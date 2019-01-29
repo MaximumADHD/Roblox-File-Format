@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-
-namespace Roblox.BinaryFormat.Chunks
+﻿namespace Roblox.BinaryFormat.Chunks
 {
     public class INST
     {
@@ -10,8 +7,6 @@ namespace Roblox.BinaryFormat.Chunks
         public readonly bool IsService;
         public readonly int NumInstances;
         public readonly int[] InstanceIds;
-
-        public Dictionary<string, PROP> Properties;
 
         public override string ToString()
         {
@@ -29,8 +24,19 @@ namespace Roblox.BinaryFormat.Chunks
                 NumInstances = reader.ReadInt32();
                 InstanceIds = reader.ReadInstanceIds(NumInstances);
             }
+        }
 
-            Properties = new Dictionary<string, PROP>();
+        public void Allocate(RobloxBinaryFile file)
+        {
+            foreach (int instId in InstanceIds)
+            {
+                Instance inst = new Instance();
+                inst.ClassName = TypeName;
+
+                file.Instances[instId] = inst;
+            }
+
+            file.Types[TypeIndex] = this;
         }
     }
 }

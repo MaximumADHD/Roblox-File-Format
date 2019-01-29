@@ -20,7 +20,7 @@ namespace Roblox.BinaryFormat
 
         public override string ToString()
         {
-            return ChunkType + " Chunk [" + Size + ']';
+            return ChunkType + " Chunk [" + Size + " bytes]";
         }
 
         public RobloxBinaryReader GetReader(string chunkType)

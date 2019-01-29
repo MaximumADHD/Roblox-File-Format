@@ -19,5 +19,26 @@
                 ParentIds = reader.ReadInstanceIds(NumRelations);
             }
         }
+
+        public void Assemble(RobloxBinaryFile file)
+        {
+            for (int i = 0; i < NumRelations; i++)
+            {
+                int childId = ChildrenIds[i];
+                int parentId = ParentIds[i];
+
+                Instance child = file.Instances[childId];
+
+                if (parentId >= 0)
+                {
+                    Instance parent = file.Instances[parentId];
+                    child.Parent = parent;
+                }
+                else
+                {
+                    file.BinaryTrunk.Add(child);
+                }
+            }
+        }
     }
 }

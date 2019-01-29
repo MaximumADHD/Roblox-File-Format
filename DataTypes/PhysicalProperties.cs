@@ -9,8 +9,8 @@ namespace Roblox.DataTypes
         public readonly float Friction;
         public readonly float Elasticity;
 
-        public float FrictionWeight;
-        public float ElasticityWeight;
+        public readonly float FrictionWeight;
+        public readonly float ElasticityWeight;
 
         public PhysicalProperties(Material material)
         {

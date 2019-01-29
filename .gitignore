@@ -4,3 +4,4 @@ packages/*
 .vs/*
 *.suo
 *.ide
+*.user

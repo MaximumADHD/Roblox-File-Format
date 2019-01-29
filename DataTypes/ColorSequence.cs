@@ -24,21 +24,21 @@ namespace Roblox.DataTypes
 
         public ColorSequence(ColorSequenceKeypoint[] keypoints)
         {
-            int len = keypoints.Length;
+            int numKeys = keypoints.Length;
 
-            if (len < 2)
+            if (numKeys < 2)
                 throw new Exception("ColorSequence: requires at least 2 keypoints");
-            else if (len > 20)
+            else if (numKeys > 20)
                 throw new Exception("ColorSequence: table is too long.");
 
-            for (int i = 1; i < len; i++)
-                if (keypoints[i-1].Time > keypoints[i].Time)
+            for (int key = 1; key < numKeys; key++)
+                if (keypoints[key - 1].Time > keypoints[key].Time)
                     throw new Exception("ColorSequence: all keypoints must be ordered by time");
 
-            if (keypoints[0].Time < 0)
+            if (Math.Abs(keypoints[0].Time) >= 10e-5f)
                 throw new Exception("ColorSequence must start at time=0.0");
 
-            if (keypoints[len-1].Time > 1)
+            if (Math.Abs(keypoints[numKeys - 1].Time - 1f) >= 10e-5f)
                 throw new Exception("ColorSequence must end at time=1.0");
 
             Keypoints = keypoints;

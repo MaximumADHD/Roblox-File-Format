@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Roblox
 {
@@ -38,25 +34,63 @@ namespace Roblox
         Int64
     }
 
-    public class RobloxProperty
+    public class Property
     {
         public string Name;
         public PropertyType Type;
         public object Value;
 
+        private byte[] RawBuffer = null;
+        public bool HasRawBuffer
+        {
+            get
+            {
+                if (RawBuffer == null && Value != null)
+                {
+                    // Infer what the buffer should be if this is a primitive.
+                    switch (Type)
+                    {
+                        case PropertyType.Int:
+                            RawBuffer = BitConverter.GetBytes((int)Value);
+                            break;
+                        case PropertyType.Int64:
+                            RawBuffer = BitConverter.GetBytes((long)Value);
+                            break;
+                        case PropertyType.Bool:
+                            RawBuffer = BitConverter.GetBytes((bool)Value);
+                            break;
+                        case PropertyType.Float:
+                            RawBuffer = BitConverter.GetBytes((float)Value);
+                            break;
+                        case PropertyType.Double:
+                            RawBuffer = BitConverter.GetBytes((double)Value);
+                            break;
+                    }
+                }
+
+                return (RawBuffer != null);
+            }
+        }
+
         public override string ToString()
         {
-            Type PropertyType = typeof(PropertyType);
+            string typeName = Enum.GetName(typeof(PropertyType), Type);
+            string valueLabel = (Value != null ? Value.ToString() : "null");
 
-            string typeName = Enum.GetName(PropertyType, Type);
-            string valueLabel;
-
-            if (Value != null)
-                valueLabel = Value.ToString();
-            else
-                valueLabel = "?";
+            if (Type == PropertyType.String)
+                valueLabel = '"' + valueLabel + '"';
 
             return string.Join(" ", typeName, Name, '=', valueLabel);
+        }
+
+        internal void SetRawBuffer(byte[] buffer)
+        {
+            RawBuffer = buffer;
+        }
+
+        public byte[] GetRawBuffer()
+        {
+            return RawBuffer;
         }
     }
 }

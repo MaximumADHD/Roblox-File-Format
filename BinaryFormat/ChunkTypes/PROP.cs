@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 
 using Roblox.Enums;
@@ -10,60 +9,46 @@ namespace Roblox.BinaryFormat.Chunks
 {
     public class PROP
     {
-        public int Index { get; private set; }
-        public string Name { get; private set; }
-
-        public readonly PropertyType Type;
-        public RobloxProperty[] Properties => props;
-
-        private RobloxBinaryReader reader;
-        private RobloxProperty[] props;
-
-        public override string ToString()
+        public static void ReadProperties(RobloxBinaryFile file, RobloxBinaryChunk chunk)
         {
-            Type PropertyType = typeof(PropertyType);
-            return '[' + Enum.GetName(PropertyType, Type) + "] " + Name;
-        }
+            RobloxBinaryReader reader = chunk.GetReader("PROP");
 
-        public PROP(RobloxBinaryChunk chunk)
-        {
-            reader = chunk.GetReader("PROP");
-
-            Index = reader.ReadInt32();
-            Name = reader.ReadString();
+            // Read the property's header info.
+            int typeIndex = reader.ReadInt32();
+            string name = reader.ReadString();
+            PropertyType propType;
 
             try
             {
-                byte propType = reader.ReadByte();
-                Type = (PropertyType)propType;
+                byte typeId = reader.ReadByte();
+                propType = (PropertyType)typeId;
             }
             catch
             {
-                Type = PropertyType.Unknown;
+                propType = PropertyType.Unknown;
             }
-        }
 
-        public void ReadPropertyValues(INST instChunk, RobloxInstance[] instMap)
-        {
-            int[] ids = instChunk.InstanceIds;
-            int instCount = ids.Length;
+            // Create access arrays for the objects we will be adding properties to.
+            INST type = file.Types[typeIndex];
+            Property[] props = new Property[type.NumInstances];
 
-            props = new RobloxProperty[instCount];
+            int[] ids = type.InstanceIds;
+            int instCount = type.NumInstances;
 
             for (int i = 0; i < instCount; i++)
             {
-                RobloxProperty prop = new RobloxProperty();
-                prop.Name = Name;
-                prop.Type = Type;
+                int instId = ids[i];
 
-                Properties[i] = prop;
-                instMap[ids[i]].Properties.Add(prop);
+                Property prop = new Property();
+                prop.Name = name;
+                prop.Type = propType;
+                props[i] = prop;
+                
+                Instance inst = file.Instances[instId];
+                inst.AddProperty(ref prop);
             }
 
-            // Setup some short-hand functions for frequently used actions.
-            var readInstanceInts = new Func<int[]>(() => reader.ReadInts(instCount));
-            var readInstanceFloats = new Func<float[]>(() => reader.ReadFloats(instCount));
-
+            // Setup some short-hand functions for actions frequently used during the read procedure.
             var loadProperties = new Action<Func<int, object>>(read =>
             {
                 for (int i = 0; i < instCount; i++)
@@ -73,46 +58,67 @@ namespace Roblox.BinaryFormat.Chunks
                 }
             });
 
-            // Process the property data based on the property type.
-            switch (Type)
+            var readInts = new Func<int[]>(() => reader.ReadInts(instCount));
+            var readFloats = new Func<float[]>(() => reader.ReadFloats(instCount));
+            
+            // Read the property data based on the property type.
+            switch (propType)
             {
                 case PropertyType.String:
-                    loadProperties(i => reader.ReadString());
+                    loadProperties(i =>
+                    {
+                        string result = reader.ReadString();
+
+                        // Leave an access point for the original byte sequence, in case this is a BinaryString.
+                        // This will allow the developer to read the sequence without any mangling from C# strings.
+                        byte[] buffer = reader.GetLastStringBuffer();
+                        props[i].SetRawBuffer(buffer);
+
+                        return result;
+                    });
+
                     break;
                 case PropertyType.Bool:
                     loadProperties(i => reader.ReadBoolean());
                     break;
                 case PropertyType.Int:
-                    int[] ints = readInstanceInts();
+                    int[] ints = readInts();
                     loadProperties(i => ints[i]);
                     break;
                 case PropertyType.Float:
-                    float[] floats = readInstanceFloats();
+                    float[] floats = readFloats();
                     loadProperties(i => floats[i]);
                     break;
                 case PropertyType.Double:
                     loadProperties(i => reader.ReadDouble());
                     break;
                 case PropertyType.UDim:
-                    float[] scales = readInstanceFloats();
-                    int[] offsets = readInstanceInts();
+                    float[] UDim_Scales = readFloats();
+                    int[] UDim_Offsets = readInts();
 
                     loadProperties(i =>
                     {
-                        float scale = scales[i];
-                        int offset = offsets[i];
+                        float scale = UDim_Scales[i];
+                        int offset = UDim_Offsets[i];
                         return new UDim(scale, offset);
                     });
 
                     break;
                 case PropertyType.UDim2:
-                    float[] scalesX = readInstanceFloats(), scalesY = readInstanceFloats();
-                    int[] offsetsX = readInstanceInts(), offsetsY = readInstanceInts();
+                    float[] UDim2_Scales_X = readFloats(), 
+                            UDim2_Scales_Y = readFloats();
+
+                    int[] UDim2_Offsets_X = readInts(), 
+                          UDim2_Offsets_Y = readInts();
 
                     loadProperties(i =>
                     {
-                        float scaleX = scalesX[i], scaleY = scalesY[i];
-                        int offsetX = offsetsX[i], offsetY = offsetsY[i];
+                        float scaleX = UDim2_Scales_X[i],
+                              scaleY = UDim2_Scales_Y[i];
+
+                        int offsetX = UDim2_Offsets_X[i],
+                            offsetY = UDim2_Offsets_Y[i];
+
                         return new UDim2(scaleX, offsetX, scaleY, offsetY);
                     });
 
@@ -147,19 +153,19 @@ namespace Roblox.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.BrickColor:
-                    int[] brickColors = readInstanceInts();
+                    int[] brickColors = readInts();
 
                     loadProperties(i =>
                     {
                         int number = brickColors[i];
-                        return BrickColor.New(number);
+                        return BrickColor.FromNumber(number);
                     });
 
                     break;
                 case PropertyType.Color3:
-                    float[] color3_R = readInstanceFloats(),
-                            color3_G = readInstanceFloats(),
-                            color3_B = readInstanceFloats();
+                    float[] color3_R = readFloats(),
+                            color3_G = readFloats(),
+                            color3_B = readFloats();
 
                     loadProperties(i =>
                     {
@@ -172,8 +178,8 @@ namespace Roblox.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Vector2:
-                    float[] vector2_X = readInstanceFloats(),
-                            vector2_Y = readInstanceFloats();
+                    float[] vector2_X = readFloats(),
+                            vector2_Y = readFloats();
 
                     loadProperties(i =>
                     {
@@ -185,9 +191,9 @@ namespace Roblox.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Vector3:
-                    float[] vector3_X = readInstanceFloats(),
-                            vector3_Y = readInstanceFloats(),
-                            vector3_Z = readInstanceFloats();
+                    float[] vector3_X = readFloats(),
+                            vector3_Y = readFloats(),
+                            vector3_Z = readFloats();
 
                     loadProperties(i =>
                     {
@@ -206,14 +212,17 @@ namespace Roblox.BinaryFormat.Chunks
 
                     loadProperties(i =>
                     {
-                        byte orientId = reader.ReadByte();
+                        int normalXY = reader.ReadByte();
 
-                        if (orientId > 0)
+                        if (normalXY > 0)
                         {
-                            NormalId normX = (NormalId)((orientId - 1) / 6);
+                            // Make sure this value is in a safe range.
+                            normalXY = (normalXY - 1) % 36;
+
+                            NormalId normX = (NormalId)((normalXY - 1) / 6);
                             Vector3 R0 = Vector3.FromNormalId(normX);
 
-                            NormalId normY = (NormalId)((orientId - 1) % 6);
+                            NormalId normY = (NormalId)((normalXY - 1) % 6);
                             Vector3 R1 = Vector3.FromNormalId(normY);
 
                             // Compute R2 using the cross product of R0 and R1.
@@ -227,12 +236,10 @@ namespace Roblox.BinaryFormat.Chunks
                                 R2.X, R2.Y, R2.Z,
                             };
                         }
-                        else if (Type == PropertyType.Quaternion)
+                        else if (propType == PropertyType.Quaternion)
                         {
-                            float qx = reader.ReadSingle(),
-                                  qy = reader.ReadSingle(),
-                                  qz = reader.ReadSingle(),
-                                  qw = reader.ReadSingle();
+                            float qx = reader.ReadFloat(), qy = reader.ReadFloat(),
+                                  qz = reader.ReadFloat(), qw = reader.ReadFloat();
 
                             Quaternion quat = new Quaternion(qx, qy, qz, qw);
                             var rotation = quat.ToCFrame();
@@ -245,7 +252,7 @@ namespace Roblox.BinaryFormat.Chunks
 
                             for (int m = 0; m < 9; m++)
                             {
-                                float value = reader.ReadSingle();
+                                float value = reader.ReadFloat();
                                 matrix[m] = value;
                             }
 
@@ -253,9 +260,9 @@ namespace Roblox.BinaryFormat.Chunks
                         }
                     });
 
-                    float[] cframe_X = readInstanceFloats(),
-                            cframe_Y = readInstanceFloats(),
-                            cframe_Z = readInstanceFloats();
+                    float[] cframe_X = readFloats(),
+                            cframe_Y = readFloats(),
+                            cframe_Z = readFloats();
 
                     loadProperties(i =>
                     {
@@ -273,8 +280,12 @@ namespace Roblox.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Enum:
-                    uint[] enums = reader.ReadInterwovenValues(instCount, BitConverter.ToUInt32);
+                    // TODO: I want to map these values to actual Roblox enums, but I'll have to add an
+                    //       interpreter for the JSON API Dump to do it properly.
+
+                    uint[] enums = reader.ReadInterlaced(instCount, BitConverter.ToUInt32);
                     loadProperties(i => enums[i]);
+
                     break;
                 case PropertyType.Ref:
                     int[] instIds = reader.ReadInstanceIds(instCount);
@@ -282,7 +293,7 @@ namespace Roblox.BinaryFormat.Chunks
                     loadProperties(i =>
                     {
                         int instId = instIds[i];
-                        return instId >= 0 ? instMap[instId] : null;
+                        return instId >= 0 ? file.Instances[instId] : null;
                     });
 
                     break;
@@ -300,16 +311,16 @@ namespace Roblox.BinaryFormat.Chunks
                 case PropertyType.NumberSequence:
                     loadProperties(i =>
                     {
-                        int keys = reader.ReadInt32();
-                        var keypoints = new NumberSequenceKeypoint[keys];
+                        int numKeys = reader.ReadInt32();
+                        var keypoints = new NumberSequenceKeypoint[numKeys];
 
-                        for (int key = 0; key < keys; key++)
+                        for (int key = 0; key < numKeys; key++)
                         {
-                            float time = reader.ReadSingle(),
-                                  value = reader.ReadSingle(),
-                                  envelope = reader.ReadSingle();
+                            float Time = reader.ReadFloat(),
+                                  Value = reader.ReadFloat(),
+                                  Envelope = reader.ReadFloat();
 
-                            keypoints[key] = new NumberSequenceKeypoint(time, value, envelope);
+                            keypoints[key] = new NumberSequenceKeypoint(Time, Value, Envelope);
                         }
 
                         return new NumberSequence(keypoints);
@@ -319,18 +330,23 @@ namespace Roblox.BinaryFormat.Chunks
                 case PropertyType.ColorSequence:
                     loadProperties(i =>
                     {
-                        int keys = reader.ReadInt32();
-                        var keypoints = new ColorSequenceKeypoint[keys];
+                        int numKeys = reader.ReadInt32();
+                        var keypoints = new ColorSequenceKeypoint[numKeys];
 
-                        for (int key = 0; key < keys; key++)
+                        for (int key = 0; key < numKeys; key++)
                         {
-                            float time = reader.ReadSingle(),
-                                  R = reader.ReadSingle(),
-                                  G = reader.ReadSingle(),
-                                  B = reader.ReadSingle(),
-                                  envelope = reader.ReadSingle(); // unused, but still written
+                            float Time = reader.ReadFloat(),
+                                  R = reader.ReadFloat(),
+                                  G = reader.ReadFloat(),
+                                  B = reader.ReadFloat();
 
-                            keypoints[key] = new ColorSequenceKeypoint(time, new Color3(R, G, B));
+                            Color3 Color = new Color3(R, G, B);
+                            keypoints[key] = new ColorSequenceKeypoint(Time, Color);
+
+                            // ColorSequenceKeypoint has an unused `Envelope` float which has to be read.
+                            // Roblox Studio writes it because it does an std::memcpy call to the C++ type.
+                            // If we skip it, the stream will become misaligned.
+                            reader.ReadBytes(4);
                         }
 
                         return new ColorSequence(keypoints);
@@ -340,25 +356,21 @@ namespace Roblox.BinaryFormat.Chunks
                 case PropertyType.NumberRange:
                     loadProperties(i =>
                     {
-                        float min = reader.ReadSingle();
-                        float max = reader.ReadSingle();
+                        float min = reader.ReadFloat();
+                        float max = reader.ReadFloat();
 
                         return new NumberRange(min, max);
                     });
 
                     break;
                 case PropertyType.Rect:
-                    float[] Rect_X0 = readInstanceFloats(),
-                            Rect_Y0 = readInstanceFloats(),
-                            Rect_X1 = readInstanceFloats(),
-                            Rect_Y1 = readInstanceFloats();
+                    float[] Rect_X0 = readFloats(), Rect_Y0 = readFloats(),
+                            Rect_X1 = readFloats(), Rect_Y1 = readFloats();
 
                     loadProperties(i =>
                     {
-                        float x0 = Rect_X0[i],
-                              y0 = Rect_Y0[i],
-                              x1 = Rect_X1[i],
-                              y1 = Rect_Y1[i];
+                        float x0 = Rect_X0[i], y0 = Rect_Y0[i],
+                              x1 = Rect_X1[i], y1 = Rect_Y1[i];
 
                         return new Rect(x0, y0, x1, y1);
                     });
@@ -371,19 +383,19 @@ namespace Roblox.BinaryFormat.Chunks
                         
                         if (custom)
                         {
-                            float density = reader.ReadSingle(),
-                                  friction = reader.ReadSingle(),
-                                  elasticity = reader.ReadSingle(),
-                                  frictionWeight = reader.ReadSingle(),
-                                  elasticityWeight = reader.ReadSingle();
+                            float Density = reader.ReadFloat(),
+                                  Friction = reader.ReadFloat(),
+                                  Elasticity = reader.ReadFloat(),
+                                  FrictionWeight = reader.ReadFloat(),
+                                  ElasticityWeight = reader.ReadFloat();
 
                             return new PhysicalProperties
                             (
-                                density,
-                                friction,
-                                elasticity,
-                                frictionWeight, 
-                                elasticityWeight
+                                Density,
+                                Friction,
+                                Elasticity,
+                                FrictionWeight,
+                                ElasticityWeight
                             );
                         }
 
@@ -407,7 +419,7 @@ namespace Roblox.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Int64:
-                    long[] int64s = reader.ReadInterwovenValues(instCount, (buffer, start) =>
+                    long[] int64s = reader.ReadInterlaced(instCount, (buffer, start) =>
                     {
                         long result = BitConverter.ToInt64(buffer, start);
                         return (long)((ulong)result >> 1) ^ (-(result & 1));
@@ -415,8 +427,9 @@ namespace Roblox.BinaryFormat.Chunks
 
                     loadProperties(i => int64s[i]);
                     break;
-                
             }
+
+            reader.Dispose();
         }
     }
 }

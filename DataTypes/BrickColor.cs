@@ -20,7 +20,6 @@ namespace Roblox.DataTypes
 
         private static List<BrickColor> ByPalette;
         private static Dictionary<int, BrickColor> ByNumber;
-        private static Dictionary<string, BrickColor> ByName;
 
         private static Random RNG = new Random();
 
@@ -41,20 +40,38 @@ namespace Roblox.DataTypes
 
         static BrickColor()
         {
-            ByName = BrickColors.ColorMap.ToDictionary(brickColor => brickColor.Name);
+            Dictionary<string, int> bcSum = new Dictionary<string, int>();
+
+            foreach (BrickColor color in BrickColors.ColorMap)
+            {
+                if (bcSum.ContainsKey(color.Name))
+                {
+                    bcSum[color.Name]++;
+                }
+                else
+                {
+                    bcSum.Add(color.Name, 1);
+                }
+            }
+
             ByNumber = BrickColors.ColorMap.ToDictionary(brickColor => brickColor.Number);
             ByPalette = BrickColors.PaletteMap.Select(number => ByNumber[number]).ToList();
         }
 
-        public static BrickColor New(string name)
+        public static BrickColor FromName(string name)
         {
-            if (!ByName.ContainsKey(name))
-                name = DefaultName;
+            BrickColor result = null;
+            var query = BrickColors.ColorMap.Where((bc) => bc.Name == name);
 
-            return ByName[name];
+            if (query.Count() > 0)
+                result = query.First();
+            else
+                result = FromName(DefaultName);
+
+            return result;
         }
 
-        public static BrickColor New(int number)
+        public static BrickColor FromNumber(int number)
         {
             if (!ByNumber.ContainsKey(number))
                 number = DefaultNumber;
@@ -62,14 +79,14 @@ namespace Roblox.DataTypes
             return ByNumber[number];
         }
 
-        public static BrickColor New(Color3 color)
+        public static BrickColor FromColor3(Color3 color)
         {
-            return New(color.R, color.G, color.B);
+            return FromRGB(color.R, color.G, color.B);
         }
 
-        public static BrickColor New(float r = 0, float g = 0, float b = 0)
+        public static BrickColor FromRGB(float r = 0, float g = 0, float b = 0)
         {
-            BrickColor bestMatch = New(-1);
+            BrickColor bestMatch = FromNumber(-1);
             float closest = float.MaxValue;
 
             foreach (BrickColor brickColor in BrickColors.ColorMap)
@@ -106,13 +123,13 @@ namespace Roblox.DataTypes
             return ByPalette[index];
         }
 
-        public static BrickColor White()    => New("White");
-        public static BrickColor Gray()     => New("Medium stone grey");
-        public static BrickColor DarkGray() => New("Dark stone grey");
-        public static BrickColor Black()    => New("Black");
-        public static BrickColor Red()      => New("Bright red");
-        public static BrickColor Yellow()   => New("Bright yellow");
-        public static BrickColor Green()    => New("Dark green");
-        public static BrickColor Blue()     => New("Bright blue");
+        public static BrickColor White()    => FromName("White");
+        public static BrickColor Gray()     => FromName("Medium stone grey");
+        public static BrickColor DarkGray() => FromName("Dark stone grey");
+        public static BrickColor Black()    => FromName("Black");
+        public static BrickColor Red()      => FromName("Bright red");
+        public static BrickColor Yellow()   => FromName("Bright yellow");
+        public static BrickColor Green()    => FromName("Dark green");
+        public static BrickColor Blue()     => FromName("Bright blue");
     }
 }
