@@ -212,17 +212,17 @@ namespace Roblox.BinaryFormat.Chunks
 
                     loadProperties(i =>
                     {
-                        int normalXY = reader.ReadByte();
+                        int normXY = reader.ReadByte();
 
-                        if (normalXY > 0)
+                        if (normXY > 0)
                         {
                             // Make sure this value is in a safe range.
-                            normalXY = (normalXY - 1) % 36;
+                            normXY = (normXY - 1) % 36;
 
-                            NormalId normX = (NormalId)((normalXY - 1) / 6);
+                            NormalId normX = (NormalId)(normXY / 6);
                             Vector3 R0 = Vector3.FromNormalId(normX);
 
-                            NormalId normY = (NormalId)((normalXY - 1) % 6);
+                            NormalId normY = (NormalId)(normXY % 6);
                             Vector3 R1 = Vector3.FromNormalId(normY);
 
                             // Compute R2 using the cross product of R0 and R1.
