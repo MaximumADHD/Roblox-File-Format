@@ -104,6 +104,7 @@ namespace Roblox
         {
             Property property = null;
 
+            var query = Properties.Where((prop) => prop.Name.ToLower() == propertyName.ToLower());
             if (query.Count() > 0)
                 property = query.First();
 
