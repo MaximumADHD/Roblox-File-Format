@@ -18,7 +18,7 @@ namespace Roblox.DataTypes
             return string.Join(", ", R, G, B);
         }
 
-        public static Color3 fromRGB(int r = 0, int g = 0, int b = 0)
+        public static Color3 fromRGB(uint r = 0, uint g = 0, uint b = 0)
         {
             return new Color3(r / 255f, g / 255f, b / 255f);
         }

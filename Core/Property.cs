@@ -36,6 +36,7 @@ namespace Roblox
 
     public class Property
     {
+        public Instance Instance;
         public string Name;
         public PropertyType Type;
         public object Value;
@@ -47,7 +48,7 @@ namespace Roblox
             {
                 if (RawBuffer == null && Value != null)
                 {
-                    // Infer what the buffer should be if this is a primitive.
+                    // Improvise what the buffer should be if this is a primitive.
                     switch (Type)
                     {
                         case PropertyType.Int:
@@ -70,6 +71,16 @@ namespace Roblox
 
                 return (RawBuffer != null);
             }
+        }
+
+        public string GetFullName()
+        {
+            string result = Name;
+
+            if (Instance != null)
+                result = Instance.GetFullName() + '.' + result;
+
+            return result;
         }
 
         public override string ToString()

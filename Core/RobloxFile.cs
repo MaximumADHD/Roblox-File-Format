@@ -13,8 +13,8 @@ namespace Roblox
     /// </summary>
     public interface IRobloxFile
     {
-        IReadOnlyList<Instance> Trunk { get; }
-        void Initialize(byte[] buffer);
+        Instance Contents { get; }
+        void ReadFile(byte[] buffer);
     }
 
     /// <summary>
@@ -26,9 +26,9 @@ namespace Roblox
         public bool Initialized { get; private set; }
         public IRobloxFile InnerFile { get; private set; }
 
-        public IReadOnlyList<Instance> Trunk => InnerFile.Trunk;
+        public Instance Contents => InnerFile.Contents;
 
-        public void Initialize(byte[] buffer)
+        public void ReadFile(byte[] buffer)
         {
             if (!Initialized)
             {
@@ -37,14 +37,14 @@ namespace Roblox
                     string header = Encoding.UTF7.GetString(buffer, 0, 14);
                     IRobloxFile file = null;
 
-                    if (header == RobloxBinaryFile.MagicHeader)
-                        file = new RobloxBinaryFile();
+                    if (header == BinaryRobloxFile.MagicHeader)
+                        file = new BinaryRobloxFile();
                     else if (header.StartsWith("<roblox"))
-                        file = new RobloxXmlFile();
+                        file = new XmlRobloxFile();
 
                     if (file != null)
                     {
-                        file.Initialize(buffer);
+                        file.ReadFile(buffer);
                         InnerFile = file;
 
                         Initialized = true;
@@ -58,7 +58,7 @@ namespace Roblox
 
         public RobloxFile(byte[] buffer)
         {
-            Initialize(buffer);
+            ReadFile(buffer);
         }
 
         public RobloxFile(Stream stream)
@@ -71,13 +71,13 @@ namespace Roblox
                 buffer = memoryStream.ToArray();
             }
 
-            Initialize(buffer);
+            ReadFile(buffer);
         }
 
         public RobloxFile(string filePath)
         {
             byte[] buffer = File.ReadAllBytes(filePath);
-            Initialize(buffer);
+            ReadFile(buffer);
         }
     }
 }

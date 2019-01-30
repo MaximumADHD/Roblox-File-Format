@@ -6,11 +6,11 @@ namespace Roblox.DataTypes
     [Flags]
     public enum Faces
     {
-        Right  = 0 << NormalId.Right,
-        Top    = 0 << NormalId.Top,
-        Back   = 0 << NormalId.Back,
-        Left   = 0 << NormalId.Left,
-        Bottom = 0 << NormalId.Bottom,
-        Front  = 0 << NormalId.Front,
+        Right  = 1 << NormalId.Right,
+        Top    = 1 << NormalId.Top,
+        Back   = 1 << NormalId.Back,
+        Left   = 1 << NormalId.Left,
+        Bottom = 1 << NormalId.Bottom,
+        Front  = 1 << NormalId.Front,
     }
 }

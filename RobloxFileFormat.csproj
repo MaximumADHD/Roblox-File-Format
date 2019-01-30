@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryFormat\BinaryChunk.cs" />
-    <Compile Include="BinaryFormat\BinaryFile.cs" />
+    <Compile Include="BinaryFormat\BinaryRobloxFile.cs" />
     <Compile Include="BinaryFormat\ChunkTypes\INST.cs" />
     <Compile Include="BinaryFormat\ChunkTypes\META.cs" />
     <Compile Include="BinaryFormat\ChunkTypes\PRNT.cs" />
@@ -83,14 +83,40 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\RobloxFile.cs" />
     <Compile Include="Core\Instance.cs" />
-    <Compile Include="XmlFormat\XmlFile.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\PhysicalProperties.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\NumberRange.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\NumberSequence.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\ColorSequence.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Faces.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Axes.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Color3uint8.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Color3.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Content.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\BinaryString.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Rect.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\String.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Double.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Float.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Boolean.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\BrickColor.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Enum.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Int64.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Int.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Ref.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\UDim2.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Vector2.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\CFrame.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Ray.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\UDim.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Vector3.cs" />
+    <Compile Include="XmlFormat\XmlPropertyTokens.cs" />
+    <Compile Include="XmlFormat\XmlDataReader.cs" />
+    <Compile Include="XmlFormat\XmlRobloxFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="XmlFormat\TokenHandlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

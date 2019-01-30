@@ -26,11 +26,11 @@ namespace Roblox.DataTypes
         private const string DefaultName = "Medium stone grey";
         private const int DefaultNumber = 194;
 
-        internal BrickColor(int number, int rgb, string name)
+        internal BrickColor(int number, uint rgb, string name)
         {
-            int r = (rgb / 65536) % 256;
-            int g = (rgb / 256) % 256;
-            int b = rgb % 256;
+            uint r = (rgb / 65536) % 256;
+            uint g = (rgb / 256) % 256;
+            uint b = (rgb % 256);
 
             Name = name;
             Number = number;

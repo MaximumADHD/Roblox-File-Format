@@ -26,13 +26,11 @@
             }
         }
 
-        public void Allocate(RobloxBinaryFile file)
+        public void Allocate(BinaryRobloxFile file)
         {
             foreach (int instId in InstanceIds)
             {
-                Instance inst = new Instance();
-                inst.ClassName = TypeName;
-
+                Instance inst = new Instance(TypeName);
                 file.Instances[instId] = inst;
             }
 

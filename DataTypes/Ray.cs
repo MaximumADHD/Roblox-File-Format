@@ -28,7 +28,7 @@
 
         public override string ToString()
         {
-            return '{' + Origin + "}, {" + Direction + '}';
+            return '{' + Origin.ToString() + "}, {" + Direction.ToString() + '}';
         }
 
         public Vector3 ClosestPoint(Vector3 point)

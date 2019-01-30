@@ -5,12 +5,15 @@ using System.Linq;
 namespace Roblox
 {
     /// <summary>
-    /// Describes an object in Roblox's Parent->Child hierarchy.
+    /// Describes an object in Roblox's DataModel hierarchy.
     /// Instances can have sets of properties loaded from *.rbxl/*.rbxm files.
     /// </summary>
     public class Instance
     {
-        public string ClassName = "";
+        /// <summary>The ClassName of this Instance.</summary>
+        public readonly string ClassName;
+
+        /// <summary>A list of properties that are defined under this Instance.</summary>
         public List<Property> Properties = new List<Property>();
         
         private List<Instance> Children = new List<Instance>();
@@ -19,9 +22,29 @@ namespace Roblox
         public string Name => ReadProperty("Name", ClassName);
         public override string ToString() => Name;
 
-        /// <summary>
-        /// Returns true if this Instance is an ancestor to the provided Instance.
-        /// </summary>
+        /// <summary>Creates an instance using the provided ClassName.</summary>
+        /// <param name="className">The ClassName to use for this Instance.</param>
+        public Instance(string className = "Instance")
+        {
+            ClassName = className;
+        }
+
+        /// <summary>Creates an instance using the provided ClassName and Name.</summary>
+        /// <param name="className">The ClassName to use for this Instance.</param>
+        /// <param name="name">The Name to use for this Instance.</param>
+        public Instance(string className = "Instance", string name = "Instance")
+        {
+            Property propName = new Property();
+            propName.Name = "Name";
+            propName.Type = PropertyType.String;
+            propName.Value = name;
+            propName.Instance = this;
+
+            ClassName = className;
+            Properties.Add(propName);
+        }
+
+        /// <summary>Returns true if this Instance is an ancestor to the provided Instance.</summary>
         /// <param name="descendant">The instance whose descendance will be tested against this Instance.</param>
         public bool IsAncestorOf(Instance descendant)
         {
@@ -36,9 +59,7 @@ namespace Roblox
             return false;
         }
 
-        /// <summary>
-        /// Returns true if this Instance is a descendant of the provided Instance.
-        /// </summary>
+        /// <summary>Returns true if this Instance is a descendant of the provided Instance.</summary>
         /// <param name="ancestor">The instance whose ancestry will be tested against this Instance.</param>
         public bool IsDescendantOf(Instance ancestor)
         {
@@ -53,14 +74,17 @@ namespace Roblox
         /// </summary>
         public Instance Parent
         {
-            get { return rawParent; }
+            get
+            {
+                return rawParent;
+            }
             set
             {
                 if (IsAncestorOf(value))
                     throw new Exception("Parent would result in circular reference.");
 
                 if (Parent == this)
-                    throw new Exception("Attempt to set parent to self");
+                    throw new Exception("Attempt to set parent to self.");
 
                 if (rawParent != null)
                     rawParent.Children.Remove(this);
@@ -70,18 +94,37 @@ namespace Roblox
             }
         }
 
-        public IEnumerable<Instance> GetChildren()
+        /// <summary>
+        /// Returns a snapshot of the Instances currently parented to this Instance, as an array.
+        /// </summary>
+        public Instance[] GetChildren()
         {
-            var current = Children.ToArray();
-            return current.AsEnumerable();
+            return Children.ToArray();
         }
 
         /// <summary>
-        /// Returns the first Instance whose Name is the provided string name. If the instance is not found, this returns null.
+        /// Returns a snapshot of the Instances that are descendants of this Instance, as an array.
         /// </summary>
-        /// <param name="name">The name of the instance to find.</param>
-        /// <returns>The instance that was found with this name, or null.</returns>
-        public Instance FindFirstChild(string name)
+        public Instance[] GetDescendants()
+        {
+            Instance[] results = GetChildren();
+
+            foreach (Instance child in results)
+            {
+                Instance[] childResults = child.GetDescendants();
+                results = results.Concat(childResults).ToArray();
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Returns the first child of this Instance whose Name is the provided string name.
+        /// If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="name">The Name of the Instance to find.</param>
+        /// <param name="recursive">Indicates if we should search descendants as well.</param>
+        public Instance FindFirstChild(string name, bool recursive = false)
         {
             Instance result = null;
 
@@ -90,6 +133,38 @@ namespace Roblox
                 result = query.First();
 
             return result;
+        }
+
+        /// <summary>
+        /// Returns the first Instance whose ClassName is the provided string className. If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="className">The ClassName of the Instance to find.</param>
+        public Instance FindFirstChildOfClass(string className)
+        {
+            Instance result = null;
+
+            var query = Children.Where(child => child.ClassName == className);
+            if (query.Count() > 0)
+                result = query.First();
+
+            return result;
+        }
+
+        /// <summary>
+        /// Returns a string descrbing the index traversal of this Instance, starting from its root ancestor.
+        /// </summary>
+        public string GetFullName()
+        {
+            string fullName = Name;
+            Instance at = Parent;
+
+            while (at != null)
+            {
+                fullName = at.Name + '.' + fullName;
+                at = at.Parent;
+            }
+
+            return fullName;
         }
 
         /// <summary>
@@ -126,7 +201,7 @@ namespace Roblox
                 object result = ReadProperty(propertyName);
                 return (T)result;
             }
-            catch (Exception e)
+            catch
             {
                 return nullFallback;
             }
@@ -134,7 +209,8 @@ namespace Roblox
 
         /// <summary>
         /// Looks for a property with the specified property name. If found, it will try to set the value of the referenced outValue to its value.<para/>
-        /// Returns true if the property was found and its value was casted to the referenced outValue. If it returns false, the outValue has not been set.
+        /// Returns true if the property was found and its value was casted to the referenced outValue.<para/>
+        /// If it returns false, the outValue will not have its value set.
         /// </summary>
         /// <typeparam name="T">The value type to convert to when finding the specified property name.</typeparam>
         /// <param name="propertyName">The name of the property to be fetched from this Instance.</param>

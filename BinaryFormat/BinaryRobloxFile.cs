@@ -6,7 +6,7 @@ using Roblox.BinaryFormat.Chunks;
 
 namespace Roblox.BinaryFormat
 {
-    public class RobloxBinaryFile : IRobloxFile
+    public class BinaryRobloxFile : IRobloxFile
     {
         // Header Specific
         public const string MagicHeader = "<roblox!\x89\xff\x0d\x0a\x1a\x0a";
@@ -17,8 +17,8 @@ namespace Roblox.BinaryFormat
         public byte[] Reserved;
 
         // IRobloxFile
-        public List<Instance> BinaryTrunk = new List<Instance>();
-        public IReadOnlyList<Instance> Trunk => BinaryTrunk.AsReadOnly();
+        internal readonly Instance BinContents = new Instance("Folder", "BinaryRobloxFile");
+        public Instance Contents => BinContents;
 
         // Runtime Specific
         public List<RobloxBinaryChunk> Chunks = new List<RobloxBinaryChunk>();
@@ -28,7 +28,7 @@ namespace Roblox.BinaryFormat
         public META Metadata;
         public INST[] Types;
         
-        public void Initialize(byte[] contents)
+        public void ReadFile(byte[] contents)
         {
             using (MemoryStream file = new MemoryStream(contents))
             using (RobloxBinaryReader reader = new RobloxBinaryReader(file))
@@ -38,7 +38,7 @@ namespace Roblox.BinaryFormat
                 string signature = Encoding.UTF7.GetString(binSignature);
 
                 if (signature != MagicHeader)
-                    throw new InvalidDataException("Provided file's signature does not match RobloxBinaryFile.MagicHeader!");
+                    throw new InvalidDataException("Provided file's signature does not match BinaryRobloxFile.MagicHeader!");
 
                 // Read header data.
                 Version = reader.ReadUInt16();
@@ -69,8 +69,8 @@ namespace Roblox.BinaryFormat
                                 PROP.ReadProperties(this, chunk);
                                 break;
                             case "PRNT":
-                                PRNT prnt = new PRNT(chunk);
-                                prnt.Assemble(this);
+                                PRNT hierarchy = new PRNT(chunk);
+                                hierarchy.Assemble(this);
                                 break;
                             case "META":
                                 Metadata = new META(chunk);

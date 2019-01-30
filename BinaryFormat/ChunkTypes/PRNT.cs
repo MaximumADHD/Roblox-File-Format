@@ -20,7 +20,7 @@
             }
         }
 
-        public void Assemble(RobloxBinaryFile file)
+        public void Assemble(BinaryRobloxFile file)
         {
             for (int i = 0; i < NumRelations; i++)
             {
@@ -28,16 +28,14 @@
                 int parentId = ParentIds[i];
 
                 Instance child = file.Instances[childId];
+                Instance parent = null;
 
                 if (parentId >= 0)
-                {
-                    Instance parent = file.Instances[parentId];
-                    child.Parent = parent;
-                }
+                    parent = file.Instances[parentId];
                 else
-                {
-                    file.BinaryTrunk.Add(child);
-                }
+                    parent = file.BinContents;
+
+                child.Parent = parent;
             }
         }
     }

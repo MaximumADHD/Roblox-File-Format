@@ -9,7 +9,7 @@ namespace Roblox.BinaryFormat.Chunks
 {
     public class PROP
     {
-        public static void ReadProperties(RobloxBinaryFile file, RobloxBinaryChunk chunk)
+        public static void ReadProperties(BinaryRobloxFile file, RobloxBinaryChunk chunk)
         {
             RobloxBinaryReader reader = chunk.GetReader("PROP");
 
@@ -38,13 +38,14 @@ namespace Roblox.BinaryFormat.Chunks
             for (int i = 0; i < instCount; i++)
             {
                 int instId = ids[i];
+                Instance inst = file.Instances[instId];
 
                 Property prop = new Property();
                 prop.Name = name;
                 prop.Type = propType;
+                prop.Instance = inst;
+
                 props[i] = prop;
-                
-                Instance inst = file.Instances[instId];
                 inst.AddProperty(ref prop);
             }
 
