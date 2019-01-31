@@ -13,7 +13,7 @@ namespace Roblox.BinaryFormat
         public readonly byte[] CompressedData;
 
         public readonly int Size;
-        public readonly int Reserved;
+        public readonly byte[] Reserved;
         public readonly byte[] Data;
 
         public bool HasCompressedData => (CompressedSize > 0);
@@ -41,7 +41,7 @@ namespace Roblox.BinaryFormat
 
             CompressedSize = reader.ReadInt32();
             Size = reader.ReadInt32();
-            Reserved = reader.ReadInt32();
+            Reserved = reader.ReadBytes(4);
 
             if (HasCompressedData)
             {
