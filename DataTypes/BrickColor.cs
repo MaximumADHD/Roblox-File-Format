@@ -40,20 +40,6 @@ namespace Roblox.DataTypes
 
         static BrickColor()
         {
-            Dictionary<string, int> bcSum = new Dictionary<string, int>();
-
-            foreach (BrickColor color in BrickColors.ColorMap)
-            {
-                if (bcSum.ContainsKey(color.Name))
-                {
-                    bcSum[color.Name]++;
-                }
-                else
-                {
-                    bcSum.Add(color.Name, 1);
-                }
-            }
-
             ByNumber = BrickColors.ColorMap.ToDictionary(brickColor => brickColor.Number);
             ByPalette = BrickColors.PaletteMap.Select(number => ByNumber[number]).ToList();
         }
