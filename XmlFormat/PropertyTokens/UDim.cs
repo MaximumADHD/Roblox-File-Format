@@ -28,12 +28,12 @@ namespace Roblox.XmlFormat.PropertyTokens
         public bool ReadToken(Property property, XmlNode token)
         {
             UDim? result = ReadUDim(token);
-            bool success = (result != null);
+            bool success = result.HasValue;
 
             if (success)
             {
                 property.Type = PropertyType.UDim;
-                property.Value = result;
+                property.Value = result.Value;
             }
 
             return success;

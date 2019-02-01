@@ -34,12 +34,12 @@ namespace Roblox.XmlFormat.PropertyTokens
         public bool ReadToken(Property property, XmlNode token)
         {
             Vector2? result = ReadVector2(token);
-            bool success = (result != null);
+            bool success = result.HasValue;
 
             if (success)
             {
                 property.Type = PropertyType.Vector2;
-                property.Value = result;
+                property.Value = result.Value;
             }
 
             return success;
