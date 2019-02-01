@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Roblox.DataTypes
+namespace RobloxFiles.DataTypes
 {
     public struct Region3int16
     {

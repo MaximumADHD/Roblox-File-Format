@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Xml;
-using Roblox.DataTypes;
+using RobloxFiles.DataTypes;
 
-namespace Roblox.XmlFormat.PropertyTokens
+namespace RobloxFiles.XmlFormat.PropertyTokens
 {
     public class PhysicalPropertiesToken : IXmlPropertyToken
     {

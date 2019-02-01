@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Roblox.Enums;
+using RobloxFiles.Enums;
 
-namespace Roblox.DataTypes.Utility
+namespace RobloxFiles.DataTypes.Utility
 {
     public static class MaterialInfo
     {

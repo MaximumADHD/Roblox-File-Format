@@ -1,4 +1,4 @@
-﻿namespace Roblox.DataTypes
+﻿namespace RobloxFiles.DataTypes
 {
     public struct ColorSequenceKeypoint
     {

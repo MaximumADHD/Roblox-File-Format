@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Roblox.DataTypes;
+using RobloxFiles.DataTypes;
 
-namespace Roblox.DataTypes.Utility
+namespace RobloxFiles.DataTypes.Utility
 {
     public static class BrickColors
     {

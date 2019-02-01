@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Xml;
 
-namespace Roblox.XmlFormat
+namespace RobloxFiles.XmlFormat
 {
     static class XmlDataReader
     {
@@ -51,12 +51,13 @@ namespace Roblox.XmlFormat
 
             Instance inst = new Instance(classToken.InnerText);
 
-            // The 'reference' attribute is optional, but should be defined if a Ref property needs to link to this Instance.
+            // The 'referent' attribute is optional, but should be defined if a Ref property needs to link to this Instance.
             XmlNode refToken = instNode.Attributes.GetNamedItem("referent");
 
             if (refToken != null && instances != null)
             {
                 string refId = refToken.InnerText;
+
                 if (instances.ContainsKey(refId))
                     throw new Exception("XmlDataReader.ReadItem: Got an Item with a duplicate 'referent' attribute!");
 

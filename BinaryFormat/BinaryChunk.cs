@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using LZ4;
 
-namespace Roblox.BinaryFormat
+namespace RobloxFiles.BinaryFormat
 {
     public class RobloxBinaryChunk
     {

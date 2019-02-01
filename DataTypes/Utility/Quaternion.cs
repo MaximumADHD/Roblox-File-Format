@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Roblox.DataTypes.Utility
+namespace RobloxFiles.DataTypes.Utility
 {
     public class Quaternion
     {

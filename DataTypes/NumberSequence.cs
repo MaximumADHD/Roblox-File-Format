@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Roblox.DataTypes
+namespace RobloxFiles.DataTypes
 {
     public struct NumberSequence
     {

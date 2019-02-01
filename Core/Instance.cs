@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Roblox
+namespace RobloxFiles
 {
     /// <summary>
     /// Describes an object in Roblox's DataModel hierarchy.

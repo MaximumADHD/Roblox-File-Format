@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 
-namespace Roblox.XmlFormat.PropertyTokens
+namespace RobloxFiles.XmlFormat.PropertyTokens
 {
     public class BinaryStringToken : IXmlPropertyToken
     {

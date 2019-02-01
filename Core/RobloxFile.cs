@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-using Roblox.BinaryFormat;
-using Roblox.XmlFormat;
+using RobloxFiles.BinaryFormat;
+using RobloxFiles.XmlFormat;
 
-namespace Roblox
+namespace RobloxFiles
 {
     /// <summary>
     /// Interface which represents a RobloxFile implementation.

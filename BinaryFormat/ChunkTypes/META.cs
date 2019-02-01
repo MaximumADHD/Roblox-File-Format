@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Roblox.BinaryFormat.Chunks
+namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class META
     {

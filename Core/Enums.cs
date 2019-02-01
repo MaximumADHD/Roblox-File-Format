@@ -1,7 +1,7 @@
 ﻿// This is an auto-generated list of all available enums on Roblox!
 // Updated as of 0.369.1.273919
 
-namespace Roblox.Enums
+namespace RobloxFiles.Enums
 {
     public enum ActionType
     {

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 
-using Roblox.Enums;
-using Roblox.DataTypes;
-using Roblox.DataTypes.Utility;
+using RobloxFiles.Enums;
+using RobloxFiles.DataTypes;
+using RobloxFiles.DataTypes.Utility;
 
-namespace Roblox.BinaryFormat.Chunks
+namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class PROP
     {

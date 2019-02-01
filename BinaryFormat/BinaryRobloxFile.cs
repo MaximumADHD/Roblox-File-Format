@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Roblox.BinaryFormat.Chunks;
 
-namespace Roblox.BinaryFormat
+using RobloxFiles.BinaryFormat.Chunks;
+
+namespace RobloxFiles.BinaryFormat
 {
     public class BinaryRobloxFile : IRobloxFile
     {

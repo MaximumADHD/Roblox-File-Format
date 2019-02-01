@@ -1,7 +1,7 @@
 ﻿using System;
-using Roblox.DataTypes.Utility;
+using RobloxFiles.DataTypes.Utility;
 
-namespace Roblox.DataTypes
+namespace RobloxFiles.DataTypes
 {
     public class CFrame
     {

@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace Roblox.XmlFormat.PropertyTokens
+namespace RobloxFiles.XmlFormat.PropertyTokens
 {
     public class FloatToken : IXmlPropertyToken
     {

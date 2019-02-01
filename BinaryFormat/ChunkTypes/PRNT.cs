@@ -1,4 +1,4 @@
-﻿namespace Roblox.BinaryFormat.Chunks
+﻿namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class PRNT
     {

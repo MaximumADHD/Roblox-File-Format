@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace Roblox.XmlFormat
+namespace RobloxFiles.XmlFormat
 {
     public class XmlRobloxFile : IRobloxFile
     {

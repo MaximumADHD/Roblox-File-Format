@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Roblox.BinaryFormat
+namespace RobloxFiles.BinaryFormat
 {
     public class RobloxBinaryReader : BinaryReader
     {

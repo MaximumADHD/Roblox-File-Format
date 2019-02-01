@@ -1,7 +1,7 @@
-﻿using Roblox.Enums;
-using Roblox.DataTypes.Utility;
+﻿using RobloxFiles.Enums;
+using RobloxFiles.DataTypes.Utility;
 
-namespace Roblox.DataTypes
+namespace RobloxFiles.DataTypes
 {
     public struct PhysicalProperties
     {

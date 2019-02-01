@@ -1,9 +1,9 @@
-﻿using System.Diagnostics;
+﻿#if DEBUG
+using System.Diagnostics;
 
-namespace Roblox
+namespace RobloxFiles
 {
     // This is a placeholder.
-
     internal class UnitTest
     {
         public static void Main(string[] args)
@@ -16,3 +16,4 @@ namespace Roblox
         }
     }
 }
+#endif

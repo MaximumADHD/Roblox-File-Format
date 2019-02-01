@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml;
 
-namespace Roblox.XmlFormat
+namespace RobloxFiles.XmlFormat
 {
     public interface IXmlPropertyToken
     {

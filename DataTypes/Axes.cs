@@ -1,7 +1,7 @@
 ﻿using System;
-using Roblox.Enums;
+using RobloxFiles.Enums;
 
-namespace Roblox.DataTypes
+namespace RobloxFiles.DataTypes
 {
     [Flags]
     public enum Axes

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Roblox
+namespace RobloxFiles
 {
     public enum PropertyType
     {
