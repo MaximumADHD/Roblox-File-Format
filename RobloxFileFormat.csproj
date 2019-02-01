@@ -33,8 +33,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LZ4, Version=1.0.10.93, Culture=neutral, PublicKeyToken=62e1b5ec1eec9bdd, processorArchitecture=MSIL">
-      <HintPath>packages\lz4net.1.0.10.93\lib\net4-client\LZ4.dll</HintPath>
+    <Reference Include="LZ4, Version=1.0.15.93, Culture=neutral, PublicKeyToken=62e1b5ec1eec9bdd, processorArchitecture=MSIL">
+      <HintPath>Packages\LZ4.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -48,13 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryFormat\BinaryChunk.cs" />
+    <Compile Include="BinaryFormat\BinaryReader.cs" />
     <Compile Include="BinaryFormat\BinaryRobloxFile.cs" />
     <Compile Include="BinaryFormat\ChunkTypes\INST.cs" />
     <Compile Include="BinaryFormat\ChunkTypes\META.cs" />
     <Compile Include="BinaryFormat\ChunkTypes\PRNT.cs" />
     <Compile Include="BinaryFormat\ChunkTypes\PROP.cs" />
-    <Compile Include="BinaryFormat\BinaryReader.cs" />
+    <Compile Include="Core\Enums.cs" />
     <Compile Include="Core\Property.cs" />
+    <Compile Include="Core\Instance.cs" />
+    <Compile Include="Core\RobloxFile.cs" />
     <Compile Include="DataTypes\Axes.cs" />
     <Compile Include="DataTypes\BrickColor.cs" />
     <Compile Include="DataTypes\CFrame.cs" />
@@ -70,59 +73,48 @@
     <Compile Include="DataTypes\Region3int16.cs" />
     <Compile Include="DataTypes\Utility\BrickColors.cs" />
     <Compile Include="DataTypes\Vector3int16.cs" />
-    <Compile Include="Core\Enums.cs" />
-    <Compile Include="DataTypes\Utility\MaterialInfo.cs" />
-    <Compile Include="DataTypes\Utility\Quaternion.cs" />
     <Compile Include="DataTypes\Rect.cs" />
     <Compile Include="DataTypes\Region3.cs" />
     <Compile Include="DataTypes\UDim.cs" />
     <Compile Include="DataTypes\UDim2.cs" />
     <Compile Include="DataTypes\Vector2.cs" />
     <Compile Include="DataTypes\Vector3.cs" />
+    <Compile Include="DataTypes\Utility\MaterialInfo.cs" />
+    <Compile Include="DataTypes\Utility\Quaternion.cs" />
     <Compile Include="UnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\RobloxFile.cs" />
-    <Compile Include="Core\Instance.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\PhysicalProperties.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\NumberRange.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\NumberSequence.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\ColorSequence.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Faces.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Axes.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Color3uint8.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Color3.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Content.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\BinaryString.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Rect.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\String.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Double.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Float.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Boolean.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\BrickColor.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Enum.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Int64.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Int.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Ref.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\UDim2.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Vector2.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\CFrame.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Ray.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\UDim.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\Vector3.cs" />
     <Compile Include="XmlFormat\XmlPropertyTokens.cs" />
     <Compile Include="XmlFormat\XmlDataReader.cs" />
     <Compile Include="XmlFormat\XmlRobloxFile.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Axes.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\BinaryString.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Boolean.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\BrickColor.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\CFrame.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Content.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Color3.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Color3uint8.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\ColorSequence.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Double.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Enum.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Faces.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Float.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Int.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Int64.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\NumberRange.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\NumberSequence.cs" />    
+    <Compile Include="XmlFormat\PropertyTokens\PhysicalProperties.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Ray.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Rect.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Ref.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\String.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\UDim.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\UDim2.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Vector2.cs" />
+    <Compile Include="XmlFormat\PropertyTokens\Vector3.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="Packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
