@@ -2,12 +2,12 @@
 
 namespace RobloxFiles.DataTypes
 {
-    public struct NumberRange
+    public class NumberRange
     {
         public readonly float Min;
         public readonly float Max;
 
-        public NumberRange(float min, float max)
+        public NumberRange(float min = 0, float max = 0)
         {
             if (max - min < 0)
                 throw new Exception("NumberRange: invalid range");

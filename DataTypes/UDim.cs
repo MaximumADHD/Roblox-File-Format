@@ -1,6 +1,6 @@
 ﻿namespace RobloxFiles.DataTypes
 {
-    public struct UDim
+    public class UDim
     {
         public readonly float Scale;
         public readonly int Offset;

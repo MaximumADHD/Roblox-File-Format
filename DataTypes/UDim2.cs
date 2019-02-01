@@ -1,13 +1,13 @@
 ﻿namespace RobloxFiles.DataTypes
 {
-    public struct UDim2
+    public class UDim2
     {
         public readonly UDim X, Y;
 
         public UDim Width => X;
         public UDim Height => Y;
 
-        public UDim2(float scaleX, int offsetX, float scaleY, int offsetY)
+        public UDim2(float scaleX = 0, int offsetX = 0, float scaleY = 0, int offsetY = 0)
         {
             X = new UDim(scaleX, offsetX);
             Y = new UDim(scaleY, offsetY);

@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
+
 using RobloxFiles.DataTypes;
 
-namespace RobloxFiles.DataTypes.Utility
+namespace RobloxFiles.Utility
 {
+    /// <summary>
+    /// This static class defines all of Roblox's built-in BrickColor data.
+    /// It is used primarily by the BrickColor DataType.
+    /// </summary>
     public static class BrickColors
     {
         /// <summary>
@@ -33,10 +38,10 @@ namespace RobloxFiles.DataTypes.Utility
         };
 
         /// <summary>
-        /// This contains a list of all available BrickColors on Roblox.
+        /// This contains a list of all defined BrickColors on Roblox.
         /// </summary>
         
-        public static IReadOnlyCollection<BrickColor> ColorMap = new List<BrickColor>()
+        public static IReadOnlyList<BrickColor> ColorMap = new List<BrickColor>()
         {
             new BrickColor(   1, 0xF2F3F3, "White"),
             new BrickColor(   2, 0xA1A5A2, "Grey"),

@@ -20,12 +20,27 @@ namespace RobloxFiles.DataTypes
         public Vector3 RightVector => new Vector3( m11,  m21,  m31);
         public Vector3 UpVector    => new Vector3( m12,  m22,  m32);
 
+        public CFrame()
+        {
+            m14 = 0;
+            m24 = 0;
+            m34 = 0;
+        }
+
         public CFrame(Vector3 pos)
         {
             m14 = pos.X;
             m24 = pos.Y;
             m34 = pos.Z;
         }
+
+        public CFrame(float nx = 0, float ny = 0, float nz = 0)
+        {
+            m14 = nx;
+            m24 = ny;
+            m34 = nz;
+        }
+
 
         public CFrame(Vector3 eye, Vector3 look)
         {
@@ -37,9 +52,9 @@ namespace RobloxFiles.DataTypes
             {
                 if (zAxis.Y < 0)
                 {
-                    xAxis = new Vector3(0,  0, -1);
-                    yAxis = new Vector3(1,  0,  0);
-                    zAxis = new Vector3(0, -1,  0);
+                    xAxis = new Vector3(0, 0, -1);
+                    yAxis = new Vector3(1, 0, 0);
+                    zAxis = new Vector3(0, -1, 0);
                 }
                 else
                 {
@@ -52,13 +67,6 @@ namespace RobloxFiles.DataTypes
             m11 = xAxis.X; m12 = yAxis.X; m13 = zAxis.X; m14 = eye.X;
             m21 = xAxis.Y; m22 = yAxis.Y; m23 = zAxis.Y; m24 = eye.Y;
             m31 = xAxis.Z; m32 = yAxis.Z; m33 = zAxis.Z; m34 = eye.Z;
-        }
-
-        public CFrame(float nx = 0, float ny = 0, float nz = 0)
-        {
-            m14 = nx;
-            m24 = ny;
-            m34 = nz;
         }
 
         public CFrame(float nx, float ny, float nz, float i, float j, float k, float w)

@@ -1,6 +1,6 @@
 ﻿namespace RobloxFiles.DataTypes
 {
-    public struct Ray
+    public class Ray
     {
         public readonly Vector3 Origin;
         public readonly Vector3 Direction;
@@ -33,15 +33,19 @@
 
         public Vector3 ClosestPoint(Vector3 point)
         {
-            Vector3 offset = point - Origin;
-            float diff = offset.Dot(Direction) / Direction.Dot(Direction);
-            return Origin + (diff * Direction);
+            Vector3 result = Origin;
+            float t = Direction.Dot(point - result);
+
+            if (t >= 0)
+                result += (Direction * t);
+
+            return result;
         }
 
         public float Distance(Vector3 point)
         {
-            Vector3 projected = ClosestPoint(point);
-            return (point - projected).Magnitude;
+            Vector3 closestPoint = ClosestPoint(point);
+            return (closestPoint - point).Magnitude;
         }
     }
 }

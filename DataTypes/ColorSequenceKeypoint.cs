@@ -1,6 +1,6 @@
 ﻿namespace RobloxFiles.DataTypes
 {
-    public struct ColorSequenceKeypoint
+    public class ColorSequenceKeypoint
     {
         public readonly float Time;
         public readonly Color3 Value;

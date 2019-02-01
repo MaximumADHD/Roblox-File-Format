@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using RobloxFiles.DataTypes.Utility;
+using RobloxFiles.Utility;
 
 namespace RobloxFiles.DataTypes
 {
@@ -35,7 +35,7 @@ namespace RobloxFiles.DataTypes
             Name = name;
             Number = number;
 
-            Color = Color3.fromRGB(r, g, b);
+            Color = Color3.FromRGB(r, g, b);
         }
 
         static BrickColor()
@@ -43,7 +43,7 @@ namespace RobloxFiles.DataTypes
             ByNumber = BrickColors.ColorMap.ToDictionary(brickColor => brickColor.Number);
             ByPalette = BrickColors.PaletteMap.Select(number => ByNumber[number]).ToList();
         }
-
+        
         public static BrickColor FromName(string name)
         {
             BrickColor result = null;

@@ -2,7 +2,7 @@
 
 namespace RobloxFiles.DataTypes
 {
-    public struct ColorSequence
+    public class ColorSequence
     {
         public readonly ColorSequenceKeypoint[] Keypoints;
 
@@ -46,7 +46,7 @@ namespace RobloxFiles.DataTypes
 
         public override string ToString()
         {
-            return string.Join(" ", Keypoints);
+            return string.Join<ColorSequenceKeypoint>(" ", Keypoints);
         }
     }
 }

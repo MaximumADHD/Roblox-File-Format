@@ -7,7 +7,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "UDim";
 
-        public static UDim? ReadUDim(XmlNode token, string prefix = "")
+        public static UDim ReadUDim(XmlNode token, string prefix = "")
         {
             try
             {
@@ -27,13 +27,13 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadToken(Property property, XmlNode token)
         {
-            UDim? result = ReadUDim(token);
-            bool success = result.HasValue;
+            UDim result = ReadUDim(token);
+            bool success = (result != null);
 
             if (success)
             {
                 property.Type = PropertyType.UDim;
-                property.Value = result.Value;
+                property.Value = result;
             }
 
             return success;

@@ -5,12 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RobloxFiles")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Roblox File Format")]
+[assembly: AssemblyDescription("Implementation of Roblox's File Format in C# for .NET 4.0")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RobloxFiles")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCompany("Written by CloneTrooper1019")]
+[assembly: AssemblyProduct("Roblox File Format")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

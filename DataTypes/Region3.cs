@@ -2,7 +2,7 @@
 
 namespace RobloxFiles.DataTypes
 {
-    public struct Region3
+    public class Region3
     {
         public readonly CFrame CFrame;
         public readonly Vector3 Size;

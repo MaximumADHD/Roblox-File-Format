@@ -26,7 +26,7 @@ namespace RobloxFiles.XmlFormat
             }
             catch
             {
-                throw new Exception("XmlRobloxFile: Could not read XML!");
+                throw new Exception("XmlRobloxFile: Could not read provided buffer as XML!");
             }
 
             XmlNode roblox = Root.FirstChild;

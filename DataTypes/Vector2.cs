@@ -2,7 +2,7 @@
 
 namespace RobloxFiles.DataTypes
 {
-    public struct Vector2
+    public class Vector2
     {
         public readonly float X, Y;
         

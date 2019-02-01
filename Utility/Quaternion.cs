@@ -2,12 +2,13 @@
 
 namespace RobloxFiles.DataTypes.Utility
 {
+    /// <summary>
+    /// Quaternion is a utility used by the CFrame DataType to handle rotation interpolation.
+    /// It can be used as an independent Quaternion implementation if you so please!
+    /// </summary>
     public class Quaternion
     {
-        public readonly float X;
-        public readonly float Y;
-        public readonly float Z;
-        public readonly float W;
+        public readonly float X, Y, Z, W;
 
         public float Magnitude
         {
@@ -41,8 +42,7 @@ namespace RobloxFiles.DataTypes.Utility
             CFrame matrix = (cf - cf.Position);
             float[] ac = cf.GetComponents();
 
-            float m41 = ac[0], m42 = ac[1],  m43 = ac[2],
-                  m11 = ac[3], m12 = ac[4],  m13 = ac[5],
+            float m11 = ac[3], m12 = ac[4],  m13 = ac[5],
                   m21 = ac[6], m22 = ac[7],  m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 

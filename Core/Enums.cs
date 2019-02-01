@@ -1,5 +1,5 @@
 ﻿// This is an auto-generated list of all available enums on Roblox!
-// Updated as of 0.369.1.273919
+// Updated as of 0.370.0.274702
 
 namespace RobloxFiles.Enums
 {
@@ -806,7 +806,8 @@ namespace RobloxFiles.Enums
         Players = 7,
         Chat = 15,
         Avatar,
-        Analytics = 22
+        Analytics = 22,
+        Localization = 24
     }
 
     public enum HumanoidDisplayDistanceType

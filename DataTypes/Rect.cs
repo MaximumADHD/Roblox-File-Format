@@ -1,6 +1,6 @@
 ﻿namespace RobloxFiles.DataTypes
 {
-    public struct Rect
+    public class Rect
     {
         public readonly Vector2 Min;
         public readonly Vector2 Max;
@@ -8,7 +8,7 @@
         public float Width => (Max - Min).X;
         public float Height => (Max - Min).Y;
 
-        public Rect(Vector2? min, Vector2? max)
+        public Rect(Vector2 min = null, Vector2 max = null)
         {
             Min = min ?? Vector2.Zero;
             Max = max ?? Vector2.Zero;

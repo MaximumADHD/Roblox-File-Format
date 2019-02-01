@@ -9,13 +9,13 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadToken(Property property, XmlNode token)
         {
-            UDim? xDim = UDimToken.ReadUDim(token, "X");
-            UDim? yDim = UDimToken.ReadUDim(token, "Y");
+            UDim xUDim = UDimToken.ReadUDim(token, "X");
+            UDim yUDim = UDimToken.ReadUDim(token, "Y");
 
-            if (xDim != null && yDim != null)
+            if (xUDim != null && yUDim != null)
             {
                 property.Type = PropertyType.UDim2;
-                property.Value = new UDim2(xDim.Value, yDim.Value);
+                property.Value = new UDim2(xUDim, yUDim);
 
                 return true;
             }

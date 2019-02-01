@@ -42,7 +42,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -86,7 +86,7 @@
     <Compile Include="DataTypes\PhysicalProperties.cs" />
     <Compile Include="DataTypes\Ray.cs" />
     <Compile Include="DataTypes\Region3int16.cs" />
-    <Compile Include="DataTypes\Utility\BrickColors.cs" />
+    <Compile Include="Utility\BrickColors.cs" />
     <Compile Include="DataTypes\Vector3int16.cs" />
     <Compile Include="DataTypes\Rect.cs" />
     <Compile Include="DataTypes\Region3.cs" />
@@ -94,9 +94,8 @@
     <Compile Include="DataTypes\UDim2.cs" />
     <Compile Include="DataTypes\Vector2.cs" />
     <Compile Include="DataTypes\Vector3.cs" />
-    <Compile Include="DataTypes\Utility\MaterialInfo.cs" />
-    <Compile Include="DataTypes\Utility\Quaternion.cs" />
-    <Compile Include="UnitTest.cs" />
+    <Compile Include="Utility\MaterialInfo.cs" />
+    <Compile Include="Utility\Quaternion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlFormat\XmlPropertyTokens.cs" />
     <Compile Include="XmlFormat\XmlDataReader.cs" />
@@ -127,9 +126,6 @@
     <Compile Include="XmlFormat\PropertyTokens\UDim2.cs" />
     <Compile Include="XmlFormat\PropertyTokens\Vector2.cs" />
     <Compile Include="XmlFormat\PropertyTokens\Vector3.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

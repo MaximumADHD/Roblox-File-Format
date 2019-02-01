@@ -3,7 +3,7 @@ using RobloxFiles.Enums;
 
 namespace RobloxFiles.DataTypes
 {
-    public struct Vector3
+    public class Vector3
     {
         public readonly float X, Y, Z;
 

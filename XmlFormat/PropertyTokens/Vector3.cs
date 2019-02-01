@@ -8,7 +8,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
         public string Token => "Vector3";
         private static string[] Coords = new string[3] { "X", "Y", "Z" };
 
-        public static Vector3? ReadVector3(XmlNode token)
+        public static Vector3 ReadVector3(XmlNode token)
         {
             float[] xyz = new float[3];
 
@@ -32,13 +32,13 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadToken(Property property, XmlNode token)
         {
-            Vector3? result = ReadVector3(token);
-            bool success = result.HasValue;
+            Vector3 result = ReadVector3(token);
+            bool success = (result != null);
 
             if (success)
             {
                 property.Type = PropertyType.Vector3;
-                property.Value = result.Value;
+                property.Value = result;
             }
 
             return success;

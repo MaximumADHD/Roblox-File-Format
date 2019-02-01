@@ -20,7 +20,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                 uint g = (value >> 8) & 0xFF;
                 uint b = value & 0xFF;
 
-                prop.Value = Color3.fromRGB(r, g, b);
+                prop.Value = Color3.FromRGB(r, g, b);
             }
             
             return success;

@@ -2,9 +2,16 @@
 
 namespace RobloxFiles.DataTypes
 {
-    public struct Vector3int16
+    public class Vector3int16
     {
         public readonly short X, Y, Z;
+
+        public Vector3int16()
+        {
+            X = 0;
+            Y = 0;
+            Z = 0;
+        }
 
         public Vector3int16(short x = 0, short y = 0, short z = 0)
         {

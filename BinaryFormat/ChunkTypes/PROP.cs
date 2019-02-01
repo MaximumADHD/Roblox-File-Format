@@ -415,7 +415,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                              g = color3uint8_G[i],
                              b = color3uint8_B[i];
 
-                        return Color3.fromRGB(r, g, b);
+                        return Color3.FromRGB(r, g, b);
                     });
 
                     break;

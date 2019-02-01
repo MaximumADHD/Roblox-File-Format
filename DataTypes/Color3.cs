@@ -2,7 +2,7 @@
 
 namespace RobloxFiles.DataTypes
 {
-    public struct Color3
+    public class Color3
     {
         public readonly float R, G, B;
 
@@ -18,12 +18,12 @@ namespace RobloxFiles.DataTypes
             return string.Join(", ", R, G, B);
         }
 
-        public static Color3 fromRGB(uint r = 0, uint g = 0, uint b = 0)
+        public static Color3 FromRGB(uint r = 0, uint g = 0, uint b = 0)
         {
             return new Color3(r / 255f, g / 255f, b / 255f);
         }
 
-        public static Color3 fromHSV(float h = 0, float s = 0, float v = 0)
+        public static Color3 FromHSV(float h = 0, float s = 0, float v = 0)
         {
             int i = (int)Math.Min(5, Math.Floor(6.0 * h));
             float f = 6.0f * h - i;
@@ -51,7 +51,7 @@ namespace RobloxFiles.DataTypes
             }
         }
 
-        public static float[] toHSV(Color3 color)
+        public static float[] ToHSV(Color3 color)
         {
             float val = Math.Max(Math.Max(color.R, color.G), color.B);
 
