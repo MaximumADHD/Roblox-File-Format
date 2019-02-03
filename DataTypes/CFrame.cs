@@ -327,7 +327,7 @@ namespace RobloxFiles.DataTypes
             return new float[] { m14, m24, m34, m11, m12, m13, m21, m22, m23, m31, m32, m33 };
         }
 
-        public float[] toEulerAnglesXYZ()
+        public float[] ToEulerAnglesXYZ()
         {
             float x = (float)Math.Atan2(-m23, m33);
             float y = (float)Math.Asin(m13);

@@ -78,5 +78,14 @@ namespace RobloxFiles
             byte[] buffer = File.ReadAllBytes(filePath);
             ReadFile(buffer);
         }
+
+        /// <summary>
+        /// Treats the provided string as if you were indexing a specific child or descendant of the `RobloxFile.Contents` folder.<para/>
+        /// The provided string can either be:<para/>
+        /// - The name of a child that is parented to RobloxFile.Contents (  Example: RobloxFile["Workspace"]  )<para/>
+        /// - A period (.) separated path to a descendant of RobloxFile.Contents (  Example: RobloxFile["Workspace.Terrain"]  )<para/>
+        /// This will throw an exception if any instance in the traversal is not found.
+        /// </summary>
+        public Instance this[string accessor] => Contents[accessor];
     }
 }

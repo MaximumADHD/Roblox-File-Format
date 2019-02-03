@@ -25,6 +25,8 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             try
             {
                 bool custom = readBool("CustomPhysics");
+                prop.Type = PropertyType.PhysicalProperties;
+
                 if (custom)
                 {
                     prop.Value = new PhysicalProperties
@@ -35,8 +37,6 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                         readFloat("FrictionWeight"),
                         readFloat("ElasticityWeight")
                     );
-
-                    prop.Type = PropertyType.PhysicalProperties;
                 }
 
                 return true;

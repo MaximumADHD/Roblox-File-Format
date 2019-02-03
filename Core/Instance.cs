@@ -8,6 +8,7 @@ namespace RobloxFiles
     /// Describes an object in Roblox's DataModel hierarchy.
     /// Instances can have sets of properties loaded from *.rbxl/*.rbxm files.
     /// </summary>
+
     public class Instance
     {
         /// <summary>The ClassName of this Instance.</summary>
@@ -238,6 +239,33 @@ namespace RobloxFiles
         public void AddProperty(ref Property prop)
         {
             Properties.Add(prop);
+        }
+
+        /// <summary>
+        /// Treats the provided string as if you were indexing a specific child or descendant of this Instance.<para/>
+        /// The provided string can either be:<para/>
+        /// - The name of a child that is parented to this Instance. (  Example: game["Workspace"]  )<para/>
+        /// - A period-separated path to a descendant of this Instance. (  Example: game["Workspace.Terrain"]  )<para/>
+        /// This will throw an exception if any instance in the traversal is not found.
+        /// </summary>
+        public Instance this[string accessor]
+        {
+            get
+            {
+                Instance result = this;
+
+                foreach (string name in accessor.Split('.'))
+                {
+                    Instance next = result.FindFirstChild(name);
+
+                    if (next == null)
+                        throw new Exception(name + " is not a valid member of " + result.Name);
+
+                    result = next;
+                }
+
+                return result;
+            }
         }
     }
 }
