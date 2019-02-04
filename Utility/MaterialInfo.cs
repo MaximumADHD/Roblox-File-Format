@@ -140,7 +140,8 @@ namespace RobloxFiles.Utility
 
         /// <summary>
         /// A dictionary mapping materials to their default Friction.<para/>
-        /// NOTE: This only maps materials that have different FrictionWeights. If it isn't in here, assume their FrictionWeight is 1.
+        /// NOTE: This only maps materials that have different FrictionWeights.<para/>
+        ///       If it isn't in here, assume their FrictionWeight is 1.
         /// </summary>
         public static IReadOnlyDictionary<Material, float> FrictionWeightMap = new Dictionary<Material, float>()
         {

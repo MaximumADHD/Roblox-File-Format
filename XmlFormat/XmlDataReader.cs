@@ -4,7 +4,7 @@ using System.Xml;
 
 namespace RobloxFiles.XmlFormat
 {
-    static class XmlDataReader
+    public static class XmlDataReader
     {
         public static void ReadProperties(Instance instance, XmlNode propsNode)
         {
@@ -39,7 +39,7 @@ namespace RobloxFiles.XmlFormat
             }
         }
 
-        public static Instance ReadInstance(XmlNode instNode, ref Dictionary<string, Instance> instances)
+        public static Instance ReadInstance(XmlNode instNode, XmlRobloxFile file = null)
         {
             // Process the instance itself
             if (instNode.Name != "Item")
@@ -54,14 +54,14 @@ namespace RobloxFiles.XmlFormat
             // The 'referent' attribute is optional, but should be defined if a Ref property needs to link to this Instance.
             XmlNode refToken = instNode.Attributes.GetNamedItem("referent");
 
-            if (refToken != null && instances != null)
+            if (refToken != null && file != null)
             {
                 string refId = refToken.InnerText;
 
-                if (instances.ContainsKey(refId))
+                if (file.Instances.ContainsKey(refId))
                     throw new Exception("XmlDataReader.ReadItem: Got an Item with a duplicate 'referent' attribute!");
 
-                instances.Add(refId, inst);
+                file.Instances.Add(refId, inst);
             }
 
             // Process the child nodes of this instance.
@@ -73,7 +73,7 @@ namespace RobloxFiles.XmlFormat
                 }
                 else if (childNode.Name == "Item")
                 {
-                    Instance child = ReadInstance(childNode, ref instances);
+                    Instance child = ReadInstance(childNode, file);
                     child.Parent = inst;
                 }
             }

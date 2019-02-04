@@ -5,9 +5,9 @@ using System.Text;
 
 namespace RobloxFiles.BinaryFormat
 {
-    public class RobloxBinaryReader : BinaryReader
+    public class BinaryRobloxReader : BinaryReader
     {
-        public RobloxBinaryReader(Stream stream) : base(stream) { }
+        public BinaryRobloxReader(Stream stream) : base(stream) { }
         private byte[] lastStringBuffer = new byte[0] { };
 
         public T[] ReadInterlaced<T>(int count, Func<byte[], int, T> decode) where T : struct

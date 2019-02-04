@@ -376,9 +376,10 @@ namespace RobloxFiles.Enums
     public enum ContextActionPriority
     {
         Low = 1000,
-        Default = 2000,
-        Medium,
-        High = 3000
+        Medium = 2000,
+        High = 3000,
+
+        Default = Medium
     }
 
     public enum ContextActionResult

@@ -8,9 +8,9 @@
         public readonly int[] ChildrenIds;
         public readonly int[] ParentIds;
 
-        public PRNT(RobloxBinaryChunk chunk)
+        public PRNT(BinaryRobloxChunk chunk)
         {
-            using (RobloxBinaryReader reader = chunk.GetReader("PRNT"))
+            using (BinaryRobloxReader reader = chunk.GetReader("PRNT"))
             {
                 Format = reader.ReadByte();
                 NumRelations = reader.ReadInt32();

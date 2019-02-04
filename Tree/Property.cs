@@ -36,8 +36,9 @@ namespace RobloxFiles
 
     public class Property
     {
-        public Instance Instance;
         public string Name;
+        public Instance Instance;
+
         public PropertyType Type;
         public object Value;
 

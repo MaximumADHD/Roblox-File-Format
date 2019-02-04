@@ -39,6 +39,7 @@ namespace RobloxFiles.Utility
 
         /// <summary>
         /// This contains a list of all defined BrickColors on Roblox.
+        /// There are some name duplicates, but that's an issue on Roblox's end.
         /// </summary>
         
         public static IReadOnlyList<BrickColor> ColorMap = new List<BrickColor>()

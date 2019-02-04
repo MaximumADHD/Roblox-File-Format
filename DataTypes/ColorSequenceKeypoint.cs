@@ -4,11 +4,13 @@
     {
         public readonly float Time;
         public readonly Color3 Value;
+        public readonly byte[] Reserved;
 
-        public ColorSequenceKeypoint(float time, Color3 value)
+        public ColorSequenceKeypoint(float time, Color3 value, byte[] reserved = null)
         {
             Time = time;
             Value = value;
+            Reserved = reserved;
         }
 
         public override string ToString()

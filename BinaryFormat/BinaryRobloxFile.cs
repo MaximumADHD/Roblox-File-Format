@@ -22,7 +22,7 @@ namespace RobloxFiles.BinaryFormat
         public Instance Contents => BinContents;
 
         // Runtime Specific
-        public List<RobloxBinaryChunk> Chunks = new List<RobloxBinaryChunk>();
+        public List<BinaryRobloxChunk> Chunks = new List<BinaryRobloxChunk>();
         public override string ToString() => GetType().Name;
         
         public Instance[] Instances;
@@ -32,7 +32,7 @@ namespace RobloxFiles.BinaryFormat
         public void ReadFile(byte[] contents)
         {
             using (MemoryStream file = new MemoryStream(contents))
-            using (RobloxBinaryReader reader = new RobloxBinaryReader(file))
+            using (BinaryRobloxReader reader = new BinaryRobloxReader(file))
             {
                 // Verify the signature of the file.
                 byte[] binSignature = reader.ReadBytes(14);
@@ -57,7 +57,7 @@ namespace RobloxFiles.BinaryFormat
                 {
                     try
                     {
-                        RobloxBinaryChunk chunk = new RobloxBinaryChunk(reader);
+                        BinaryRobloxChunk chunk = new BinaryRobloxChunk(reader);
                         Chunks.Add(chunk);
 
                         switch (chunk.ChunkType)
@@ -67,7 +67,8 @@ namespace RobloxFiles.BinaryFormat
                                 type.Allocate(this);
                                 break;
                             case "PROP":
-                                PROP.ReadProperties(this, chunk);
+                                PROP prop = new PROP(chunk);
+                                prop.ReadProperties(this);
                                 break;
                             case "PRNT":
                                 PRNT hierarchy = new PRNT(chunk);

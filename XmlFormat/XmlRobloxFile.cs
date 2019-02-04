@@ -47,12 +47,12 @@ namespace RobloxFiles.XmlFormat
                 {
                     if (child.Name == "Item")
                     {
-                        Instance item = XmlDataReader.ReadInstance(child, ref Instances);
+                        Instance item = XmlDataReader.ReadInstance(child, this);
                         item.Parent = XmlContents;
                     }
                 }
 
-                // Resolve references for Ref properties.
+                // Resolve referent properties.
                 var refProps = Instances.Values
                     .SelectMany(inst => inst.Properties)
                     .Where(prop => prop.Type == PropertyType.Ref);

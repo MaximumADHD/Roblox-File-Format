@@ -6,12 +6,6 @@ using System.Xml;
 
 namespace RobloxFiles.XmlFormat
 {
-    public interface IXmlPropertyToken
-    {
-        string Token { get; }
-        bool ReadToken(Property prop, XmlNode token);
-    }
-
     public static class XmlPropertyTokens
     {
         public static IReadOnlyDictionary<string, IXmlPropertyToken> Handlers;

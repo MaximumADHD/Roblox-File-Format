@@ -13,9 +13,9 @@
             return TypeName;
         }
 
-        public INST(RobloxBinaryChunk chunk)
+        public INST(BinaryRobloxChunk chunk)
         {
-            using (RobloxBinaryReader reader = chunk.GetReader("INST"))
+            using (BinaryRobloxReader reader = chunk.GetReader("INST"))
             {
                 TypeIndex = reader.ReadInt32();
                 TypeName = reader.ReadString();

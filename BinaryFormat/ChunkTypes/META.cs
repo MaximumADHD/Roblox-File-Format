@@ -7,9 +7,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public int NumEntries;
         public Dictionary<string, string> Entries;
 
-        public META(RobloxBinaryChunk chunk)
+        public META(BinaryRobloxChunk chunk)
         {
-            using (RobloxBinaryReader reader = chunk.GetReader("META"))
+            using (BinaryRobloxReader reader = chunk.GetReader("META"))
             {
                 NumEntries = reader.ReadInt32();
                 Entries = new Dictionary<string, string>(NumEntries);

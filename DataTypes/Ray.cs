@@ -34,10 +34,10 @@
         public Vector3 ClosestPoint(Vector3 point)
         {
             Vector3 result = Origin;
-            float t = Direction.Dot(point - result);
+            float dist = Direction.Dot(point - result);
 
-            if (t >= 0)
-                result += (Direction * t);
+            if (dist >= 0)
+                result += (Direction * dist);
 
             return result;
         }
@@ -45,7 +45,7 @@
         public float Distance(Vector3 point)
         {
             Vector3 closestPoint = ClosestPoint(point);
-            return (closestPoint - point).Magnitude;
+            return (point - closestPoint).Magnitude;
         }
     }
 }

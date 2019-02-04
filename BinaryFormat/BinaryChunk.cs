@@ -5,15 +5,20 @@ using LZ4;
 
 namespace RobloxFiles.BinaryFormat
 {
-    public class RobloxBinaryChunk
+    /// <summary>
+    /// BinaryRobloxChunk represents a generic LZ4-compressed chunk
+    /// of data in Roblox's Binary File Format.
+    /// </summary>
+    public class BinaryRobloxChunk
     {
         public readonly string ChunkType;
 
         public readonly int CompressedSize;
-        public readonly byte[] CompressedData;
-
         public readonly int Size;
+
         public readonly byte[] Reserved;
+
+        public readonly byte[] CompressedData;
         public readonly byte[] Data;
 
         public bool HasCompressedData => (CompressedSize > 0);
@@ -23,18 +28,18 @@ namespace RobloxFiles.BinaryFormat
             return ChunkType + " Chunk [" + Size + " bytes]";
         }
 
-        public RobloxBinaryReader GetReader(string chunkType)
+        public BinaryRobloxReader GetReader(string chunkType)
         {
             if (ChunkType == chunkType)
             {
                 MemoryStream buffer = new MemoryStream(Data);
-                return new RobloxBinaryReader(buffer);
+                return new BinaryRobloxReader(buffer);
             }
 
             throw new Exception("Expected " + chunkType + " ChunkType from the input RobloxBinaryChunk");
         }
 
-        public RobloxBinaryChunk(RobloxBinaryReader reader)
+        public BinaryRobloxChunk(BinaryRobloxReader reader)
         {
             byte[] bChunkType = reader.ReadBytes(4);
             ChunkType = Encoding.ASCII.GetString(bChunkType);

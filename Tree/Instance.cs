@@ -20,6 +20,7 @@ namespace RobloxFiles
         private List<Instance> Children = new List<Instance>();
         private Instance rawParent;
 
+        /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public string Name => ReadProperty("Name", ClassName);
         public override string ToString() => Name;
 
@@ -108,15 +109,19 @@ namespace RobloxFiles
         /// </summary>
         public Instance[] GetDescendants()
         {
-            Instance[] results = GetChildren();
+            List<Instance> results = new List<Instance>();
 
-            foreach (Instance child in results)
+            foreach (Instance child in Children)
             {
-                Instance[] childResults = child.GetDescendants();
-                results = results.Concat(childResults).ToArray();
+                // Add this child to the results.
+                results.Add(child);
+
+                // Add its descendants to the results.
+                Instance[] descendants = child.GetDescendants();
+                results.AddRange(descendants);
             }
 
-            return results;
+            return results.ToArray();
         }
 
         /// <summary>
@@ -128,23 +133,73 @@ namespace RobloxFiles
         public Instance FindFirstChild(string name, bool recursive = false)
         {
             Instance result = null;
+            var query = Children.Where((child) => name == child.Name);
 
-            var query = Children.Where(child => child.Name == name);
             if (query.Count() > 0)
+            {
                 result = query.First();
+            }
+            else if (recursive)
+            {
+                foreach (Instance child in Children)
+                {
+                    Instance found = child.FindFirstChild(name, true);
+
+                    if (found != null)
+                    {
+                        result = found;
+                        break;
+                    }
+                }
+            }
 
             return result;
+        }
+
+        /// <summary>
+        /// Returns the first ancestor of this Instance whose Name is the provided string name.
+        /// If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="name">The Name of the Instance to find.</param>
+        public Instance FindFirstAncestor(string name)
+        {
+            Instance ancestor = Parent;
+
+            while (ancestor != null)
+            {
+                if (ancestor.Name == name)
+                    break;
+
+                ancestor = ancestor.Parent;
+            }
+
+            return ancestor;
+        }
+
+        public Instance FindFirstAncestorOfClass(string className)
+        {
+            Instance ancestor = Parent;
+
+            while (ancestor != null)
+            {
+                if (ancestor.ClassName == className)
+                    break;
+
+                ancestor = ancestor.Parent;
+            }
+
+            return ancestor;
         }
 
         /// <summary>
         /// Returns the first Instance whose ClassName is the provided string className. If the instance is not found, this returns null.
         /// </summary>
         /// <param name="className">The ClassName of the Instance to find.</param>
-        public Instance FindFirstChildOfClass(string className)
+        public Instance FindFirstChildOfClass(string className, bool recursive = false)
         {
             Instance result = null;
+            var query = Children.Where((child) => className == child.ClassName);
 
-            var query = Children.Where(child => child.ClassName == className);
             if (query.Count() > 0)
                 result = query.First();
 
@@ -242,13 +297,16 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Treats the provided string as if you were indexing a specific child or descendant of this Instance.<para/>
-        /// The provided string can either be:<para/>
-        /// - The name of a child that is parented to this Instance. (  Example: game["Workspace"]  )<para/>
-        /// - A period-separated path to a descendant of this Instance. (  Example: game["Workspace.Terrain"]  )<para/>
-        /// This will throw an exception if any instance in the traversal is not found.
+        /// Allows you to access a child/descendant of this Instance, and/or one of its properties.<para/>
+        /// The provided string should be a period-separated (.) path to what you wish to access.<para/>
+        /// This will throw an exception if any part of the path cannot be found.<para/>
+        /// 
+        /// ~ Examples ~<para/>
+        ///     var terrain = robloxFile["Workspace.Terrain"] as Instance;<para/>
+        ///     var currentCamera = robloxFile["Workspace.CurrentCamera"] as Property;<para/>
+        /// 
         /// </summary>
-        public Instance this[string accessor]
+        public object this[string accessor]
         {
             get
             {
@@ -259,7 +317,21 @@ namespace RobloxFiles
                     Instance next = result.FindFirstChild(name);
 
                     if (next == null)
-                        throw new Exception(name + " is not a valid member of " + result.Name);
+                    {
+                        // Check if there is any property with this name.
+                        var propQuery = result.Properties
+                            .Where((prop) => name == prop.Name);
+
+                        if (propQuery.Count() > 0)
+                        {
+                            var prop = propQuery.First();
+                            return prop;
+                        }
+                        else
+                        {
+                            throw new Exception(name + " is not a valid member of " + result.Name);
+                        }
+                    }
 
                     result = next;
                 }
