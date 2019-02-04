@@ -179,10 +179,10 @@ namespace RobloxFiles.DataTypes
             float n33 = a31 * b13 + a32 * b23 + a33 * b33 + a34 * m43;
             float n34 = a31 * b14 + a32 * b24 + a33 * b34 + a34 * m44;
 
-            float n41 = 0 * b11 + m42 * b21 + m43 * b31 + m44 * m41;
-            float n42 = 0 * b12 + m42 * b22 + m43 * b32 + m44 * m42;
-            float n43 = 0 * b13 + m42 * b23 + m43 * b33 + m44 * m43;
-            float n44 = 0 * b14 + m42 * b24 + m43 * b34 + m44 * m44;
+            float n41 = m41 * b11 + m42 * b21 + m43 * b31 + m44 * m41;
+            float n42 = m41 * b12 + m42 * b22 + m43 * b32 + m44 * m42;
+            float n43 = m41 * b13 + m42 * b23 + m43 * b33 + m44 * m43;
+            float n44 = m41 * b14 + m42 * b24 + m43 * b34 + m44 * m44;
 
             return new CFrame(n14, n24, n34, n11, n12, n13, n21, n22, n23, n31, n32, n33);
         }
