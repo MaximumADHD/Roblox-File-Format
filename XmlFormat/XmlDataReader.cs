@@ -43,11 +43,11 @@ namespace RobloxFiles.XmlFormat
         {
             // Process the instance itself
             if (instNode.Name != "Item")
-                throw new Exception("XmlDataReader.ReadItem: Provided XmlNode's class should be 'Item'!");
+                throw new Exception("XmlDataReader.ReadInstance: Provided XmlNode's name should be 'Item'!");
 
             XmlNode classToken = instNode.Attributes.GetNamedItem("class");
             if (classToken == null)
-                throw new Exception("XmlDataReader.ReadItem: Got an Item without a defined 'class' attribute!");
+                throw new Exception("XmlDataReader.ReadInstance: Got an Item without a defined 'class' attribute!");
 
             Instance inst = new Instance(classToken.InnerText);
 
@@ -59,7 +59,7 @@ namespace RobloxFiles.XmlFormat
                 string refId = refToken.InnerText;
 
                 if (file.Instances.ContainsKey(refId))
-                    throw new Exception("XmlDataReader.ReadItem: Got an Item with a duplicate 'referent' attribute!");
+                    throw new Exception("XmlDataReader.ReadInstance: Got an Item with a duplicate 'referent' attribute!");
 
                 file.Instances.Add(refId, inst);
             }
