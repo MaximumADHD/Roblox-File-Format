@@ -31,7 +31,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
             {
                 Type = PropertyType.Unknown;
             }
-
         }
 
         public void ReadProperties(BinaryRobloxFile file)
@@ -57,6 +56,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
             }
 
             // Setup some short-hand functions for actions frequently used during the read procedure.
+            var readInts = new Func<int[]>(() => Reader.ReadInts(instCount));
+            var readFloats = new Func<float[]>(() => Reader.ReadFloats(instCount));
+            
             var loadProperties = new Action<Func<int, object>>(read =>
             {
                 for (int i = 0; i < instCount; i++)
@@ -65,9 +67,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     props[i].Value = result;
                 }
             });
-
-            var readInts = new Func<int[]>(() => Reader.ReadInts(instCount));
-            var readFloats = new Func<float[]>(() => Reader.ReadFloats(instCount));
             
             // Read the property data based on the property type.
             switch (Type)
@@ -161,11 +160,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.BrickColor:
-                    int[] brickColors = readInts();
+                    int[] BrickColorIds = readInts();
 
                     loadProperties(i =>
                     {
-                        int number = brickColors[i];
+                        int number = BrickColorIds[i];
                         return BrickColor.FromNumber(number);
                     });
 
@@ -186,28 +185,28 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Vector2:
-                    float[] vector2_X = readFloats(),
-                            vector2_Y = readFloats();
+                    float[] Vector2_X = readFloats(),
+                            Vector2_Y = readFloats();
 
                     loadProperties(i =>
                     {
-                        float x = vector2_X[i],
-                              y = vector2_Y[i];
+                        float x = Vector2_X[i],
+                              y = Vector2_Y[i];
 
                         return new Vector2(x, y);
                     });
 
                     break;
                 case PropertyType.Vector3:
-                    float[] vector3_X = readFloats(),
-                            vector3_Y = readFloats(),
-                            vector3_Z = readFloats();
+                    float[] Vector3_X = readFloats(),
+                            Vector3_Y = readFloats(),
+                            Vector3_Z = readFloats();
 
                     loadProperties(i =>
                     {
-                        float x = vector3_X[i],
-                              y = vector3_Y[i],
-                              z = vector3_Z[i];
+                        float x = Vector3_X[i],
+                              y = Vector3_Y[i],
+                              z = Vector3_Z[i];
 
                         return new Vector3(x, y, z);
                     });
@@ -268,17 +267,17 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         }
                     });
 
-                    float[] cframe_X = readFloats(),
-                            cframe_Y = readFloats(),
-                            cframe_Z = readFloats();
+                    float[] CFrame_X = readFloats(),
+                            CFrame_Y = readFloats(),
+                            CFrame_Z = readFloats();
 
                     loadProperties(i =>
                     {
                         float[] matrix = props[i].Value as float[];
 
-                        float x = cframe_X[i],
-                              y = cframe_Y[i],
-                              z = cframe_Z[i];
+                        float x = CFrame_X[i],
+                              y = CFrame_Y[i],
+                              z = CFrame_Z[i];
 
                         float[] position = new float[3] { x, y, z };
                         float[] components = position.Concat(matrix).ToArray();
@@ -409,15 +408,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Color3uint8:
-                    byte[] color3uint8_R = Reader.ReadBytes(instCount),
-                           color3uint8_G = Reader.ReadBytes(instCount),
-                           color3uint8_B = Reader.ReadBytes(instCount);
+                    byte[] Color3uint8_R = Reader.ReadBytes(instCount),
+                           Color3uint8_G = Reader.ReadBytes(instCount),
+                           Color3uint8_B = Reader.ReadBytes(instCount);
                     
                     loadProperties(i =>
                     {
-                        byte r = color3uint8_R[i],
-                             g = color3uint8_G[i],
-                             b = color3uint8_B[i];
+                        byte r = Color3uint8_R[i],
+                             g = Color3uint8_G[i],
+                             b = Color3uint8_B[i];
 
                         return Color3.FromRGB(r, g, b);
                     });
