@@ -423,7 +423,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Int64:
-                    long[] int64s = Reader.ReadInterleaved(instCount, (buffer, start) =>
+                    long[] int64s = Reader.ReadInterlaced(instCount, (buffer, start) =>
                     {
                         long result = BitConverter.ToInt64(buffer, start);
                         return (long)((ulong)result >> 1) ^ (-(result & 1));
