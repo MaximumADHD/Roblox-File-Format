@@ -290,7 +290,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     // TODO: I want to map these values to actual Roblox enums, but I'll have to add an
                     //       interpreter for the JSON API Dump to do it properly.
 
-                    uint[] enums = Reader.ReadInterlaced(instCount, BitConverter.ToUInt32);
+                    uint[] enums = Reader.ReadInterleaved(instCount, BitConverter.ToUInt32);
                     loadProperties(i => enums[i]);
 
                     break;
