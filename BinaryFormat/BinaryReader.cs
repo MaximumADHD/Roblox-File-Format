@@ -9,39 +9,44 @@ namespace RobloxFiles.BinaryFormat
     {
         public BinaryRobloxReader(Stream stream) : base(stream) { }
         private byte[] lastStringBuffer = new byte[0] { };
-
-        public T[] ReadInterlaced<T>(int count, Func<byte[], int, T> decode) where T : struct
+        
+        // Reads 'count * sizeof(T)' interleaved bytes and converts them
+        // into an array of T[count] where each value in the array has 
+        // been transformed by the provided 'transform' function.
+        public T[] ReadInterleaved<T>(int count, Func<byte[], int, T> transform) where T : struct
         {
-            int bytesPerBlock = Marshal.SizeOf<T>();
-            byte[] interlaced = ReadBytes(count * bytesPerBlock);
+            int bufferSize = Marshal.SizeOf<T>();
+            byte[] interleaved = ReadBytes(count * bufferSize);
 
             T[] values = new T[count];
 
             for (int i = 0; i < count; i++)
             {
-                long block = 0;
+                long buffer = 0;
 
-                for (int pack = 0; pack < bytesPerBlock; pack++)
+                for (int column = 0; column < bufferSize; column++)
                 {
-                    long bits = interlaced[(pack * count) + i];
-                    int shift = (bytesPerBlock - pack - 1) * 8;
-                    block |= (bits << shift);
+                    long block = interleaved[(column * count) + i];
+                    int shift = (bufferSize - column - 1) * 8;
+                    buffer |= (block << shift);
                 }
 
-                byte[] buffer = BitConverter.GetBytes(block);
-                values[i] = decode(buffer, 0);
+                byte[] sequence = BitConverter.GetBytes(buffer);
+                values[i] = transform(sequence, 0);
             }
 
             return values;
         }
-
-        private int ReadInterlacedInt(byte[] buffer, int startIndex)
+        
+        // Transforms an int from an interleaved buffer.
+        private int TransformInt(byte[] buffer, int startIndex)
         {
             int value = BitConverter.ToInt32(buffer, startIndex);
             return (value >> 1) ^ (-(value & 1));
         }
-
-        private float ReadInterlacedFloat(byte[] buffer, int startIndex)
+        
+        // Transforms a float from an interleaved buffer.
+        private float TransformFloat(byte[] buffer, int startIndex)
         {
             uint u = BitConverter.ToUInt32(buffer, startIndex);
             uint i = (u >> 1) | (u << 31);
@@ -49,17 +54,20 @@ namespace RobloxFiles.BinaryFormat
             byte[] b = BitConverter.GetBytes(i);
             return BitConverter.ToSingle(b, 0);
         }
-
+        
+        // Reads an interleaved buffer of integers.
         public int[] ReadInts(int count)
         {
-            return ReadInterlaced(count, ReadInterlacedInt);
+            return ReadInterleaved(count, TransformInt);
         }
-
+        
+        // Reads an interleaved buffer of floats.
         public float[] ReadFloats(int count)
         {
-            return ReadInterlaced(count, ReadInterlacedFloat);
+            return ReadInterleaved(count, TransformFloat);
         }
-
+        
+        // Reads and accumulates an interleaved buffer of integers.
         public int[] ReadInstanceIds(int count)
         {
             int[] values = ReadInts(count);
