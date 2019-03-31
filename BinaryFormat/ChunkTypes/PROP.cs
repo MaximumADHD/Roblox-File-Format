@@ -170,15 +170,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Color3:
-                    float[] color3_R = readFloats(),
-                            color3_G = readFloats(),
-                            color3_B = readFloats();
+                    float[] Color3_R = readFloats(),
+                            Color3_G = readFloats(),
+                            Color3_B = readFloats();
 
                     loadProperties(i =>
                     {
-                        float r = color3_R[i],
-                              g = color3_G[i],
-                              b = color3_B[i];
+                        float r = Color3_R[i],
+                              g = Color3_G[i],
+                              b = Color3_B[i];
 
                         return new Color3(r, g, b);
                     });
