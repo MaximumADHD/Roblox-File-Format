@@ -7,7 +7,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "NumberSequence";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             string contents = token.InnerText.Trim();
             string[] buffer = contents.Split(' ');
@@ -23,9 +23,9 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
                     for (int i = 0; i < length; i += 3)
                     {
-                        float Time     = float.Parse(buffer[  i  ]);
-                        float Value    = float.Parse(buffer[i + 1]);
-                        float Envelope = float.Parse(buffer[i + 2]);
+                        float Time     = Formatting.ParseFloat(buffer[  i  ]);
+                        float Value    = Formatting.ParseFloat(buffer[i + 1]);
+                        float Envelope = Formatting.ParseFloat(buffer[i + 2]);
 
                         keypoints[i / 3] = new NumberSequenceKeypoint(Time, Value, Envelope);
                     }
@@ -40,6 +40,11 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return valid;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            node.InnerText = prop.Value.ToString() + ' ';
         }
     }
 }

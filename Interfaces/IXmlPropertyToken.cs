@@ -10,6 +10,8 @@ namespace RobloxFiles.XmlFormat
     public interface IXmlPropertyToken
     {
         string Token { get; }
-        bool ReadToken(Property prop, XmlNode token);
+
+        bool ReadProperty(Property prop, XmlNode token);
+        void WriteProperty(Property prop, XmlDocument doc, XmlNode node);
     }
 }

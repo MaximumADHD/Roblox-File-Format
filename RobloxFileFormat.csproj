@@ -97,11 +97,13 @@
     <Compile Include="DataTypes\UDim2.cs" />
     <Compile Include="DataTypes\Vector2.cs" />
     <Compile Include="DataTypes\Vector3.cs" />
+    <Compile Include="Utility\Formatting.cs" />
     <Compile Include="Utility\MaterialInfo.cs" />
     <Compile Include="Utility\Quaternion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlFormat\PropertyTokens\SharedString.cs" />
     <Compile Include="XmlFormat\PropertyTokens\Vector3int16.cs" />
+    <Compile Include="XmlFormat\XmlDataWriter.cs" />
     <Compile Include="XmlFormat\XmlPropertyTokens.cs" />
     <Compile Include="XmlFormat\XmlDataReader.cs" />
     <Compile Include="XmlFormat\XmlRobloxFile.cs" />

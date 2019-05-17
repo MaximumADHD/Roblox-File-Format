@@ -12,17 +12,19 @@ namespace RobloxFiles
     public class Instance
     {
         /// <summary>The ClassName of this Instance.</summary>
-        public readonly string ClassName;
+        public string ClassName;
 
         /// <summary>A list of properties that are defined under this Instance.</summary>
         public Dictionary<string, Property> Properties = new Dictionary<string, Property>();
-        
+
         private List<Instance> Children = new List<Instance>();
         private Instance rawParent;
 
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public string Name => ReadProperty("Name", ClassName);
         public override string ToString() => Name;
+
+        internal string XmlReferent;
 
         /// <summary>Creates an instance using the provided ClassName.</summary>
         /// <param name="className">The ClassName to use for this Instance.</param>
@@ -292,7 +294,7 @@ namespace RobloxFiles
         /// This is used during the file loading procedure.
         /// </summary>
         /// <param name="prop">A reference to the property that will be added.</param>
-        public void AddProperty(ref Property prop)
+        internal void AddProperty(ref Property prop)
         {
             Properties.Add(prop.Name, prop);
         }

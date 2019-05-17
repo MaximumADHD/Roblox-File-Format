@@ -62,8 +62,9 @@ namespace RobloxFiles.XmlFormat
                     Property prop = new Property();
                     prop.Name = propName.InnerText;
                     prop.Instance = instance;
+                    prop.XmlToken = propType;
 
-                    if (!tokenHandler.ReadToken(prop, propNode))
+                    if (!tokenHandler.ReadProperty(prop, propNode))
                         Console.WriteLine("Could not read property: " + prop.GetFullName() + '!');
 
                     instance.AddProperty(ref prop);
@@ -75,7 +76,7 @@ namespace RobloxFiles.XmlFormat
             }
         }
 
-        public static Instance ReadInstance(XmlNode instNode, XmlRobloxFile file = null)
+        public static Instance ReadInstance(XmlNode instNode, XmlRobloxFile file)
         {
             var error = createErrorHandler("ReadInstance");
 

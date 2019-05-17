@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -19,7 +20,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                 try
                 {
                     var coord = token[key];
-                    xyz[i] = XmlPropertyTokens.ParseFloat(coord.InnerText);
+                    xyz[i] = Formatting.ParseFloat(coord.InnerText);
                 }
                 catch
                 {
@@ -30,7 +31,22 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             return new Vector3(xyz);
         }
 
-        public bool ReadToken(Property property, XmlNode token)
+        public static void WriteVector3(XmlDocument doc, XmlNode node, Vector3 value)
+        {
+            XmlElement x = doc.CreateElement("X");
+            x.InnerText = value.X.ToInvariantString();
+            node.AppendChild(x);
+
+            XmlElement y = doc.CreateElement("Y");
+            y.InnerText = value.Y.ToInvariantString();
+            node.AppendChild(y);
+
+            XmlElement z = doc.CreateElement("Z");
+            z.InnerText = value.Z.ToInvariantString();
+            node.AppendChild(z);
+        }
+
+        public bool ReadProperty(Property property, XmlNode token)
         {
             Vector3 result = ReadVector3(token);
             bool success = (result != null);
@@ -42,6 +58,12 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return success;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            Vector3 value = prop.Value as Vector3;
+            WriteVector3(doc, node, value);
         }
     }
 }

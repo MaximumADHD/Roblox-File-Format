@@ -8,7 +8,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
         public string Token => "Vector3int16";
         private static string[] Coords = new string[3] { "X", "Y", "Z" };
 
-        public bool ReadToken(Property property, XmlNode token)
+        public bool ReadProperty(Property property, XmlNode token)
         {
             short[] xyz = new short[3];
 
@@ -35,6 +35,23 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             property.Value = new Vector3int16(x, y, z);
 
             return true;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            Vector3int16 value = prop.Value as Vector3int16;
+
+            XmlElement x = doc.CreateElement("X");
+            x.InnerText = value.X.ToString();
+            node.AppendChild(x);
+
+            XmlElement y = doc.CreateElement("Y");
+            y.InnerText = value.Y.ToString();
+            node.AppendChild(y);
+
+            XmlElement z = doc.CreateElement("Z");
+            z.InnerText = value.Z.ToString();
+            node.AppendChild(z);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -7,7 +8,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "NumberRange";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             string contents = token.InnerText.Trim();
             string[] buffer = contents.Split(' ');
@@ -17,8 +18,8 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             {
                 try
                 {
-                    float min = float.Parse(buffer[0]);
-                    float max = float.Parse(buffer[1]);
+                    float min = Formatting.ParseFloat(buffer[0]);
+                    float max = Formatting.ParseFloat(buffer[1]);
 
                     prop.Type = PropertyType.NumberRange;
                     prop.Value = new NumberRange(min, max);
@@ -30,6 +31,11 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return valid;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            node.InnerText = prop.Value.ToString() + ' ';
         }
     }
 }

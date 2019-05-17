@@ -6,9 +6,14 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "token";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
-            return XmlPropertyTokens.ReadTokenGeneric<uint>(prop, PropertyType.Enum, token);
+            return XmlPropertyTokens.ReadPropertyGeneric<uint>(prop, PropertyType.Enum, token);
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            node.InnerText = prop.Value.ToString();
         }
     }
 }

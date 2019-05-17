@@ -8,9 +8,9 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "Color3uint8";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
-            bool success = XmlPropertyTokens.ReadTokenGeneric<uint>(prop, PropertyType.Color3, token);
+            bool success = XmlPropertyTokens.ReadPropertyGeneric<uint>(prop, PropertyType.Color3, token);
 
             if (success)
             {
@@ -24,6 +24,18 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
             
             return success;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            Color3 color = prop.Value as Color3;
+
+            uint r = (uint)(color.R * 256);
+            uint g = (uint)(color.G * 256);
+            uint b = (uint)(color.B * 256);
+
+            uint rgb = (255u << 24) | (r << 16) | (g << 8) | b;
+            node.InnerText = rgb.ToString();
         }
     }
 }

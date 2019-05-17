@@ -62,6 +62,11 @@ namespace RobloxFiles
             }
         }
 
+        public void WriteFile(Stream stream)
+        {
+            InnerFile.WriteFile(stream);
+        }
+
         /// <summary>
         /// Creates a RobloxFile from a provided byte sequence that represents the file.
         /// </summary>

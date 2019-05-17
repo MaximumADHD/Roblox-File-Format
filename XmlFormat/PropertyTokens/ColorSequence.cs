@@ -7,7 +7,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "ColorSequence";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             string contents = token.InnerText.Trim();
             string[] buffer = contents.Split(' ');
@@ -23,11 +23,11 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
                     for (int i = 0; i < length; i += 5)
                     {
-                        float Time = float.Parse(buffer[i]);
+                        float Time = Formatting.ParseFloat(buffer[i]);
 
-                        float R = float.Parse(buffer[i + 1]);
-                        float G = float.Parse(buffer[i + 2]);
-                        float B = float.Parse(buffer[i + 3]);
+                        float R = Formatting.ParseFloat(buffer[i + 1]);
+                        float G = Formatting.ParseFloat(buffer[i + 2]);
+                        float B = Formatting.ParseFloat(buffer[i + 3]);
 
                         Color3 Value = new Color3(R, G, B);
                         keypoints[i / 5] = new ColorSequenceKeypoint(Time, Value);
@@ -43,6 +43,11 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return valid;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            node.InnerText = prop.Value.ToString() + ' ';
         }
     }
 }

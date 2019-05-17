@@ -19,7 +19,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                 try
                 {
                     var coord = token[key];
-                    components[i] = float.Parse(coord.InnerText);
+                    components[i] = Formatting.ParseFloat(coord.InnerText);
                 }
                 catch
                 {
@@ -30,18 +30,35 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             return new CFrame(components);
         }
 
-        public bool ReadToken(Property property, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             CFrame result = ReadCFrame(token);
             bool success = (result != null);
 
             if (success)
             {
-                property.Type = PropertyType.CFrame;
-                property.Value = result;
+                prop.Type = PropertyType.CFrame;
+                prop.Value = result;
             }
 
             return success;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            CFrame cf = prop.Value as CFrame;
+            float[] components = cf.GetComponents();
+
+            for (int i = 0; i < 12; i++)
+            {
+                string coordName = Coords[i];
+                float coordValue = components[i];
+
+                XmlElement coord = doc.CreateElement(coordName);
+                coord.InnerText = coordValue.ToInvariantString();
+
+                node.AppendChild(coord);
+            }
         }
     }
 }

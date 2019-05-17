@@ -7,9 +7,9 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "Faces";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
-            bool success = XmlPropertyTokens.ReadTokenGeneric<uint>(prop, PropertyType.Faces, token);
+            bool success = XmlPropertyTokens.ReadPropertyGeneric<uint>(prop, PropertyType.Faces, token);
 
             if (success)
             {
@@ -26,6 +26,15 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return success;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            XmlElement faces = doc.CreateElement("faces");
+            node.AppendChild(faces);
+
+            int value = (int)prop.Value;
+            faces.InnerText = value.ToInvariantString();
         }
     }
 }

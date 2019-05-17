@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -7,7 +8,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "UDim2";
 
-        public bool ReadToken(Property property, XmlNode token)
+        public bool ReadProperty(Property property, XmlNode token)
         {
             UDim xUDim = UDimToken.ReadUDim(token, "X");
             UDim yUDim = UDimToken.ReadUDim(token, "Y");
@@ -21,6 +22,17 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return false;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            UDim2 value = prop.Value as UDim2;
+
+            UDim xUDim = value.X;
+            UDimToken.WriteUDim(doc, node, xUDim, "X");
+
+            UDim yUDim = value.Y;
+            UDimToken.WriteUDim(doc, node, yUDim, "Y");
         }
     }
 }

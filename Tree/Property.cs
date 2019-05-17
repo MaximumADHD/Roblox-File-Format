@@ -33,7 +33,7 @@ namespace RobloxFiles
         PhysicalProperties,
         Color3uint8,
         Int64,
-        SharedString
+        SharedString,
     }
 
     public class Property
@@ -44,7 +44,9 @@ namespace RobloxFiles
         public PropertyType Type;
         public object Value;
 
+        public string XmlToken = "";
         private byte[] RawBuffer = null;
+
         public bool HasRawBuffer
         {
             get

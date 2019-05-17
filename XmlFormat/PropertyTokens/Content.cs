@@ -7,7 +7,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "Content";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             string content = token.InnerText;
             prop.Type = PropertyType.String;
@@ -27,6 +27,22 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return true;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            string content = prop.Value.ToString();
+            string type = "null";
+
+            if (prop.HasRawBuffer)
+                type = "binary";
+            else if (content.Length > 0)
+                type = "url";
+
+            XmlElement contentType = doc.CreateElement(type);
+            contentType.InnerText = content;
+
+            node.AppendChild(contentType);
         }
     }
 }

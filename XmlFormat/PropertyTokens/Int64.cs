@@ -6,9 +6,14 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "int64";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
-            return XmlPropertyTokens.ReadTokenGeneric<long>(prop, PropertyType.Int64, token);
+            return XmlPropertyTokens.ReadPropertyGeneric<long>(prop, PropertyType.Int64, token);
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            node.InnerText = prop.Value.ToString();
         }
     }
 }

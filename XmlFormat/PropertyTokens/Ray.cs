@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -8,7 +9,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
         public string Token => "Ray";
         private static string[] Fields = new string[2] { "origin", "direction" };
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             try
             {
@@ -34,6 +35,19 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             {
                 return false;
             }
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            Ray ray = prop.Value as Ray;
+
+            XmlElement origin = doc.CreateElement("origin");
+            Vector3Token.WriteVector3(doc, origin, ray.Origin);
+            node.AppendChild(origin);
+
+            XmlElement direction = doc.CreateElement("direction");
+            Vector3Token.WriteVector3(doc, direction, ray.Direction);
+            node.AppendChild(direction);
         }
     }
 }

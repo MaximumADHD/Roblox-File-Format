@@ -6,13 +6,26 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "Ref";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             string refId = token.InnerText;
             prop.Type = PropertyType.Ref;
             prop.Value = refId;
 
             return true;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            string result = "null";
+
+            if (prop.Value != null && prop.Value.ToString() != "null")
+            {
+                Instance inst = prop.Value as Instance;
+                result = inst.XmlReferent;
+            }
+
+            node.InnerText = result;
         }
     }
 }

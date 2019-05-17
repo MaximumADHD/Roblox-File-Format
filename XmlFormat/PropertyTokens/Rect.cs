@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -8,7 +9,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
         public string Token => "Rect2D";
         private static string[] Fields = new string[2] { "min", "max" };
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             try
             {
@@ -34,6 +35,19 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             {
                 return false;
             }
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            Rect rect = prop.Value as Rect;
+
+            XmlElement min = doc.CreateElement("min");
+            Vector2Token.WriteVector2(doc, min, rect.Min);
+            node.AppendChild(min);
+
+            XmlElement max = doc.CreateElement("max");
+            Vector2Token.WriteVector2(doc, max, rect.Max);
+            node.AppendChild(max);
         }
     }
 }

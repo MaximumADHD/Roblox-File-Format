@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml;
 using RobloxFiles.DataTypes;
 
@@ -17,10 +18,10 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             });
         }
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             var readBool = createReader(bool.Parse, token);
-            var readFloat = createReader(XmlPropertyTokens.ParseFloat, token);
+            var readFloat = createReader(Formatting.ParseFloat, token);
 
             try
             {
@@ -44,6 +45,41 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             catch
             {
                 return false;
+            }
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            bool hasCustomPhysics = (prop.Value != null);
+
+            XmlElement customPhysics = doc.CreateElement("CustomPhysics");
+            customPhysics.InnerText = hasCustomPhysics
+                .ToString()
+                .ToLower();
+
+            node.AppendChild(customPhysics);
+
+            if (hasCustomPhysics)
+            {
+                var customProps = prop.Value as PhysicalProperties;
+                
+                var data = new Dictionary<string, float>()
+                {
+                    { "Density", customProps.Density },
+                    { "Friction", customProps.Friction },
+                    { "Elasticity", customProps.Elasticity },
+                    { "FrictionWeight", customProps.FrictionWeight },
+                    { "ElasticityWeight", customProps.ElasticityWeight }
+                };
+
+                foreach (string elementType in data.Keys)
+                {
+                    float value = data[elementType];
+
+                    XmlElement element = doc.CreateElement(elementType);
+                    element.InnerText = value.ToInvariantString();
+                    node.AppendChild(element);
+                }
             }
         }
     }

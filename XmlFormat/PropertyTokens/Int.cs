@@ -6,7 +6,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "int";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
             // BrickColors are represented by ints, see if 
             // we can infer when they should be a BrickColor.
@@ -14,12 +14,19 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             if (prop.Name.Contains("Color") || prop.Instance.ClassName.Contains("Color"))
             {
                 var brickColorToken = XmlPropertyTokens.GetHandler<BrickColorToken>();
-                return brickColorToken.ReadToken(prop, token);
+                return brickColorToken.ReadProperty(prop, token);
             }
             else
             {
-                return XmlPropertyTokens.ReadTokenGeneric<int>(prop, PropertyType.Int, token);
+                return XmlPropertyTokens.ReadPropertyGeneric<int>(prop, PropertyType.Int, token);
             }
+
+            
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            node.InnerText = prop.Value.ToInvariantString();
         }
     }
 }

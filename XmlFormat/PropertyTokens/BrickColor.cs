@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -10,16 +11,18 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
         //   Since BrickColors are written as ints, the IntToken class will try to redirect 
         //   to this handler if it believes that its representing a BrickColor.
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
-            bool success = XmlPropertyTokens.ReadTokenGeneric<int>(prop, PropertyType.BrickColor, token);
+            bool success = XmlPropertyTokens.ReadPropertyGeneric<int>(prop, PropertyType.BrickColor, token);
 
             if (success)
             {
                 int value = (int)prop.Value;
+
                 try
                 {
                     BrickColor brickColor = BrickColor.FromNumber(value);
+                    prop.XmlToken = "BrickColor";
                     prop.Value = brickColor;
                 }
                 catch
@@ -28,8 +31,19 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                     success = false;
                 }
             }
-
+            
             return success;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            BrickColor value = prop.Value as BrickColor;
+
+            XmlElement brickColor = doc.CreateElement("int");
+            brickColor.InnerText = value.Number.ToInvariantString();
+
+            brickColor.SetAttribute("name", prop.Name);
+            brickColor.AppendChild(node);
         }
     }
 }

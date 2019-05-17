@@ -6,19 +6,14 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     {
         public string Token => "float";
 
-        public bool ReadToken(Property prop, XmlNode token)
+        public bool ReadProperty(Property prop, XmlNode token)
         {
-            try
-            {
-                float value = XmlPropertyTokens.ParseFloat(token.InnerText);
-                prop.Type = PropertyType.Float;
-                prop.Value = value;
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return XmlPropertyTokens.ReadPropertyGeneric<float>(prop, PropertyType.Float, token);
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            node.InnerText = prop.Value.ToInvariantString();
         }
     }
 }

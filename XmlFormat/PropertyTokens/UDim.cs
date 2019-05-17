@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -12,7 +13,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             try
             {
                 XmlElement scaleToken = token[prefix + 'S'];
-                float scale = XmlPropertyTokens.ParseFloat(scaleToken.InnerText);
+                float scale = Formatting.ParseFloat(scaleToken.InnerText);
 
                 XmlElement offsetToken = token[prefix + 'O'];
                 int offset = int.Parse(offsetToken.InnerText);
@@ -25,7 +26,18 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
         }
 
-        public bool ReadToken(Property property, XmlNode token)
+        public static void WriteUDim(XmlDocument doc, XmlNode node, UDim value, string prefix = "")
+        {
+            XmlElement scale = doc.CreateElement(prefix + 'S');
+            scale.InnerText = value.Scale.ToInvariantString();
+            node.AppendChild(scale);
+
+            XmlElement offset = doc.CreateElement(prefix + 'O');
+            offset.InnerText = value.Offset.ToInvariantString();
+            node.AppendChild(offset);
+        }
+
+        public bool ReadProperty(Property property, XmlNode token)
         {
             UDim result = ReadUDim(token);
             bool success = (result != null);
@@ -37,6 +49,12 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             }
 
             return success;
+        }
+
+        public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
+        {
+            UDim value = prop.Value as UDim;
+            WriteUDim(doc, node, value);
         }
     }
 }

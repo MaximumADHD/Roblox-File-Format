@@ -100,5 +100,10 @@ namespace RobloxFiles.BinaryFormat
                 }
             }
         }
+
+        public void WriteFile(Stream stream)
+        {
+            throw new NotImplementedException("Not implemented yet!");
+        }
     }
 }

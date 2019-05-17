@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml;
 
+using RobloxFiles;
+
 namespace RobloxFiles.XmlFormat
 {
     public static class XmlPropertyTokens
@@ -35,17 +37,30 @@ namespace RobloxFiles.XmlFormat
             Handlers = tokenHandlers;
         }
 
-        public static bool ReadTokenGeneric<T>(Property prop, PropertyType propType, XmlNode token) where T : struct
+        public static bool ReadPropertyGeneric<T>(Property prop, PropertyType propType, XmlNode token) where T : struct
         {
             try
             {
-                Type resultType = typeof(T);
-                TypeConverter converter = TypeDescriptor.GetConverter(resultType);
+                string value = token.InnerText;
 
-                object result = converter.ConvertFromString(token.InnerText);
+                if (typeof(T) == typeof(int))
+                    prop.Value = Formatting.ParseInt(value);
+                else if (typeof(T) == typeof(float))
+                    prop.Value = Formatting.ParseFloat(value);
+                else if (typeof(T) == typeof(double))
+                    prop.Value = Formatting.ParseDouble(value);
+
+                if (prop.Value == null)
+                {
+                    Type resultType = typeof(T);
+                    TypeConverter converter = TypeDescriptor.GetConverter(resultType);
+
+                    object result = converter.ConvertFromString(token.InnerText);
+                    prop.Value = result;
+                }
+
                 prop.Type = propType;
-                prop.Value = result;
-
+                
                 return true;
             }
             catch
@@ -71,22 +86,6 @@ namespace RobloxFiles.XmlFormat
                 .First();
 
             return (T)result;
-        }
-
-        public static float ParseFloat(string value)
-        {
-            float result;
-
-            if (value == "INF")
-                result = float.PositiveInfinity;
-            else if (value == "-INF")
-                result = float.NegativeInfinity;
-            else if (value == "NAN")
-                result = float.NaN;
-            else
-                result = float.Parse(value);
-
-            return result;
         }
     }
 }
