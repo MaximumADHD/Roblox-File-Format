@@ -1,6 +1,7 @@
 ﻿using System;
+using RobloxFiles.DataTypes;
 
-namespace RobloxFiles.DataTypes.Utility
+namespace RobloxFiles.Utility
 {
     /// <summary>
     /// Quaternion is a utility used by the CFrame DataType to handle rotation interpolation.

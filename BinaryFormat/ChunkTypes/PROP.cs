@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 
 using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
-using RobloxFiles.DataTypes.Utility;
+using RobloxFiles.Utility;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
@@ -44,20 +45,18 @@ namespace RobloxFiles.BinaryFormat.Chunks
             for (int i = 0; i < instCount; i++)
             {
                 int id = ids[i];
-                Instance instance = file.Instances[id];
+                Instance inst = file.Instances[id];
 
-                Property prop = new Property();
-                prop.Name = Name;
-                prop.Type = Type;
-                prop.Instance = instance;
-
+                Property prop = new Property(inst, this);
                 props[i] = prop;
-                instance.AddProperty(ref prop);
+
+                inst.AddProperty(ref prop);
             }
 
-            // Setup some short-hand functions for actions frequently used during the read procedure.
+            // Setup some short-hand functions for actions used during the read procedure.
             var readInts = new Func<int[]>(() => Reader.ReadInts(instCount));
             var readFloats = new Func<float[]>(() => Reader.ReadFloats(instCount));
+            
             
             var loadProperties = new Action<Func<int, object>>(read =>
             {
@@ -290,7 +289,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     // TODO: I want to map these values to actual Roblox enums, but I'll have to add an
                     //       interpreter for the JSON API Dump to do it properly.
 
-                    uint[] enums = Reader.ReadInterleaved(instCount, BitConverter.ToUInt32);
+                    uint[] enums = Reader.ReadUInts(instCount);
                     loadProperties(i => enums[i]);
 
                     break;
@@ -430,6 +429,19 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     loadProperties(i => int64s[i]);
+                    break;
+                case PropertyType.SharedString:
+                    uint[] sharedKeys = Reader.ReadUInts(instCount);
+
+                    loadProperties(i =>
+                    {
+                        uint key = sharedKeys[i];
+                        return file.SharedStrings[key];
+                    });
+
+                    break;
+                default:
+                    Console.WriteLine("Unhandled property type: {0}!", Type);
                     break;
             }
 

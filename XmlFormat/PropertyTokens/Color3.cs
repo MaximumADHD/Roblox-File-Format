@@ -7,43 +7,45 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     public class Color3Token : IXmlPropertyToken
     {
         public string Token => "Color3";
-        private string[] LegacyFields = new string[3] { "R", "G", "B" };
+        private string[] Fields = new string[3] { "R", "G", "B" };
 
         public bool ReadToken(Property prop, XmlNode token)
         {
-            var color3uint8 = XmlPropertyTokens.GetHandler<Color3uint8Token>();
-            bool success = color3uint8.ReadToken(prop, token);
+            bool success = true;
+            float[] fields = new float[Fields.Length];
 
-            if (!success)
+            for (int i = 0; i < fields.Length; i++)
             {
-                // Try the legacy technique.
-                float[] fields = new float[LegacyFields.Length];
+                string key = Fields[i];
 
-                for (int i = 0; i < fields.Length; i++)
+                try
                 {
-                    string key = LegacyFields[i];
-
-                    try
-                    {
-                        var coord = token[key];
-                        fields[i] = XmlPropertyTokens.ParseFloat(coord.InnerText);
-                    }
-                    catch
-                    {
-                        return false;
-                    }
+                    var coord = token[key];
+                    fields[i] = XmlPropertyTokens.ParseFloat(coord.InnerText);
                 }
+                catch
+                {
+                    success = false;
+                    break;
+                }
+            }
 
+            if (success)
+            {
                 float r = fields[0],
                       g = fields[1],
                       b = fields[2];
 
                 prop.Type = PropertyType.Color3;
                 prop.Value = new Color3(r, g, b);
-
-                success = true;
             }
-            
+            else
+            {
+                // Try falling back to the Color3uint8 technique...
+                var color3uint8 = XmlPropertyTokens.GetHandler<Color3uint8Token>();
+                success = color3uint8.ReadToken(prop, token);
+            }
+
             return success;
         }
     }

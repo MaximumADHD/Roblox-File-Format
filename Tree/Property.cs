@@ -1,4 +1,5 @@
 ﻿using System;
+using RobloxFiles.BinaryFormat.Chunks;
 
 namespace RobloxFiles
 {
@@ -31,7 +32,8 @@ namespace RobloxFiles
         Rect,
         PhysicalProperties,
         Color3uint8,
-        Int64
+        Int64,
+        SharedString
     }
 
     public class Property
@@ -67,11 +69,29 @@ namespace RobloxFiles
                         case PropertyType.Double:
                             RawBuffer = BitConverter.GetBytes((double)Value);
                             break;
+                        case PropertyType.SharedString:
+                            RawBuffer = Convert.FromBase64String((string)Value);
+                            break;
                     }
                 }
 
                 return (RawBuffer != null);
             }
+        }
+
+        public Property(string name = "", PropertyType type = PropertyType.Unknown, Instance instance = null)
+        {
+            Name = name;
+            Type = type;
+
+            Instance = instance;
+        }
+
+        public Property(Instance instance, PROP property)
+        {
+            Instance = instance;
+            Name = property.Name;
+            Type = property.Type;
         }
 
         public string GetFullName()

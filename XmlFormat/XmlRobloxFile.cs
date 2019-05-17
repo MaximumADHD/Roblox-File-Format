@@ -16,6 +16,7 @@ namespace RobloxFiles.XmlFormat
         // Runtime Specific
         public readonly XmlDocument Root = new XmlDocument();
         public Dictionary<string, Instance> Instances = new Dictionary<string, Instance>();
+        public Dictionary<string, string> SharedStrings = new Dictionary<string, string>();
         
         public void ReadFile(byte[] buffer)
         {
@@ -50,16 +51,24 @@ namespace RobloxFiles.XmlFormat
                         Instance item = XmlDataReader.ReadInstance(child, this);
                         item.Parent = XmlContents;
                     }
+                    else if (child.Name == "SharedStrings")
+                    {
+                        XmlDataReader.ReadSharedStrings(child, this);
+                    }
                 }
 
-                // Resolve referent properties.
-                var refProps = Instances.Values
+                // Query the properties.
+                var props = Instances.Values
                     .SelectMany(inst => inst.Properties)
-                    .Where(prop => prop.Type == PropertyType.Ref);
-                    
+                    .Select(pair => pair.Value);
+
+                // Resolve referent properties.
+                var refProps = props.Where(prop => prop.Type == PropertyType.Ref);
+                  
                 foreach (Property refProp in refProps)
                 {
                     string refId = refProp.Value as string;
+
                     if (Instances.ContainsKey(refId))
                     {
                         Instance refInst = Instances[refId];
@@ -67,13 +76,36 @@ namespace RobloxFiles.XmlFormat
                     }
                     else if (refId != "null")
                     {
-                        Console.WriteLine("XmlRobloxFile: Could not resolve reference for " + refProp.GetFullName());
+                        string name = refProp.GetFullName();
+                        Console.WriteLine("XmlRobloxFile: Could not resolve reference for {0}", name);
                     }
+                }
+
+                // Resolve shared strings.
+                var sharedProps = props.Where(prop => prop.Type == PropertyType.SharedString);
+
+                foreach (Property sharedProp in sharedProps)
+                {
+                    string md5 = sharedProp.Value as string;
+
+                    if (SharedStrings.ContainsKey(md5))
+                    {
+                        string value = SharedStrings[md5];
+                        sharedProp.Value = value;
+
+                        byte[] data = Convert.FromBase64String(value);
+                        sharedProp.SetRawBuffer(data);
+
+                        continue;
+                    }
+
+                    string name = sharedProp.GetFullName();
+                    Console.WriteLine("XmlRobloxFile: Could not resolve shared string for {0}", name);
                 }
             }
             else
             {
-                throw new Exception("XmlRobloxFile: No `roblox` tag found!");
+                throw new Exception("XmlRobloxFile: No 'roblox' tag found!");
             }
         }
     }

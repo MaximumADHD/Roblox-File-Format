@@ -1,15 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Xml;
 
 namespace RobloxFiles.XmlFormat
 {
     public static class XmlDataReader
     {
+        private static Func<string, Exception> createErrorHandler(string label)
+        {
+            var errorHandler = new Func<string, Exception>((message) =>
+            {
+                string contents = $"XmlDataReader.{label}: {message}";
+                return new Exception(contents);
+            });
+
+            return errorHandler;
+        }
+
+        public static void ReadSharedStrings(XmlNode sharedStrings, XmlRobloxFile file)
+        {
+            var error = createErrorHandler("ReadSharedStrings");
+
+            if (sharedStrings.Name != "SharedStrings")
+                throw error("Provided XmlNode's class should be 'SharedStrings'!");
+
+            foreach (XmlNode sharedString in sharedStrings)
+            {
+                if (sharedString.Name == "SharedString")
+                {
+                    XmlNode md5Node = sharedString.Attributes.GetNamedItem("md5");
+
+                    if (md5Node == null)
+                        throw error("Got a SharedString without an 'md5' attribute!");
+
+                    string key = md5Node.InnerText;
+                    string value = sharedString.InnerText.Replace("\n", "");
+
+                    file.SharedStrings.Add(key, value);
+                }
+            }
+        }
+
         public static void ReadProperties(Instance instance, XmlNode propsNode)
         {
+            var error = createErrorHandler("ReadProperties");
+
             if (propsNode.Name != "Properties")
-                throw new Exception("XmlDataReader.ReadProperties: Provided XmlNode's class should be 'Properties'!");
+                throw error("Provided XmlNode's class should be 'Properties'!");
 
             foreach (XmlNode propNode in propsNode.ChildNodes)
             {
@@ -17,7 +53,7 @@ namespace RobloxFiles.XmlFormat
                 XmlNode propName = propNode.Attributes.GetNamedItem("name");
 
                 if (propName == null)
-                    throw new Exception("XmlDataReader.ReadProperties: Got a property node without a 'name' attribute!");
+                    throw error("Got a property node without a 'name' attribute!");
 
                 IXmlPropertyToken tokenHandler = XmlPropertyTokens.GetHandler(propType);
 
@@ -28,26 +64,28 @@ namespace RobloxFiles.XmlFormat
                     prop.Instance = instance;
 
                     if (!tokenHandler.ReadToken(prop, propNode))
-                        Console.WriteLine("XmlDataReader.ReadProperties:  Could not read property: " + prop.GetFullName() + '!');
+                        Console.WriteLine("Could not read property: " + prop.GetFullName() + '!');
 
                     instance.AddProperty(ref prop);
                 }
                 else
                 {
-                    Console.WriteLine("XmlDataReader.ReadProperties: No IXmlPropertyToken found for property type: " + propType + '!');
+                    Console.WriteLine("No IXmlPropertyToken found for property type: " + propType + '!');
                 }
             }
         }
 
         public static Instance ReadInstance(XmlNode instNode, XmlRobloxFile file = null)
         {
+            var error = createErrorHandler("ReadInstance");
+
             // Process the instance itself
             if (instNode.Name != "Item")
-                throw new Exception("XmlDataReader.ReadInstance: Provided XmlNode's name should be 'Item'!");
+                throw error("Provided XmlNode's name should be 'Item'!");
 
             XmlNode classToken = instNode.Attributes.GetNamedItem("class");
             if (classToken == null)
-                throw new Exception("XmlDataReader.ReadInstance: Got an Item without a defined 'class' attribute!");
+                throw error("Got an Item without a defined 'class' attribute!");
 
             Instance inst = new Instance(classToken.InnerText);
 
@@ -59,7 +97,7 @@ namespace RobloxFiles.XmlFormat
                 string refId = refToken.InnerText;
 
                 if (file.Instances.ContainsKey(refId))
-                    throw new Exception("XmlDataReader.ReadInstance: Got an Item with a duplicate 'referent' attribute!");
+                    throw error("Got an Item with a duplicate 'referent' attribute!");
 
                 file.Instances.Add(refId, inst);
             }

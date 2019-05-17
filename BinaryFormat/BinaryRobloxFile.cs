@@ -26,8 +26,10 @@ namespace RobloxFiles.BinaryFormat
         public override string ToString() => GetType().Name;
         
         public Instance[] Instances;
-        public META Metadata;
         public INST[] Types;
+
+        public Dictionary<string, string> Metadata;
+        public Dictionary<uint, string> SharedStrings;
         
         public void ReadFile(byte[] contents)
         {
@@ -75,12 +77,18 @@ namespace RobloxFiles.BinaryFormat
                                 hierarchy.Assemble(this);
                                 break;
                             case "META":
-                                Metadata = new META(chunk);
+                                META meta = new META(chunk);
+                                Metadata = meta.Data;
+                                break;
+                            case "SSTR":
+                                SSTR shared = new SSTR(chunk);
+                                SharedStrings = shared.Strings;
                                 break;
                             case "END\0":
                                 reading = false;
                                 break;
                             default:
+                                Console.WriteLine("Unhandled chunk type: {0}!", chunk.ChunkType);
                                 Chunks.Remove(chunk);
                                 break;
                         }

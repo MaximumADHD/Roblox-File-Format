@@ -37,19 +37,21 @@ namespace RobloxFiles.XmlFormat
 
         public static bool ReadTokenGeneric<T>(Property prop, PropertyType propType, XmlNode token) where T : struct
         {
-            Type resultType = typeof(T);
-            TypeConverter converter = TypeDescriptor.GetConverter(resultType);
-
-            if (converter != null)
+            try
             {
+                Type resultType = typeof(T);
+                TypeConverter converter = TypeDescriptor.GetConverter(resultType);
+
                 object result = converter.ConvertFromString(token.InnerText);
                 prop.Type = propType;
                 prop.Value = result;
 
                 return true;
             }
-
-            return false;
+            catch
+            {
+                return false;
+            }
         }
 
         public static IXmlPropertyToken GetHandler(string tokenName)

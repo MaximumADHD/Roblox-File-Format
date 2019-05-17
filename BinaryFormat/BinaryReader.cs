@@ -9,11 +9,11 @@ namespace RobloxFiles.BinaryFormat
     {
         public BinaryRobloxReader(Stream stream) : base(stream) { }
         private byte[] lastStringBuffer = new byte[0] { };
-        
-        // Reads 'count * sizeof(T)' interleaved bytes and converts them
-        // into an array of T[count] where each value in the array has 
-        // been transformed by the provided 'transform' function.
-        public T[] ReadInterleaved<T>(int count, Func<byte[], int, T> transform) where T : struct
+
+        // Reads 'count * sizeof(T)' interleaved bytes and converts 
+        // them into an array of T[count] where each value in the 
+        // array has been decoded by the provided 'decode' function.
+        public T[] ReadInterleaved<T>(int count, Func<byte[], int, T> decode) where T : struct
         {
             int bufferSize = Marshal.SizeOf<T>();
             byte[] interleaved = ReadBytes(count * bufferSize);
@@ -32,21 +32,21 @@ namespace RobloxFiles.BinaryFormat
                 }
 
                 byte[] sequence = BitConverter.GetBytes(buffer);
-                values[i] = transform(sequence, 0);
+                values[i] = decode(sequence, 0);
             }
 
             return values;
         }
         
-        // Transforms an int from an interleaved buffer.
-        private int TransformInt(byte[] buffer, int startIndex)
+        // Decodes an int from an interleaved buffer.
+        private int DecodeInt(byte[] buffer, int startIndex)
         {
             int value = BitConverter.ToInt32(buffer, startIndex);
             return (value >> 1) ^ (-(value & 1));
         }
         
-        // Transforms a float from an interleaved buffer.
-        private float TransformFloat(byte[] buffer, int startIndex)
+        // Decodes a float from an interleaved buffer.
+        private float DecodeFloat(byte[] buffer, int startIndex)
         {
             uint u = BitConverter.ToUInt32(buffer, startIndex);
             uint i = (u >> 1) | (u << 31);
@@ -58,13 +58,19 @@ namespace RobloxFiles.BinaryFormat
         // Reads an interleaved buffer of integers.
         public int[] ReadInts(int count)
         {
-            return ReadInterleaved(count, TransformInt);
+            return ReadInterleaved(count, DecodeInt);
         }
         
         // Reads an interleaved buffer of floats.
         public float[] ReadFloats(int count)
         {
-            return ReadInterleaved(count, TransformFloat);
+            return ReadInterleaved(count, DecodeFloat);
+        }
+
+        // Reads an interleaved buffer of unsigned integers.
+        public uint[] ReadUInts(int count)
+        {
+            return ReadInterleaved(count, BitConverter.ToUInt32);
         }
         
         // Reads and accumulates an interleaved buffer of integers.

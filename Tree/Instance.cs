@@ -15,7 +15,7 @@ namespace RobloxFiles
         public readonly string ClassName;
 
         /// <summary>A list of properties that are defined under this Instance.</summary>
-        public List<Property> Properties = new List<Property>();
+        public Dictionary<string, Property> Properties = new Dictionary<string, Property>();
         
         private List<Instance> Children = new List<Instance>();
         private Instance rawParent;
@@ -36,14 +36,16 @@ namespace RobloxFiles
         /// <param name="name">The Name to use for this Instance.</param>
         public Instance(string className = "Instance", string name = "Instance")
         {
-            Property propName = new Property();
-            propName.Name = "Name";
-            propName.Type = PropertyType.String;
-            propName.Value = name;
-            propName.Instance = this;
+            Property propName = new Property()
+            {
+                Type = PropertyType.String,
+                Instance = this,
+                Name = "Name",
+                Value = name,
+            };
 
             ClassName = className;
-            Properties.Add(propName);
+            AddProperty(ref propName);
         }
 
         /// <summary>Returns true if this Instance is an ancestor to the provided Instance.</summary>
@@ -235,9 +237,8 @@ namespace RobloxFiles
         {
             Property property = null;
 
-            var query = Properties.Where((prop) => prop.Name.ToLower() == propertyName.ToLower());
-            if (query.Count() > 0)
-                property = query.First();
+            if (Properties.ContainsKey(propertyName))
+                property = Properties[propertyName];
 
             return (property != null ? property.Value : null);
         }
@@ -293,7 +294,7 @@ namespace RobloxFiles
         /// <param name="prop">A reference to the property that will be added.</param>
         public void AddProperty(ref Property prop)
         {
-            Properties.Add(prop);
+            Properties.Add(prop.Name, prop);
         }
 
         /// <summary>
@@ -319,18 +320,14 @@ namespace RobloxFiles
                     if (next == null)
                     {
                         // Check if there is any property with this name.
-                        var propQuery = result.Properties
-                            .Where((prop) => name == prop.Name);
+                        Property prop = null;
 
-                        if (propQuery.Count() > 0)
-                        {
-                            var prop = propQuery.First();
-                            return prop;
-                        }
+                        if (result.Properties.ContainsKey(name))
+                            prop = result.Properties[name];
                         else
-                        {
                             throw new Exception(name + " is not a valid member of " + result.Name);
-                        }
+
+                        return prop;
                     }
 
                     result = next;
