@@ -15,40 +15,23 @@ namespace RobloxFiles
         public string ClassName;
 
         /// <summary>A list of properties that are defined under this Instance.</summary>
-        public Dictionary<string, Property> Properties = new Dictionary<string, Property>();
+        private Dictionary<string, Property> props = new Dictionary<string, Property>();
+        public IReadOnlyDictionary<string, Property> Properties => props;
 
         private List<Instance> Children = new List<Instance>();
-        private Instance rawParent;
+        private Instance parent;
 
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
-        public string Name => ReadProperty("Name", ClassName);
         public override string ToString() => Name;
 
-        internal string XmlReferent;
+        /// <summary>A unique identifier for this instance when being serialized as XML.</summary>
+        public string XmlReferent { get; internal set; }
 
-        /// <summary>Creates an instance using the provided ClassName.</summary>
-        /// <param name="className">The ClassName to use for this Instance.</param>
-        public Instance(string className = "Instance")
-        {
-            ClassName = className;
-        }
+        /// <summary>Indicates whether the parent of this object is locked.</summary>
+        public bool ParentLocked { get; protected set; }
 
-        /// <summary>Creates an instance using the provided ClassName and Name.</summary>
-        /// <param name="className">The ClassName to use for this Instance.</param>
-        /// <param name="name">The Name to use for this Instance.</param>
-        public Instance(string className = "Instance", string name = "Instance")
-        {
-            Property propName = new Property()
-            {
-                Type = PropertyType.String,
-                Instance = this,
-                Name = "Name",
-                Value = name,
-            };
-
-            ClassName = className;
-            AddProperty(ref propName);
-        }
+        /// <summary>Indicates whether this object should be serialized.</summary>
+        public bool Archivable = true;
 
         /// <summary>Returns true if this Instance is an ancestor to the provided Instance.</summary>
         /// <param name="descendant">The instance whose descendance will be tested against this Instance.</param>
@@ -72,6 +55,23 @@ namespace RobloxFiles
             return ancestor.IsAncestorOf(this);
         }
 
+        public string Name
+        {
+            get
+            {
+                Property propName = GetProperty("Name");
+
+                if (propName == null)
+                    SetProperty("Name", "Instance");
+
+                return propName.Value.ToString();
+            }
+            set
+            {
+                SetProperty("Name", value);
+            }
+        }
+
         /// <summary>
         /// The parent of this Instance, or null if the instance is the root of a tree.<para/>
         /// Setting the value of this property will throw an exception if:<para/>
@@ -82,21 +82,24 @@ namespace RobloxFiles
         {
             get
             {
-                return rawParent;
+                return parent;
             }
             set
             {
+                if (ParentLocked)
+                    throw new Exception("The Parent property of this instance is locked.");
+
                 if (IsAncestorOf(value))
                     throw new Exception("Parent would result in circular reference.");
 
                 if (Parent == this)
                     throw new Exception("Attempt to set parent to self.");
 
-                if (rawParent != null)
-                    rawParent.Children.Remove(this);
+                if (parent != null)
+                    parent.Children.Remove(this);
 
                 value.Children.Add(this);
-                rawParent = value;
+                parent = value;
             }
         }
 
@@ -180,6 +183,11 @@ namespace RobloxFiles
             return ancestor;
         }
 
+        /// <summary>
+        /// Returns the first ancestor of this Instance whose ClassName is the provided string className.
+        /// If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="name">The Name of the Instance to find.</param>
         public Instance FindFirstAncestorOfClass(string className)
         {
             Instance ancestor = Parent;
@@ -196,7 +204,8 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Returns the first Instance whose ClassName is the provided string className. If the instance is not found, this returns null.
+        /// Returns the first Instance whose ClassName is the provided string className.
+        /// If the instance is not found, this returns null.
         /// </summary>
         /// <param name="className">The ClassName of the Instance to find.</param>
         public Instance FindFirstChildOfClass(string className, bool recursive = false)
@@ -228,21 +237,77 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Looks for a property with the specified property name, and returns it as an object.
+        /// Returns a Property object if a property with the specified name is defined in this Instance.
+        /// </summary>
+        public Property GetProperty(string name)
+        {
+            Property result = null;
+
+            if (Properties.ContainsKey(name))
+                result = Properties[name];
+
+            return result;
+        }
+
+        /// <summary>
+        /// Finds or creates a property with the specified name, and sets its value to the provided object.
+        /// Returns the property object that had its value set, if the value is not null.
+        /// </summary>
+        public Property SetProperty(string name, object value, PropertyType? preferType = null)
+        {
+            Property prop = GetProperty(name) ?? new Property()
+            {
+                Type = preferType ?? PropertyType.Unknown,
+                Name = name
+            };
+
+            if (preferType == null)
+            {
+                object oldValue = prop.Value;
+
+                Type oldType = oldValue?.GetType();
+                Type newType = value?.GetType();
+
+                if (oldType != newType)
+                {
+                    if (value == null)
+                    {
+                        RemoveProperty(name);
+                        return prop;
+                    }
+
+                    string typeName = newType.Name;
+
+                    if (value is Instance)
+                        typeName = "Ref";
+                    else if (value is int)
+                        typeName = "Int";
+                    else if (value is long)
+                        typeName = "Int64";
+                    
+                    Enum.TryParse(typeName, out prop.Type);
+                }
+            }
+
+            prop.Value = value;
+
+            if (prop.Instance == null)
+                AddProperty(ref prop);
+
+            return prop;
+        }
+
+        /// <summary>
+        /// Looks for a property with the specified property name, and returns its value as an object.
         /// <para/>The resulting value may be null if the property is not serialized.
         /// <para/>You can use the templated ReadProperty overload to fetch it as a specific type with a default value provided.
         /// </summary>
         /// <param name="propertyName">The name of the property to be fetched from this Instance.</param>
         /// <returns>An object reference to the value of the specified property, if it exists.</returns>
-        /// 
         public object ReadProperty(string propertyName)
         {
-            Property property = null;
-
-            if (Properties.ContainsKey(propertyName))
-                property = Properties[propertyName];
-
-            return (property != null ? property.Value : null);
+            Property property = GetProperty(propertyName);
+            return property?.Value;
         }
 
         /// <summary>
@@ -291,52 +356,39 @@ namespace RobloxFiles
 
         /// <summary>
         /// Adds a property by reference to this Instance's property list.
-        /// This is used during the file loading procedure.
         /// </summary>
         /// <param name="prop">A reference to the property that will be added.</param>
         internal void AddProperty(ref Property prop)
         {
-            Properties.Add(prop.Name, prop);
+            prop.Instance = this;
+
+            if (prop.Name == "Name")
+            {
+                Property nameProp = GetProperty("Name");
+
+                if (nameProp != null)
+                {
+                    nameProp.Value = prop.Value;
+                    return;
+                }
+            }
+
+            props.Add(prop.Name, prop);
         }
 
         /// <summary>
-        /// Allows you to access a child/descendant of this Instance, and/or one of its properties.<para/>
-        /// The provided string should be a period-separated (.) path to what you wish to access.<para/>
-        /// This will throw an exception if any part of the path cannot be found.<para/>
-        /// 
-        /// ~ Examples ~<para/>
-        ///     var terrain = robloxFile["Workspace.Terrain"] as Instance;<para/>
-        ///     var currentCamera = robloxFile["Workspace.CurrentCamera"] as Property;<para/>
-        /// 
+        /// Removes a property with the provided name if a property with the provided name exists.
         /// </summary>
-        public object this[string accessor]
+        /// <param name="name">The name of the property to be removed.</param>
+        /// <returns>True if a property with the provided name was removed.</returns> 
+        public bool RemoveProperty(string name)
         {
-            get
-            {
-                Instance result = this;
+            Property prop = GetProperty(name);
 
-                foreach (string name in accessor.Split('.'))
-                {
-                    Instance next = result.FindFirstChild(name);
+            if (prop != null)
+                prop.Instance = null;
 
-                    if (next == null)
-                    {
-                        // Check if there is any property with this name.
-                        Property prop = null;
-
-                        if (result.Properties.ContainsKey(name))
-                            prop = result.Properties[name];
-                        else
-                            throw new Exception(name + " is not a valid member of " + result.Name);
-
-                        return prop;
-                    }
-
-                    result = next;
-                }
-
-                return result;
-            }
+            return props.Remove(name);
         }
     }
 }

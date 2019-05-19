@@ -8,23 +8,22 @@ using System.Xml;
 
 namespace RobloxFiles.XmlFormat
 {
-    public class XmlRobloxFile : IRobloxFile
+    public class XmlRobloxFile : RobloxFile
     {
-        // IRobloxFile
-        internal readonly Instance XmlContents = new Instance("Folder", "XmlRobloxFile");
-        public Instance Contents => XmlContents;
-
         // Runtime Specific
         public readonly XmlDocument Root = new XmlDocument();
 
-        public Dictionary<string, Instance> Instances = new Dictionary<string, Instance>();
-        public Dictionary<string, string> SharedStrings = new Dictionary<string, string>();
-        
-        public void ReadFile(byte[] buffer)
-        {
-            Instances.Clear();
-            SharedStrings.Clear();
+        internal Dictionary<string, Instance> Instances = new Dictionary<string, Instance>();
+        internal Dictionary<string, string> SharedStrings = new Dictionary<string, string>();
 
+        internal XmlRobloxFile()
+        {
+            Name = "XmlRobloxFile";
+            ParentLocked = true;
+        }
+        
+        protected override void ReadFile(byte[] buffer)
+        {
             try
             {
                 string xml = Encoding.UTF8.GetString(buffer);
@@ -53,22 +52,22 @@ namespace RobloxFiles.XmlFormat
                 {
                     if (child.Name == "Item")
                     {
-                        Instance item = XmlDataReader.ReadInstance(child, this);
-                        item.Parent = XmlContents;
+                        Instance item = XmlRobloxFileReader.ReadInstance(child, this);
+                        item.Parent = this;
                     }
                     else if (child.Name == "SharedStrings")
                     {
-                        XmlDataReader.ReadSharedStrings(child, this);
+                        XmlRobloxFileReader.ReadSharedStrings(child, this);
                     }
                 }
 
                 // Query the properties.
-                var props = Instances.Values
+                var allProps = Instances.Values
                     .SelectMany(inst => inst.Properties)
                     .Select(pair => pair.Value);
 
                 // Resolve referent properties.
-                var refProps = props.Where(prop => prop.Type == PropertyType.Ref);
+                var refProps = allProps.Where(prop => prop.Type == PropertyType.Ref);
                   
                 foreach (Property refProp in refProps)
                 {
@@ -87,7 +86,7 @@ namespace RobloxFiles.XmlFormat
                 }
 
                 // Resolve shared strings.
-                var sharedProps = props.Where(prop => prop.Type == PropertyType.SharedString);
+                var sharedProps = allProps.Where(prop => prop.Type == PropertyType.SharedString);
 
                 foreach (Property sharedProp in sharedProps)
                 {
@@ -99,13 +98,13 @@ namespace RobloxFiles.XmlFormat
                         sharedProp.Value = value;
 
                         byte[] data = Convert.FromBase64String(value);
-                        sharedProp.SetRawBuffer(data);
-
-                        continue;
+                        sharedProp.RawBuffer = data;
                     }
-
-                    string name = sharedProp.GetFullName();
-                    Console.WriteLine("XmlRobloxFile: Could not resolve shared string for {0}", name);
+                    else
+                    {
+                        string name = sharedProp.GetFullName();
+                        Console.WriteLine("XmlRobloxFile: Could not resolve shared string for {0}", name);
+                    }
                 }
             }
             else
@@ -114,38 +113,41 @@ namespace RobloxFiles.XmlFormat
             }
         }
 
-        public void WriteFile(Stream stream)
+        public override void Save(Stream stream)
         {
             XmlDocument doc = new XmlDocument();
-            XmlElement roblox = XmlDataWriter.CreateRobloxElement(doc);
+
+            XmlElement roblox = doc.CreateElement("roblox");
+            roblox.SetAttribute("version", "4");
+            doc.AppendChild(roblox);
 
             Instances.Clear();
             SharedStrings.Clear();
 
-            Instance[] topLevelItems = Contents.GetChildren();
+            Instance[] children = GetChildren();
 
             // First, record all of the instances.
-            foreach (Instance inst in topLevelItems)
-                XmlDataWriter.RecordInstances(this, inst);
+            foreach (Instance inst in children)
+                XmlRobloxFileWriter.RecordInstances(this, inst);
 
             // Now append them into the document.
-            foreach (Instance inst in Contents.GetChildren())
+            foreach (Instance inst in children)
             {
-                XmlNode instNode = XmlDataWriter.WriteInstance(inst, doc, this);
+                XmlNode instNode = XmlRobloxFileWriter.WriteInstance(inst, doc, this);
                 roblox.AppendChild(instNode);
             }
 
             // Append the shared strings.
             if (SharedStrings.Count > 0)
             {
-                XmlNode sharedStrings = XmlDataWriter.WriteSharedStrings(doc, this);
+                XmlNode sharedStrings = XmlRobloxFileWriter.WriteSharedStrings(doc, this);
                 roblox.AppendChild(sharedStrings);
             }
 
             // Write the XML file.
             using (StringWriter buffer = new StringWriter())
             {
-                XmlWriterSettings settings = XmlDataWriter.Settings;
+                XmlWriterSettings settings = XmlRobloxFileWriter.Settings;
                 
                 using (XmlWriter xmlWriter = XmlWriter.Create(buffer, settings))
                     doc.WriteContentTo(xmlWriter);

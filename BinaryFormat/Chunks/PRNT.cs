@@ -8,9 +8,9 @@
         public readonly int[] ChildrenIds;
         public readonly int[] ParentIds;
 
-        public PRNT(BinaryRobloxChunk chunk)
+        public PRNT(BinaryRobloxFileChunk chunk)
         {
-            using (BinaryRobloxReader reader = chunk.GetReader("PRNT"))
+            using (BinaryRobloxFileReader reader = chunk.GetDataReader())
             {
                 Format = reader.ReadByte();
                 NumRelations = reader.ReadInt32();
@@ -28,14 +28,7 @@
                 int parentId = ParentIds[i];
 
                 Instance child = file.Instances[childId];
-                Instance parent = null;
-
-                if (parentId >= 0)
-                    parent = file.Instances[parentId];
-                else
-                    parent = file.BinContents;
-
-                child.Parent = parent;
+                child.Parent = (parentId >= 0 ? file.Instances[parentId] : file);
             }
         }
     }

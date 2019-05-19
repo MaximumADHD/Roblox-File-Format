@@ -5,9 +5,9 @@ using System.Text;
 
 namespace RobloxFiles.BinaryFormat
 {
-    public class BinaryRobloxReader : BinaryReader
+    public class BinaryRobloxFileReader : BinaryReader
     {
-        public BinaryRobloxReader(Stream stream) : base(stream) { }
+        public BinaryRobloxFileReader(Stream stream) : base(stream) { }
         private byte[] lastStringBuffer = new byte[0] { };
 
         // Reads 'count * sizeof(T)' interleaved bytes and converts 

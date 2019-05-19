@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
@@ -7,19 +8,18 @@ using RobloxFiles.XmlFormat.PropertyTokens;
 
 namespace RobloxFiles.XmlFormat
 {
-    public static class XmlDataWriter
+    public static class XmlRobloxFileWriter
     {
-        public static XmlWriterSettings Settings = new XmlWriterSettings()
+        public static readonly XmlWriterSettings Settings = new XmlWriterSettings()
         {
             Indent = true,
             IndentChars = "\t",
             NewLineChars = "\r\n",
             Encoding = Encoding.UTF8,
-            OmitXmlDeclaration = true,
-            NamespaceHandling = NamespaceHandling.Default
+            OmitXmlDeclaration = true
         };
 
-        private static string CreateReferent()
+        public static string CreateReferent()
         {
             Guid referentGuid = Guid.NewGuid();
 
@@ -40,21 +40,18 @@ namespace RobloxFiles.XmlFormat
             foreach (Instance child in inst.GetChildren())
                 RecordInstances(file, child);
 
-            string referent = CreateReferent();
-            file.Instances.Add(referent, inst);
-            inst.XmlReferent = referent;
+            if (inst.XmlReferent == "")
+                inst.XmlReferent = CreateReferent();
+
+            file.Instances.Add(inst.XmlReferent, inst);
         }
 
         public static XmlElement CreateRobloxElement(XmlDocument doc)
         {
             XmlElement roblox = doc.CreateElement("roblox");
-            doc.AppendChild(roblox);
-
-            roblox.SetAttribute("xmlns:xmime", "http://www.w3.org/2005/05/xmlmime");
-            roblox.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-            roblox.SetAttribute("xsi:noNamespaceSchemaLocation", "http://www.roblox.com/roblox.xsd");
             roblox.SetAttribute("version", "4");
-
+            doc.AppendChild(roblox);
+            
             XmlElement externalNull = doc.CreateElement("External");
             roblox.AppendChild(externalNull);
             externalNull.InnerText = "null";
@@ -150,7 +147,7 @@ namespace RobloxFiles.XmlFormat
             instNode.AppendChild(propsNode);
 
             var props = instance.Properties;
-
+            
             foreach (string propName in props.Keys)
             {
                 Property prop = props[propName];
@@ -182,7 +179,7 @@ namespace RobloxFiles.XmlFormat
                 string data = file.SharedStrings[md5];
                 byte[] buffer = Convert.FromBase64String(data);
 
-                bufferProp.SetRawBuffer(buffer);
+                bufferProp.RawBuffer = buffer;
                 binaryWriter.WriteProperty(bufferProp, doc, sharedString);
 
                 sharedStrings.AppendChild(sharedString);

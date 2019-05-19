@@ -3,7 +3,7 @@ using System.Xml;
 
 namespace RobloxFiles.XmlFormat
 {
-    public static class XmlDataReader
+    public static class XmlRobloxFileReader
     {
         private static Func<string, Exception> createErrorHandler(string label)
         {
@@ -59,10 +59,12 @@ namespace RobloxFiles.XmlFormat
 
                 if (tokenHandler != null)
                 {
-                    Property prop = new Property();
-                    prop.Name = propName.InnerText;
-                    prop.Instance = instance;
-                    prop.XmlToken = propType;
+                    Property prop = new Property()
+                    {
+                        Name = propName.InnerText,
+                        Instance = instance,
+                        XmlToken = propType
+                    };
 
                     if (!tokenHandler.ReadProperty(prop, propNode))
                         Console.WriteLine("Could not read property: " + prop.GetFullName() + '!');
@@ -88,19 +90,20 @@ namespace RobloxFiles.XmlFormat
             if (classToken == null)
                 throw error("Got an Item without a defined 'class' attribute!");
 
-            Instance inst = new Instance(classToken.InnerText);
+            Instance inst = new Instance() { ClassName = classToken.InnerText };
 
             // The 'referent' attribute is optional, but should be defined if a Ref property needs to link to this Instance.
             XmlNode refToken = instNode.Attributes.GetNamedItem("referent");
 
             if (refToken != null && file != null)
             {
-                string refId = refToken.InnerText;
+                string referent = refToken.InnerText;
+                inst.XmlReferent = referent;
 
-                if (file.Instances.ContainsKey(refId))
+                if (file.Instances.ContainsKey(referent))
                     throw error("Got an Item with a duplicate 'referent' attribute!");
 
-                file.Instances.Add(refId, inst);
+                file.Instances.Add(referent, inst);
             }
 
             // Process the child nodes of this instance.

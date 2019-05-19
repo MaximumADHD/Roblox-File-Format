@@ -7,7 +7,7 @@ using RobloxFiles.BinaryFormat.Chunks;
 
 namespace RobloxFiles.BinaryFormat
 {
-    public class BinaryRobloxFile : IRobloxFile
+    public class BinaryRobloxFile : RobloxFile
     {
         // Header Specific
         public const string MagicHeader = "<roblox!\x89\xff\x0d\x0a\x1a\x0a";
@@ -17,12 +17,8 @@ namespace RobloxFiles.BinaryFormat
         public uint   NumInstances;
         public byte[] Reserved;
 
-        // IRobloxFile
-        internal readonly Instance BinContents = new Instance("Folder", "BinaryRobloxFile");
-        public Instance Contents => BinContents;
-
         // Runtime Specific
-        public List<BinaryRobloxChunk> Chunks = new List<BinaryRobloxChunk>();
+        public List<BinaryRobloxFileChunk> Chunks = new List<BinaryRobloxFileChunk>();
         public override string ToString() => GetType().Name;
         
         public Instance[] Instances;
@@ -30,11 +26,17 @@ namespace RobloxFiles.BinaryFormat
 
         public Dictionary<string, string> Metadata;
         public Dictionary<uint, string> SharedStrings;
+
+        internal BinaryRobloxFile()
+        {
+            Name = "BinaryRobloxFile";
+            ParentLocked = true;
+        }
         
-        public void ReadFile(byte[] contents)
+        protected override void ReadFile(byte[] contents)
         {
             using (MemoryStream file = new MemoryStream(contents))
-            using (BinaryRobloxReader reader = new BinaryRobloxReader(file))
+            using (BinaryRobloxFileReader reader = new BinaryRobloxFileReader(file))
             {
                 // Verify the signature of the file.
                 byte[] binSignature = reader.ReadBytes(14);
@@ -59,7 +61,7 @@ namespace RobloxFiles.BinaryFormat
                 {
                     try
                     {
-                        BinaryRobloxChunk chunk = new BinaryRobloxChunk(reader);
+                        BinaryRobloxFileChunk chunk = new BinaryRobloxFileChunk(reader);
                         Chunks.Add(chunk);
 
                         switch (chunk.ChunkType)
@@ -88,7 +90,7 @@ namespace RobloxFiles.BinaryFormat
                                 reading = false;
                                 break;
                             default:
-                                Console.WriteLine("Unhandled chunk type: {0}!", chunk.ChunkType);
+                                Console.WriteLine("BinaryRobloxFile: Unhandled chunk type: {0}!", chunk.ChunkType);
                                 Chunks.Remove(chunk);
                                 break;
                         }
@@ -101,7 +103,7 @@ namespace RobloxFiles.BinaryFormat
             }
         }
 
-        public void WriteFile(Stream stream)
+        public override void Save(Stream stream)
         {
             throw new NotImplementedException("Not implemented yet!");
         }

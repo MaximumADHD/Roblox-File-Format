@@ -39,13 +39,13 @@ namespace RobloxFiles
     public class Property
     {
         public string Name;
-        public Instance Instance;
+        public Instance Instance { get; internal set; }
 
         public PropertyType Type;
         public object Value;
 
         public string XmlToken = "";
-        private byte[] RawBuffer = null;
+        public byte[] RawBuffer { get; internal set; }
 
         public bool HasRawBuffer
         {
@@ -115,16 +115,6 @@ namespace RobloxFiles
                 valueLabel = '"' + valueLabel + '"';
 
             return string.Join(" ", typeName, Name, '=', valueLabel);
-        }
-
-        internal void SetRawBuffer(byte[] buffer)
-        {
-            RawBuffer = buffer;
-        }
-
-        public byte[] GetRawBuffer()
-        {
-            return RawBuffer;
         }
     }
 }

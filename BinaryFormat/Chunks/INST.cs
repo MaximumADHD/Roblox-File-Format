@@ -13,9 +13,9 @@
             return TypeName;
         }
 
-        public INST(BinaryRobloxChunk chunk)
+        public INST(BinaryRobloxFileChunk chunk)
         {
-            using (BinaryRobloxReader reader = chunk.GetReader("INST"))
+            using (BinaryRobloxFileReader reader = chunk.GetDataReader())
             {
                 TypeIndex = reader.ReadInt32();
                 TypeName = reader.ReadString();
@@ -30,7 +30,7 @@
         {
             foreach (int instId in InstanceIds)
             {
-                Instance inst = new Instance(TypeName);
+                Instance inst = new Instance() { ClassName = TypeName };
                 file.Instances[instId] = inst;
             }
 

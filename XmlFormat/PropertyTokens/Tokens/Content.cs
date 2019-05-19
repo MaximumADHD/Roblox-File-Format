@@ -22,7 +22,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                 {
                     // Roblox technically doesn't support this anymore, but load it anyway :P
                     byte[] buffer = Convert.FromBase64String(content);
-                    prop.SetRawBuffer(buffer);
+                    prop.RawBuffer = buffer;
                 }
             }
 

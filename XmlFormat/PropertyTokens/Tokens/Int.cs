@@ -20,8 +20,6 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             {
                 return XmlPropertyTokens.ReadPropertyGeneric<int>(prop, PropertyType.Int, token);
             }
-
-            
         }
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)

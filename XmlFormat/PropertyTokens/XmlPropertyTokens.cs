@@ -4,8 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml;
 
-using RobloxFiles;
-
 namespace RobloxFiles.XmlFormat
 {
     public static class XmlPropertyTokens
@@ -60,7 +58,6 @@ namespace RobloxFiles.XmlFormat
                 }
 
                 prop.Type = propType;
-                
                 return true;
             }
             catch

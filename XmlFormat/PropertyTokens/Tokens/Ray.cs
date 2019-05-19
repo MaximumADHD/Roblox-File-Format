@@ -22,7 +22,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                     read[i] = Vector3Token.ReadVector3(fieldToken);
                 }
 
-                Vector3 origin    = read[0],
+                Vector3 origin = read[0],
                         direction = read[1];
 
                 Ray ray = new Ray(origin, direction);
@@ -42,11 +42,12 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             Ray ray = prop.Value as Ray;
 
             XmlElement origin = doc.CreateElement("origin");
-            Vector3Token.WriteVector3(doc, origin, ray.Origin);
-            node.AppendChild(origin);
-
             XmlElement direction = doc.CreateElement("direction");
+
+            Vector3Token.WriteVector3(doc, origin, ray.Origin);
             Vector3Token.WriteVector3(doc, direction, ray.Direction);
+
+            node.AppendChild(origin);
             node.AppendChild(direction);
         }
     }

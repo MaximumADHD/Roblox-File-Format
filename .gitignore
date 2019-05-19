@@ -4,3 +4,4 @@ obj/*
 *.suo
 *.ide
 *.user
+Program.cs

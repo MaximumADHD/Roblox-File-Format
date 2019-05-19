@@ -14,11 +14,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public readonly int TypeIndex;
         public readonly PropertyType Type;
 
-        private BinaryRobloxReader Reader;
+        private BinaryRobloxFileReader Reader;
 
-        public PROP(BinaryRobloxChunk chunk)
+        public PROP(BinaryRobloxFileChunk chunk)
         {
-            Reader = chunk.GetReader("PROP");
+            Reader = chunk.GetDataReader();
 
             TypeIndex = Reader.ReadInt32();
             Name = Reader.ReadString();
@@ -78,7 +78,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         // Leave an access point for the original byte sequence, in case this is a BinaryString.
                         // This will allow the developer to read the sequence without any mangling from C# strings.
                         byte[] buffer = Reader.GetLastStringBuffer();
-                        props[i].SetRawBuffer(buffer);
+                        props[i].RawBuffer = buffer;
 
                         return result;
                     });

@@ -11,9 +11,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public Dictionary<string, uint> Lookup = new Dictionary<string, uint>();
         public Dictionary<uint, string> Strings = new Dictionary<uint, string>();
 
-        public SSTR(BinaryRobloxChunk chunk)
+        public SSTR(BinaryRobloxFileChunk chunk)
         {
-            using (BinaryRobloxReader reader = chunk.GetReader("SSTR"))
+            using (BinaryRobloxFileReader reader = chunk.GetDataReader())
             {
                 Version = reader.ReadInt32();
                 NumHashes = reader.ReadInt32();

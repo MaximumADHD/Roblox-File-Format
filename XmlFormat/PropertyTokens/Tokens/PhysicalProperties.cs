@@ -78,6 +78,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
                     XmlElement element = doc.CreateElement(elementType);
                     element.InnerText = value.ToInvariantString();
+
                     node.AppendChild(element);
                 }
             }

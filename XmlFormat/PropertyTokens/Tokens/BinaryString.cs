@@ -15,14 +15,14 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             prop.Value = base64;
 
             byte[] buffer = Convert.FromBase64String(base64);
-            prop.SetRawBuffer(buffer);
+            prop.RawBuffer = buffer;
             
             return true;
         }
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            byte[] data = prop.GetRawBuffer();
+            byte[] data = prop.RawBuffer;
             string value = Convert.ToBase64String(data);
             
             if (value.Length > 72)
