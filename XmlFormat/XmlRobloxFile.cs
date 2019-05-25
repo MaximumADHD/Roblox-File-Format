@@ -29,7 +29,7 @@ namespace RobloxFiles.XmlFormat
                 string xml = Encoding.UTF8.GetString(buffer);
                 Root.LoadXml(xml);
             }
-            catch
+            catch (Exception e)
             {
                 throw new Exception("XmlRobloxFile: Could not read provided buffer as XML!");
             }
@@ -82,6 +82,7 @@ namespace RobloxFiles.XmlFormat
                     {
                         string name = refProp.GetFullName();
                         Console.WriteLine("XmlRobloxFile: Could not resolve reference for {0}", name);
+                        refProp.Value = null;
                     }
                 }
 
@@ -158,6 +159,7 @@ namespace RobloxFiles.XmlFormat
                 using (BinaryWriter writer = new BinaryWriter(stream))
                 {
                     byte[] data = Encoding.UTF8.GetBytes(result);
+                    stream.SetLength(0);
                     writer.Write(data);
                 }
             }

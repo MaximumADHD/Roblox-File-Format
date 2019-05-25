@@ -20,9 +20,16 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
                 if (contentType.StartsWith("binary") || contentType == "hash")
                 {
-                    // Roblox technically doesn't support this anymore, but load it anyway :P
-                    byte[] buffer = Convert.FromBase64String(content);
-                    prop.RawBuffer = buffer;
+                    try
+                    {
+                        // Roblox technically doesn't support this anymore, but load it anyway :P
+                        byte[] buffer = Convert.FromBase64String(content);
+                        prop.RawBuffer = buffer;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("ContentToken: Got illegal base64 string: {0}", content);
+                    }
                 }
             }
 
@@ -40,8 +47,17 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                 type = "url";
 
             XmlElement contentType = doc.CreateElement(type);
-            contentType.InnerText = content;
 
+            if (type == "binary")
+            {
+                XmlCDataSection cdata = doc.CreateCDataSection(content);
+                contentType.AppendChild(cdata);
+            }
+            else
+            {
+                contentType.InnerText = content;
+            }
+            
             node.AppendChild(contentType);
         }
     }

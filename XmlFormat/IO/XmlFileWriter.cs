@@ -40,7 +40,7 @@ namespace RobloxFiles.XmlFormat
             foreach (Instance child in inst.GetChildren())
                 RecordInstances(file, child);
 
-            if (inst.XmlReferent == "")
+            if (inst.XmlReferent.Length < 35)
                 inst.XmlReferent = CreateReferent();
 
             file.Instances.Add(inst.XmlReferent, inst);
