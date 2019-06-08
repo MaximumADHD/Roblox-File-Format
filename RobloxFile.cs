@@ -10,7 +10,7 @@ namespace RobloxFiles
 {
     /// <summary>
     /// Represents a loaded *.rbxl/*.rbxm Roblox file.
-    /// All of the surface-level Instances are stored in the RobloxFile's 'Contents' property.
+    /// The contents of the RobloxFile are stored as its children.
     /// </summary>
     public abstract class RobloxFile : Instance
     {

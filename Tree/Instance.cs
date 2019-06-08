@@ -18,17 +18,23 @@ namespace RobloxFiles
         private Dictionary<string, Property> props = new Dictionary<string, Property>();
         public IReadOnlyDictionary<string, Property> Properties => props;
 
-        private List<Instance> Children = new List<Instance>();
+        protected List<Instance> Children = new List<Instance>();
         private Instance parent;
 
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public override string ToString() => Name;
 
-        /// <summary>A unique identifier for this instance when being serialized as XML.</summary>
-        public string XmlReferent { get; internal set; }
+        /// <summary>A unique identifier for this instance when being serialized.</summary>
+        public string Referent { get; internal set; }
 
         /// <summary>Indicates whether the parent of this object is locked.</summary>
-        public bool ParentLocked { get; protected set; }
+        public bool ParentLocked { get; internal set; }
+
+        /// <summary>Indicates whether this Instance is marked as a Service in the binary file format.</summary>
+        public bool IsService { get; internal set; }
+
+        /// <summary>If this instance is a service, this indicates whether the service should be loaded via GetService when Roblox loads the place file.</summary>
+        public bool IsRootedService { get; internal set; }
 
         /// <summary>Indicates whether this object should be serialized.</summary>
         public bool Archivable = true;

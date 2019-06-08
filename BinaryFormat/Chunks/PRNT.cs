@@ -1,27 +1,25 @@
-﻿namespace RobloxFiles.BinaryFormat.Chunks
+﻿using System.Collections.Generic;
+
+namespace RobloxFiles.BinaryFormat.Chunks
 {
-    public class PRNT
+    public class PRNT : IBinaryFileChunk
     {
-        public readonly byte Format;
-        public readonly int NumRelations;
+        public byte Format { get; private set; }
+        public int NumRelations { get; private set; }
 
-        public readonly int[] ChildrenIds;
-        public readonly int[] ParentIds;
+        public List<int> ChildrenIds { get; private set; }
+        public List<int> ParentIds { get; private set; }
 
-        public PRNT(BinaryRobloxFileChunk chunk)
+        public void LoadFromReader(BinaryRobloxFileReader reader)
         {
-            using (BinaryRobloxFileReader reader = chunk.GetDataReader())
-            {
-                Format = reader.ReadByte();
-                NumRelations = reader.ReadInt32();
+            BinaryRobloxFile file = reader.File;
 
-                ChildrenIds = reader.ReadInstanceIds(NumRelations);
-                ParentIds = reader.ReadInstanceIds(NumRelations);
-            }
-        }
+            Format = reader.ReadByte();
+            NumRelations = reader.ReadInt32();
 
-        public void Assemble(BinaryRobloxFile file)
-        {
+            ChildrenIds = reader.ReadInstanceIds(NumRelations);
+            ParentIds = reader.ReadInstanceIds(NumRelations);
+            
             for (int i = 0; i < NumRelations; i++)
             {
                 int childId = ChildrenIds[i];
@@ -30,6 +28,40 @@
                 Instance child = file.Instances[childId];
                 child.Parent = (parentId >= 0 ? file.Instances[parentId] : file);
             }
+        }
+
+        public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
+        {
+            BinaryRobloxFile file = writer.File;
+            writer.StartWritingChunk(this);
+
+            Format = 0;
+            NumRelations = file.Instances.Length;
+
+            ChildrenIds = new List<int>();
+            ParentIds = new List<int>();
+
+            foreach (Instance inst in file.Instances)
+            {
+                Instance parent = inst.Parent;
+
+                int childId = int.Parse(inst.Referent);
+                int parentId = -1;
+
+                if (parent != null)
+                    parentId = int.Parse(parent.Referent);
+
+                ChildrenIds.Add(childId);
+                ParentIds.Add(parentId);
+            }
+
+            writer.Write(Format);
+            writer.Write(NumRelations);
+
+            writer.WriteInstanceIds(ChildrenIds);
+            writer.WriteInstanceIds(ParentIds);
+
+            return writer.FinishWritingChunk();
         }
     }
 }

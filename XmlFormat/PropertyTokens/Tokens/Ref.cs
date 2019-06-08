@@ -22,7 +22,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
             if (prop.Value != null && prop.Value.ToString() != "null")
             {
                 Instance inst = prop.Value as Instance;
-                result = inst.XmlReferent;
+                result = inst.Referent;
             }
 
             node.InnerText = result;

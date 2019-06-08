@@ -125,9 +125,30 @@ namespace RobloxFiles.DataTypes
             return this + (other - this) * t;
         }
 
-        public bool isClose(Vector3 other, float epsilon = 0.0f)
+        public bool IsClose(Vector3 other, float epsilon = 0.0f)
         {
             return (other - this).Magnitude <= Math.Abs(epsilon);
+        }
+
+        public int ToNormalId()
+        {
+            int result = -1;
+
+            for (int i = 0; i < 6; i++)
+            {
+                NormalId normalId = (NormalId)i;
+                Vector3 normal = FromNormalId(normalId);
+
+                float dotProd = normal.Dot(this);
+
+                if (Math.Abs(dotProd - 1f) < 10e-5f)
+                {
+                    result = i;
+                    break;
+                }
+            }
+
+            return result;
         }
     }
 }

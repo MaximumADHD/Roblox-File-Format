@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -7,8 +9,13 @@ namespace RobloxFiles.BinaryFormat
 {
     public class BinaryRobloxFileReader : BinaryReader
     {
-        public BinaryRobloxFileReader(Stream stream) : base(stream) { }
+        public readonly BinaryRobloxFile File;
         private byte[] lastStringBuffer = new byte[0] { };
+
+        public BinaryRobloxFileReader(BinaryRobloxFile file, Stream stream) : base(stream)
+        {
+            File = file;
+        }
 
         // Reads 'count * sizeof(T)' interleaved bytes and converts 
         // them into an array of T[count] where each value in the 
@@ -74,14 +81,14 @@ namespace RobloxFiles.BinaryFormat
         }
         
         // Reads and accumulates an interleaved buffer of integers.
-        public int[] ReadInstanceIds(int count)
+        public List<int> ReadInstanceIds(int count)
         {
             int[] values = ReadInts(count);
 
             for (int i = 1; i < count; ++i)
                 values[i] += values[i - 1];
 
-            return values;
+            return values.ToList();
         }
 
         public override string ReadString()

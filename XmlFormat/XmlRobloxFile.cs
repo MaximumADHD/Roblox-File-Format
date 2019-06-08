@@ -29,7 +29,7 @@ namespace RobloxFiles.XmlFormat
                 string xml = Encoding.UTF8.GetString(buffer);
                 Root.LoadXml(xml);
             }
-            catch (Exception e)
+            catch
             {
                 throw new Exception("XmlRobloxFile: Could not read provided buffer as XML!");
             }
@@ -110,7 +110,7 @@ namespace RobloxFiles.XmlFormat
             }
             else
             {
-                throw new Exception("XmlRobloxFile: No 'roblox' tag found!");
+                throw new Exception("XmlRobloxFile: No 'roblox' element found!");
             }
         }
 

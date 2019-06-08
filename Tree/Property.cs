@@ -1,4 +1,6 @@
 ﻿using System;
+
+using RobloxFiles.BinaryFormat;
 using RobloxFiles.BinaryFormat.Chunks;
 
 namespace RobloxFiles
@@ -47,6 +49,8 @@ namespace RobloxFiles
         public string XmlToken = "";
         public byte[] RawBuffer { get; internal set; }
 
+        internal BinaryRobloxFileWriter CurrentWriter;
+
         public bool HasRawBuffer
         {
             get
@@ -83,10 +87,9 @@ namespace RobloxFiles
 
         public Property(string name = "", PropertyType type = PropertyType.Unknown, Instance instance = null)
         {
+            Instance = instance;
             Name = name;
             Type = type;
-
-            Instance = instance;
         }
 
         public Property(Instance instance, PROP property)
@@ -115,6 +118,29 @@ namespace RobloxFiles
                 valueLabel = '"' + valueLabel + '"';
 
             return string.Join(" ", typeName, Name, '=', valueLabel);
+        }
+
+        public T CastValue<T>()
+        {
+            T result;
+
+            if (Value is T)
+                result = (T)Value;
+            else
+                result = default(T);
+
+            return result;
+        }
+
+        internal void WriteValue<T>() where T : struct
+        {
+            if (CurrentWriter == null)
+                throw new Exception("Property.CurrentWriter must be set to use WriteValue<T>");
+
+            T value = CastValue<T>();
+
+            byte[] bytes = BinaryRobloxFileWriter.GetBytes(value);
+            CurrentWriter.Write(bytes);
         }
     }
 }

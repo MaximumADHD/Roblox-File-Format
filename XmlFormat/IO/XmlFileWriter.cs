@@ -40,10 +40,10 @@ namespace RobloxFiles.XmlFormat
             foreach (Instance child in inst.GetChildren())
                 RecordInstances(file, child);
 
-            if (inst.XmlReferent.Length < 35)
-                inst.XmlReferent = CreateReferent();
+            if (inst.Referent.Length < 35)
+                inst.Referent = CreateReferent();
 
-            file.Instances.Add(inst.XmlReferent, inst);
+            file.Instances.Add(inst.Referent, inst);
         }
 
         public static XmlElement CreateRobloxElement(XmlDocument doc)
@@ -141,7 +141,7 @@ namespace RobloxFiles.XmlFormat
         {
             XmlElement instNode = doc.CreateElement("Item");
             instNode.SetAttribute("class", instance.ClassName);
-            instNode.SetAttribute("referent", instance.XmlReferent);
+            instNode.SetAttribute("referent", instance.Referent);
 
             XmlElement propsNode = doc.CreateElement("Properties");
             instNode.AppendChild(propsNode);

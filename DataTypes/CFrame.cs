@@ -335,5 +335,55 @@ namespace RobloxFiles.DataTypes
 
             return new float[] { x, y, z };
         }
+
+        public bool IsAxisAligned()
+        {
+            float[] matrix = GetComponents();
+
+            byte sum0 = 0, 
+                 sum1 = 0;
+
+            for (int i = 3; i < 12; i++)
+            {
+                float t = matrix[i];
+
+                if (Math.Abs(t - 1f) < 10e-5f)
+                {
+                    // Approximately ±1
+                    sum1++;
+                }
+                else if (Math.Abs(t) < 10e-5f)
+                {
+                    // Approximately ±0
+                    sum0++;
+                }
+            }
+
+            return (sum0 == 6 && sum1 == 3);
+        }
+
+        private static bool IsLegalOrientId(int orientId)
+        {
+            int xNormalAbs = (orientId / 6) % 3;
+            int yNormalAbs = orientId % 3;
+
+            return (xNormalAbs != yNormalAbs);
+        }
+
+        public int GetOrientId()
+        {
+            if (!IsAxisAligned())
+                return -1;
+
+            int xNormal = RightVector.ToNormalId();
+            int yNormal = UpVector.ToNormalId();
+
+            int orientId = (6 * xNormal) + yNormal;
+
+            if (!IsLegalOrientId(orientId))
+                return -1;
+
+            return orientId;
+        }
     }
 }

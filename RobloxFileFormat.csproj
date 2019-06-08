@@ -63,13 +63,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryFormat\BinaryFileChunk.cs" />
-    <Compile Include="BinaryFormat\BinaryFileReader.cs" />
     <Compile Include="BinaryFormat\BinaryRobloxFile.cs" />
     <Compile Include="BinaryFormat\Chunks\INST.cs" />
     <Compile Include="BinaryFormat\Chunks\META.cs" />
     <Compile Include="BinaryFormat\Chunks\PRNT.cs" />
     <Compile Include="BinaryFormat\Chunks\PROP.cs" />
     <Compile Include="BinaryFormat\Chunks\SSTR.cs" />
+    <Compile Include="BinaryFormat\IO\BinaryFileReader.cs" />
+    <Compile Include="BinaryFormat\IO\BinaryFileWriter.cs" />
+    <Compile Include="Interfaces\IBinaryFileChunk.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Tree\Enums.cs" />
     <Compile Include="Tree\Property.cs" />
@@ -88,7 +90,7 @@
     <Compile Include="DataTypes\PhysicalProperties.cs" />
     <Compile Include="DataTypes\Ray.cs" />
     <Compile Include="DataTypes\Region3int16.cs" />
-    <Compile Include="XmlFormat\PropertyTokens\IXmlPropertyToken.cs" />
+    <Compile Include="Interfaces\IXmlPropertyToken.cs" />
     <Compile Include="Utility\BrickColors.cs" />
     <Compile Include="DataTypes\Vector3int16.cs" />
     <Compile Include="DataTypes\Rect.cs" />
@@ -146,5 +148,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

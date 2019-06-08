@@ -98,7 +98,7 @@ namespace RobloxFiles.XmlFormat
             if (refToken != null && file != null)
             {
                 string referent = refToken.InnerText;
-                inst.XmlReferent = referent;
+                inst.Referent = referent;
 
                 if (file.Instances.ContainsKey(referent))
                     throw error("Got an Item with a duplicate 'referent' attribute!");

@@ -40,12 +40,13 @@ namespace RobloxFiles.XmlFormat
             try
             {
                 string value = token.InnerText;
+                Type type = typeof(T);
 
-                if (typeof(T) == typeof(int))
+                if (type == typeof(int))
                     prop.Value = Formatting.ParseInt(value);
-                else if (typeof(T) == typeof(float))
+                else if (type == typeof(float))
                     prop.Value = Formatting.ParseFloat(value);
-                else if (typeof(T) == typeof(double))
+                else if (type == typeof(double))
                     prop.Value = Formatting.ParseDouble(value);
 
                 if (prop.Value == null)
