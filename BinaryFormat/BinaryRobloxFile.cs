@@ -218,14 +218,11 @@ namespace RobloxFiles.BinaryFormat
                 // Write all of the chunks.
                 foreach (BinaryRobloxFileChunk chunk in Chunks)
                 {
-                    byte[] chunkType = Encoding.ASCII.GetBytes(chunk.ChunkType);
-
                     if (chunk.HasWriteBuffer)
                     {
                         byte[] writeBuffer = chunk.WriteBuffer;
                         writer.Write(writeBuffer);
                     }
-
                 }
             }
         }
