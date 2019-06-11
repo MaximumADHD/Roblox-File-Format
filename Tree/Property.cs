@@ -44,12 +44,53 @@ namespace RobloxFiles
         public Instance Instance { get; internal set; }
 
         public PropertyType Type;
-        public object Value;
 
         public string XmlToken = "";
-        public byte[] RawBuffer { get; internal set; }
+        public byte[] RawBuffer;
 
         internal BinaryRobloxFileWriter CurrentWriter;
+        internal object RawValue;
+
+        private void ImproviseRawBuffer()
+        {
+            switch (Type)
+            {
+                case PropertyType.Int:
+                    RawBuffer = BitConverter.GetBytes((int)Value);
+                    break;
+                case PropertyType.Int64:
+                    RawBuffer = BitConverter.GetBytes((long)Value);
+                    break;
+                case PropertyType.Bool:
+                    RawBuffer = BitConverter.GetBytes((bool)Value);
+                    break;
+                case PropertyType.Float:
+                    RawBuffer = BitConverter.GetBytes((float)Value);
+                    break;
+                case PropertyType.Double:
+                    RawBuffer = BitConverter.GetBytes((double)Value);
+                    break;
+                case PropertyType.SharedString:
+                    RawBuffer = Convert.FromBase64String((string)Value);
+                    break;
+                //
+            }
+        }
+
+        public object Value
+        {
+            get
+            {
+                return RawValue;
+            }
+            set
+            {
+                RawValue = value;
+                RawBuffer = null;
+
+                ImproviseRawBuffer();
+            }
+        }
 
         public bool HasRawBuffer
         {
@@ -58,27 +99,7 @@ namespace RobloxFiles
                 if (RawBuffer == null && Value != null)
                 {
                     // Improvise what the buffer should be if this is a primitive.
-                    switch (Type)
-                    {
-                        case PropertyType.Int:
-                            RawBuffer = BitConverter.GetBytes((int)Value);
-                            break;
-                        case PropertyType.Int64:
-                            RawBuffer = BitConverter.GetBytes((long)Value);
-                            break;
-                        case PropertyType.Bool:
-                            RawBuffer = BitConverter.GetBytes((bool)Value);
-                            break;
-                        case PropertyType.Float:
-                            RawBuffer = BitConverter.GetBytes((float)Value);
-                            break;
-                        case PropertyType.Double:
-                            RawBuffer = BitConverter.GetBytes((double)Value);
-                            break;
-                        case PropertyType.SharedString:
-                            RawBuffer = Convert.FromBase64String((string)Value);
-                            break;
-                    }
+                    ImproviseRawBuffer();
                 }
 
                 return (RawBuffer != null);
@@ -138,8 +159,8 @@ namespace RobloxFiles
                 throw new Exception("Property.CurrentWriter must be set to use WriteValue<T>");
 
             T value = CastValue<T>();
-
             byte[] bytes = BinaryRobloxFileWriter.GetBytes(value);
+
             CurrentWriter.Write(bytes);
         }
     }

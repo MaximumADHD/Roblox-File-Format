@@ -45,13 +45,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
             foreach (var pair in Lookup)
             {
                 string key = pair.Key;
+
                 byte[] md5 = Convert.FromBase64String(key);
-
-                uint id = pair.Value;
-                string value = Strings[id];
-
                 writer.Write(md5);
-                writer.WriteString(value);
+
+                string value = Strings[pair.Value];
+                byte[] buffer = Convert.FromBase64String(value);
+
+                writer.Write(buffer.Length);
+                writer.Write(buffer);
             }
 
             return writer.FinishWritingChunk();

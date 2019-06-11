@@ -510,9 +510,16 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 case PropertyType.String:
                     props.ForEach(prop =>
                     {
-                        byte[] rawBuffer = prop.RawBuffer;
-                        writer.Write(rawBuffer.Length);
-                        writer.Write(rawBuffer);
+                        byte[] buffer = prop.HasRawBuffer ? prop.RawBuffer : null;
+
+                        if (buffer == null)
+                        {
+                            string value = prop.CastValue<string>();
+                            buffer = Encoding.UTF8.GetBytes(value);
+                        }
+
+                        writer.Write(buffer.Length);
+                        writer.Write(buffer);
                     });
 
                     break;

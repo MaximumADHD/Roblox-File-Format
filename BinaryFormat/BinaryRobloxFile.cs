@@ -32,7 +32,7 @@ namespace RobloxFiles.BinaryFormat
         public Dictionary<string, string> Metadata => META?.Data;
 
         public bool HasSharedStrings => (SSTR != null);
-        public Dictionary<uint, string> SharedStrings => SSTR?.Strings;
+        public IReadOnlyDictionary<uint, string> SharedStrings => SSTR?.Strings;
 
         internal BinaryRobloxFile()
         {
@@ -130,21 +130,8 @@ namespace RobloxFiles.BinaryFormat
                 
                 NumInstances = 0;
                 NumTypes = 0;
-
-                if (HasSharedStrings)
-                {
-                    SSTR.NumHashes = 0;
-                    SSTR.Lookup.Clear();
-                    SSTR.Strings.Clear();
-                }
-
-                // Write the META chunk.
-                if (HasMetadata)
-                {
-                    var metaChunk = META.SaveAsChunk(writer);
-                    Chunks.Add(metaChunk);
-                }
-
+                SSTR = null;
+                
                 // Record all instances and types.
                 writer.RecordInstances(Children);
 
@@ -183,6 +170,13 @@ namespace RobloxFiles.BinaryFormat
                 {
                     var sharedStrings = SSTR.SaveAsChunk(writer);
                     Chunks.Insert(0, sharedStrings);
+                }
+
+                // Write the META chunk.
+                if (HasMetadata)
+                {
+                    var metaChunk = META.SaveAsChunk(writer);
+                    Chunks.Insert(0, metaChunk);
                 }
 
                 // Write the END_ chunk.
