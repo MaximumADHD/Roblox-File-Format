@@ -46,23 +46,6 @@ namespace RobloxFiles.XmlFormat
             file.Instances.Add(inst.Referent, inst);
         }
 
-        public static XmlElement CreateRobloxElement(XmlDocument doc)
-        {
-            XmlElement roblox = doc.CreateElement("roblox");
-            roblox.SetAttribute("version", "4");
-            doc.AppendChild(roblox);
-            
-            XmlElement externalNull = doc.CreateElement("External");
-            roblox.AppendChild(externalNull);
-            externalNull.InnerText = "null";
-
-            XmlElement externalNil = doc.CreateElement("External");
-            roblox.AppendChild(externalNil);
-            externalNil.InnerText = "nil";
-
-            return roblox;
-        }
-
         public static XmlNode WriteProperty(Property prop, XmlDocument doc, XmlRobloxFile file)
         {
             string propType = prop.XmlToken;
