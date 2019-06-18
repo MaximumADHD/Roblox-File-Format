@@ -16,7 +16,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public int TypeIndex { get; internal set; }
 
         public PropertyType Type { get; internal set; }
-        public byte TypeId => (byte)Type;
+        public byte TypeId
+        {
+            get { return (byte)Type; }
+            internal set { Type = (PropertyType)value; }
+        }
         
         public void LoadFromReader(BinaryRobloxFileReader reader)
         {
@@ -24,9 +28,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
             TypeIndex = reader.ReadInt32();
             Name = reader.ReadString();
-
-            byte propType = reader.ReadByte();
-            Type = (PropertyType)propType;
+            TypeId = reader.ReadByte();
             
             INST type = file.Types[TypeIndex];
             Property[] props = new Property[type.NumInstances];
