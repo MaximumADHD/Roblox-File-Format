@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -16,9 +18,14 @@ namespace RobloxFiles.BinaryFormat
         public string ChunkType { get; private set; }
         public long ChunkStart { get; private set; }
         
-        public Dictionary<string, INST> TypeMap;
+        public Dictionary<string, INST> ClassMap;
         public readonly BinaryRobloxFile File;
+
+        // Instances in parent->child order
         public List<Instance> Instances;
+
+        // Instances in child->parent order
+        public List<Instance> PostInstances;
 
         public BinaryRobloxFileWriter(BinaryRobloxFile file, Stream workBuffer = null) : base(workBuffer ?? new MemoryStream())
         {
@@ -28,7 +35,9 @@ namespace RobloxFiles.BinaryFormat
             ChunkType = "";
             
             Instances = new List<Instance>();
-            TypeMap = new Dictionary<string, INST>();
+            PostInstances = new List<Instance>();
+
+            ClassMap = new Dictionary<string, INST>();
         }
 
         private static byte[] GetBytes<T>(T value, int bufferSize, IntPtr converter)
@@ -144,35 +153,63 @@ namespace RobloxFiles.BinaryFormat
         {
             foreach (Instance instance in instances)
             {
-                int instId = (int)(File.NumInstances++);
+                if (!instance.Archivable)
+                    continue;
 
+                int instId = (int)(File.NumInstances++);
                 instance.Referent = instId.ToString();
                 Instances.Add(instance);
 
                 string className = instance.ClassName;
                 INST inst = null;
 
-                if (!TypeMap.ContainsKey(className))
+                if (!ClassMap.ContainsKey(className))
                 {
                     inst = new INST()
                     {
-                        TypeName = className,
+                        ClassName = className,
                         InstanceIds = new List<int>(),
                         IsService = instance.IsService
                     };
 
-                    TypeMap.Add(className, inst);
+                    ClassMap.Add(className, inst);
                 }
                 else
                 {
-                    inst = TypeMap[className];
+                    inst = ClassMap[className];
                 }
 
                 inst.NumInstances++;
                 inst.InstanceIds.Add(instId);
                 
                 RecordInstances(instance.GetChildren());
+                PostInstances.Add(instance);
             }
+        }
+        
+        internal void ApplyClassMap()
+        {
+            File.Instances = Instances.ToArray();
+
+            var classNames = ClassMap
+                .Select(type => type.Key)
+                .ToList();
+
+            classNames.Sort(StringComparer.Ordinal);
+
+            var classes = classNames
+                .Select(className => ClassMap[className])
+                .ToArray();
+
+            for (int i = 0; i < classes.Length; i++, File.NumClasses++)
+            {
+                string className = classNames[i];
+
+                INST inst = ClassMap[className];
+                inst.ClassIndex = i;
+            }
+
+            File.Classes = classes;
         }
 
         // Marks that we are writing a chunk.
@@ -235,6 +272,20 @@ namespace RobloxFiles.BinaryFormat
             Chunk = null;
 
             return chunk;
+        }
+
+        public void SaveChunk(IBinaryFileChunk handler)
+        {
+            var chunk = handler.SaveAsChunk(this);
+            File.Chunks.Add(chunk);
+        }
+
+        public BinaryRobloxFileChunk WriteEndChunk()
+        {
+            StartWritingChunk("END\0");
+            WriteString("</roblox>", true);
+
+            return FinishWritingChunk(false);
         }
     }
 }

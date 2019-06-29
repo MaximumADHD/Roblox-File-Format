@@ -3,9 +3,6 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-using RobloxFiles.BinaryFormat;
-using RobloxFiles.XmlFormat;
-
 namespace RobloxFiles
 {
     /// <summary>
@@ -16,7 +13,7 @@ namespace RobloxFiles
     {
         protected abstract void ReadFile(byte[] buffer);
         public abstract void Save(Stream stream);
-
+        
         /// <summary>
         /// Opens a RobloxFile using the provided buffer.
         /// </summary>

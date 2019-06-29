@@ -6,12 +6,8 @@ namespace RobloxFiles.DataTypes
     {
         public readonly ColorSequenceKeypoint[] Keypoints;
 
-        public ColorSequence(Color3 c)
+        public ColorSequence(Color3 c) : this(c, c)
         {
-            ColorSequenceKeypoint a = new ColorSequenceKeypoint(0, c);
-            ColorSequenceKeypoint b = new ColorSequenceKeypoint(1, c);
-
-            Keypoints = new ColorSequenceKeypoint[2] { a, b };
         }
 
         public ColorSequence(Color3 c0, Color3 c1)
@@ -35,10 +31,13 @@ namespace RobloxFiles.DataTypes
                 if (keypoints[key - 1].Time > keypoints[key].Time)
                     throw new Exception("ColorSequence: all keypoints must be ordered by time");
 
-            if (Math.Abs(keypoints[0].Time) >= 10e-5f)
+            var first = keypoints[0];
+            var last = keypoints[numKeys - 1];
+
+            if (!first.Time.FuzzyEquals(0))
                 throw new Exception("ColorSequence must start at time=0.0");
 
-            if (Math.Abs(keypoints[numKeys - 1].Time - 1f) >= 10e-5f)
+            if (!last.Time.FuzzyEquals(1))
                 throw new Exception("ColorSequence must end at time=1.0");
 
             Keypoints = keypoints;

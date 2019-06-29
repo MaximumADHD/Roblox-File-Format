@@ -6,20 +6,26 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace RobloxFiles.XmlFormat
+using RobloxFiles.DataTypes;
+using RobloxFiles.XmlFormat;
+
+namespace RobloxFiles
 {
     public class XmlRobloxFile : RobloxFile
     {
-        // Runtime Specific
-        public readonly XmlDocument Root = new XmlDocument();
+        public readonly XmlDocument XmlDocument = new XmlDocument();
 
         internal Dictionary<string, Instance> Instances = new Dictionary<string, Instance>();
-        internal Dictionary<string, string> SharedStrings = new Dictionary<string, string>();
+        internal HashSet<string> SharedStrings = new HashSet<string>();
 
-        internal XmlRobloxFile()
+        private Dictionary<string, string> RawMetadata = new Dictionary<string, string>();
+        public Dictionary<string, string> Metadata => RawMetadata;
+
+        public XmlRobloxFile()
         {
             Name = "XmlRobloxFile";
             ParentLocked = true;
+            Referent = "null";
         }
         
         protected override void ReadFile(byte[] buffer)
@@ -27,14 +33,14 @@ namespace RobloxFiles.XmlFormat
             try
             {
                 string xml = Encoding.UTF8.GetString(buffer);
-                Root.LoadXml(xml);
+                XmlDocument.LoadXml(xml);
             }
             catch
             {
                 throw new Exception("XmlRobloxFile: Could not read provided buffer as XML!");
             }
 
-            XmlNode roblox = Root.FirstChild;
+            XmlNode roblox = XmlDocument.FirstChild;
             
             if (roblox != null && roblox.Name == "roblox")
             {
@@ -59,6 +65,10 @@ namespace RobloxFiles.XmlFormat
                     {
                         XmlRobloxFileReader.ReadSharedStrings(child, this);
                     }
+                    else if (child.Name == "Meta")
+                    {
+                        XmlRobloxFileReader.ReadMetadata(child, this);
+                    }
                 }
 
                 // Query the properties.
@@ -68,10 +78,11 @@ namespace RobloxFiles.XmlFormat
 
                 // Resolve referent properties.
                 var refProps = allProps.Where(prop => prop.Type == PropertyType.Ref);
-                  
+                
                 foreach (Property refProp in refProps)
                 {
-                    string refId = refProp.Value as string;
+                    string refId = refProp.XmlToken;
+                    refProp.XmlToken = "Ref";
 
                     if (Instances.ContainsKey(refId))
                     {
@@ -86,26 +97,13 @@ namespace RobloxFiles.XmlFormat
                     }
                 }
 
-                // Resolve shared strings.
+                // Record shared strings.
                 var sharedProps = allProps.Where(prop => prop.Type == PropertyType.SharedString);
 
                 foreach (Property sharedProp in sharedProps)
                 {
-                    string md5 = sharedProp.Value as string;
-
-                    if (SharedStrings.ContainsKey(md5))
-                    {
-                        string value = SharedStrings[md5];
-                        sharedProp.Value = value;
-
-                        byte[] data = Convert.FromBase64String(value);
-                        sharedProp.RawBuffer = data;
-                    }
-                    else
-                    {
-                        string name = sharedProp.GetFullName();
-                        Console.WriteLine("XmlRobloxFile: Could not resolve shared string for {0}", name);
-                    }
+                    SharedString shared = sharedProp.CastValue<SharedString>();
+                    SharedStrings.Add(shared.MD5_Key);
                 }
             }
             else
@@ -125,17 +123,32 @@ namespace RobloxFiles.XmlFormat
             Instances.Clear();
             SharedStrings.Clear();
 
+            // First, append the metadata
+            foreach (string key in Metadata.Keys)
+            {
+                string value = Metadata[key];
+
+                XmlElement meta = doc.CreateElement("Meta");
+                meta.SetAttribute("name", key);
+                meta.InnerText = value;
+                
+                roblox.AppendChild(meta);
+            }
+
             Instance[] children = GetChildren();
 
-            // First, record all of the instances.
+            // Record all of the instances.
             foreach (Instance inst in children)
                 XmlRobloxFileWriter.RecordInstances(this, inst);
 
             // Now append them into the document.
             foreach (Instance inst in children)
             {
-                XmlNode instNode = XmlRobloxFileWriter.WriteInstance(inst, doc, this);
-                roblox.AppendChild(instNode);
+                if (inst.Archivable)
+                {
+                    XmlNode instNode = XmlRobloxFileWriter.WriteInstance(inst, doc, this);
+                    roblox.AppendChild(instNode);
+                }
             }
 
             // Append the shared strings.

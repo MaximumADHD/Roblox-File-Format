@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class INST : IBinaryFileChunk
     {
-        public int TypeIndex { get; internal set; }
-        public string TypeName { get; internal set; }
+        public int ClassIndex { get; internal set; }
+        public string ClassName { get; internal set; }
 
         public bool IsService { get; internal set; }
         public List<bool> RootedServices { get; internal set; }
@@ -14,17 +14,14 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public int NumInstances { get; internal set; }
         public List<int> InstanceIds { get; internal set; }
 
-        public override string ToString()
-        {
-            return TypeName;
-        }
-
+        public override string ToString() => ClassName;
+        
         public void LoadFromReader(BinaryRobloxFileReader reader)
         {
             BinaryRobloxFile file = reader.File;
 
-            TypeIndex = reader.ReadInt32();
-            TypeName = reader.ReadString();
+            ClassIndex = reader.ReadInt32();
+            ClassName = reader.ReadString();
             IsService = reader.ReadBoolean();
 
             NumInstances = reader.ReadInt32();
@@ -44,32 +41,30 @@ namespace RobloxFiles.BinaryFormat.Chunks
             for (int i = 0; i < NumInstances; i++)
             {
                 int instId = InstanceIds[i];
+                Type instType = Type.GetType($"RobloxFiles.{ClassName}") ?? typeof(Instance);
 
-                var inst = new Instance()
-                {
-                    ClassName = TypeName,
-                    IsService = IsService,
-                    Referent = instId.ToString()
-                };
-
+                var inst = Activator.CreateInstance(instType) as Instance;
+                inst.Referent = instId.ToString();
+                inst.IsService = IsService;
+                
                 if (IsService)
                 {
-                    bool rooted = RootedServices[i];
-                    inst.IsRootedService = rooted;
+                    bool isRooted = RootedServices[i];
+                    inst.Parent = (isRooted ? file : null);
                 }
 
                 file.Instances[instId] = inst;
             }
 
-            file.Types[TypeIndex] = this;
+            file.Classes[ClassIndex] = this;
         }
 
         public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
         {
             writer.StartWritingChunk(this);
 
-            writer.Write(TypeIndex);
-            writer.WriteString(TypeName);
+            writer.Write(ClassIndex);
+            writer.WriteString(ClassName);
 
             writer.Write(IsService);
             writer.Write(NumInstances);
@@ -82,30 +77,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 foreach (int instId in InstanceIds)
                 {
                     Instance service = file.Instances[instId];
-                    writer.Write(service.IsRootedService);
+                    bool isRooted = (service.Parent == file);
+
+                    writer.Write(isRooted);
                 }
             }
 
             return writer.FinishWritingChunk();
-        }
-
-        internal static void ApplyTypeMap(BinaryRobloxFileWriter writer)
-        {
-            BinaryRobloxFile file = writer.File;
-            file.Instances = writer.Instances.ToArray();
-
-            var types = writer.TypeMap
-                .OrderBy(type => type.Key)
-                .Select(type => type.Value)
-                .ToArray();
-
-            for (int i = 0; i < types.Length; i++, file.NumTypes++)
-            {
-                INST type = types[i];
-                type.TypeIndex = i;
-            }
-
-            file.Types = types;
         }
     }
 }

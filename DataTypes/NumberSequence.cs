@@ -35,10 +35,13 @@ namespace RobloxFiles.DataTypes
                 if (keypoints[key - 1].Time > keypoints[key].Time)
                     throw new Exception("NumberSequence: all keypoints must be ordered by time");
 
-            if (Math.Abs(keypoints[0].Time) >= 10e-5f)
+            var first = keypoints[0];
+            var last = keypoints[numKeys - 1];
+
+            if (!first.Time.FuzzyEquals(0))
                 throw new Exception("NumberSequence must start at time=0.0");
 
-            if (Math.Abs(keypoints[numKeys - 1].Time - 1f) >= 10e-5f)
+            if (!last.Time.FuzzyEquals(1))
                 throw new Exception("NumberSequence must end at time=1.0");
 
             Keypoints = keypoints;

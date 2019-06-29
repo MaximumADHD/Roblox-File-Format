@@ -20,10 +20,10 @@
             }
         }
 
-        public Ray(Vector3 origin, Vector3 direction)
+        public Ray(Vector3 origin = null, Vector3 direction = null)
         {
-            Origin = origin;
-            Direction = direction;
+            Origin = origin ?? new Vector3();
+            Direction = direction ?? new Vector3();
         }
 
         public override string ToString()

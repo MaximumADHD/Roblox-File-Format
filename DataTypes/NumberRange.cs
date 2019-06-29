@@ -7,6 +7,12 @@ namespace RobloxFiles.DataTypes
         public readonly float Min;
         public readonly float Max;
 
+        public NumberRange(float num)
+        {
+            Min = num;
+            Max = num;
+        }
+
         public NumberRange(float min = 0, float max = 0)
         {
             if (max - min < 0)

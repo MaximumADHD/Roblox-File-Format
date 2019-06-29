@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 
 namespace RobloxFiles
 {
@@ -11,16 +13,32 @@ namespace RobloxFiles
 
     public class Instance
     {
+        public Instance()
+        {
+            Name = ClassName;
+        }
+        
         /// <summary>The ClassName of this Instance.</summary>
-        public string ClassName;
+        public string ClassName => GetType().Name;
+
+        /// <summary>Internal list of Properties that are under this Instance.</summary>
+        private Dictionary<string, Property> props = new Dictionary<string, Property>();
 
         /// <summary>A list of properties that are defined under this Instance.</summary>
-        private Dictionary<string, Property> props = new Dictionary<string, Property>();
         public IReadOnlyDictionary<string, Property> Properties => props;
 
-        protected List<Instance> Children = new List<Instance>();
-        private Instance parent;
+        /// <summary>The raw list of children for this Instance.</summary>
+        internal List<Instance> Children = new List<Instance>();
 
+        /// <summary>Raw value of the Instance's parent.</summary>
+        private Instance RawParent;
+
+        /// <summary>The name of this Instance.</summary>
+        public string Name;
+
+        /// <summary>Indicates whether this Instance should be serialized.</summary>
+        public bool Archivable = true;
+        
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public override string ToString() => Name;
 
@@ -30,14 +48,56 @@ namespace RobloxFiles
         /// <summary>Indicates whether the parent of this object is locked.</summary>
         public bool ParentLocked { get; internal set; }
 
-        /// <summary>Indicates whether this Instance is marked as a Service in the binary file format.</summary>
+        /// <summary>Indicates whether this Instance is a Service.</summary>
         public bool IsService { get; internal set; }
 
-        /// <summary>If this instance is a service, this indicates whether the service should be loaded via GetService when Roblox loads the place file.</summary>
-        public bool IsRootedService { get; internal set; }
+        /// <summary>Raw list of CollectionService tags assigned to this Instance.</summary>
+        private List<string> RawTags = new List<string>();
 
-        /// <summary>Indicates whether this object should be serialized.</summary>
-        public bool Archivable = true;
+        /// <summary>A list of CollectionService tags assigned to this Instance.</summary>
+        public List<string> Tags => RawTags;
+
+        /// <summary>
+        /// Internal format of the Instance's CollectionService tags.
+        /// Property objects will look to this member for serializing the Tags property.
+        /// </summary>
+        internal byte[] SerializedTags
+        {
+            get
+            {
+                string fullString = string.Join("\0", Tags.ToArray());
+
+                byte[] buffer = fullString.ToCharArray()
+                    .Select(ch => (byte)ch)
+                    .ToArray();
+
+                return buffer;
+            }
+            set
+            {
+                int length = value.Length;
+
+                List<byte> buffer = new List<byte>();
+                Tags.Clear();
+                
+                for (int i = 0; i < length; i++)
+                {
+                    byte id = value[i];
+
+                    if (id != 0)
+                        buffer.Add(id);
+
+                    if (id == 0 || i == (length - 1))
+                    {
+                        byte[] data = buffer.ToArray();
+                        buffer.Clear();
+
+                        string tag = Encoding.UTF8.GetString(data);
+                        Tags.Add(tag);
+                    }
+                }
+            }
+        }
 
         /// <summary>Returns true if this Instance is an ancestor to the provided Instance.</summary>
         /// <param name="descendant">The instance whose descendance will be tested against this Instance.</param>
@@ -61,26 +121,20 @@ namespace RobloxFiles
             return ancestor.IsAncestorOf(this);
         }
 
-        public string Name
+        /// <summary>
+        /// Returns true if the provided instance inherits from the provided instance type.
+        /// </summary>
+        public bool IsA<T>() where T : Instance
         {
-            get
-            {
-                Property propName = GetProperty("Name");
-
-                if (propName == null)
-                    SetProperty("Name", "Instance");
-
-                return propName.Value.ToString();
-            }
-            set
-            {
-                SetProperty("Name", value);
-            }
+            Type myType = GetType();
+            Type classType = typeof(T);
+            return classType.IsAssignableFrom(myType);
         }
 
         /// <summary>
         /// The parent of this Instance, or null if the instance is the root of a tree.<para/>
         /// Setting the value of this property will throw an exception if:<para/>
+        /// - The parent is currently locked.<para/>
         /// - The value is set to itself.<para/>
         /// - The value is a descendant of the Instance.
         /// </summary>
@@ -88,7 +142,7 @@ namespace RobloxFiles
         {
             get
             {
-                return parent;
+                return RawParent;
             }
             set
             {
@@ -101,11 +155,10 @@ namespace RobloxFiles
                 if (Parent == this)
                     throw new Exception("Attempt to set parent to self.");
 
-                if (parent != null)
-                    parent.Children.Remove(this);
+                RawParent?.Children.Remove(this);
+                value?.Children.Add(this);
 
-                value.Children.Add(this);
-                parent = value;
+                RawParent = value;
             }
         }
 
@@ -143,10 +196,14 @@ namespace RobloxFiles
         /// </summary>
         /// <param name="name">The Name of the Instance to find.</param>
         /// <param name="recursive">Indicates if we should search descendants as well.</param>
-        public Instance FindFirstChild(string name, bool recursive = false)
+        public T FindFirstChild<T>(string name, bool recursive = false) where T : Instance
         {
-            Instance result = null;
-            var query = Children.Where((child) => name == child.Name);
+            T result = null;
+
+            var query = Children
+                .Where(child => child is T)
+                .Where(child => name == child.Name)
+                .Cast<T>();
 
             if (query.Count() > 0)
             {
@@ -156,7 +213,7 @@ namespace RobloxFiles
             {
                 foreach (Instance child in Children)
                 {
-                    Instance found = child.FindFirstChild(name, true);
+                    T found = child.FindFirstChild<T>(name, true);
 
                     if (found != null)
                     {
@@ -170,23 +227,44 @@ namespace RobloxFiles
         }
 
         /// <summary>
+        /// Returns the first child of this Instance whose Name is the provided string name.
+        /// If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="name">The Name of the Instance to find.</param>
+        /// <param name="recursive">Indicates if we should search descendants as well.</param>
+        public Instance FindFirstChild(string name, bool recursive = false)
+        {
+            return FindFirstChild<Instance>(name, recursive);
+        }
+
+        /// <summary>
+        /// Returns the first ancestor of this Instance whose Name is the provided string name.
+        /// If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="name">The Name of the Instance to find.</param>
+        public T FindFirstAncestor<T>(string name) where T : Instance
+        {
+            Instance ancestor = Parent;
+
+            while (ancestor != null)
+            {
+                if (ancestor is T && ancestor.Name == name)
+                    return (T)ancestor;
+                
+                ancestor = ancestor.Parent;
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Returns the first ancestor of this Instance whose Name is the provided string name.
         /// If the instance is not found, this returns null.
         /// </summary>
         /// <param name="name">The Name of the Instance to find.</param>
         public Instance FindFirstAncestor(string name)
         {
-            Instance ancestor = Parent;
-
-            while (ancestor != null)
-            {
-                if (ancestor.Name == name)
-                    break;
-
-                ancestor = ancestor.Parent;
-            }
-
-            return ancestor;
+            return FindFirstAncestor<Instance>(name);
         }
 
         /// <summary>
@@ -194,16 +272,43 @@ namespace RobloxFiles
         /// If the instance is not found, this returns null.
         /// </summary>
         /// <param name="name">The Name of the Instance to find.</param>
-        public Instance FindFirstAncestorOfClass(string className)
+        public T FindFirstAncestorOfClass<T>() where T : Instance
         {
+            Type classType = typeof(T);
+            string className = classType.Name;
+
             Instance ancestor = Parent;
 
             while (ancestor != null)
             {
-                if (ancestor.ClassName == className)
-                    break;
-
+                if (ancestor is T)
+                    return (T)ancestor;
+                
                 ancestor = ancestor.Parent;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the first ancestor of this Instance which derives from the provided type T.
+        /// If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="name">The Name of the Instance to find.</param>
+        public T FindFirstAncestorWhichIsA<T>() where T : Instance
+        {
+            T ancestor = null;
+            Instance check = Parent;
+
+            while (check != null)
+            {
+                if (check.IsA<T>())
+                {
+                    ancestor = (T)check;
+                    break;
+                }
+
+                check = check.Parent;
             }
 
             return ancestor;
@@ -214,13 +319,65 @@ namespace RobloxFiles
         /// If the instance is not found, this returns null.
         /// </summary>
         /// <param name="className">The ClassName of the Instance to find.</param>
-        public Instance FindFirstChildOfClass(string className, bool recursive = false)
+        public T FindFirstChildOfClass<T>(bool recursive = false) where T : Instance
         {
-            Instance result = null;
-            var query = Children.Where((child) => className == child.ClassName);
+            var query = Children
+                .Where(child => child is T)
+                .Cast<T>();
+
+            T result = null;
+            
+            if (query.Count() > 0)
+            {
+                result = query.First();
+            }
+            else if (recursive)
+            {
+                foreach (Instance child in Children)
+                {
+                    T found = child.FindFirstChildOfClass<T>(true);
+
+                    if (found != null)
+                    {
+                        result = found;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Returns the first child of this Instance which derives from the provided type T.
+        /// If the instance is not found, this returns null.
+        /// </summary>
+        /// <param name="recursive">Whether this should search descendants as well.</param>
+        public T FindFirstChildWhichIsA<T>(bool recursive = false) where T : Instance
+        {
+            var query = Children
+                .Where(child => child.IsA<T>())
+                .Cast<T>();
+
+            T result = null;
 
             if (query.Count() > 0)
+            {
                 result = query.First();
+            }
+            else if (recursive)
+            {
+                foreach (Instance child in Children)
+                {
+                    T found = child.FindFirstChildWhichIsA<T>(true);
+
+                    if (found != null)
+                    {
+                        result = found;
+                        break;
+                    }
+                }
+            }
 
             return result;
         }
@@ -243,123 +400,18 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Returns a Property object if a property with the specified name is defined in this Instance.
+        /// Returns a Property object whose name is the provided string name.
         /// </summary>
         public Property GetProperty(string name)
         {
             Property result = null;
 
-            if (Properties.ContainsKey(name))
-                result = Properties[name];
+            if (props.ContainsKey(name))
+                result = props[name];
 
             return result;
         }
-
-        /// <summary>
-        /// Finds or creates a property with the specified name, and sets its value to the provided object.
-        /// Returns the property object that had its value set, if the value is not null.
-        /// </summary>
-        public Property SetProperty(string name, object value, PropertyType? preferType = null)
-        {
-            Property prop = GetProperty(name) ?? new Property()
-            {
-                Type = preferType ?? PropertyType.Unknown,
-                Name = name
-            };
-
-            if (preferType == null)
-            {
-                object oldValue = prop.Value;
-
-                Type oldType = oldValue?.GetType();
-                Type newType = value?.GetType();
-
-                if (oldType != newType)
-                {
-                    if (value == null)
-                    {
-                        RemoveProperty(name);
-                        return prop;
-                    }
-
-                    string typeName = newType.Name;
-
-                    if (value is Instance)
-                        typeName = "Ref";
-                    else if (value is int)
-                        typeName = "Int";
-                    else if (value is long)
-                        typeName = "Int64";
-                    
-                    Enum.TryParse(typeName, out prop.Type);
-                }
-            }
-
-            prop.Value = value;
-
-            if (prop.Instance == null)
-                AddProperty(ref prop);
-
-            return prop;
-        }
-
-        /// <summary>
-        /// Looks for a property with the specified property name, and returns its value as an object.
-        /// <para/>The resulting value may be null if the property is not serialized.
-        /// <para/>You can use the templated ReadProperty overload to fetch it as a specific type with a default value provided.
-        /// </summary>
-        /// <param name="propertyName">The name of the property to be fetched from this Instance.</param>
-        /// <returns>An object reference to the value of the specified property, if it exists.</returns>
-        public object ReadProperty(string propertyName)
-        {
-            Property property = GetProperty(propertyName);
-            return property?.Value;
-        }
-
-        /// <summary>
-        /// Looks for a property with the specified property name, and returns it as the specified type.<para/>
-        /// If it cannot be converted, the provided nullFallback value will be returned instead.
-        /// </summary>
-        /// <typeparam name="T">The value type to convert to when finding the specified property name.</typeparam>
-        /// <param name="propertyName">The name of the property to be fetched from this Instance.</param>
-        /// <param name="nullFallback">A fallback value to be returned if casting to T fails, or the property is not found.</param>
-        /// <returns></returns>
-        public T ReadProperty<T>(string propertyName, T nullFallback)
-        {
-            try
-            {
-                object result = ReadProperty(propertyName);
-                return (T)result;
-            }
-            catch
-            {
-                return nullFallback;
-            }
-        }
-
-        /// <summary>
-        /// Looks for a property with the specified property name. If found, it will try to set the value of the referenced outValue to its value.<para/>
-        /// Returns true if the property was found and its value was casted to the referenced outValue.<para/>
-        /// If it returns false, the outValue will not have its value set.
-        /// </summary>
-        /// <typeparam name="T">The value type to convert to when finding the specified property name.</typeparam>
-        /// <param name="propertyName">The name of the property to be fetched from this Instance.</param>
-        /// <param name="outValue">The value to write to if the property can be casted to T correctly.</param>
-        public bool TryReadProperty<T>(string propertyName, ref T outValue)
-        {
-            try
-            {
-                object result = ReadProperty(propertyName);
-                outValue = (T)result;
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
+        
         /// <summary>
         /// Adds a property by reference to this Instance's property list.
         /// </summary>
@@ -368,16 +420,8 @@ namespace RobloxFiles
         {
             prop.Instance = this;
 
-            if (prop.Name == "Name")
-            {
-                Property nameProp = GetProperty("Name");
-
-                if (nameProp != null)
-                {
-                    nameProp.Value = prop.Value;
-                    return;
-                }
-            }
+            if (props.ContainsKey(prop.Name))
+                props.Remove(prop.Name);
 
             props.Add(prop.Name, prop);
         }
@@ -387,14 +431,69 @@ namespace RobloxFiles
         /// </summary>
         /// <param name="name">The name of the property to be removed.</param>
         /// <returns>True if a property with the provided name was removed.</returns> 
-        public bool RemoveProperty(string name)
+        internal bool RemoveProperty(string name)
         {
-            Property prop = GetProperty(name);
-
-            if (prop != null)
+            if (props.ContainsKey(name))
+            {
+                Property prop = Properties[name];
                 prop.Instance = null;
+            }
 
             return props.Remove(name);
+        }
+
+        /// <summary>
+        /// Ensures that all serializable properties of this Instance have
+        /// a registered Property object with the correct PropertyType.
+        /// </summary>
+        internal IReadOnlyDictionary<string, Property> RefreshProperties()
+        {
+            Type instType = GetType();
+            FieldInfo[] fields = instType.GetFields(Property.BindingFlags);
+
+            foreach (FieldInfo field in fields)
+            {
+                string fieldName = field.Name;
+                Type fieldType = field.FieldType;
+
+                if (field.GetCustomAttribute<ObsoleteAttribute>() != null)
+                    continue;
+
+                if (Property.Types.ContainsKey(fieldType))
+                {
+                    if (fieldName.EndsWith("_"))
+                        fieldName = instType.Name;
+
+                    if (!props.ContainsKey(fieldName))
+                    {
+                        Property newProp = new Property()
+                        {
+                            Type = Property.Types[fieldType],
+                            Value = field.GetValue(this),
+                            Name = fieldName,
+                            Instance = this
+                        };
+
+                        AddProperty(ref newProp);
+                    }
+                    else
+                    {
+                        Property prop = props[fieldName];
+                        prop.Value = field.GetValue(this);
+                        prop.Type = Property.Types[fieldType];
+                    }
+                }
+            }
+
+            Property tags = GetProperty("Tags");
+            
+            if (tags == null)
+            {
+                tags = new Property("Tags", PropertyType.String);
+                AddProperty(ref tags);
+            }
+
+            return Properties;
         }
     }
 }

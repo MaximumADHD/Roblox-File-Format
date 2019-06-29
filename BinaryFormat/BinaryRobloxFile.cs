@@ -4,9 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using RobloxFiles.BinaryFormat;
 using RobloxFiles.BinaryFormat.Chunks;
+using RobloxFiles.DataTypes;
 
-namespace RobloxFiles.BinaryFormat
+namespace RobloxFiles
 {
     public class BinaryRobloxFile : RobloxFile
     {
@@ -14,7 +16,7 @@ namespace RobloxFiles.BinaryFormat
         public const string MagicHeader = "<roblox!\x89\xff\x0d\x0a\x1a\x0a";
 
         public ushort Version;
-        public uint   NumTypes;
+        public uint   NumClasses;
         public uint   NumInstances;
         public long   Reserved;
 
@@ -23,7 +25,7 @@ namespace RobloxFiles.BinaryFormat
         public override string ToString() => GetType().Name;
         
         public Instance[] Instances;
-        public INST[] Types;
+        public INST[] Classes;
 
         internal META META = null;
         internal SSTR SSTR = null;
@@ -32,9 +34,9 @@ namespace RobloxFiles.BinaryFormat
         public Dictionary<string, string> Metadata => META?.Data;
 
         public bool HasSharedStrings => (SSTR != null);
-        public IReadOnlyDictionary<uint, string> SharedStrings => SSTR?.Strings;
+        public IReadOnlyDictionary<uint, SharedString> SharedStrings => SSTR?.Strings;
 
-        internal BinaryRobloxFile()
+        public BinaryRobloxFile()
         {
             Name = "BinaryRobloxFile";
             ParentLocked = true;
@@ -55,14 +57,14 @@ namespace RobloxFiles.BinaryFormat
 
                 // Read header data.
                 Version = reader.ReadUInt16();
-                NumTypes = reader.ReadUInt32();
+                NumClasses = reader.ReadUInt32();
                 NumInstances = reader.ReadUInt32();
                 Reserved = reader.ReadInt64();
 
                 // Begin reading the file chunks.
                 bool reading = true;
 
-                Types = new INST[NumTypes];
+                Classes = new INST[NumClasses];
                 Instances = new Instance[NumInstances];
 
                 while (reading)
@@ -92,6 +94,7 @@ namespace RobloxFiles.BinaryFormat
                                 handler = new SSTR();
                                 break;
                             case "END\0":
+                                Chunks.Add(chunk);
                                 reading = false;
                                 break;
                             default:
@@ -129,42 +132,35 @@ namespace RobloxFiles.BinaryFormat
                 Chunks.Clear();
                 
                 NumInstances = 0;
-                NumTypes = 0;
+                NumClasses = 0;
                 SSTR = null;
                 
-                // Record all instances and types.
+                // Recursively capture all instances and classes.
                 writer.RecordInstances(Children);
 
-                // Apply the type values.
-                INST.ApplyTypeMap(writer);
+                // Apply the recorded instances and classes.
+                writer.ApplyClassMap();
 
                 // Write the INST chunks.
-                foreach (INST type in Types)
-                {
-                    var instChunk = type.SaveAsChunk(writer);
-                    Chunks.Add(instChunk);
-                }
+                foreach (INST inst in Classes)
+                    writer.SaveChunk(inst);
 
                 // Write the PROP chunks.
-                foreach (INST type in Types)
+                foreach (INST inst in Classes)
                 {
-                    Dictionary<string, PROP> props = PROP.CollectProperties(writer, type);
+                    Dictionary<string, PROP> props = PROP.CollectProperties(writer, inst);
 
                     foreach (string propName in props.Keys)
                     {
                         PROP prop = props[propName];
-
-                        var chunk = prop.SaveAsChunk(writer);
-                        Chunks.Add(chunk);
+                        writer.SaveChunk(prop);
                     }
                 }
 
                 // Write the PRNT chunk.
                 PRNT parents = new PRNT();
-
-                var parentChunk = parents.SaveAsChunk(writer);
-                Chunks.Add(parentChunk);
-
+                writer.SaveChunk(parents);
+                
                 // Write the SSTR chunk.
                 if (HasSharedStrings)
                 {
@@ -180,15 +176,12 @@ namespace RobloxFiles.BinaryFormat
                 }
 
                 // Write the END_ chunk.
-                writer.StartWritingChunk("END\0");
-                writer.WriteString("</roblox>", true);
-
-                var endChunk = writer.FinishWritingChunk(false);
+                var endChunk = writer.WriteEndChunk();
                 Chunks.Add(endChunk);
             }
 
             //////////////////////////////////////////////////////////////////////////
-            // Write the chunks with the header & footer data
+            // Write the chunk buffers with the header data
             //////////////////////////////////////////////////////////////////////////
 
             using (BinaryWriter writer = new BinaryWriter(stream))
@@ -196,20 +189,15 @@ namespace RobloxFiles.BinaryFormat
                 stream.Position = 0;
                 stream.SetLength(0);
 
-                byte[] magicHeader = MagicHeader
+                writer.Write(MagicHeader
                     .Select(ch => (byte)ch)
-                    .ToArray();
-
-                writer.Write(magicHeader);
+                    .ToArray());
 
                 writer.Write(Version);
-                writer.Write(NumTypes);
+                writer.Write(NumClasses);
                 writer.Write(NumInstances);
+                writer.Write(Reserved);
 
-                // Write the 8 reserved-bytes.
-                writer.Write(0L);
-
-                // Write all of the chunks.
                 foreach (BinaryRobloxFileChunk chunk in Chunks)
                 {
                     if (chunk.HasWriteBuffer)

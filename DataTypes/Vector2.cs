@@ -28,7 +28,7 @@ namespace RobloxFiles.DataTypes
             Y = y;
         }
 
-        public Vector2(float[] coords)
+        internal Vector2(float[] coords)
         {
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
@@ -68,6 +68,11 @@ namespace RobloxFiles.DataTypes
         public static Vector2 operator /(Vector2 a, Vector2 b) => div(a, b);
         public static Vector2 operator /(Vector2 v, float n) => upcastFloatOp(v, n, div);
         public static Vector2 operator /(float n, Vector2 v) => upcastFloatOp(n, v, div);
+
+        public static Vector2 operator -(Vector2 v)
+        {
+            return new Vector2(-v.X, -v.Y);
+        }
 
         public static Vector2 Zero => new Vector2(0, 0);
 

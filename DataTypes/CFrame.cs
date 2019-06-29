@@ -14,11 +14,23 @@ namespace RobloxFiles.DataTypes
         public float Y => m24;
         public float Z => m34;
 
-        public Vector3 Position => new Vector3(X, Y, Z);
+        public Vector3 Position
+        {
+            get
+            {
+                return new Vector3(X, Y, Z);
+            }
+            set
+            {
+                m14 = value.X;
+                m24 = value.Y;
+                m34 = value.Z;
+            }
+        }
 
-        public Vector3 LookVector  => new Vector3(-m13, -m23, -m33);
-        public Vector3 RightVector => new Vector3( m11,  m21,  m31);
-        public Vector3 UpVector    => new Vector3( m12,  m22,  m32);
+        public Vector3 RightVector => new Vector3( m11,  m12,  m13);
+        public Vector3 UpVector    => new Vector3( m21,  m22,  m23);
+        public Vector3 LookVector  => new Vector3(-m31, -m32, -m33);
 
         public CFrame()
         {
@@ -40,7 +52,6 @@ namespace RobloxFiles.DataTypes
             m24 = ny;
             m34 = nz;
         }
-
 
         public CFrame(Vector3 eye, Vector3 look)
         {
@@ -127,9 +138,9 @@ namespace RobloxFiles.DataTypes
         {
             float[] ac = a.GetComponents();
 
-            float x   = ac[0], y   = ac[1],  z   = ac[2], 
-                  m11 = ac[3], m12 = ac[4],  m13 = ac[5], 
-                  m21 = ac[6], m22 = ac[7],  m23 = ac[8], 
+            float   x = ac[0],   y = ac[1],    z = ac[2],
+                  m11 = ac[3], m12 = ac[4],  m13 = ac[5],
+                  m21 = ac[6], m22 = ac[7],  m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 
             return new CFrame(x - b.X, y - b.Y, z - b.Z, m11, m12, m13, m21, m22, m23, m31, m32, m33);
@@ -138,9 +149,10 @@ namespace RobloxFiles.DataTypes
         public static Vector3 operator *(CFrame a, Vector3 b)
         {
             float[] ac = a.GetComponents();
-            float x   = ac[0], y   = ac[1],  z   = ac[2], 
-                  m11 = ac[3], m12 = ac[4],  m13 = ac[5], 
-                  m21 = ac[6], m22 = ac[7],  m23 = ac[8], 
+
+            float   x = ac[0],   y = ac[1],    z = ac[2],
+                  m11 = ac[3], m12 = ac[4],  m13 = ac[5],
+                  m21 = ac[6], m22 = ac[7],  m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 
             Vector3 right = new Vector3(m11, m21, m31);
@@ -154,14 +166,14 @@ namespace RobloxFiles.DataTypes
             float[] ac = a.GetComponents();
             float[] bc = b.GetComponents();
 
-            float a14 = ac[0], a24 = ac[1],  a34 = ac[2], 
-                  a11 = ac[3], a12 = ac[4],  a13 = ac[5], 
-                  a21 = ac[6], a22 = ac[7],  a23 = ac[8], 
+            float a14 = ac[0], a24 = ac[1], a34 = ac[2],
+                  a11 = ac[3], a12 = ac[4], a13 = ac[5],
+                  a21 = ac[6], a22 = ac[7], a23 = ac[8],
                   a31 = ac[9], a32 = ac[10], a33 = ac[11];
 
-            float b14 = bc[0], b24 = bc[1],  b34 = bc[2], 
-                  b11 = bc[3], b12 = bc[4],  b13 = bc[5], 
-                  b21 = bc[6], b22 = bc[7],  b23 = bc[8], 
+            float b14 = bc[0], b24 = bc[1],  b34 = bc[2],
+                  b11 = bc[3], b12 = bc[4],  b13 = bc[5],
+                  b21 = bc[6], b22 = bc[7],  b23 = bc[8],
                   b31 = bc[9], b32 = bc[10], b33 = bc[11];
 
             float n11 = a11 * b11 + a12 * b21 + a13 * b31 + a14 * m41;
@@ -345,14 +357,14 @@ namespace RobloxFiles.DataTypes
 
             for (int i = 3; i < 12; i++)
             {
-                float t = matrix[i];
+                float t = Math.Abs(matrix[i]);
 
-                if (Math.Abs(t - 1f) < 10e-5f)
+                if (t.FuzzyEquals(1))
                 {
                     // Approximately ±1
                     sum1++;
                 }
-                else if (Math.Abs(t) < 10e-5f)
+                else if (t.FuzzyEquals(0))
                 {
                     // Approximately ±0
                     sum0++;
@@ -364,10 +376,10 @@ namespace RobloxFiles.DataTypes
 
         private static bool IsLegalOrientId(int orientId)
         {
-            int xNormalAbs = (orientId / 6) % 3;
-            int yNormalAbs = orientId % 3;
+            int xOrientId = (orientId / 6) % 3;
+            int yOrientId = orientId % 3;
 
-            return (xNormalAbs != yNormalAbs);
+            return (xOrientId != yOrientId);
         }
 
         public int GetOrientId()
