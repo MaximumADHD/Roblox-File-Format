@@ -22,7 +22,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public byte TypeId
         {
             get { return (byte)Type; }
-            set { Type = (PropertyType)value; }
+            internal set { Type = (PropertyType)value; }
         }
 
         public override string ToString()
