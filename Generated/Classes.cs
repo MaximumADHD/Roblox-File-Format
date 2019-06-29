@@ -2076,6 +2076,7 @@ namespace RobloxFiles
 
     public class UnionOperation : PartOperation
     {
+        [Obsolete] public FormFactor FormFactor;
     }
 
     public class TrussPart : BasePart
