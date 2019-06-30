@@ -3,9 +3,6 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-using RobloxFiles.BinaryFormat;
-using RobloxFiles.XmlFormat;
-
 namespace RobloxFiles
 {
     /// <summary>

@@ -4,18 +4,18 @@
     {
         public readonly float Time;
         public readonly Color3 Value;
-        public readonly byte[] Reserved;
+        public readonly int Envelope;
 
-        public ColorSequenceKeypoint(float time, Color3 value, byte[] reserved = null)
+        public ColorSequenceKeypoint(float time, Color3 value, int envelope = 0)
         {
             Time = time;
             Value = value;
-            Reserved = reserved;
+            Envelope = envelope;
         }
 
         public override string ToString()
         {
-            return string.Join(" ", Time, Value.R, Value.G, Value.B, 0);
+            return string.Join(" ", Time, Value.R, Value.G, Value.B, Envelope);
         }
     }
 }

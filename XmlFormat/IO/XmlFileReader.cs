@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Xml;
 
+using RobloxFiles.DataTypes;
+
 namespace RobloxFiles.XmlFormat
 {
     public static class XmlRobloxFileReader
@@ -35,9 +37,33 @@ namespace RobloxFiles.XmlFormat
                     string key = md5Node.InnerText;
                     string value = sharedString.InnerText.Replace("\n", "");
 
-                    file.SharedStrings.Add(key, value);
+                    byte[] buffer = Convert.FromBase64String(value);
+                    SharedString record = SharedString.FromBase64(value);
+
+                    if (record.MD5_Key != key)
+                        throw error("The provided md5 hash did not match with the md5 hash computed for the value!");
+
+                    file.SharedStrings.Add(key);
                 }
             }
+        }
+
+        public static void ReadMetadata(XmlNode meta, XmlRobloxFile file)
+        {
+            var error = createErrorHandler("ReadMetadata");
+
+            if (meta.Name != "Meta")
+                throw error("Provided XmlNode's class should be 'Meta'!");
+
+            XmlNode propName = meta.Attributes.GetNamedItem("name");
+
+            if (propName == null)
+                throw error("Got a Meta node without a 'name' attribute!");
+
+            string key = propName.InnerText;
+            string value = meta.InnerText;
+
+            file.Metadata[key] = value;
         }
 
         public static void ReadProperties(Instance instance, XmlNode propsNode)
@@ -53,7 +79,12 @@ namespace RobloxFiles.XmlFormat
                 XmlNode propName = propNode.Attributes.GetNamedItem("name");
 
                 if (propName == null)
+                {
+                    if (propNode.Name == "Item")
+                        continue;
+
                     throw error("Got a property node without a 'name' attribute!");
+                }
 
                 IXmlPropertyToken tokenHandler = XmlPropertyTokens.GetHandler(propType);
 
@@ -90,8 +121,12 @@ namespace RobloxFiles.XmlFormat
             if (classToken == null)
                 throw error("Got an Item without a defined 'class' attribute!");
 
-            Instance inst = new Instance() { ClassName = classToken.InnerText };
 
+            string className = classToken.InnerText;
+
+            Type instType = Type.GetType($"RobloxFiles.{className}") ?? typeof(Instance);
+            Instance inst = Activator.CreateInstance(instType) as Instance;
+            
             // The 'referent' attribute is optional, but should be defined if a Ref property needs to link to this Instance.
             XmlNode refToken = instNode.Attributes.GetNamedItem("referent");
 

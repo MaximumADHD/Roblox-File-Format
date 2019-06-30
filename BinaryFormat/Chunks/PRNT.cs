@@ -27,21 +27,21 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 Instance child = file.Instances[childId];
                 child.Parent = (parentId >= 0 ? file.Instances[parentId] : file);
+                child.ParentLocked = child.IsService;
             }
         }
 
         public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
         {
-            BinaryRobloxFile file = writer.File;
             writer.StartWritingChunk(this);
 
             Format = 0;
-            NumRelations = file.Instances.Length;
+            NumRelations = 0;
 
             ChildrenIds = new List<int>();
             ParentIds = new List<int>();
 
-            foreach (Instance inst in file.Instances)
+            foreach (Instance inst in writer.PostInstances)
             {
                 Instance parent = inst.Parent;
 
@@ -53,6 +53,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 ChildrenIds.Add(childId);
                 ParentIds.Add(parentId);
+
+                NumRelations++;
             }
 
             writer.Write(Format);

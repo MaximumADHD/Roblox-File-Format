@@ -30,7 +30,7 @@ namespace RobloxFiles.DataTypes
             Z = z;
         }
 
-        public Vector3(float[] coords)
+        internal Vector3(float[] coords)
         {
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
@@ -92,6 +92,11 @@ namespace RobloxFiles.DataTypes
         public static Vector3 operator /(Vector3 v, float n)   => upcastFloatOp(v, n, div);
         public static Vector3 operator /(float n, Vector3 v)   => upcastFloatOp(n, v, div);
 
+        public static Vector3 operator -(Vector3 v)
+        {
+            return new Vector3(-v.X, -v.Y, -v.Z);
+        }
+
         public static Vector3 Zero  => new Vector3(0, 0, 0);
         public static Vector3 Right => new Vector3(1, 0, 0);
         public static Vector3 Up    => new Vector3(0, 1, 0);
@@ -141,7 +146,7 @@ namespace RobloxFiles.DataTypes
 
                 float dotProd = normal.Dot(this);
 
-                if (Math.Abs(dotProd - 1f) < 10e-5f)
+                if (dotProd.FuzzyEquals(1))
                 {
                     result = i;
                     break;

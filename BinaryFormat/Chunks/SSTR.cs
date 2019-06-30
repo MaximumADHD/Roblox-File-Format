@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
@@ -9,7 +10,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public int NumHashes;
 
         public Dictionary<string, uint> Lookup = new Dictionary<string, uint>();
-        public Dictionary<uint, string> Strings = new Dictionary<uint, string>();
+        public Dictionary<uint, SharedString> Strings = new Dictionary<uint, SharedString>();
 
         public void LoadFromReader(BinaryRobloxFileReader reader)
         {
@@ -25,10 +26,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 int length = reader.ReadInt32();
                 byte[] data = reader.ReadBytes(length);
 
-                string key = Convert.ToBase64String(md5);
-                string value = Convert.ToBase64String(data);
-
-                Lookup.Add(key, id);
+                SharedString value = SharedString.FromBuffer(data);
+                Lookup.Add(value.MD5_Key, id);
                 Strings.Add(id, value);
             }
 
@@ -49,8 +48,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 byte[] md5 = Convert.FromBase64String(key);
                 writer.Write(md5);
 
-                string value = Strings[pair.Value];
-                byte[] buffer = Convert.FromBase64String(value);
+                SharedString value = Strings[pair.Value];
+                byte[] buffer = SharedString.FindRecord(value.MD5_Key);
 
                 writer.Write(buffer.Length);
                 writer.Write(buffer);

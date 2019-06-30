@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 
+using RobloxFiles.DataTypes;
 using RobloxFiles.XmlFormat.PropertyTokens;
 
 namespace RobloxFiles.XmlFormat
@@ -40,7 +39,7 @@ namespace RobloxFiles.XmlFormat
             foreach (Instance child in inst.GetChildren())
                 RecordInstances(file, child);
 
-            if (inst.Referent.Length < 35)
+            if (inst.Referent == null || inst.Referent.Length < 35)
                 inst.Referent = CreateReferent();
 
             file.Instances.Add(inst.Referent, inst);
@@ -102,19 +101,8 @@ namespace RobloxFiles.XmlFormat
 
             if (prop.Type == PropertyType.SharedString)
             {
-                string data = prop.Value.ToString();
-                byte[] buffer = Convert.FromBase64String(data);
-
-                using (MD5 md5 = MD5.Create())
-                {
-                    byte[] hash = md5.ComputeHash(buffer);
-                    string key = Convert.ToBase64String(hash);
-
-                    if (!file.SharedStrings.ContainsKey(key))
-                        file.SharedStrings.Add(key, data);
-
-                    propNode.InnerText = key;
-                }
+                SharedString value = prop.CastValue<SharedString>();
+                file.SharedStrings.Add(value.MD5_Key);
             }
 
             return propNode;
@@ -122,6 +110,9 @@ namespace RobloxFiles.XmlFormat
 
         public static XmlNode WriteInstance(Instance instance, XmlDocument doc, XmlRobloxFile file)
         {
+            if (!instance.Archivable)
+                return null;
+
             XmlElement instNode = doc.CreateElement("Item");
             instNode.SetAttribute("class", instance.ClassName);
             instNode.SetAttribute("referent", instance.Referent);
@@ -129,7 +120,7 @@ namespace RobloxFiles.XmlFormat
             XmlElement propsNode = doc.CreateElement("Properties");
             instNode.AppendChild(propsNode);
 
-            var props = instance.Properties;
+            var props = instance.RefreshProperties();
             
             foreach (string propName in props.Keys)
             {
@@ -140,8 +131,11 @@ namespace RobloxFiles.XmlFormat
 
             foreach (Instance child in instance.GetChildren())
             {
-                XmlNode childNode = WriteInstance(child, doc, file);
-                instNode.AppendChild(childNode);
+                if (child.Archivable)
+                {
+                    XmlNode childNode = WriteInstance(child, doc, file);
+                    instNode.AppendChild(childNode);
+                }
             }
 
             return instNode;
@@ -152,18 +146,15 @@ namespace RobloxFiles.XmlFormat
             XmlElement sharedStrings = doc.CreateElement("SharedStrings");
 
             var binaryWriter = XmlPropertyTokens.GetHandler<BinaryStringToken>();
-            var bufferProp = new Property("SharedString", PropertyType.String);
+            var binaryBuffer = new Property("SharedString", PropertyType.String);
 
-            foreach (string md5 in file.SharedStrings.Keys)
+            foreach (string md5 in file.SharedStrings)
             {
                 XmlElement sharedString = doc.CreateElement("SharedString");
                 sharedString.SetAttribute("md5", md5);
 
-                string data = file.SharedStrings[md5];
-                byte[] buffer = Convert.FromBase64String(data);
-
-                bufferProp.RawBuffer = buffer;
-                binaryWriter.WriteProperty(bufferProp, doc, sharedString);
+                binaryBuffer.RawBuffer = SharedString.FindRecord(md5);
+                binaryWriter.WriteProperty(binaryBuffer, doc, sharedString);
 
                 sharedStrings.AppendChild(sharedString);
             }

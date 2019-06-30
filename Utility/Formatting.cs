@@ -1,8 +1,5 @@
-﻿using System.Globalization;
-using System.Linq;
-
-// This global class defines extension methods to numeric types
-// where I don't want system globalization to come into play.
+﻿using System;
+using System.Globalization;
 
 internal static class Formatting
 {
@@ -104,5 +101,15 @@ internal static class Formatting
     public static int ParseInt(string s)
     {
         return int.Parse(s, invariant);
+    }
+
+    public static bool FuzzyEquals(this float a, float b, float epsilon = 10e-5f)
+    {
+        return Math.Abs(a - b) < epsilon;
+    }
+
+    public static bool FuzzyEquals(this double a, double b, double epsilon = 10e-5)
+    {
+        return Math.Abs(a - b) < epsilon;
     }
 }
