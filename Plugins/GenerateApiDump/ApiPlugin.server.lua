@@ -391,7 +391,6 @@ local function generateClasses()
 			local firstLine = true
 			table.sort(propNames)
 			
-			
 			if classTags.Service then
 				writeLine("public %s()", className)
 				openStack()
@@ -399,8 +398,14 @@ local function generateClasses()
 				writeLine("IsService = true;")
 				closeStack()
 				
-				if #propNames > 0 then
-					writeLine()
+				for i, propName in ipairs(propNames) do
+					local prop = propMap[propName]
+					local serial = prop.Serialization
+					
+					if serial.CanLoad then
+						writeLine()
+						break
+					end
 				end
 			end
 			

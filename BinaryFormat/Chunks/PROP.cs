@@ -6,7 +6,6 @@ using System.Text;
 
 using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
-using RobloxFiles.Utility;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {

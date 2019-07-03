@@ -6,7 +6,6 @@ using RobloxFiles.BinaryFormat;
 using RobloxFiles.BinaryFormat.Chunks;
 
 using RobloxFiles.DataTypes;
-using RobloxFiles.Utility;
 
 namespace RobloxFiles
 {
@@ -140,6 +139,12 @@ namespace RobloxFiles
                     }
                 }
 
+                if (Name.Contains(" "))
+                {
+                    var implicitName = Name.Replace(' ', '_');
+                    return implicitName;
+                }
+
                 return Name;
             }
         }
@@ -188,13 +193,42 @@ namespace RobloxFiles
                         FieldInfo field = Instance.GetType()
                             .GetField(ImplicitName, BindingFlags);
 
-                        try
+                        if (field != null)
                         {
-                            field?.SetValue(Instance, value);
-                        }
-                        catch
-                        {
-                            Console.WriteLine($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
+                            Type fieldType = field.FieldType;
+                            Type valueType = value?.GetType();
+
+                            if (fieldType == valueType || value == null)
+                            {
+                                try
+                                {
+                                    field.SetValue(Instance, value);
+                                }
+                                catch
+                                {
+                                    Console.WriteLine($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
+                                }
+                            }
+                            else if (valueType != null)
+                            {
+                                var typeWrapper = new Type[] { valueType };
+                                MethodInfo implicitCast = fieldType.GetMethod("op_Implicit", typeWrapper);
+
+                                if (implicitCast != null)
+                                {
+                                    var valueWrapper = new object[] { value };
+
+                                    try
+                                    {
+                                        object castedValue = implicitCast.Invoke(null, valueWrapper);
+                                        field.SetValue(Instance, castedValue);
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Instance.ClassName}.{Name}");
+                                    }
+                                }
+                            }
                         }
                     }
                 }

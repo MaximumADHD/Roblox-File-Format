@@ -21,7 +21,7 @@ namespace RobloxFiles
         /// <summary>The ClassName of this Instance.</summary>
         public string ClassName => GetType().Name;
 
-        /// <summary>Internal list of Properties that are under this Instance.</summary>
+        /// <summary>Internal list of properties that are under this Instance.</summary>
         private Dictionary<string, Property> props = new Dictionary<string, Property>();
 
         /// <summary>A list of properties that are defined under this Instance.</summary>
@@ -30,7 +30,7 @@ namespace RobloxFiles
         /// <summary>The raw list of children for this Instance.</summary>
         internal List<Instance> Children = new List<Instance>();
 
-        /// <summary>Raw value of the Instance's parent.</summary>
+        /// <summary>The raw value of the Instance's parent.</summary>
         private Instance RawParent;
 
         /// <summary>The name of this Instance.</summary>

@@ -644,7 +644,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-
     }
 
     public class ContextActionService : Instance
@@ -723,6 +722,9 @@ namespace RobloxFiles
 
     public abstract class BevelMesh : DataModelMesh
     {
+        public float Bevel = 0;
+        public float Bevel_Roundness = 0;
+        public float Bulge = 0;
     }
 
     public class BlockMesh : BevelMesh
@@ -1758,7 +1760,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-
     }
 
     public class LocalizationTable : Instance
@@ -1866,7 +1867,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-
     }
 
     public abstract class PVInstance : Instance
@@ -2065,6 +2065,7 @@ namespace RobloxFiles
     {
         public Content AssetId = "";
         public byte[] ChildData = new byte[0];
+        public FormFactor FormFactor = FormFactor.Custom;
         public byte[] MeshData = new byte[0];
         public RenderFidelity RenderFidelity = RenderFidelity.Precise;
         public bool UsePartColor = false;
@@ -2728,7 +2729,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-
     }
 
     public class StudioData : Instance
@@ -2748,7 +2748,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-
     }
 
     public class Team : Instance
@@ -2983,7 +2982,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-
     }
 
     public abstract class ValueBase : Instance

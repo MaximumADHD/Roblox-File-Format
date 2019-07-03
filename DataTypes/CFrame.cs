@@ -1,5 +1,4 @@
 ﻿using System;
-using RobloxFiles.Utility;
 
 namespace RobloxFiles.DataTypes
 {

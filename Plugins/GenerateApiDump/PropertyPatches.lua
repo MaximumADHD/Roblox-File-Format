@@ -84,6 +84,23 @@ return
 		}
 	};
 	
+	BevelMesh = 
+	{
+		Add = 
+		{
+			Bevel = "float";
+			Bevel_Roundness = "float";
+			Bulge = "float";
+		};
+		
+		Defaults = 
+		{
+			Bevel = 0;
+			Bevel_Roundness = 0;
+			Bulge = 0;
+		}
+	};
+	
 	BinaryStringValue =
 	{
 		Add = 
@@ -387,6 +404,7 @@ return
 			AssetId = "Content";
 			ChildData = "BinaryString";
 			MeshData = "BinaryString";
+			FormFactor = "Enum:FormFactor";
 		};
 		
 		Defaults = 
@@ -394,6 +412,7 @@ return
 			AssetId = "";
 			ChildData = "";
 			MeshData = "";
+			FormFactor = Enum.FormFactor.Custom;
 		};
 	};
 	
