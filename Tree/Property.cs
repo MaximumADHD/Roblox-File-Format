@@ -43,13 +43,13 @@ namespace RobloxFiles
 
     public class Property
     {
-        public string Name;
+        public string Name { get; internal set; }
         public Instance Instance { get; internal set; }
 
-        public PropertyType Type;
+        public PropertyType Type { get; internal set; }
 
-        public string XmlToken = "";
-        public byte[] RawBuffer;
+        public string XmlToken { get; internal set; }
+        public byte[] RawBuffer { get; internal set; }
 
         internal object RawValue;
         internal BinaryRobloxFileWriter CurrentWriter;
@@ -74,16 +74,20 @@ namespace RobloxFiles
             { typeof(UDim2),    PropertyType.UDim2   },
             { typeof(CFrame),   PropertyType.CFrame  },
             { typeof(Color3),   PropertyType.Color3  },
+            { typeof(Content),  PropertyType.String  },
             { typeof(Vector2),  PropertyType.Vector2 },
             { typeof(Vector3),  PropertyType.Vector3 },
+            
 
             { typeof(BrickColor),      PropertyType.BrickColor     },
             { typeof(Quaternion),      PropertyType.Quaternion     },
+            { typeof(Color3uint8),     PropertyType.Color3uint8    },
             { typeof(NumberRange),     PropertyType.NumberRange    },
             { typeof(SharedString),    PropertyType.SharedString   },
             { typeof(Vector3int16),    PropertyType.Vector3int16   },
             { typeof(ColorSequence),   PropertyType.ColorSequence  },
             { typeof(NumberSequence),  PropertyType.NumberSequence },
+            { typeof(ProtectedString), PropertyType.String         },
             
             { typeof(PhysicalProperties),  PropertyType.PhysicalProperties },
         };
@@ -98,7 +102,7 @@ namespace RobloxFiles
             else if (RawValue is SharedString)
             {
                 var sharedString = CastValue<SharedString>();
-                RawBuffer = Convert.FromBase64String(sharedString.MD5_Key);
+                RawBuffer = sharedString.SharedValue;
                 return;
             }
 
@@ -134,17 +138,19 @@ namespace RobloxFiles
 
                     if (typeName == Name)
                     {
-                        var implicitName = Name + '_';
-                        return implicitName;
+                        FieldInfo directField = instType.GetField(typeName, BindingFlags.DeclaredOnly);
+
+                        if (directField != null)
+                        {
+                            var implicitName = Name + '_';
+                            return implicitName;
+                        }
                     }
                 }
 
                 if (Name.Contains(" "))
-                {
-                    var implicitName = Name.Replace(' ', '_');
-                    return implicitName;
-                }
-
+                    return Name.Replace(' ', '_');
+                
                 return Name;
             }
         }
@@ -289,14 +295,16 @@ namespace RobloxFiles
 
         public T CastValue<T>()
         {
-            T result;
+            object result;
 
-            if (Value is T)
+            if (typeof(T) == typeof(string))
+                result = Value?.ToString() ?? "";
+            else if (Value is T)
                 result = (T)Value;
             else
                 result = default(T);
-
-            return result;
+            
+            return (T)result;
         }
 
         internal void WriteValue<T>() where T : struct

@@ -11,11 +11,11 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
         {
             // BinaryStrings are encoded in base64
             string base64 = token.InnerText.Replace("\n", "");
-            prop.Value = Convert.FromBase64String(base64);
-            prop.Type = PropertyType.String;
-            
             byte[] buffer = Convert.FromBase64String(base64);
+
+            prop.Value = buffer;
             prop.RawBuffer = buffer;
+            prop.Type = PropertyType.String;
             
             return true;
         }

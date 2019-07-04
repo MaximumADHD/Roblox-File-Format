@@ -348,6 +348,12 @@ return
 		}
 	};
 	
+	LuaSourceContainer = 
+	{
+		Add      = { ScriptGuid = "string" };
+		Defaults = { ScriptGuid = ""       };
+	};
+	
 	ManualSurfaceJointInstance = 
 	{
 		Add = 

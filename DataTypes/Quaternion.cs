@@ -21,6 +21,11 @@ namespace RobloxFiles.DataTypes
             }
         }
 
+        public override string ToString()
+        {
+            return string.Join(", ", X, Y, Z, W);
+        }
+
         public Quaternion(float x, float y, float z, float w)
         {
             X = x;

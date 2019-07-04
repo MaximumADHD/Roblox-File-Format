@@ -6,27 +6,26 @@
     /// </summary>
     public class Content
     {
-        // TODO: Maybe introduce constraints to the value?
-        public readonly string Data;
+        public readonly string Url;
 
         public override string ToString()
         {
-            return Data;
+            return Url;
         }
 
-        public Content(string data)
+        public Content(string url)
         {
-            Data = data;
+            Url = url;
         }
 
         public static implicit operator string(Content content)
         {
-            return content.Data;
+            return content.Url;
         }
 
-        public static implicit operator Content(string data)
+        public static implicit operator Content(string url)
         {
-            return new Content(data);
+            return new Content(url);
         }
     }
 }

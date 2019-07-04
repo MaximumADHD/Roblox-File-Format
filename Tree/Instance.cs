@@ -459,7 +459,14 @@ namespace RobloxFiles
                 if (field.GetCustomAttribute<ObsoleteAttribute>() != null)
                     continue;
 
-                if (Property.Types.ContainsKey(fieldType))
+                PropertyType propType = PropertyType.Unknown;
+
+                if (fieldType.IsEnum)
+                    propType = PropertyType.Enum;
+                else if (Property.Types.ContainsKey(fieldType))
+                    propType = Property.Types[fieldType];
+
+                if (propType != PropertyType.Unknown)
                 {
                     if (fieldName.EndsWith("_"))
                         fieldName = instType.Name;
@@ -468,9 +475,9 @@ namespace RobloxFiles
                     {
                         Property newProp = new Property()
                         {
-                            Type = Property.Types[fieldType],
                             Value = field.GetValue(this),
                             Name = fieldName,
+                            Type = propType,
                             Instance = this
                         };
 
@@ -480,7 +487,7 @@ namespace RobloxFiles
                     {
                         Property prop = props[fieldName];
                         prop.Value = field.GetValue(this);
-                        prop.Type = Property.Types[fieldType];
+                        prop.Type = propType;
                     }
                 }
             }

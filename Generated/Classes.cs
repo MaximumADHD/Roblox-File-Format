@@ -1786,6 +1786,7 @@ namespace RobloxFiles
 
     public abstract class LuaSourceContainer : Instance
     {
+        public string ScriptGuid = "";
     }
 
     public abstract class BaseScript : LuaSourceContainer

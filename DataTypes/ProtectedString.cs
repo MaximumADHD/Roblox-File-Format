@@ -6,21 +6,21 @@
     /// </summary>
     public class ProtectedString
     {
-        public readonly string Value;
+        public readonly string ProtectedValue;
 
         public override string ToString()
         {
-            return Value;
+            return ProtectedValue;
         }
 
         public ProtectedString(string value)
         {
-            Value = value;
+            ProtectedValue = value;
         }
 
         public static implicit operator string(ProtectedString protectedString)
         {
-            return protectedString.Value;
+            return protectedString.ProtectedValue;
         }
 
         public static implicit operator ProtectedString(string value)
