@@ -77,9 +77,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 foreach (int instId in InstanceIds)
                 {
                     Instance service = file.Instances[instId];
-                    bool isRooted = (service.Parent == file);
-
-                    writer.Write(isRooted);
+                    writer.Write(service.Parent == file);
                 }
             }
 
