@@ -39,6 +39,16 @@ namespace RobloxFiles.BinaryFormat
 
             ClassMap = new Dictionary<string, INST>();
         }
+        
+        public static int SizeOf<T>() where T : struct
+        {
+            int result = 1;
+            
+            if (typeof(T) != typeof(bool))
+                result = Marshal.SizeOf<T>();
+                
+            return result;
+        }
 
         private static byte[] GetBytes<T>(T value, int bufferSize, IntPtr converter)
         {
@@ -52,7 +62,7 @@ namespace RobloxFiles.BinaryFormat
 
         public static byte[] GetBytes<T>(T value) where T : struct
         {
-            int bufferSize = Marshal.SizeOf<T>();
+            int bufferSize = SizeOf<T>();
             IntPtr converter = Marshal.AllocHGlobal(bufferSize);
 
             var result = GetBytes(value, bufferSize, converter);
@@ -66,7 +76,7 @@ namespace RobloxFiles.BinaryFormat
         public void WriteInterleaved<T>(List<T> values, Func<T, T> encode = null) where T : struct
         {
             int count = values.Count;
-            int bufferSize = Marshal.SizeOf<T>();
+            int bufferSize = SizeOf<T>();
 
             byte[][] blocks = new byte[count][];
             IntPtr converter = Marshal.AllocHGlobal(bufferSize);
@@ -111,7 +121,7 @@ namespace RobloxFiles.BinaryFormat
             return BitConverter.ToSingle(buffer, 0);
         }
         
-        // Writes an interleaved list of ints.
+        // Writes an interleaved list of integers.
         public void WriteInts(List<int> values)
         {
             WriteInterleaved(values, EncodeInt);
@@ -123,7 +133,7 @@ namespace RobloxFiles.BinaryFormat
             WriteInterleaved(values, EncodeFloat);
         }
 
-        // Writes an accumlated array of integers.
+        // Accumulatively writes an interleaved array of integers.
         public void WriteInstanceIds(List<int> values)
         {
             int numIds = values.Count;
@@ -204,7 +214,6 @@ namespace RobloxFiles.BinaryFormat
             for (int i = 0; i < classes.Length; i++, File.NumClasses++)
             {
                 string className = classNames[i];
-
                 INST inst = ClassMap[className];
                 inst.ClassIndex = i;
             }
