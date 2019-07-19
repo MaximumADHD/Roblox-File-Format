@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.392.0.317745
+// Updated as of 0.393.0.319623
 
 namespace RobloxFiles.Enums
 {
@@ -895,7 +895,8 @@ namespace RobloxFiles.Enums
     {
         Asset,
         Product,
-        GamePass
+        GamePass,
+        Subscription
     }
 
     public enum InitialDockState
