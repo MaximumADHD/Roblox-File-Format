@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.392.0.317745
+// Updated as of 0.394.0.322464
 
 using System;
 
@@ -2212,6 +2212,7 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
+        public bool Checked = false; // [Load-only]
         public string DefaultShortcut = ""; // [Load-only]
         public bool Enabled = true; // [Load-only]
     }
