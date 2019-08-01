@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.394.0.322464
+// Updated as of 0.395.0.324413
 
 using System;
 
@@ -794,6 +794,14 @@ namespace RobloxFiles
         public string GoodbyeDialog = "";
         public string ResponseDialog = "";
         public string UserDialog = "";
+    }
+
+    public class DraftsService : Instance
+    {
+        public DraftsService()
+        {
+            IsService = true;
+        }
     }
 
     public class Dragger : Instance
@@ -1732,6 +1740,7 @@ namespace RobloxFiles
         public bool LegacyOutlines = false;
         public Color3 OutdoorAmbient = Color3.FromRGB(128, 128, 128);
 
+        [Obsolete]
         public bool Outlines
         {
             get { return LegacyOutlines; }

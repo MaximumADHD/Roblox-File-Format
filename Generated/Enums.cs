@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.394.0.322464
+// Updated as of 0.395.0.324413
 
 namespace RobloxFiles.Enums
 {
@@ -558,6 +558,13 @@ namespace RobloxFiles.Enums
         Height
     }
 
+    public enum DraftStatusCode
+    {
+        OK,
+        DraftOutdated,
+        ScriptRemoved
+    }
+
     public enum EasingDirection
     {
         In,
@@ -574,7 +581,10 @@ namespace RobloxFiles.Enums
         Quart,
         Quint,
         Bounce,
-        Elastic
+        Elastic,
+        Exponential,
+        Circular,
+        Cubic
     }
 
     public enum ElasticBehavior
