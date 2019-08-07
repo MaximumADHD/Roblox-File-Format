@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.395.0.324413
+// Updated as of 0.396.0.327208
 
 using System;
 
@@ -2127,7 +2127,6 @@ namespace RobloxFiles
         }
 
         public bool AllowThirdPartySales = false;
-        public AutoJointsMode AutoJointsMode = AutoJointsMode.Default;
         public string CollisionGroups = "Default^0^1";
         public Camera CurrentCamera = null;
         public double DistributedGameTime = 0;

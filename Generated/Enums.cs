@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.395.0.324413
+// Updated as of 0.396.0.327208
 
 namespace RobloxFiles.Enums
 {
@@ -113,13 +113,6 @@ namespace RobloxFiles.Enums
         EarAccessory,
         EyeAccessory,
         EmoteAnimation = 61
-    }
-
-    public enum AutoJointsMode
-    {
-        Default,
-        Explicit,
-        LegacyImplicit
     }
 
     public enum AvatarContextMenuOption

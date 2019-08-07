@@ -672,7 +672,6 @@ return
 	{
 		Add =
 		{
-			AutoJointsMode = "Enum:AutoJointsMode";
 			CollisionGroups = "string";
 			ExplicitAutoJoints = "bool";
 			
@@ -685,7 +684,6 @@ return
 		
 		Defaults =
 		{
-			AutoJointsMode = Enum.AutoJointsMode.Default;
 			CollisionGroups = "Default^0^1";
 			ExplicitAutoJoints = true;
 			
