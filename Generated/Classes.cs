@@ -2051,6 +2051,7 @@ namespace RobloxFiles
 
     public abstract class TriangleMeshPart : BasePart
     {
+        public CollisionFidelity CollisionFidelity = CollisionFidelity.Default; // [Load-only]
         public Vector3 InitialSize = new Vector3(1, 1, 1);
         public byte[] LODData = new byte[0];
         public SharedString PhysicalConfigData = SharedString.FromBase64("1B2M2Y8AsgTpgAmY7PhCfg==");

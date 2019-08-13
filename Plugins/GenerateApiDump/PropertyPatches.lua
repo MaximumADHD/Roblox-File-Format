@@ -607,6 +607,7 @@ return
 			LODData = "BinaryString";
 			PhysicsData = "BinaryString";
 			PhysicalConfigData = "SharedString";
+			CollisionFidelity = "Enum:CollisionFidelity";
 		};
 		
 		Defaults = 
@@ -614,7 +615,8 @@ return
 			LODData = "";
 			PhysicsData = "";
 			InitialSize = Vector3.new(1, 1, 1);
-			PhysicalConfigData = "1B2M2Y8AsgTpgAmY7PhCfg==";			
+			PhysicalConfigData = "1B2M2Y8AsgTpgAmY7PhCfg==";
+			CollisionFidelity = Enum.CollisionFidelity.Default;
 		};
 	};
 	
