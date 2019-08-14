@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.396.0.327208
+// Updated as of 0.397.0.329146
 
 namespace RobloxFiles.Enums
 {
@@ -174,6 +174,13 @@ namespace RobloxFiles.Enums
         RightUpperArm,
         RootPart,
         Unknown = 17
+    }
+
+    public enum BorderMode
+    {
+        Outline,
+        Middle,
+        Inset
     }
 
     public enum BreakReason

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.396.0.327208
+// Updated as of 0.397.0.329146
 
 using System;
 
@@ -1011,6 +1011,7 @@ namespace RobloxFiles
         }
 
         public Color3 BorderColor3 = Color3.FromRGB(27, 42, 53);
+        public BorderMode BorderMode = BorderMode.Outline;
         public int BorderSizePixel = 1;
         public bool ClipsDescendants = false;
 
@@ -1830,6 +1831,14 @@ namespace RobloxFiles
     public class MarketplaceService : Instance
     {
         public MarketplaceService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class MemStorageService : Instance
+    {
+        public MemStorageService()
         {
             IsService = true;
         }
