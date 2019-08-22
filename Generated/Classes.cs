@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.397.0.329146
+// Updated as of 0.398.0.332127
 
 using System;
 
@@ -1216,6 +1216,7 @@ namespace RobloxFiles
 
         public Color3 TextColor3 = Color3.FromRGB(27, 42, 53);
         public bool TextEditable = true;
+        public TextInputType TextInputType = TextInputType.Default; // [Load-only]
         public bool TextScaled = false;
         public float TextSize = 8;
         public Color3 TextStrokeColor3 = new Color3();
@@ -2699,7 +2700,7 @@ namespace RobloxFiles
 
         public bool AllowCustomAnimations = true;
         public bool AutoJumpEnabled = true;
-        public float CameraMaxZoomDistance = 400;
+        public float CameraMaxZoomDistance = 128;
         public float CameraMinZoomDistance = 0.5f;
         public CameraMode CameraMode = CameraMode.Classic;
         public float CharacterJumpHeight = 7.2f;

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.397.0.329146
+// Updated as of 0.398.0.332127
 
 namespace RobloxFiles.Enums
 {
@@ -1755,6 +1755,16 @@ namespace RobloxFiles.Enums
         ClientPhysicsPause
     }
 
+    public enum StudioDataModelType
+    {
+        Edit,
+        PlayClient = 2,
+        PlayServer,
+        RobloxPlugin,
+        UserPlugin,
+        Null
+    }
+
     public enum StudioStyleGuideColor
     {
         MainBackground,
@@ -1950,6 +1960,15 @@ namespace RobloxFiles.Enums
     {
         PublicChat = 1,
         PrivateChat
+    }
+
+    public enum TextInputType
+    {
+        Default,
+        NoSuggestions,
+        Number,
+        Email,
+        Phone
     }
 
     public enum TextTruncate
