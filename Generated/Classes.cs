@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.398.0.332127
+// Updated as of 0.401.0.338533
 
 using System;
 
@@ -2679,6 +2679,10 @@ namespace RobloxFiles
         public Color3 SparkleColor = Color3.FromRGB(144, 25, 255);
     }
 
+    public class StandalonePluginScripts : Instance
+    {
+    }
+
     public class StarterGear : Instance
     {
     }
@@ -2770,6 +2774,8 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public bool UseLocalSpace = false; // [Load-only]
     }
 
     public class Team : Instance
