@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.401.0.338533
+// Updated as of 0.403.1.344866
 
 namespace RobloxFiles.Enums
 {
@@ -615,8 +615,7 @@ namespace RobloxFiles.Enums
     public enum ExplosionType
     {
         NoCraters,
-        Craters,
-        CratersAndDebris
+        Craters
     }
 
     public enum FillDirection
@@ -1968,7 +1967,8 @@ namespace RobloxFiles.Enums
         NoSuggestions,
         Number,
         Email,
-        Phone
+        Phone,
+        Password
     }
 
     public enum TextTruncate

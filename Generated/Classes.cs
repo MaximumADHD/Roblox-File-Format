@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.401.0.338533
+// Updated as of 0.403.1.344866
 
 using System;
 
@@ -1188,6 +1188,7 @@ namespace RobloxFiles
     public class TextBox : GuiObject
     {
         public bool ClearTextOnFocus = true;
+        public bool EnableRealtimeFilteringHints = false; // [Load-only]
         public Font Font = Font.Legacy;
 
         [Obsolete]
@@ -1197,7 +1198,6 @@ namespace RobloxFiles
             set { TextSize = FontUtility.GetFontSize(value); }
         }
 
-        public bool IsPassword = false; // [Load-only]
         public float LineHeight = 1;
         public bool ManualFocusRelease = false; // [Load-only]
         public bool MultiLine = false;
@@ -2247,6 +2247,14 @@ namespace RobloxFiles
     public class PointsService : Instance
     {
         public PointsService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class PolicyService : Instance
+    {
+        public PolicyService()
         {
             IsService = true;
         }
