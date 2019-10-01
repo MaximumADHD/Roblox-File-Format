@@ -353,6 +353,10 @@ local function generateClasses()
 			end
 		end
 		
+		if class.Name == "PackageLink" then
+			registerClass = true
+		end
+		
 		if registerClass then
 			local objectType
 			

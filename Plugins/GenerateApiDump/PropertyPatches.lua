@@ -385,6 +385,38 @@ return
 		Remove = {"SelectedTheme"}
 	};
 	
+	PackageLink = 
+	{
+		Add = 
+		{
+			VersionId = "int64";
+			
+			OriginalHash = "int64";
+			SymbolicLink = "string";
+			
+			VersionIdSerialize = "int64";
+			PackageIdSerialize = "Content";
+		};
+		
+		Defaults = 
+		{
+			AutoUpdate = false;
+			
+			OriginalHash = 0;
+			SymbolicLink = "";
+			
+			VersionIdSerialize = 0;
+			PackageIdSerialize = "";
+		};
+		
+		Redirect = 
+		{
+			PackageId = "PackageIdSerialize";
+			VersionId = "VersionIdSerialize";
+			VersionNumber = "VersionIdSerialize";
+		};
+	};
+	
 	Part = 
 	{
 		Add = { shape = "Enum:PartType" };

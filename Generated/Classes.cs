@@ -2152,6 +2152,28 @@ namespace RobloxFiles
         public bool TerrainWeldsFixed = true;
     }
 
+    public class PackageLink : Instance
+    {
+        public bool AutoUpdate = false;
+        public long OriginalHash = 0;
+        public Content PackageIdSerialize = "";
+        public string SymbolicLink = "";
+
+        public long VersionId
+        {
+            get { return VersionIdSerialize; }
+            set { VersionIdSerialize = value; }
+        }
+
+        public long VersionIdSerialize = 0;
+
+        public long VersionNumber
+        {
+            get { return VersionIdSerialize; }
+            set { VersionIdSerialize = value; }
+        }
+    }
+
     public class PackageService : Instance
     {
         public PackageService()
