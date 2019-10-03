@@ -2156,6 +2156,13 @@ namespace RobloxFiles
     {
         public bool AutoUpdate = false;
         public long OriginalHash = 0;
+
+        public Content PackageId
+        {
+            get { return PackageIdSerialize; }
+            set { PackageIdSerialize = value; }
+        }
+
         public Content PackageIdSerialize = "";
         public string SymbolicLink = "";
 

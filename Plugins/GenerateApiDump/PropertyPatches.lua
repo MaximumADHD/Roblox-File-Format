@@ -390,6 +390,7 @@ return
 		Add = 
 		{
 			VersionId = "int64";
+			PackageId = "Content";
 			
 			OriginalHash = "int64";
 			SymbolicLink = "string";
@@ -411,8 +412,9 @@ return
 		
 		Redirect = 
 		{
-			PackageId = "PackageIdSerialize";
-			VersionId = "VersionIdSerialize";
+			PackageId = { Get = "PackageIdSerialize" };
+			VersionId = { Get = "VersionIdSerialize" };
+			
 			VersionNumber = "VersionIdSerialize";
 		};
 	};
@@ -639,7 +641,6 @@ return
 			LODData = "BinaryString";
 			PhysicsData = "BinaryString";
 			PhysicalConfigData = "SharedString";
-			CollisionFidelity = "Enum:CollisionFidelity";
 		};
 		
 		Defaults = 
@@ -648,7 +649,6 @@ return
 			PhysicsData = "";
 			InitialSize = Vector3.new(1, 1, 1);
 			PhysicalConfigData = "1B2M2Y8AsgTpgAmY7PhCfg==";
-			CollisionFidelity = Enum.CollisionFidelity.Default;
 		};
 	};
 	
