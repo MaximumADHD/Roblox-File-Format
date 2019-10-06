@@ -75,6 +75,9 @@ namespace RobloxFiles.XmlFormat
 
             foreach (XmlNode propNode in propsNode.ChildNodes)
             {
+                if (propNode.NodeType == XmlNodeType.Comment)
+                    continue;
+
                 string propType = propNode.Name;
                 XmlNode propName = propNode.Attributes.GetNamedItem("name");
 

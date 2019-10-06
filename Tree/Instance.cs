@@ -132,6 +132,22 @@ namespace RobloxFiles
         }
 
         /// <summary>
+        /// Attempts to cast this Instance to an inherited class of type '<typeparamref name="T"/>'.
+        /// Returns null if the instance cannot be casted to the provided type.
+        /// </summary>
+        /// <typeparam name="T">The type of Instance to cast to.</typeparam>
+        /// <returns>The instance as the type '<typeparamref name="T"/>' if it can be converted, or null.</returns>
+        public T Cast<T>() where T : Instance
+        {
+            T result = null;
+
+            if (IsA<T>())
+                result = this as T;
+
+            return result;
+        }
+
+        /// <summary>
         /// The parent of this Instance, or null if the instance is the root of a tree.<para/>
         /// Setting the value of this property will throw an exception if:<para/>
         /// - The parent is currently locked.<para/>
@@ -163,7 +179,7 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Returns a snapshot of the Instances currently parented to this Instance, as an array.
+        /// Returns an array containing all the children of this Instance.
         /// </summary>
         public Instance[] GetChildren()
         {
@@ -171,7 +187,20 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Returns a snapshot of the Instances that are descendants of this Instance, as an array.
+        /// Returns an array containing all the children of this Instance, whose type is '<typeparamref name="T"/>'.
+        /// </summary>
+        public T[] GetChildrenOfType<T>() where T : Instance
+        {
+            T[] ofType = GetChildren()
+                .Where(child => child.IsA<T>())
+                .Cast<T>()
+                .ToArray();
+
+            return ofType;
+        }
+
+        /// <summary>
+        /// Returns an array containing all the descendants of this Instance.
         /// </summary>
         public Instance[] GetDescendants()
         {
@@ -188,6 +217,19 @@ namespace RobloxFiles
             }
 
             return results.ToArray();
+        }
+
+        /// <summary>
+        /// Returns an array containing all the descendants of this Instance, whose type is '<typeparamref name="T"/>'.
+        /// </summary>
+        public T[] GetDescendantsOfType<T>() where T : Instance
+        {
+            T[] ofType = GetDescendants()
+                .Where(desc => desc.IsA<T>())
+                .Cast<T>()
+                .ToArray();
+
+            return ofType;
         }
 
         /// <summary>
@@ -291,7 +333,7 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Returns the first ancestor of this Instance which derives from the provided type T.
+        /// Returns the first ancestor of this Instance which derives from the provided type <typeparamref name="T"/>.
         /// If the instance is not found, this returns null.
         /// </summary>
         /// <param name="name">The Name of the Instance to find.</param>
@@ -349,7 +391,7 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Returns the first child of this Instance which derives from the provided type T.
+        /// Returns the first child of this Instance which derives from the provided type <typeparamref name="T"/>.
         /// If the instance is not found, this returns null.
         /// </summary>
         /// <param name="recursive">Whether this should search descendants as well.</param>
