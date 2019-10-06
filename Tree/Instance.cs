@@ -425,7 +425,7 @@ namespace RobloxFiles
         }
 
         /// <summary>
-        /// Returns a string descrbing the index traversal of this Instance, starting from its root ancestor.
+        /// Returns a string describing the index traversal of this Instance, starting from its root ancestor.
         /// </summary>
         public string GetFullName()
         {
