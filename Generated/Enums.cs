@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.403.1.344866
+// Updated as of 0.407.0.353595
 
 namespace RobloxFiles.Enums
 {
@@ -605,13 +605,6 @@ namespace RobloxFiles.Enums
         Skip16
     }
 
-    public enum ErrorReporting
-    {
-        DontReport,
-        Prompt,
-        Report
-    }
-
     public enum ExplosionType
     {
         NoCraters,
@@ -937,17 +930,6 @@ namespace RobloxFiles.Enums
         All,
         Surface,
         None
-    }
-
-    public enum JointType
-    {
-        Weld = 1,
-        Snap = 3,
-        Rotate = 7,
-        RotateP,
-        RotateV,
-        Glue,
-        None = 28
     }
 
     public enum KeyCode
@@ -1566,6 +1548,16 @@ namespace RobloxFiles.Enums
         diff
     }
 
+    public enum ReturnKeyType
+    {
+        Default,
+        Done,
+        Go,
+        Next,
+        Search,
+        Send
+    }
+
     public enum ReverbType
     {
         NoReverb,
@@ -1761,7 +1753,7 @@ namespace RobloxFiles.Enums
         PlayServer,
         RobloxPlugin,
         UserPlugin,
-        Null
+        None
     }
 
     public enum StudioStyleGuideColor

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.403.1.344866
+// Updated as of 0.407.0.353595
 
 using System;
 
@@ -1204,6 +1204,7 @@ namespace RobloxFiles
         public bool OverlayNativeInput = false; // [Load-only]
         public Color3 PlaceholderColor3 = Color3.FromRGB(178, 178, 178);
         public string PlaceholderText = "";
+        public ReturnKeyType ReturnKeyType = ReturnKeyType.Default; // [Load-only]
         public bool ShowNativeInput = true;
         public string Text = "TextBox";
 
@@ -1733,6 +1734,8 @@ namespace RobloxFiles
         public float Brightness = 2;
         public Color3 ColorShift_Bottom = new Color3();
         public Color3 ColorShift_Top = new Color3();
+        public float EnvironmentDiffuseScale = 0;
+        public float EnvironmentSpecularScale = 0;
         public float ExposureCompensation = 0;
         public Color3 FogColor = Color3.FromRGB(192, 192, 192);
         public float FogEnd = 100000;
@@ -2156,22 +2159,10 @@ namespace RobloxFiles
     {
         public bool AutoUpdate = false;
         public long OriginalHash = 0;
-
-        public Content PackageId
-        {
-            get { return PackageIdSerialize; }
-            set { PackageIdSerialize = value; }
-        }
-
+        public Content PackageId => PackageIdSerialize;
         public Content PackageIdSerialize = "";
         public string SymbolicLink = "";
-
-        public long VersionId
-        {
-            get { return VersionIdSerialize; }
-            set { VersionIdSerialize = value; }
-        }
-
+        public long VersionId => VersionIdSerialize;
         public long VersionIdSerialize = 0;
 
         public long VersionNumber
@@ -2260,9 +2251,9 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
-        public bool Checked = false; // [Load-only]
+        public bool Checked = true; // [Load-only]
         public string DefaultShortcut = ""; // [Load-only]
-        public bool Enabled = true; // [Load-only]
+        public bool Enabled = false; // [Load-only]
     }
 
     public class PluginGuiService : Instance
@@ -2812,7 +2803,7 @@ namespace RobloxFiles
             IsService = true;
         }
 
-        public bool UseLocalSpace = false; // [Load-only]
+        public bool UseLocalSpace = true; // [Load-only]
     }
 
     public class Team : Instance
@@ -2927,6 +2918,14 @@ namespace RobloxFiles
     public class TweenService : Instance
     {
         public TweenService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class UGCValidationService : Instance
+    {
+        public UGCValidationService()
         {
             IsService = true;
         }

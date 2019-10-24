@@ -456,7 +456,7 @@ local function generateClasses()
 							set = redirect.Set
 						end
 						
-						if not firstLine then
+						if not firstLine and set then
 							writeLine()
 						end
 						
@@ -464,14 +464,18 @@ local function generateClasses()
 							writeLine("[Obsolete]")
 						end
 						
-						writeLine("public %s %s", valueType, name)
+						if set then
+							writeLine("public %s %s", valueType, name)
+							
+							openStack()
+								writeLine("get { return %s; }", get)
+								writeLine("set { %s; }", set)
+							closeStack()
+						else
+							writeLine("public %s %s => %s;", valueType, name, get)
+						end
 						
-						openStack()
-							writeLine("get { return %s; }", get)
-							writeLine("set { %s; }", set)
-						closeStack()
-						
-						if (i ~= #propNames) then
+						if i ~= #propNames and set then
 							writeLine()
 						end
 					else
