@@ -54,7 +54,7 @@ namespace RobloxFiles
         internal object RawValue;
         internal BinaryRobloxFileWriter CurrentWriter;
         
-        internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
+        internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
 
         public static IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {

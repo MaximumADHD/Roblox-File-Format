@@ -57,6 +57,9 @@ namespace RobloxFiles
         /// <summary>A list of CollectionService tags assigned to this Instance.</summary>
         public List<string> Tags => RawTags;
 
+        /// <summary>The internal serialized data of this Instance's attributes</summary>
+        internal byte[] AttributesSerialize;
+        
         /// <summary>
         /// Internal format of the Instance's CollectionService tags.
         /// Property objects will look to this member for serializing the Tags property.

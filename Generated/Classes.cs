@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.407.0.353595
+// Updated as of 0.408.0.355772
 
 using System;
 
@@ -1584,6 +1584,7 @@ namespace RobloxFiles
     {
         public CFrame C0 = new CFrame();
         public CFrame C1 = new CFrame();
+        public bool Enabled = true;
         public bool IsAutoJoint = true;
         public BasePart Part0 = null;
         public BasePart Part1 = null;
@@ -2251,7 +2252,7 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
-        public bool Checked = true; // [Load-only]
+        public bool Checked = false; // [Load-only]
         public string DefaultShortcut = ""; // [Load-only]
         public bool Enabled = false; // [Load-only]
     }

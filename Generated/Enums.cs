@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.407.0.353595
+// Updated as of 0.408.0.355772
 
 namespace RobloxFiles.Enums
 {
@@ -1319,6 +1319,14 @@ namespace RobloxFiles.Enums
         MessageInfo,
         MessageWarning,
         MessageError
+    }
+
+    public enum ModifierKey
+    {
+        Shift,
+        Ctrl,
+        Alt,
+        Meta
     }
 
     public enum MouseBehavior
