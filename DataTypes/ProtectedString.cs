@@ -7,11 +7,7 @@
     public class ProtectedString
     {
         public readonly string ProtectedValue;
-
-        public override string ToString()
-        {
-            return ProtectedValue;
-        }
+        public override string ToString() => ProtectedValue;
 
         public ProtectedString(string value)
         {

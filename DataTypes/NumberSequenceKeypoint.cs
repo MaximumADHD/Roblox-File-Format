@@ -6,6 +6,11 @@
         public readonly float Value;
         public readonly float Envelope;
 
+        public override string ToString()
+        {
+            return $"{Time} {Value} {Envelope}";
+        }
+
         public NumberSequenceKeypoint(float time, float value, float envelope = 0)
         {
             Time = time;
@@ -13,9 +18,11 @@
             Envelope = envelope;
         }
 
-        public override string ToString()
+        internal NumberSequenceKeypoint(Attribute attr)
         {
-            return string.Join(" ", Time, Value, Envelope);
+            Envelope = attr.readFloat();
+            Time = attr.readFloat();
+            Value = attr.readFloat();
         }
     }
 }

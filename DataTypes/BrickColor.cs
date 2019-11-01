@@ -26,6 +26,9 @@ namespace RobloxFiles.DataTypes
         private const string DefaultName = "Medium stone grey";
         private const int DefaultNumber = 194;
 
+        public static implicit operator int(BrickColor color) => color.Number;
+        public static implicit operator BrickColor(int number) => FromNumber(number);
+
         internal BrickColor(int number, uint rgb, string name)
         {
             uint r = (rgb / 65536) % 256;
@@ -43,6 +46,7 @@ namespace RobloxFiles.DataTypes
             ByNumber = BrickColors.ColorMap.ToDictionary(brickColor => brickColor.Number);
             ByPalette = BrickColors.PaletteMap.Select(number => ByNumber[number]).ToList();
         }
+
         
         public static BrickColor FromName(string name)
         {

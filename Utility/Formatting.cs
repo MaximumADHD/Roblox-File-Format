@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Globalization;
+using System.Text;
 
 internal static class Formatting
 {
@@ -111,5 +113,16 @@ internal static class Formatting
     public static bool FuzzyEquals(this double a, double b, double epsilon = 10e-5)
     {
         return Math.Abs(a - b) < epsilon;
+    }
+
+    public static string ReadString(this BinaryReader reader, bool useIntLength)
+    {
+        if (!useIntLength)
+            return reader.ReadString();
+
+        int len = reader.ReadInt32();
+        byte[] buffer = reader.ReadBytes(len);
+
+        return Encoding.UTF8.GetString(buffer);
     }
 }

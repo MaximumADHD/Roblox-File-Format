@@ -6,6 +6,11 @@
         public readonly Color3 Value;
         public readonly int Envelope;
 
+        public override string ToString()
+        {
+            return $"{Time} {Value.R} {Value.G} {Value.B} {Envelope}";
+        }
+
         public ColorSequenceKeypoint(float time, Color3 value, int envelope = 0)
         {
             Time = time;
@@ -13,9 +18,11 @@
             Envelope = envelope;
         }
 
-        public override string ToString()
+        internal ColorSequenceKeypoint(Attribute attr)
         {
-            return string.Join(" ", Time, Value.R, Value.G, Value.B, Envelope);
+            Envelope = attr.readInt();
+            Time = attr.readFloat();
+            Value = new Color3(attr);
         }
     }
 }

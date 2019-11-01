@@ -5,6 +5,8 @@
         public readonly Vector3 Origin;
         public readonly Vector3 Direction;
 
+        public override string ToString() => $"{{{Origin}}}, {{{Direction}}}";
+
         public Ray Unit
         {
             get
@@ -26,9 +28,10 @@
             Direction = direction ?? new Vector3();
         }
 
-        public override string ToString()
+        internal Ray(Attribute attr)
         {
-            return '{' + Origin.ToString() + "}, {" + Direction.ToString() + '}';
+            Origin = new Vector3(attr);
+            Direction = new Vector3(attr);
         }
 
         public Vector3 ClosestPoint(Vector3 point)

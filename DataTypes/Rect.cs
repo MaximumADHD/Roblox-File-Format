@@ -8,6 +8,8 @@
         public float Width => (Max - Min).X;
         public float Height => (Max - Min).Y;
 
+        public override string ToString() => $"{Min}, {Max}";
+
         public Rect(Vector2 min = null, Vector2 max = null)
         {
             Min = min ?? Vector2.Zero;
@@ -20,9 +22,10 @@
             Max = new Vector2(maxX, maxY);
         }
 
-        public override string ToString()
+        internal Rect(Attribute attr)
         {
-            return string.Join(", ", Min, Max);
+            Min = new Vector2(attr);
+            Max = new Vector2(attr);
         }
     }
 }

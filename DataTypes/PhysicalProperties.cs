@@ -12,6 +12,11 @@ namespace RobloxFiles.DataTypes
         public readonly float FrictionWeight = 1.0f;
         public readonly float ElasticityWeight = 1.0f;
 
+        public override string ToString()
+        {
+            return $"{Density}, {Friction}, {Elasticity}, {FrictionWeight}, {ElasticityWeight}";
+        }
+
         public PhysicalProperties(Material material)
         {
             if (MaterialInfo.FrictionWeightMap.ContainsKey(material))
@@ -32,9 +37,14 @@ namespace RobloxFiles.DataTypes
             ElasticityWeight = elasticityWeight;
         }
 
-        public override string ToString()
+        internal PhysicalProperties(Attribute attr)
         {
-            return string.Join(", ", Density, Friction, Elasticity, FrictionWeight, ElasticityWeight);
+            Density = attr.readFloat();
+            Friction = attr.readFloat();
+            Elasticity = attr.readFloat();
+
+            FrictionWeight = attr.readFloat();
+            ElasticityWeight = attr.readFloat();
         }
     }
 }

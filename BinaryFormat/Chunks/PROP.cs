@@ -87,6 +87,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         // Check if this is going to be casted as a BinaryString.
                         // BinaryStrings should use a type of byte[] instead.
 
+                        if (Name == "AttributesSerialize")
+                            return buffer;
+
                         Property prop = props[i];
                         Instance instance = prop.Instance;
 

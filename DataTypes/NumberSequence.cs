@@ -6,6 +6,11 @@ namespace RobloxFiles.DataTypes
     {
         public readonly NumberSequenceKeypoint[] Keypoints;
 
+        public override string ToString()
+        {
+            return string.Join<NumberSequenceKeypoint>(" ", Keypoints);
+        }
+
         public NumberSequence(float n)
         {
             NumberSequenceKeypoint a = new NumberSequenceKeypoint(0, n);
@@ -47,9 +52,15 @@ namespace RobloxFiles.DataTypes
             Keypoints = keypoints;
         }
 
-        public override string ToString()
+        public NumberSequence(Attribute attr)
         {
-            return string.Join<NumberSequenceKeypoint>(" ", Keypoints);
+            int numKeys = attr.readInt();
+            var keypoints = new NumberSequenceKeypoint[numKeys];
+
+            for (int i = 0; i < numKeys; i++)
+                keypoints[i] = new NumberSequenceKeypoint(attr);
+
+            Keypoints = keypoints;
         }
     }
 }

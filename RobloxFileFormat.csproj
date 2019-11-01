@@ -81,10 +81,13 @@
     <Compile Include="DataTypes\Color3uint8.cs" />
     <Compile Include="DataTypes\ProtectedString.cs" />
     <Compile Include="DataTypes\Content.cs" />
+    <Compile Include="DataTypes\Region3int16.cs" />
     <Compile Include="DataTypes\SharedString.cs" />
+    <Compile Include="DataTypes\Vector2int16.cs" />
     <Compile Include="Interfaces\IBinaryFileChunk.cs" />
     <Compile Include="Generated\Classes.cs" />
     <Compile Include="Generated\Enums.cs" />
+    <Compile Include="Tree\Attributes.cs" />
     <Compile Include="Tree\Property.cs" />
     <Compile Include="Tree\Instance.cs" />
     <Compile Include="RobloxFile.cs" />

@@ -166,6 +166,11 @@ namespace RobloxFiles
                         byte[] data = Instance.SerializedTags;
                         RawValue = data;
                     }
+                    else if (Name == "AttributesSerialize")
+                    {
+                        byte[] data = Instance.AttributesSerialize;
+                        RawValue = data;
+                    }
                     else
                     {
                         FieldInfo field = Instance.GetType()
@@ -193,6 +198,11 @@ namespace RobloxFiles
                     {
                         byte[] data = value as byte[];
                         Instance.SerializedTags = data;
+                    }
+                    else if (Name == "AttributesSerialize" && value is byte[])
+                    {
+                        byte[] data = value as byte[];
+                        Instance.AttributesSerialize = data;
                     }
                     else
                     {

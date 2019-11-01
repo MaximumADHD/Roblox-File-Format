@@ -9,6 +9,7 @@ namespace RobloxFiles.DataTypes
     public class Quaternion
     {
         public readonly float X, Y, Z, W;
+        public override string ToString() => $"{X}, {Y}, {Z}, {W}";
 
         public float Magnitude
         {
@@ -20,12 +21,7 @@ namespace RobloxFiles.DataTypes
                 return (float)magnitude;
             }
         }
-
-        public override string ToString()
-        {
-            return string.Join(", ", X, Y, Z, W);
-        }
-
+        
         public Quaternion(float x, float y, float z, float w)
         {
             X = x;

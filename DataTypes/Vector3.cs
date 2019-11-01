@@ -6,6 +6,7 @@ namespace RobloxFiles.DataTypes
     public class Vector3
     {
         public readonly float X, Y, Z;
+        public override string ToString() => $"{X}, {Y}, {Z}";
 
         public float Magnitude
         {
@@ -35,6 +36,13 @@ namespace RobloxFiles.DataTypes
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
             Z = coords.Length > 2 ? coords[2] : 0;
+        }
+
+        internal Vector3(Attribute attr)
+        {
+            X = attr.readFloat();
+            Y = attr.readFloat();
+            Z = attr.readFloat();
         }
 
         public static Vector3 FromAxis(Axis axis)
@@ -102,10 +110,7 @@ namespace RobloxFiles.DataTypes
         public static Vector3 Up    => new Vector3(0, 1, 0);
         public static Vector3 Back  => new Vector3(0, 0, 1);
 
-        public override string ToString()
-        {
-            return string.Join(", ", X, Y, Z);
-        }
+        
 
         public float Dot(Vector3 other)
         {

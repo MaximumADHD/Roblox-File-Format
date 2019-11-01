@@ -7,11 +7,7 @@
     public class Content
     {
         public readonly string Url;
-
-        public override string ToString()
-        {
-            return Url;
-        }
+        public override string ToString() => Url;
 
         public Content(string url)
         {

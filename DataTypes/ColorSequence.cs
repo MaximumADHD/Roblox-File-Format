@@ -6,6 +6,11 @@ namespace RobloxFiles.DataTypes
     {
         public readonly ColorSequenceKeypoint[] Keypoints;
 
+        public override string ToString()
+        {
+            return string.Join<ColorSequenceKeypoint>(" ", Keypoints);
+        }
+
         public ColorSequence(Color3 c) : this(c, c)
         {
         }
@@ -42,10 +47,16 @@ namespace RobloxFiles.DataTypes
 
             Keypoints = keypoints;
         }
-
-        public override string ToString()
+        
+        public ColorSequence(Attribute attr)
         {
-            return string.Join<ColorSequenceKeypoint>(" ", Keypoints);
+            int numKeys = attr.readInt();
+            var keypoints = new ColorSequenceKeypoint[numKeys];
+
+            for (int i = 0; i < numKeys; i++)
+                keypoints[i] = new ColorSequenceKeypoint(attr);
+
+            Keypoints = keypoints;
         }
     }
 }

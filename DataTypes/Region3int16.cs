@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RobloxFiles.DataTypes
+﻿namespace RobloxFiles.DataTypes
 {
-    public struct Region3int16
+    public class Region3int16
     {
         public readonly Vector3int16 Min, Max;
+        public override string ToString() => $"{Min}; {Max}";
 
         public Region3int16(Vector3int16 min = null, Vector3int16 max = null)
         {
@@ -16,9 +11,10 @@ namespace RobloxFiles.DataTypes
             Max = max ?? new Vector3int16();
         }
 
-        public override string ToString()
+        internal Region3int16(Attribute attr)
         {
-            return string.Join("; ", Min, Max);
+            Min = new Vector3int16(attr);
+            Max = new Vector3int16(attr);
         }
     }
 }

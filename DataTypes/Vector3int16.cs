@@ -5,12 +5,10 @@ namespace RobloxFiles.DataTypes
     public class Vector3int16
     {
         public readonly short X, Y, Z;
+        public override string ToString() => $"{X}, {Y}, {Z}";
 
-        public Vector3int16()
+        public Vector3int16() : this(0, 0, 0)
         {
-            X = 0;
-            Y = 0;
-            Z = 0;
         }
 
         public Vector3int16(short x = 0, short y = 0, short z = 0)
@@ -27,9 +25,11 @@ namespace RobloxFiles.DataTypes
             Z = (short)z;
         }
 
-        public override string ToString()
+        internal Vector3int16(Attribute attr)
         {
-            return string.Join(", ", X, Y, Z);
+            X = attr.readShort();
+            Y = attr.readShort();
+            Z = attr.readShort();
         }
 
         private delegate Vector3int16 Operator(Vector3int16 a, Vector3int16 b);

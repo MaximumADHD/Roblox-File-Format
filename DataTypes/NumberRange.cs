@@ -7,24 +7,39 @@ namespace RobloxFiles.DataTypes
         public readonly float Min;
         public readonly float Max;
 
+        public override string ToString() => $"{Min} {Max}";
+
         public NumberRange(float num)
         {
             Min = num;
             Max = num;
         }
 
+        private static void checkRange(float min, float max)
+        {
+            if (max - min >= 0)
+                return;
+
+            throw new Exception("NumberRange: invalid range");
+        }
+
         public NumberRange(float min = 0, float max = 0)
         {
-            if (max - min < 0)
-                throw new Exception("NumberRange: invalid range");
+            checkRange(min, max);
 
             Min = min;
             Max = max;
         }
 
-        public override string ToString()
+        internal NumberRange(Attribute attr)
         {
-            return string.Join(" ", Min, Max);
+            float min = attr.readFloat();
+            float max = attr.readFloat();
+
+            checkRange(min, max);
+
+            Min = min;
+            Max = max;
         }
     }
 }

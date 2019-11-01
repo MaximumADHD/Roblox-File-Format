@@ -1,4 +1,5 @@
 ﻿using System;
+using RobloxFiles.Enums;
 
 namespace RobloxFiles.DataTypes
 {
@@ -119,6 +120,50 @@ namespace RobloxFiles.DataTypes
             m11 = comp[3]; m12 = comp[4];  m13 = comp[5];
             m21 = comp[6]; m22 = comp[7];  m23 = comp[8];
             m31 = comp[9]; m32 = comp[10]; m33 = comp[11];
+        }
+
+        private void initFromMatrix(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
+        {
+            if (vZ == null)
+                vZ = vX.Cross(vY);
+
+            m14 = pos.X; m24 = pos.Y; m34 = pos.Z;
+            m11 =  vX.X; m12 =  vX.Y; m13 =  vX.Z;
+            m21 =  vY.X; m22 =  vY.Y; m23 =  vY.Z;
+            m31 =  vZ.X; m32 =  vZ.Y; m33 =  vZ.Z;
+        }
+
+        public CFrame(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
+        {
+            initFromMatrix(pos, vX, vY, vZ);
+        }
+
+        internal CFrame(Attribute attr)
+        {
+            Vector3 pos = new Vector3(attr);
+            byte rawOrientId = attr.readByte();
+
+            if (rawOrientId > 0)
+            {
+                // Make sure this value is in a safe range.
+                int orientId = (rawOrientId - 1) % 36;
+
+                NormalId xColumn = (NormalId)(orientId / 6);
+                Vector3 vX = Vector3.FromNormalId(xColumn);
+
+                NormalId yColumn = (NormalId)(orientId % 6);
+                Vector3 vY = Vector3.FromNormalId(yColumn);
+
+                initFromMatrix(pos, vX, vY);
+            }
+            else
+            {
+                Vector3 vX = new Vector3(attr),
+                        vY = new Vector3(attr),
+                        vZ = new Vector3(attr);
+
+                initFromMatrix(pos, vX, vY, vZ);
+            }
         }
 
         public static CFrame operator +(CFrame a, Vector3 b)

@@ -7,17 +7,13 @@
     public class Color3uint8
     {
         public readonly byte R, G, B;
+        public override string ToString() => $"{R}, {G}, {B}";
 
         public Color3uint8(byte r = 0, byte g = 0, byte b = 0)
         {
             R = r;
             G = g;
             B = b;
-        }
-
-        public override string ToString()
-        {
-            return string.Join(", ", R, G, B);
         }
 
         public static implicit operator Color3(Color3uint8 color)

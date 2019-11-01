@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -57,9 +58,23 @@ namespace RobloxFiles
         /// <summary>A list of CollectionService tags assigned to this Instance.</summary>
         public List<string> Tags => RawTags;
 
+        /// <summary>The attributes defined for this Instance.</summary>
+        public Attributes Attributes { get; private set; }
+
         /// <summary>The internal serialized data of this Instance's attributes</summary>
-        internal byte[] AttributesSerialize;
-        
+        internal byte[] AttributesSerialize
+        {
+            get
+            {
+                return Attributes?.Serialize() ?? new byte[0];
+            }
+            set
+            {
+                MemoryStream data = new MemoryStream(value);
+                Attributes = new Attributes(data);
+            }
+        }
+
         /// <summary>
         /// Internal format of the Instance's CollectionService tags.
         /// Property objects will look to this member for serializing the Tags property.
@@ -538,11 +553,18 @@ namespace RobloxFiles
             }
 
             Property tags = GetProperty("Tags");
+            Property attributes = GetProperty("AttributesSerialize");
             
             if (tags == null)
             {
                 tags = new Property("Tags", PropertyType.String);
                 AddProperty(ref tags);
+            }
+
+            if (attributes == null)
+            {
+                attributes = new Property("AttributesSerialize", PropertyType.String);
+                AddProperty(ref attributes);
             }
 
             return Properties;

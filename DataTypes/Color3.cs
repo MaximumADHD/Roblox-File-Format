@@ -5,6 +5,7 @@ namespace RobloxFiles.DataTypes
     public class Color3
     {
         public readonly float R, G, B;
+        public override string ToString() => $"{R}, {G}, {B}";
 
         public Color3(float r = 0, float g = 0, float b = 0)
         {
@@ -13,9 +14,11 @@ namespace RobloxFiles.DataTypes
             B = b;
         }
 
-        public override string ToString()
+        internal Color3(Attribute attr)
         {
-            return string.Join(", ", R, G, B);
+            R = attr.readFloat();
+            G = attr.readFloat();
+            B = attr.readFloat();
         }
 
         public static Color3 FromRGB(uint r = 0, uint g = 0, uint b = 0)

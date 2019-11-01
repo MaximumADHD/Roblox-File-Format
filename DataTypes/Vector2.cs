@@ -5,7 +5,8 @@ namespace RobloxFiles.DataTypes
     public class Vector2
     {
         public readonly float X, Y;
-        
+        public override string ToString() => $"{X}, {Y}";
+
         public float Magnitude
         {
             get
@@ -32,6 +33,12 @@ namespace RobloxFiles.DataTypes
         {
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
+        }
+
+        internal Vector2(Attribute attr)
+        {
+            X = attr.readFloat();
+            Y = attr.readFloat();
         }
 
         private delegate Vector2 Operator(Vector2 a, Vector2 b);
@@ -75,11 +82,6 @@ namespace RobloxFiles.DataTypes
         }
 
         public static Vector2 Zero => new Vector2(0, 0);
-
-        public override string ToString()
-        {
-            return string.Join(", ", X, Y);
-        }
 
         public float Dot(Vector2 other)
         {

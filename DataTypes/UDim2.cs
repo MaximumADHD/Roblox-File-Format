@@ -3,6 +3,7 @@
     public class UDim2
     {
         public readonly UDim X, Y;
+        public override string ToString() => $"{{{X}}},{{{Y}}}";
 
         public UDim Width => X;
         public UDim Height => Y;
@@ -19,11 +20,12 @@
             Y = y;
         }
 
-        public override string ToString()
+        internal UDim2(Attribute attr)
         {
-            return '{' + X.ToString() + "},{" + Y.ToString() + '}';
+            X = new UDim(attr);
+            Y = new UDim(attr);
         }
-
+        
         public UDim2 Lerp(UDim2 other, float alpha)
         {
             float scaleX = X.Scale + ((other.X.Scale - X.Scale) * alpha);
