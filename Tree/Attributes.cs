@@ -64,7 +64,7 @@ namespace RobloxFiles
         internal double readDouble() => reader.ReadDouble();
         internal string readString() => reader.ReadString(true);
 
-        private Attribute[] readArray()
+        internal Attribute[] readArray()
         {
             int count = readInt();
             var result = new Attribute[count];
@@ -75,7 +75,7 @@ namespace RobloxFiles
             return result;
         }
 
-        private object readEnum()
+        internal object readEnum()
         {
             string name = readString();
             int value = readInt();
@@ -220,6 +220,12 @@ namespace RobloxFiles
     {
         private void initialize(BinaryReader reader)
         {
+            Stream stream = reader.BaseStream;
+
+            if (stream.Length - stream.Position < 4)
+                // Not enough room to read the entry count, possibly empty?
+                return;
+
             int numEntries = reader.ReadInt32();
 
             for (int i = 0; i < numEntries; i++)

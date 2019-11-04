@@ -49,7 +49,10 @@ namespace RobloxFiles.XmlFormat
         {
             string propType = prop.XmlToken;
 
-            if (prop.XmlToken.Length == 0)
+            if (propType == null)
+                propType = "";
+
+            if (propType.Length == 0)
             {
                 propType = GetEnumName(prop.Type);
 
