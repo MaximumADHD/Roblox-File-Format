@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.408.0.355772
+// Updated as of 0.409.2.359720
 
 using System;
 
@@ -2252,7 +2252,7 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
-        public bool Checked = false; // [Load-only]
+        public bool Checked = true; // [Load-only]
         public string DefaultShortcut = ""; // [Load-only]
         public bool Enabled = false; // [Load-only]
     }
@@ -2793,6 +2793,7 @@ namespace RobloxFiles
             IsService = true;
         }
 
+        public bool EnableScriptCollabOnLoad = false;
         public long SrcPlaceId = 0;
         public long SrcUniverseId = 0;
     }

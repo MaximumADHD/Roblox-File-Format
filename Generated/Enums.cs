@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.408.0.355772
+// Updated as of 0.409.2.359720
 
 namespace RobloxFiles.Enums
 {
@@ -455,6 +455,12 @@ namespace RobloxFiles.Enums
         GetSortedAsync,
         SetIncrementSortedAsync,
         OnUpdate
+    }
+
+    public enum DateTimeKind
+    {
+        Utc,
+        Local
     }
 
     public enum DevCameraOcclusionMode
