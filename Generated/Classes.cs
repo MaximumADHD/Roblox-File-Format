@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.409.2.359720
+// Updated as of 0.410.1.361262
 
 using System;
 
@@ -2053,6 +2053,7 @@ namespace RobloxFiles
         public string ClusterGrid = "";
         public string ClusterGridV2 = "";
         public byte[] ClusterGridV3 = new byte[0];
+        public bool Decoration = false;
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
         public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
         public byte[] SmoothGrid = Convert.FromBase64String("AQU=");
@@ -2134,7 +2135,11 @@ namespace RobloxFiles
         public BasePart PrimaryPart = null;
     }
 
-    public class Workspace : Model
+    public abstract class WorldRoot : Model
+    {
+    }
+
+    public class Workspace : WorldRoot
     {
         public Workspace()
         {
@@ -2154,6 +2159,10 @@ namespace RobloxFiles
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
         public int StreamingTargetRadius = 1024;
         public bool TerrainWeldsFixed = true;
+    }
+
+    public class WorldModel : WorldRoot
+    {
     }
 
     public class PackageLink : Instance
@@ -2254,7 +2263,7 @@ namespace RobloxFiles
     {
         public bool Checked = true; // [Load-only]
         public string DefaultShortcut = ""; // [Load-only]
-        public bool Enabled = false; // [Load-only]
+        public bool Enabled = true; // [Load-only]
     }
 
     public class PluginGuiService : Instance

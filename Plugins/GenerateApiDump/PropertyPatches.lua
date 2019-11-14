@@ -595,6 +595,8 @@ return
 			ClusterGridV2 = "";
 			ClusterGridV3 = "";
 			
+			Decoration = false;
+			
 			SmoothGrid = "AQU=";
 			PhysicsGrid = "AgMAAAAAAAAAAAAAAAA=";
 			MaterialColors = "AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM";
