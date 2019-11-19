@@ -31,7 +31,7 @@ namespace RobloxFiles.DataTypes
             Z = z;
         }
 
-        internal Vector3(float[] coords)
+        public Vector3(float[] coords)
         {
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
