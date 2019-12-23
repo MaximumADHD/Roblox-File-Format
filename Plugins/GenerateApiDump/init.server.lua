@@ -9,7 +9,7 @@ local stackLevel = 0
 
 local singletons = 
 {
-	Terrain = workspace:WaitForChild("Terrain");
+	Terrain = workspace:WaitForChild("Terrain", 1000);
 	StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts");
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts");
 }
@@ -175,7 +175,7 @@ end
 -- Formatting
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local formatting = require(script.Parent.Formatting)
+local formatting = require(script.Formatting)
 
 local formatLinks = 
 {
@@ -207,7 +207,7 @@ end
 -- Property Patches
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local patches = require(script.Parent.PropertyPatches)
+local patches = require(script.PropertyPatches)
 local patchIndex = {}
 
 function patchIndex:__index(key)

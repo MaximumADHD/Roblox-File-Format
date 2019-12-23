@@ -110,8 +110,6 @@ namespace RobloxFiles.DataTypes
         public static Vector3 Up    => new Vector3(0, 1, 0);
         public static Vector3 Back  => new Vector3(0, 0, 1);
 
-        
-
         public float Dot(Vector3 other)
         {
             float dotX = X * other.X;

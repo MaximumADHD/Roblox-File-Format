@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.410.1.361262
+// Updated as of 0.413.1.370526
 
 using System;
 
@@ -310,6 +310,14 @@ namespace RobloxFiles
         public float ThrustP = 5;
         public float TurnD = 500;
         public float TurnP = 3000;
+    }
+
+    public class BrowserService : Instance
+    {
+        public BrowserService()
+        {
+            IsService = true;
+        }
     }
 
     public abstract class CacheableContentProvider : Instance
@@ -1801,7 +1809,9 @@ namespace RobloxFiles
 
     public abstract class LuaSourceContainer : Instance
     {
+        public Content LinkedSource = "";
         public string ScriptGuid = "";
+        public ProtectedString Source = "";
     }
 
     public abstract class BaseScript : LuaSourceContainer
@@ -1812,7 +1822,6 @@ namespace RobloxFiles
 
     public class Script : BaseScript
     {
-        public ProtectedString Source = "";
     }
 
     public class LocalScript : Script
@@ -1821,8 +1830,6 @@ namespace RobloxFiles
 
     public class ModuleScript : LuaSourceContainer
     {
-        public Content LinkedSource = "";
-        public ProtectedString Source = "";
     }
 
     public class LuaWebService : Instance
@@ -2169,10 +2176,8 @@ namespace RobloxFiles
     {
         public bool AutoUpdate = false;
         public long OriginalHash = 0;
-        public Content PackageId => PackageIdSerialize;
         public Content PackageIdSerialize = "";
         public string SymbolicLink = "";
-        public long VersionId => VersionIdSerialize;
         public long VersionIdSerialize = 0;
 
         public long VersionNumber
@@ -2246,6 +2251,17 @@ namespace RobloxFiles
         }
     }
 
+    public class PlayerEmulatorService : Instance
+    {
+        public PlayerEmulatorService()
+        {
+            IsService = true;
+        }
+
+        public bool PlayerEmulationEnabled = false; // [Load-only]
+        public string StudioEmulatedCountryRegionCode = ""; // [Load-only]
+    }
+
     public class Players : Instance
     {
         public Players()
@@ -2261,9 +2277,9 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
-        public bool Checked = true; // [Load-only]
+        public bool Checked = false; // [Load-only]
         public string DefaultShortcut = ""; // [Load-only]
-        public bool Enabled = true; // [Load-only]
+        public bool Enabled = false; // [Load-only]
     }
 
     public class PluginGuiService : Instance
@@ -2971,6 +2987,14 @@ namespace RobloxFiles
     {
         public int MaxTextSize = 100;
         public int MinTextSize = 1;
+    }
+
+    public class UIGradient : UIComponent
+    {
+        public ColorSequence Color = new ColorSequence(new Color3(1, 1, 1));
+        public Vector2 Offset = new Vector2();
+        public float Rotation = 0;
+        public NumberSequence Transparency = new NumberSequence(0);
     }
 
     public abstract class UILayout : UIComponent

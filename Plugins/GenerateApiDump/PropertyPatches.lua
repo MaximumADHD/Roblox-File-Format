@@ -1,7 +1,7 @@
 local function UseColor3(propName)
 	return
 	{
-		Get = "BrickColor.FromColor3(" .. propName .. ')';
+		Get = string.format("BrickColor.FromColor3(%s)", propName);
 		Set = propName .. " = value.Color";
 	}
 end
@@ -347,11 +347,31 @@ return
 			DevelopmentLanguage = "SourceLocaleId";
 		}
 	};
+
+	LocalScript =
+	{
+		Remove = 
+		{
+			"LinkedSource",
+			"Source"
+		}
+	};
 	
 	LuaSourceContainer = 
 	{
-		Add      = { ScriptGuid = "string" };
-		Defaults = { ScriptGuid = ""       };
+		Add = 
+		{ 
+			LinkedSource = "Content";
+			ScriptGuid = "string";
+			Source = "ProtectedString";
+		};
+
+		Defaults = 
+		{
+			LinkedSource = "";
+			ScriptGuid = "";
+			Source = "";
+		};
 	};
 	
 	ManualSurfaceJointInstance = 
@@ -379,6 +399,15 @@ return
 		Add      = { ModelInPrimary = "CFrame"     };
 		Defaults = { ModelInPrimary = CFrame.new() };
 	};
+
+	ModuleScript = 
+	{
+		Remove =
+		{
+			"LinkedSource",
+			"Source"
+		}
+	};
 	
 	NotificationService = 
 	{
@@ -389,9 +418,6 @@ return
 	{
 		Add = 
 		{
-			VersionId = "int64";
-			PackageId = "Content";
-			
 			OriginalHash = "int64";
 			SymbolicLink = "string";
 			
@@ -412,9 +438,6 @@ return
 		
 		Redirect = 
 		{
-			PackageId = { Get = "PackageIdSerialize" };
-			VersionId = { Get = "VersionIdSerialize" };
-			
 			VersionNumber = "VersionIdSerialize";
 		};
 	};
@@ -507,6 +530,15 @@ return
 	ServerScriptService = 
 	{
 		Defaults = { LoadStringEnabled = false }
+	};
+
+	Script = 
+	{
+		Remove = 
+		{
+			"LinkedSource",
+			"Source"
+		}
 	};
 	
 	Smoke =

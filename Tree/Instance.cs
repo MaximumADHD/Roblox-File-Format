@@ -29,7 +29,7 @@ namespace RobloxFiles
         public IReadOnlyDictionary<string, Property> Properties => props;
 
         /// <summary>The raw list of children for this Instance.</summary>
-        internal List<Instance> Children = new List<Instance>();
+        internal HashSet<Instance> Children = new HashSet<Instance>();
 
         /// <summary>The raw value of the Instance's parent.</summary>
         private Instance RawParent;
@@ -445,14 +445,14 @@ namespace RobloxFiles
         /// <summary>
         /// Returns a string describing the index traversal of this Instance, starting from its root ancestor.
         /// </summary>
-        public string GetFullName()
+        public string GetFullName(string separator = ".")
         {
             string fullName = Name;
             Instance at = Parent;
 
             while (at != null)
             {
-                fullName = at.Name + '.' + fullName;
+                fullName = at.Name + separator + fullName;
                 at = at.Parent;
             }
 
