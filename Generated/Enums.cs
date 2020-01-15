@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.413.1.370526
+// Updated as of 0.415.0.373700
 
 namespace RobloxFiles.Enums
 {
@@ -326,7 +326,8 @@ namespace RobloxFiles.Enums
         Default,
         Classic,
         Follow,
-        Orbital
+        Orbital,
+        CameraToggle
     }
 
     public enum ComputerMovementMode
@@ -474,7 +475,8 @@ namespace RobloxFiles.Enums
         UserChoice,
         Classic,
         Follow,
-        Orbital
+        Orbital,
+        CameraToggle
     }
 
     public enum DevComputerMovementMode

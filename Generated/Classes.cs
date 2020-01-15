@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.413.1.370526
+// Updated as of 0.415.0.373700
 
 using System;
 
@@ -1245,6 +1245,15 @@ namespace RobloxFiles
         public TextYAlignment TextYAlignment = TextYAlignment.Center;
     }
 
+    public class VideoFrame : GuiObject
+    {
+        public bool Looped = false;
+        public bool Playing = false;
+        public double TimePosition = 0;
+        public Content Video = "";
+        public float Volume = 1;
+    }
+
     public class ViewportFrame : GuiObject
     {
         public Color3 Ambient = Color3.FromRGB(200, 200, 200);
@@ -2277,9 +2286,9 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
-        public bool Checked = false; // [Load-only]
+        public bool Checked = true; // [Load-only]
         public string DefaultShortcut = ""; // [Load-only]
-        public bool Enabled = false; // [Load-only]
+        public bool Enabled = true; // [Load-only]
     }
 
     public class PluginGuiService : Instance
