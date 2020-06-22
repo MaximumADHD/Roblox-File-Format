@@ -18,7 +18,13 @@ function Format.String(value)
 end
 
 function Format.Int(value)
-	return string.format("%i", value)
+	if value == 2147483647 then
+		return "int.MaxValue"
+	elseif value == -2147483648 then
+		return "int.MinValue"
+	else
+		return string.format("%i", value)
+	end
 end
 
 function Format.Number(value)
@@ -238,7 +244,7 @@ function Format.ColorSequence(cs)
 	local csKey = cs.Keypoints[1]
 	
 	local fmt = "new ColorSequence(%s)"
-	local value = Format.Color3(csKey.Value)
+	local value = tostring(csKey.Value)
 	
 	return fmt:format(value)
 end

@@ -1,8 +1,18 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.415.0.373700
+// Updated as of 0.437.0.406875
 
 namespace RobloxFiles.Enums
 {
+    public enum ABTestLoadingStatus
+    {
+        None,
+        Pending,
+        Initialized,
+        Error,
+        TimedOut,
+        ShutOff
+    }
+
     public enum ActionType
     {
         Nothing,
@@ -30,6 +40,12 @@ namespace RobloxFiles.Enums
     {
         Parallel,
         Perpendicular
+    }
+
+    public enum AlphaMode
+    {
+        Overlay,
+        Transparency
     }
 
     public enum AnimationPriority
@@ -112,7 +128,15 @@ namespace RobloxFiles.Enums
         PoseAnimation,
         EarAccessory,
         EyeAccessory,
-        EmoteAnimation = 61
+        EmoteAnimation = 61,
+        Video
+    }
+
+    public enum AutoIndentRule
+    {
+        Off,
+        Absolute,
+        Relative
     }
 
     public enum AvatarContextMenuOption
@@ -189,6 +213,12 @@ namespace RobloxFiles.Enums
         Error,
         SpecialBreakpoint,
         UserBreakpoint
+    }
+
+    public enum BulkMoveMode
+    {
+        FireAllEvents,
+        FireCFrameChanged
     }
 
     public enum Button
@@ -318,7 +348,8 @@ namespace RobloxFiles.Enums
     {
         Default,
         Hull,
-        Box
+        Box,
+        PreciseConvexDecomposition
     }
 
     public enum ComputerCameraMovementMode
@@ -458,12 +489,6 @@ namespace RobloxFiles.Enums
         OnUpdate
     }
 
-    public enum DateTimeKind
-    {
-        Utc,
-        Local
-    }
-
     public enum DevCameraOcclusionMode
     {
         Zoom,
@@ -570,7 +595,8 @@ namespace RobloxFiles.Enums
     {
         OK,
         DraftOutdated,
-        ScriptRemoved
+        ScriptRemoved,
+        DraftCommitted
     }
 
     public enum EasingDirection
@@ -833,6 +859,7 @@ namespace RobloxFiles.Enums
         NetFail,
         Aborted,
         SslConnectFail,
+        SslVerificationFail,
         Unknown
     }
 
@@ -892,6 +919,13 @@ namespace RobloxFiles.Enums
         Dead,
         Physics,
         None = 18
+    }
+
+    public enum IKCollisionsMode
+    {
+        NoCollisions,
+        OtherMechanismsAnchored,
+        IncludeContactedMechanisms
     }
 
     public enum InOut
@@ -1213,7 +1247,8 @@ namespace RobloxFiles.Enums
     {
         SystemDefault,
         English,
-        SimplifiedChinese
+        SimplifiedChinese,
+        Korean
     }
 
     public enum LeftRight
@@ -1430,6 +1465,13 @@ namespace RobloxFiles.Enums
         Roblox
     }
 
+    public enum PhysicsSimulationRate
+    {
+        Fixed240Hz,
+        Fixed120Hz,
+        Fixed60Hz
+    }
+
     public enum Platform
     {
         Windows,
@@ -1541,6 +1583,12 @@ namespace RobloxFiles.Enums
     {
         OuterBox,
         InnerBox
+    }
+
+    public enum RaycastFilterType
+    {
+        Blacklist,
+        Whitelist
     }
 
     public enum RenderFidelity
@@ -1830,6 +1878,8 @@ namespace RobloxFiles.Enums
         ScriptBuiltInFunction,
         ScriptWarning,
         ScriptError,
+        ScriptWhitespace,
+        ScriptRuler,
         DebuggerCurrentLine,
         DebuggerErrorLine,
         DiffFilePathText,
@@ -1862,10 +1912,7 @@ namespace RobloxFiles.Enums
         DialogButtonText,
         DialogButtonBorder,
         DialogMainButton,
-        DialogMainButtonText,
-        Merge3HighlightOriginal,
-        Merge3HighlightMine,
-        Merge3HighlightTheirs
+        DialogMainButtonText
     }
 
     public enum StudioStyleGuideModifier
@@ -1932,7 +1979,8 @@ namespace RobloxFiles.Enums
         Legacy,
         Voxel,
         Compatibility,
-        ShadowMap
+        ShadowMap,
+        Future
     }
 
     public enum TeleportResult

@@ -8,7 +8,9 @@ end
 
 local GuiTextMixIn = 
 {
-	Redirect = 
+	Add = { Transparency = "float" };
+	
+	Redirect =
 	{
 		FontSize = 
 		{
@@ -18,41 +20,44 @@ local GuiTextMixIn =
 		
 		TextColor = UseColor3("TextColor3");
 		TextWrap = "TextWrapped";
+
+		Transparency = 
+		{
+			Get = "base.Transparency";
+
+			Set = "base.Transparency = value;\n" ..
+				  "TextTransparency  = value;";
+			
+			Flag = "new";
+		}
 	};
 }
 
 return
 {
-	Accoutrement = 
-	{
-		Remove =
-		{
-			"AttachmentUp";
-			"AttachmentPos";
-			"AttachmentRight";
-			"AttachmentForward";
-		};
-	};
-	
 	AnalyticsService = 
 	{
 		Defaults = { ApiKey = "" }
 	};
 	
-	Attachment = 
+	BallSocketConstraint =
 	{
-		Remove = 
+		-- Why does this even exist?
+		Add =
 		{
-			"Axis";
-			"Orientation";
-			"Position";
-			"SecondaryAxis";
-			"WorldAxis";
-			"WorldCFrame";
-			"WorldOrientation";
-			"WorldPosition";
-			"WorldSecondaryAxis";
+			MaxFrictionTorque = "float";
+			MaxFrictionTorqueXml = "float";
 		};
+		
+		Defaults =
+		{
+			MaxFrictionTorqueXml = 0;
+		};
+
+		Redirect =
+		{
+			MaxFrictionTorque = "MaxFrictionTorqueXml";
+		}
 	};
 	
 	BasePart =
@@ -82,6 +87,11 @@ return
 			"Orientation";
 			"Rotation";
 		}
+	};
+
+	BaseScript =
+	{
+		Remove = {"LinkedSource"};
 	};
 	
 	BevelMesh = 
@@ -137,9 +147,20 @@ return
 		Redirect = { cframe = "CFrame" };
 	};
 	
+	Bone =
+	{
+		Remove = {"Transform"}
+	};
+	
 	Camera = 
 	{
 		Redirect = { CoordinateFrame = "CFrame" }
+	};
+
+	CustomEvent =
+	{
+		Add      = { PersistedCurrentValue = "float"; };
+		Defaults = { PersistedCurrentValue = 0;       };
 	};
 	
 	DataModelMesh = 
@@ -173,7 +194,14 @@ return
 	
 	DoubleConstrainedValue = 
 	{
-		Redirect = { ConstrainedValue = "Value" }
+		Add      = { value = "double" };
+		Defaults = { value = 0.0      };
+		
+		Redirect = 
+		{
+			Value = "value";
+			ConstrainedValue = "value"; 
+		}
 	};
 	
 	Fire =
@@ -210,9 +238,15 @@ return
 		};
 		
 		Redirect = 
-		{ 
+		{
 			FormFactor = "formFactorRaw";
 		};
+	};
+
+	FunctionalTest =
+	{
+		Add      = { HasMigratedSettingsToTestService = "bool"; };
+		Defaults = { HasMigratedSettingsToTestService = false;  };
 	};
 	
 	GuiBase2d = 
@@ -293,7 +327,14 @@ return
 	
 	IntConstrainedValue = 
 	{
-		Redirect = { ConstrainedValue = "Value" }
+		Add      = { value = "int64" };
+		Defaults = { value = 0;      };
+		
+		Redirect = 
+		{
+			Value = "value";
+			ConstrainedValue = "value";
+		}
 	};
 	
 	JointInstance = 
@@ -310,31 +351,9 @@ return
 		};
 		
 		Defaults = 
-		{ 
-			LegacyOutlines = false;
+		{
 			Technology = Enum.Technology.Compatibility;
 		};
-		
-		Redirect = 
-		{
-			Outlines = "LegacyOutlines";
-		};
-		
-		Remove = 
-		{ 
-			"ClockTime";
-		};
-	};
-	
-	LocalizationService = 
-	{
-		Remove =
-		{
-			"ForcePlayModeGameLocaleId";
-			"ForcePlayModeRobloxLocaleId";
-			"RobloxForcePlayModeGameLocaleId";
-			"RobloxForcePlayModeRobloxLocaleId";
-		} 
 	};
 	
 	LocalizationTable = 
@@ -409,18 +428,10 @@ return
 		}
 	};
 	
-	NotificationService = 
-	{
-		Remove = {"SelectedTheme"}
-	};
-	
 	PackageLink = 
 	{
 		Add = 
 		{
-			OriginalHash = "int64";
-			SymbolicLink = "string";
-			
 			VersionIdSerialize = "int64";
 			PackageIdSerialize = "Content";
 		};
@@ -429,16 +440,8 @@ return
 		{
 			AutoUpdate = false;
 			
-			OriginalHash = 0;
-			SymbolicLink = "";
-			
 			VersionIdSerialize = 0;
 			PackageIdSerialize = "";
-		};
-		
-		Redirect = 
-		{
-			VersionNumber = "VersionIdSerialize";
 		};
 	};
 	
@@ -501,20 +504,6 @@ return
 			MaxPlayersInternal = 16;
 			PreferredPlayersInternal = 0;
 		}
-	};
-	
-	RenderingTest = 
-	{
-		Remove =
-		{
-			"Position";
-			"Orientation";
-		};
-	};
-	
-	ScriptContext = 
-	{
-		Remove = { "ScriptsDisabled" }
 	};
 	
 	SelectionBox =
@@ -583,8 +572,8 @@ return
 		
 		Redirect =
 		{
-			EmitterSize = "xmlRead_MinDistance_3";
 			MaxDistance = "xmlRead_MaxDistance_3";
+			xmlRead_MinDistance_3 = "EmitterSize";
 			
 			MinDistance = "EmitterSize";
 			Pitch = "PlaybackSpeed";
@@ -598,11 +587,27 @@ return
 	
 	StudioData = 
 	{
+		Add =
+		{
+			CommitInflightAuthorId = "int64";
+			CommitInflightGuid = "string";
+			CommitInflightPlaceVersion = "int";
+		};
+
 		Defaults = 
 		{
+			CommitInflightAuthorId = 0;
+			CommitInflightGuid = "";
+			CommitInflightPlaceVersion = 0;
+
 			SrcPlaceId = 0;
 			SrcUniverseId = 0;
 		};
+	};
+	
+	SurfaceAppearance =
+	{
+		Defaults = { AlphaMode = Enum.AlphaMode.Overlay }
 	};
 	
 	TextBox = GuiTextMixIn;
@@ -656,17 +661,6 @@ return
 		};
 	};
 	
-	Tool =
-	{
-		Remove =
-		{
-			"GripForward";
-			"GripPos";
-			"GripRight";
-			"GripUp";
-		};
-	};
-	
 	TriangleMeshPart =
 	{
 		Add =
@@ -705,8 +699,6 @@ return
 			CameraCFrame = CFrame.new();
 			CameraFieldOfView = 70;
 		};
-		
-		Remove = {"CurrentCamera"};
 	};
 	
 	WeldConstraint =
@@ -748,6 +740,7 @@ return
 			StreamingPauseMode = "Enum:StreamingPauseMode";
 			
 			TerrainWeldsFixed = "bool";
+			TemporaryLegacyPhysicsSolverOverrideStreaming = "bool";
 		};
 		
 		Defaults =
@@ -760,6 +753,7 @@ return
 			StreamingPauseMode = Enum.StreamingPauseMode.Default;
 			
 			TerrainWeldsFixed = true;
+			TemporaryLegacyPhysicsSolverOverrideStreaming = false;
 		}
 	}
 }

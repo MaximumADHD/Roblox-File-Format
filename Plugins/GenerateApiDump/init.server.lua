@@ -324,6 +324,9 @@ local function generateClasses()
 	writeLine("using RobloxFiles.Utility;")
 	writeLine()
 	
+	writeLine("#pragma warning disable IDE1006 // Suppress warnings about camelCase.")
+	writeLine()
+	
 	writeLine("namespace RobloxFiles")
 	openStack()
 	
@@ -401,28 +404,23 @@ local function generateClasses()
 				
 				writeLine("IsService = true;")
 				closeStack()
-				
-				for i, propName in ipairs(propNames) do
-					local prop = propMap[propName]
-					local serial = prop.Serialization
-					
-					if serial.CanLoad then
-						writeLine()
-						break
-					end
-				end
 			end
 			
 			for i, propName in ipairs(propNames) do
 				local prop = propMap[propName]
+				local propTags = getTags(prop)
 				
 				local serial = prop.Serialization
 				local valueType = prop.ValueType.Name
 				
-				if serial.CanLoad then
-					local propTags = getTags(prop)
+				local redirect = redirectProps[propName]
+				local couldSave = (serial.CanSave or propTags.Deprecated or redirect)
+				
+				if serial.CanLoad and couldSave then
+					if firstLine and classTags.Service then
+						writeLine()
+					end
 					
-					local redirect = redirectProps[propName]
 					local name = propName
 					local default = ""
 					
@@ -446,14 +444,19 @@ local function generateClasses()
 					end
 					
 					if redirect then
-						local get, set
+						local get, set, flag
 						
 						if typeof(redirect) == "string" then
 							get = redirect
 							set = redirect .. " = value"
+							
+							if redirect == "value" then
+								set = "this." .. set
+							end
 						else
-							get = redirect.Get
-							set = redirect.Set
+							get  = redirect.Get
+							set  = redirect.Set
+							flag = redirect.Flag
 						end
 						
 						if not firstLine and set then
@@ -465,11 +468,30 @@ local function generateClasses()
 						end
 						
 						if set then
-							writeLine("public %s %s", valueType, name)
-							
+							if flag then
+								writeLine("public %s %s %s", flag, valueType, name)
+							else
+								writeLine("public %s %s", valueType, name)
+							end
+
 							openStack()
-								writeLine("get { return %s; }", get)
+							writeLine("get { return %s; }", get)
+
+							if set:find('\n') then
+								writeLine()
+								
+								writeLine("set")
+								openStack()
+
+								for line in set:gmatch("[^\r\n]+") do
+									writeLine(line)
+								end
+
+								closeStack()
+							else
 								writeLine("set { %s; }", set)
+							end
+
 							closeStack()
 						else
 							writeLine("public %s %s => %s;", valueType, name, get)
@@ -512,13 +534,8 @@ local function generateClasses()
 								result = formatFunc(value)
 							end
 							
-							if not serial.CanSave and not propTags.Deprecated then
-								comment = " // [Load-only]"
-							else
-								comment = ""
-							end
-							
 							default = " = " .. result
+							comment = ""
 						end
 						
 						if propTags.Deprecated then

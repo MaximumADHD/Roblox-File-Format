@@ -11,6 +11,10 @@ namespace RobloxFiles.DataTypes
             return string.Join<ColorSequenceKeypoint>(" ", Keypoints);
         }
 
+        public ColorSequence(float r, float g, float b) : this(new Color3(r, g, b))
+        {
+        }
+
         public ColorSequence(Color3 c) : this(c, c)
         {
         }

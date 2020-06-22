@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\IBinaryFileChunk.cs" />
     <Compile Include="Generated\Classes.cs" />
     <Compile Include="Generated\Enums.cs" />
+    <Compile Include="LibTest\Program.cs" />
     <Compile Include="Tree\Attributes.cs" />
     <Compile Include="Tree\Property.cs" />
     <Compile Include="Tree\Instance.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="DataTypes\Vector3.cs" />
     <Compile Include="Utility\Formatting.cs" />
     <Compile Include="Utility\FontUtility.cs" />
+    <Compile Include="Utility\ImplicitMember.cs" />
     <Compile Include="Utility\MaterialInfo.cs" />
     <Compile Include="DataTypes\Quaternion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +166,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="LibTest\Binary.rbxl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="LibTest\Xml.rbxlx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 
 using RobloxFiles.BinaryFormat;
 using RobloxFiles.BinaryFormat.Chunks;
 
 using RobloxFiles.DataTypes;
+using RobloxFiles.Utility;
 
 namespace RobloxFiles
 {
@@ -55,8 +58,9 @@ namespace RobloxFiles
         internal BinaryRobloxFileWriter CurrentWriter;
         
         internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
+        internal static MemberTypes FieldOrProperty = MemberTypes.Field | MemberTypes.Property;
 
-        public static IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
+        public static readonly IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {
             { typeof(Axes),   PropertyType.Axes  },
             { typeof(Faces),  PropertyType.Faces },
@@ -78,18 +82,18 @@ namespace RobloxFiles
             { typeof(Vector2),  PropertyType.Vector2 },
             { typeof(Vector3),  PropertyType.Vector3 },
             
+            { typeof(BrickColor),   PropertyType.BrickColor   },
+            { typeof(Quaternion),   PropertyType.Quaternion   },
+            { typeof(Color3uint8),  PropertyType.Color3uint8  },
+            { typeof(NumberRange),  PropertyType.NumberRange  },
+            { typeof(SharedString), PropertyType.SharedString },
+            { typeof(Vector3int16), PropertyType.Vector3int16 },
 
-            { typeof(BrickColor),      PropertyType.BrickColor     },
-            { typeof(Quaternion),      PropertyType.Quaternion     },
-            { typeof(Color3uint8),     PropertyType.Color3uint8    },
-            { typeof(NumberRange),     PropertyType.NumberRange    },
-            { typeof(SharedString),    PropertyType.SharedString   },
-            { typeof(Vector3int16),    PropertyType.Vector3int16   },
-            { typeof(ColorSequence),   PropertyType.ColorSequence  },
-            { typeof(NumberSequence),  PropertyType.NumberSequence },
-            { typeof(ProtectedString), PropertyType.String         },
-            
-            { typeof(PhysicalProperties),  PropertyType.PhysicalProperties },
+            { typeof(ColorSequence),  PropertyType.ColorSequence  },
+            { typeof(NumberSequence), PropertyType.NumberSequence },
+
+            { typeof(ProtectedString),    PropertyType.String             },
+            { typeof(PhysicalProperties), PropertyType.PhysicalProperties },
         };
 
         private void ImproviseRawBuffer()
@@ -166,24 +170,19 @@ namespace RobloxFiles
                         byte[] data = Instance.SerializedTags;
                         RawValue = data;
                     }
-                    else if (Name == "AttributesSerialize")
-                    {
-                        byte[] data = Instance.AttributesSerialize;
-                        RawValue = data;
-                    }
                     else
                     {
-                        FieldInfo field = Instance.GetType()
-                            .GetField(ImplicitName, BindingFlags);
+                        var type = Instance.GetType();
+                        var member = ImplicitMember.Get(type, ImplicitName);
 
-                        if (field != null)
+                        if (member != null)
                         {
-                            object value = field.GetValue(Instance);
+                            object value = member.GetValue(Instance);
                             RawValue = value;
                         }
                         else
                         {
-                            Console.WriteLine($"RobloxFiles.Property - No defined field for {Instance.ClassName}.{Name}");
+                            Console.Error.WriteLine($"RobloxFiles.Property - No defined member for {Instance.ClassName}.{Name}");
                         }
                     }
                 }
@@ -199,49 +198,41 @@ namespace RobloxFiles
                         byte[] data = value as byte[];
                         Instance.SerializedTags = data;
                     }
-                    else if (Name == "AttributesSerialize" && value is byte[])
-                    {
-                        byte[] data = value as byte[];
-                        Instance.AttributesSerialize = data;
-                    }
                     else
                     {
-                        FieldInfo field = Instance.GetType()
-                            .GetField(ImplicitName, BindingFlags);
+                        var type = Instance.GetType();
+                        var member = ImplicitMember.Get(type, ImplicitName);
 
-                        if (field != null)
+                        if (member != null)
                         {
-                            Type fieldType = field.FieldType;
-                            Type valueType = value?.GetType();
-
-                            if (fieldType == valueType || value == null)
+                            var valueType = value?.GetType();
+                            Type memberType = member.MemberType;
+                            
+                            if (memberType == valueType || value == null)
                             {
                                 try
                                 {
-                                    field.SetValue(Instance, value);
+                                    member.SetValue(Instance, value);
                                 }
                                 catch
                                 {
-                                    Console.WriteLine($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
+                                    Console.Error.WriteLine($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
                                 }
                             }
                             else if (valueType != null)
                             {
-                                var typeWrapper = new Type[] { valueType };
-                                MethodInfo implicitCast = fieldType.GetMethod("op_Implicit", typeWrapper);
+                                MethodInfo implicitCast = memberType.GetMethod("op_Implicit", new Type[] { valueType });
 
                                 if (implicitCast != null)
                                 {
-                                    var valueWrapper = new object[] { value };
-
                                     try
                                     {
-                                        object castedValue = implicitCast.Invoke(null, valueWrapper);
-                                        field.SetValue(Instance, castedValue);
+                                        object castedValue = implicitCast.Invoke(null, new object[] { value });
+                                        member.SetValue(Instance, castedValue);
                                     }
                                     catch
                                     {
-                                        Console.WriteLine($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Instance.ClassName}.{Name}");
+                                        Console.Error.WriteLine($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Instance.ClassName}.{Name}");
                                     }
                                 }
                             }
