@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.437.0.406875
+// Updated as of 0.438.0.407270
 
 using System;
 
@@ -51,6 +51,7 @@ namespace RobloxFiles
             IsService = true;
         }
 
+        [Obsolete]
         public string ApiKey = "";
     }
 
@@ -1139,6 +1140,7 @@ namespace RobloxFiles
         }
 
         public float LineHeight = 1;
+        public bool RichText = false;
         public string Text = "Button";
 
         [Obsolete]
@@ -1208,6 +1210,7 @@ namespace RobloxFiles
         }
 
         public float LineHeight = 1;
+        public bool RichText = false;
         public string Text = "Label";
 
         [Obsolete]
@@ -1282,6 +1285,7 @@ namespace RobloxFiles
         public bool MultiLine = false;
         public Color3 PlaceholderColor3 = Color3.FromRGB(178, 178, 178);
         public string PlaceholderText = "";
+        public bool RichText = false;
         public bool ShowNativeInput = true;
         public string Text = "TextBox";
 
@@ -1840,22 +1844,22 @@ namespace RobloxFiles
             IsService = true;
         }
 
-        public Color3 Ambient = new Color3();
-        public float Brightness = 2;
+        public Color3 Ambient = Color3.FromRGB(127, 127, 127);
+        public float Brightness = 1;
         public Color3 ColorShift_Bottom = new Color3();
         public Color3 ColorShift_Top = new Color3();
         public float EnvironmentDiffuseScale = 0;
         public float EnvironmentSpecularScale = 0;
         public float ExposureCompensation = 0;
-        public Color3 FogColor = Color3.FromRGB(192, 192, 192);
+        public Color3 FogColor = Color3.FromRGB(191, 191, 191);
         public float FogEnd = 100000;
         public float FogStart = 0;
         public float GeographicLatitude = 41.7333f;
-        public bool GlobalShadows = true;
-        public Color3 OutdoorAmbient = Color3.FromRGB(128, 128, 128);
+        public bool GlobalShadows = false;
+        public Color3 OutdoorAmbient = Color3.FromRGB(127, 127, 127);
 
         [Obsolete]
-        public bool Outlines = false;
+        public bool Outlines = true;
 
         [Obsolete]
         public Color3 ShadowColor = Color3.FromRGB(178, 178, 183);
@@ -2167,7 +2171,7 @@ namespace RobloxFiles
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
         public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
         public byte[] SmoothGrid = Convert.FromBase64String("AQU=");
-        public Color3 WaterColor = Color3.FromRGB(12, 84, 92);
+        public Color3 WaterColor = Color3.FromRGB(12, 84, 91);
         public float WaterReflectance = 1;
         public float WaterTransparency = 0.3f;
         public float WaterWaveSize = 0.15f;
@@ -2264,7 +2268,7 @@ namespace RobloxFiles
         public double DistributedGameTime = 0;
         public bool ExplicitAutoJoints = true;
         public float FallenPartsDestroyHeight = -500;
-        public bool FilteringEnabled = true;
+        public bool FilteringEnabled = false;
         public float Gravity = 196.2f;
         public bool StreamingEnabled = false;
         public int StreamingMinRadius = 64;
@@ -2833,7 +2837,7 @@ namespace RobloxFiles
         public ReverbType AmbientReverb = ReverbType.NoReverb;
         public float DistanceFactor = 3.33f;
         public float DopplerScale = 1;
-        public bool RespectFilteringEnabled = true;
+        public bool RespectFilteringEnabled = false;
         public float RolloffScale = 1;
     }
 
@@ -2847,6 +2851,14 @@ namespace RobloxFiles
 
         public bool Enabled = true;
         public Color3 SparkleColor = Color3.FromRGB(144, 25, 255);
+    }
+
+    public class SpawnerService : Instance
+    {
+        public SpawnerService()
+        {
+            IsService = true;
+        }
     }
 
     public class StandalonePluginScripts : Instance
@@ -2874,7 +2886,7 @@ namespace RobloxFiles
 
         public bool AllowCustomAnimations = true;
         public bool AutoJumpEnabled = true;
-        public float CameraMaxZoomDistance = 128;
+        public float CameraMaxZoomDistance = 400;
         public float CameraMinZoomDistance = 0.5f;
         public CameraMode CameraMode = CameraMode.Classic;
         public float CharacterJumpHeight = 7.2f;

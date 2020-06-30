@@ -14,6 +14,21 @@ local singletons =
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts");
 }
 
+local numberTypes =
+{
+	int = true;
+	long = true;
+	float = true;
+	double = true;
+}
+
+local stringTypes =
+{
+	string = true;
+	Content = true;
+	ProtectedString = true;
+}
+
 local isCoreScript = pcall(function ()
 	local restricted = game:GetService("RobloxPluginGuiService")
 	return tostring(restricted)
@@ -246,6 +261,9 @@ if plugin then
 		"Generates a C# dump of Roblox's Enum API.",
 		"rbxasset://textures/Icon_Stream_Off@2x.png"
 	)
+
+	classButton.ClickableWhenViewportHidden = true
+	enumButton.ClickableWhenViewportHidden = true
 end
 
 local function getAsync(url)
@@ -266,6 +284,7 @@ local function getAsync(url)
 end
 
 local function generateClasses()
+	local env = getfenv()
 	local version = getAsync(baseUrl .. "version.txt")
 	
 	local apiDump = getAsync(baseUrl .. "API-Dump.json")
@@ -296,9 +315,9 @@ local function generateClasses()
 				pcall(function ()
 					class.Object = Instance.new(className)
 					
-					if ServerStorage:FindFirstChild("DumpFolder") then
+					if game:FindFirstChild("DumpFolder") then
 						class.Object.Name = className
-						class.Object.Parent = ServerStorage.DumpFolder
+						class.Object.Parent = game.DumpFolder
 					end
 				end)
 			end
@@ -510,11 +529,41 @@ local function generateClasses()
 							end)
 						end
 						
-						local comment = " // Default missing!"
-						local category = prop.ValueType.Category
+						local typeData = prop.ValueType
+						local category = typeData.Category
+						
+						if not gotValue and category ~= "Class" then
+							-- Fallback to implicit defaults
+							local typeName = typeData.Name
+
+							if numberTypes[typeName] then
+								value = 0
+								gotValue = true
+							elseif stringTypes[typeName] then
+								value = ""
+								gotValue = true
+							elseif category == "DataType" then
+								local DataType = env[typeName]
+								
+								if DataType and typeof(DataType) == "table" and not rawget(env, typeName) then
+									pcall(function ()
+										value = DataType.new()
+										gotValue = true
+									end)
+								end
+							end
+
+							local id = string.format("%s.%s", className, propName)
+							local src = string.format("[%s]", script.Parent:GetFullName())
+
+							if gotValue then
+								warn(src, "Fell back to implicit value for property:", id)
+							else
+								warn(src, "!! Could not figure out default value for property:", id)
+							end
+						end
 						
 						if gotValue then
-							local category = prop.ValueType.Category
 							local formatFunc = getFormatFunction(valueType)
 							
 							if not formatFunc then
@@ -535,7 +584,6 @@ local function generateClasses()
 							end
 							
 							default = " = " .. result
-							comment = ""
 						end
 						
 						if propTags.Deprecated then
@@ -548,10 +596,9 @@ local function generateClasses()
 						
 						if category == "Class" then
 							default = " = null"
-							comment = ""
 						end
 						
-						writeLine("public %s %s%s;%s", valueType, name, default, comment)
+						writeLine("public %s %s%s;", valueType, name, default)
 						
 						if propTags.Deprecated and i ~= #propNames then
 							writeLine()

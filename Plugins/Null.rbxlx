@@ -1,0 +1,7 @@
+<roblox version="4">
+	<Item class="Folder">
+		<Properties>
+			<string name="Name">DumpFolder</string>
+		</Properties>
+	</Item>
+</roblox>

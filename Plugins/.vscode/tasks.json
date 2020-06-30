@@ -8,6 +8,16 @@
             "label": "Build Plugin",
             "command": "rojo build --output GenerateApiDump.rbxm",
             
+            "group": "build"
+        },
+
+        {
+            "type": "shell",
+            "label": "Build and Test Plugin",
+
+            "command": "powershell -ExecutionPolicy ByPass -File DeployToStudio.ps1",
+            "dependsOn": ["Build Plugin"],
+            
             "group":
             {
                 "kind": "build",

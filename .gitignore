@@ -331,3 +331,4 @@ ASALocalRun/
 
 # Library Test
 RobloxFileFormat.exe
+*.lock

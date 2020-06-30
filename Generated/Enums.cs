@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.437.0.406875
+// Updated as of 0.438.0.407270
 
 namespace RobloxFiles.Enums
 {
@@ -1912,7 +1912,9 @@ namespace RobloxFiles.Enums
         DialogButtonText,
         DialogButtonBorder,
         DialogMainButton,
-        DialogMainButtonText
+        DialogMainButtonText,
+        InfoBarWarningBackground,
+        InfoBarWarningText
     }
 
     public enum StudioStyleGuideModifier
