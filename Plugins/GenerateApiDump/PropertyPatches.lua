@@ -35,29 +35,10 @@ local GuiTextMixIn =
 
 return
 {
-	AnalyticsService = 
-	{
-		Defaults = { ApiKey = "" }
-	};
-	
 	BallSocketConstraint =
 	{
 		-- Why does this even exist?
-		Add =
-		{
-			MaxFrictionTorque = "float";
-			MaxFrictionTorqueXml = "float";
-		};
-		
-		Defaults =
-		{
-			MaxFrictionTorqueXml = 0;
-		};
-
-		Redirect =
-		{
-			MaxFrictionTorque = "MaxFrictionTorqueXml";
-		}
+		Add = { MaxFrictionTorqueXml = "float" };
 	};
 	
 	BasePart =
@@ -81,12 +62,6 @@ return
 			Color3uint8 = Color3.fromRGB(163, 162, 165);
 			size = Vector3.new(4, 1.2, 2);
 		};
-		
-		Remove = 
-		{
-			"Orientation";
-			"Rotation";
-		}
 	};
 
 	BaseScript =
@@ -101,27 +76,12 @@ return
 			Bevel = "float";
 			Bevel_Roundness = "float";
 			Bulge = "float";
-		};
-		
-		Defaults = 
-		{
-			Bevel = 0;
-			Bevel_Roundness = 0;
-			Bulge = 0;
 		}
 	};
 	
 	BinaryStringValue =
 	{
-		Add = 
-		{
-			Value = "BinaryString"; 
-		};
-		
-		Defaults = 
-		{
-			Value = ""; 
-		};
+		Add = { Value = "BinaryString" };
 	};
 	
 	BodyColors =
@@ -147,11 +107,6 @@ return
 		Redirect = { cframe = "CFrame" };
 	};
 	
-	Bone =
-	{
-		Remove = {"Transform"}
-	};
-	
 	Camera = 
 	{
 		Redirect = { CoordinateFrame = "CFrame" }
@@ -159,8 +114,7 @@ return
 
 	CustomEvent =
 	{
-		Add      = { PersistedCurrentValue = "float"; };
-		Defaults = { PersistedCurrentValue = 0;       };
+		Add = { PersistedCurrentValue = "float" };
 	};
 	
 	DataModelMesh = 
@@ -187,15 +141,9 @@ return
 		}
 	};
 	
-	DebuggerWatch =
-	{
-		Defaults = { Expression = "" };
-	};
-	
 	DoubleConstrainedValue = 
 	{
-		Add      = { value = "double" };
-		Defaults = { value = 0.0      };
+		Add = { value = "double" };
 		
 		Redirect = 
 		{
@@ -311,12 +259,6 @@ return
 			EmotesDataInternal = "string";
 			EquippedEmotesDataInternal = "string";
 		};
-		
-		Defaults = 
-		{
-			EmotesDataInternal = "";
-			EquippedEmotesDataInternal = "";
-		};
 	};
 	
 	InsertService = 
@@ -328,7 +270,6 @@ return
 	IntConstrainedValue = 
 	{
 		Add      = { value = "int64" };
-		Defaults = { value = 0;      };
 		
 		Redirect = 
 		{
@@ -384,13 +325,6 @@ return
 			ScriptGuid = "string";
 			Source = "ProtectedString";
 		};
-
-		Defaults = 
-		{
-			LinkedSource = "";
-			ScriptGuid = "";
-			Source = "";
-		};
 	};
 	
 	ManualSurfaceJointInstance = 
@@ -415,8 +349,7 @@ return
 	
 	Model = 
 	{
-		Add      = { ModelInPrimary = "CFrame"     };
-		Defaults = { ModelInPrimary = CFrame.new() };
+		Add = { ModelInPrimary = "CFrame" };
 	};
 
 	ModuleScript = 
@@ -436,13 +369,7 @@ return
 			PackageIdSerialize = "Content";
 		};
 		
-		Defaults = 
-		{
-			AutoUpdate = false;
-			
-			VersionIdSerialize = 0;
-			PackageIdSerialize = "";
-		};
+		Defaults = { AutoUpdate = false };
 	};
 	
 	Part = 
@@ -473,13 +400,7 @@ return
 			FormFactor = "Enum:FormFactor";
 		};
 		
-		Defaults = 
-		{
-			AssetId = "";
-			ChildData = "";
-			MeshData = "";
-			FormFactor = Enum.FormFactor.Custom;
-		};
+		Defaults = { FormFactor = Enum.FormFactor.Custom };
 	};
 	
 	PartOperationAsset = 
@@ -489,21 +410,11 @@ return
 			ChildData = "BinaryString";
 			MeshData = "BinaryString";
 		};
-		
-		Defaults = 
-		{
-			ChildData = "";
-			MeshData = "";
-		};
 	};
 	
 	Players =
 	{
-		Defaults =
-		{
-			MaxPlayersInternal = 16;
-			PreferredPlayersInternal = 0;
-		}
+		Defaults = { MaxPlayersInternal = 16 }
 	};
 	
 	SelectionBox =
@@ -584,24 +495,29 @@ return
 	{
 		Redirect = { Color = "SparkleColor" };
 	};
+
+	StarterPlayer =
+	{
+		Defaults =
+		{
+			GameSettingsAvatar = Enum.GameAvatarType.R15;
+			GameSettingsR15Collision = Enum.R15CollisionType.OuterBox;
+			
+			GameSettingsScaleRangeHead       = NumberRange.new(0.95, 1.00);
+			GameSettingsScaleRangeWidth      = NumberRange.new(0.70, 1.00);
+			GameSettingsScaleRangeHeight     = NumberRange.new(0.90, 1.05);
+			GameSettingsScaleRangeBodyType   = NumberRange.new(0.00, 1.00);
+			GameSettingsScaleRangeProportion = NumberRange.new(0.00, 1.00);
+		};
+	};
 	
 	StudioData = 
 	{
 		Add =
 		{
-			CommitInflightAuthorId = "int64";
 			CommitInflightGuid = "string";
+			CommitInflightAuthorId = "int64";
 			CommitInflightPlaceVersion = "int";
-		};
-
-		Defaults = 
-		{
-			CommitInflightAuthorId = 0;
-			CommitInflightGuid = "";
-			CommitInflightPlaceVersion = 0;
-
-			SrcPlaceId = 0;
-			SrcUniverseId = 0;
 		};
 	};
 	
@@ -628,10 +544,6 @@ return
 		
 		Defaults = 
 		{
-			ClusterGrid = "";
-			ClusterGridV2 = "";
-			ClusterGridV3 = "";
-			
 			Decoration = false;
 			
 			SmoothGrid = "AQU=";
@@ -669,14 +581,14 @@ return
 			LODData = "BinaryString";
 			PhysicsData = "BinaryString";
 			PhysicalConfigData = "SharedString";
+			CollisionFidelity = "Enum:CollisionFidelity";
 		};
 		
-		Defaults = 
+		Defaults =
 		{
-			LODData = "";
-			PhysicsData = "";
 			InitialSize = Vector3.new(1, 1, 1);
 			PhysicalConfigData = "1B2M2Y8AsgTpgAmY7PhCfg==";
+			CollisionFidelity = Enum.CollisionFidelity.Default;
 		};
 	};
 	
@@ -703,7 +615,7 @@ return
 	
 	WeldConstraint =
 	{
-		Add = 
+		Add =
 		{
 			Part0Internal = "Class:BasePart";
 			Part1Internal = "Class:BasePart";

@@ -42,7 +42,7 @@ namespace RobloxFiles.Utility
         /// There are some name duplicates, but that's an issue on Roblox's end.
         /// </summary>
         
-        public static IReadOnlyList<BrickColor> ColorMap = new List<BrickColor>()
+        public static readonly IReadOnlyList<BrickColor> ColorMap = new List<BrickColor>()
         {
             new BrickColor(   1, 0xF2F3F3, "White"),
             new BrickColor(   2, 0xA1A5A2, "Grey"),

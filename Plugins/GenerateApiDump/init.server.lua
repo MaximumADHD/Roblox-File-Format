@@ -18,6 +18,7 @@ local numberTypes =
 {
 	int = true;
 	long = true;
+	int64 = true;
 	float = true;
 	double = true;
 }
@@ -26,6 +27,7 @@ local stringTypes =
 {
 	string = true;
 	Content = true;
+	BinaryString = true;
 	ProtectedString = true;
 }
 
@@ -406,11 +408,15 @@ local function generateClasses()
 			end
 			
 			for propName, propType in pairs(classPatches.Add) do
-				if not propMap[propName] then
+				local prop = propMap[propName]
+				
+				if prop then
+					local serial = prop.Serialization
+					serial.CanSave = true
+					serial.CanLoad = true
+				else
 					propMap[propName] = createProperty(propName, propType)
 					table.insert(propNames, propName)
-				else
-					propMap[propName].Serialization.CanLoad = true
 				end
 			end
 			

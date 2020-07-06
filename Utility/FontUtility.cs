@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using RobloxFiles.Enums;
 
@@ -10,7 +7,7 @@ namespace RobloxFiles.Utility
 {
     public static class FontUtility
     {
-        public static IReadOnlyDictionary<int, FontSize> FontSizes = new Dictionary<int, FontSize>()
+        public static readonly IReadOnlyDictionary<int, FontSize> FontSizes = new Dictionary<int, FontSize>()
         {
             { 8,  FontSize.Size8  },
             { 9,  FontSize.Size9  },
@@ -28,8 +25,6 @@ namespace RobloxFiles.Utility
             { 60, FontSize.Size60 },
             { 96, FontSize.Size96 },
         };
-
-        private static Dictionary<int, FontSize> IntToFontSize = new Dictionary<int, FontSize>();
 
         public static FontSize GetFontSize(int fontSize)
         {

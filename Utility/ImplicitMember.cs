@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 
 namespace RobloxFiles.Utility
@@ -14,12 +15,20 @@ namespace RobloxFiles.Utility
 
         public static ImplicitMember Get(Type type, string name)
         {
-            var field = type.GetField(name, flags);
-            var prop = type.GetProperty(name, flags);
+            var field = type
+                .GetFields(flags)
+                .Where(f => f.Name == name)
+                .FirstOrDefault();
 
             if (field != null)
                 return new ImplicitMember(field);
-            else if (prop != null)
+
+            var prop = type
+                .GetProperties(flags)
+                .Where(p => p.Name == name)
+                .FirstOrDefault();
+
+            if (prop != null)
                 return new ImplicitMember(prop);
 
             return null;

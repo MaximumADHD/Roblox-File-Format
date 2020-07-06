@@ -12,7 +12,7 @@ namespace RobloxFiles.Utility
         /// <summary>
         /// A dictionary mapping materials to their default Density.
         /// </summary>
-        public static IReadOnlyDictionary<Material, float> DensityMap = new Dictionary<Material, float>()
+        public static readonly IReadOnlyDictionary<Material, float> DensityMap = new Dictionary<Material, float>()
         {
             {Material.Air,           0.01f},
             {Material.Asphalt,       2.36f},
@@ -56,7 +56,7 @@ namespace RobloxFiles.Utility
         /// <summary>
         /// A dictionary mapping materials to their default Elasticity.
         /// </summary>
-        public static IReadOnlyDictionary<Material, float> ElasticityMap = new Dictionary<Material, float>()
+        public static readonly IReadOnlyDictionary<Material, float> ElasticityMap = new Dictionary<Material, float>()
         {
             {Material.Air,           0.01f},
             {Material.Asphalt,       0.20f},
@@ -100,7 +100,7 @@ namespace RobloxFiles.Utility
         /// <summary>
         /// A dictionary mapping materials to their default Friction.
         /// </summary>
-        public static IReadOnlyDictionary<Material, float> FrictionMap = new Dictionary<Material, float>()
+        public static readonly IReadOnlyDictionary<Material, float> FrictionMap = new Dictionary<Material, float>()
         {
             {Material.Air,           0.01f},
             {Material.Asphalt,       0.80f},
@@ -146,7 +146,7 @@ namespace RobloxFiles.Utility
         /// NOTE: This only maps materials that have different FrictionWeights.<para/>
         ///       If it isn't in here, assume their FrictionWeight is 1.
         /// </summary>
-        public static IReadOnlyDictionary<Material, float> FrictionWeightMap = new Dictionary<Material, float>()
+        public static readonly IReadOnlyDictionary<Material, float> FrictionWeightMap = new Dictionary<Material, float>()
         {
             {Material.Asphalt,       0.30f},
             {Material.Basalt,        0.30f},
