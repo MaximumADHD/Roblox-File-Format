@@ -103,7 +103,7 @@ namespace RobloxFiles
                 foreach (Property sharedProp in sharedProps)
                 {
                     SharedString shared = sharedProp.CastValue<SharedString>();
-                    SharedStrings.Add(shared.MD5_Key);
+                    SharedStrings.Add(shared.Key);
                 }
             }
             else

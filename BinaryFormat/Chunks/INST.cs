@@ -16,7 +16,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
         public override string ToString() => ClassName;
         
-        public void LoadFromReader(BinaryRobloxFileReader reader)
+        public void Load(BinaryRobloxFileReader reader)
         {
             BinaryRobloxFile file = reader.File;
 
@@ -59,10 +59,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
             file.Classes[ClassIndex] = this;
         }
 
-        public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
+        public void Save(BinaryRobloxFileWriter writer)
         {
-            writer.StartWritingChunk(this);
-
             writer.Write(ClassIndex);
             writer.WriteString(ClassName);
 
@@ -72,7 +70,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
             if (IsService)
             {
-                BinaryRobloxFile file = writer.File;
+                var file = writer.File;
 
                 foreach (int instId in InstanceIds)
                 {
@@ -80,8 +78,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.Write(service.Parent == file);
                 }
             }
-
-            return writer.FinishWritingChunk();
         }
     }
 }

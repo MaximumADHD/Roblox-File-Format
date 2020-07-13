@@ -115,14 +115,18 @@ internal static class Formatting
         return Math.Abs(a - b) < epsilon;
     }
 
+    public static byte[] ReadBuffer(this BinaryReader reader)
+    {
+        int len = reader.ReadInt32();
+        return reader.ReadBytes(len);
+    }
+
     public static string ReadString(this BinaryReader reader, bool useIntLength)
     {
         if (!useIntLength)
             return reader.ReadString();
 
-        int len = reader.ReadInt32();
-        byte[] buffer = reader.ReadBytes(len);
-
+        byte[] buffer = reader.ReadBuffer();
         return Encoding.UTF8.GetString(buffer);
     }
 }

@@ -1,29 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class PRNT : IBinaryFileChunk
     {
-        public byte Format { get; private set; }
-        public int NumRelations { get; private set; }
+        private const byte FORMAT = 0;
 
-        public List<int> ChildrenIds { get; private set; }
-        public List<int> ParentIds { get; private set; }
-
-        public void LoadFromReader(BinaryRobloxFileReader reader)
+        public void Load(BinaryRobloxFileReader reader)
         {
             BinaryRobloxFile file = reader.File;
 
-            Format = reader.ReadByte();
-            NumRelations = reader.ReadInt32();
+            byte format = reader.ReadByte();
+            int idCount = reader.ReadInt32();
 
-            ChildrenIds = reader.ReadInstanceIds(NumRelations);
-            ParentIds = reader.ReadInstanceIds(NumRelations);
+            if (format != FORMAT)
+                throw new Exception($"Unexpected PRNT format: {format} (expected {FORMAT}!)");
+
+            var childIds = reader.ReadInstanceIds(idCount);
+            var parentIds = reader.ReadInstanceIds(idCount);
             
-            for (int i = 0; i < NumRelations; i++)
+            for (int i = 0; i < idCount; i++)
             {
-                int childId = ChildrenIds[i];
-                int parentId = ParentIds[i];
+                int childId = childIds[i];
+                int parentId = parentIds[i];
 
                 Instance child = file.Instances[childId];
                 child.Parent = (parentId >= 0 ? file.Instances[parentId] : file);
@@ -31,15 +31,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
             }
         }
 
-        public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
+        public void Save(BinaryRobloxFileWriter writer)
         {
-            writer.StartWritingChunk(this);
+            var postInstances = writer.PostInstances;
+            var idCount = postInstances.Count;
 
-            Format = 0;
-            NumRelations = 0;
-
-            ChildrenIds = new List<int>();
-            ParentIds = new List<int>();
+            var childIds = new List<int>();
+            var parentIds = new List<int>();
 
             foreach (Instance inst in writer.PostInstances)
             {
@@ -51,19 +49,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 if (parent != null)
                     parentId = int.Parse(parent.Referent);
 
-                ChildrenIds.Add(childId);
-                ParentIds.Add(parentId);
-
-                NumRelations++;
+                childIds.Add(childId);
+                parentIds.Add(parentId);
             }
 
-            writer.Write(Format);
-            writer.Write(NumRelations);
+            writer.Write(FORMAT);
+            writer.Write(idCount);
 
-            writer.WriteInstanceIds(ChildrenIds);
-            writer.WriteInstanceIds(ParentIds);
-
-            return writer.FinishWritingChunk();
+            writer.WriteInstanceIds(childIds);
+            writer.WriteInstanceIds(parentIds);
         }
     }
 }

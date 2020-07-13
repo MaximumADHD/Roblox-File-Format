@@ -29,7 +29,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
             return $"{Type} {ClassName}.{Name}";
         }
 
-        public void LoadFromReader(BinaryRobloxFileReader reader)
+        public void Load(BinaryRobloxFileReader reader)
         {
             BinaryRobloxFile file = reader.File;
 
@@ -71,7 +71,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
             });
             
-            // Read the property data based on the property type.
             switch (Type)
             {
                 case PropertyType.String:
@@ -500,13 +499,22 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     readProperties(i =>
                     {
                         uint key = SharedKeys[i];
-
                         return file.SharedStrings[key];
                     });
 
                     break;
+                case PropertyType.ProtectedString:
+                    readProperties(i =>
+                    {
+                        int length = reader.ReadInt32();
+                        byte[] buffer = reader.ReadBytes(length);
+
+                        return new ProtectedString(buffer);
+                    });
+
+                    break;
                 default:
-                    Console.WriteLine("Unhandled property type: {0}!", Type);
+                    Console.Error.WriteLine("Unhandled property type: {0}!", Type);
                     break;
                 //
             }
@@ -546,7 +554,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
             return propMap;
         }
 
-        public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
+        public void Save(BinaryRobloxFileWriter writer)
         {
             BinaryRobloxFile file = writer.File;
 
@@ -567,9 +575,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 props.Add(prop);
             }
 
-            writer.StartWritingChunk(this);
             writer.Write(ClassIndex);
-
             writer.WriteString(Name);
             writer.Write(TypeId);
 
@@ -996,12 +1002,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     props.ForEach(prop =>
                     {
-                        SharedString shared = prop.CastValue<SharedString>();
-                        string key = shared.MD5_Key;
+                        var shared = prop.CastValue<SharedString>();
+                        string key = shared.Key;
                         
                         if (!sstr.Lookup.ContainsKey(key))
                         {
-                            uint id = (uint)(sstr.NumHashes++);
+                            uint id = (uint)(sstr.Lookup.Count);
                             sstr.Strings.Add(id, shared);
                             sstr.Lookup.Add(key, id);
                         }
@@ -1012,10 +1018,19 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     writer.WriteInterleaved(sharedKeys);
                     break;
-                //
+                case PropertyType.ProtectedString:
+                    props.ForEach(prop =>
+                    {
+                        var protect = prop.CastValue<ProtectedString>();
+                        byte[] buffer = protect.RawBuffer;
+
+                        writer.Write(buffer.Length);
+                        writer.Write(buffer);
+                    });
+
+                    break;
+                default: break;
             }
-            
-            return writer.FinishWritingChunk();
         }
     }
 }

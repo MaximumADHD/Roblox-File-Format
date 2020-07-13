@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Files\Binary.rbxl" />
+    <None Remove="Files\CoreScripts.rbxm" />
+    <None Remove="Files\Xml.rbxlx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Files\Binary.rbxl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Files\Xml.rbxlx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RobloxFileFormat.csproj" />
+  </ItemGroup>
+
+</Project>

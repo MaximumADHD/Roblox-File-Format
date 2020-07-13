@@ -2,18 +2,58 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 using RobloxFiles.DataTypes;
 
-namespace RobloxFiles
+namespace RobloxFiles.UnitTest
 {
-    // If the solution is built as an exe, this class is
-    // used to drive some basic testing of the library.
-
-    internal static class Program
+    static class Program
     {
         const string pattern = "\\d+$";
+
+        static void PrintTreeImpl(Instance inst, int stack = 0)
+        {
+            string padding = "";
+            string extension = "";
+
+            for (int i = 0; i < stack; i++)
+                padding += '\t';
+
+            switch (inst.ClassName)
+            {
+                case "Script":
+                    extension = ".server.lua";
+                    break;
+                case "LocalScript":
+                    extension = ".client.lua";
+                    break;
+                case "ModuleScript":
+                    extension = ".lua";
+                    break;
+                default: break;
+            }
+
+            Console.WriteLine($"{padding}{inst.Name}{extension}");
+
+            var children = inst
+                .GetChildren()
+                .ToList();
+
+            children.ForEach(child => PrintTreeImpl(child, stack + 1));
+        }
+
+        static void PrintTree(string path)
+        {
+            Console.WriteLine("Opening file...");
+            RobloxFile target = RobloxFile.Open(path);
+
+            foreach (Instance child in target.GetChildren())
+                PrintTreeImpl(child);
+
+            Debugger.Break();
+        }
 
         static void CountAssets(string path)
         {
@@ -22,6 +62,14 @@ namespace RobloxFiles
 
             var workspace = target.FindFirstChildOfClass<Workspace>();
             var assets = new HashSet<string>();
+
+            if (workspace == null)
+            {
+                Console.WriteLine("No workspace found!");
+                Debugger.Break();
+
+                return;
+            }
 
             foreach (Instance inst in workspace.GetDescendants())
             {
@@ -63,22 +111,19 @@ namespace RobloxFiles
             if (args.Length > 0)
             {
                 string path = args[0];
-                CountAssets(path);
+                PrintTree(path);
             }
             else
             {
-                RobloxFile bin = RobloxFile.Open(@"LibTest\Binary.rbxl");
-                RobloxFile xml = RobloxFile.Open(@"LibTest\Xml.rbxlx");
+                RobloxFile bin = RobloxFile.Open(@"Files\Binary.rbxl");
+                RobloxFile xml = RobloxFile.Open(@"Files\Xml.rbxlx");
 
                 Console.WriteLine("Files opened! Pausing execution for debugger analysis...");
                 Debugger.Break();
 
-                using (FileStream binStream = File.OpenWrite(@"LibTest\Binary_SaveTest.rbxl"))
-                    bin.Save(binStream);
-
-                using (FileStream xmlStream = File.OpenWrite(@"LibTest\Xml_SaveTest.rbxlx"))
-                    xml.Save(xmlStream);
-
+                bin.Save(@"Files\Binary_SaveTest.rbxl");
+                xml.Save(@"Files\Xml_SaveTest.rbxlx");
+                
                 Console.WriteLine("Files saved! Pausing execution for debugger analysis...");
                 Debugger.Break();
             }

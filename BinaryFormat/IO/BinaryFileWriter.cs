@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -18,14 +17,16 @@ namespace RobloxFiles.BinaryFormat
         public string ChunkType { get; private set; }
         public long ChunkStart { get; private set; }
         
-        public Dictionary<string, INST> ClassMap;
         public readonly BinaryRobloxFile File;
 
+        // Dictionary mapping ClassNames to their INST chunks.
+        private readonly Dictionary<string, INST> ClassMap;
+
         // Instances in parent->child order
-        public List<Instance> Instances;
+        private readonly List<Instance> Instances;
 
         // Instances in child->parent order
-        public List<Instance> PostInstances;
+        internal List<Instance> PostInstances { get; private set; }
 
         public BinaryRobloxFileWriter(BinaryRobloxFile file, Stream workBuffer = null) : base(workBuffer ?? new MemoryStream())
         {
@@ -104,13 +105,13 @@ namespace RobloxFiles.BinaryFormat
         }
         
         // Encodes an int for an interleaved buffer.
-        private int EncodeInt(int value)
+        private static int EncodeInt(int value)
         {
             return (value << 1) ^ (value >> 31);
         }
         
         // Encodes a float for an interleaved buffer.
-        private float EncodeFloat(float value)
+        private static float EncodeFloat(float value)
         {
             byte[] buffer = BitConverter.GetBytes(value);
             uint bits = BitConverter.ToUInt32(buffer, 0);
@@ -171,9 +172,9 @@ namespace RobloxFiles.BinaryFormat
                 Instances.Add(instance);
 
                 string className = instance.ClassName;
-                INST inst = null;
+                INST inst;
 
-                if (!ClassMap.ContainsKey(className))
+                if (!ClassMap.TryGetValue(className, out inst))
                 {
                     inst = new INST()
                     {
@@ -184,11 +185,7 @@ namespace RobloxFiles.BinaryFormat
 
                     ClassMap.Add(className, inst);
                 }
-                else
-                {
-                    inst = ClassMap[className];
-                }
-
+                
                 inst.NumInstances++;
                 inst.InstanceIds.Add(instId);
                 
@@ -222,7 +219,7 @@ namespace RobloxFiles.BinaryFormat
         }
 
         // Marks that we are writing a chunk.
-        public bool StartWritingChunk(string chunkType)
+        private bool StartWritingChunk(string chunkType)
         {
             if (chunkType.Length != 4)
                 throw new Exception("BinaryFileWriter.StartWritingChunk - ChunkType length should be 4!");
@@ -241,7 +238,7 @@ namespace RobloxFiles.BinaryFormat
         }
 
         // Marks that we are writing a chunk.
-        public bool StartWritingChunk(IBinaryFileChunk chunk)
+        private bool StartWritingChunk(IBinaryFileChunk chunk)
         {
             if (!WritingChunk)
             {
@@ -257,7 +254,7 @@ namespace RobloxFiles.BinaryFormat
         }
 
         // Compresses the data that was written into a BinaryRobloxFileChunk and writes it.
-        public BinaryRobloxFileChunk FinishWritingChunk(bool compress = true)
+        private BinaryRobloxFileChunk FinishWritingChunk(bool compress = true)
         {
             if (!WritingChunk)
                 throw new Exception($"BinaryRobloxFileWriter: Cannot finish writing a chunk without starting one!");
@@ -283,18 +280,36 @@ namespace RobloxFiles.BinaryFormat
             return chunk;
         }
 
-        public void SaveChunk(IBinaryFileChunk handler)
+        internal BinaryRobloxFileChunk SaveChunk(IBinaryFileChunk handler, int insertPos = -1)
         {
-            var chunk = handler.SaveAsChunk(this);
-            File.Chunks.Add(chunk);
+            StartWritingChunk(handler);
+            handler.Save(this);
+
+            var chunk = FinishWritingChunk();
+
+            if (insertPos >= 0)
+                File.ChunksImpl.Insert(insertPos, chunk);
+            else
+                File.ChunksImpl.Add(chunk);
+
+            return chunk;
         }
 
-        public BinaryRobloxFileChunk WriteEndChunk()
+        internal BinaryRobloxFileChunk WriteChunk(string chunkType, string content, bool compress = false)
         {
-            StartWritingChunk("END\0");
-            WriteString("</roblox>", true);
+            if (chunkType.Length > 4)
+                chunkType = chunkType.Substring(0, 4);
 
-            return FinishWritingChunk(false);
+            while (chunkType.Length < 4)
+                chunkType += '\0';
+
+            StartWritingChunk(chunkType);
+            WriteString(content);
+
+            var chunk = FinishWritingChunk(compress);
+            File.ChunksImpl.Add(chunk);
+
+            return chunk;
         }
     }
 }

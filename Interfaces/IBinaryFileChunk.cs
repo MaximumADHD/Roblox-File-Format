@@ -2,7 +2,7 @@
 {
     public interface IBinaryFileChunk
     {
-        void LoadFromReader(BinaryRobloxFileReader reader);
-        BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer);
+        void Load(BinaryRobloxFileReader reader);
+        void Save(BinaryRobloxFileWriter writer);
     }
 }

@@ -1,43 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
-using System.Security.Cryptography;
+using System.Collections.Generic;
+using Konscious.Security.Cryptography;
 
 namespace RobloxFiles.DataTypes
 {
+    // SharedString is a datatype that takes a sequence of bytes and stores it in a 
+    // lookup table that is shared by the entire file. It originally used MD5 for the
+    // hashing, but Roblox now uses Blake2B to avoid the obvious problems with using MD5.
+    
+    // In practice the value of a SharedString does not have to match the hash of the
+    // data it represents, it just needs to be distinct and MUST be 16 bytes long.
+    // The XML format still uses 'md5' as its attribute key to the lookup table.
+
     public class SharedString
     {
-        private static Dictionary<string, byte[]> Records = new Dictionary<string, byte[]>();
-        public readonly string MD5_Key;
+        private static Dictionary<string, byte[]> Lookup = new Dictionary<string, byte[]>();
+        public string Key { get; internal set; }
+        public string ComputedKey { get; internal set; }
 
-        public byte[] SharedValue => FindRecord(MD5_Key);
-        public override string ToString() => $"MD5 Key: {MD5_Key}";
+        public byte[] SharedValue => Find(ComputedKey ?? Key);
+        public override string ToString() => $"Key: {ComputedKey ?? Key}";
 
-        internal SharedString(string md5)
+        internal SharedString(string key)
         {
-            MD5_Key = md5;
+            Key = key;
+        }
+
+        internal static void Register(string key, byte[] buffer)
+        {
+            Lookup.Add(key, buffer);
         }
 
         private SharedString(byte[] buffer)
         {
-            using (MD5 md5 = MD5.Create())
+            using (HMACBlake2B blake2B = new HMACBlake2B(16 * 8))
             {
-                byte[] hash = md5.ComputeHash(buffer);
-                MD5_Key = Convert.ToBase64String(hash);
+                byte[] hash = blake2B.ComputeHash(buffer);
+                ComputedKey = Convert.ToBase64String(hash);
+                Key = ComputedKey;
             }
 
-            if (Records.ContainsKey(MD5_Key))
+            if (Lookup.ContainsKey(ComputedKey))
                 return;
 
-            Records.Add(MD5_Key, buffer);
+            Register(ComputedKey, buffer);
         }
 
-        public static byte[] FindRecord(string key)
+        public static byte[] Find(string key)
         {
             byte[] result = null;
 
-            if (Records.ContainsKey(key))
-                result = Records[key];
+            if (Lookup.ContainsKey(key))
+                result = Lookup[key];
 
             return result;
         }

@@ -520,12 +520,12 @@ namespace RobloxFiles
                     continue;
 
                 PropertyType propType = PropertyType.Unknown;
-
-                if (fieldType.IsEnum)
-                    propType = PropertyType.Enum;
-                else if (Property.Types.ContainsKey(fieldType))
+                
+                if (Property.Types.ContainsKey(fieldType))
                     propType = Property.Types[fieldType];
-
+                else if (fieldType.IsEnum)
+                    propType = PropertyType.Enum;
+                
                 if (propType != PropertyType.Unknown)
                 {
                     if (fieldName.EndsWith("_"))

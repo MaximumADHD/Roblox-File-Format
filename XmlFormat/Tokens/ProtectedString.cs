@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Text;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -10,7 +11,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
         public bool ReadProperty(Property prop, XmlNode token)
         {
             ProtectedString contents = token.InnerText;
-            prop.Type = PropertyType.String;
+            prop.Type = PropertyType.ProtectedString;
             prop.Value = contents;
 
             return true;
@@ -18,16 +19,26 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            string value = prop.CastValue<ProtectedString>();
+            ProtectedString value = prop.CastValue<ProtectedString>();
 
-            if (value.Contains("\r") || value.Contains("\n"))
+            if (value.IsCompiled)
             {
-                XmlCDataSection cdata = doc.CreateCDataSection(value);
-                node.AppendChild(cdata);
+                var binary = XmlPropertyTokens.GetHandler<BinaryStringToken>();
+                binary.WriteProperty(prop, doc, node);
             }
             else
             {
-                node.InnerText = value;
+                string contents = Encoding.UTF8.GetString(value.RawBuffer);
+
+                if (contents.Contains("\r") || contents.Contains("\n"))
+                {
+                    XmlCDataSection cdata = doc.CreateCDataSection(contents);
+                    node.AppendChild(cdata);
+                }
+                else
+                {
+                    node.InnerText = contents;
+                }
             }
         }
     }

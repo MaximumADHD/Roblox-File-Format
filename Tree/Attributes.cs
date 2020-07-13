@@ -54,7 +54,7 @@ namespace RobloxFiles
         }
 
         internal BinaryReader reader;
-        internal BinaryWriter writer;
+        // internal BinaryWriter writer;
 
         internal int readInt() => reader.ReadInt32();
         internal byte readByte() => reader.ReadByte();

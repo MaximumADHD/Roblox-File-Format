@@ -42,6 +42,7 @@ namespace RobloxFiles
         Color3uint8,
         Int64,
         SharedString,
+        ProtectedString
     }
 
     public class Property
@@ -60,6 +61,7 @@ namespace RobloxFiles
         internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
         internal static MemberTypes FieldOrProperty = MemberTypes.Field | MemberTypes.Property;
 
+        // !! FIXME: Map typeof(ProtectedString) to PropertyType.ProtectedString when binary files are allowed to read it.
         public static readonly IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {
             { typeof(Axes),   PropertyType.Axes  },
@@ -92,24 +94,30 @@ namespace RobloxFiles
             { typeof(ColorSequence),  PropertyType.ColorSequence  },
             { typeof(NumberSequence), PropertyType.NumberSequence },
 
-            { typeof(ProtectedString),    PropertyType.String             },
+            { typeof(ProtectedString),    PropertyType.String             }, 
             { typeof(PhysicalProperties), PropertyType.PhysicalProperties },
         };
 
         private void ImproviseRawBuffer()
         {
-            if (RawValue is byte[])
-            {
-                RawBuffer = RawValue as byte[];
-                return;
-            }
-            else if (RawValue is SharedString)
+            if (RawValue is SharedString)
             {
                 var sharedString = CastValue<SharedString>();
                 RawBuffer = sharedString.SharedValue;
                 return;
             }
-
+            else if (RawValue is ProtectedString)
+            {
+                var protectedString = CastValue<ProtectedString>();
+                RawBuffer = protectedString.RawBuffer;
+                return;
+            }
+            else if (RawValue is byte[])
+            {
+                RawBuffer = RawValue as byte[];
+                return;
+            }
+            
             switch (Type)
             {
                 case PropertyType.Int:
@@ -127,7 +135,7 @@ namespace RobloxFiles
                 case PropertyType.Double:
                     RawBuffer = BitConverter.GetBytes((double)Value);
                     break;
-                //
+                default: break;
             }
         }
 
@@ -142,8 +150,12 @@ namespace RobloxFiles
 
                     if (typeName == Name)
                     {
-                        FieldInfo directField = instType.GetField(typeName, BindingFlags.DeclaredOnly);
-
+                        FieldInfo directField = instType
+                            .GetFields()
+                            .Where(field => field.Name.StartsWith(Name))
+                            .Where(field => field.DeclaringType == instType)
+                            .FirstOrDefault();
+                        
                         if (directField != null)
                         {
                             var implicitName = Name + '_';

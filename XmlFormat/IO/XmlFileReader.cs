@@ -11,7 +11,7 @@ namespace RobloxFiles.XmlFormat
         {
             var errorHandler = new Func<string, Exception>((message) =>
             {
-                string contents = $"XmlDataReader.{label}: {message}";
+                string contents = $"XmlRobloxFileReader.{label}: {message}";
                 return new Exception(contents);
             });
 
@@ -29,19 +29,25 @@ namespace RobloxFiles.XmlFormat
             {
                 if (sharedString.Name == "SharedString")
                 {
-                    XmlNode md5Node = sharedString.Attributes.GetNamedItem("md5");
+                    XmlNode hashNode = sharedString.Attributes.GetNamedItem("md5");
 
-                    if (md5Node == null)
+                    if (hashNode == null)
                         throw error("Got a SharedString without an 'md5' attribute!");
 
-                    string key = md5Node.InnerText;
+                    string key = hashNode.InnerText;
                     string value = sharedString.InnerText.Replace("\n", "");
 
-                    byte[] buffer = Convert.FromBase64String(value);
-                    SharedString record = SharedString.FromBase64(value);
+                    byte[] hash = Convert.FromBase64String(key);
+                    var record = SharedString.FromBase64(value);
 
-                    if (record.MD5_Key != key)
-                        throw error("The provided md5 hash did not match with the md5 hash computed for the value!");
+                    if (hash.Length != 16)
+                        throw error($"SharedString base64 key '{key}' must decode to byte[16]!");
+
+                    if (key != record.Key)
+                    {
+                        SharedString.Register(key, record.SharedValue);
+                        record.Key = key;
+                    }
 
                     file.SharedStrings.Add(key);
                 }

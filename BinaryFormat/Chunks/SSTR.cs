@@ -6,56 +6,54 @@ namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class SSTR : IBinaryFileChunk
     {
-        public int Version;
-        public int NumHashes;
+        private const int FORMAT = 0;
 
-        public Dictionary<string, uint> Lookup = new Dictionary<string, uint>();
-        public Dictionary<uint, SharedString> Strings = new Dictionary<uint, SharedString>();
+        internal Dictionary<string, uint> Lookup = new Dictionary<string, uint>();
+        internal Dictionary<uint, SharedString> Strings = new Dictionary<uint, SharedString>();
 
-        public void LoadFromReader(BinaryRobloxFileReader reader)
+        public void Load(BinaryRobloxFileReader reader)
         {
             BinaryRobloxFile file = reader.File;
 
-            Version = reader.ReadInt32();
-            NumHashes = reader.ReadInt32();
+            int format = reader.ReadInt32();
+            int numHashes = reader.ReadInt32();
 
-            for (uint id = 0; id < NumHashes; id++)
+            if (format != FORMAT)
+                throw new Exception($"Unexpected SSTR format: {format} (expected {FORMAT}!)");
+            
+            for (uint id = 0; id < numHashes; id++)
             {
-                byte[] md5 = reader.ReadBytes(16);
+                byte[] hash = reader.ReadBytes(16);
+                string key = Convert.ToBase64String(hash);
 
-                int length = reader.ReadInt32();
-                byte[] data = reader.ReadBytes(length);
-
+                byte[] data = reader.ReadBuffer();
                 SharedString value = SharedString.FromBuffer(data);
-                Lookup.Add(value.MD5_Key, id);
+
+                Lookup.Add(key, id);
                 Strings.Add(id, value);
             }
 
             file.SSTR = this;
         }
 
-        public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
+        public void Save(BinaryRobloxFileWriter writer)
         {
-            writer.StartWritingChunk(this);
-
-            writer.Write(Version);
-            writer.Write(NumHashes);
+            writer.Write(FORMAT);
+            writer.Write(Lookup.Count);
 
             foreach (var pair in Lookup)
             {
                 string key = pair.Key;
 
-                byte[] md5 = Convert.FromBase64String(key);
-                writer.Write(md5);
+                byte[] hash = Convert.FromBase64String(key);
+                writer.Write(hash);
 
                 SharedString value = Strings[pair.Value];
-                byte[] buffer = SharedString.FindRecord(value.MD5_Key);
+                byte[] buffer = SharedString.Find(value.Key);
 
                 writer.Write(buffer.Length);
                 writer.Write(buffer);
             }
-
-            return writer.FinishWritingChunk();
         }
     }
 }

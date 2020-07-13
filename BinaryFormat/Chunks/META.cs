@@ -6,7 +6,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
     {
         public Dictionary<string, string> Data = new Dictionary<string, string>();
 
-        public void LoadFromReader(BinaryRobloxFileReader reader)
+        public void Load(BinaryRobloxFileReader reader)
         {
             BinaryRobloxFile file = reader.File;
             int numEntries = reader.ReadInt32();
@@ -21,18 +21,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
             file.META = this;
         }
 
-        public BinaryRobloxFileChunk SaveAsChunk(BinaryRobloxFileWriter writer)
+        public void Save(BinaryRobloxFileWriter writer)
         {
-            writer.StartWritingChunk(this);
             writer.Write(Data.Count);
 
-            foreach (var kvPair in Data)
+            foreach (var pair in Data)
             {
-                writer.WriteString(kvPair.Key);
-                writer.WriteString(kvPair.Value);
+                writer.WriteString(pair.Key);
+                writer.WriteString(pair.Value);
             }
-
-            return writer.FinishWritingChunk();
         }
     }
 }

@@ -15,26 +15,31 @@ namespace RobloxFiles
         // Header Specific
         public const string MagicHeader = "<roblox!\x89\xff\x0d\x0a\x1a\x0a";
 
-        public ushort Version;
-        public uint   NumClasses;
-        public uint   NumInstances;
-        public long   Reserved;
+        public ushort Version      { get; internal set; }
+        public uint   NumClasses   { get; internal set; }
+        public uint   NumInstances { get; internal set; }
+        public long   Reserved     { get; internal set; }
 
         // Runtime Specific
-        public List<BinaryRobloxFileChunk> Chunks = new List<BinaryRobloxFileChunk>();
+        internal List<BinaryRobloxFileChunk> ChunksImpl = new List<BinaryRobloxFileChunk>();
+        public IReadOnlyList<BinaryRobloxFileChunk> Chunks => ChunksImpl;
         public override string ToString() => GetType().Name;
         
-        public Instance[] Instances;
-        public INST[] Classes;
+        public Instance[] Instances { get; internal set; }
+        public INST[] Classes       { get; internal set; }
 
         internal META META = null;
         internal SSTR SSTR = null;
+        internal SIGN SIGN = null;
 
         public bool HasMetadata => (META != null);
         public Dictionary<string, string> Metadata => META?.Data;
 
         public bool HasSharedStrings => (SSTR != null);
         public IReadOnlyDictionary<uint, SharedString> SharedStrings => SSTR?.Strings;
+
+        public bool HasSignatures => (SIGN != null);
+        public IReadOnlyList<Signature> Signatures => SIGN?.Signatures;
 
         public BinaryRobloxFile()
         {
@@ -71,12 +76,10 @@ namespace RobloxFiles
                 {
                     try
                     {
-                        BinaryRobloxFileChunk chunk = new BinaryRobloxFileChunk(reader);
-                        string chunkType = chunk.ChunkType;
-
+                        var chunk = new BinaryRobloxFileChunk(reader);
                         IBinaryFileChunk handler = null;
                         
-                        switch (chunkType)
+                        switch (chunk.ChunkType)
                         {
                             case "INST":
                                 handler = new INST();
@@ -93,22 +96,27 @@ namespace RobloxFiles
                             case "SSTR":
                                 handler = new SSTR();
                                 break;
+                            case "SIGN":
+                                handler = new SIGN();
+                                break;
                             case "END\0":
-                                Chunks.Add(chunk);
+                                ChunksImpl.Add(chunk);
                                 reading = false;
                                 break;
-                            default:
-                                Console.WriteLine("BinaryRobloxFile - Unhandled chunk-type: {0}!", chunkType);
+                            case string unhandled:
+                                Console.WriteLine("BinaryRobloxFile - Unhandled chunk-type: {0}!", unhandled);
                                 break;
+                            default: break;
                         }
 
                         if (handler != null)
                         {
-                            using (BinaryRobloxFileReader dataReader = chunk.GetDataReader(this))
-                                handler.LoadFromReader(dataReader);
-
                             chunk.Handler = handler;
-                            Chunks.Add(chunk);
+
+                            using (var dataReader = chunk.GetDataReader(this))
+                                handler.Load(dataReader);
+
+                            ChunksImpl.Add(chunk);
                         }
                     }
                     catch (EndOfStreamException)
@@ -129,7 +137,7 @@ namespace RobloxFiles
             {
                 // Clear the existing data.
                 Referent = "-1";
-                Chunks.Clear();
+                ChunksImpl.Clear();
                 
                 NumInstances = 0;
                 NumClasses = 0;
@@ -148,7 +156,7 @@ namespace RobloxFiles
                 // Write the PROP chunks.
                 foreach (INST inst in Classes)
                 {
-                    Dictionary<string, PROP> props = PROP.CollectProperties(writer, inst);
+                    var props = PROP.CollectProperties(writer, inst);
 
                     foreach (string propName in props.Keys)
                     {
@@ -158,26 +166,23 @@ namespace RobloxFiles
                 }
 
                 // Write the PRNT chunk.
-                PRNT parents = new PRNT();
+                var parents = new PRNT();
                 writer.SaveChunk(parents);
                 
                 // Write the SSTR chunk.
                 if (HasSharedStrings)
-                {
-                    var sharedStrings = SSTR.SaveAsChunk(writer);
-                    Chunks.Insert(0, sharedStrings);
-                }
+                    writer.SaveChunk(SSTR, 0);
 
                 // Write the META chunk.
                 if (HasMetadata)
-                {
-                    var metaChunk = META.SaveAsChunk(writer);
-                    Chunks.Insert(0, metaChunk);
-                }
+                    writer.SaveChunk(META, 0);
 
-                // Write the END_ chunk.
-                var endChunk = writer.WriteEndChunk();
-                Chunks.Add(endChunk);
+                // Write the SIGN chunk.
+                if (HasSignatures)
+                    writer.SaveChunk(SIGN);
+
+                // Write the END chunk.
+                writer.WriteChunk("END", "</roblox>");
             }
 
             //////////////////////////////////////////////////////////////////////////

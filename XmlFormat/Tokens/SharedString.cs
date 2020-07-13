@@ -9,17 +9,25 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
-            string md5 = token.InnerText;
+            string key = token.InnerText;
             prop.Type = PropertyType.SharedString;
-            prop.Value = new SharedString(md5);
+            prop.Value = new SharedString(key);
 
             return true;
         }
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            SharedString value = prop.CastValue<SharedString>();
-            node.InnerText = value.MD5_Key;
+            var value = prop.CastValue<SharedString>();
+            string key = value.Key;
+
+            if (value.ComputedKey == null)
+            {
+                var newShared = SharedString.FromBuffer(value.SharedValue);
+                key = newShared.ComputedKey;
+            }
+
+            node.InnerText = key;
         }
     }
 }
