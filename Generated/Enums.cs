@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.438.0.407270
+// Updated as of 0.441.1.408989
 
 namespace RobloxFiles.Enums
 {
@@ -1340,6 +1340,15 @@ namespace RobloxFiles.Enums
         Premium
     }
 
+    public enum MeshPartDetailLevel
+    {
+        DistanceBased,
+        Level01,
+        Level02,
+        Level03,
+        Level04
+    }
+
     public enum MeshType
     {
         Head,
@@ -1594,7 +1603,8 @@ namespace RobloxFiles.Enums
     public enum RenderFidelity
     {
         Automatic,
-        Precise
+        Precise,
+        Performance
     }
 
     public enum RenderPriority
@@ -1753,6 +1763,13 @@ namespace RobloxFiles.Enums
         RelativeYY
     }
 
+    public enum SkinnedMeshAllowType
+    {
+        Default,
+        Enabled,
+        Disabled
+    }
+
     public enum SortOrder
     {
         Name,
@@ -1898,6 +1915,11 @@ namespace RobloxFiles.Enums
         DiffLineNumDeletionBackground,
         DiffFilePathBackground,
         DiffFilePathBorder,
+        ChatIncomingBgColor,
+        ChatIncomingTextColor,
+        ChatOutgoingBgColor,
+        ChatOutgoingTextColor,
+        ChatModeratedMessageColor,
         Separator,
         ButtonBorder,
         ButtonText,
@@ -1914,7 +1936,8 @@ namespace RobloxFiles.Enums
         DialogMainButton,
         DialogMainButtonText,
         InfoBarWarningBackground,
-        InfoBarWarningText
+        InfoBarWarningText,
+        ScriptEditorCurrentLine
     }
 
     public enum StudioStyleGuideModifier
@@ -1983,6 +2006,14 @@ namespace RobloxFiles.Enums
         Compatibility,
         ShadowMap,
         Future
+    }
+
+    public enum TeleportMethod
+    {
+        TeleportToSpawnByName,
+        TeleportToPlaceInstance,
+        TeleportToPrivateServer,
+        TeleportToPartyAsync
     }
 
     public enum TeleportResult

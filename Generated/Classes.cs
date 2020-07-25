@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.438.0.407270
+// Updated as of 0.441.1.408989
 
 using System;
 
@@ -1465,7 +1465,9 @@ namespace RobloxFiles
 
     public class CylinderHandleAdornment : HandleAdornment
     {
+        public float Angle = 360;
         public float Height = 1;
+        public float InnerRadius = 0;
         public float Radius = 1;
     }
 
@@ -2182,7 +2184,9 @@ namespace RobloxFiles
 
     public class MeshPart : TriangleMeshPart
     {
+        public bool HasJointOffset = false;
         public bool HasSkinnedMesh = false;
+        public Vector3 JointOffset = new Vector3();
 
         [Obsolete]
         public Content MeshID
@@ -2264,6 +2268,7 @@ namespace RobloxFiles
         public float FallenPartsDestroyHeight = -500;
         public bool FilteringEnabled = false;
         public float Gravity = 196.2f;
+        public SkinnedMeshAllowType SkinnedMeshEnabled;
         public bool StreamingEnabled = false;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
