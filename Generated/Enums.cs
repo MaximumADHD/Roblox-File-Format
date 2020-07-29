@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.441.1.408989
+// Updated as of 0.442.0.409197
 
 namespace RobloxFiles.Enums
 {
@@ -1373,6 +1373,13 @@ namespace RobloxFiles.Enums
         MessageError
     }
 
+    public enum ModelLevelOfDetail
+    {
+        Automatic,
+        StreamingMesh,
+        Disabled
+    }
+
     public enum ModifierKey
     {
         Shift,
@@ -1763,13 +1770,6 @@ namespace RobloxFiles.Enums
         RelativeYY
     }
 
-    public enum SkinnedMeshAllowType
-    {
-        Default,
-        Enabled,
-        Disabled
-    }
-
     public enum SortOrder
     {
         Name,
@@ -2013,7 +2013,8 @@ namespace RobloxFiles.Enums
         TeleportToSpawnByName,
         TeleportToPlaceInstance,
         TeleportToPrivateServer,
-        TeleportToPartyAsync
+        TeleportPartyAsync,
+        TeleportUnknown
     }
 
     public enum TeleportResult

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.441.1.408989
+// Updated as of 0.442.0.409197
 
 using System;
 
@@ -2245,6 +2245,7 @@ namespace RobloxFiles
 
     public class Model : PVInstance
     {
+        public ModelLevelOfDetail LevelOfDetail = ModelLevelOfDetail.Automatic;
         public CFrame ModelInPrimary = new CFrame();
         public BasePart PrimaryPart = null;
     }
@@ -2268,7 +2269,6 @@ namespace RobloxFiles
         public float FallenPartsDestroyHeight = -500;
         public bool FilteringEnabled = false;
         public float Gravity = 196.2f;
-        public SkinnedMeshAllowType SkinnedMeshEnabled;
         public bool StreamingEnabled = false;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
@@ -2383,6 +2383,14 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
+    }
+
+    public class PluginDebugService : Instance
+    {
+        public PluginDebugService()
+        {
+            IsService = true;
+        }
     }
 
     public class PluginGuiService : Instance
