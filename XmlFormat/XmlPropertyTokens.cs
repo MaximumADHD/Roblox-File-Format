@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.ComponentModel;
 using System.Linq;
 using System.Xml;
@@ -14,13 +15,16 @@ namespace RobloxFiles.XmlFormat
         {
             // Initialize the PropertyToken handler singletons.
             Type IXmlPropertyToken = typeof(IXmlPropertyToken);
+            var assembly = Assembly.GetExecutingAssembly();
 
-            var handlerTypes = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .Where(type => type != IXmlPropertyToken)
-                .Where(type => IXmlPropertyToken.IsAssignableFrom(type));
+            var handlerTypes = assembly.GetTypes()
+                .Where(type => IXmlPropertyToken.IsAssignableFrom(type))
+                .Where(type => type != IXmlPropertyToken);
 
-            var propTokens = handlerTypes.Select(handlerType => Activator.CreateInstance(handlerType) as IXmlPropertyToken);
+            var propTokens = handlerTypes
+                .Select(handlerType => Activator.CreateInstance(handlerType))
+                .Cast<IXmlPropertyToken>();
+
             var tokenHandlers = new Dictionary<string, IXmlPropertyToken>();
 
             foreach (IXmlPropertyToken propToken in propTokens)
