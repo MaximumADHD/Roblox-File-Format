@@ -1,7 +1,7 @@
 local Format = {}
 
 function Format.Null(value)
-	return "null"
+	return nil
 end
 
 function Format.Bytes(value)
@@ -9,7 +9,13 @@ function Format.Bytes(value)
 		local fmt = "Convert.FromBase64String(%q)"
 		return fmt:format(value)
 	else
-		return "new byte[0]"
+		return "Array.Empty<byte>()"
+	end
+end
+
+function Format.Bool(value)
+	if value then
+		return "true"
 	end
 end
 
@@ -17,21 +23,21 @@ function Format.String(value)
 	return string.format("%q", value)
 end
 
-function Format.Int(value)
+function Format.Int(value, default)
 	if value == 2147483647 then
 		return "int.MaxValue"
 	elseif value == -2147483648 then
 		return "int.MinValue"
-	else
+	elseif value ~= 0 or default then
 		return string.format("%i", value)
 	end
 end
 
-function Format.Number(value)
+function Format.Number(value, default)
 	local int = math.floor(value)
 	
 	if math.abs(value - int) < 0.001 then
-		return Format.Int(int)
+		return Format.Int(int, default)
 	end
 	
 	local result = string.format("%.5f", value)
@@ -40,10 +46,12 @@ function Format.Number(value)
 	return result
 end
 
-function Format.Double(value)
-	local result = Format.Number(value)
+function Format.Double(value, default)
+	local result = Format.Number(value, default)
 	
-	if result == "inf" then
+	if not result then
+		return nil
+	elseif result == "inf" then
 		return "double.MaxValue"
 	elseif result == "-inf" then
 		return "double.MinValue"
@@ -52,10 +60,12 @@ function Format.Double(value)
 	end
 end
 
-function Format.Float(value)
-	local result = Format.Number(value)
+function Format.Float(value, default)
+	local result = Format.Number(value, default)
 	
-	if result == "inf" then
+	if not result then
+		return nil
+	elseif result == "inf" then
 		return "float.MaxValue"
 	elseif result == "-inf" then
 		return "float.MinValue"
@@ -73,7 +83,7 @@ function Format.Flags(flag, enum)
 	
 	for _,item in pairs(enum:GetEnumItems()) do
 		if flag[item.Name] then
-			value = value + (2 ^ item.Value)
+			value += (2 ^ item.Value)
 		end
 	end
 	
@@ -103,17 +113,17 @@ function Format.Color3(color)
 		return "new Color3()"
 	end
 	
-	local r = Format.Float(color.r)
-	local g = Format.Float(color.g)
-	local b = Format.Float(color.b)
+	local r = Format.Float(color.R, true)
+	local g = Format.Float(color.G, true)
+	local b = Format.Float(color.B, true)
 	
 	local fmt = "%s(%s, %s, %s)";
 	local constructor = "new Color3";
 	
 	if string.find(r .. g .. b, 'f') then
-		r = Format.Int(color.r * 255)
-		g = Format.Int(color.g * 255)
-		b = Format.Int(color.b * 255)
+		r = Format.Int(color.R * 255)
+		g = Format.Int(color.G * 255)
+		b = Format.Int(color.B * 255)
 		
 		constructor = "Color3.FromRGB"
 	end
@@ -126,8 +136,8 @@ function Format.UDim(udim)
 		return "new UDim()"
 	end
 	
-	local scale = Format.Float(udim.Scale)
-	local offset = Format.Int(udim.Offset)
+	local scale = Format.Float(udim.Scale, true)
+	local offset = Format.Int(udim.Offset, true)
 	
 	local fmt = "new UDim(%s, %s)"
 	return fmt:format(scale, offset)
@@ -138,11 +148,11 @@ function Format.UDim2(udim2)
 		return "new UDim2()"
 	end
 	
-	local xScale = Format.Float(udim2.X.Scale)
-	local yScale = Format.Float(udim2.Y.Scale)
+	local xScale = Format.Float(udim2.X.Scale, true)
+	local yScale = Format.Float(udim2.Y.Scale, true)
 	
-	local xOffset = Format.Int(udim2.X.Offset)
-	local yOffset = Format.Int(udim2.Y.Offset)
+	local xOffset = Format.Int(udim2.X.Offset, true)
+	local yOffset = Format.Int(udim2.Y.Offset, true)
 	
 	local fmt = "new UDim2(%s, %s, %s, %s)"
 	return fmt:format(xScale, xOffset, yScale, yOffset)
@@ -153,8 +163,8 @@ function Format.Vector2(v2)
 		return "new Vector2()"
 	end
 	
-	local x = Format.Float(v2.X)
-	local y = Format.Float(v2.Y)
+	local x = Format.Float(v2.X, true)
+	local y = Format.Float(v2.Y, true)
 	
 	local fmt = "new Vector2(%s, %s)"
 	return fmt:format(x, y)
@@ -165,9 +175,9 @@ function Format.Vector3(v3)
 		return "new Vector3()"
 	end
 	
-	local x = Format.Float(v3.X)
-	local y = Format.Float(v3.Y)
-	local z = Format.Float(v3.Z)
+	local x = Format.Float(v3.X, true)
+	local y = Format.Float(v3.Y, true)
+	local z = Format.Float(v3.Z, true)
 	
 	local fmt = "new Vector3(%s, %s, %s)"
 	return fmt:format(x, y, z)
@@ -185,16 +195,16 @@ function Format.CFrame(cf)
 	if rot == blankCF then
 		local fmt = "new CFrame(%s, %s, %s)"
 		
-		local x = Format.Float(cf.X)
-		local y = Format.Float(cf.Y)
-		local z = Format.Float(cf.Z)
+		local x = Format.Float(cf.X, true)
+		local y = Format.Float(cf.Y, true)
+		local z = Format.Float(cf.Z, true)
 		
 		return fmt:format(x, y, z)
 	else
 		local comp = { cf:GetComponents() }
 		
 		for i = 1,12 do
-			comp[i] = Format.Float(comp[i])
+			comp[i] = Format.Float(comp[i], true)
 		end
 		
 		local fmt = "new CFrame(%s)"
@@ -209,10 +219,10 @@ function Format.NumberRange(nr)
 	local max = nr.Max
 	
 	local fmt = "new NumberRange(%s)"
-	local value = Format.Float(min)
+	local value = Format.Float(min, true)
 	
 	if min ~= max then
-		value = value .. ", " .. Format.Float(max)
+		value = value .. ", " .. Format.Float(max, true)
 	end
 	
 	return fmt:format(value)
@@ -253,7 +263,7 @@ function Format.NumberSequence(ns)
 	local nsKey = ns.Keypoints[1]
 	
 	local fmt = "new NumberSequence(%s)"
-	local value = Format.Float(nsKey.Value)
+	local value = Format.Float(nsKey.Value, true)
 	
 	return fmt:format(value)
 end
@@ -263,9 +273,9 @@ function Format.Vector3int16(v3)
 		return "new Vector3int16()"
 	end
 	
-	local x = Format.Int(v3.X)
-	local y = Format.Int(v3.Y)
-	local z = Format.Int(v3.Z)
+	local x = Format.Int(v3.X, true)
+	local y = Format.Int(v3.Y, true)
+	local z = Format.Int(v3.Z, true)
 	
 	local fmt = "new Vector3int16(%s, %s, %s)"
 	return fmt:format(x, y, z)

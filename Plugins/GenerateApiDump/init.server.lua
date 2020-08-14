@@ -200,9 +200,10 @@ local formatLinks =
 	["nil"]  = "Null";
 	["long"] = "Int";
 	
-	["float"]  = "Float";
-	["byte[]"] = "Bytes";
-	["double"] = "Double";
+	["float"]   = "Float";
+	["byte[]"]  = "Bytes";
+	["double"]  = "Double";
+	["boolean"] = "Bool";
 	
 	["string"]   = "String";
 	["Content"]  = "String";
@@ -247,25 +248,18 @@ setmetatable(patches, patchIndex)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 local baseUrl = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Tracker/roblox/"
-local toolbar, classButton, enumButton
+local toolbar, button
 
 if plugin then
 	toolbar = plugin:CreateToolbar("C# API Dump")
 
-	classButton = toolbar:CreateButton(
-		"Dump Classes",
-		"Generates a C# dump of Roblox's Class API.", 
+	button = toolbar:CreateButton(
+		"Dump API",
+		"Generates a C# dump of Roblox's Class/Enum API.", 
 		"rbxasset://textures/Icon_Stream_Off@2x.png"
 	)
 	
-	enumButton = toolbar:CreateButton(
-		"Dump Enums",
-		"Generates a C# dump of Roblox's Enum API.",
-		"rbxasset://textures/Icon_Stream_Off@2x.png"
-	)
-
-	classButton.ClickableWhenViewportHidden = true
-	enumButton.ClickableWhenViewportHidden = true
+	button.ClickableWhenViewportHidden = true
 end
 
 local function getAsync(url)
@@ -294,6 +288,12 @@ local function generateClasses()
 	
 	local classNames = {}
 	classes = {}
+
+	local enumMap =
+	{
+		Axis = true;
+		FontSize = true;
+	}
 	
 	for _,class in ipairs(apiDump.Classes) do
 		local className = class.Name
@@ -309,9 +309,7 @@ local function generateClasses()
 			
 			if classTags.Service then
 				pcall(function ()
-					if not className:find("Network") then
-						class.Object = game:GetService(className)
-					end
+					class.Object = game:GetService(className)
 				end)
 			elseif not classTags.NotCreatable then
 				pcall(function ()
@@ -345,7 +343,11 @@ local function generateClasses()
 	writeLine("using RobloxFiles.Utility;")
 	writeLine()
 	
-	writeLine("#pragma warning disable IDE1006 // Suppress warnings about camelCase.")
+	writeLine("#pragma warning disable CA1041  // Provide ObsoleteAttribute message")
+	writeLine("#pragma warning disable CA1051  // Do not declare visible instance fields")
+	writeLine("#pragma warning disable CA1707  // Identifiers should not contain underscores")
+	writeLine("#pragma warning disable CA1716  // Identifiers should not match keywords")
+	writeLine("#pragma warning disable IDE1006 // Naming Styles")
 	writeLine()
 	
 	writeLine("namespace RobloxFiles")
@@ -589,7 +591,14 @@ local function generateClasses()
 								result = formatFunc(value)
 							end
 							
-							default = " = " .. result
+							if result ~= nil then
+								default = " = " .. result
+							end
+
+							if formatFunc == formatting.EnumItem then
+								local enumName = tostring(value.EnumType)
+								enumMap[enumName] = true
+							end
 						end
 						
 						if propTags.Deprecated then
@@ -598,10 +607,6 @@ local function generateClasses()
 							end
 							
 							writeLine("[Obsolete]")
-						end
-						
-						if category == "Class" then
-							default = " = null"
 						end
 						
 						writeLine("public %s %s%s;", valueType, name, default)
@@ -625,27 +630,36 @@ local function generateClasses()
 	
 	closeStack()
 	exportStream("Classes")
+
+	return enumMap
 end
 
-local function generateEnums()
+local function generateEnums(whiteList)
 	local version = getfenv().version():gsub("%. ", ".")
 	clearStream()
 	
 	writeLine("// Auto-generated list of Roblox enums.")
 	writeLine("// Updated as of %s", version)
 	writeLine()
-	
+
 	writeLine("namespace RobloxFiles.Enums")
 	openStack()
 	
 	local enums = Enum:GetEnums()
 	
 	for i, enum in ipairs(enums) do
-		writeLine("public enum %s", tostring(enum))
+		local enumName = tostring(enum)
+
+		if whiteList and not whiteList[enumName] then
+			continue
+		end
+		
+		writeLine("public enum %s", enumName)
 		openStack()
 		
 		local enumItems = enum:GetEnumItems()
 		local lastValue = -1
+		local mapped = {}
 		
 		table.sort(enumItems, function (a, b)
 			return a.Value < b.Value
@@ -658,16 +672,20 @@ local function generateEnums()
 			local name = enumItem.Name
 			local value = enumItem.Value
 			
-			if (value - lastValue) ~= 1 then
-				text = " = " .. value;
+			if not mapped[value] then
+				if (value - lastValue) ~= 1 then
+					text = " = " .. value;
+				end
+				
+				if i == #enumItems then
+					comma = ""
+				end
+				
+				lastValue = value
+				mapped[value] = true
+
+				writeLine("%s%s%s", name, text, comma)
 			end
-			
-			if i == #enumItems then
-				comma = ""
-			end
-			
-			lastValue = value
-			writeLine("%s%s%s", name, text, comma)
 		end
 		
 		closeStack()
@@ -681,10 +699,13 @@ local function generateEnums()
 	exportStream("Enums")
 end
 
+local function generateAll()
+	local enumList = generateClasses()
+	generateEnums(enumList)
+end
+
 if plugin then
-	classButton.Click:Connect(generateClasses)
-	enumButton.Click:Connect(generateEnums)
+	button.Click:Connect(generateAll)
 else
-	generateClasses()
-	generateEnums()
+	generateAll()
 end

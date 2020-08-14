@@ -9,7 +9,7 @@ namespace RobloxFiles.XmlFormat
 {
     public static class XmlPropertyTokens
     {
-        public static IReadOnlyDictionary<string, IXmlPropertyToken> Handlers;
+        private static readonly Dictionary<string, IXmlPropertyToken> Handlers = new Dictionary<string, IXmlPropertyToken>();
 
         static XmlPropertyTokens()
         {
@@ -25,22 +25,24 @@ namespace RobloxFiles.XmlFormat
                 .Select(handlerType => Activator.CreateInstance(handlerType))
                 .Cast<IXmlPropertyToken>();
 
-            var tokenHandlers = new Dictionary<string, IXmlPropertyToken>();
-
             foreach (IXmlPropertyToken propToken in propTokens)
             {
                 var tokens = propToken.Token.Split(';')
                     .Select(token => token.Trim())
                     .ToList();
 
-                tokens.ForEach(token => tokenHandlers.Add(token, propToken));
+                tokens.ForEach(token => Handlers.Add(token, propToken));
             }
-
-            Handlers = tokenHandlers;
         }
 
         public static bool ReadPropertyGeneric<T>(XmlNode token, out T outValue) where T : struct
         {
+            if (token == null)
+            {
+                var name = nameof(token);
+                throw new ArgumentNullException(name);
+            }
+            
             try
             {
                 string value = token.InnerText;
@@ -65,18 +67,22 @@ namespace RobloxFiles.XmlFormat
                 outValue = (T)result;
                 return true;
             }
-            catch
+            catch (NotSupportedException)
             {
-                outValue = default(T);
+                outValue = default;
                 return false;
             }
         }
 
         public static bool ReadPropertyGeneric<T>(Property prop, PropertyType propType, XmlNode token) where T : struct
         {
-            T result;
+            if (prop == null)
+            {
+                var name = nameof(prop);
+                throw new ArgumentNullException(name);
+            }
 
-            if (ReadPropertyGeneric(token, out result))
+            if (ReadPropertyGeneric(token, out T result))
             {
                 prop.Type = propType;
                 prop.Value = result;

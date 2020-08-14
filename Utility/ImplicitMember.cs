@@ -7,8 +7,8 @@ namespace RobloxFiles.Utility
     // This is a lazy helper class to disambiguate between FieldInfo and PropertyInfo
     internal class ImplicitMember
     {
-        private static BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
-        private object member;
+        private const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
+        private readonly object member;
         
         private ImplicitMember(FieldInfo field) { member = field; }
         private ImplicitMember(PropertyInfo prop) { member = prop; }

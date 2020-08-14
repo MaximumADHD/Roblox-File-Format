@@ -5,7 +5,7 @@ using System.Text;
 
 internal static class Formatting
 {
-    private static CultureInfo invariant => CultureInfo.InvariantCulture;
+    private static CultureInfo Invariant => CultureInfo.InvariantCulture;
 
     public static string ToInvariantString(this float value)
     {
@@ -18,7 +18,7 @@ internal static class Formatting
         else if (float.IsNaN(value))
             result = "NAN";
         else
-            result = value.ToString(invariant);
+            result = value.ToString(Invariant);
 
         return result;
     }
@@ -34,75 +34,52 @@ internal static class Formatting
         else if (double.IsNaN(value))
             result = "NAN";
         else
-            result = value.ToString(invariant);
+            result = value.ToString(Invariant);
 
         return result;
     }
 
     public static string ToInvariantString(this int value)
     {
-        return value.ToString(invariant);
+        return value.ToString(Invariant);
     }
 
     public static string ToInvariantString(this object value)
     {
-        if (value is float)
+        switch (value)
         {
-            float f = (float)value;
-            return f.ToInvariantString();
-        }
-        else if (value is double)
-        {
-            double d = (double)value;
-            return d.ToInvariantString();
-        }
-        else if (value is int)
-        {
-            int i = (int)value;
-            return i.ToInvariantString();
-        }
-        else
-        {
-            // Unhandled
-            return value.ToString();
+            case double d : return d.ToInvariantString();
+            case float  f : return f.ToInvariantString();
+            case int    i : return i.ToInvariantString();
+            default       : return value.ToString();
         }
     }
 
     public static float ParseFloat(string value)
     {
-        float result;
-
-        if (value == "INF")
-            result = float.PositiveInfinity;
-        else if (value == "-INF")
-            result = float.NegativeInfinity;
-        else if (value == "NAN")
-            result = float.NaN;
-        else
-            result = float.Parse(value, invariant);
-
-        return result;
+        switch (value)
+        {
+            case  "NAN" : return float.NaN;
+            case  "INF" : return float.PositiveInfinity;
+            case "-INF" : return float.NegativeInfinity;
+            default     : return float.Parse(value, Invariant);
+        }
     }
 
     public static double ParseDouble(string value)
     {
-        double result;
-
-        if (value == "INF")
-            result = double.PositiveInfinity;
-        else if (value == "-INF")
-            result = double.NegativeInfinity;
-        else if (value == "NAN")
-            result = double.NaN;
-        else
-            result = double.Parse(value, invariant);
-
-        return result;
+        switch (value)
+        {
+            case  "NAN" : return double.NaN;
+            case  "INF" : return double.PositiveInfinity;
+            case "-INF" : return double.NegativeInfinity;
+            default     : return double.Parse(value, Invariant);
+        }
     }
 
     public static int ParseInt(string s)
     {
-        return int.Parse(s, invariant);
+        return int.Parse(s, Invariant);
     }
 
     public static bool FuzzyEquals(this float a, float b, float epsilon = 10e-5f)

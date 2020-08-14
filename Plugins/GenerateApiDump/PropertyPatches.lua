@@ -2,7 +2,7 @@ local function UseColor3(propName)
 	return
 	{
 		Get = string.format("BrickColor.FromColor3(%s)", propName);
-		Set = propName .. " = value.Color";
+		Set = propName .. " = value?.Color";
 	}
 end
 
@@ -349,7 +349,11 @@ return
 	
 	Model = 
 	{
-		Add = { ModelInPrimary = "CFrame" };
+		Add = 
+		{
+			ModelInPrimary = "CFrame";
+			ModelMeshData = "BinaryString";
+		};
 	};
 
 	ModuleScript = 
