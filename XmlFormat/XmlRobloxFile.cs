@@ -33,7 +33,14 @@ namespace RobloxFiles
             try
             {
                 string xml = Encoding.UTF8.GetString(buffer);
-                XmlDocument.LoadXml(xml);
+                var settings = new XmlReaderSettings() { XmlResolver = null };
+
+                using (StringReader reader = new StringReader(xml))
+                {
+                    XmlReader xmlReader = XmlReader.Create(reader, settings);
+                    XmlDocument.Load(xmlReader);
+                    xmlReader.Dispose();
+                }
             }
             catch
             {
@@ -46,9 +53,8 @@ namespace RobloxFiles
             {
                 // Verify the version we are using.
                 XmlNode version = roblox.Attributes.GetNamedItem("version");
-                int schemaVersion;
-
-                if (version == null || !int.TryParse(version.Value, out schemaVersion))
+                
+                if (version == null || !int.TryParse(version.Value, out int schemaVersion))
                     throw new Exception("XmlRobloxFile: No version number defined!");
                 else if (schemaVersion < 4)
                     throw new Exception("XmlRobloxFile: Provided version must be at least 4!");

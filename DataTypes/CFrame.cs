@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using RobloxFiles.Enums;
 
 namespace RobloxFiles.DataTypes
 {
     public class CFrame
     {
-        private float       m11 = 1, m12 = 0, m13 = 0, m14 = 0;
-        private float       m21 = 0, m22 = 1, m23 = 0, m24 = 0;
-        private float       m31 = 0, m32 = 0, m33 = 1, m34 = 0;
+        private float m11 = 1, m12, m13, m14;
+        private float m21, m22 = 1, m23, m24;
+        private float m31, m32, m33 = 1, m34;
+
         private const float m41 = 0, m42 = 0, m43 = 0, m44 = 1;
 
         public float X => m14;
@@ -16,21 +18,21 @@ namespace RobloxFiles.DataTypes
 
         public Vector3 Position
         {
-            get
-            {
-                return new Vector3(X, Y, Z);
-            }
+            get => new Vector3(X, Y, Z);
+
             set
             {
+                Contract.Requires(value != null);
+
                 m14 = value.X;
                 m24 = value.Y;
                 m34 = value.Z;
             }
         }
 
-        public Vector3 RightVector => new Vector3( m11,  m12,  m13);
         public Vector3 UpVector    => new Vector3( m21,  m22,  m23);
         public Vector3 LookVector  => new Vector3(-m31, -m32, -m33);
+        public Vector3 RightVector => new Vector3(m11, m12, m13);
 
         public CFrame()
         {
@@ -41,6 +43,8 @@ namespace RobloxFiles.DataTypes
 
         public CFrame(Vector3 pos)
         {
+            Contract.Requires(pos != null);
+
             m14 = pos.X;
             m24 = pos.Y;
             m34 = pos.Z;
@@ -113,9 +117,8 @@ namespace RobloxFiles.DataTypes
 
         public CFrame(params float[] comp)
         {
-            if (comp.Length < 12)
-                throw new Exception("There should be 12 floats provided to construct CFrame with an array of floats");
-
+            Contract.Requires(comp.Length >= 12, "There should be 12 floats provided to construct a CFrame with an array of floats");
+            
             m14 = comp[0]; m24 = comp[1];  m34 = comp[2];
             m11 = comp[3]; m12 = comp[4];  m13 = comp[5];
             m21 = comp[6]; m22 = comp[7];  m23 = comp[8];
@@ -135,6 +138,7 @@ namespace RobloxFiles.DataTypes
 
         public CFrame(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
         {
+            Contract.Requires(pos != null && vX != null && vY != null);
             initFromMatrix(pos, vX, vY, vZ);
         }
 
@@ -192,16 +196,22 @@ namespace RobloxFiles.DataTypes
 
         public static Vector3 operator *(CFrame a, Vector3 b)
         {
+            if (a == null)
+                throw new ArgumentNullException(nameof(a));
+            else if (b == null)
+                throw new ArgumentNullException(nameof(b));
+
             float[] ac = a.GetComponents();
 
-            float   x = ac[0],   y = ac[1],    z = ac[2],
-                  m11 = ac[3], m12 = ac[4],  m13 = ac[5],
+            float m11 = ac[3], m12 = ac[4],  m13 = ac[5],
                   m21 = ac[6], m22 = ac[7],  m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 
-            Vector3 right = new Vector3(m11, m21, m31);
-            Vector3 up = new Vector3(m12, m22, m32);
-            Vector3 back = new Vector3(m13, m23, m33);
+            
+            var up = new Vector3(m12, m22, m32);
+            var back = new Vector3(m13, m23, m33);
+            var right = new Vector3(m11, m21, m31);
+
             return a.Position + b.X * right + b.Y * up + b.Z * back;
         }
 
@@ -235,11 +245,6 @@ namespace RobloxFiles.DataTypes
             float n33 = a31 * b13 + a32 * b23 + a33 * b33 + a34 * m43;
             float n34 = a31 * b14 + a32 * b24 + a33 * b34 + a34 * m44;
 
-            float n41 = m41 * b11 + m42 * b21 + m43 * b31 + m44 * m41;
-            float n42 = m41 * b12 + m42 * b22 + m43 * b32 + m44 * m42;
-            float n43 = m41 * b13 + m42 * b23 + m43 * b33 + m44 * m43;
-            float n44 = m41 * b14 + m42 * b24 + m43 * b34 + m44 * m44;
-
             return new CFrame(n14, n24, n34, n11, n12, n13, n21, n22, n23, n31, n32, n33);
         }
 
@@ -263,9 +268,9 @@ namespace RobloxFiles.DataTypes
         {
             float[] ac = GetComponents();
 
-            float a14 = ac[0], a24 = ac[1], a34 = ac[2],
-                  a11 = ac[3], a12 = ac[4], a13 = ac[5],
-                  a21 = ac[6], a22 = ac[7], a23 = ac[8],
+            float a14 = ac[0], a24 = ac[1],  a34 = ac[2],
+                  a11 = ac[3], a12 = ac[4],  a13 = ac[5],
+                  a21 = ac[6], a22 = ac[7],  a23 = ac[8],
                   a31 = ac[9], a32 = ac[10], a33 = ac[11];
 
             float det = ( a11 * a22 * a33 * m44 + a11 * a23 * a34 * m42 + a11 * a24 * a32 * m43
@@ -294,11 +299,6 @@ namespace RobloxFiles.DataTypes
             float b32 = (a11 * a34 * m42 + a12 * a31 * m44 + a14 * a32 * m41 - a11 * a32 * m44 - a12 * a34 * m41 - a14 * a31 * m42) / det;
             float b33 = (a11 * a22 * m44 + a12 * a24 * m41 + a14 * a21 * m42 - a11 * a24 * m42 - a12 * a21 * m44 - a14 * a22 * m41) / det;
             float b34 = (a11 * a24 * a32 + a12 * a21 * a34 + a14 * a22 * a31 - a11 * a22 * a34 - a12 * a24 * a31 - a14 * a21 * a32) / det;
-
-            float b41 = (a21 * a33 * m42 + a22 * a31 * m43 + a23 * a32 * m41 - a21 * a32 * m43 - a22 * a33 * m41 - a23 * a31 * m42) / det;
-            float b42 = (a11 * a32 * m43 + a12 * a33 * m41 + a13 * a31 * m42 - a11 * a33 * m42 - a12 * a31 * m43 - a13 * a32 * m41) / det;
-            float b43 = (a11 * a23 * m42 + a12 * a21 * m43 + a13 * a22 * m41 - a11 * a22 * m43 - a12 * a23 * m41 - a13 * a21 * m42) / det;
-            float b44 = (a11 * a22 * a33 + a12 * a23 * a31 + a13 * a21 * a32 - a11 * a23 * a32 - a12 * a21 * a33 - a13 * a22 * a31) / det;
 
             return new CFrame(b14, b24, b34, b11, b12, b13, b21, b22, b23, b31, b32, b33);
         }

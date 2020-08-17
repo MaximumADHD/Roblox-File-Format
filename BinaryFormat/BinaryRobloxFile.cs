@@ -28,9 +28,9 @@ namespace RobloxFiles
         public Instance[] Instances { get; internal set; }
         public INST[] Classes       { get; internal set; }
 
-        internal META META = null;
-        internal SSTR SSTR = null;
-        internal SIGN SIGN = null;
+        internal META META;
+        internal SSTR SSTR;
+        internal SIGN SIGN;
 
         public bool HasMetadata => (META != null);
         public Dictionary<string, string> Metadata => META?.Data;
@@ -104,18 +104,22 @@ namespace RobloxFiles
                                 reading = false;
                                 break;
                             case string unhandled:
-                                Console.WriteLine("BinaryRobloxFile - Unhandled chunk-type: {0}!", unhandled);
+                                Console.Error.WriteLine("BinaryRobloxFile - Unhandled chunk-type: {0}!", unhandled);
                                 break;
                             default: break;
                         }
 
                         if (handler != null)
                         {
-                            chunk.Handler = handler;
-
-                            using (var dataReader = chunk.GetDataReader(this))
-                                handler.Load(dataReader);
-
+                            using (var readBuffer = new MemoryStream(chunk.Data))
+                            {
+                                using (var dataReader = new BinaryRobloxFileReader(this, readBuffer))
+                                {
+                                    chunk.Handler = handler;
+                                    handler.Load(dataReader);
+                                }
+                            }
+                            
                             ChunksImpl.Add(chunk);
                         }
                     }
@@ -133,16 +137,17 @@ namespace RobloxFiles
             // Generate the chunk data.
             //////////////////////////////////////////////////////////////////////////
 
-            using (var writer = new BinaryRobloxFileWriter(this))
+            using (var workBuffer = new MemoryStream())
+            using (var writer = new BinaryRobloxFileWriter(this, workBuffer))
             {
                 // Clear the existing data.
                 Referent = "-1";
                 ChunksImpl.Clear();
-                
+
                 NumInstances = 0;
                 NumClasses = 0;
                 SSTR = null;
-                
+
                 // Recursively capture all instances and classes.
                 writer.RecordInstances(Children);
 
@@ -168,7 +173,7 @@ namespace RobloxFiles
                 // Write the PRNT chunk.
                 var parents = new PRNT();
                 writer.SaveChunk(parents);
-                
+
                 // Write the SSTR chunk.
                 if (HasSharedStrings)
                     writer.SaveChunk(SSTR, 0);

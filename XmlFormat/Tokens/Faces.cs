@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Diagnostics.Contracts;
+using System.Xml;
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
@@ -9,9 +10,9 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
-            uint value;
+            Contract.Requires(prop != null);
 
-            if (XmlPropertyTokens.ReadPropertyGeneric(token, out value))
+            if (XmlPropertyTokens.ReadPropertyGeneric(token, out uint value))
             {
                 Faces faces = (Faces)value;
                 prop.Value = faces;
@@ -24,6 +25,8 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
+            Contract.Requires(prop != null && doc != null && node != null);
+
             XmlElement faces = doc.CreateElement("faces");
             node.AppendChild(faces);
 

@@ -1,5 +1,7 @@
 ﻿using System.Xml;
 using RobloxFiles.DataTypes;
+using System.Diagnostics.Contracts;
+using System;
 
 namespace RobloxFiles.XmlFormat.PropertyTokens
 {
@@ -9,9 +11,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
-            uint value;
-
-            if (XmlPropertyTokens.ReadPropertyGeneric(token, out value))
+            if (XmlPropertyTokens.ReadPropertyGeneric(token, out uint value))
             {
                 uint r = (value >> 16) & 0xFF;
                 uint g = (value >> 8) & 0xFF;
@@ -28,14 +28,16 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            Color3uint8 color = prop.CastValue<Color3uint8>();
+            Color3uint8 color = prop?.CastValue<Color3uint8>();
+            Contract.Requires(node != null);
+
 
             uint r = color.R,
                  g = color.G,
                  b = color.B;
 
             uint rgb = (255u << 24) | (r << 16) | (g << 8) | b;
-            node.InnerText = rgb.ToString();
+            node.InnerText = rgb.ToInvariantString();
         }
     }
 }

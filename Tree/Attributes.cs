@@ -41,7 +41,7 @@ namespace RobloxFiles
         Region3int16,
     }
 
-    public class Attribute
+    public class Attribute : IDisposable
     {
         public AttributeType DataType { get; private set; }
         public object Value { get; private set; }
@@ -202,7 +202,12 @@ namespace RobloxFiles
 
             reader = null;
         }
-        
+
+        public void Dispose()
+        {
+            reader.Dispose();
+        }
+
         internal Attribute(BinaryReader reader)
         {
             this.reader = reader;
@@ -252,7 +257,7 @@ namespace RobloxFiles
         internal byte[] Serialize()
         {
             // TODO
-            return new byte[0];
+            return Array.Empty<byte>();
         }
     }
 }

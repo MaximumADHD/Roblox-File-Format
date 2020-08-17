@@ -152,7 +152,7 @@ namespace RobloxFiles
                     {
                         FieldInfo directField = instType
                             .GetFields()
-                            .Where(field => field.Name.StartsWith(Name))
+                            .Where(field => field.Name.StartsWith(Name, StringComparison.InvariantCulture))
                             .Where(field => field.DeclaringType == instType)
                             .FirstOrDefault();
                         

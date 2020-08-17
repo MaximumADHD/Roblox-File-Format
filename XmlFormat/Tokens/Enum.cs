@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using System.Reflection;
 using System.Xml;
 
@@ -10,9 +11,9 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
-            uint value;
+            Contract.Requires(prop != null);
 
-            if (XmlPropertyTokens.ReadPropertyGeneric(token, out value))
+            if (XmlPropertyTokens.ReadPropertyGeneric(token, out uint value))
             {
                 Instance inst = prop.Instance;
                 Type instType = inst?.GetType();
@@ -36,13 +37,13 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
+            Contract.Requires(prop != null && node != null);
             object rawValue = prop.Value;
-            Type valueType = rawValue.GetType();
-
+            
             int signed = (int)rawValue;
             uint value = (uint)signed;
 
-            node.InnerText = value.ToString();
+            node.InnerText = value.ToInvariantString();
         }
     }
 }

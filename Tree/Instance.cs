@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -66,7 +67,7 @@ namespace RobloxFiles
         {
             get
             {
-                return Attributes?.Serialize() ?? new byte[0];
+                return Attributes?.Serialize() ?? Array.Empty<byte>();
             }
             set
             {
@@ -136,6 +137,7 @@ namespace RobloxFiles
         /// <param name="ancestor">The instance whose ancestry will be tested against this Instance.</param>
         public bool IsDescendantOf(Instance ancestor)
         {
+            Contract.Requires(ancestor != null);
             return ancestor.IsAncestorOf(this);
         }
 
@@ -265,7 +267,7 @@ namespace RobloxFiles
                 .Where(child => name == child.Name)
                 .Cast<T>();
 
-            if (query.Count() > 0)
+            if (query.Any())
             {
                 result = query.First();
             }
@@ -309,7 +311,7 @@ namespace RobloxFiles
             while (ancestor != null)
             {
                 if (ancestor is T && ancestor.Name == name)
-                    return (T)ancestor;
+                    return ancestor as T;
                 
                 ancestor = ancestor.Parent;
             }
@@ -334,15 +336,12 @@ namespace RobloxFiles
         /// <param name="name">The Name of the Instance to find.</param>
         public T FindFirstAncestorOfClass<T>() where T : Instance
         {
-            Type classType = typeof(T);
-            string className = classType.Name;
-
             Instance ancestor = Parent;
 
             while (ancestor != null)
             {
                 if (ancestor is T)
-                    return (T)ancestor;
+                    return ancestor as T;
                 
                 ancestor = ancestor.Parent;
             }
@@ -387,7 +386,7 @@ namespace RobloxFiles
 
             T result = null;
             
-            if (query.Count() > 0)
+            if (query.Any())
             {
                 result = query.First();
             }
@@ -421,7 +420,7 @@ namespace RobloxFiles
 
             T result = null;
 
-            if (query.Count() > 0)
+            if (query.Any())
             {
                 result = query.First();
             }

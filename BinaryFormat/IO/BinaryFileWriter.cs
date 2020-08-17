@@ -28,7 +28,7 @@ namespace RobloxFiles.BinaryFormat
         // Instances in child->parent order
         internal List<Instance> PostInstances { get; private set; }
 
-        public BinaryRobloxFileWriter(BinaryRobloxFile file, Stream workBuffer = null) : base(workBuffer ?? new MemoryStream())
+        public BinaryRobloxFileWriter(BinaryRobloxFile file, Stream workBuffer) : base(workBuffer)
         {
             File = file;
 
@@ -167,14 +167,13 @@ namespace RobloxFiles.BinaryFormat
                 if (!instance.Archivable)
                     continue;
 
-                int instId = (int)(File.NumInstances++);
-                instance.Referent = instId.ToString();
+                int instId = (int)File.NumInstances++;
+                string className = instance.ClassName;
+
+                instance.Referent = instId.ToInvariantString();
                 Instances.Add(instance);
 
-                string className = instance.ClassName;
-                INST inst;
-
-                if (!ClassMap.TryGetValue(className, out inst))
+                if (!ClassMap.TryGetValue(className, out INST inst))
                 {
                     inst = new INST()
                     {

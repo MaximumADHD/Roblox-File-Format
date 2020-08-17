@@ -55,6 +55,26 @@ internal static class Formatting
         }
     }
 
+    public static string ToLowerInvariant(this string str)
+    {
+        return str.ToLower(Invariant);
+    }
+
+    public static string ToUpperInvariant(this string str)
+    {
+        return str.ToUpper(Invariant);
+    }
+
+    public static bool StartsWithInvariant(this string str, string other)
+    {
+        return str.StartsWith(other, StringComparison.InvariantCulture);
+    }
+
+    public static bool EndsWithInvariant(this string str, string other)
+    {
+        return str.EndsWith(other, StringComparison.InvariantCulture);
+    }
+
     public static float ParseFloat(string value)
     {
         switch (value)

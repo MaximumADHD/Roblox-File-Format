@@ -53,7 +53,7 @@ namespace RobloxFiles.DataTypes
             BrickColor result = null;
             var query = BrickColors.ColorMap.Where((bc) => bc.Name == name);
 
-            if (query.Count() > 0)
+            if (query.Any())
                 result = query.First();
             else
                 result = FromName(DefaultName);

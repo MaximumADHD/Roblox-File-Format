@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -21,13 +23,15 @@ namespace RobloxFiles.XmlFormat
 
         public static string CreateReferent()
         {
-            Guid referentGuid = Guid.NewGuid();
+            var referentGuid = Guid
+                .NewGuid()
+                .ToString();
 
             string referent = "RBX" + referentGuid
-                .ToString()
-                .ToUpper();
+                .ToUpper(CultureInfo.InvariantCulture)
+                .Replace("-", "");
 
-            return referent.Replace("-", "");
+            return referent;
         }
 
         private static string GetEnumName<T>(T item) where T : struct
@@ -77,7 +81,7 @@ namespace RobloxFiles.XmlFormat
                     case PropertyType.Float:
                     case PropertyType.Int64:
                     case PropertyType.Double:
-                        propType = propType.ToLower();
+                        propType = propType.ToLower(CultureInfo.InvariantCulture);
                         break;
                     case PropertyType.String:
                         propType = (prop.HasRawBuffer ? "BinaryString" : "string");
@@ -166,6 +170,7 @@ namespace RobloxFiles.XmlFormat
 
         public static XmlNode WriteSharedStrings(XmlDocument doc, XmlRobloxFile file)
         {
+            Contract.Requires(doc != null && file != null);
             XmlElement sharedStrings = doc.CreateElement("SharedStrings");
 
             var binaryWriter = XmlPropertyTokens.GetHandler<BinaryStringToken>();

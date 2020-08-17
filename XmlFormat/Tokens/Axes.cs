@@ -9,9 +9,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
-            uint value;
-
-            if (XmlPropertyTokens.ReadPropertyGeneric(token, out value))
+            if (XmlPropertyTokens.ReadPropertyGeneric(token, out uint value))
             {
                 Axes axes = (Axes)value;
                 prop.Value = axes;
