@@ -18,16 +18,20 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            var value = prop.CastValue<SharedString>();
-            string key = value.Key;
+            var value = prop.Value as SharedString;
 
-            if (value.ComputedKey == null)
+            if (value != null)
             {
-                var newShared = SharedString.FromBuffer(value.SharedValue);
-                key = newShared.ComputedKey;
-            }
+                string key = value.Key;
 
-            node.InnerText = key;
+                if (value.ComputedKey == null)
+                {
+                    var newShared = SharedString.FromBuffer(value.SharedValue);
+                    key = newShared.ComputedKey;
+                }
+
+                node.InnerText = key;
+            }
         }
     }
 }

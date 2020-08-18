@@ -170,6 +170,25 @@ namespace RobloxFiles.DataTypes
             }
         }
 
+        public override bool Equals(object obj)
+        {
+            if (obj is CFrame)
+            {
+                CFrame other = obj as CFrame;
+
+                float[] a = GetComponents();
+                float[] b = other.GetComponents();
+
+                for (int i = 0; i < 12; i++)
+                    if (!a[i].FuzzyEquals(b[i]))
+                        return false;
+
+                return true;
+            }
+
+            return base.Equals(obj);
+        }
+
         public static CFrame operator +(CFrame a, Vector3 b)
         {
             float[] ac = a.GetComponents();

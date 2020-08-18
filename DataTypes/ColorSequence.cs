@@ -21,10 +21,11 @@ namespace RobloxFiles.DataTypes
 
         public ColorSequence(Color3 c0, Color3 c1)
         {
-            ColorSequenceKeypoint a = new ColorSequenceKeypoint(0, c0);
-            ColorSequenceKeypoint b = new ColorSequenceKeypoint(1, c1);
-
-            Keypoints = new ColorSequenceKeypoint[2] { a, b };
+            Keypoints = new ColorSequenceKeypoint[2] 
+            {
+                new ColorSequenceKeypoint(0, c0),
+                new ColorSequenceKeypoint(1, c1)
+            };
         }
 
         public ColorSequence(ColorSequenceKeypoint[] keypoints)

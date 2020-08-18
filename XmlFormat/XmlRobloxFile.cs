@@ -20,6 +20,7 @@ namespace RobloxFiles
 
         private Dictionary<string, string> RawMetadata = new Dictionary<string, string>();
         public Dictionary<string, string> Metadata => RawMetadata;
+        internal int RefCounter = 0;
 
         public XmlRobloxFile()
         {
@@ -121,11 +122,12 @@ namespace RobloxFiles
         public override void Save(Stream stream)
         {
             XmlDocument doc = new XmlDocument();
-
+            
             XmlElement roblox = doc.CreateElement("roblox");
             roblox.SetAttribute("version", "4");
             doc.AppendChild(roblox);
-
+           
+            RefCounter = 0;
             Instances.Clear();
             SharedStrings.Clear();
 

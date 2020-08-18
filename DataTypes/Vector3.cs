@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using RobloxFiles.Enums;
 
 namespace RobloxFiles.DataTypes
@@ -63,6 +64,36 @@ namespace RobloxFiles.DataTypes
             coords[index % 3] = (index > 2 ? -1f : 1f);
 
             return new Vector3(coords);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Vector3)
+            {
+                Vector3 other = obj as Vector3;
+
+                if (!X.FuzzyEquals(other.X))
+                    return false;
+
+                if (!Y.FuzzyEquals(other.Y))
+                    return false;
+
+                if (!Z.FuzzyEquals(other.Z))
+                    return false;
+
+                return true;
+            }
+                
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            int x = X.GetHashCode(),
+                y = Y.GetHashCode(),
+                z = Z.GetHashCode();
+
+            return x ^ y ^ z;
         }
 
         private delegate Vector3 Operator(Vector3 a, Vector3 b);

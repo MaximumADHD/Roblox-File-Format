@@ -29,8 +29,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 byte[] data = reader.ReadBuffer();
                 SharedString value = SharedString.FromBuffer(data);
 
-                Lookup.Add(key, id);
-                Strings.Add(id, value);
+                Lookup[key] = id;
+                Strings[id] = value;
             }
 
             file.SSTR = this;

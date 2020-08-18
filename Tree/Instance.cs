@@ -530,11 +530,44 @@ namespace RobloxFiles
                     if (fieldName.EndsWith("_"))
                         fieldName = instType.Name;
 
+                    string xmlToken = fieldType.Name;
+
+                    if (fieldType.IsEnum)
+                        xmlToken = "token";
+
+                    switch (xmlToken)
+                    {
+                        case "String":
+                        case "Double":
+                            xmlToken = xmlToken.ToLowerInvariant();
+                            break;
+                        case "Boolean":
+                            xmlToken = "bool";
+                            break;
+                        case "Single":
+                            xmlToken = "float";
+                            break;
+                        case "Int32":
+                            xmlToken = "int";
+                            break;
+                        case "Int64":
+                            xmlToken = "int64";
+                            break;
+                        case "Rect":
+                            xmlToken = "Rect2D";
+                            break;
+                        case "CFrame":
+                            xmlToken = "CoordinateFrame";
+                            break;
+                        default: break;
+                    }
+
                     if (!props.ContainsKey(fieldName))
                     {
                         Property newProp = new Property()
                         {
                             Value = field.GetValue(this),
+                            XmlToken = xmlToken,
                             Name = fieldName,
                             Type = propType,
                             Instance = this
@@ -546,6 +579,7 @@ namespace RobloxFiles
                     {
                         Property prop = props[fieldName];
                         prop.Value = field.GetValue(this);
+                        prop.XmlToken = xmlToken;
                         prop.Type = propType;
                     }
                 }

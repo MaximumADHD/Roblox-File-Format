@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml;
 
 using RobloxFiles.DataTypes;
+using RobloxFiles.Utility;
 using RobloxFiles.XmlFormat.PropertyTokens;
 
 namespace RobloxFiles.XmlFormat
@@ -41,11 +42,10 @@ namespace RobloxFiles.XmlFormat
 
         internal static void RecordInstances(XmlRobloxFile file, Instance inst)
         {
+            inst.Referent = "RBX" + file.RefCounter++;
+
             foreach (Instance child in inst.GetChildren())
                 RecordInstances(file, child);
-
-            if (inst.Referent == null || inst.Referent.Length < 35)
-                inst.Referent = CreateReferent();
 
             file.Instances.Add(inst.Referent, inst);
         }
@@ -100,15 +100,21 @@ namespace RobloxFiles.XmlFormat
 
             if (prop.Type == PropertyType.SharedString)
             {
-                SharedString value = prop.CastValue<SharedString>();
-                
-                if (value.ComputedKey == null)
+                SharedString str = prop.CastValue<SharedString>();
+
+                if (str == null)
                 {
-                    var newShared = SharedString.FromBuffer(value.SharedValue);
-                    value.Key = newShared.ComputedKey;
+                    byte[] value = prop.CastValue<byte[]>();
+                    str = SharedString.FromBuffer(value);
+                }
+                
+                if (str.ComputedKey == null)
+                {
+                    var newShared = SharedString.FromBuffer(str.SharedValue);
+                    str.Key = newShared.ComputedKey;
                 }
 
-                file.SharedStrings.Add(value.Key);
+                file.SharedStrings.Add(str.Key);
             }
 
             XmlElement propElement = doc.CreateElement(propType);
@@ -148,12 +154,43 @@ namespace RobloxFiles.XmlFormat
             foreach (string propName in orderedKeys)
             {
                 Property prop = props[propName];
-                XmlNode propNode = WriteProperty(prop, doc, file);
+                bool isDefault = false;
 
-                if (propNode == null)
-                    continue;
+                object a = DefaultProperty.Get(instance, prop);
+                object b = prop.Value;
 
-                propsNode.AppendChild(propNode);
+                if (a is float)
+                {
+                    float f0 = (float)a,
+                          f1 = (float)b;
+
+                    isDefault = f0.FuzzyEquals(f1);
+                }
+                else if (a is double)
+                {
+                    double d0 = (double)a,
+                           d1 = (double)b;
+
+                    isDefault = d0.FuzzyEquals(d1);
+                }
+                else if (b != null)
+                {
+                    isDefault = b.Equals(a);
+                }
+                else if (a == b)
+                {
+                    isDefault = true;
+                }
+
+                if (!isDefault)
+                {
+                    XmlNode propNode = WriteProperty(prop, doc, file);
+
+                    if (propNode == null)
+                        continue;
+
+                    propsNode.AppendChild(propNode);
+                }
             }
 
             foreach (Instance child in instance.GetChildren())

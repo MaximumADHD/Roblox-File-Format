@@ -16,6 +16,11 @@
             B = b;
         }
 
+        public override int GetHashCode()
+        {
+            return (R << 24) | (G << 8) | B;
+        }
+
         public static implicit operator Color3(Color3uint8 color)
         {
             float r = color.R / 255f;

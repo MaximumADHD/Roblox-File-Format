@@ -100,22 +100,32 @@ namespace RobloxFiles
 
         private void ImproviseRawBuffer()
         {
-            if (RawValue is SharedString)
-            {
-                var sharedString = CastValue<SharedString>();
-                RawBuffer = sharedString.SharedValue;
-                return;
-            }
-            else if (RawValue is ProtectedString)
-            {
-                var protectedString = CastValue<ProtectedString>();
-                RawBuffer = protectedString.RawBuffer;
-                return;
-            }
-            else if (RawValue is byte[])
+            if (RawValue is byte[])
             {
                 RawBuffer = RawValue as byte[];
                 return;
+            }
+
+            if (RawValue is SharedString)
+            {
+                var sharedString = CastValue<SharedString>();
+
+                if (sharedString != null)
+                {
+                    RawBuffer = sharedString.SharedValue;
+                    return;
+                }
+            }
+           
+            if (RawValue is ProtectedString)
+            {
+                var protectedString = CastValue<ProtectedString>();
+
+                if (protectedString != null)
+                {
+                    RawBuffer = protectedString.RawBuffer;
+                    return;
+                }
             }
             
             switch (Type)
@@ -123,11 +133,11 @@ namespace RobloxFiles
                 case PropertyType.Int:
                     RawBuffer = BitConverter.GetBytes((int)Value);
                     break;
-                case PropertyType.Int64:
-                    RawBuffer = BitConverter.GetBytes((long)Value);
-                    break;
                 case PropertyType.Bool:
                     RawBuffer = BitConverter.GetBytes((bool)Value);
+                    break;
+                case PropertyType.Int64:
+                    RawBuffer = BitConverter.GetBytes((long)Value);
                     break;
                 case PropertyType.Float:
                     RawBuffer = BitConverter.GetBytes((float)Value);

@@ -14,6 +14,15 @@ namespace RobloxFiles.DataTypes
             B = b;
         }
 
+        public override int GetHashCode()
+        {
+            int r = R.GetHashCode(),
+                g = G.GetHashCode(),
+                b = B.GetHashCode();
+
+            return (r ^ g ^ b);
+        }
+
         internal Color3(Attribute attr)
         {
             R = attr.readFloat();
