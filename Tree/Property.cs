@@ -56,11 +56,9 @@ namespace RobloxFiles
         public byte[] RawBuffer { get; internal set; }
 
         internal object RawValue;
-        internal BinaryRobloxFileWriter CurrentWriter;
         
         internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
-        internal static MemberTypes FieldOrProperty = MemberTypes.Field | MemberTypes.Property;
-
+        
         // !! FIXME: Map typeof(ProtectedString) to PropertyType.ProtectedString when binary files are allowed to read it.
         public static readonly IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {
@@ -328,17 +326,6 @@ namespace RobloxFiles
                 result = default(T);
             
             return (T)result;
-        }
-
-        internal void WriteValue<T>() where T : struct
-        {
-            if (CurrentWriter == null)
-                throw new Exception("Property.CurrentWriter must be set to use WriteValue<T>");
-
-            T value = CastValue<T>();
-            byte[] bytes = BinaryRobloxFileWriter.GetBytes(value);
-
-            CurrentWriter.Write(bytes);
         }
     }
 }

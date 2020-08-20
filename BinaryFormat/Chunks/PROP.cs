@@ -6,6 +6,7 @@ using System.Text;
 
 using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
+using System.Diagnostics;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
@@ -571,7 +572,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 else if (prop.Type != Type)
                     throw new Exception($"Property {Name} is not using the correct type in {instance.GetFullName()}!");
 
-                prop.CurrentWriter = writer;
                 props.Add(prop);
             }
 
@@ -628,7 +628,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteFloats(floats);
                     break;
                 case PropertyType.Double:
-                    props.ForEach(prop => prop.WriteValue<double>());
+                    props.ForEach(prop =>
+                    {
+                        double value = prop.CastValue<double>();
+                        writer.Write(BinaryRobloxFileWriter.GetBytes(value));
+                    });
+
                     break;
                 case PropertyType.UDim:
                     var UDim_Scales = new List<float>();
@@ -689,7 +694,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     break;
                 case PropertyType.Faces:
                 case PropertyType.Axes:
-                    props.ForEach(prop => prop.WriteValue<byte>());
+                    props.ForEach(prop =>
+                    {
+                        byte value = prop.CastValue<byte>();
+                        writer.Write(value);
+                    });
+                    
                     break;
                 case PropertyType.BrickColor:
                     var BrickColorIds = new List<int>();
@@ -1003,6 +1013,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     props.ForEach(prop =>
                     {
                         var shared = prop.CastValue<SharedString>();
+
+                        if (shared == null)
+                        {
+                            byte[] empty = Array.Empty<byte>();
+                            shared = SharedString.FromBuffer(empty);
+                        }
+
                         string key = shared.Key;
                         
                         if (!sstr.Lookup.ContainsKey(key))

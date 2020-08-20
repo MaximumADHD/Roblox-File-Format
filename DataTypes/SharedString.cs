@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using Konscious.Security.Cryptography;
 
 namespace RobloxFiles.DataTypes
@@ -15,7 +16,7 @@ namespace RobloxFiles.DataTypes
 
     public class SharedString
     {
-        private static Dictionary<string, byte[]> Lookup = new Dictionary<string, byte[]>();
+        private static ConcurrentDictionary<string, byte[]> Lookup = new ConcurrentDictionary<string, byte[]>();
         public string Key { get; internal set; }
         public string ComputedKey { get; internal set; }
 
@@ -29,12 +30,15 @@ namespace RobloxFiles.DataTypes
 
         internal static void Register(string key, byte[] buffer)
         {
-            Lookup.Add(key, buffer);
+            if (Lookup.ContainsKey(key))
+                return;
+
+            Lookup.TryAdd(key, buffer);
         }
 
         private SharedString(byte[] buffer)
         {
-            using (HMACBlake2B blake2B = new HMACBlake2B(16 * 8))
+            using (var blake2B = new HMACBlake2B(16 * 8))
             {
                 byte[] hash = blake2B.ComputeHash(buffer);
                 ComputedKey = Convert.ToBase64String(hash);

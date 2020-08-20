@@ -2252,7 +2252,7 @@ namespace RobloxFiles
         public ModelLevelOfDetail LevelOfDetail = ModelLevelOfDetail.Automatic;
         public CFrame ModelInPrimary = new CFrame();
         public CFrame ModelMeshCFrame = new CFrame();
-        public byte[] ModelMeshData = Array.Empty<byte>();
+        public SharedString ModelMeshData;
         public Vector3 ModelMeshSize = new Vector3();
         public BasePart PrimaryPart;
     }
