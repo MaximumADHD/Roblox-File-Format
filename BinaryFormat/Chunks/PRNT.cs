@@ -27,7 +27,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 Instance child = file.Instances[childId];
                 child.Parent = (parentId >= 0 ? file.Instances[parentId] : file);
-                child.ParentLocked = child.IsService;
             }
         }
 

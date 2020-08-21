@@ -362,7 +362,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     readProperties(i =>
                     {
                         int instId = instIds[i];
-                        return instId >= 0 ? file.Instances[instId] : null;
+                        Instance result = null;
+
+                        if (instId >= 0)
+                            result = file.Instances[instId];
+
+                        return result;
                     });
 
                     break;

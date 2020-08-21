@@ -53,11 +53,8 @@ namespace RobloxFiles
         /// <summary>Indicates whether this Instance is a Service.</summary>
         public bool IsService { get; internal set; }
 
-        /// <summary>Raw list of CollectionService tags assigned to this Instance.</summary>
-        private List<string> RawTags = new List<string>();
-
         /// <summary>A list of CollectionService tags assigned to this Instance.</summary>
-        public List<string> Tags => RawTags;
+        public List<string> Tags { get; } = new List<string>();
 
         /// <summary>The attributes defined for this Instance.</summary>
         public Attributes Attributes { get; private set; }
@@ -144,6 +141,7 @@ namespace RobloxFiles
         /// <summary>
         /// Returns true if the provided instance inherits from the provided instance type.
         /// </summary>
+        [Obsolete("Use the `is` operator instead.")]
         public bool IsA<T>() where T : Instance
         {
             Type myType = GetType();
@@ -161,7 +159,7 @@ namespace RobloxFiles
         {
             T result = null;
 
-            if (IsA<T>())
+            if (this is T)
                 result = this as T;
 
             return result;
@@ -212,7 +210,7 @@ namespace RobloxFiles
         public T[] GetChildrenOfType<T>() where T : Instance
         {
             T[] ofType = GetChildren()
-                .Where(child => child.IsA<T>())
+                .Where(child => child is T)
                 .Cast<T>()
                 .ToArray();
 
@@ -224,7 +222,7 @@ namespace RobloxFiles
         /// </summary>
         public Instance[] GetDescendants()
         {
-            List<Instance> results = new List<Instance>();
+            var results = new List<Instance>();
 
             foreach (Instance child in Children)
             {
@@ -245,7 +243,7 @@ namespace RobloxFiles
         public T[] GetDescendantsOfType<T>() where T : Instance
         {
             T[] ofType = GetDescendants()
-                .Where(desc => desc.IsA<T>())
+                .Where(desc => desc is T)
                 .Cast<T>()
                 .ToArray();
 
@@ -361,9 +359,9 @@ namespace RobloxFiles
 
             while (check != null)
             {
-                if (check.IsA<T>())
+                if (check is T)
                 {
-                    ancestor = (T)check;
+                    ancestor = check as T;
                     break;
                 }
 
@@ -415,30 +413,26 @@ namespace RobloxFiles
         public T FindFirstChildWhichIsA<T>(bool recursive = false) where T : Instance
         {
             var query = Children
-                .Where(child => child.IsA<T>())
+                .Where(child => child is T)
                 .Cast<T>();
 
-            T result = null;
-
             if (query.Any())
-            {
-                result = query.First();
-            }
-            else if (recursive)
+                return query.First();
+            
+            if (recursive)
             {
                 foreach (Instance child in Children)
                 {
                     T found = child.FindFirstChildWhichIsA<T>(true);
 
-                    if (found != null)
-                    {
-                        result = found;
-                        break;
-                    }
+                    if (found == null)
+                        continue;
+
+                    return found;
                 }
             }
 
-            return result;
+            return null;
         }
 
         /// <summary>
@@ -539,6 +533,7 @@ namespace RobloxFiles
                     {
                         case "String":
                         case "Double":
+                        case "Int64":
                             xmlToken = xmlToken.ToLowerInvariant();
                             break;
                         case "Boolean":
@@ -549,9 +544,6 @@ namespace RobloxFiles
                             break;
                         case "Int32":
                             xmlToken = "int";
-                            break;
-                        case "Int64":
-                            xmlToken = "int64";
                             break;
                         case "Rect":
                             xmlToken = "Rect2D";
@@ -564,7 +556,7 @@ namespace RobloxFiles
 
                     if (!props.ContainsKey(fieldName))
                     {
-                        Property newProp = new Property()
+                        var newProp = new Property()
                         {
                             Value = field.GetValue(this),
                             XmlToken = xmlToken,

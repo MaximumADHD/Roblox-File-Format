@@ -228,7 +228,7 @@ namespace RobloxFiles
                             var valueType = value?.GetType();
                             Type memberType = member.MemberType;
                             
-                            if (memberType == valueType || value == null)
+                            if (value == null || memberType.IsAssignableFrom(valueType))
                             {
                                 try
                                 {
