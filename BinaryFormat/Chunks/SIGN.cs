@@ -1,4 +1,7 @@
-﻿namespace RobloxFiles.BinaryFormat.Chunks
+﻿using System;
+using System.Text;
+
+namespace RobloxFiles.BinaryFormat.Chunks
 {
     public struct Signature
     {
@@ -50,6 +53,30 @@
 
                 writer.Write(signature.Length);
                 writer.Write(signature.Data);
+            }
+        }
+
+        public void WriteInfo(StringBuilder builder)
+        {
+            int numSignatures = Signatures.Length;
+            builder.AppendLine($"NumSignatures: {numSignatures}");
+
+            for (int i = 0; i < numSignatures; i++)
+            {
+                var signature = Signatures[i];
+                builder.AppendLine($"## Signature {i}");
+
+                var version = signature.Version;
+                builder.AppendLine($"- Version: {version}");
+
+                var id = signature.Id;
+                builder.AppendLine($"- Id:      {id}");
+
+                var length = signature.Length;
+                builder.AppendLine($"- Length:  {length}");
+
+                var data = Convert.ToBase64String(signature.Data);
+                builder.AppendLine($"- Data:    {data}");
             }
         }
     }

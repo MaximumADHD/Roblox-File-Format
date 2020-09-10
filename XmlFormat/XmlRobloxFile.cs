@@ -18,8 +18,7 @@ namespace RobloxFiles
         internal Dictionary<string, Instance> Instances = new Dictionary<string, Instance>();
         internal HashSet<string> SharedStrings = new HashSet<string>();
 
-        private Dictionary<string, string> RawMetadata = new Dictionary<string, string>();
-        public Dictionary<string, string> Metadata => RawMetadata;
+        public Dictionary<string, string> Metadata { get; private set; } = new Dictionary<string, string>();
         internal int RefCounter = 0;
 
         public XmlRobloxFile()

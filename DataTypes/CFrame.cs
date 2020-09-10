@@ -30,9 +30,13 @@ namespace RobloxFiles.DataTypes
             }
         }
 
-        public Vector3 UpVector    => new Vector3( m21,  m22,  m23);
-        public Vector3 LookVector  => new Vector3(-m31, -m32, -m33);
-        public Vector3 RightVector => new Vector3(m11, m12, m13);
+        public Vector3 RightVector => new Vector3( m11,  m21,  m31);
+        public Vector3 UpVector    => new Vector3( m12,  m22,  m32);
+        public Vector3 LookVector  => new Vector3(-m13, -m23, -m33);
+
+        public Vector3 ColumnX => new Vector3(m11, m12, m13);
+        public Vector3 ColumnY => new Vector3(m21, m22, m23);
+        public Vector3 ColumnZ => new Vector3(m31, m32, m33);
 
         public CFrame()
         {
@@ -43,8 +47,6 @@ namespace RobloxFiles.DataTypes
 
         public CFrame(Vector3 pos)
         {
-            Contract.Requires(pos != null);
-
             m14 = pos.X;
             m24 = pos.Y;
             m34 = pos.Z;
@@ -68,7 +70,7 @@ namespace RobloxFiles.DataTypes
                 if (zAxis.Y < 0)
                 {
                     xAxis = new Vector3(0, 0, -1);
-                    yAxis = new Vector3(1, 0, 0);
+                    yAxis = new Vector3(1,  0, 0);
                     zAxis = new Vector3(0, -1, 0);
                 }
                 else
@@ -170,25 +172,6 @@ namespace RobloxFiles.DataTypes
             }
         }
 
-        public override bool Equals(object obj)
-        {
-            if (obj is CFrame)
-            {
-                CFrame other = obj as CFrame;
-
-                float[] a = GetComponents();
-                float[] b = other.GetComponents();
-
-                for (int i = 0; i < 12; i++)
-                    if (!a[i].FuzzyEquals(b[i]))
-                        return false;
-
-                return true;
-            }
-
-            return base.Equals(obj);
-        }
-
         public static CFrame operator +(CFrame a, Vector3 b)
         {
             float[] ac = a.GetComponents();
@@ -226,7 +209,6 @@ namespace RobloxFiles.DataTypes
                   m21 = ac[6], m22 = ac[7],  m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 
-            
             var up = new Vector3(m12, m22, m32);
             var back = new Vector3(m13, m23, m33);
             var right = new Vector3(m11, m21, m31);
@@ -279,8 +261,7 @@ namespace RobloxFiles.DataTypes
             float cosAng = (float)Math.Cos(theta);
             float sinAng = (float)Math.Sin(theta);
 
-            return axis * cosAng + axis.Dot(unit) * unit *
-                  (1 - cosAng) + unit.Cross(axis) * sinAng;
+            return axis * cosAng + axis.Dot(unit) * unit * (1 - cosAng) + unit.Cross(axis) * sinAng;
         }
 
         public CFrame Inverse()
@@ -324,9 +305,9 @@ namespace RobloxFiles.DataTypes
 
         public static CFrame FromAxisAngle(Vector3 axis, float theta)
         {
-            Vector3 r = VectorAxisAngle(axis, Vector3.Right, theta);
             Vector3 u = VectorAxisAngle(axis, Vector3.Up,    theta);
             Vector3 b = VectorAxisAngle(axis, Vector3.Back,  theta);
+            Vector3 r = VectorAxisAngle(axis, Vector3.Right, theta);
 
             return new CFrame(0, 0, 0, r.X, u.X, b.X, r.Y, u.Y, b.Y, r.Z, u.Z, b.Z);
         }
@@ -347,24 +328,18 @@ namespace RobloxFiles.DataTypes
         
         public CFrame Lerp(CFrame other, float t)
         {
-            if (t == 0.0f)
-            {
+            if (t == 0f)
                 return this;
-            }
-            else if (t == 1.0f)
-            {
+            else if (t == 1f)
                 return other;
-            }
-            else
-            {
-                Quaternion q1 = new Quaternion(this);
-                Quaternion q2 = new Quaternion(other);
+           
+            var q1 = new Quaternion(this);
+            var q2 = new Quaternion(other);
 
-                CFrame rot = q1.Slerp(q2, t).ToCFrame();
-                Vector3 pos = Position.Lerp(other.Position, t);
+            CFrame rot = q1.Slerp(q2, t).ToCFrame();
+            Vector3 pos = Position.Lerp(other.Position, t);
 
-                return new CFrame(pos) * rot;
-            }
+            return new CFrame(pos) * rot;
         }
 
         public CFrame ToWorldSpace(CFrame cf2)
@@ -422,12 +397,12 @@ namespace RobloxFiles.DataTypes
             {
                 float t = Math.Abs(matrix[i]);
 
-                if (t.FuzzyEquals(1))
+                if (t.FuzzyEquals(1, 1e-8f))
                 {
                     // Approximately ±1
                     sum1++;
                 }
-                else if (t.FuzzyEquals(0))
+                else if (t.FuzzyEquals(0, 1e-8f))
                 {
                     // Approximately ±0
                     sum0++;
@@ -450,8 +425,8 @@ namespace RobloxFiles.DataTypes
             if (!IsAxisAligned())
                 return -1;
 
-            int xNormal = RightVector.ToNormalId();
-            int yNormal = UpVector.ToNormalId();
+            int xNormal = ColumnX.ToNormalId();
+            int yNormal = ColumnY.ToNormalId();
 
             int orientId = (6 * xNormal) + yNormal;
 

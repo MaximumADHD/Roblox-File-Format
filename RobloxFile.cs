@@ -42,7 +42,6 @@ namespace RobloxFiles
                 }
             }
 
-            string lead = Encoding.UTF8.GetString(buffer, 0, 100);
             throw new Exception("Unrecognized header!");
         }
 

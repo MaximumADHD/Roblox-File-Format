@@ -6,12 +6,15 @@ using System.Text;
 
 using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
+using RobloxFiles.Utility;
+
 using System.Diagnostics;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class PROP : IBinaryFileChunk
     {
+        private BinaryRobloxFile File;
         public string Name { get; internal set; }
 
         public int ClassIndex { get; internal set; }
@@ -33,6 +36,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public void Load(BinaryRobloxFileReader reader)
         {
             BinaryRobloxFile file = reader.File;
+            File = file;
 
             ClassIndex = reader.ReadInt32();
             Name = reader.ReadString();
@@ -87,28 +91,32 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         // Check if this is going to be casted as a BinaryString.
                         // BinaryStrings should use a type of byte[] instead.
 
-                        if (Name == "AttributesSerialize")
-                            return buffer;
-
-                        Property prop = props[i];
-                        Instance instance = prop.Instance;
-
-                        Type instType = instance.GetType();
-                        FieldInfo field = instType.GetField(Name);
-
-                        if (field != null)
+                        switch (Name)
                         {
-                            object result = value;
-                            Type fieldType = field.FieldType;
+                            case "Tags":
+                            case "AttributesSerialize":
+                                return buffer;
+                            default:
+                            {
+                                Property prop = props[i];
+                                Instance instance = prop.Instance;
 
-                            if (fieldType == typeof(byte[]))
-                                result = buffer;
+                                Type instType = instance.GetType();
+                                var member = ImplicitMember.Get(instType, Name);
 
-                            return result;
-                        }
-                        else
-                        {
-                            return value;
+                                if (member != null)
+                                {
+                                    object result = value;
+                                    Type memberType = member.MemberType;
+
+                                    if (memberType == typeof(byte[]))
+                                        result = buffer;
+
+                                    return result;
+                                }
+
+                                return value;
+                            }
                         }
                     });
 
@@ -345,8 +353,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                         try
                         {
-                            FieldInfo info = instType.GetField(Name, Property.BindingFlags);
-                            return Enum.Parse(info.FieldType, value.ToInvariantString());
+                            var info = ImplicitMember.Get(instType, Name);
+                            return Enum.Parse(info.MemberType, value.ToInvariantString());
                         }
                         catch
                         {
@@ -362,12 +370,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     readProperties(i =>
                     {
                         int instId = instIds[i];
-                        Instance result = null;
-
-                        if (instId >= 0)
-                            result = file.Instances[instId];
-
-                        return result;
+                        return instId >= 0 ? file.Instances[instId] : null;
                     });
 
                     break;
@@ -540,6 +543,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 foreach (string propName in props.Keys)
                 {
+                    if (propName == "Archivable")
+                        continue;
+
+                    if (propName.Contains("__"))
+                        continue;
+
                     if (!propMap.ContainsKey(propName))
                     {
                         Property prop = props[propName];
@@ -549,6 +558,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             Name = prop.Name,
                             Type = prop.Type,
 
+                            ClassName = inst.ClassName,
                             ClassIndex = inst.ClassIndex
                         };
 
@@ -563,6 +573,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
         public void Save(BinaryRobloxFileWriter writer)
         {
             BinaryRobloxFile file = writer.File;
+            File = file;
 
             INST inst = file.Classes[ClassIndex];
             var props = new List<Property>();
@@ -1052,6 +1063,41 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 default: break;
+            }
+        }
+
+        public void WriteInfo(StringBuilder builder)
+        {
+            builder.AppendLine($"- Name:       {Name}");
+            builder.AppendLine($"- Type:       {Type}");
+            builder.AppendLine($"- TypeId:     {TypeId}");
+            builder.AppendLine($"- ClassName:  {ClassName}");
+            builder.AppendLine($"- ClassIndex: {ClassIndex}");
+
+            builder.AppendLine($"| InstanceId |           Value           |");
+            builder.AppendLine($"|-----------:|---------------------------|");
+
+            INST inst = File.Classes[ClassIndex];
+
+            foreach (var instId in inst.InstanceIds)
+            {
+                Instance instance = File.Instances[instId];
+                Property prop = instance?.GetProperty(Name);
+
+                object value = prop?.Value;
+                string str = value?.ToInvariantString() ?? "null";
+
+                if (value is byte[])
+                    str = Convert.ToBase64String(value as byte[]);
+
+                if (str.Length > 25)
+                    str = str.Substring(0, 22) + "...";
+
+                str = str.Replace('\r', ' ');
+                str = str.Replace('\n', ' ');
+
+                string row = string.Format("| {0, 10} | {1, -25} |", instId, str);
+                builder.AppendLine(row);
             }
         }
     }

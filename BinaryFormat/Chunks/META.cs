@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
@@ -29,6 +30,19 @@ namespace RobloxFiles.BinaryFormat.Chunks
             {
                 writer.WriteString(pair.Key);
                 writer.WriteString(pair.Value);
+            }
+        }
+
+        public void WriteInfo(StringBuilder builder)
+        {
+            builder.AppendLine($"- NumEntries: {Data.Count}");
+
+            foreach (var pair in Data)
+            {
+                string key   = pair.Key,
+                       value = pair.Value;
+
+                builder.AppendLine($"  - {key}: {value}");
             }
         }
     }

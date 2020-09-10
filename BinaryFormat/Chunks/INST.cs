@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
@@ -78,6 +79,19 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.Write(service.Parent == file);
                 }
             }
+        }
+
+        public void WriteInfo(StringBuilder builder)
+        {
+            builder.AppendLine($"- ClassIndex:   {ClassIndex}");
+            builder.AppendLine($"- ClassName:    {ClassName}");
+            builder.AppendLine($"- IsService:    {IsService}");
+
+            if (IsService && RootedServices != null)
+                builder.AppendLine($"- RootedServices: `{string.Join(", ", RootedServices)}`");
+
+            builder.AppendLine($"- NumInstances: {NumInstances}");
+            builder.AppendLine($"- InstanceIds: `{string.Join(", ", InstanceIds)}`");
         }
     }
 }

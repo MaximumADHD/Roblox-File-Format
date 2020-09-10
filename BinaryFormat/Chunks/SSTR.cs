@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+
 using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.BinaryFormat.Chunks
@@ -53,6 +55,20 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 writer.Write(buffer.Length);
                 writer.Write(buffer);
+            }
+        }
+
+        public void WriteInfo(StringBuilder builder)
+        {
+            builder.AppendLine($"Format:     {FORMAT}");
+            builder.AppendLine($"NumStrings: {Lookup.Count}");
+
+            builder.AppendLine($"## Keys");
+
+            foreach (var pair in Lookup)
+            {
+                string key = pair.Key;
+                builder.AppendLine($"- `{key}`");
             }
         }
     }
