@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.443.0.409841
+// Updated as of 0.447.1.411123
 
 using System;
 
@@ -106,6 +106,14 @@ namespace RobloxFiles
 
     public class Bone : Attachment
     {
+    }
+
+    public class AvatarEditorService : Instance
+    {
+        public AvatarEditorService()
+        {
+            IsService = true;
+        }
     }
 
     public class Backpack : Instance
@@ -1690,7 +1698,6 @@ namespace RobloxFiles
         public CFrame C0 = new CFrame();
         public CFrame C1 = new CFrame();
         public bool Enabled = true;
-        public bool IsAutoJoint = true;
         public BasePart Part0;
         public BasePart Part1;
     }
@@ -1991,6 +1998,14 @@ namespace RobloxFiles
     {
     }
 
+    public class NetworkClient : NetworkPeer
+    {
+        public NetworkClient()
+        {
+            IsService = true;
+        }
+    }
+
     public class NoCollisionConstraint : Instance
     {
         public bool Enabled = true;
@@ -2163,8 +2178,6 @@ namespace RobloxFiles
 
     public class Terrain : BasePart
     {
-        public string ClusterGrid = "";
-        public string ClusterGridV2 = "";
         public byte[] ClusterGridV3 = Array.Empty<byte>();
         public bool Decoration;
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
@@ -2179,7 +2192,6 @@ namespace RobloxFiles
 
     public abstract class TriangleMeshPart : BasePart
     {
-        public CollisionFidelity CollisionFidelity = CollisionFidelity.Default;
         public Vector3 InitialSize = new Vector3(1, 1, 1);
         public byte[] LODData = Array.Empty<byte>();
         public SharedString PhysicalConfigData = SharedString.FromBase64("1B2M2Y8AsgTpgAmY7PhCfg==");
@@ -2280,7 +2292,6 @@ namespace RobloxFiles
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
         public int StreamingTargetRadius = 1024;
-        public bool TemporaryLegacyPhysicsSolverOverrideStreaming;
         public bool TerrainWeldsFixed = true;
     }
 
@@ -3207,6 +3218,14 @@ namespace RobloxFiles
     public class UIScale : UIComponent
     {
         public float Scale = 1;
+    }
+
+    public class UnvalidatedAssetService : Instance
+    {
+        public UnvalidatedAssetService()
+        {
+            IsService = true;
+        }
     }
 
     public class UserInputService : Instance

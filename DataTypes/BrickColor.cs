@@ -47,7 +47,20 @@ namespace RobloxFiles.DataTypes
             ByPalette = BrickColors.PaletteMap.Select(number => ByNumber[number]).ToList();
         }
 
-        
+        public override int GetHashCode()
+        {
+            return Number;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is BrickColor))
+                return false;
+
+            var bc = obj as BrickColor;
+            return Number == bc.Number;
+        }
+
         public static BrickColor FromName(string name)
         {
             BrickColor result = null;

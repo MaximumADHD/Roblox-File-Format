@@ -28,5 +28,29 @@
         {
             return new UDim(a.Scale - b.Scale, a.Offset - b.Offset);
         }
+
+        public override int GetHashCode()
+        {
+            int hash = Scale.GetHashCode()
+                     ^ Offset.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is UDim))
+                return false;
+
+            var other = obj as UDim;
+
+            if (!Scale.Equals(other.Scale))
+                return false;
+
+            if (!Offset.Equals(other.Offset))
+                return false;
+
+            return true;
+        }
     }
 }

@@ -24,5 +24,33 @@
             Time = attr.readFloat();
             Value = attr.readFloat();
         }
+
+        public override int GetHashCode()
+        {
+            int hash = Time.GetHashCode()
+                     ^ Value.GetHashCode()
+                     ^ Envelope.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is NumberSequenceKeypoint))
+                return false;
+
+            var otherKey = obj as NumberSequenceKeypoint;
+
+            if (!Time.Equals(otherKey.Time))
+                return false;
+
+            if (!Value.Equals(otherKey.Value))
+                return false;
+
+            if (!Envelope.Equals(otherKey.Envelope))
+                return false;
+
+            return true;
+        }
     }
 }

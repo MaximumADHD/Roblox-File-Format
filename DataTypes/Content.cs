@@ -23,5 +23,19 @@
         {
             return new Content(url);
         }
+
+        public override int GetHashCode()
+        {
+            return Url.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Content))
+                return false;
+
+            var content = obj as Content;
+            return Url.Equals(content.Url);
+        }
     }
 }

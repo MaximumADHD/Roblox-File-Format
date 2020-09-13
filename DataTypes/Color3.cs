@@ -20,7 +20,26 @@ namespace RobloxFiles.DataTypes
                 g = G.GetHashCode(),
                 b = B.GetHashCode();
 
-            return (r ^ g ^ b);
+            return r ^ g ^ b;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Color3))
+                return false;
+
+            var other = obj as Color3;
+
+            if (!R.Equals(other.R))
+                return false;
+
+            if (!G.Equals(other.G))
+                return false;
+
+            if (!B.Equals(other.B))
+                return false;
+
+            return true;
         }
 
         internal Color3(Attribute attr)

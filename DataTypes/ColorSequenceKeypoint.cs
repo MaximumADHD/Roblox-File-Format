@@ -25,5 +25,33 @@
             Time = attr.readFloat();
             Value = new Color3(attr);
         }
+
+        public override int GetHashCode()
+        {
+            int hash = Time.GetHashCode()
+                     ^ Value.GetHashCode()
+                     ^ Envelope.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is ColorSequenceKeypoint))
+                return false;
+
+            var otherKey = obj as ColorSequenceKeypoint;
+
+            if (!Time.Equals(otherKey.Time))
+                return false;
+
+            if (!Value.Equals(otherKey.Value))
+                return false;
+
+            if (!Envelope.Equals(otherKey.Envelope))
+                return false;
+
+            return true;
+        }
     }
 }

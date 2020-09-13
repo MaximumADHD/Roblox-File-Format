@@ -66,36 +66,6 @@ namespace RobloxFiles.DataTypes
             return new Vector3(coords);
         }
 
-        public override bool Equals(object obj)
-        {
-            if (obj is Vector3)
-            {
-                Vector3 other = obj as Vector3;
-
-                if (!X.FuzzyEquals(other.X))
-                    return false;
-
-                if (!Y.FuzzyEquals(other.Y))
-                    return false;
-
-                if (!Z.FuzzyEquals(other.Z))
-                    return false;
-
-                return true;
-            }
-                
-            return base.Equals(obj);
-        }
-
-        public override int GetHashCode()
-        {
-            int x = X.GetHashCode(),
-                y = Y.GetHashCode(),
-                z = Z.GetHashCode();
-
-            return x ^ y ^ z;
-        }
-
         private delegate Vector3 Operator(Vector3 a, Vector3 b);
         
         private static Vector3 upcastFloatOp(Vector3 vec, float num, Operator upcast)
@@ -188,6 +158,34 @@ namespace RobloxFiles.DataTypes
             }
 
             return result;
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = X.GetHashCode()
+                     ^ Y.GetHashCode()
+                     ^ Z.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Vector3))
+                return false;
+
+            var other = obj as Vector3;
+
+            if (!X.Equals(other.X))
+                return false;
+
+            if (!Y.Equals(other.Y))
+                return false;
+
+            if (!Z.Equals(other.Z))
+                return false;
+
+            return true;
         }
     }
 }

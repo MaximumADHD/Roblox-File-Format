@@ -11,6 +11,8 @@ namespace RobloxFiles
     /// </summary>
     public abstract class RobloxFile : Instance
     {
+        public static bool LogErrors = false;
+
         protected abstract void ReadFile(byte[] buffer);
 
         /// <summary>

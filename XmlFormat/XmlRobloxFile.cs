@@ -98,7 +98,10 @@ namespace RobloxFiles
                     else if (refId != "null")
                     {
                         string name = refProp.GetFullName();
-                        Console.WriteLine("XmlRobloxFile: Could not resolve reference for {0}", name);
+
+                        if (LogErrors)
+                            Console.Error.WriteLine("XmlRobloxFile: Could not resolve reference for {0}", name);
+
                         refProp.Value = null;
                     }
                 }

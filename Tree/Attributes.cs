@@ -87,7 +87,9 @@ namespace RobloxFiles
             }
             catch
             {
-                Console.WriteLine($"RobloxFile - Got unknown Enum {name} in Attribute.");
+                if (RobloxFile.LogErrors)
+                    Console.Error.WriteLine($"RobloxFile - Got unknown Enum {name} in Attribute.");
+
                 return null;
             }
         }

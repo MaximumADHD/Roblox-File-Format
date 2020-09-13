@@ -30,6 +30,9 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                     }
                     catch
                     {
+                        if (!RobloxFile.LogErrors)
+                            return true;
+
                         Console.WriteLine("ContentToken: Got illegal base64 string: {0}", data);
                     }
                 }

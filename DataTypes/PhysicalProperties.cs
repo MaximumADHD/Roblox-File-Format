@@ -46,5 +46,41 @@ namespace RobloxFiles.DataTypes
             FrictionWeight = attr.readFloat();
             ElasticityWeight = attr.readFloat();
         }
+
+        public override int GetHashCode()
+        {
+            int hash = Density.GetHashCode()
+                     ^ Friction.GetHashCode()
+                     ^ Elasticity.GetHashCode()
+                     ^ FrictionWeight.GetHashCode()
+                     ^ ElasticityWeight.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is PhysicalProperties))
+                return false;
+
+            var other = obj as PhysicalProperties;
+
+            if (!Density.Equals(other.Density))
+                return false;
+
+            if (!Friction.Equals(other.Friction))
+                return false;
+
+            if (!Elasticity.Equals(other.Elasticity))
+                return false;
+
+            if (!FrictionWeight.Equals(other.FrictionWeight))
+                return false;
+
+            if (!ElasticityWeight.Equals(other.ElasticityWeight))
+                return false;
+
+            return true;
+        }
     }
 }

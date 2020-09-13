@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace RobloxFiles.DataTypes
 {
@@ -49,6 +50,30 @@ namespace RobloxFiles.DataTypes
         public static implicit operator ProtectedString(byte[] value)
         {
             return new ProtectedString(value);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is ProtectedString))
+                return false;
+
+            var other = obj as ProtectedString;
+            var otherBuffer = other.RawBuffer;
+
+            if (RawBuffer.Length != otherBuffer.Length)
+                return false;
+
+            for (int i = 0; i < RawBuffer.Length; i++)
+                if (RawBuffer[i] != otherBuffer[i])
+                    return false;
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var str = Convert.ToBase64String(RawBuffer);
+            return str.GetHashCode();
         }
     }
 }

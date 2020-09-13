@@ -62,5 +62,40 @@ namespace RobloxFiles.DataTypes
 
             Keypoints = keypoints;
         }
+
+        public override int GetHashCode()
+        {
+            int hash = 0;
+
+            foreach (var keypoint in Keypoints)
+                hash ^= keypoint.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is NumberSequence))
+                return false;
+
+            var colorSeq = obj as NumberSequence;
+            var otherKeys = colorSeq.Keypoints;
+
+            if (Keypoints.Length != otherKeys.Length)
+                return false;
+
+            for (int i = 0; i < Keypoints.Length; i++)
+            {
+                var keyA = Keypoints[i];
+                var keyB = otherKeys[i];
+
+                if (keyA.Equals(keyB))
+                    continue;
+
+                return false;
+            }
+
+            return true;
+        }
     }
 }

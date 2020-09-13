@@ -202,6 +202,9 @@ namespace RobloxFiles
                         }
                         else
                         {
+                            if (!RobloxFile.LogErrors)
+                                return false;
+
                             Console.Error.WriteLine($"RobloxFiles.Property - No defined member for {Instance.ClassName}.{Name}");
                         }
                     }
@@ -236,6 +239,9 @@ namespace RobloxFiles
                                 }
                                 catch
                                 {
+                                    if (!RobloxFile.LogErrors)
+                                        return;
+
                                     Console.Error.WriteLine($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
                                 }
                             }
@@ -252,6 +258,9 @@ namespace RobloxFiles
                                     }
                                     catch
                                     {
+                                        if (!RobloxFile.LogErrors)
+                                            return;
+
                                         Console.Error.WriteLine($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Instance.ClassName}.{Name}");
                                     }
                                 }

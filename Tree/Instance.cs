@@ -512,6 +512,11 @@ namespace RobloxFiles
                 if (field.GetCustomAttribute<ObsoleteAttribute>() != null)
                     continue;
 
+                if (fieldName == "Archivable" || fieldName.EndsWith("k__BackingField"))
+                    continue;
+                else if (fieldName == "Bevel_Roundness")
+                    fieldName = "Bevel Roundness";
+
                 PropertyType propType = PropertyType.Unknown;
                 
                 if (Property.Types.ContainsKey(fieldType))

@@ -41,5 +41,29 @@ namespace RobloxFiles.DataTypes
 
             return new Region3(emin, emax);
         }
+
+        public override int GetHashCode()
+        {
+            int hash = Min.GetHashCode()
+                     ^ Max.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Region3))
+                return false;
+
+            var other = obj as Region3;
+
+            if (!Min.Equals(other.Min))
+                return false;
+
+            if (!Max.Equals(other.Max))
+                return false;
+
+            return true;
+        }
     }
 }

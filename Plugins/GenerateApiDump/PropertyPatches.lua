@@ -278,12 +278,6 @@ return
 		}
 	};
 	
-	JointInstance = 
-	{
-		Add      = { IsAutoJoint = "bool" };
-		Defaults = { IsAutoJoint = true   };
-	};
-	
 	Lighting =
 	{
 		Add = 
@@ -349,10 +343,12 @@ return
 	
 	Model = 
 	{
-		Add = 
+		Add =
 		{
 			ModelInPrimary = "CFrame";
-			ModelMeshData = "BinaryString";
+			ModelMeshCFrame = "CFrame";
+			ModelMeshData = "SharedString";
+			ModelMeshSize = "Vector3";
 		};
 	};
 
@@ -538,18 +534,13 @@ return
 	{
 		Add = 
 		{
-			ClusterGrid = "string";
-			ClusterGridV2 = "string";
 			ClusterGridV3 = "BinaryString";
-			
-			SmoothGrid = "BinaryString";
 			PhysicsGrid = "BinaryString";
+			SmoothGrid = "BinaryString";
 		};
 		
 		Defaults = 
 		{
-			Decoration = false;
-			
 			SmoothGrid = "AQU=";
 			PhysicsGrid = "AgMAAAAAAAAAAAAAAAA=";
 			MaterialColors = "AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM";
@@ -585,14 +576,12 @@ return
 			LODData = "BinaryString";
 			PhysicsData = "BinaryString";
 			PhysicalConfigData = "SharedString";
-			CollisionFidelity = "Enum:CollisionFidelity";
 		};
 		
 		Defaults =
 		{
 			InitialSize = Vector3.new(1, 1, 1);
 			PhysicalConfigData = "1B2M2Y8AsgTpgAmY7PhCfg==";
-			CollisionFidelity = Enum.CollisionFidelity.Default;
 		};
 	};
 	
@@ -656,7 +645,6 @@ return
 			StreamingPauseMode = "Enum:StreamingPauseMode";
 			
 			TerrainWeldsFixed = "bool";
-			TemporaryLegacyPhysicsSolverOverrideStreaming = "bool";
 		};
 		
 		Defaults =
@@ -669,7 +657,6 @@ return
 			StreamingPauseMode = Enum.StreamingPauseMode.Default;
 			
 			TerrainWeldsFixed = true;
-			TemporaryLegacyPhysicsSolverOverrideStreaming = false;
 		}
 	}
 }

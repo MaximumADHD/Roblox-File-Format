@@ -36,5 +36,29 @@
 
             return new UDim2(scaleX, offsetX, scaleY, offsetY);
         }
+
+        public override int GetHashCode()
+        {
+            int hash = X.GetHashCode()
+                     ^ Y.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is UDim2))
+                return false;
+
+            var other = obj as UDim2;
+
+            if (!X.Equals(other.X))
+                return false;
+
+            if (!Y.Equals(other.Y))
+                return false;
+
+            return true;
+        }
     }
 }

@@ -16,5 +16,29 @@
             Min = new Vector3int16(attr);
             Max = new Vector3int16(attr);
         }
+
+        public override int GetHashCode()
+        {
+            int hash = Min.GetHashCode()
+                     ^ Max.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Region3int16))
+                return false;
+
+            var other = obj as Region3int16;
+
+            if (!Min.Equals(other.Min))
+                return false;
+
+            if (!Max.Equals(other.Max))
+                return false;
+
+            return true;
+        }
     }
 }

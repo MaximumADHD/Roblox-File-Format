@@ -50,5 +50,29 @@
             Vector3 closestPoint = ClosestPoint(point);
             return (point - closestPoint).Magnitude;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Ray))
+                return false;
+
+            var other = obj as Ray;
+
+            if (!Origin.Equals(other.Origin))
+                return false;
+
+            if (!Direction.Equals(other.Direction))
+                return false;
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = Origin.GetHashCode()
+                     ^ Direction.GetHashCode();
+
+            return hash;
+        }
     }
 }

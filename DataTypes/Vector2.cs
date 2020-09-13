@@ -103,5 +103,29 @@ namespace RobloxFiles.DataTypes
         {
             return this + (other - this) * t;
         }
+
+        public override int GetHashCode()
+        {
+            int hash = X.GetHashCode()
+                     ^ Y.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Vector2))
+                return false;
+
+            var other = obj as Vector2;
+
+            if (!X.Equals(other.X))
+                return false;
+
+            if (!Y.Equals(other.Y))
+                return false;
+
+            return true;
+        }
     }
 }

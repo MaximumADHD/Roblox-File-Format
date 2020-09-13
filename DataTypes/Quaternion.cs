@@ -40,7 +40,6 @@ namespace RobloxFiles.DataTypes
 
         public Quaternion(CFrame cf)
         {
-            CFrame matrix = (cf - cf.Position);
             float[] ac = cf.GetComponents();
 
             float m11 = ac[3], m12 = ac[4],  m13 = ac[5],
@@ -203,6 +202,38 @@ namespace RobloxFiles.DataTypes
             float s2 = b.W;
 
             return new Quaternion(s1 * v2 + s2 * v1 + v1.Cross(v2), s1 * s2 - v1.Dot(v2));
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = X.GetHashCode()
+                     ^ Y.GetHashCode()
+                     ^ Z.GetHashCode()
+                     ^ W.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Quaternion))
+                return false;
+
+            var other = obj as Quaternion;
+
+            if (!X.Equals(other.X))
+                return false;
+
+            if (!Y.Equals(other.Y))
+                return false;
+
+            if (!Z.Equals(other.Z))
+                return false;
+
+            if (!W.Equals(other.W))
+                return false;
+
+            return true;
         }
     }
 }

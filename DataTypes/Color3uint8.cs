@@ -18,7 +18,18 @@
 
         public override int GetHashCode()
         {
-            return (R << 24) | (G << 8) | B;
+            return (R << 16) | (G << 8) | B;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Color3uint8))
+                return false;
+
+            int rgb0 = GetHashCode(),
+                rgb1 = obj.GetHashCode();
+
+            return rgb0.Equals(rgb1);
         }
 
         public static implicit operator Color3(Color3uint8 color)

@@ -23,6 +23,20 @@ namespace RobloxFiles.DataTypes
         public byte[] SharedValue => Find(ComputedKey ?? Key);
         public override string ToString() => $"Key: {ComputedKey ?? Key}";
 
+        public override int GetHashCode()
+        {
+            return Key.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is SharedString))
+                return false;
+
+            var other = (obj as SharedString);
+            return Key.Equals(other.Key);
+        }
+
         internal SharedString(string key)
         {
             Key = key;

@@ -107,11 +107,12 @@ namespace RobloxFiles.XmlFormat
                     };
 
                     if (!tokenHandler.ReadProperty(prop, propNode))
-                        Console.WriteLine("Could not read property: " + prop.GetFullName() + '!');
+                        if (RobloxFile.LogErrors)
+                            Console.Error.WriteLine("Could not read property: " + prop.GetFullName() + '!');
 
                     instance.AddProperty(ref prop);
                 }
-                else
+                else if (RobloxFile.LogErrors)
                 {
                     Console.WriteLine("No IXmlPropertyToken found for property type: " + propType + '!');
                 }

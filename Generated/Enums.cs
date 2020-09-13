@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.443.0.409841
+// Updated as of 0.447.1.411123
 
 namespace RobloxFiles.Enums
 {
@@ -102,14 +102,6 @@ namespace RobloxFiles.Enums
         Custom,
         Scriptable,
         Orbital
-    }
-
-    public enum CollisionFidelity
-    {
-        Default,
-        Hull,
-        Box,
-        PreciseConvexDecomposition
     }
 
     public enum DevCameraOcclusionMode

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 
 namespace RobloxFiles.DataTypes
 {
@@ -15,31 +16,38 @@ namespace RobloxFiles.DataTypes
             Max = num;
         }
 
-        private static void checkRange(float min, float max)
-        {
-            if (max - min >= 0)
-                return;
-
-            throw new Exception("NumberRange: invalid range");
-        }
-
         public NumberRange(float min = 0, float max = 0)
         {
-            checkRange(min, max);
-
+            Contract.Requires(max - min >= 0, "Max must be greater than min.");
+            Contract.EndContractBlock();
+            
             Min = min;
             Max = max;
         }
 
-        internal NumberRange(Attribute attr)
+        internal NumberRange(Attribute attr) : this(attr.readFloat(), attr.readFloat())
         {
-            float min = attr.readFloat();
-            float max = attr.readFloat();
+        }
 
-            checkRange(min, max);
+        public override int GetHashCode()
+        {
+            return Min.GetHashCode() ^ Max.GetHashCode();
+        }
 
-            Min = min;
-            Max = max;
+        public override bool Equals(object obj)
+        {
+            if (!(obj is NumberRange))
+                return false;
+
+            var other = obj as NumberRange;
+
+            if (!Min.Equals(other.Min))
+                return false;
+
+            if (!Max.Equals(other.Max))
+                return false;
+
+            return true;
         }
     }
 }

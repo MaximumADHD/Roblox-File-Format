@@ -65,5 +65,29 @@ namespace RobloxFiles.DataTypes
         public static Vector2int16 operator /(Vector2int16 a, Vector2int16 b) => div(a, b);
         public static Vector2int16 operator /(Vector2int16 v, short n)        => upcastShortOp(v, n, div);
         public static Vector2int16 operator /(short n, Vector2int16 v)        => upcastShortOp(n, v, div);
+
+        public override int GetHashCode()
+        {
+            int hash = X.GetHashCode()
+                     ^ Y.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Vector2int16))
+                return false;
+
+            var other = obj as Vector2int16;
+
+            if (!X.Equals(other.X))
+                return false;
+
+            if (!Y.Equals(other.Y))
+                return false;
+
+            return true;
+        }
     }
 }

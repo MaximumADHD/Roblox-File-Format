@@ -27,5 +27,29 @@
             Min = new Vector2(attr);
             Max = new Vector2(attr);
         }
+
+        public override int GetHashCode()
+        {
+            int hash = Min.GetHashCode()
+                     ^ Max.GetHashCode();
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Rect))
+                return false;
+
+            var other = obj as Rect;
+
+            if (!Min.Equals(other.Min))
+                return false;
+
+            if (!Max.Equals(other.Max))
+                return false;
+
+            return true;
+        }
     }
 }

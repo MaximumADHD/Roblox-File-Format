@@ -38,6 +38,40 @@ namespace RobloxFiles.DataTypes
         public Vector3 ColumnY => new Vector3(m21, m22, m23);
         public Vector3 ColumnZ => new Vector3(m31, m32, m33);
 
+        public override int GetHashCode()
+        {
+            var components = GetComponents();
+            int hashCode = 0;
+
+            foreach (float component in components)
+                hashCode ^= component.GetHashCode();
+
+            return hashCode;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CFrame))
+                return false;
+
+            var other = obj as CFrame;
+            var compA = GetComponents();
+            var compB = other.GetComponents();
+
+            for (int i = 0; i < 12; i++)
+            {
+                float a = compA[i],
+                      b = compB[i];
+
+                if (a.Equals(b))
+                    continue;
+
+                return false;
+            }
+
+            return true;
+        }
+
         public CFrame()
         {
             m14 = 0;
