@@ -39,12 +39,12 @@ namespace RobloxFiles.DataTypes
 
         internal PhysicalProperties(Attribute attr)
         {
-            Density = attr.readFloat();
-            Friction = attr.readFloat();
-            Elasticity = attr.readFloat();
+            Density = attr.ReadFloat();
+            Friction = attr.ReadFloat();
+            Elasticity = attr.ReadFloat();
 
-            FrictionWeight = attr.readFloat();
-            ElasticityWeight = attr.readFloat();
+            FrictionWeight = attr.ReadFloat();
+            ElasticityWeight = attr.ReadFloat();
         }
 
         public override int GetHashCode()

@@ -16,7 +16,7 @@ namespace RobloxFiles.DataTypes
 
     public class SharedString
     {
-        private static ConcurrentDictionary<string, byte[]> Lookup = new ConcurrentDictionary<string, byte[]>();
+        private static readonly ConcurrentDictionary<string, byte[]> Lookup = new ConcurrentDictionary<string, byte[]>();
         public string Key { get; internal set; }
         public string ComputedKey { get; internal set; }
 

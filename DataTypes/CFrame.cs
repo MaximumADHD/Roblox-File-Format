@@ -161,7 +161,7 @@ namespace RobloxFiles.DataTypes
             m31 = comp[9]; m32 = comp[10]; m33 = comp[11];
         }
 
-        private void initFromMatrix(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
+        private void InitFromMatrix(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
         {
             if (vZ == null)
                 vZ = vX.Cross(vY);
@@ -175,7 +175,7 @@ namespace RobloxFiles.DataTypes
         public CFrame(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
         {
             Contract.Requires(pos != null && vX != null && vY != null);
-            initFromMatrix(pos, vX, vY, vZ);
+            InitFromMatrix(pos, vX, vY, vZ);
         }
 
         internal CFrame(Attribute attr)
@@ -194,7 +194,7 @@ namespace RobloxFiles.DataTypes
                 NormalId yColumn = (NormalId)(orientId % 6);
                 Vector3 vY = Vector3.FromNormalId(yColumn);
 
-                initFromMatrix(pos, vX, vY);
+                InitFromMatrix(pos, vX, vY);
             }
             else
             {
@@ -202,7 +202,7 @@ namespace RobloxFiles.DataTypes
                         vY = new Vector3(attr),
                         vZ = new Vector3(attr);
 
-                initFromMatrix(pos, vX, vY, vZ);
+                InitFromMatrix(pos, vX, vY, vZ);
             }
         }
 

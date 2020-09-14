@@ -44,9 +44,9 @@ namespace RobloxFiles.DataTypes
 
         internal Color3(Attribute attr)
         {
-            R = attr.readFloat();
-            G = attr.readFloat();
-            B = attr.readFloat();
+            R = attr.ReadFloat();
+            G = attr.ReadFloat();
+            B = attr.ReadFloat();
         }
 
         public static Color3 FromRGB(uint r = 0, uint g = 0, uint b = 0)

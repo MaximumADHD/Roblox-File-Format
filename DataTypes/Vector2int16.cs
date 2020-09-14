@@ -39,10 +39,10 @@ namespace RobloxFiles.DataTypes
             return upcast(numVec, vec);
         }
 
-        private static Operator add = new Operator((a, b) => new Vector2int16(a.X + b.X, a.Y + b.Y));
-        private static Operator sub = new Operator((a, b) => new Vector2int16(a.X - b.X, a.Y - b.Y));
-        private static Operator mul = new Operator((a, b) => new Vector2int16(a.X * b.X, a.Y * b.Y));
-        private static Operator div = new Operator((a, b) =>
+        private static readonly Operator add = new Operator((a, b) => new Vector2int16(a.X + b.X, a.Y + b.Y));
+        private static readonly Operator sub = new Operator((a, b) => new Vector2int16(a.X - b.X, a.Y - b.Y));
+        private static readonly Operator mul = new Operator((a, b) => new Vector2int16(a.X * b.X, a.Y * b.Y));
+        private static readonly Operator div = new Operator((a, b) =>
         {
             if (b.X == 0 || b.Y == 0)
                 throw new DivideByZeroException();

@@ -56,17 +56,17 @@ namespace RobloxFiles
         internal BinaryReader reader;
         // internal BinaryWriter writer;
 
-        internal int readInt() => reader.ReadInt32();
+        internal int ReadInt() => reader.ReadInt32();
         internal byte readByte() => reader.ReadByte();
         internal bool readBool() => reader.ReadBoolean();
         internal short readShort() => reader.ReadInt16();
-        internal float readFloat() => reader.ReadSingle();
-        internal double readDouble() => reader.ReadDouble();
-        internal string readString() => reader.ReadString(true);
+        internal float ReadFloat() => reader.ReadSingle();
+        internal double ReadDouble() => reader.ReadDouble();
+        internal string ReadString() => reader.ReadString(true);
 
-        internal Attribute[] readArray()
+        internal Attribute[] ReadArray()
         {
-            int count = readInt();
+            int count = ReadInt();
             var result = new Attribute[count];
 
             for (int i = 0; i < count; i++)
@@ -77,8 +77,8 @@ namespace RobloxFiles
 
         internal object readEnum()
         {
-            string name = readString();
-            int value = readInt();
+            string name = ReadString();
+            int value = ReadInt();
 
             try
             {
@@ -107,22 +107,22 @@ namespace RobloxFiles
                 case AttributeType.Null:
                     break;
                 case AttributeType.String:
-                    Value = readString();
+                    Value = ReadString();
                     break;
                 case AttributeType.Bool:
                     Value = readBool();
                     break;
                 case AttributeType.Int:
-                    Value = readInt();
+                    Value = ReadInt();
                     break;
                 case AttributeType.Float:
-                    Value = readFloat();
+                    Value = ReadFloat();
                     break;
                 case AttributeType.Double:
-                    Value = readDouble();
+                    Value = ReadDouble();
                     break;
                 case AttributeType.Array:
-                    Value = readArray();
+                    Value = ReadArray();
                     break;
                 case AttributeType.Dictionary:
                     Value = new Attributes(reader);
@@ -137,13 +137,13 @@ namespace RobloxFiles
                     Value = new Ray(this);
                     break;
                 case AttributeType.Faces:
-                    Value = (Faces)readInt();
+                    Value = (Faces)ReadInt();
                     break;
                 case AttributeType.Axes:
-                    Value = (Axes)readInt();
+                    Value = (Axes)ReadInt();
                     break;
                 case AttributeType.BrickColor:
-                    Value = (BrickColor)readInt();
+                    Value = (BrickColor)ReadInt();
                     break;
                 case AttributeType.Color3:
                     Value = new Color3(this);
@@ -225,7 +225,7 @@ namespace RobloxFiles
 
     public class Attributes : Dictionary<string, Attribute>
     {
-        private void initialize(BinaryReader reader)
+        private void Initialize(BinaryReader reader)
         {
             Stream stream = reader.BaseStream;
 
@@ -245,14 +245,14 @@ namespace RobloxFiles
 
         internal Attributes(BinaryReader reader)
         {
-            initialize(reader);
+            Initialize(reader);
         }
 
         internal Attributes(MemoryStream stream)
         {
             using (BinaryReader reader = new BinaryReader(stream))
             {
-                initialize(reader);
+                Initialize(reader);
             }
         }
 

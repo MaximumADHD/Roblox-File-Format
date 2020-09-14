@@ -54,7 +54,7 @@ namespace RobloxFiles.DataTypes
 
         public NumberSequence(Attribute attr)
         {
-            int numKeys = attr.readInt();
+            int numKeys = attr.ReadInt();
             var keypoints = new NumberSequenceKeypoint[numKeys];
 
             for (int i = 0; i < numKeys; i++)

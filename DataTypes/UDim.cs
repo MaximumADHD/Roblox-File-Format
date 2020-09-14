@@ -15,8 +15,8 @@
 
         internal UDim(Attribute attr)
         {
-            Scale = attr.readFloat();
-            Offset = attr.readInt();
+            Scale = attr.ReadFloat();
+            Offset = attr.ReadInt();
         }
 
         public static UDim operator+(UDim a, UDim b)

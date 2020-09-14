@@ -125,10 +125,19 @@ namespace RobloxFiles
                     return;
                 }
             }
+
+            if (RawValue is long)
+                Type = PropertyType.Int64;
             
             switch (Type)
             {
                 case PropertyType.Int:
+                    if (Value is long)
+                    {
+                        Type = PropertyType.Int64;
+                        goto case PropertyType.Int64;
+                    }
+                    
                     RawBuffer = BitConverter.GetBytes((int)Value);
                     break;
                 case PropertyType.Bool:
@@ -307,7 +316,7 @@ namespace RobloxFiles
             string result = Name;
 
             if (Instance != null)
-                result = Instance.GetFullName() + '.' + result;
+                result = Instance.GetFullName() + "->" + result;
 
             return result;
         }
@@ -329,8 +338,8 @@ namespace RobloxFiles
 
             if (typeof(T) == typeof(string))
                 result = Value?.ToString() ?? "";
-            else if (Value is T)
-                result = (T)Value;
+            else if (Value is T typedValue)
+                result = typedValue;
             else
                 result = default(T);
             

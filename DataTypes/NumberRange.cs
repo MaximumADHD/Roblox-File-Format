@@ -25,7 +25,7 @@ namespace RobloxFiles.DataTypes
             Max = max;
         }
 
-        internal NumberRange(Attribute attr) : this(attr.readFloat(), attr.readFloat())
+        internal NumberRange(Attribute attr) : this(attr.ReadFloat(), attr.ReadFloat())
         {
         }
 

@@ -16,7 +16,7 @@
 
         public static implicit operator string(Content content)
         {
-            return content.Url;
+            return content?.Url;
         }
 
         public static implicit operator Content(string url)

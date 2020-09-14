@@ -20,9 +20,9 @@
 
         internal NumberSequenceKeypoint(Attribute attr)
         {
-            Envelope = attr.readFloat();
-            Time = attr.readFloat();
-            Value = attr.readFloat();
+            Envelope = attr.ReadFloat();
+            Time = attr.ReadFloat();
+            Value = attr.ReadFloat();
         }
 
         public override int GetHashCode()

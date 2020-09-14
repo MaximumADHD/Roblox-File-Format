@@ -24,7 +24,7 @@ namespace RobloxFiles
         public string ClassName => GetType().Name;
 
         /// <summary>Internal list of properties that are under this Instance.</summary>
-        private Dictionary<string, Property> props = new Dictionary<string, Property>();
+        private readonly Dictionary<string, Property> props = new Dictionary<string, Property>();
 
         /// <summary>A list of properties that are defined under this Instance.</summary>
         public IReadOnlyDictionary<string, Property> Properties => props;
@@ -45,7 +45,7 @@ namespace RobloxFiles
         public override string ToString() => Name;
 
         /// <summary>A unique identifier for this instance when being serialized.</summary>
-        public string Referent { get; internal set; }
+        public string Referent { get; set; }
 
         /// <summary>Indicates whether the parent of this object is locked.</summary>
         public bool ParentLocked { get; internal set; }
@@ -438,7 +438,7 @@ namespace RobloxFiles
         /// <summary>
         /// Returns a string describing the index traversal of this Instance, starting from its root ancestor.
         /// </summary>
-        public string GetFullName(string separator = ".")
+        public string GetFullName(string separator = "\\")
         {
             string fullName = Name;
             Instance at = Parent;
@@ -511,6 +511,8 @@ namespace RobloxFiles
 
                 if (field.GetCustomAttribute<ObsoleteAttribute>() != null)
                     continue;
+
+                // A few specific edge case hacks. I wish these didn't need to exist :(
 
                 if (fieldName == "Archivable" || fieldName.EndsWith("k__BackingField"))
                     continue;

@@ -21,8 +21,8 @@
 
         internal ColorSequenceKeypoint(Attribute attr)
         {
-            Envelope = attr.readInt();
-            Time = attr.readFloat();
+            Envelope = attr.ReadInt();
+            Time = attr.ReadFloat();
             Value = new Color3(attr);
         }
 

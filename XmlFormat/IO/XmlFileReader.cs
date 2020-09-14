@@ -7,7 +7,7 @@ namespace RobloxFiles.XmlFormat
 {
     public static class XmlRobloxFileReader
     {
-        private static Func<string, Exception> createErrorHandler(string label)
+        private static Func<string, Exception> CreateErrorHandler(string label)
         {
             var errorHandler = new Func<string, Exception>((message) =>
             {
@@ -20,7 +20,7 @@ namespace RobloxFiles.XmlFormat
 
         public static void ReadSharedStrings(XmlNode sharedStrings, XmlRobloxFile file)
         {
-            var error = createErrorHandler("ReadSharedStrings");
+            var error = CreateErrorHandler("ReadSharedStrings");
 
             if (sharedStrings.Name != "SharedStrings")
                 throw error("Provided XmlNode's class should be 'SharedStrings'!");
@@ -56,7 +56,7 @@ namespace RobloxFiles.XmlFormat
 
         public static void ReadMetadata(XmlNode meta, XmlRobloxFile file)
         {
-            var error = createErrorHandler("ReadMetadata");
+            var error = CreateErrorHandler("ReadMetadata");
 
             if (meta.Name != "Meta")
                 throw error("Provided XmlNode's class should be 'Meta'!");
@@ -74,7 +74,7 @@ namespace RobloxFiles.XmlFormat
 
         public static void ReadProperties(Instance instance, XmlNode propsNode)
         {
-            var error = createErrorHandler("ReadProperties");
+            var error = CreateErrorHandler("ReadProperties");
 
             if (propsNode.Name != "Properties")
                 throw error("Provided XmlNode's class should be 'Properties'!");
@@ -121,7 +121,7 @@ namespace RobloxFiles.XmlFormat
 
         public static Instance ReadInstance(XmlNode instNode, XmlRobloxFile file)
         {
-            var error = createErrorHandler("ReadInstance");
+            var error = CreateErrorHandler("ReadInstance");
 
             // Process the instance itself
             if (instNode.Name != "Item")

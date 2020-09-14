@@ -161,29 +161,15 @@ namespace RobloxFiles.XmlFormat
                 object a = DefaultProperty.Get(instance, prop);
                 object b = prop.Value;
 
-                if (a is float)
-                {
-                    float f0 = (float)a,
-                          f1 = (float)b;
-
-                    isDefault = f0.FuzzyEquals(f1);
-                }
-                else if (a is double)
-                {
-                    double d0 = (double)a,
-                           d1 = (double)b;
-
+                if (a is double d0 && b is double d1)
                     isDefault = d0.FuzzyEquals(d1);
-                }
+                else if (a is float f0 && b is float f1)
+                    isDefault = f0.FuzzyEquals(f1);
                 else if (b != null)
-                {
                     isDefault = b.Equals(a);
-                }
                 else if (a == b)
-                {
                     isDefault = true;
-                }
-
+                
                 if (!isDefault)
                 {
                     XmlNode propNode = WriteProperty(prop, doc, file);

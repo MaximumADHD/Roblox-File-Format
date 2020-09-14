@@ -47,10 +47,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
             INST inst = file.Classes[ClassIndex];
             ClassName = inst.ClassName;
 
-            Property[] props = new Property[inst.NumInstances];
-
             var ids = inst.InstanceIds;
             int instCount = inst.NumInstances;
+            var props = new Property[inst.NumInstances];
 
             for (int i = 0; i < instCount; i++)
             {
@@ -71,8 +70,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
             {
                 for (int i = 0; i < instCount; i++)
                 {
-                    object result = read(i);
-                    props[i].Value = result;
+                    var prop = props[i];
+                    prop.Value = read(i);
                 }
             });
             

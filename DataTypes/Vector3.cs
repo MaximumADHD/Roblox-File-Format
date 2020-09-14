@@ -41,9 +41,9 @@ namespace RobloxFiles.DataTypes
 
         internal Vector3(Attribute attr)
         {
-            X = attr.readFloat();
-            Y = attr.readFloat();
-            Z = attr.readFloat();
+            X = attr.ReadFloat();
+            Y = attr.ReadFloat();
+            Z = attr.ReadFloat();
         }
 
         public static Vector3 FromAxis(Axis axis)
@@ -80,10 +80,10 @@ namespace RobloxFiles.DataTypes
             return upcast(numVec, vec);
         }
 
-        private static Operator add = new Operator((a, b) => new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z));
-        private static Operator sub = new Operator((a, b) => new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z));
-        private static Operator mul = new Operator((a, b) => new Vector3(a.X * b.X, a.Y * b.Y, a.Z * b.Z));
-        private static Operator div = new Operator((a, b) => new Vector3(a.X / b.X, a.Y / b.Y, a.Z / b.Z));
+        private static readonly Operator add = new Operator((a, b) => new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z));
+        private static readonly Operator sub = new Operator((a, b) => new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z));
+        private static readonly Operator mul = new Operator((a, b) => new Vector3(a.X * b.X, a.Y * b.Y, a.Z * b.Z));
+        private static readonly Operator div = new Operator((a, b) => new Vector3(a.X / b.X, a.Y / b.Y, a.Z / b.Z));
 
         public static Vector3 operator +(Vector3 a, Vector3 b) => add(a, b);
         public static Vector3 operator +(Vector3 v, float n)   => upcastFloatOp(v, n, add);

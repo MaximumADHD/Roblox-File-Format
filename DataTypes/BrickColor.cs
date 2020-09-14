@@ -18,10 +18,10 @@ namespace RobloxFiles.DataTypes
 
         public override string ToString() => Name;
 
-        private static List<BrickColor> ByPalette;
-        private static Dictionary<int, BrickColor> ByNumber;
+        private static readonly List<BrickColor> ByPalette;
+        private static readonly Dictionary<int, BrickColor> ByNumber;
 
-        private static Random RNG = new Random();
+        private static readonly Random RNG = new Random();
 
         private const string DefaultName = "Medium stone grey";
         private const int DefaultNumber = 194;

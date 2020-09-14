@@ -23,9 +23,9 @@ namespace RobloxFiles
 
         public XmlRobloxFile()
         {
-            Name = "XmlRobloxFile";
-            ParentLocked = true;
+            Name = "Xml:";
             Referent = "null";
+            ParentLocked = true;
         }
         
         protected override void ReadFile(byte[] buffer)

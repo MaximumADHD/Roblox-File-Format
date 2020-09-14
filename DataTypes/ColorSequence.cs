@@ -90,7 +90,7 @@ namespace RobloxFiles.DataTypes
         
         public ColorSequence(Attribute attr)
         {
-            int numKeys = attr.readInt();
+            int numKeys = attr.ReadInt();
             var keypoints = new ColorSequenceKeypoint[numKeys];
 
             for (int i = 0; i < numKeys; i++)

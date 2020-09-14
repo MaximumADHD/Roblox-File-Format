@@ -43,9 +43,9 @@ namespace RobloxFiles
 
         public BinaryRobloxFile()
         {
-            Name = "BinaryRobloxFile";
-            ParentLocked = true;
+            Name = "Bin:";
             Referent = "-1";
+            ParentLocked = true;
         }
         
         protected override void ReadFile(byte[] contents)
