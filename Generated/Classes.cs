@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.447.1.411123
+// Updated as of 0.448.0.411244
 
 using System;
 
@@ -2288,6 +2288,7 @@ namespace RobloxFiles
         public float FallenPartsDestroyHeight = -500;
         public bool FilteringEnabled;
         public float Gravity = 196.2f;
+        public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public bool StreamingEnabled;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;

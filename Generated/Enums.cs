@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.447.1.411123
+// Updated as of 0.448.0.411244
 
 namespace RobloxFiles.Enums
 {
@@ -334,6 +334,13 @@ namespace RobloxFiles.Enums
         NoInput,
         Constant = 12,
         Sin
+    }
+
+    public enum InterpolationThrottlingMode
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum LeftRight

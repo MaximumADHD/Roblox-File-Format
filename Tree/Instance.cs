@@ -32,14 +32,17 @@ namespace RobloxFiles
         /// <summary>The raw list of children for this Instance.</summary>
         internal HashSet<Instance> Children = new HashSet<Instance>();
 
-        /// <summary>The raw value of the Instance's parent.</summary>
-        private Instance RawParent;
+        /// <summary>The raw unsafe value of the Instance's parent.</summary>
+        private Instance ParentUnsafe;
 
         /// <summary>The name of this Instance.</summary>
         public string Name;
 
         /// <summary>Indicates whether this Instance should be serialized.</summary>
         public bool Archivable = true;
+
+        /// <summary>The source AssetId this instance was created in.</summary>
+        public long SourceAssetId = -1;
         
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public override string ToString() => Name;
@@ -174,25 +177,35 @@ namespace RobloxFiles
         /// </summary>
         public Instance Parent
         {
-            get
-            {
-                return RawParent;
-            }
+            get => ParentUnsafe;
+
             set
             {
                 if (ParentLocked)
-                    throw new Exception("The Parent property of this instance is locked.");
+                {
+                    string newParent = value?.Name ?? "NULL",
+                           currParent = Parent?.Name ?? "NULL";
+
+                    throw new InvalidOperationException($"The Parent property of {Name} is locked, current parent: {currParent}, new parent {newParent}");
+                }
 
                 if (IsAncestorOf(value))
-                    throw new Exception("Parent would result in circular reference.");
+                {
+                    string pathA = GetFullName("."),
+                           pathB = value.GetFullName(".");
+
+                    throw new InvalidOperationException($"Attempt to set parent of {pathA} to {pathB} would result in circular reference");
+                }
 
                 if (Parent == this)
-                    throw new Exception("Attempt to set parent to self.");
+                    throw new InvalidOperationException($"Attempt to set {Name} as its own parent");
 
-                RawParent?.Children.Remove(this);
-                value?.Children.Add(this);
-
-                RawParent = value;
+                lock (ParentUnsafe)
+                {
+                    ParentUnsafe?.Children.Remove(this);
+                    value?.Children.Add(this);
+                    ParentUnsafe = value;
+                }
             }
         }
 
