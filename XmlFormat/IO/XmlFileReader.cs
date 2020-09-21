@@ -114,7 +114,7 @@ namespace RobloxFiles.XmlFormat
                 }
                 else if (RobloxFile.LogErrors)
                 {
-                    Console.WriteLine("No IXmlPropertyToken found for property type: " + propType + '!');
+                    Console.Error.WriteLine("No IXmlPropertyToken found for property type: " + propType + '!');
                 }
             }
         }

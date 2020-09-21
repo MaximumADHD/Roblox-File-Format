@@ -65,20 +65,13 @@ namespace RobloxFiles.DataTypes
 
             switch (i)
             {
-                case 0:
-                    return new Color3(v, k, m);
-                case 1:
-                    return new Color3(n, v, m);
-                case 2:
-                    return new Color3(m, v, k);
-                case 3:
-                    return new Color3(m, n, v);
-                case 4:
-                    return new Color3(k, m, v);
-                case 5:
-                    return new Color3(v, m, n);
-                default:
-                    return new Color3();
+                case  0 : return new Color3(v, k, m);
+                case  1 : return new Color3(n, v, m);
+                case  2 : return new Color3(m, v, k);
+                case  3 : return new Color3(m, n, v);
+                case  4 : return new Color3(k, m, v);
+                case  5 : return new Color3(v, m, n);
+                default : return new Color3(0, 0, 0);
             }
         }
 

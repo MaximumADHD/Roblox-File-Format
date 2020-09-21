@@ -7,7 +7,7 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
     public class Color3Token : IXmlPropertyToken
     {
         public string Token => "Color3";
-        private string[] Fields = new string[3] { "R", "G", "B" };
+        private readonly string[] Fields = new string[3] { "R", "G", "B" };
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
@@ -21,7 +21,15 @@ namespace RobloxFiles.XmlFormat.PropertyTokens
                 try
                 {
                     var coord = token[key];
-                    fields[i] = Formatting.ParseFloat(coord.InnerText);
+                    string text = coord?.InnerText;
+
+                    if (text == null)
+                    {
+                        text = "0";
+                        success = false;
+                    }
+
+                    fields[i] = Formatting.ParseFloat(text);
                 }
                 catch
                 {

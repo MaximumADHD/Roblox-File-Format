@@ -56,6 +56,9 @@ namespace RobloxFiles
         /// <summary>Indicates whether this Instance is a Service.</summary>
         public bool IsService { get; internal set; }
 
+        /// <summary>Indicates whether this Instance has been destroyed.</summary>
+        public bool Destroyed { get; internal set; }
+
         /// <summary>A list of CollectionService tags assigned to this Instance.</summary>
         public List<string> Tags { get; } = new List<string>();
 
@@ -200,12 +203,9 @@ namespace RobloxFiles
                 if (Parent == this)
                     throw new InvalidOperationException($"Attempt to set {Name} as its own parent");
 
-                lock (ParentUnsafe)
-                {
-                    ParentUnsafe?.Children.Remove(this);
-                    value?.Children.Add(this);
-                    ParentUnsafe = value;
-                }
+                ParentUnsafe?.Children.Remove(this);
+                value?.Children.Add(this);
+                ParentUnsafe = value;
             }
         }
 
@@ -416,6 +416,28 @@ namespace RobloxFiles
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Disposes of this instance and its descendants, and locks its parent.
+        /// All property bindings, tags, and attributes are cleared.
+        /// </summary>
+        public void Destroy()
+        {
+            Destroyed = true;
+            props.Clear();
+            
+            Parent = null;
+            ParentLocked = true;
+
+            Tags?.Clear();
+            Attributes?.Clear();
+
+            while (Children.Any())
+            {
+                var child = Children.First();
+                child.Destroy();
+            }
         }
 
         /// <summary>

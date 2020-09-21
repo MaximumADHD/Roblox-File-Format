@@ -346,19 +346,28 @@ namespace RobloxFiles.DataTypes
             return new CFrame(0, 0, 0, r.X, u.X, b.X, r.Y, u.Y, b.Y, r.Z, u.Z, b.Z);
         }
 
-        public static CFrame Angles(float x, float y, float z)
+        public static CFrame FromEulerAnglesXYZ(float x, float y, float z)
         {
-            CFrame cfx = FromAxisAngle(Vector3.Right, x);
-            CFrame cfy = FromAxisAngle(Vector3.Up,    y);
-            CFrame cfz = FromAxisAngle(Vector3.Back,  z);
+            CFrame cfx = FromAxisAngle(Vector3.Right, x),
+                   cfy = FromAxisAngle(Vector3.Up, y),
+                   cfz = FromAxisAngle(Vector3.Back, z);
 
             return cfx * cfy * cfz;
         }
 
-        public static CFrame FromEulerAnglesXYZ(float x, float y, float z)
+        public static CFrame FromEulerAnglesXYZ(params float[] angles)
         {
-            return Angles(x, y, z);
+            Contract.Requires(angles.Length == 3);
+
+            float x = angles[0],
+                  y = angles[1],
+                  z = angles[2];
+
+            return FromEulerAnglesXYZ(x, y, z);
         }
+
+        public static CFrame Angles(float x, float y, float z) => FromEulerAnglesXYZ(x, y, z);
+        public static CFrame Angles(params float[] angles)     => FromEulerAnglesXYZ(angles);
         
         public CFrame Lerp(CFrame other, float t)
         {

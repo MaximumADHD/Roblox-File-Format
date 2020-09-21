@@ -353,11 +353,22 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         try
                         {
                             var info = ImplicitMember.Get(instType, Name);
+
+                            if (info == null)
+                            {
+                                if (RobloxFile.LogErrors)
+                                    Console.Error.WriteLine($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
+
+                                return value;
+                            }
+                            
                             return Enum.Parse(info.MemberType, value.ToInvariantString());
                         }
                         catch
                         {
-                            Console.WriteLine($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
+                            if (RobloxFile.LogErrors)
+                                Console.Error.WriteLine($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
+                            
                             return value;
                         }
                     });
@@ -522,7 +533,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 default:
-                    Console.Error.WriteLine("Unhandled property type: {0}!", Type);
+                    if (RobloxFile.LogErrors)
+                        Console.Error.WriteLine("Unhandled property type: {0}!", Type);
+
                     break;
                 //
             }
