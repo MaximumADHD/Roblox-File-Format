@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.448.0.411244
+// Updated as of 0.449.1.411731
 
 using System;
 
@@ -225,15 +225,15 @@ namespace RobloxFiles
         [Obsolete]
         public Vector3 angularvelocity
         {
-            get { return AngularVelocity; }
-            set { AngularVelocity = value; }
+            get => AngularVelocity;
+            set => AngularVelocity = value;
         }
 
         [Obsolete]
         public Vector3 maxTorque
         {
-            get { return MaxTorque; }
-            set { MaxTorque = value; }
+            get => MaxTorque;
+            set => MaxTorque = value;
         }
     }
 
@@ -244,8 +244,8 @@ namespace RobloxFiles
         [Obsolete]
         public Vector3 force
         {
-            get { return Force; }
-            set { Force = value; }
+            get => Force;
+            set => Force = value;
         }
     }
 
@@ -259,15 +259,15 @@ namespace RobloxFiles
         [Obsolete]
         public CFrame cframe
         {
-            get { return CFrame; }
-            set { CFrame = value; }
+            get => CFrame;
+            set => CFrame = value;
         }
 
         [Obsolete]
         public Vector3 maxTorque
         {
-            get { return MaxTorque; }
-            set { MaxTorque = value; }
+            get => MaxTorque;
+            set => MaxTorque = value;
         }
     }
 
@@ -281,15 +281,15 @@ namespace RobloxFiles
         [Obsolete]
         public Vector3 maxForce
         {
-            get { return MaxForce; }
-            set { MaxForce = value; }
+            get => MaxForce;
+            set => MaxForce = value;
         }
 
         [Obsolete]
         public Vector3 position
         {
-            get { return Position; }
-            set { Position = value; }
+            get => Position;
+            set => Position = value;
         }
     }
 
@@ -301,15 +301,15 @@ namespace RobloxFiles
         [Obsolete]
         public Vector3 force
         {
-            get { return Force; }
-            set { Force = value; }
+            get => Force;
+            set => Force = value;
         }
 
         [Obsolete]
         public Vector3 location
         {
-            get { return Location; }
-            set { Location = value; }
+            get => Location;
+            set => Location = value;
         }
     }
 
@@ -322,15 +322,15 @@ namespace RobloxFiles
         [Obsolete]
         public Vector3 maxForce
         {
-            get { return MaxForce; }
-            set { MaxForce = value; }
+            get => MaxForce;
+            set => MaxForce = value;
         }
 
         [Obsolete]
         public Vector3 velocity
         {
-            get { return Velocity; }
-            set { Velocity = value; }
+            get => Velocity;
+            set => Velocity = value;
         }
     }
 
@@ -398,8 +398,8 @@ namespace RobloxFiles
         [Obsolete]
         public CFrame CoordinateFrame
         {
-            get { return CFrame; }
-            set { CFrame = value; }
+            get => CFrame;
+            set => CFrame = value;
         }
 
         public float FieldOfView = 70;
@@ -410,8 +410,8 @@ namespace RobloxFiles
         [Obsolete]
         public CFrame focus
         {
-            get { return Focus; }
-            set { Focus = value; }
+            get => Focus;
+            set => Focus = value;
         }
     }
 
@@ -431,48 +431,48 @@ namespace RobloxFiles
     {
         public BrickColor HeadColor
         {
-            get { return BrickColor.FromColor3(HeadColor3); }
-            set { HeadColor3 = value?.Color; }
+            get => BrickColor.FromColor3(HeadColor3);
+            set => HeadColor3 = value?.Color;
         }
 
         public Color3 HeadColor3 = Color3.FromRGB(253, 234, 141);
 
         public BrickColor LeftArmColor
         {
-            get { return BrickColor.FromColor3(LeftArmColor3); }
-            set { LeftArmColor3 = value?.Color; }
+            get => BrickColor.FromColor3(LeftArmColor3);
+            set => LeftArmColor3 = value?.Color;
         }
 
         public Color3 LeftArmColor3 = Color3.FromRGB(253, 234, 141);
 
         public BrickColor LeftLegColor
         {
-            get { return BrickColor.FromColor3(LeftLegColor3); }
-            set { LeftLegColor3 = value?.Color; }
+            get => BrickColor.FromColor3(LeftLegColor3);
+            set => LeftLegColor3 = value?.Color;
         }
 
         public Color3 LeftLegColor3 = Color3.FromRGB(13, 105, 172);
 
         public BrickColor RightArmColor
         {
-            get { return BrickColor.FromColor3(RightArmColor3); }
-            set { RightArmColor3 = value?.Color; }
+            get => BrickColor.FromColor3(RightArmColor3);
+            set => RightArmColor3 = value?.Color;
         }
 
         public Color3 RightArmColor3 = Color3.FromRGB(253, 234, 141);
 
         public BrickColor RightLegColor
         {
-            get { return BrickColor.FromColor3(RightLegColor3); }
-            set { RightLegColor3 = value?.Color; }
+            get => BrickColor.FromColor3(RightLegColor3);
+            set => RightLegColor3 = value?.Color;
         }
 
         public Color3 RightLegColor3 = Color3.FromRGB(13, 105, 172);
 
         public BrickColor TorsoColor
         {
-            get { return BrickColor.FromColor3(TorsoColor3); }
-            set { TorsoColor3 = value?.Color; }
+            get => BrickColor.FromColor3(TorsoColor3);
+            set => TorsoColor3 = value?.Color;
         }
 
         public Color3 TorsoColor3 = Color3.FromRGB(40, 127, 71);
@@ -932,16 +932,16 @@ namespace RobloxFiles
 
         public float Heat
         {
-            get { return heat_xml; }
-            set { heat_xml = value; }
+            get => heat_xml;
+            set => heat_xml = value;
         }
 
         public Color3 SecondaryColor = Color3.FromRGB(139, 80, 55);
 
         public float Size
         {
-            get { return size_xml; }
-            set { size_xml = value; }
+            get => size_xml;
+            set => size_xml = value;
         }
 
         public float heat_xml = 9;
@@ -949,8 +949,8 @@ namespace RobloxFiles
         [Obsolete]
         public float size
         {
-            get { return Size; }
-            set { Size = value; }
+            get => Size;
+            set => Size = value;
         }
 
         public float size_xml = 5;
@@ -1046,8 +1046,8 @@ namespace RobloxFiles
         [Obsolete]
         public bool Localize
         {
-            get { return AutoLocalize; }
-            set { AutoLocalize = value; }
+            get => AutoLocalize;
+            set => AutoLocalize = value;
         }
 
         public LocalizationTable RootLocalizationTable;
@@ -1057,12 +1057,13 @@ namespace RobloxFiles
     {
         public bool Active;
         public Vector2 AnchorPoint = new Vector2();
+        public AutomaticSize AutomaticSize = AutomaticSize.None;
 
         [Obsolete]
         public BrickColor BackgroundColor
         {
-            get { return BrickColor.FromColor3(BackgroundColor3); }
-            set { BackgroundColor3 = value?.Color; }
+            get => BrickColor.FromColor3(BackgroundColor3);
+            set => BackgroundColor3 = value?.Color;
         }
 
         public Color3 BackgroundColor3 = Color3.FromRGB(163, 162, 165);
@@ -1071,8 +1072,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor BorderColor
         {
-            get { return BrickColor.FromColor3(BorderColor3); }
-            set { BorderColor3 = value?.Color; }
+            get => BrickColor.FromColor3(BorderColor3);
+            set => BorderColor3 = value?.Color;
         }
 
         public Color3 BorderColor3 = Color3.FromRGB(27, 42, 53);
@@ -1097,8 +1098,8 @@ namespace RobloxFiles
 
         public float Transparency
         {
-            get { return BackgroundTransparency; }
-            set { BackgroundTransparency = value; }
+            get => BackgroundTransparency;
+            set => BackgroundTransparency = value;
         }
 
         public bool Visible = true;
@@ -1140,8 +1141,8 @@ namespace RobloxFiles
         [Obsolete]
         public FontSize FontSize
         {
-            get { return FontUtility.GetFontSize(TextSize); }
-            set { TextSize = FontUtility.GetFontSize(value); }
+            get => FontUtility.GetFontSize(TextSize);
+            set => TextSize = FontUtility.GetFontSize(value);
         }
 
         public float LineHeight = 1;
@@ -1151,8 +1152,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor TextColor
         {
-            get { return BrickColor.FromColor3(TextColor3); }
-            set { TextColor3 = value?.Color; }
+            get => BrickColor.FromColor3(TextColor3);
+            set => TextColor3 = value?.Color;
         }
 
         public Color3 TextColor3 = Color3.FromRGB(27, 42, 53);
@@ -1166,8 +1167,8 @@ namespace RobloxFiles
         [Obsolete]
         public bool TextWrap
         {
-            get { return TextWrapped; }
-            set { TextWrapped = value; }
+            get => TextWrapped;
+            set => TextWrapped = value;
         }
 
         public bool TextWrapped;
@@ -1176,7 +1177,7 @@ namespace RobloxFiles
 
         public new float Transparency
         {
-            get { return base.Transparency; }
+            get => base.Transparency;
 
             set
             {
@@ -1210,8 +1211,8 @@ namespace RobloxFiles
         [Obsolete]
         public FontSize FontSize
         {
-            get { return FontUtility.GetFontSize(TextSize); }
-            set { TextSize = FontUtility.GetFontSize(value); }
+            get => FontUtility.GetFontSize(TextSize);
+            set => TextSize = FontUtility.GetFontSize(value);
         }
 
         public float LineHeight = 1;
@@ -1221,8 +1222,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor TextColor
         {
-            get { return BrickColor.FromColor3(TextColor3); }
-            set { TextColor3 = value?.Color; }
+            get => BrickColor.FromColor3(TextColor3);
+            set => TextColor3 = value?.Color;
         }
 
         public Color3 TextColor3 = Color3.FromRGB(27, 42, 53);
@@ -1236,8 +1237,8 @@ namespace RobloxFiles
         [Obsolete]
         public bool TextWrap
         {
-            get { return TextWrapped; }
-            set { TextWrapped = value; }
+            get => TextWrapped;
+            set => TextWrapped = value;
         }
 
         public bool TextWrapped;
@@ -1246,7 +1247,7 @@ namespace RobloxFiles
 
         public new float Transparency
         {
-            get { return base.Transparency; }
+            get => base.Transparency;
 
             set
             {
@@ -1258,6 +1259,7 @@ namespace RobloxFiles
 
     public class ScrollingFrame : GuiObject
     {
+        public AutomaticSize AutomaticCanvasSize = AutomaticSize.None;
         public Content BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png";
         public Vector2 CanvasPosition = new Vector2();
         public UDim2 CanvasSize = new UDim2(0, 0, 2, 0);
@@ -1282,8 +1284,8 @@ namespace RobloxFiles
         [Obsolete]
         public FontSize FontSize
         {
-            get { return FontUtility.GetFontSize(TextSize); }
-            set { TextSize = FontUtility.GetFontSize(value); }
+            get => FontUtility.GetFontSize(TextSize);
+            set => TextSize = FontUtility.GetFontSize(value);
         }
 
         public float LineHeight = 1;
@@ -1297,8 +1299,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor TextColor
         {
-            get { return BrickColor.FromColor3(TextColor3); }
-            set { TextColor3 = value?.Color; }
+            get => BrickColor.FromColor3(TextColor3);
+            set => TextColor3 = value?.Color;
         }
 
         public Color3 TextColor3 = Color3.FromRGB(27, 42, 53);
@@ -1313,8 +1315,8 @@ namespace RobloxFiles
         [Obsolete]
         public bool TextWrap
         {
-            get { return TextWrapped; }
-            set { TextWrapped = value; }
+            get => TextWrapped;
+            set => TextWrapped = value;
         }
 
         public bool TextWrapped;
@@ -1323,7 +1325,7 @@ namespace RobloxFiles
 
         public new float Transparency
         {
-            get { return base.Transparency; }
+            get => base.Transparency;
 
             set
             {
@@ -1410,8 +1412,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor Color
         {
-            get { return BrickColor.FromColor3(Color3); }
-            set { Color3 = value?.Color; }
+            get => BrickColor.FromColor3(Color3);
+            set => Color3 = value?.Color;
         }
 
         public Color3 Color3 = Color3.FromRGB(13, 105, 172);
@@ -1443,8 +1445,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor SurfaceColor
         {
-            get { return BrickColor.FromColor3(SurfaceColor3); }
-            set { SurfaceColor3 = value?.Color; }
+            get => BrickColor.FromColor3(SurfaceColor3);
+            set => SurfaceColor3 = value?.Color;
         }
 
         public Color3 SurfaceColor3 = Color3.FromRGB(13, 105, 172);
@@ -1509,8 +1511,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor SurfaceColor
         {
-            get { return BrickColor.FromColor3(SurfaceColor3); }
-            set { SurfaceColor3 = value?.Color; }
+            get => BrickColor.FromColor3(SurfaceColor3);
+            set => SurfaceColor3 = value?.Color;
         }
 
         public Color3 SurfaceColor3 = Color3.FromRGB(13, 105, 172);
@@ -1608,8 +1610,8 @@ namespace RobloxFiles
 
         public float Health
         {
-            get { return Health_XML; }
-            set { Health_XML = value; }
+            get => Health_XML;
+            set => Health_XML = value;
         }
 
         public float HealthDisplayDistance = 100;
@@ -1632,8 +1634,8 @@ namespace RobloxFiles
         [Obsolete]
         public float maxHealth
         {
-            get { return MaxHealth; }
-            set { MaxHealth = value; }
+            get => MaxHealth;
+            set => MaxHealth = value;
         }
     }
 
@@ -1906,8 +1908,8 @@ namespace RobloxFiles
         [Obsolete]
         public string DevelopmentLanguage
         {
-            get { return SourceLocaleId; }
-            set { SourceLocaleId = value; }
+            get => SourceLocaleId;
+            set => SourceLocaleId = value;
         }
 
         public string SourceLocaleId = "en-us";
@@ -2039,8 +2041,8 @@ namespace RobloxFiles
 
         public BrickColor BrickColor
         {
-            get { return BrickColor.FromColor3(Color); }
-            set { Color = value?.Color; }
+            get => BrickColor.FromColor3(Color);
+            set => Color = value?.Color;
         }
 
         public CFrame CFrame = new CFrame();
@@ -2050,8 +2052,8 @@ namespace RobloxFiles
 
         public Color3 Color
         {
-            get { return Color3uint8; }
-            set { Color3uint8 = value; }
+            get => Color3uint8;
+            set => Color3uint8 = value;
         }
 
         public Color3uint8 Color3uint8 = Color3.FromRGB(163, 162, 165);
@@ -2077,8 +2079,8 @@ namespace RobloxFiles
 
         public Vector3 Position
         {
-            get { return CFrame.Position; }
-            set { CFrame.Position = value; }
+            get => CFrame.Position;
+            set => CFrame.Position = value;
         }
 
         public float Reflectance;
@@ -2091,8 +2093,8 @@ namespace RobloxFiles
 
         public Vector3 Size
         {
-            get { return size; }
-            set { size = value; }
+            get => size;
+            set => size = value;
         }
 
         public float TopParamA = -0.5f;
@@ -2105,8 +2107,8 @@ namespace RobloxFiles
         [Obsolete]
         public BrickColor brickColor
         {
-            get { return BrickColor; }
-            set { BrickColor = value; }
+            get => BrickColor;
+            set => BrickColor = value;
         }
 
         public Vector3 size = new Vector3(4, 1.2f, 2);
@@ -2121,15 +2123,15 @@ namespace RobloxFiles
         [Obsolete]
         public FormFactor FormFactor
         {
-            get { return formFactorRaw; }
-            set { formFactorRaw = value; }
+            get => formFactorRaw;
+            set => formFactorRaw = value;
         }
 
         [Obsolete]
         public FormFactor formFactor
         {
-            get { return FormFactor; }
-            set { FormFactor = value; }
+            get => FormFactor;
+            set => FormFactor = value;
         }
 
         public FormFactor formFactorRaw = FormFactor.Brick;
@@ -2139,8 +2141,8 @@ namespace RobloxFiles
     {
         public PartType Shape
         {
-            get { return shape; }
-            set { shape = value; }
+            get => shape;
+            set => shape = value;
         }
 
         public PartType shape = PartType.Block;
@@ -2207,8 +2209,8 @@ namespace RobloxFiles
         [Obsolete]
         public Content MeshID
         {
-            get { return MeshId; }
-            set { MeshId = value; }
+            get => MeshId;
+            set => MeshId = value;
         }
 
         public Content MeshId = "";
@@ -2239,8 +2241,8 @@ namespace RobloxFiles
     {
         public Style Style
         {
-            get { return style; }
-            set { style = value; }
+            get => style;
+            set => style = value;
         }
 
         public Style style = Style.AlternatingSupports;
@@ -2289,6 +2291,7 @@ namespace RobloxFiles
         public bool FilteringEnabled;
         public float Gravity = 196.2f;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
+        public MeshPartHeads MeshPartHeads = MeshPartHeads.Default;
         public bool StreamingEnabled;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
@@ -2345,8 +2348,8 @@ namespace RobloxFiles
         [Obsolete]
         public float VelocitySpread
         {
-            get { return SpreadAngle.X; }
-            set { SpreadAngle = new Vector2(value, value); }
+            get => SpreadAngle.X;
+            set => SpreadAngle = new Vector2(value, value);
         }
 
         public float ZOffset;
@@ -2426,6 +2429,9 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public TriStateBoolean IsLuobuServer = TriStateBoolean.Unknown;
+        public TriStateBoolean LuobuWhitelisted = TriStateBoolean.Unknown;
     }
 
     public class Pose : Instance
@@ -2698,20 +2704,20 @@ namespace RobloxFiles
 
         public float Opacity
         {
-            get { return opacity_xml; }
-            set { opacity_xml = value; }
+            get => opacity_xml;
+            set => opacity_xml = value;
         }
 
         public float RiseVelocity
         {
-            get { return riseVelocity_xml; }
-            set { riseVelocity_xml = value; }
+            get => riseVelocity_xml;
+            set => riseVelocity_xml = value;
         }
 
         public float Size
         {
-            get { return size_xml; }
-            set { size_xml = value; }
+            get => size_xml;
+            set => size_xml = value;
         }
 
         public float opacity_xml = 0.5f;
@@ -2734,22 +2740,22 @@ namespace RobloxFiles
 
         public float MaxDistance
         {
-            get { return xmlRead_MaxDistance_3; }
-            set { xmlRead_MaxDistance_3 = value; }
+            get => xmlRead_MaxDistance_3;
+            set => xmlRead_MaxDistance_3 = value;
         }
 
         [Obsolete]
         public float MinDistance
         {
-            get { return EmitterSize; }
-            set { EmitterSize = value; }
+            get => EmitterSize;
+            set => EmitterSize = value;
         }
 
         [Obsolete]
         public float Pitch
         {
-            get { return PlaybackSpeed; }
-            set { PlaybackSpeed = value; }
+            get => PlaybackSpeed;
+            set => PlaybackSpeed = value;
         }
 
         public bool PlayOnRemove;
@@ -2764,8 +2770,8 @@ namespace RobloxFiles
 
         public float xmlRead_MinDistance_3
         {
-            get { return EmitterSize; }
-            set { EmitterSize = value; }
+            get => EmitterSize;
+            set => EmitterSize = value;
         }
     }
 
@@ -2863,8 +2869,8 @@ namespace RobloxFiles
     {
         public Color3 Color
         {
-            get { return SparkleColor; }
-            set { SparkleColor = value; }
+            get => SparkleColor;
+            set => SparkleColor = value;
         }
 
         public bool Enabled = true;
@@ -3290,8 +3296,8 @@ namespace RobloxFiles
     {
         public double ConstrainedValue
         {
-            get { return value; }
-            set { this.value = value; }
+            get => value;
+            set => this.value = value;
         }
 
         public double MaxValue = 1;
@@ -3299,8 +3305,8 @@ namespace RobloxFiles
 
         public double Value
         {
-            get { return value; }
-            set { this.value = value; }
+            get => value;
+            set => this.value = value;
         }
 
         public double value;
@@ -3310,8 +3316,8 @@ namespace RobloxFiles
     {
         public long ConstrainedValue
         {
-            get { return value; }
-            set { this.value = value; }
+            get => value;
+            set => this.value = value;
         }
 
         public long MaxValue = 10;
@@ -3319,8 +3325,8 @@ namespace RobloxFiles
 
         public long Value
         {
-            get { return value; }
-            set { this.value = value; }
+            get => value;
+            set => this.value = value;
         }
 
         public long value;
@@ -3392,20 +3398,27 @@ namespace RobloxFiles
     {
         public CFrame CFrame0 = new CFrame();
         public CFrame CFrame1 = new CFrame();
-        public bool Enabled = true;
+
+        public bool Enabled
+        {
+            get => EnabledInternal;
+            set => EnabledInternal = value;
+        }
+
+        public bool EnabledInternal = true;
 
         public BasePart Part0
         {
-            get { return Part0Internal; }
-            set { Part0Internal = value; }
+            get => Part0Internal;
+            set => Part0Internal = value;
         }
 
         public BasePart Part0Internal;
 
         public BasePart Part1
         {
-            get { return Part1Internal; }
-            set { Part1Internal = value; }
+            get => Part1Internal;
+            set => Part1Internal = value;
         }
 
         public BasePart Part1Internal;

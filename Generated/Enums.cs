@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.448.0.411244
+// Updated as of 0.449.1.411731
 
 namespace RobloxFiles.Enums
 {
@@ -41,6 +41,14 @@ namespace RobloxFiles.Enums
     {
         FitWithinMaxSize,
         ScaleWithParentSize
+    }
+
+    public enum AutomaticSize
+    {
+        None,
+        X,
+        Y,
+        XY
     }
 
     public enum Axis
@@ -235,7 +243,32 @@ namespace RobloxFiles.Enums
         Gotham,
         GothamSemibold,
         GothamBold,
-        GothamBlack
+        GothamBlack,
+        AmaticSC,
+        Bangers,
+        Creepster,
+        DenkOne,
+        Fondamento,
+        FredokaOne,
+        GrenzeGotisch,
+        IndieFlower,
+        JosefinSans,
+        Jura,
+        Kalam,
+        LuckiestGuy,
+        Merriweather,
+        Michroma,
+        Nunito,
+        Oswald,
+        PatrickHand,
+        PermanentMarker,
+        Roboto,
+        RobotoCondensed,
+        RobotoMono,
+        Sarpanch,
+        SpecialElite,
+        TitilliumWeb,
+        Ubuntu
     }
 
     public enum FontSize
@@ -396,6 +429,13 @@ namespace RobloxFiles.Enums
         ForceField = 1584,
         Air = 1792,
         Water = 2048
+    }
+
+    public enum MeshPartHeads
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum MeshType
@@ -658,6 +698,13 @@ namespace RobloxFiles.Enums
         Top,
         Center,
         Bottom
+    }
+
+    public enum TriStateBoolean
+    {
+        Unknown,
+        True,
+        False
     }
 
     public enum VerticalAlignment

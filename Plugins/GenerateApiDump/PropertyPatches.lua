@@ -612,6 +612,7 @@ return
 		{
 			Part0Internal = "Class:BasePart";
 			Part1Internal = "Class:BasePart";
+			EnabledInternal = "bool";
 			
 			CFrame0 = "CFrame";
 			CFrame1 = "CFrame";
@@ -621,6 +622,7 @@ return
 		{
 			CFrame0 = CFrame.new();
 			CFrame1 = CFrame.new();
+			EnabledInternal = true;
 			
 			Part0 = Instance.new("Part");
 			Part1 = Instance.new("Part");
@@ -630,6 +632,7 @@ return
 		{
 			Part0 = "Part0Internal";
 			Part1 = "Part1Internal";
+			Enabled = "EnabledInternal";
 		};
 	};
 	
@@ -657,6 +660,7 @@ return
 			StreamingPauseMode = Enum.StreamingPauseMode.Default;
 			
 			TerrainWeldsFixed = true;
+			MeshPartHeads = Enum.MeshPartHeads.Default;
 		}
 	}
 }

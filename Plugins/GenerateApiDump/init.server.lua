@@ -502,7 +502,7 @@ local function generateClasses()
 							end
 
 							openStack()
-							writeLine("get { return %s; }", get)
+							writeLine("get => %s;", get)
 
 							if set:find('\n') then
 								writeLine()
@@ -516,7 +516,7 @@ local function generateClasses()
 
 								closeStack()
 							else
-								writeLine("set { %s; }", set)
+								writeLine("set => %s;", set)
 							end
 
 							closeStack()
