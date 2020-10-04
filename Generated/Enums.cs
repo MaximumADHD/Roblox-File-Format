@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.449.1.411731
+// Updated as of 0.450.0.411923
 
 namespace RobloxFiles.Enums
 {
@@ -213,6 +213,13 @@ namespace RobloxFiles.Enums
     {
         NoCraters,
         Craters
+    }
+
+    public enum FieldOfViewMode
+    {
+        Vertical,
+        Diagonal,
+        MaxAxis
     }
 
     public enum FillDirection

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.449.1.411731
+// Updated as of 0.450.0.411923
 
 using System;
 
@@ -70,6 +70,14 @@ namespace RobloxFiles
 
     public class Animator : Instance
     {
+    }
+
+    public class AssetCounterService : Instance
+    {
+        public AssetCounterService()
+        {
+            IsService = true;
+        }
     }
 
     public class AssetManagerService : Instance
@@ -402,10 +410,13 @@ namespace RobloxFiles
             set => CFrame = value;
         }
 
+        public float DiagonalFieldOfView;
         public float FieldOfView = 70;
+        public FieldOfViewMode FieldOfViewMode = FieldOfViewMode.Vertical;
         public CFrame Focus = new CFrame(0, 0, -5);
         public bool HeadLocked = true;
         public float HeadScale = 1;
+        public float MaxAxisFieldOfView;
 
         [Obsolete]
         public CFrame focus
@@ -2202,6 +2213,7 @@ namespace RobloxFiles
 
     public class MeshPart : TriangleMeshPart
     {
+        public bool DoubleSided;
         public bool HasJointOffset;
         public bool HasSkinnedMesh;
         public Vector3 JointOffset = new Vector3();
