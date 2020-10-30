@@ -214,7 +214,7 @@ namespace RobloxFiles
                             if (!RobloxFile.LogErrors)
                                 return false;
 
-                            Console.Error.WriteLine($"RobloxFiles.Property - No defined member for {Instance.ClassName}.{Name}");
+                            Console.Error.WriteLine($"RobloxFiles.Property - Property {Instance.ClassName}.{Name} does not exist!");
                         }
                     }
                 }

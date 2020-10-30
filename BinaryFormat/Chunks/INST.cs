@@ -28,6 +28,17 @@ namespace RobloxFiles.BinaryFormat.Chunks
             NumInstances = reader.ReadInt32();
             InstanceIds = reader.ReadInstanceIds(NumInstances);
 
+            Type instType = Type.GetType($"RobloxFiles.{ClassName}");
+            file.Classes[ClassIndex] = this;
+
+            if (instType == null)
+            {
+                if (RobloxFile.LogErrors)
+                    Console.Error.WriteLine($"INST - Unknown class: {ClassName} while reading INST chunk.");
+
+                return;
+            }
+
             if (IsService)
             {
                 RootedServices = new List<bool>();
@@ -42,8 +53,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
             for (int i = 0; i < NumInstances; i++)
             {
                 int instId = InstanceIds[i];
-                Type instType = Type.GetType($"RobloxFiles.{ClassName}") ?? typeof(Instance);
-
+                
                 var inst = Activator.CreateInstance(instType) as Instance;
                 inst.Referent = instId.ToString();
                 inst.IsService = IsService;
@@ -56,8 +66,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 file.Instances[instId] = inst;
             }
-
-            file.Classes[ClassIndex] = this;
         }
 
         public void Save(BinaryRobloxFileWriter writer)

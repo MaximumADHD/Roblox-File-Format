@@ -29,6 +29,24 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 int parentId = parentIds[i];
 
                 Instance child = file.Instances[childId];
+                Instance parent = (parentId >= 0 ? file.Instances[parentId] : file);
+
+                if (child == null)
+                {
+                    if (RobloxFile.LogErrors)
+                        Console.Error.WriteLine($"PRNT: could not parent {childId} to {parentId} because child {childId} was null.");
+
+                    continue;
+                }
+
+                if (parentId >= 0 && parent == null)
+                {
+                    if (RobloxFile.LogErrors)
+                        Console.Error.WriteLine($"PRNT: could not parent {childId} to {parentId} because parent {parentId} was null.");
+
+                    continue;
+                }
+
                 child.Parent = (parentId >= 0 ? file.Instances[parentId] : file);
             }
         }

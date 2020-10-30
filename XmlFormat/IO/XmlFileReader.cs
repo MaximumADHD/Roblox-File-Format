@@ -11,7 +11,7 @@ namespace RobloxFiles.XmlFormat
         {
             var errorHandler = new Func<string, Exception>((message) =>
             {
-                string contents = $"XmlRobloxFileReader.{label}: {message}";
+                string contents = $"{nameof(XmlRobloxFileReader)}.{label} - {message}";
                 return new Exception(contents);
             });
 
@@ -20,10 +20,10 @@ namespace RobloxFiles.XmlFormat
 
         public static void ReadSharedStrings(XmlNode sharedStrings, XmlRobloxFile file)
         {
-            var error = CreateErrorHandler("ReadSharedStrings");
+            var error = CreateErrorHandler(nameof(ReadSharedStrings));
 
             if (sharedStrings.Name != "SharedStrings")
-                throw error("Provided XmlNode's class should be 'SharedStrings'!");
+                throw error("Provided XmlNode's class must be 'SharedStrings'!");
 
             foreach (XmlNode sharedString in sharedStrings)
             {
@@ -41,7 +41,7 @@ namespace RobloxFiles.XmlFormat
                     var record = SharedString.FromBase64(value);
 
                     if (hash.Length != 16)
-                        throw error($"SharedString base64 key '{key}' must decode to byte[16]!");
+                        throw error($"SharedString base64 key '{key}' must align to byte[16]!");
 
                     if (key != record.Key)
                     {
@@ -56,7 +56,7 @@ namespace RobloxFiles.XmlFormat
 
         public static void ReadMetadata(XmlNode meta, XmlRobloxFile file)
         {
-            var error = CreateErrorHandler("ReadMetadata");
+            var error = CreateErrorHandler(nameof(ReadMetadata));
 
             if (meta.Name != "Meta")
                 throw error("Provided XmlNode's class should be 'Meta'!");
@@ -74,7 +74,7 @@ namespace RobloxFiles.XmlFormat
 
         public static void ReadProperties(Instance instance, XmlNode propsNode)
         {
-            var error = CreateErrorHandler("ReadProperties");
+            var error = CreateErrorHandler(nameof(ReadProperties));
 
             if (propsNode.Name != "Properties")
                 throw error("Provided XmlNode's class should be 'Properties'!");
@@ -106,35 +106,48 @@ namespace RobloxFiles.XmlFormat
                         XmlToken = propType
                     };
 
-                    if (!tokenHandler.ReadProperty(prop, propNode))
-                        if (RobloxFile.LogErrors)
-                            Console.Error.WriteLine("Could not read property: " + prop.GetFullName() + '!');
-
+                    if (!tokenHandler.ReadProperty(prop, propNode) && RobloxFile.LogErrors)
+                    {
+                        var readError = error($"Could not read property: {prop.GetFullName()}!");
+                        Console.Error.WriteLine(readError.Message);
+                    }
+                    
                     instance.AddProperty(ref prop);
                 }
                 else if (RobloxFile.LogErrors)
                 {
-                    Console.Error.WriteLine("No IXmlPropertyToken found for property type: " + propType + '!');
+                    var tokenError = error($"No {nameof(IXmlPropertyToken)} found for property type: {propType}!");
+                    Console.Error.WriteLine(tokenError.Message);
                 }
             }
         }
-
         public static Instance ReadInstance(XmlNode instNode, XmlRobloxFile file)
         {
-            var error = CreateErrorHandler("ReadInstance");
+            var error = CreateErrorHandler(nameof(ReadInstance));
 
             // Process the instance itself
             if (instNode.Name != "Item")
                 throw error("Provided XmlNode's name should be 'Item'!");
 
             XmlNode classToken = instNode.Attributes.GetNamedItem("class");
+
             if (classToken == null)
                 throw error("Got an Item without a defined 'class' attribute!");
 
-
             string className = classToken.InnerText;
+            Type instType = Type.GetType($"RobloxFiles.{className}");
 
-            Type instType = Type.GetType($"RobloxFiles.{className}") ?? typeof(Instance);
+            if (instType == null)
+            {
+                if (RobloxFile.LogErrors)
+                {
+                    var typeError = error($"Unknown class {className} while reading Item.");
+                    Console.Error.WriteLine(typeError.Message);
+                }
+
+                return null;
+            }
+
             Instance inst = Activator.CreateInstance(instType) as Instance;
             
             // The 'referent' attribute is optional, but should be defined if a Ref property needs to link to this Instance.
@@ -154,14 +167,19 @@ namespace RobloxFiles.XmlFormat
             // Process the child nodes of this instance.
             foreach (XmlNode childNode in instNode.ChildNodes)
             {
-                if (childNode.Name == "Properties")
+                switch (childNode.Name)
                 {
-                    ReadProperties(inst, childNode);
-                }
-                else if (childNode.Name == "Item")
-                {
-                    Instance child = ReadInstance(childNode, file);
-                    child.Parent = inst;
+                    case "Item":
+                        Instance child = ReadInstance(childNode, file);
+
+                        if (child != null)
+                            child.Parent = inst;
+
+                        break;
+                    case "Properties": 
+                        ReadProperties(inst, childNode); 
+                        break;
+                    default: break;
                 }
             }
 

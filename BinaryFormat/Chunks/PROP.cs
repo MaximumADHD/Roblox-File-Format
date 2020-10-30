@@ -56,6 +56,14 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 int id = ids[i];
                 Instance instance = file.Instances[id];
 
+                if (instance == null)
+                {
+                    if (RobloxFile.LogErrors)
+                        Console.Error.WriteLine($"PROP: No instance @{id} for property {ClassName}.{Name}");
+
+                    continue;
+                }
+
                 Property prop = new Property(instance, this);
                 props[i] = prop;
 
@@ -71,6 +79,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 for (int i = 0; i < instCount; i++)
                 {
                     var prop = props[i];
+
+                    if (prop == null)
+                        continue;
+
                     prop.Value = read(i);
                 }
             });
@@ -593,9 +605,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
             foreach (int instId in inst.InstanceIds)
             {
                 Instance instance = file.Instances[instId];
-                Property prop = instance.Properties[Name];
+                var instProps = instance.Properties;
 
-                if (prop == null)
+                if (!instProps.TryGetValue(Name, out Property prop))
                     throw new Exception($"Property {Name} must be defined in {instance.GetFullName()}!");
                 else if (prop.Type != Type)
                     throw new Exception($"Property {Name} is not using the correct type in {instance.GetFullName()}!");

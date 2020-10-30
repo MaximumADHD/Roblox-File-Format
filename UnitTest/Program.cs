@@ -108,6 +108,8 @@ namespace RobloxFiles.UnitTest
         [STAThread]
         static void Main(string[] args)
         {
+            RobloxFile.LogErrors = true;
+
             if (args.Length > 0)
             {
                 string path = args[0];

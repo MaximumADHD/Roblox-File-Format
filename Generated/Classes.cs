@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.450.0.411923
+// Updated as of 0.454.0.413308
 
 using System;
 
@@ -410,13 +410,11 @@ namespace RobloxFiles
             set => CFrame = value;
         }
 
-        public float DiagonalFieldOfView;
         public float FieldOfView = 70;
         public FieldOfViewMode FieldOfViewMode = FieldOfViewMode.Vertical;
         public CFrame Focus = new CFrame(0, 0, -5);
         public bool HeadLocked = true;
         public float HeadScale = 1;
-        public float MaxAxisFieldOfView;
 
         [Obsolete]
         public CFrame focus
@@ -1471,6 +1469,7 @@ namespace RobloxFiles
 
     public abstract class HandleAdornment : PVAdornment
     {
+        public AdornCullingMode AdornCullingMode = AdornCullingMode.Automatic;
         public bool AlwaysOnTop;
         public CFrame CFrame = new CFrame();
         public Vector3 SizeRelativeOffset = new Vector3();
@@ -1691,6 +1690,22 @@ namespace RobloxFiles
         public string WaistAccessory = "";
         public long WalkAnimation;
         public float WidthScale = 1;
+    }
+
+    public abstract class ILegacyStudioBridge : Instance
+    {
+        public ILegacyStudioBridge()
+        {
+            IsService = true;
+        }
+    }
+
+    public class LegacyStudioBridge : ILegacyStudioBridge
+    {
+        public LegacyStudioBridge()
+        {
+            IsService = true;
+        }
     }
 
     public class InsertService : Instance
@@ -2497,6 +2512,33 @@ namespace RobloxFiles
         public float Spread = 1;
     }
 
+    public class ProximityPrompt : Instance
+    {
+        public string ActionText = "Interact";
+        public bool ClickablePrompt = true;
+        public bool Enabled = true;
+        public ProximityPromptExclusivity Exclusivity = ProximityPromptExclusivity.OnePerButton;
+        public KeyCode GamepadKeyCode = KeyCode.ButtonX;
+        public float HoldDuration;
+        public KeyCode KeyboardKeyCode = KeyCode.E;
+        public float MaxActivationDistance = 10;
+        public string ObjectText = "";
+        public bool RequiresLineOfSight = true;
+        public ProximityPromptStyle Style = ProximityPromptStyle.Default;
+        public Vector2 UIOffset = new Vector2();
+    }
+
+    public class ProximityPromptService : Instance
+    {
+        public ProximityPromptService()
+        {
+            IsService = true;
+        }
+
+        public bool Enabled = true;
+        public int MaxPromptsVisible = 16;
+    }
+
     public class RbxAnalyticsService : Instance
     {
         public RbxAnalyticsService()
@@ -3092,6 +3134,14 @@ namespace RobloxFiles
         }
     }
 
+    public class TracerService : Instance
+    {
+        public TracerService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Trail : Instance
     {
         public Attachment Attachment0;
@@ -3434,5 +3484,6 @@ namespace RobloxFiles
         }
 
         public BasePart Part1Internal;
+        public int State = 3;
     }
 }

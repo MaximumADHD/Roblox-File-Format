@@ -12,6 +12,9 @@
 			<float name="FallenPartsDestroyHeight">-500</float>
 			<bool name="FilteringEnabled">true</bool>
 			<float name="Gravity">196.199997</float>
+			<token name="InterpolationThrottling">0</token>
+			<token name="LevelOfDetail">0</token>
+			<token name="MeshPartHeads">0</token>
 			<CoordinateFrame name="ModelInPrimary">
 				<X>0</X>
 				<Y>0</Y>
@@ -26,19 +29,135 @@
 				<R21>0</R21>
 				<R22>1</R22>
 			</CoordinateFrame>
+			<CoordinateFrame name="ModelMeshCFrame">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<Vector3 name="ModelMeshSize">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
 			<string name="Name">Workspace</string>
 			<Ref name="PrimaryPart">null</Ref>
+			<int64 name="SourceAssetId">-1</int64>
 			<bool name="StreamingEnabled">false</bool>
 			<int name="StreamingMinRadius">64</int>
 			<token name="StreamingPauseMode">0</token>
 			<int name="StreamingTargetRadius">1024</int>
 			<BinaryString name="Tags"></BinaryString>
-			<bool name="TemporaryLegacyPhysicsSolverOverrideStreaming">false</bool>
 			<bool name="TerrainWeldsFixed">true</bool>
 		</Properties>
+		<Item class="MeshPart" referent="RBX67B3FD3E14EA450384765593C146F924">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>15.4042997</Y>
+					<Z>9</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CastShadow">false</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="DoubleSided">false</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>1.90382576</X>
+					<Y>4.49005699</Y>
+					<Z>0.858924985</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<BinaryString name="LODData"></BinaryString>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<Content name="MeshID"><url>rbxassetid://3186730087</url></Content>
+				<Content name="MeshId"><url>rbxassetid://3186730087</url></Content>
+				<string name="Name">Box</string>
+				<SharedString name="PhysicalConfigData">+qv2o0HSW+htH+ALwYQpiw==</SharedString>
+				<BinaryString name="PhysicsData"></BinaryString>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<Content name="TextureID"><url>rbxassetid://3186730114</url></Content>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>1.90382576</X>
+					<Y>4.49005699</Y>
+					<Z>0.858924985</Z>
+				</Vector3>
+			</Properties>
+		</Item>
 		<Item class="Model" referent="RBX63EE28AEF4DC4F129E1BE761DEF6FFDD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<token name="LevelOfDetail">0</token>
 				<CoordinateFrame name="ModelInPrimary">
 					<X>0</X>
 					<Y>0</Y>
@@ -53,8 +172,29 @@
 					<R21>0</R21>
 					<R22>1</R22>
 				</CoordinateFrame>
+				<CoordinateFrame name="ModelMeshCFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<Vector3 name="ModelMeshSize">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
 				<string name="Name">Car</string>
 				<Ref name="PrimaryPart">null</Ref>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 			<Item class="MeshPart" referent="RBX01FDB4C1402F4093945EB5030DDEE3BA">
@@ -90,15 +230,22 @@
 					<PhysicalProperties name="CustomPhysicalProperties">
 						<CustomPhysics>false</CustomPhysics>
 					</PhysicalProperties>
+					<bool name="DoubleSided">false</bool>
 					<float name="FrontParamA">-0.5</float>
 					<float name="FrontParamB">0.5</float>
 					<token name="FrontSurface">0</token>
 					<token name="FrontSurfaceInput">0</token>
+					<bool name="HasJointOffset">false</bool>
 					<bool name="HasSkinnedMesh">false</bool>
 					<Vector3 name="InitialSize">
 						<X>4.72215939</X>
 						<Y>3.58347774</Y>
 						<Z>9.56809998</Z>
+					</Vector3>
+					<Vector3 name="JointOffset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
 					</Vector3>
 					<BinaryString name="LODData"></BinaryString>
 					<float name="LeftParamA">-0.5</float>
@@ -111,7 +258,7 @@
 					<Content name="MeshID"><url>rbxassetid://3186726050</url></Content>
 					<Content name="MeshId"><url>rbxassetid://3186726050</url></Content>
 					<string name="Name">Box</string>
-					<SharedString name="PhysicalConfigData">+KXn2PVkmG8K5+S8Au8qxA==</SharedString>
+					<SharedString name="PhysicalConfigData">+qv2o0HSW+htH+ALwYQpiw==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -125,6 +272,7 @@
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureID"><null></null></Content>
 					<float name="TopParamA">-0.5</float>
@@ -177,15 +325,22 @@
 					<PhysicalProperties name="CustomPhysicalProperties">
 						<CustomPhysics>false</CustomPhysics>
 					</PhysicalProperties>
+					<bool name="DoubleSided">false</bool>
 					<float name="FrontParamA">-0.5</float>
 					<float name="FrontParamB">0.5</float>
 					<token name="FrontSurface">0</token>
 					<token name="FrontSurfaceInput">0</token>
+					<bool name="HasJointOffset">false</bool>
 					<bool name="HasSkinnedMesh">false</bool>
 					<Vector3 name="InitialSize">
 						<X>4.72215939</X>
 						<Y>3.58347774</Y>
 						<Z>9.56809998</Z>
+					</Vector3>
+					<Vector3 name="JointOffset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
 					</Vector3>
 					<BinaryString name="LODData"></BinaryString>
 					<float name="LeftParamA">-0.5</float>
@@ -198,7 +353,7 @@
 					<Content name="MeshID"><url>rbxassetid://3186726050</url></Content>
 					<Content name="MeshId"><url>rbxassetid://3186726050</url></Content>
 					<string name="Name">Default</string>
-					<SharedString name="PhysicalConfigData">p5XjaPTg1Nj3G83dgQnxnQ==</SharedString>
+					<SharedString name="PhysicalConfigData">h8IPxf7q0MVs4uyaKSOhVA==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -212,6 +367,7 @@
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureID"><null></null></Content>
 					<float name="TopParamA">-0.5</float>
@@ -264,15 +420,22 @@
 					<PhysicalProperties name="CustomPhysicalProperties">
 						<CustomPhysics>false</CustomPhysics>
 					</PhysicalProperties>
+					<bool name="DoubleSided">false</bool>
 					<float name="FrontParamA">-0.5</float>
 					<float name="FrontParamB">0.5</float>
 					<token name="FrontSurface">0</token>
 					<token name="FrontSurfaceInput">0</token>
+					<bool name="HasJointOffset">false</bool>
 					<bool name="HasSkinnedMesh">false</bool>
 					<Vector3 name="InitialSize">
 						<X>4.72215939</X>
 						<Y>3.58347774</Y>
 						<Z>9.56809998</Z>
+					</Vector3>
+					<Vector3 name="JointOffset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
 					</Vector3>
 					<BinaryString name="LODData"></BinaryString>
 					<float name="LeftParamA">-0.5</float>
@@ -285,7 +448,7 @@
 					<Content name="MeshID"><url>rbxassetid://3186726050</url></Content>
 					<Content name="MeshId"><url>rbxassetid://3186726050</url></Content>
 					<string name="Name">Hull</string>
-					<SharedString name="PhysicalConfigData">Mx7Ko9ySR/gOoyA4uo08sQ==</SharedString>
+					<SharedString name="PhysicalConfigData">yk4/m1d5tPD+2SapafAV9A==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -299,6 +462,7 @@
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureID"><null></null></Content>
 					<float name="TopParamA">-0.5</float>
@@ -351,15 +515,22 @@
 					<PhysicalProperties name="CustomPhysicalProperties">
 						<CustomPhysics>false</CustomPhysics>
 					</PhysicalProperties>
+					<bool name="DoubleSided">false</bool>
 					<float name="FrontParamA">-0.5</float>
 					<float name="FrontParamB">0.5</float>
 					<token name="FrontSurface">0</token>
 					<token name="FrontSurfaceInput">0</token>
+					<bool name="HasJointOffset">false</bool>
 					<bool name="HasSkinnedMesh">false</bool>
 					<Vector3 name="InitialSize">
 						<X>4.72215939</X>
 						<Y>3.58347774</Y>
 						<Z>9.56809998</Z>
+					</Vector3>
+					<Vector3 name="JointOffset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
 					</Vector3>
 					<BinaryString name="LODData"></BinaryString>
 					<float name="LeftParamA">-0.5</float>
@@ -372,7 +543,7 @@
 					<Content name="MeshID"><url>rbxassetid://3186726050</url></Content>
 					<Content name="MeshId"><url>rbxassetid://3186726050</url></Content>
 					<string name="Name">PreciseConvexDecomposition</string>
-					<SharedString name="PhysicalConfigData">R5+LhZFmUtVbZb2bGVv+Hw==</SharedString>
+					<SharedString name="PhysicalConfigData">ezvavG8GMWP28xfkKnsm/w==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -386,6 +557,7 @@
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureID"><null></null></Content>
 					<float name="TopParamA">-0.5</float>
@@ -438,15 +610,22 @@
 					<PhysicalProperties name="CustomPhysicalProperties">
 						<CustomPhysics>false</CustomPhysics>
 					</PhysicalProperties>
+					<bool name="DoubleSided">false</bool>
 					<float name="FrontParamA">-0.5</float>
 					<float name="FrontParamB">0.5</float>
 					<token name="FrontSurface">0</token>
 					<token name="FrontSurfaceInput">0</token>
+					<bool name="HasJointOffset">false</bool>
 					<bool name="HasSkinnedMesh">false</bool>
 					<Vector3 name="InitialSize">
 						<X>4.72215939</X>
 						<Y>3.58347774</Y>
 						<Z>9.56809998</Z>
+					</Vector3>
+					<Vector3 name="JointOffset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
 					</Vector3>
 					<BinaryString name="LODData"></BinaryString>
 					<float name="LeftParamA">-0.5</float>
@@ -459,7 +638,7 @@
 					<Content name="MeshID"><url>rbxassetid://3186726050</url></Content>
 					<Content name="MeshId"><url>rbxassetid://3186726050</url></Content>
 					<string name="Name">LOD</string>
-					<SharedString name="PhysicalConfigData">R5+LhZFmUtVbZb2bGVv+Hw==</SharedString>
+					<SharedString name="PhysicalConfigData">ezvavG8GMWP28xfkKnsm/w==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">0</token>
@@ -473,6 +652,7 @@
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureID"><null></null></Content>
 					<float name="TopParamA">-0.5</float>
@@ -513,6 +693,7 @@
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
+				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
 					<X>-147.404663</X>
 					<Y>309.432617</Y>
@@ -530,6 +711,7 @@
 				<bool name="HeadLocked">true</bool>
 				<float name="HeadScale">1</float>
 				<string name="Name">Camera</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
@@ -863,6 +1045,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 /4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A
 /4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A/4D/gP+A
 /4D/gP+A/4D+]]></BinaryString>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="TopParamA">-0.5</float>
 				<float name="TopParamB">0.5</float>
@@ -894,6 +1077,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BoolValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<bool name="Value">false</bool>
 			</Properties>
@@ -902,6 +1086,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BrickColorValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<int name="Value">194</int>
 			</Properties>
@@ -910,6 +1095,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Color3Value</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Color3 name="Value">
 					<R>1</R>
@@ -922,6 +1108,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">CFrameValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<CoordinateFrame name="Value">
 					<X>0</X>
@@ -943,6 +1130,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">IntValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<int64 name="Value">1234</int64>
 			</Properties>
@@ -951,6 +1139,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">NumberValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<double name="Value">9.0000999999999997669</double>
 			</Properties>
@@ -959,6 +1148,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ObjectValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Ref name="Value">RBXFAF4D42BBBF64D22A501EA7C72732DF2</Ref>
 			</Properties>
@@ -967,6 +1157,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">RayValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Ray name="Value">
 					<origin>
@@ -986,6 +1177,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StringValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<string name="Value">TestingLol</string>
 			</Properties>
@@ -1051,6 +1243,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<Y>0</Y>
 					<Z>0</Z>
 				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="TopParamA">-0.5</float>
 				<float name="TopParamB">0.5</float>
@@ -1083,6 +1276,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 						<B>0.674509823</B>
 					</Color3>
 					<string name="Name">ArcHandles</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">false</bool>
@@ -1101,6 +1295,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 						<faces>0</faces>
 					</Faces>
 					<string name="Name">Handles</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">1</token>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
@@ -1128,6 +1323,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<NumberRange name="RotSpeed">-360 360 </NumberRange>
 					<NumberRange name="Rotation">0 360 </NumberRange>
 					<NumberSequence name="Size">0 0 0 0.0526316 1.0543 1.0543 0.105263 3.77257 3.11371 0.157895 7.00848 1.49576 0.210526 9.39737 0.301316 0.263158 9.93181 0.0340967 0.315789 8.38641 0.806796 0.368421 5.4129 2.29355 0.421053 2.26526 2.26526 0.473684 0.270914 0.270914 0.526316 0.270914 0.270914 0.578947 2.26526 2.26526 0.631579 5.4129 2.29355 0.684211 8.38641 0.806796 0.736842 9.93181 0.0340967 0.789474 9.39737 0.301316 0.842105 7.00848 1.49576 0.894737 3.77257 3.11371 0.947368 1.0543 1.0543 1 0 0 </NumberSequence>
+					<int64 name="SourceAssetId">-1</int64>
 					<NumberRange name="Speed">5 10 </NumberRange>
 					<Vector2 name="SpreadAngle">
 						<X>360</X>
@@ -1160,6 +1356,7 @@ local lastPoint = ColorSequenceKeypoint.new(1, keyPoints[1].Value)
 table.insert(keyPoints, lastPoint)
 
 script.Parent.Color = ColorSequence.new(keyPoints)]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 					</Properties>
 				</Item>
@@ -1185,6 +1382,7 @@ local lastPoint = NumberSequenceKeypoint.new(1, keyPoints[1].Value)
 table.insert(keyPoints, lastPoint)
 
 script.Parent.Size = NumberSequence.new(keyPoints)]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 					</Properties>
 				</Item>
@@ -1210,6 +1408,7 @@ local lastPoint = NumberSequenceKeypoint.new(1, keyPoints[1].Value)
 table.insert(keyPoints, lastPoint)
 
 script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 					</Properties>
 				</Item>
@@ -1219,6 +1418,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Vector3Value</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Vector3 name="Value">
 					<X>1</X>
@@ -1236,6 +1436,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector2>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
+				<token name="AutomaticSize">0</token>
 				<Color3 name="BackgroundColor3">
 					<R>1</R>
 					<G>1</G>
@@ -1274,6 +1475,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<YO>-50</YO>
 				</UDim2>
 				<token name="SizeConstraint">0</token>
+				<int64 name="SourceAssetId">-1</int64>
 				<token name="Style">0</token>
 				<BinaryString name="Tags"></BinaryString>
 				<bool name="Visible">true</bool>
@@ -1299,6 +1501,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<S>-0.400000006</S>
 						<O>16</O>
 					</UDim>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -1306,6 +1509,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Item class="Model" referent="RBX03FEC8C750AF4002A6FC8CC83C44278C">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<token name="LevelOfDetail">0</token>
 				<CoordinateFrame name="ModelInPrimary">
 					<X>0</X>
 					<Y>0</Y>
@@ -1320,8 +1524,29 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<R21>0</R21>
 					<R22>1</R22>
 				</CoordinateFrame>
+				<CoordinateFrame name="ModelMeshCFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+				<Vector3 name="ModelMeshSize">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
 				<string name="Name">StuffModel</string>
 				<Ref name="PrimaryPart">null</Ref>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 			<Item class="Part" referent="RBXEF89F259C223402FB039BF71C40FB79C">
@@ -1380,6 +1605,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -1417,6 +1643,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>0.5</Y>
 							<Z>0.5</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><null></null></Content>
 						<Vector3 name="VertexColor">
@@ -1483,6 +1710,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -1520,6 +1748,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>1.95000005</Y>
 							<Z>1</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><url>rbxasset://textures/SwordTexture.png</url></Content>
 						<Vector3 name="VertexColor">
@@ -1586,6 +1815,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -1623,6 +1853,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>0.150000006</Y>
 							<Z>0.200000003</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><null></null></Content>
 						<Vector3 name="VertexColor">
@@ -1689,6 +1920,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -1726,6 +1958,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>0.0500000007</Y>
 							<Z>0.100000001</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><null></null></Content>
 						<Vector3 name="VertexColor">
@@ -1792,6 +2025,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -1829,6 +2063,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>0.5</Y>
 							<Z>0.5</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><null></null></Content>
 						<Vector3 name="VertexColor">
@@ -1895,6 +2130,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -1932,6 +2168,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>0.0199999996</Y>
 							<Z>0.0199999996</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><null></null></Content>
 						<Vector3 name="VertexColor">
@@ -1998,6 +2235,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -2035,6 +2273,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>0.100000001</Y>
 							<Z>0.100000001</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><null></null></Content>
 						<Vector3 name="VertexColor">
@@ -2101,6 +2340,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -2138,6 +2378,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>0.600000024</Y>
 							<Z>0.600000024</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><url>rbxasset://textures/hammertex128.png</url></Content>
 						<Vector3 name="VertexColor">
@@ -2204,6 +2445,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -2241,6 +2483,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 							<Y>-0.230000004</Y>
 							<Z>-0.200000003</Z>
 						</Vector3>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<Content name="TextureId"><null></null></Content>
 						<Vector3 name="VertexColor">
@@ -2307,6 +2550,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -2338,6 +2582,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<token name="RollOffMode">0</token>
 						<Ref name="SoundGroup">null</Ref>
 						<Content name="SoundId"><null></null></Content>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<double name="TimePosition">0</double>
 						<float name="Volume">1</float>
@@ -2352,6 +2597,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<double name="MaxValue">INF</double>
 				<double name="MinValue">0</double>
 				<string name="Name">DoubleValue</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<double name="value">1.3337000000000001076</double>
 			</Properties>
@@ -2389,15 +2635,22 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<PhysicalProperties name="CustomPhysicalProperties">
 					<CustomPhysics>false</CustomPhysics>
 				</PhysicalProperties>
+				<bool name="DoubleSided">false</bool>
 				<float name="FrontParamA">-0.5</float>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
 				<bool name="HasSkinnedMesh">false</bool>
 				<Vector3 name="InitialSize">
 					<X>1.90382576</X>
 					<Y>4.49005699</Y>
 					<Z>0.858924985</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
 				</Vector3>
 				<BinaryString name="LODData"></BinaryString>
 				<float name="LeftParamA">-0.5</float>
@@ -2410,7 +2663,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Content name="MeshID"><url>rbxassetid://3186730087</url></Content>
 				<Content name="MeshId"><url>rbxassetid://3186730087</url></Content>
 				<string name="Name">Default</string>
-				<SharedString name="PhysicalConfigData">0173GmJSl63YNkwRLsdzHw==</SharedString>
+				<SharedString name="PhysicalConfigData">wqN+0m4YPEAIF5tOPQwXdA==</SharedString>
 				<BinaryString name="PhysicsData"></BinaryString>
 				<float name="Reflectance">0</float>
 				<token name="RenderFidelity">1</token>
@@ -2424,6 +2677,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<Y>0</Y>
 					<Z>0</Z>
 				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TextureID"><url>rbxassetid://3186730114</url></Content>
 				<float name="TopParamA">-0.5</float>
@@ -2476,15 +2730,22 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<PhysicalProperties name="CustomPhysicalProperties">
 					<CustomPhysics>false</CustomPhysics>
 				</PhysicalProperties>
+				<bool name="DoubleSided">false</bool>
 				<float name="FrontParamA">-0.5</float>
 				<float name="FrontParamB">0.5</float>
 				<token name="FrontSurface">0</token>
 				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
 				<bool name="HasSkinnedMesh">false</bool>
 				<Vector3 name="InitialSize">
 					<X>1.90382576</X>
 					<Y>4.49005699</Y>
 					<Z>0.858924985</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
 				</Vector3>
 				<BinaryString name="LODData"></BinaryString>
 				<float name="LeftParamA">-0.5</float>
@@ -2497,7 +2758,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Content name="MeshID"><url>rbxassetid://3186730087</url></Content>
 				<Content name="MeshId"><url>rbxassetid://3186730087</url></Content>
 				<string name="Name">Hull</string>
-				<SharedString name="PhysicalConfigData">Uw2UbsRgWAvbuVwbpaHTJg==</SharedString>
+				<SharedString name="PhysicalConfigData">qKQHnbGqNyW9YBYUZo8CWQ==</SharedString>
 				<BinaryString name="PhysicsData"></BinaryString>
 				<float name="Reflectance">0</float>
 				<token name="RenderFidelity">1</token>
@@ -2511,93 +2772,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<Y>0</Y>
 					<Z>0</Z>
 				</Vector3>
-				<BinaryString name="Tags"></BinaryString>
-				<Content name="TextureID"><url>rbxassetid://3186730114</url></Content>
-				<float name="TopParamA">-0.5</float>
-				<float name="TopParamB">0.5</float>
-				<token name="TopSurface">0</token>
-				<token name="TopSurfaceInput">0</token>
-				<float name="Transparency">0</float>
-				<Vector3 name="Velocity">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-				</Vector3>
-				<Vector3 name="size">
-					<X>1.90382576</X>
-					<Y>4.49005699</Y>
-					<Z>0.858924985</Z>
-				</Vector3>
-			</Properties>
-		</Item>
-		<Item class="MeshPart" referent="RBX67B3FD3E14EA450384765593C146F924">
-			<Properties>
-				<bool name="Anchored">false</bool>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<float name="BackParamA">-0.5</float>
-				<float name="BackParamB">0.5</float>
-				<token name="BackSurface">0</token>
-				<token name="BackSurfaceInput">0</token>
-				<float name="BottomParamA">-0.5</float>
-				<float name="BottomParamB">0.5</float>
-				<token name="BottomSurface">0</token>
-				<token name="BottomSurfaceInput">0</token>
-				<CoordinateFrame name="CFrame">
-					<X>0</X>
-					<Y>15.4042997</Y>
-					<Z>9</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
-				<bool name="CanCollide">false</bool>
-				<bool name="CastShadow">false</bool>
-				<int name="CollisionGroupId">0</int>
-				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
-				<PhysicalProperties name="CustomPhysicalProperties">
-					<CustomPhysics>false</CustomPhysics>
-				</PhysicalProperties>
-				<float name="FrontParamA">-0.5</float>
-				<float name="FrontParamB">0.5</float>
-				<token name="FrontSurface">0</token>
-				<token name="FrontSurfaceInput">0</token>
-				<bool name="HasSkinnedMesh">false</bool>
-				<Vector3 name="InitialSize">
-					<X>1.90382576</X>
-					<Y>4.49005699</Y>
-					<Z>0.858924985</Z>
-				</Vector3>
-				<BinaryString name="LODData"></BinaryString>
-				<float name="LeftParamA">-0.5</float>
-				<float name="LeftParamB">0.5</float>
-				<token name="LeftSurface">0</token>
-				<token name="LeftSurfaceInput">0</token>
-				<bool name="Locked">false</bool>
-				<bool name="Massless">false</bool>
-				<token name="Material">256</token>
-				<Content name="MeshID"><url>rbxassetid://3186730087</url></Content>
-				<Content name="MeshId"><url>rbxassetid://3186730087</url></Content>
-				<string name="Name">Box</string>
-				<SharedString name="PhysicalConfigData">+KXn2PVkmG8K5+S8Au8qxA==</SharedString>
-				<BinaryString name="PhysicsData"></BinaryString>
-				<float name="Reflectance">0</float>
-				<token name="RenderFidelity">1</token>
-				<float name="RightParamA">-0.5</float>
-				<float name="RightParamB">0.5</float>
-				<token name="RightSurface">0</token>
-				<token name="RightSurfaceInput">0</token>
-				<int name="RootPriority">0</int>
-				<Vector3 name="RotVelocity">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TextureID"><url>rbxassetid://3186730114</url></Content>
 				<float name="TopParamA">-0.5</float>
@@ -2627,6 +2802,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<string name="Name">SoundService</string>
 			<bool name="RespectFilteringEnabled">false</bool>
 			<float name="RolloffScale">1</float>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2634,6 +2810,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">NonReplicatedCSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2641,6 +2818,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">CSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2650,6 +2828,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<bool name="BubbleChatEnabled">false</bool>
 			<bool name="LoadDefaultChat">true</bool>
 			<string name="Name">Chat</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2657,6 +2836,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TimerService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2668,6 +2848,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<string name="Name">Players</string>
 			<int name="PreferredPlayersInternal">56832</int>
 			<float name="RespawnTime">5</float>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2675,6 +2856,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ReplicatedFirst</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2682,6 +2864,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TweenService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2689,6 +2872,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">PermissionsService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2702,6 +2886,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<bool name="EnableScriptCollabOnLoad">false</bool>
 			<bool name="EnableScriptCollabVersionHistoryOnLoad">false</bool>
 			<string name="Name">StudioData</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<int64 name="SrcPlaceId">0</int64>
 			<int64 name="SrcUniverseId">0</int64>
 			<BinaryString name="Tags"></BinaryString>
@@ -2747,6 +2932,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<bool name="LoadCharacterAppearance">true</bool>
 			<string name="Name">StarterPlayer</string>
 			<float name="NameDisplayDistance">100</float>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<bool name="UserEmotesEnabled">true</bool>
 		</Properties>
@@ -2754,6 +2940,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StarterPlayerScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
@@ -2761,6 +2948,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StarterCharacterScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
@@ -2769,6 +2957,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">StarterPack</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2779,6 +2968,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<bool name="ResetPlayerGuiOnSpawn">true</bool>
 			<token name="ScreenOrientation">2</token>
 			<bool name="ShowDevelopmentGui">true</bool>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2786,6 +2976,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">LocalizationService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2793,6 +2984,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TeleportService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2800,6 +2992,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">CollectionService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2807,6 +3000,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">PhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2814,6 +3008,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">Geometry</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2823,6 +3018,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<bool name="AllowInsertFreeModels">false</bool>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">InsertService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2830,6 +3026,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">GamePassService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2838,6 +3035,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<int name="MaxItems">1000</int>
 			<string name="Name">Debris</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2845,6 +3043,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">CookiesService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2852,6 +3051,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">VRService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2859,6 +3059,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ContextActionService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2866,6 +3067,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2873,6 +3075,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">AssetService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2880,6 +3083,16 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TouchInputService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="AnalyticsService" referent="RBX8F2EA4D9EBD343BA9F72F2718931AAC4">
+		<Properties>
+			<string name="ApiKey"></string>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">AnalyticsService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2887,6 +3100,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">Selection</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2895,6 +3109,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="LoadStringEnabled">false</bool>
 			<string name="Name">ServerScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -2902,12 +3117,14 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ServerStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 		<Item class="Folder" referent="RBX2C94F4E6F083454EB8E1D319E30B4EB9">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">DumpFolder</string>
+				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 			<Item class="Accoutrement" referent="RBXEFDF531125BB44FD92B0841D22D36BFD">
@@ -2928,6 +3145,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</CoordinateFrame>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Accoutrement</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -2949,6 +3167,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</CoordinateFrame>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Accessory</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -2970,6 +3189,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</CoordinateFrame>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Hat</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -2978,6 +3198,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<Content name="AnimationId"><null></null></Content>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Animation</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -2985,6 +3206,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">AnimationController</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -2992,6 +3214,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Backpack</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3001,6 +3224,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<token name="BinType">0</token>
 					<string name="Name">HopperBin</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureId"><null></null></Content>
 				</Properties>
@@ -3027,6 +3251,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="ManualActivationOnly">false</bool>
 					<string name="Name">Tool</string>
 					<bool name="RequiresHandle">true</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureId"><null></null></Content>
 					<string name="ToolTip"></string>
@@ -3054,6 +3279,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="ManualActivationOnly">false</bool>
 					<string name="Name">Flag</string>
 					<bool name="RequiresHandle">true</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int name="TeamColor">194</int>
 					<Content name="TextureId"><null></null></Content>
@@ -3074,6 +3300,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="LightInfluence">0</float>
 					<string name="Name">Beam</string>
 					<int name="Segments">10</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="Texture"><null></null></Content>
 					<float name="TextureLength">1</float>
@@ -3089,6 +3316,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">BindableEvent</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3096,6 +3324,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">BindableFunction</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3114,6 +3343,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector3>
 					<string name="Name">BodyAngularVelocity</string>
 					<float name="P">1250</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3126,6 +3356,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>0</Z>
 					</Vector3>
 					<string name="Name">BodyForce</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3154,6 +3385,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector3>
 					<string name="Name">BodyGyro</string>
 					<float name="P">3000</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3173,6 +3405,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>50</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3190,6 +3423,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>0</Z>
 					</Vector3>
 					<string name="Name">BodyThrust</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3203,6 +3437,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector3>
 					<string name="Name">BodyVelocity</string>
 					<float name="P">1250</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Vector3 name="Velocity">
 						<X>0</X>
@@ -3223,6 +3458,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>0</Z>
 					</Vector3>
 					<string name="Name">RocketPropulsion</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Ref name="Target">null</Ref>
 					<Vector3 name="TargetOffset">
@@ -3257,6 +3493,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<Ref name="CameraSubject">null</Ref>
 					<token name="CameraType">0</token>
 					<float name="FieldOfView">70</float>
+					<token name="FieldOfViewMode">0</token>
 					<CoordinateFrame name="Focus">
 						<X>0</X>
 						<Y>0</Y>
@@ -3274,6 +3511,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="HeadLocked">false</bool>
 					<float name="HeadScale">1</float>
 					<string name="Name">Camera</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3306,6 +3544,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<G>0.411764741</G>
 						<B>0.674509823</B>
 					</Color3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Color3 name="TorsoColor3">
 						<R>0.156862751</R>
@@ -3322,6 +3561,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<int64 name="MeshId">0</int64>
 					<string name="Name">CharacterMesh</string>
 					<int64 name="OverlayTextureId">0</int64>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3335,6 +3575,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Color3>
 					<string name="Name">Pants</string>
 					<Content name="PantsTemplate"><null></null></Content>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3348,6 +3589,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Color3>
 					<string name="Name">Shirt</string>
 					<Content name="ShirtTemplate"><null></null></Content>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3361,6 +3603,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Color3>
 					<Content name="Graphic"><null></null></Content>
 					<string name="Name">ShirtGraphic</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3369,6 +3612,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Skin</string>
 					<int name="SkinColor">226</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3378,6 +3622,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<Content name="CursorIcon"><null></null></Content>
 					<float name="MaxActivationDistance">32</float>
 					<string name="Name">ClickDetector</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3385,6 +3630,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Configuration</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3403,6 +3649,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="ReactionTorqueEnabled">false</bool>
 					<float name="Responsiveness">10</float>
 					<bool name="RigidityEnabled">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">false</bool>
 				</Properties>
@@ -3421,6 +3668,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="ReactionForceEnabled">false</bool>
 					<float name="Responsiveness">10</float>
 					<bool name="RigidityEnabled">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">false</bool>
 				</Properties>
@@ -3441,6 +3689,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">AngularVelocity</string>
 					<bool name="ReactionTorqueEnabled">false</bool>
 					<token name="RelativeTo">2</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">false</bool>
 				</Properties>
@@ -3457,6 +3706,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">BallSocketConstraint</string>
 					<float name="Radius">0.150000006</float>
 					<float name="Restitution">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="TwistLimitsEnabled">false</bool>
 					<float name="TwistLowerAngle">-45</float>
@@ -3483,6 +3733,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="Radius">0.150000006</float>
 					<float name="Restitution">0</float>
 					<float name="ServoMaxTorque">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TargetAngle">0</float>
 					<float name="UpperAngle">45</float>
@@ -3502,6 +3753,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="MaxForce">INF</float>
 					<string name="Name">LineForce</string>
 					<bool name="ReactionForceEnabled">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">false</bool>
 				</Properties>
@@ -3515,6 +3767,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="Enabled">true</bool>
 					<float name="Length">5</float>
 					<string name="Name">RodConstraint</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Thickness">0.100000001</float>
 					<bool name="Visible">false</bool>
@@ -3530,6 +3783,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="Length">5</float>
 					<string name="Name">RopeConstraint</string>
 					<float name="Restitution">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Thickness">0.100000001</float>
 					<bool name="Visible">false</bool>
@@ -3562,6 +3816,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="ServoMaxForce">0</float>
 					<float name="ServoMaxTorque">0</float>
 					<float name="Size">0.150000006</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<float name="Speed">0</float>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TargetAngle">0</float>
@@ -3588,6 +3843,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="Restitution">0</float>
 					<float name="ServoMaxForce">0</float>
 					<float name="Size">0.150000006</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<float name="Speed">0</float>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TargetPosition">0</float>
@@ -3612,6 +3868,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="MinLength">0</float>
 					<string name="Name">SpringConstraint</string>
 					<float name="Radius">0.400000006</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<float name="Stiffness">0</float>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Thickness">0.100000001</float>
@@ -3627,6 +3884,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="Enabled">true</bool>
 					<string name="Name">Torque</string>
 					<token name="RelativeTo">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Vector3 name="Torque">
 						<X>0</X>
@@ -3651,6 +3909,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector3>
 					<string name="Name">VectorForce</string>
 					<token name="RelativeTo">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">false</bool>
 				</Properties>
@@ -3659,6 +3918,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">HumanoidController</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3666,6 +3926,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">SkateboardController</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3673,6 +3934,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">VehicleController</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3681,6 +3943,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">CustomEvent</string>
 					<float name="PersistedCurrentValue">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3689,6 +3952,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">CustomEventReceiver</string>
 					<Ref name="Source">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3711,6 +3975,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>1</Y>
 						<Z>1</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Vector3 name="VertexColor">
 						<X>1</X>
@@ -3738,6 +4003,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>1</Y>
 						<Z>1</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Vector3 name="VertexColor">
 						<X>1</X>
@@ -3763,6 +4029,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>1</Y>
 						<Z>1</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureId"><null></null></Content>
 					<Vector3 name="VertexColor">
@@ -3790,6 +4057,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>1</Y>
 						<Z>1</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureId"><null></null></Content>
 					<Vector3 name="VertexColor">
@@ -3809,6 +4077,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="InitialPrompt"></string>
 					<string name="Name">Dialog</string>
 					<token name="Purpose">1</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="Tone">0</token>
 					<float name="TriggerDistance">0</float>
@@ -3826,6 +4095,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="GoodbyeDialog"></string>
 					<string name="Name">DialogChoice</string>
 					<string name="ResponseDialog"></string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="UserDialog"></string>
 				</Properties>
@@ -3843,6 +4113,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">true</bool>
 				</Properties>
@@ -3857,6 +4128,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Color3>
 					<token name="Face">5</token>
 					<string name="Name">Decal</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="Texture"><null></null></Content>
 					<float name="Transparency">0</float>
@@ -3874,6 +4146,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">Texture</string>
 					<float name="OffsetStudsU">0</float>
 					<float name="OffsetStudsV">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<float name="StudsPerTileU">2</float>
 					<float name="StudsPerTileV">2</float>
 					<BinaryString name="Tags"></BinaryString>
@@ -3888,6 +4161,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<token name="InOut">2</token>
 					<token name="LeftRight">1</token>
 					<string name="Name">Hole</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="TopBottom">1</token>
 				</Properties>
@@ -3899,6 +4173,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<token name="InOut">2</token>
 					<token name="LeftRight">1</token>
 					<string name="Name">MotorFeature</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="TopBottom">1</token>
 				</Properties>
@@ -3918,6 +4193,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<G>0.313725501</G>
 						<B>0.215686291</B>
 					</Color3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="heat_xml">9</float>
 					<float name="size_xml">5</float>
@@ -3927,6 +4203,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Folder</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3934,6 +4211,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ForceField</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">true</bool>
 				</Properties>
@@ -3944,6 +4222,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Description">?</string>
 					<bool name="HasMigratedSettingsToTestService">false</bool>
 					<string name="Name">FunctionalTest</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -3956,6 +4235,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">false</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -3994,6 +4274,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YO>0</YO>
 					</UDim2>
 					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">false</bool>
@@ -4010,6 +4291,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoButtonColor">true</bool>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -4079,6 +4361,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						</max>
 					</Rect2D>
 					<float name="SliceScale">1</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
 					<UDim2 name="TileSize">
@@ -4101,6 +4384,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoButtonColor">true</bool>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -4131,6 +4415,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YS>0</YS>
 						<YO>0</YO>
 					</UDim2>
+					<bool name="RichText">false</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">true</bool>
@@ -4143,6 +4428,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YO>0</YO>
 					</UDim2>
 					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Text">Button</string>
@@ -4177,6 +4463,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -4242,6 +4529,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						</max>
 					</Rect2D>
 					<float name="SliceScale">1</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UDim2 name="TileSize">
 						<XS>1</XS>
@@ -4262,6 +4550,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -4291,6 +4580,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YS>0</YS>
 						<YO>0</YO>
 					</UDim2>
+					<bool name="RichText">false</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">false</bool>
@@ -4302,6 +4592,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YO>0</YO>
 					</UDim2>
 					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Text">Label</string>
 					<Color3 name="TextColor3">
@@ -4335,6 +4626,8 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticCanvasSize">0</token>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -4396,6 +4689,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YO>0</YO>
 					</UDim2>
 					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-top.png</url></Content>
 					<token name="VerticalScrollBarInset">0</token>
@@ -4413,6 +4707,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -4450,6 +4745,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YS>0</YS>
 						<YO>0</YO>
 					</UDim2>
+					<bool name="RichText">false</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<float name="Rotation">0</float>
 					<bool name="Selectable">true</bool>
@@ -4462,6 +4758,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YO>0</YO>
 					</UDim2>
 					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Text">TextBox</string>
 					<Color3 name="TextColor3">
@@ -4501,6 +4798,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>0.639215708</R>
 						<G>0.635294139</G>
@@ -4570,6 +4868,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<YO>0</YO>
 					</UDim2>
 					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">1</int>
@@ -4613,6 +4912,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<X>0</X>
 						<Y>0</Y>
 					</Vector2>
+					<int64 name="SourceAssetId">-1</int64>
 					<Vector3 name="StudsOffset">
 						<X>0</X>
 						<Y>0</Y>
@@ -4637,6 +4937,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">ScreenGui</string>
 					<bool name="ResetOnSpawn">true</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="ZIndexBehavior">0</token>
 				</Properties>
@@ -4651,6 +4952,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">GuiMain</string>
 					<bool name="ResetOnSpawn">true</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="ZIndexBehavior">0</token>
 				</Properties>
@@ -4675,6 +4977,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="ResetOnSpawn">true</bool>
 					<Ref name="RootLocalizationTable">null</Ref>
 					<token name="SizingMode">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="ToolPunchThroughDistance">0</float>
 					<token name="ZIndexBehavior">0</token>
@@ -4692,6 +4995,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="CycleOffset">0</float>
 					<Ref name="From">null</Ref>
 					<string name="Name">FloorWire</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<float name="StudsBetweenTextures">4</float>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="Texture"><null></null></Content>
@@ -4708,6 +5012,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			</Item>
 			<Item class="BoxHandleAdornment" referent="RBX801F295F79AA4EEE9C8B0035A24398B7">
 				<Properties>
+					<token name="AdornCullingMode">0</token>
 					<Ref name="Adornee">null</Ref>
 					<bool name="AlwaysOnTop">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -4741,6 +5046,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -4749,6 +5055,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			</Item>
 			<Item class="ConeHandleAdornment" referent="RBXDE7955E0234A4B70BC93FF35625EFA90">
 				<Properties>
+					<token name="AdornCullingMode">0</token>
 					<Ref name="Adornee">null</Ref>
 					<bool name="AlwaysOnTop">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -4779,6 +5086,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -4787,8 +5095,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			</Item>
 			<Item class="CylinderHandleAdornment" referent="RBXBA986FCD76AA4725B438354320C9EDBD">
 				<Properties>
+					<token name="AdornCullingMode">0</token>
 					<Ref name="Adornee">null</Ref>
 					<bool name="AlwaysOnTop">false</bool>
+					<float name="Angle">360</float>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<CoordinateFrame name="CFrame">
 						<X>0</X>
@@ -4810,6 +5120,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<B>0.674509823</B>
 					</Color3>
 					<float name="Height">1</float>
+					<float name="InnerRadius">0</float>
 					<string name="Name">CylinderHandleAdornment</string>
 					<float name="Radius">1</float>
 					<Vector3 name="SizeRelativeOffset">
@@ -4817,6 +5128,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -4825,6 +5137,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			</Item>
 			<Item class="ImageHandleAdornment" referent="RBXF10705791AC14C959CEC3D5248322604">
 				<Properties>
+					<token name="AdornCullingMode">0</token>
 					<Ref name="Adornee">null</Ref>
 					<bool name="AlwaysOnTop">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -4858,6 +5171,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -4866,6 +5180,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			</Item>
 			<Item class="LineHandleAdornment" referent="RBXDD1C53190C404BE1AB9423D7C0B6BB6D">
 				<Properties>
+					<token name="AdornCullingMode">0</token>
 					<Ref name="Adornee">null</Ref>
 					<bool name="AlwaysOnTop">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -4895,6 +5210,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Thickness">1</float>
 					<float name="Transparency">0</float>
@@ -4904,6 +5220,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			</Item>
 			<Item class="SphereHandleAdornment" referent="RBXC299F831556749D1B6E004332BBF0C5F">
 				<Properties>
+					<token name="AdornCullingMode">0</token>
 					<Ref name="Adornee">null</Ref>
 					<bool name="AlwaysOnTop">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -4933,6 +5250,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -4949,6 +5267,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<B>0.952941239</B>
 					</Color3>
 					<string name="Name">ParabolaAdornment</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -4965,6 +5284,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Color3>
 					<float name="LineThickness">0.150000006</float>
 					<string name="Name">SelectionBox</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<Color3 name="SurfaceColor3">
 						<R>0.0509803966</R>
 						<G>0.411764741</G>
@@ -4986,6 +5306,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<B>0.674509823</B>
 					</Color3>
 					<string name="Name">SelectionSphere</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<Color3 name="SurfaceColor3">
 						<R>0.0509803966</R>
 						<G>0.411764741</G>
@@ -5010,6 +5331,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<B>0.674509823</B>
 					</Color3>
 					<string name="Name">ArcHandles</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">false</bool>
@@ -5028,6 +5350,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<faces>0</faces>
 					</Faces>
 					<string name="Name">Handles</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<token name="Style">0</token>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
@@ -5044,6 +5367,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<B>0.674509823</B>
 					</Color3>
 					<string name="Name">SurfaceSelection</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="TargetSurface">0</token>
 					<float name="Transparency">0</float>
@@ -5061,6 +5385,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<Ref name="Humanoid">null</Ref>
 					<string name="Name">SelectionPartLasso</string>
 					<Ref name="Part">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -5081,6 +5406,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
 					<bool name="Visible">true</bool>
@@ -5115,6 +5441,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<token name="NameOcclusion">2</token>
 					<bool name="RequiresNeck">true</bool>
 					<token name="RigType">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="UseJumpPower">true</bool>
 					<float name="WalkSpeed">16</float>
@@ -5177,6 +5504,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<int64 name="RunAnimation">0</int64>
 					<int64 name="Shirt">0</int64>
 					<string name="ShouldersAccessory"></string>
+					<int64 name="SourceAssetId">-1</int64>
 					<int64 name="SwimAnimation">0</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int64 name="Torso">0</int64>
@@ -5223,10 +5551,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">RotateP</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5263,10 +5591,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">RotateV</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5322,10 +5650,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">Glue</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5361,10 +5689,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">ManualGlue</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<int name="Surface0">-1</int>
 					<int name="Surface1">-1</int>
 					<BinaryString name="Tags"></BinaryString>
@@ -5402,10 +5730,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">ManualWeld</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<int name="Surface0">-1</int>
 					<int name="Surface1">-1</int>
 					<BinaryString name="Tags"></BinaryString>
@@ -5444,11 +5772,11 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</CoordinateFrame>
 					<float name="DesiredAngle">0</float>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<float name="MaxVelocity">0</float>
 					<string name="Name">Motor</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5485,11 +5813,11 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</CoordinateFrame>
 					<float name="DesiredAngle">0</float>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<float name="MaxVelocity">0</float>
 					<string name="Name">Motor6D</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5525,10 +5853,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">Rotate</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5564,10 +5892,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">Snap</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5606,11 +5934,11 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<float name="DesiredAngle">0</float>
 					<bool name="Enabled">true</bool>
 					<Ref name="Hole">null</Ref>
-					<bool name="IsAutoJoint">false</bool>
 					<float name="MaxVelocity">0</float>
 					<string name="Name">VelocityMotor</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5646,10 +5974,10 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
-					<bool name="IsAutoJoint">false</bool>
 					<string name="Name">Weld</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5657,6 +5985,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Keyframe</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Time">0</float>
 				</Properties>
@@ -5665,6 +5994,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">KeyframeMarker</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Value"></string>
 				</Properties>
@@ -5676,6 +6006,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<bool name="Loop">true</bool>
 					<string name="Name">KeyframeSequence</string>
 					<token name="Priority">2</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5692,6 +6023,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">PointLight</string>
 					<float name="Range">8</float>
 					<bool name="Shadows">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5710,6 +6042,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">SpotLight</string>
 					<float name="Range">16</float>
 					<bool name="Shadows">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5728,6 +6061,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">SurfaceLight</string>
 					<float name="Range">16</float>
 					<bool name="Shadows">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5736,6 +6070,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Contents">[]</string>
 					<string name="Name">LocalizationTable</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<string name="SourceLocaleId">en-us</string>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
@@ -5748,6 +6083,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">Script</string>
 					<string name="ScriptGuid"></string>
 					<ProtectedString name="Source"></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5759,6 +6095,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<string name="Name">LocalScript</string>
 					<string name="ScriptGuid"></string>
 					<ProtectedString name="Source"></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5772,6 +6109,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 
 return module
 ]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 				<Item class="PackageLink" referent="RBXF5FBEC2B4A904D3D981D4ABB6EE4FB4A">
@@ -5780,6 +6118,7 @@ return module
 						<bool name="AutoUpdate">true</bool>
 						<string name="Name">PackageLink</string>
 						<Content name="PackageIdSerialize"><url>rbxassetid://2380072357</url></Content>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<int64 name="VersionIdSerialize">3</int64>
 					</Properties>
@@ -5789,6 +6128,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Message</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Text"></string>
 				</Properties>
@@ -5797,6 +6137,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Hint</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Text"></string>
 				</Properties>
@@ -5808,6 +6149,7 @@ return module
 					<string name="Name">NoCollisionConstraint</string>
 					<Ref name="Part0">null</Ref>
 					<Ref name="Part1">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -5867,6 +6209,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -5941,6 +6284,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -5978,6 +6322,7 @@ return module
 							<R22>1</R22>
 						</CoordinateFrame>
 						<string name="Name">Attachment</string>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<bool name="Visible">false</bool>
 					</Properties>
@@ -6000,6 +6345,7 @@ return module
 							<R22>1</R22>
 						</CoordinateFrame>
 						<string name="Name">Bone</string>
+						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<bool name="Visible">false</bool>
 					</Properties>
@@ -6061,6 +6407,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int name="TeamColor">194</int>
 					<float name="TopParamA">-0.5</float>
@@ -6139,6 +6486,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -6215,6 +6563,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<int name="Steer">0</int>
 					<bool name="StickyWheels">true</bool>
 					<BinaryString name="Tags"></BinaryString>
@@ -6298,6 +6647,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int name="TeamColor">194</int>
 					<float name="TopParamA">-0.5</float>
@@ -6375,6 +6725,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -6427,12 +6778,19 @@ return module
 					<PhysicalProperties name="CustomPhysicalProperties">
 						<CustomPhysics>false</CustomPhysics>
 					</PhysicalProperties>
+					<bool name="DoubleSided">false</bool>
 					<float name="FrontParamA">-0.5</float>
 					<float name="FrontParamB">0.5</float>
 					<token name="FrontSurface">0</token>
 					<token name="FrontSurfaceInput">0</token>
+					<bool name="HasJointOffset">false</bool>
 					<bool name="HasSkinnedMesh">false</bool>
 					<Vector3 name="InitialSize">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="JointOffset">
 						<X>0</X>
 						<Y>0</Y>
 						<Z>0</Z>
@@ -6448,7 +6806,7 @@ return module
 					<Content name="MeshID"><null></null></Content>
 					<Content name="MeshId"><null></null></Content>
 					<string name="Name">MeshPart</string>
-					<SharedString name="PhysicalConfigData">1B2M2Y8AsgTpgAmY7PhCfg==</SharedString>
+					<SharedString name="PhysicalConfigData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -6462,6 +6820,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TextureID"><null></null></Content>
 					<float name="TopParamA">-0.5</float>
@@ -6536,7 +6895,7 @@ return module
 					<token name="Material">256</token>
 					<BinaryString name="MeshData"></BinaryString>
 					<string name="Name">PartOperation</string>
-					<SharedString name="PhysicalConfigData">1B2M2Y8AsgTpgAmY7PhCfg==</SharedString>
+					<SharedString name="PhysicalConfigData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -6551,6 +6910,7 @@ return module
 						<Z>0</Z>
 					</Vector3>
 					<float name="SmoothingAngle">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -6625,7 +6985,7 @@ return module
 					<token name="Material">256</token>
 					<BinaryString name="MeshData"></BinaryString>
 					<string name="Name">NegateOperation</string>
-					<SharedString name="PhysicalConfigData">1B2M2Y8AsgTpgAmY7PhCfg==</SharedString>
+					<SharedString name="PhysicalConfigData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -6640,6 +7000,7 @@ return module
 						<Z>0</Z>
 					</Vector3>
 					<float name="SmoothingAngle">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -6714,7 +7075,7 @@ return module
 					<token name="Material">256</token>
 					<BinaryString name="MeshData"></BinaryString>
 					<string name="Name">UnionOperation</string>
-					<SharedString name="PhysicalConfigData">1B2M2Y8AsgTpgAmY7PhCfg==</SharedString>
+					<SharedString name="PhysicalConfigData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
 					<BinaryString name="PhysicsData"></BinaryString>
 					<float name="Reflectance">0</float>
 					<token name="RenderFidelity">1</token>
@@ -6729,6 +7090,7 @@ return module
 						<Z>0</Z>
 					</Vector3>
 					<float name="SmoothingAngle">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -6804,6 +7166,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="TopParamA">-0.5</float>
 					<float name="TopParamB">0.5</float>
@@ -6882,6 +7245,7 @@ return module
 						<Y>0</Y>
 						<Z>0</Z>
 					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
 					<int name="Steer">0</int>
 					<float name="SteerFloat">0</float>
 					<BinaryString name="Tags"></BinaryString>
@@ -6909,6 +7273,7 @@ return module
 			<Item class="Model" referent="RBX26E4F694DA90481D94CC3D6F378A4615">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<token name="LevelOfDetail">0</token>
 					<CoordinateFrame name="ModelInPrimary">
 						<X>0</X>
 						<Y>0</Y>
@@ -6923,8 +7288,29 @@ return module
 						<R21>0</R21>
 						<R22>1</R22>
 					</CoordinateFrame>
+					<CoordinateFrame name="ModelMeshCFrame">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<Vector3 name="ModelMeshSize">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
 					<string name="Name">Model</string>
 					<Ref name="PrimaryPart">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -6934,6 +7320,7 @@ return module
 					<BinaryString name="ChildData"></BinaryString>
 					<BinaryString name="MeshData"></BinaryString>
 					<string name="Name">PartOperationAsset</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -6958,6 +7345,7 @@ return module
 					<NumberRange name="RotSpeed">0 0 </NumberRange>
 					<NumberRange name="Rotation">0 0 </NumberRange>
 					<NumberSequence name="Size">0 1 0 1 1 0 </NumberSequence>
+					<int64 name="SourceAssetId">-1</int64>
 					<NumberRange name="Speed">5 5 </NumberRange>
 					<Vector2 name="SpreadAngle">
 						<X>0</X>
@@ -6990,6 +7378,7 @@ return module
 					<token name="EasingDirection">0</token>
 					<token name="EasingStyle">0</token>
 					<string name="Name">Pose</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Weight">1</float>
 				</Properties>
@@ -7001,6 +7390,7 @@ return module
 					<float name="Intensity">0.400000006</float>
 					<string name="Name">BloomEffect</string>
 					<float name="Size">24</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Threshold">0.949999988</float>
 				</Properties>
@@ -7011,6 +7401,7 @@ return module
 					<bool name="Enabled">true</bool>
 					<string name="Name">BlurEffect</string>
 					<float name="Size">24</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7022,6 +7413,7 @@ return module
 					<bool name="Enabled">true</bool>
 					<string name="Name">ColorCorrectionEffect</string>
 					<float name="Saturation">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Color3 name="TintColor">
 						<R>1</R>
@@ -7036,6 +7428,7 @@ return module
 					<bool name="Enabled">true</bool>
 					<float name="Intensity">0.25</float>
 					<string name="Name">SunRaysEffect</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<float name="Spread">1</float>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
@@ -7044,6 +7437,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadata</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7051,6 +7445,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadataCallbacks</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7058,6 +7453,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadataClasses</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7065,6 +7461,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadataEnums</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7072,6 +7469,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadataEvents</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7079,6 +7477,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadataFunctions</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7099,6 +7498,7 @@ return module
 					<string name="PreferredParent"></string>
 					<string name="ScriptContext"></string>
 					<bool name="ServerOnly">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="UIMaximum">0</double>
 					<double name="UIMinimum">0</double>
@@ -7119,6 +7519,7 @@ return module
 					<string name="Name">ReflectionMetadataEnum</string>
 					<string name="ScriptContext"></string>
 					<bool name="ServerOnly">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="UIMaximum">0</double>
 					<double name="UIMinimum">0</double>
@@ -7139,6 +7540,7 @@ return module
 					<string name="Name">ReflectionMetadataEnumItem</string>
 					<string name="ScriptContext"></string>
 					<bool name="ServerOnly">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="UIMaximum">0</double>
 					<double name="UIMinimum">0</double>
@@ -7159,6 +7561,7 @@ return module
 					<string name="Name">ReflectionMetadataMember</string>
 					<string name="ScriptContext"></string>
 					<bool name="ServerOnly">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="UIMaximum">0</double>
 					<double name="UIMinimum">0</double>
@@ -7170,6 +7573,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadataProperties</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7177,6 +7581,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ReflectionMetadataYieldFunctions</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7184,6 +7589,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">RemoteEvent</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7191,6 +7597,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">RemoteFunction</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7219,6 +7626,7 @@ return module
 					<string name="Name">RenderingTest</string>
 					<int name="QualityLevel">21</int>
 					<bool name="ShouldSkip">false</bool>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Ticket"></string>
 				</Properties>
@@ -7236,6 +7644,7 @@ return module
 					<Content name="SkyboxLf"><url>rbxasset://textures/sky/sky512_lf.tex</url></Content>
 					<Content name="SkyboxRt"><url>rbxasset://textures/sky/sky512_rt.tex</url></Content>
 					<Content name="SkyboxUp"><url>rbxasset://textures/sky/sky512_up.tex</url></Content>
+					<int64 name="SourceAssetId">-1</int64>
 					<int name="StarCount">3000</int>
 					<float name="SunAngularSize">21</float>
 					<Content name="SunTextureId"><url>rbxasset://sky/sun.jpg</url></Content>
@@ -7252,6 +7661,7 @@ return module
 					</Color3>
 					<bool name="Enabled">true</bool>
 					<string name="Name">Smoke</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="opacity_xml">0.5</float>
 					<float name="riseVelocity_xml">1</float>
@@ -7270,6 +7680,7 @@ return module
 					<token name="RollOffMode">0</token>
 					<Ref name="SoundGroup">null</Ref>
 					<Content name="SoundId"><null></null></Content>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="TimePosition">0</double>
 					<float name="Volume">0.5</float>
@@ -7285,6 +7696,7 @@ return module
 					<string name="Name">ChorusSoundEffect</string>
 					<int name="Priority">0</int>
 					<float name="Rate">0.5</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7299,6 +7711,7 @@ return module
 					<float name="Ratio">40</float>
 					<float name="Release">0.100000001</float>
 					<Ref name="SideChain">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Threshold">-40</float>
 				</Properties>
@@ -7310,6 +7723,7 @@ return module
 					<float name="Level">0.75</float>
 					<string name="Name">DistortionSoundEffect</string>
 					<int name="Priority">0</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7322,6 +7736,7 @@ return module
 					<float name="Feedback">0.5</float>
 					<string name="Name">EchoSoundEffect</string>
 					<int name="Priority">0</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="WetLevel">0</float>
 				</Properties>
@@ -7335,6 +7750,7 @@ return module
 					<float name="MidGain">-10</float>
 					<string name="Name">EqualizerSoundEffect</string>
 					<int name="Priority">0</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7347,6 +7763,7 @@ return module
 					<string name="Name">FlangeSoundEffect</string>
 					<int name="Priority">0</int>
 					<float name="Rate">5</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7357,6 +7774,7 @@ return module
 					<string name="Name">PitchShiftSoundEffect</string>
 					<float name="Octave">1.25</float>
 					<int name="Priority">0</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7370,6 +7788,7 @@ return module
 					<bool name="Enabled">true</bool>
 					<string name="Name">ReverbSoundEffect</string>
 					<int name="Priority">0</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="WetLevel">0</float>
 				</Properties>
@@ -7383,6 +7802,7 @@ return module
 					<float name="Frequency">5</float>
 					<string name="Name">TremoloSoundEffect</string>
 					<int name="Priority">0</int>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7390,6 +7810,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">SoundGroup</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Volume">0.5</float>
 				</Properties>
@@ -7399,6 +7820,7 @@ return module
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="Enabled">true</bool>
 					<string name="Name">Sparkles</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<Color3 name="SparkleColor">
 						<R>0.564705908</R>
 						<G>0.0980392247</G>
@@ -7411,6 +7833,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">StarterGear</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7419,6 +7842,7 @@ return module
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoAssignable">true</bool>
 					<string name="Name">Team</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int name="TeamColor">194</int>
 				</Properties>
@@ -7438,6 +7862,7 @@ return module
 					</Vector3int16>
 					<string name="Name">TerrainRegion</string>
 					<BinaryString name="SmoothGrid">AQU=</BinaryString>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7455,6 +7880,7 @@ return module
 					<float name="MaxLength">0</float>
 					<float name="MinLength">0.100000001</float>
 					<string name="Name">Trail</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="Texture"><null></null></Content>
 					<float name="TextureLength">1</float>
@@ -7467,6 +7893,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Tween</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7477,6 +7904,7 @@ return module
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<token name="DominantAxis">0</token>
 					<string name="Name">UIAspectRatioConstraint</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7492,6 +7920,7 @@ return module
 						<Y>0</Y>
 					</Vector2>
 					<string name="Name">UISizeConstraint</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7501,6 +7930,7 @@ return module
 					<int name="MaxTextSize">100</int>
 					<int name="MinTextSize">1</int>
 					<string name="Name">UITextSizeConstraint</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7524,25 +7954,8 @@ return module
 					<token name="HorizontalAlignment">1</token>
 					<string name="Name">UIGridLayout</string>
 					<token name="SortOrder">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<token name="StartCorner">0</token>
-					<BinaryString name="Tags"></BinaryString>
-					<token name="VerticalAlignment">1</token>
-				</Properties>
-			</Item>
-			<Item class="UIInlineLayout" referent="RBX5B1717A54E9C46929F3A1167FF28C4D0">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<token name="FillDirection">0</token>
-					<token name="HorizontalAlignment">1</token>
-					<token name="InlineAlignment">1</token>
-					<UDim2 name="InlinePadding">
-						<XS>0</XS>
-						<XO>0</XO>
-						<YS>0</YS>
-						<YO>0</YO>
-					</UDim2>
-					<string name="Name">UIInlineLayout</string>
-					<token name="SortOrder">0</token>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="VerticalAlignment">1</token>
 				</Properties>
@@ -7558,6 +7971,7 @@ return module
 						<O>0</O>
 					</UDim>
 					<token name="SortOrder">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="VerticalAlignment">1</token>
 				</Properties>
@@ -7579,6 +7993,7 @@ return module
 					</UDim>
 					<bool name="ScrollWheelInputEnabled">true</bool>
 					<token name="SortOrder">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="TouchInputEnabled">true</bool>
 					<float name="TweenTime">1</float>
@@ -7601,6 +8016,7 @@ return module
 						<YO>0</YO>
 					</UDim2>
 					<token name="SortOrder">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<token name="VerticalAlignment">1</token>
 				</Properties>
@@ -7625,6 +8041,7 @@ return module
 						<S>0</S>
 						<O>0</O>
 					</UDim>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7633,6 +8050,7 @@ return module
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">UIScale</string>
 					<float name="Scale">1</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7640,6 +8058,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">BinaryStringValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<BinaryString name="Value"></BinaryString>
 				</Properties>
@@ -7648,6 +8067,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">BoolValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<bool name="Value">false</bool>
 				</Properties>
@@ -7656,6 +8076,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">BrickColorValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int name="Value">194</int>
 				</Properties>
@@ -7664,6 +8085,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">CFrameValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<CoordinateFrame name="Value">
 						<X>0</X>
@@ -7685,6 +8107,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Color3Value</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Color3 name="Value">
 						<R>0</R>
@@ -7699,6 +8122,7 @@ return module
 					<double name="MaxValue">1</double>
 					<double name="MinValue">0</double>
 					<string name="Name">DoubleConstrainedValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="value">0</double>
 				</Properties>
@@ -7709,6 +8133,7 @@ return module
 					<int64 name="MaxValue">10</int64>
 					<int64 name="MinValue">0</int64>
 					<string name="Name">IntConstrainedValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int64 name="value">0</int64>
 				</Properties>
@@ -7717,6 +8142,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">IntValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<int64 name="Value">0</int64>
 				</Properties>
@@ -7725,6 +8151,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">NumberValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="Value">0</double>
 				</Properties>
@@ -7733,6 +8160,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">ObjectValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Ref name="Value">null</Ref>
 				</Properties>
@@ -7741,6 +8169,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">RayValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Ray name="Value">
 						<origin>
@@ -7760,6 +8189,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">StringValue</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<string name="Value"></string>
 				</Properties>
@@ -7768,6 +8198,7 @@ return module
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">Vector3Value</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Vector3 name="Value">
 						<X>0</X>
@@ -7793,24 +8224,12 @@ return module
 						<R21>0</R21>
 						<R22>1</R22>
 					</CoordinateFrame>
-					<CoordinateFrame name="CFrame1">
-						<X>0</X>
-						<Y>0</Y>
-						<Z>0</Z>
-						<R00>1</R00>
-						<R01>0</R01>
-						<R02>0</R02>
-						<R10>0</R10>
-						<R11>1</R11>
-						<R12>0</R12>
-						<R20>0</R20>
-						<R21>0</R21>
-						<R22>1</R22>
-					</CoordinateFrame>
 					<bool name="Enabled">true</bool>
 					<string name="Name">WeldConstraint</string>
 					<Ref name="Part0Internal">null</Ref>
 					<Ref name="Part1Internal">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
+					<int name="State">3</int>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7822,6 +8241,7 @@ return module
 						<O>8</O>
 					</UDim>
 					<string name="Name">UICorner</string>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7834,6 +8254,7 @@ return module
 					</Vector2>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
 					<Color3 name="BackgroundColor3">
 						<R>1</R>
 						<G>1</G>
@@ -7874,6 +8295,7 @@ return module
 						<YO>100</YO>
 					</UDim2>
 					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<double name="TimePosition">0</double>
 					<Content name="Video"><null></null></Content>
@@ -7900,6 +8322,7 @@ return module
 					<float name="Haze">0</float>
 					<string name="Name">Atmosphere</string>
 					<float name="Offset">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7912,12 +8335,14 @@ return module
 					<float name="InFocusRadius">10</float>
 					<string name="Name">DepthOfField</string>
 					<float name="NearIntensity">0.75</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
 			<Item class="WorldModel" referent="RBX2BF357C067F44B30944CB91120F81ADB">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<token name="LevelOfDetail">0</token>
 					<CoordinateFrame name="ModelInPrimary">
 						<X>0</X>
 						<Y>0</Y>
@@ -7932,8 +8357,29 @@ return module
 						<R21>0</R21>
 						<R22>1</R22>
 					</CoordinateFrame>
+					<CoordinateFrame name="ModelMeshCFrame">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+						<R00>1</R00>
+						<R01>0</R01>
+						<R02>0</R02>
+						<R10>0</R10>
+						<R11>1</R11>
+						<R12>0</R12>
+						<R20>0</R20>
+						<R21>0</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+					<Vector3 name="ModelMeshSize">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
 					<string name="Name">WorldModel</string>
 					<Ref name="PrimaryPart">null</Ref>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 				</Properties>
 			</Item>
@@ -7946,6 +8392,7 @@ return module
 					<string name="Name">SurfaceAppearance</string>
 					<Content name="NormalMap"><null></null></Content>
 					<Content name="RoughnessMap"><null></null></Content>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="TexturePack"><null></null></Content>
 				</Properties>
@@ -7961,6 +8408,7 @@ return module
 						<Y>0</Y>
 					</Vector2>
 					<float name="Rotation">0</float>
+					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<NumberSequence name="Transparency">0 0 0 1 0 0 </NumberSequence>
 				</Properties>
@@ -7971,6 +8419,7 @@ return module
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ReplicatedStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -7978,6 +8427,7 @@ return module
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">LuaWebService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -8020,48 +8470,10 @@ return module
 			</Color3>
 			<bool name="Outlines">false</bool>
 			<float name="ShadowSoftness">0.5</float>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<token name="Technology">1</token>
 			<string name="TimeOfDay">00:00:00</string>
-		</Properties>
-	</Item>
-	<Item class="AnalyticsService" referent="RBX8F2EA4D9EBD343BA9F72F2718931AAC4">
-		<Properties>
-			<string name="ApiKey"></string>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">AnalyticsService</string>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="DataStoreService" referent="RBX26A306E2D58C4B7CB7E34DF5A7300642">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<bool name="AutomaticRetry">true</bool>
-			<bool name="LegacyNamingScheme">false</bool>
-			<string name="Name">DataStoreService</string>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="FlyweightService" referent="RBX9A8E00C3B7F44224817CCF07ABFA5F3D">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">FlyweightService</string>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="HttpService" referent="RBX6EE944E7AAEF4250A9484BAEEB801CF2">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<bool name="HttpEnabled">true</bool>
-			<string name="Name">HttpService</string>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="Teams" referent="RBX3FB456C2CC644D9DACCBAA12DBB3B90B">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">Teams</string>
-			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
 	<Item class="TestService" referent="RBXB831564B6B1C462C85ACB8CC3B3C7860">
@@ -8076,14 +8488,51 @@ return module
 			<string name="Name">TestService</string>
 			<int name="NumberOfPlayers">0</int>
 			<double name="SimulateSecondsLag">0</double>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<double name="Timeout">10</double>
+		</Properties>
+	</Item>
+	<Item class="DataStoreService" referent="RBX26A306E2D58C4B7CB7E34DF5A7300642">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="AutomaticRetry">true</bool>
+			<bool name="LegacyNamingScheme">false</bool>
+			<string name="Name">DataStoreService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="FlyweightService" referent="RBX9A8E00C3B7F44224817CCF07ABFA5F3D">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">FlyweightService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="HttpService" referent="RBX6EE944E7AAEF4250A9484BAEEB801CF2">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="HttpEnabled">true</bool>
+			<string name="Name">HttpService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="Teams" referent="RBX3FB456C2CC644D9DACCBAA12DBB3B90B">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">Teams</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
 	<Item class="VirtualInputManager" referent="RBX5E1FC138D376448C8F3501ED685AB71E">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">VirtualInputManager</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -8091,6 +8540,7 @@ return module
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ReplicatedScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
@@ -8098,11 +8548,12 @@ return module
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">LanguageService</string>
+			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
 	<SharedStrings>
-		<SharedString md5="R5+LhZFmUtVbZb2bGVv+Hw==">Q1NHUEhTBwAAAANxenpBq3RavVrWxL3W0ls9BipCQyiCLz9FsibAiDtQQzU4HkEiYwdDEAAA
+		<SharedString md5="ezvavG8GMWP28xfkKnsm/w==">Q1NHUEhTBwAAAANxenpBq3RavVrWxL3W0ls9BipCQyiCLz9FsibAiDtQQzU4HkEiYwdDEAAA
 AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAACAPxUAAAAEAAAA+dYAQK5wBr+S
 t5fATAn2PwRx+z3U6pjA+1j6P0A8e7xIppjAca/sP25qEb/shpLAqoLsP34aCL8YuJfAfcHu
 PzjCTT7mCpnA9G/pP6AiqLy0ppjAHgAAAAIAAAABAAAAAwAAAAAAAAADAAAABAAAAAAAAAAC
@@ -10354,7 +10805,7 @@ AAAAAAAAAAQAAAADAAAAAAAAAAIAAAABAAAAAAAAAAMAAAADAAAAAgAAAAQAAAAQAAAAAAAA
 AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIA/DAAAAAQAAADMs/U/OPWWv0p2jsBW
 ZfM/Uw9xv7zEj8CgnA5AQnKUvw5NjsDqfQ1Ay/tsvxChj8AMAAAAAgAAAAEAAAAAAAAAAQAA
 AAIAAAADAAAAAgAAAAAAAAADAAAAAAAAAAEAAAADAAAA</SharedString>
-		<SharedString md5="p5XjaPTg1Nj3G83dgQnxnQ==">Q1NHUEhTBgAAAJXewkJ+3gC9Gx01vr4/m75NjCdEyFxIwAipl8B7qTpE+Y45Qh/2WUMQAAAA
+		<SharedString md5="h8IPxf7q0MVs4uyaKSOhVA==">Q1NHUEhTBgAAAJXewkJ+3gC9Gx01vr4/m75NjCdEyFxIwAipl8B7qTpE+Y45Qh/2WUMQAAAA
 AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIA/OQAAAAQAAAAAKRM8RMLLPWmi
 ZUAAKRM86GmoPh46b0BtzAM/qoDAPmmiZUAiEXM+Gx2yvmmiZUAAKRM8fo+OvmAZlEAAKRM8
 rAihPvzEcUDJc5c/YsKIPisZh0DJc5c/DTalPh6YaUCwNYc/lN6sPmmiZUDQqmg/7NQMv2mi
@@ -11590,7 +12041,7 @@ AAAYAAAAEAAAABgAAAARAAAAEQAAABgAAAAcAAAAEQAAABwAAAAbAAAAEQAAABsAAAAZAAAA
 EQAAABkAAAAUAAAAEQAAABQAAAASAAAAEwAAABQAAAAZAAAAEwAAABkAAAAaAAAAFQAAABsA
 AAAcAAAAFQAAABwAAAAWAAAAFgAAABwAAAAXAAAAFwAAABwAAAAYAAAAGQAAABsAAAAaAAAA
 </SharedString>
-		<SharedString md5="Uw2UbsRgWAvbuVwbpaHTJg==">Q1NHUEhTBgAAAE1JUEAHR9a7EkFXvmXbsrwJK4tAZcq7vENWDDp/bfo+haEYPtPKkkAQAAAA
+		<SharedString md5="qKQHnbGqNyW9YBYUZo8CWQ==">Q1NHUEhTBgAAAE1JUEAHR9a7EkFXvmXbsrwJK4tAZcq7vENWDDp/bfo+haEYPtPKkkAQAAAA
 AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIA/qwAAAAQAAADQ0Oa+jK4PwINC
 0j4g50+/ADXSvpezT70wNeu+jK4PwC6Da76nN4U+jK4PwBLh2z4AJIQ9TBYJQPRQXT7Qyju+
 WBL5Pxpyiz4v4j8+WBL5Pxpyiz4fWtA+jK4PwNP80T6Ays06TBYJQIZPr74wPyK+MKCgP4Li
@@ -11630,7 +12081,7 @@ AAAnAAAANQAAACkAAAAKAAAANgAAABAAAAAyAAAANgAAADIAAAAmAAAANgAAACYAAAAlAAAA
 NgAAACUAAAAQAAAANwAAABkAAAAzAAAANwAAADMAAAABAAAANwAAAAEAAAAqAAAANwAAACoA
 AAAZAAAAOAAAABoAAAA1AAAAOAAAADUAAAAnAAAAOAAAABsAAAAaAAAAOAAAACcAAAAbAAAA
 </SharedString>
-		<SharedString md5="0173GmJSl63YNkwRLsdzHw==">Q1NHUEhTBgAAAGL3bT+fOYy87Wx8PvwFXL2AXoA/ZNScOrnF6bp5APU9ws2DvPwijD8QAAAA
+		<SharedString md5="wqN+0m4YPEAIF5tOPQwXdA==">Q1NHUEhTBgAAAGL3bT+fOYy87Wx8PvwFXL2AXoA/ZNScOrnF6bp5APU9ws2DvPwijD8QAAAA
 AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIA/DwAAAAQAAACa/0m+yF60v7RB
 uj0UNl6+0oXXv/EnHT2QV8C9yF60vxBbtL3KmYy+0oXXv/EnHT1TOgW+0oXXv/LL5b0SAAAA
 AAAAAAEAAAACAAAAAAAAAAIAAAADAAAAAAAAAAMAAAABAAAAAQAAAAMAAAAEAAAAAQAAAAQA
@@ -12178,7 +12629,7 @@ AAAWAAAADQAAABYAAAAOAAAADgAAABcAAAAPAAAADgAAABYAAAAXAAAADwAAABcAAAAYAAAA
 EQAAABMAAAAZAAAAEQAAABkAAAAaAAAAEQAAABoAAAAUAAAAEgAAABgAAAAbAAAAEgAAABsA
 AAATAAAAEwAAABsAAAAZAAAAFAAAABoAAAAVAAAAFQAAABoAAAAbAAAAFQAAABsAAAAXAAAA
 FQAAABcAAAAWAAAAFwAAABsAAAAYAAAAGQAAABsAAAAaAAAA</SharedString>
-		<SharedString md5="Mx7Ko9ySR/gOoyA4uo08sQ==">Q1NHUEhTBgAAACbd8ULAvKu8NqGAvnuGF77pSVxE/jNzvTu9JsCTjnFEUD82QqNTjUMQAAAA
+		<SharedString md5="yk4/m1d5tPD+2SapafAV9A==">Q1NHUEhTBgAAACbd8ULAvKu8NqGAvnuGF77pSVxE/jNzvTu9JsCTjnFEUD82QqNTjUMQAAAA
 AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIA/HQEAAAQAAABrIAdAeRXhv4sz
 O8BRygVAdEnfv6e1dEDcLQPAs1flv387dEBsUgbA4yXkv8ekOsC53BJAEh+Nv05MlkBw7QhA
 QTYkvrRtkEBNnABAz4zyPEQOmEBTmhJArj72voqKF8Ch4BZA5PCjv+x/iUDuGxdAZKTHv3BV
@@ -12243,7 +12694,7 @@ XAAAAAUAAAA5AAAAXAAAADkAAAAMAAAAXAAAAAwAAAAsAAAAXAAAACwAAAAGAAAAXQAAADgA
 AAA3AAAAXQAAADcAAAA/AAAAXQAAACEAAAAgAAAAXQAAAD8AAAAhAAAAXQAAACAAAAAuAAAA
 XQAAAC4AAAA4AAAAXgAAABAAAAA2AAAAXgAAADYAAAA4AAAAXgAAADgAAAAuAAAAXgAAAC4A
 AAABAAAAXgAAAAEAAAAQAAAA</SharedString>
-		<SharedString md5="1B2M2Y8AsgTpgAmY7PhCfg=="></SharedString>
-		<SharedString md5="+KXn2PVkmG8K5+S8Au8qxA==">Q1NHUEhTAAAAAEJMT0NL</SharedString>
+		<SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA=="></SharedString>
+		<SharedString md5="+qv2o0HSW+htH+ALwYQpiw==">Q1NHUEhTAAAAAEJMT0NL</SharedString>
 	</SharedStrings>
 </roblox>
