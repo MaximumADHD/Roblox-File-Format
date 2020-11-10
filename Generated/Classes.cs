@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.454.0.413308
+// Updated as of 0.455.0.413788
 
 using System;
 
@@ -70,6 +70,14 @@ namespace RobloxFiles
 
     public class Animator : Instance
     {
+    }
+
+    public class AppUpdateService : Instance
+    {
+        public AppUpdateService()
+        {
+            IsService = true;
+        }
     }
 
     public class AssetCounterService : Instance
@@ -2298,6 +2306,10 @@ namespace RobloxFiles
         public BasePart PrimaryPart;
     }
 
+    public class Actor : Model
+    {
+    }
+
     public abstract class WorldRoot : Model
     {
     }
@@ -2415,6 +2427,11 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public string EmulatedCountryCode = "";
+        public string EmulatedGameLocale = "";
+        public bool PlayerEmulationEnabled;
+        public string SerializedEmulatedPolicyInfo = "";
     }
 
     public class Players : Instance
@@ -2461,16 +2478,24 @@ namespace RobloxFiles
         public TriStateBoolean LuobuWhitelisted = TriStateBoolean.Unknown;
     }
 
-    public class Pose : Instance
+    public abstract class PoseBase : Instance
     {
-        public CFrame CFrame = new CFrame();
         public PoseEasingDirection EasingDirection = PoseEasingDirection.In;
         public PoseEasingStyle EasingStyle = PoseEasingStyle.Linear;
+        public float Weight = 1;
+    }
+
+    public class NumberPose : PoseBase
+    {
+        public double Value;
+    }
+
+    public class Pose : PoseBase
+    {
+        public CFrame CFrame = new CFrame();
 
         [Obsolete]
         public float MaskWeight;
-
-        public float Weight = 1;
     }
 
     public abstract class PostEffect : Instance
