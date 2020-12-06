@@ -76,6 +76,7 @@ local function exportStream(label)
 		export.Archivable = false
 		export.Source = results
 		export.Name = label
+		export.Parent = workspace
 		
 		plugin:OpenScript(export)
 	end

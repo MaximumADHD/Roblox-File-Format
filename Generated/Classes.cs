@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.455.0.413788
+// Updated as of 0.458.1.415373
 
 using System;
 
@@ -196,6 +196,29 @@ namespace RobloxFiles
 
         public ScreenOrientation ScreenOrientation = ScreenOrientation.LandscapeSensor;
         public bool ShowDevelopmentGui = true;
+    }
+
+    public abstract class BaseWrap : Instance
+    {
+        public Content CageMeshId = "";
+        public CFrame CageOrigin = new CFrame();
+        public CFrame ImportOrigin = new CFrame();
+    }
+
+    public class WrapLayer : BaseWrap
+    {
+        public CFrame BindOffset = new CFrame();
+        public bool Enabled = true;
+        public int Order = 1;
+        public float Puffiness = 1;
+        public Content ReferenceMeshId = "";
+        public CFrame ReferenceOrigin = new CFrame();
+        public float ShrinkFactor;
+    }
+
+    public class WrapTarget : BaseWrap
+    {
+        public float Stiffness = 0.9f;
     }
 
     public class Beam : Instance
@@ -544,6 +567,12 @@ namespace RobloxFiles
     {
         public Content CursorIcon = "";
         public float MaxActivationDistance = 32;
+    }
+
+    public class Clouds : Instance
+    {
+        public float Cover = 0.5f;
+        public float Density = 0.7f;
     }
 
     public class CollectionService : Instance
@@ -1598,6 +1627,14 @@ namespace RobloxFiles
         }
     }
 
+    public class HeightmapImporterService : Instance
+    {
+        public HeightmapImporterService()
+        {
+            IsService = true;
+        }
+    }
+
     public class HttpRbxApiService : Instance
     {
         public HttpRbxApiService()
@@ -2540,6 +2577,7 @@ namespace RobloxFiles
     public class ProximityPrompt : Instance
     {
         public string ActionText = "Interact";
+        public bool AutoLocalize = true;
         public bool ClickablePrompt = true;
         public bool Enabled = true;
         public ProximityPromptExclusivity Exclusivity = ProximityPromptExclusivity.OnePerButton;
@@ -2549,6 +2587,7 @@ namespace RobloxFiles
         public float MaxActivationDistance = 10;
         public string ObjectText = "";
         public bool RequiresLineOfSight = true;
+        public LocalizationTable RootLocalizationTable;
         public ProximityPromptStyle Style = ProximityPromptStyle.Default;
         public Vector2 UIOffset = new Vector2();
     }
@@ -2814,9 +2853,12 @@ namespace RobloxFiles
 
     public class Sound : Instance
     {
+        [Obsolete]
         public float EmitterSize = 10;
+
         public bool Looped;
 
+        [Obsolete]
         public float MaxDistance
         {
             get => xmlRead_MaxDistance_3;
@@ -3096,6 +3138,13 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+    }
+
+    public class TeleportOptions : Instance
+    {
+        public string ReservedServerAccessCode = "";
+        public string ServerInstanceId = "";
+        public bool ShouldReserveServer;
     }
 
     public class TeleportService : Instance
