@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.458.1.415373
+// Updated as of 0.460.0.416222
 
 using System;
 
@@ -2118,6 +2118,7 @@ namespace RobloxFiles
 
         public CFrame CFrame = new CFrame();
         public bool CanCollide = true;
+        public bool CanTouch = true;
         public bool CastShadow = true;
         public int CollisionGroupId;
 
@@ -2373,6 +2374,7 @@ namespace RobloxFiles
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
         public int StreamingTargetRadius = 1024;
         public bool TerrainWeldsFixed = true;
+        public bool TouchesUseCollisionGroups;
     }
 
     public class WorldModel : WorldRoot
@@ -2486,6 +2488,14 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
+    }
+
+    public class PluginDebugService : Instance
+    {
+        public PluginDebugService()
+        {
+            IsService = true;
+        }
     }
 
     public class PluginGuiService : Instance
@@ -3096,7 +3106,6 @@ namespace RobloxFiles
         public int CommitInflightPlaceVersion;
         public bool EnableScriptCollabByDefaultOnLoad;
         public bool EnableScriptCollabOnLoad;
-        public bool EnableScriptCollabVersionHistoryOnLoad;
         public long SrcPlaceId;
         public long SrcUniverseId;
     }
