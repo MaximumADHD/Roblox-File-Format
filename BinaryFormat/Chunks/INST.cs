@@ -33,9 +33,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
             if (instType == null)
             {
-                if (RobloxFile.LogErrors)
-                    Console.Error.WriteLine($"INST - Unknown class: {ClassName} while reading INST chunk.");
-
+                RobloxFile.LogError($"INST - Unknown class: {ClassName} while reading INST chunk.");
                 return;
             }
 

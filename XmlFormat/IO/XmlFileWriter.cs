@@ -94,9 +94,7 @@ namespace RobloxFiles.XmlFormat
 
             if (handler == null)
             {
-                if (RobloxFile.LogErrors)
-                    Console.Error.WriteLine("XmlDataWriter.WriteProperty: No token handler found for property type: {0}", propType);
-
+                RobloxFile.LogError($"XmlRobloxFileWriter.WriteProperty: No token handler found for property type: {propType}");
                 return null;
             }
 

@@ -58,9 +58,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 if (instance == null)
                 {
-                    if (RobloxFile.LogErrors)
-                        Console.Error.WriteLine($"PROP: No instance @{id} for property {ClassName}.{Name}");
-
+                    RobloxFile.LogError($"PROP: No instance @{id} for property {ClassName}.{Name}");
                     continue;
                 }
 
@@ -368,9 +366,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                             if (info == null)
                             {
-                                if (RobloxFile.LogErrors)
-                                    Console.Error.WriteLine($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
-
+                                RobloxFile.LogError($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
                                 return value;
                             }
                             
@@ -378,9 +374,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         }
                         catch
                         {
-                            if (RobloxFile.LogErrors)
-                                Console.Error.WriteLine($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
-                            
+                            RobloxFile.LogError($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
                             return value;
                         }
                     });
@@ -545,9 +539,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 default:
-                    if (RobloxFile.LogErrors)
-                        Console.Error.WriteLine("Unhandled property type: {0}!", Type);
-
+                    RobloxFile.LogError($"Unhandled property type: {Type}!");
                     break;
                 //
             }

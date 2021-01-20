@@ -181,7 +181,7 @@ namespace RobloxFiles.DataTypes
         internal CFrame(Attribute attr)
         {
             Vector3 pos = new Vector3(attr);
-            byte rawOrientId = attr.readByte();
+            byte rawOrientId = attr.ReadByte();
 
             if (rawOrientId > 0)
             {

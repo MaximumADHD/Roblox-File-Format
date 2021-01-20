@@ -97,11 +97,7 @@ namespace RobloxFiles
                     }
                     else if (refId != "null")
                     {
-                        string name = refProp.GetFullName();
-
-                        if (LogErrors)
-                            Console.Error.WriteLine("XmlRobloxFile: Could not resolve reference for {0}", name);
-
+                        LogError($"XmlRobloxFile: Could not resolve reference for {refProp.GetFullName()}");
                         refProp.Value = null;
                     }
                 }
@@ -112,6 +108,14 @@ namespace RobloxFiles
                 foreach (Property sharedProp in sharedProps)
                 {
                     SharedString shared = sharedProp.CastValue<SharedString>();
+
+                    if (shared == null)
+                    {
+                        var nullBuffer = Array.Empty<byte>();
+                        shared = SharedString.FromBuffer(nullBuffer);
+                        sharedProp.Value = shared;
+                    }
+                    
                     SharedStrings.Add(shared.Key);
                 }
             }

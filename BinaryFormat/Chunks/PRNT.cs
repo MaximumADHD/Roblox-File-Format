@@ -33,17 +33,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 if (child == null)
                 {
-                    if (RobloxFile.LogErrors)
-                        Console.Error.WriteLine($"PRNT: could not parent {childId} to {parentId} because child {childId} was null.");
-
+                    RobloxFile.LogError($"PRNT: could not parent {childId} to {parentId} because child {childId} was null.");
                     continue;
                 }
 
                 if (parentId >= 0 && parent == null)
                 {
-                    if (RobloxFile.LogErrors)
-                        Console.Error.WriteLine($"PRNT: could not parent {childId} to {parentId} because parent {parentId} was null.");
-
+                    RobloxFile.LogError($"PRNT: could not parent {childId} to {parentId} because parent {parentId} was null.");
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.460.0.416222
+// Updated as of 0.462.0.416719
 
 using System;
 
@@ -730,6 +730,14 @@ namespace RobloxFiles
     {
         public ActuatorRelativeTo RelativeTo = ActuatorRelativeTo.Attachment0;
         public Vector3 Torque_ = new Vector3();
+    }
+
+    public class UniversalConstraint : Constraint
+    {
+        public bool LimitsEnabled;
+        public float MaxAngle = 45;
+        public float Radius = 0.2f;
+        public float Restitution;
     }
 
     public class VectorForce : Constraint

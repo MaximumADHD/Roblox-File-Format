@@ -109,7 +109,7 @@ namespace RobloxFiles.XmlFormat
                     if (!tokenHandler.ReadProperty(prop, propNode) && RobloxFile.LogErrors)
                     {
                         var readError = error($"Could not read property: {prop.GetFullName()}!");
-                        Console.Error.WriteLine(readError.Message);
+                        RobloxFile.LogError(readError.Message);
                     }
                     
                     instance.AddProperty(ref prop);
@@ -117,7 +117,7 @@ namespace RobloxFiles.XmlFormat
                 else if (RobloxFile.LogErrors)
                 {
                     var tokenError = error($"No {nameof(IXmlPropertyToken)} found for property type: {propType}!");
-                    Console.Error.WriteLine(tokenError.Message);
+                    RobloxFile.LogError(tokenError.Message);
                 }
             }
         }
@@ -142,7 +142,7 @@ namespace RobloxFiles.XmlFormat
                 if (RobloxFile.LogErrors)
                 {
                     var typeError = error($"Unknown class {className} while reading Item.");
-                    Console.Error.WriteLine(typeError.Message);
+                    RobloxFile.LogError(typeError.Message);
                 }
 
                 return null;

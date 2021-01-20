@@ -137,5 +137,17 @@ namespace RobloxFiles
         {
             return Task.Run(() => Save(filePath));
         }
+
+        /// <summary>
+        /// Logs an error that occurred while opening a RobloxFile if logs are enabled.
+        /// </summary>
+        /// <param name="message"></param>
+        internal static void LogError(string message)
+        {
+            if (!LogErrors)
+                return;
+
+            Console.Error.WriteLine(message);
+        }
     }
 }

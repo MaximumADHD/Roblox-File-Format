@@ -57,9 +57,9 @@ namespace RobloxFiles
         // internal BinaryWriter writer;
 
         internal int ReadInt() => reader.ReadInt32();
-        internal byte readByte() => reader.ReadByte();
-        internal bool readBool() => reader.ReadBoolean();
-        internal short readShort() => reader.ReadInt16();
+        internal byte ReadByte() => reader.ReadByte();
+        internal bool ReadBool() => reader.ReadBoolean();
+        internal short ReadShort() => reader.ReadInt16();
         internal float ReadFloat() => reader.ReadSingle();
         internal double ReadDouble() => reader.ReadDouble();
         internal string ReadString() => reader.ReadString(true);
@@ -103,14 +103,13 @@ namespace RobloxFiles
 
             switch (DataType)
             {
-                //////////////////////////
                 case AttributeType.Null:
                     break;
                 case AttributeType.String:
                     Value = ReadString();
                     break;
                 case AttributeType.Bool:
-                    Value = readBool();
+                    Value = ReadBool();
                     break;
                 case AttributeType.Int:
                     Value = ReadInt();
@@ -185,7 +184,7 @@ namespace RobloxFiles
                     Value = new Rect(this);
                     break;
                 case AttributeType.PhysicalProperties:
-                    bool custom = readBool();
+                    bool custom = ReadBool();
 
                     if (custom)
                         Value = new PhysicalProperties(this);
@@ -197,9 +196,7 @@ namespace RobloxFiles
                 case AttributeType.Region3int16:
                     Value = new Region3int16(this);
                     break;
-                default:
-                    throw new InvalidDataException($"Cannot handle AttributeType {DataType}!");
-                //////////////////////////
+                default: throw new InvalidDataException($"Cannot handle AttributeType {DataType}!");
             }
 
             reader = null;

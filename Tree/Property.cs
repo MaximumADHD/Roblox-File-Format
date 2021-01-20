@@ -211,10 +211,7 @@ namespace RobloxFiles
                         }
                         else
                         {
-                            if (!RobloxFile.LogErrors)
-                                return false;
-
-                            Console.Error.WriteLine($"RobloxFiles.Property - Property {Instance.ClassName}.{Name} does not exist!");
+                            RobloxFile.LogError($"RobloxFiles.Property - Property {Instance.ClassName}.{Name} does not exist!");
                         }
                     }
                 }
@@ -248,10 +245,7 @@ namespace RobloxFiles
                                 }
                                 catch
                                 {
-                                    if (!RobloxFile.LogErrors)
-                                        return;
-
-                                    Console.Error.WriteLine($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
+                                    RobloxFile.LogError($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
                                 }
                             }
                             else if (valueType != null)
@@ -267,10 +261,7 @@ namespace RobloxFiles
                                     }
                                     catch
                                     {
-                                        if (!RobloxFile.LogErrors)
-                                            return;
-
-                                        Console.Error.WriteLine($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Instance.ClassName}.{Name}");
+                                        RobloxFile.LogError($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Instance.ClassName}.{Name}");
                                     }
                                 }
                             }

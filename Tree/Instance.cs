@@ -18,6 +18,7 @@ namespace RobloxFiles
         public Instance()
         {
             Name = ClassName;
+            RefreshProperties();
         }
         
         /// <summary>The ClassName of this Instance.</summary>
@@ -506,12 +507,11 @@ namespace RobloxFiles
         /// <param name="prop">A reference to the property that will be added.</param>
         internal void AddProperty(ref Property prop)
         {
+            string name = prop.Name;
+            RemoveProperty(name);
+
             prop.Instance = this;
-
-            if (props.ContainsKey(prop.Name))
-                props.Remove(prop.Name);
-
-            props.Add(prop.Name, prop);
+            props.Add(name, prop);
         }
 
         /// <summary>

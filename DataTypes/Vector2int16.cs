@@ -21,8 +21,8 @@ namespace RobloxFiles.DataTypes
 
         internal Vector2int16(Attribute attr)
         {
-            X = attr.readShort();
-            Y = attr.readShort();
+            X = attr.ReadShort();
+            Y = attr.ReadShort();
         }
         
         private delegate Vector2int16 Operator(Vector2int16 a, Vector2int16 b);
