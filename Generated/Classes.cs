@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.462.0.416719
+// Updated as of 0.463.0.417004
 
 using System;
 
@@ -1761,6 +1761,14 @@ namespace RobloxFiles
         }
     }
 
+    public class IXPService : Instance
+    {
+        public IXPService()
+        {
+            IsService = true;
+        }
+    }
+
     public class InsertService : Instance
     {
         public InsertService()
@@ -2421,6 +2429,7 @@ namespace RobloxFiles
         public float LightEmission;
         public float LightInfluence;
         public bool LockedToPart;
+        public ParticleOrientation Orientation = ParticleOrientation.FacingCamera;
         public float Rate = 20;
         public NumberRange RotSpeed = new NumberRange(0);
         public NumberRange Rotation = new NumberRange(0);

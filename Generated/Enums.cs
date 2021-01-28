@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.462.0.416719
+// Updated as of 0.463.0.417004
 
 namespace RobloxFiles.Enums
 {
@@ -761,6 +761,14 @@ namespace RobloxFiles.Enums
         Ball,
         Block,
         Cylinder
+    }
+
+    public enum ParticleOrientation
+    {
+        FacingCamera,
+        FacingCameraWorldUp,
+        VelocityParallel,
+        VelocityPerpendicular
     }
 
     public enum PoseEasingDirection
