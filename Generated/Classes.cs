@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.463.0.417004
+// Updated as of 0.464.0.417415
 
 using System;
 
@@ -856,6 +856,10 @@ namespace RobloxFiles
         public MeshType MeshType = MeshType.Head;
     }
 
+    public class DataStoreIncrementOptions : Instance
+    {
+    }
+
     public class DataStoreService : Instance
     {
         public DataStoreService()
@@ -867,6 +871,10 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool LegacyNamingScheme;
+    }
+
+    public class DataStoreSetOptions : Instance
+    {
     }
 
     public class Debris : Instance
@@ -1079,6 +1087,11 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+    }
+
+    public class GetDataStoreOptions : Instance
+    {
+        public bool AllScopes;
     }
 
     public class GroupService : Instance
@@ -2177,6 +2190,8 @@ namespace RobloxFiles
         public SurfaceType RightSurface = SurfaceType.Smooth;
         public InputType RightSurfaceInput = InputType.NoInput;
         public int RootPriority;
+
+        [Obsolete]
         public Vector3 RotVelocity = new Vector3();
 
         public Vector3 Size
@@ -2190,6 +2205,8 @@ namespace RobloxFiles
         public SurfaceType TopSurface = SurfaceType.Smooth;
         public InputType TopSurfaceInput = InputType.NoInput;
         public float Transparency;
+
+        [Obsolete]
         public Vector3 Velocity = new Vector3();
 
         [Obsolete]
@@ -2385,6 +2402,7 @@ namespace RobloxFiles
         public float Gravity = 196.2f;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeads MeshPartHeads = MeshPartHeads.Default;
+        public PhysicsSteppingMethod PhysicsSteppingMethod;
         public bool StreamingEnabled;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
@@ -2437,6 +2455,7 @@ namespace RobloxFiles
         public NumberRange Speed = new NumberRange(5);
         public Vector2 SpreadAngle = new Vector2();
         public Content Texture = "rbxasset://textures/particles/sparkles_main.dds";
+        public float TimeScale = 1;
         public NumberSequence Transparency = new NumberSequence(0);
         public float VelocityInheritance;
 
@@ -2671,6 +2690,7 @@ namespace RobloxFiles
         public bool Deprecated;
         public bool EditingDisabled;
         public bool IsBackend;
+        public int PropertyOrder = 5000;
         public string ScriptContext = "";
         public bool ServerOnly;
         public double UIMaximum;
