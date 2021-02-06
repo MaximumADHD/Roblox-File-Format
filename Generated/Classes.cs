@@ -2402,7 +2402,6 @@ namespace RobloxFiles
         public float Gravity = 196.2f;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeads MeshPartHeads = MeshPartHeads.Default;
-        public PhysicsSteppingMethod PhysicsSteppingMethod;
         public bool StreamingEnabled;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
