@@ -54,10 +54,9 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is ProtectedString))
+            if (!(obj is ProtectedString other))
                 return false;
 
-            var other = obj as ProtectedString;
             var otherBuffer = other.RawBuffer;
 
             if (RawBuffer.Length != otherBuffer.Length)

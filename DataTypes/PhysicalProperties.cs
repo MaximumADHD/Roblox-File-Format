@@ -60,10 +60,8 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is PhysicalProperties))
+            if (!(obj is PhysicalProperties other))
                 return false;
-
-            var other = obj as PhysicalProperties;
 
             if (!Density.Equals(other.Density))
                 return false;

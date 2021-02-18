@@ -77,8 +77,6 @@ local function exportStream(label)
 		export.Source = results
 		export.Name = label
 		export.Parent = workspace
-		
-		plugin:OpenScript(export)
 	end
 	
 	if isCoreScript then

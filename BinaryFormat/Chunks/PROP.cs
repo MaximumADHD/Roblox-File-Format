@@ -805,16 +805,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     {
                         CFrame value = null;
 
-                        if (prop.Value is Quaternion)
-                        {
-                            Quaternion q = prop.CastValue<Quaternion>();
+                        if (prop.Value is Quaternion q)
                             value = q.ToCFrame();
-                        }
                         else
-                        {
                             value = prop.CastValue<CFrame>();
-                        }
-
+                        
                         Vector3 pos = value.Position;
                         CFrame_X.Add(pos.X);
                         CFrame_Y.Add(pos.Y);
@@ -856,15 +851,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     props.ForEach(prop =>
                     {
-                        if (prop.Value is uint)
+                        if (prop.Value is uint raw)
                         {
-                            uint raw = prop.CastValue<uint>();
                             Enums.Add(raw);
                             return;
                         }
 
                         int signed = (int)prop.Value;
                         uint value = (uint)signed;
+
                         Enums.Add(value);
                     });
 
@@ -1103,8 +1098,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 object value = prop?.Value;
                 string str = value?.ToInvariantString() ?? "null";
 
-                if (value is byte[])
-                    str = Convert.ToBase64String(value as byte[]);
+                if (value is byte[] buffer)
+                    str = Convert.ToBase64String(buffer);
 
                 if (str.Length > 25)
                     str = str.Substring(0, 22) + "...";

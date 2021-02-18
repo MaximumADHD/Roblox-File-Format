@@ -25,10 +25,8 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Color3))
+            if (!(obj is Color3 other))
                 return false;
-
-            var other = obj as Color3;
 
             if (!R.Equals(other.R))
                 return false;

@@ -7,8 +7,8 @@ namespace RobloxFiles.Utility
 {
     static class DefaultProperty
     {
-        private static Dictionary<string, Instance> ClassMap;
-        private static HashSet<Instance> Refreshed = new HashSet<Instance>();
+        private static readonly Dictionary<string, Instance> ClassMap;
+        private static readonly HashSet<Instance> Refreshed = new HashSet<Instance>();
 
         static DefaultProperty()
         {

@@ -36,10 +36,8 @@
 
         public override bool Equals(object obj)
         {
-            if (!(obj is NumberSequenceKeypoint))
+            if (!(obj is NumberSequenceKeypoint otherKey))
                 return false;
-
-            var otherKey = obj as NumberSequenceKeypoint;
 
             if (!Time.Equals(otherKey.Time))
                 return false;

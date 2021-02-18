@@ -123,6 +123,7 @@
     <Compile Include="DataTypes\Vector2.cs" />
     <Compile Include="DataTypes\Vector3.cs" />
     <Compile Include="Utility\DefaultProperty.cs" />
+    <Compile Include="DataTypes\EulerAngles.cs" />
     <Compile Include="Utility\Formatting.cs" />
     <Compile Include="Utility\FontUtility.cs" />
     <Compile Include="Utility\ImplicitMember.cs" />

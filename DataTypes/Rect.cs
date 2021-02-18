@@ -38,10 +38,8 @@
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Rect))
+            if (!(obj is Rect other))
                 return false;
-
-            var other = obj as Rect;
 
             if (!Min.Equals(other.Min))
                 return false;

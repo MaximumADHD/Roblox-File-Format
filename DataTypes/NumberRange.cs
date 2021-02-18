@@ -36,10 +36,8 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is NumberRange))
+            if (!(obj is NumberRange other))
                 return false;
-
-            var other = obj as NumberRange;
 
             if (!Min.Equals(other.Min))
                 return false;

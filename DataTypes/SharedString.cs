@@ -30,10 +30,9 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is SharedString))
+            if (!(obj is SharedString other))
                 return false;
 
-            var other = (obj as SharedString);
             return Key.Equals(other.Key);
         }
 

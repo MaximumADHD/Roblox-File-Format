@@ -53,10 +53,8 @@
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Ray))
+            if (!(obj is Ray other))
                 return false;
-
-            var other = obj as Ray;
 
             if (!Origin.Equals(other.Origin))
                 return false;

@@ -60,8 +60,8 @@ namespace RobloxFiles
         /// <summary>Indicates whether this Instance has been destroyed.</summary>
         public bool Destroyed { get; internal set; }
 
-        /// <summary>A list of CollectionService tags assigned to this Instance.</summary>
-        public List<string> Tags { get; } = new List<string>();
+        /// <summary>A hashset of CollectionService tags assigned to this Instance.</summary>
+        public HashSet<string> Tags { get; } = new HashSet<string>();
 
         /// <summary>The attributes defined for this Instance.</summary>
         public Attributes Attributes { get; private set; }
@@ -100,7 +100,7 @@ namespace RobloxFiles
             {
                 int length = value.Length;
 
-                List<byte> buffer = new List<byte>();
+                var buffer = new List<byte>();
                 Tags.Clear();
                 
                 for (int i = 0; i < length; i++)

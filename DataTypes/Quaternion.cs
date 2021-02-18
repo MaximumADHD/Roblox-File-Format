@@ -134,21 +134,21 @@ namespace RobloxFiles.DataTypes
 
         public CFrame ToCFrame()
         {
-            float xc = X * 2f;
-            float yc = Y * 2f;
-            float zc = Z * 2f;
+            float xc = X * 2f,
+                  yc = Y * 2f,
+                  zc = Z * 2f;
 
-            float xx = X * xc;
-            float xy = X * yc;
-            float xz = X * zc;
+            float xx = X * xc,
+                  xy = X * yc,
+                  xz = X * zc;
 
-            float wx = W * xc;
-            float wy = W * yc;
-            float wz = W * zc;
+            float wx = W * xc,
+                  wy = W * yc,
+                  wz = W * zc;
 
-            float yy = Y * yc;
-            float yz = Y * zc;
-            float zz = Z * zc;
+            float yy = Y * yc,
+                  yz = Y * zc,
+                  zz = Z * zc;
 
             return new CFrame
             (
@@ -195,13 +195,31 @@ namespace RobloxFiles.DataTypes
 
         public static Quaternion operator *(Quaternion a, Quaternion b)
         {
-            Vector3 v1 = new Vector3(a.X, a.Y, a.Z);
-            float s1 = a.W;
+            Vector3 v1 = new Vector3(a.X, a.Y, a.Z),
+                    v2 = new Vector3(b.X, b.Y, b.Z);
 
-            Vector3 v2 = new Vector3(b.X, b.Y, b.Z);
-            float s2 = b.W;
+            float s1 = a.W,
+                  s2 = b.W;
 
             return new Quaternion(s1 * v2 + s2 * v1 + v1.Cross(v2), s1 * s2 - v1.Dot(v2));
+        }
+
+        public EulerAngles ToEulerAngles()
+        {
+            var angles = new EulerAngles();
+
+            double sinr_cosp = 2 * (W * X + Y * Z);
+            double cosr_cosp = 1 - 2 * (X * X + Y * Y);
+            angles.Roll = (float)Math.Atan2(sinr_cosp, cosr_cosp);
+
+            double sinp = 2 * (W * Y - Z * X);
+            angles.Pitch = (float)Math.Asin(sinp);
+
+            double siny_cosp = 2 * (W * Z + X * Y);
+            double cosy_cosp = 1 - 2 * (Y * Y + Z * Z);
+            angles.Yaw = (float)Math.Atan2(siny_cosp, cosy_cosp);
+
+            return angles;
         }
 
         public override int GetHashCode()
@@ -216,10 +234,8 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Quaternion))
+            if (!(obj is Quaternion other))
                 return false;
-
-            var other = obj as Quaternion;
 
             if (!X.Equals(other.X))
                 return false;

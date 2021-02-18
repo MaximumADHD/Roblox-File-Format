@@ -54,10 +54,9 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is BrickColor))
+            if (!(obj is BrickColor bc))
                 return false;
 
-            var bc = obj as BrickColor;
             return Number == bc.Number;
         }
 

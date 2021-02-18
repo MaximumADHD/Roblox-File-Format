@@ -51,10 +51,9 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is CFrame))
+            if (!(obj is CFrame other))
                 return false;
 
-            var other = obj as CFrame;
             var compA = GetComponents();
             var compB = other.GetComponents();
 
@@ -420,13 +419,24 @@ namespace RobloxFiles.DataTypes
             return new float[] { m14, m24, m34, m11, m12, m13, m21, m22, m23, m31, m32, m33 };
         }
 
+        public EulerAngles ToEulerAngles() => new EulerAngles
+        {
+            Yaw   = (float)Math.Asin(m13),
+            Pitch = (float)Math.Atan2(-m23, m33),
+            Roll  = (float)Math.Atan2(-m12, m11),
+        };
+
+        [Obsolete]
         public float[] ToEulerAnglesXYZ()
         {
-            float x = (float)Math.Atan2(-m23, m33);
-            float y = (float)Math.Asin(m13);
-            float z = (float)Math.Atan2(-m12, m11);
+            var result = ToEulerAngles();
 
-            return new float[] { x, y, z };
+            return new float[]
+            {
+                result.Pitch,
+                result.Yaw,
+                result.Roll
+            };
         }
 
         public bool IsAxisAligned()

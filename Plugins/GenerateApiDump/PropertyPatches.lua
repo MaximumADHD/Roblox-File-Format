@@ -6,6 +6,32 @@ local function UseColor3(propName)
 	}
 end
 
+local function TryDefineEnum(enumName)
+	local gotEnum, enum = pcall(function ()
+		return Enum[enumName]
+	end)
+
+	if gotEnum then
+		return "Enum:" .. tostring(enum)
+	end
+end
+
+local function TryGetEnumItem(enumName, itemName)
+	local gotEnum, enum = pcall(function ()
+		return Enum[enumName]
+	end)
+
+	if gotEnum then
+		local gotEnumItem, item = pcall(function ()
+			return enum[itemName]
+		end)
+
+		if gotEnumItem then
+			return item
+		end
+	end
+end
+
 local GuiTextMixIn = 
 {
 	Add = { Transparency = "float" };
@@ -121,14 +147,14 @@ return
 	{
 		Add = 
 		{
-			LODX = "Enum:LevelOfDetailSetting";
-			LODY = "Enum:LevelOfDetailSetting";
+			LODX = TryDefineEnum("LevelOfDetailSetting");
+			LODY = TryDefineEnum("LevelOfDetailSetting");
 		};
 		
-		Defaults = 
+		Defaults =
 		{
-			LODX = Enum.LevelOfDetailSetting.High;
-			LODY = Enum.LevelOfDetailSetting.High;
+			LODX = TryGetEnumItem("LevelOfDetailSetting", "High");
+			LODY = TryGetEnumItem("LevelOfDetailSetting", "High");
 		};
 	};
 	
@@ -282,12 +308,12 @@ return
 	{
 		Add = 
 		{
-			Technology = "Enum:Technology";
+			Technology = TryDefineEnum("Technology");
 		};
 		
 		Defaults = 
 		{
-			Technology = Enum.Technology.Compatibility;
+			Technology = TryGetEnumItem("Technology", "Compatibility");
 		};
 	};
 	
@@ -485,7 +511,7 @@ return
 		{
 			MaxDistance = "xmlRead_MaxDistance_3";
 			xmlRead_MinDistance_3 = "EmitterSize";
-			
+			RollOffMinDistance = "EmitterSize";
 			MinDistance = "EmitterSize";
 			Pitch = "PlaybackSpeed";
 		};
@@ -649,7 +675,7 @@ return
 			
 			StreamingMinRadius = "int";
 			StreamingTargetRadius = "int";
-			StreamingPauseMode = "Enum:StreamingPauseMode";
+			StreamingPauseMode = TryDefineEnum("StreamingPauseMode");
 			
 			TerrainWeldsFixed = "bool";
 		};
@@ -661,10 +687,11 @@ return
 			
 			StreamingMinRadius = 64;
 			StreamingTargetRadius = 1024;
-			StreamingPauseMode = Enum.StreamingPauseMode.Default;
+			StreamingPauseMode = TryGetEnumItem("StreamingPauseMode", "Default");
 			
 			TerrainWeldsFixed = true;
-			MeshPartHeads = Enum.MeshPartHeads.Default;
+			MeshPartHeads = TryGetEnumItem("MeshPartHeads", "Default");
+			MeshPartHeadsAndAccessories = TryGetEnumItem("MeshPartHeadsAndAccessories", "Default");
 		}
 	}
 }

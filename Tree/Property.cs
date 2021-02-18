@@ -104,10 +104,8 @@ namespace RobloxFiles
                 return;
             }
 
-            if (RawValue is SharedString)
+            if (RawValue is SharedString sharedString)
             {
-                var sharedString = CastValue<SharedString>();
-
                 if (sharedString != null)
                 {
                     RawBuffer = sharedString.SharedValue;
@@ -115,10 +113,8 @@ namespace RobloxFiles
                 }
             }
            
-            if (RawValue is ProtectedString)
+            if (RawValue is ProtectedString protectedString)
             {
-                var protectedString = CastValue<ProtectedString>();
-
                 if (protectedString != null)
                 {
                     RawBuffer = protectedString.RawBuffer;
@@ -222,9 +218,8 @@ namespace RobloxFiles
             {
                 if (Instance != null)
                 {
-                    if (Name == "Tags" && value is byte[])
+                    if (Name == "Tags" && value is byte[] data)
                     {
-                        byte[] data = value as byte[];
                         Instance.SerializedTags = data;
                     }
                     else

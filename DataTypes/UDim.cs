@@ -39,10 +39,8 @@
 
         public override bool Equals(object obj)
         {
-            if (!(obj is UDim))
+            if (!(obj is UDim other))
                 return false;
-
-            var other = obj as UDim;
 
             if (!Scale.Equals(other.Scale))
                 return false;

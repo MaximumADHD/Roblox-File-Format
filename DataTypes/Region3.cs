@@ -52,10 +52,8 @@ namespace RobloxFiles.DataTypes
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Region3))
+            if (!(obj is Region3 other))
                 return false;
-
-            var other = obj as Region3;
 
             if (!Min.Equals(other.Min))
                 return false;

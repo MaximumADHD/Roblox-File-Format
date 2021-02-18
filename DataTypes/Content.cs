@@ -31,10 +31,9 @@
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Content))
+            if (!(obj is Content content))
                 return false;
 
-            var content = obj as Content;
             return Url.Equals(content.Url);
         }
     }

@@ -40,16 +40,10 @@ namespace RobloxFiles.Utility
             {
                 Type result = null;
 
-                if (member is FieldInfo)
-                {
-                    var field = member as FieldInfo;
+                if (member is FieldInfo field)
                     result = field.FieldType;
-                }
-                else if (member is PropertyInfo)
-                {
-                    var prop = member as PropertyInfo;
+                else if (member is PropertyInfo prop)
                     result = prop.PropertyType;
-                }
 
                 return result;
             }
@@ -57,32 +51,22 @@ namespace RobloxFiles.Utility
 
         public object GetValue(object obj)
         {
-            if (member is FieldInfo)
-            {
-                var field = member as FieldInfo;
+            if (member is FieldInfo field)
                 return field.GetValue(obj);
-            }
-            else if (member is PropertyInfo)
-            {
-                var prop = member as PropertyInfo;
+            else if (member is PropertyInfo prop)
                 return prop.GetValue(obj);
-            }
-
+            
             return null;
         }
 
         public void SetValue(object obj, object value)
         {
-            if (member is FieldInfo)
-            {
-                var field = member as FieldInfo;
+            if (member is FieldInfo field)
                 field.SetValue(obj, value);
-            }
-            else if (member is PropertyInfo)
-            {
-                var prop = member as PropertyInfo;
+            else if (member is PropertyInfo prop)
                 prop.SetValue(obj, value);
-            }
+
+            RobloxFile.LogError("Unknown field in ImplicitMember.SetValue");
         }
     }
 }

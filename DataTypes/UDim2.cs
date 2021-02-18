@@ -47,10 +47,8 @@
 
         public override bool Equals(object obj)
         {
-            if (!(obj is UDim2))
+            if (!(obj is UDim2 other))
                 return false;
-
-            var other = obj as UDim2;
 
             if (!X.Equals(other.X))
                 return false;
