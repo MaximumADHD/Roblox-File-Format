@@ -567,6 +567,7 @@ return
 		
 		Defaults = 
 		{
+			Decoration = false;
 			SmoothGrid = "AQU=";
 			PhysicsGrid = "AgMAAAAAAAAAAAAAAAA=";
 			MaterialColors = "AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM";
@@ -671,26 +672,33 @@ return
 		Add =
 		{
 			CollisionGroups = "string";
+
 			ExplicitAutoJoints = "bool";
-			
+			TerrainWeldsFixed = "bool";
+
 			StreamingMinRadius = "int";
 			StreamingTargetRadius = "int";
+
+			MeshPartHeads = TryDefineEnum("MeshPartHeads");
 			StreamingPauseMode = TryDefineEnum("StreamingPauseMode");
-			
-			TerrainWeldsFixed = "bool";
+			PhysicsSteppingMethod = TryDefineEnum("PhysicsSteppingMethod");
+			MeshPartHeadsAndAccessories = TryDefineEnum("MeshPartHeadsAndAccessories");
 		};
 		
 		Defaults =
 		{
 			CollisionGroups = "Default^0^1";
+
+			TouchesUseCollisionGroups = false;
 			ExplicitAutoJoints = true;
+			TerrainWeldsFixed = true;
 			
 			StreamingMinRadius = 64;
 			StreamingTargetRadius = 1024;
-			StreamingPauseMode = TryGetEnumItem("StreamingPauseMode", "Default");
-			
-			TerrainWeldsFixed = true;
+
 			MeshPartHeads = TryGetEnumItem("MeshPartHeads", "Default");
+			StreamingPauseMode = TryGetEnumItem("StreamingPauseMode", "Default");
+			PhysicsSteppingMethod = TryGetEnumItem("PhysicsSteppingMethod", "Default");
 			MeshPartHeadsAndAccessories = TryGetEnumItem("MeshPartHeadsAndAccessories", "Default");
 		}
 	}

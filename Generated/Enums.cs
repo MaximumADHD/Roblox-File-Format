@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.464.0.417415
+// Updated as of 0.465.0.417678
 
 namespace RobloxFiles.Enums
 {
@@ -769,6 +769,13 @@ namespace RobloxFiles.Enums
         FacingCameraWorldUp,
         VelocityParallel,
         VelocityPerpendicular
+    }
+
+    public enum PhysicsSteppingMethod
+    {
+        Default,
+        Fixed,
+        Adaptive
     }
 
     public enum PoseEasingDirection
