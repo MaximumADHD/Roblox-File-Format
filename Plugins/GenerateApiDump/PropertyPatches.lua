@@ -203,12 +203,12 @@ return
 	{
 		Add = 
 		{
-			formFactorRaw = "Enum:FormFactor";
+			formFactorRaw = TryDefineEnum("FormFactor");
 		};
 		
 		Defaults = 
 		{
-			formFactorRaw = Enum.FormFactor.Brick;
+			formFactorRaw = TryGetEnumItem("FormFactor", "Brick");
 		};
 		
 		Redirect = 
@@ -400,7 +400,7 @@ return
 	
 	Part = 
 	{
-		Add = { shape = "Enum:PartType" };
+		Add = { shape = TryDefineEnum("PartType") };
 		Redirect = { Shape = "shape" };
 	};
 	
@@ -421,9 +421,14 @@ return
 		Add =
 		{
 			AssetId = "Content";
+
 			ChildData = "BinaryString";
+			ChildData2 = "SharedString";
+
 			MeshData = "BinaryString";
-			FormFactor = "Enum:FormFactor";
+			MeshData2 = "SharedString";
+
+			FormFactor = TryDefineEnum("FormFactor");
 		};
 		
 		Defaults = { FormFactor = Enum.FormFactor.Custom };
@@ -560,6 +565,7 @@ return
 	{
 		Add = 
 		{
+			AcquisitionMethod = TryDefineEnum("TerrainAcquisitionMethod");
 			ClusterGridV3 = "BinaryString";
 			PhysicsGrid = "BinaryString";
 			SmoothGrid = "BinaryString";
@@ -570,6 +576,7 @@ return
 			Decoration = false;
 			SmoothGrid = "AQU=";
 			PhysicsGrid = "AgMAAAAAAAAAAAAAAAA=";
+			AcquisitionMethod = TryGetEnumItem("TerrainAcquisitionMethod", "None");
 			MaterialColors = "AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM";
 		};
 	};
@@ -614,8 +621,13 @@ return
 	
 	TrussPart =
 	{
-		Add = { style = "Enum:Style" };
+		Add = { style = TryDefineEnum("Style") };
 		Redirect = { Style = "style" };
+	};
+
+	UnvalidatedAssetService =
+	{
+		Add = { CachedData = "string" };
 	};
 	
 	ViewportFrame = 

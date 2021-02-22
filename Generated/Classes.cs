@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.465.0.417678
+// Updated as of 0.466.1.418149
 
 using System;
 
@@ -2285,6 +2285,7 @@ namespace RobloxFiles
 
     public class Terrain : BasePart
     {
+        public TerrainAcquisitionMethod AcquisitionMethod = TerrainAcquisitionMethod.None;
         public byte[] ClusterGridV3 = Array.Empty<byte>();
         public bool Decoration;
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
@@ -2328,8 +2329,10 @@ namespace RobloxFiles
     {
         public Content AssetId = "";
         public byte[] ChildData = Array.Empty<byte>();
+        public SharedString ChildData2 = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public FormFactor FormFactor = FormFactor.Custom;
         public byte[] MeshData = Array.Empty<byte>();
+        public SharedString MeshData2 = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public RenderFidelity RenderFidelity = RenderFidelity.Precise;
         public float SmoothingAngle;
         public bool UsePartColor;
@@ -2372,7 +2375,7 @@ namespace RobloxFiles
         public ModelLevelOfDetail LevelOfDetail = ModelLevelOfDetail.Automatic;
         public CFrame ModelInPrimary = new CFrame();
         public CFrame ModelMeshCFrame = new CFrame();
-        public SharedString ModelMeshData;
+        public SharedString ModelMeshData = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public Vector3 ModelMeshSize = new Vector3();
         public BasePart PrimaryPart;
     }
@@ -2401,7 +2404,7 @@ namespace RobloxFiles
         public bool FilteringEnabled;
         public float Gravity = 196.2f;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
-        public MeshPartHeads MeshPartHeads = MeshPartHeads.Default;
+        public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
         public bool StreamingEnabled;
         public int StreamingMinRadius = 64;
@@ -3409,12 +3412,24 @@ namespace RobloxFiles
         public float Scale = 1;
     }
 
+    public class UIStroke : UIComponent
+    {
+        public ApplyStrokeMode ApplyStrokeMode = ApplyStrokeMode.Contextual;
+        public Color3 Color = new Color3();
+        public bool Enabled = true;
+        public LineJoinMode LineJoinMode = LineJoinMode.Round;
+        public float Thickness = 1;
+        public float Transparency;
+    }
+
     public class UnvalidatedAssetService : Instance
     {
         public UnvalidatedAssetService()
         {
             IsService = true;
         }
+
+        public string CachedData = "";
     }
 
     public class UserInputService : Instance

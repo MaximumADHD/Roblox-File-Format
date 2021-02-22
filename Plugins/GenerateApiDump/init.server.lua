@@ -1,5 +1,5 @@
+local Selection = game:GetService("Selection")
 local HttpService = game:GetService("HttpService")
-local ServerStorage = game:GetService("ServerStorage")
 local StarterPlayer = game:GetService("StarterPlayer")
 local StudioService = game:GetService("StudioService")
 
@@ -77,6 +77,8 @@ local function exportStream(label)
 		export.Source = results
 		export.Name = label
 		export.Parent = workspace
+
+		Selection:Add{export}
 	end
 	
 	if isCoreScript then
@@ -312,11 +314,18 @@ local function generateClasses()
 				end)
 			elseif not classTags.NotCreatable then
 				pcall(function ()
+					local dumpFolder = game:FindFirstChild("DumpFolder")
 					class.Object = Instance.new(className)
 					
-					if game:FindFirstChild("DumpFolder") then
+					if dumpFolder then
+						local old = dumpFolder:FindFirstChildOfClass(className)
+
+						if old then
+							old:Destroy()
+						end
+
 						class.Object.Name = className
-						class.Object.Parent = game.DumpFolder
+						class.Object.Parent = dumpFolder
 					end
 				end)
 			end
@@ -548,6 +557,9 @@ local function generateClasses()
 								gotValue = true
 							elseif stringTypes[typeName] then
 								value = ""
+								gotValue = true
+							elseif typeName == "SharedString" then
+								value = "yuZpQdnvvUBOTYh1jqZ2cA=="
 								gotValue = true
 							elseif category == "DataType" then
 								local DataType = env[typeName]

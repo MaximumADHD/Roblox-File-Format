@@ -8,10 +8,20 @@ namespace RobloxFiles.Utility
     internal class ImplicitMember
     {
         private const BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
-        private readonly object member;
         
-        private ImplicitMember(FieldInfo field) { member = field; }
-        private ImplicitMember(PropertyInfo prop) { member = prop; }
+        private readonly object member;
+        private readonly string inputName;
+        
+        private ImplicitMember(FieldInfo field, string name) 
+        { 
+            member = field;
+            inputName = name;
+        }
+        private ImplicitMember(PropertyInfo prop, string name)
+        {
+            member = prop;
+            inputName = name;
+        }
 
         public static ImplicitMember Get(Type type, string name)
         {
@@ -21,7 +31,7 @@ namespace RobloxFiles.Utility
                 .FirstOrDefault();
 
             if (field != null)
-                return new ImplicitMember(field);
+                return new ImplicitMember(field, name);
 
             var prop = type
                 .GetProperties(flags)
@@ -29,7 +39,7 @@ namespace RobloxFiles.Utility
                 .FirstOrDefault();
 
             if (prop != null)
-                return new ImplicitMember(prop);
+                return new ImplicitMember(prop, name);
 
             return null;
         }
@@ -38,35 +48,54 @@ namespace RobloxFiles.Utility
         {
             get
             {
-                Type result = null;
-
-                if (member is FieldInfo field)
-                    result = field.FieldType;
-                else if (member is PropertyInfo prop)
-                    result = prop.PropertyType;
-
-                return result;
+                switch (member)
+                {
+                    case PropertyInfo prop:  return prop.PropertyType;
+                    case FieldInfo field:    return field.FieldType;
+                    
+                    default:                 return null;
+                }
             }
         }
 
         public object GetValue(object obj)
         {
-            if (member is FieldInfo field)
-                return field.GetValue(obj);
-            else if (member is PropertyInfo prop)
-                return prop.GetValue(obj);
-            
-            return null;
+            object result = null;
+
+            switch (member)
+            {
+                case FieldInfo field:
+                {
+                    result = field.GetValue(obj);
+                    break;
+                }
+                case PropertyInfo prop:
+                {
+                    result = prop.GetValue(obj);
+                    break;
+                }
+            }
+
+            return result;
         }
 
         public void SetValue(object obj, object value)
         {
-            if (member is FieldInfo field)
-                field.SetValue(obj, value);
-            else if (member is PropertyInfo prop)
-                prop.SetValue(obj, value);
-
-            RobloxFile.LogError("Unknown field in ImplicitMember.SetValue");
+            switch (member)
+            {
+                case FieldInfo field:
+                {
+                    field.SetValue(obj, value);
+                    return;
+                }
+                case PropertyInfo prop:
+                {
+                    prop.SetValue(obj, value);
+                    return;
+                }
+            }
+            
+            RobloxFile.LogError($"Unknown field '{inputName}' in ImplicitMember.SetValue");
         }
     }
 }

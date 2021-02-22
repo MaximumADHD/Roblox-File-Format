@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.465.0.417678
+// Updated as of 0.466.1.418149
 
 namespace RobloxFiles.Enums
 {
@@ -41,6 +41,12 @@ namespace RobloxFiles.Enums
         Movement,
         Action,
         Core = 1000
+    }
+
+    public enum ApplyStrokeMode
+    {
+        Contextual,
+        Border
     }
 
     public enum AspectType
@@ -661,6 +667,13 @@ namespace RobloxFiles.Enums
         High
     }
 
+    public enum LineJoinMode
+    {
+        Round,
+        Bevel,
+        Miter
+    }
+
     public enum Material
     {
         Plastic = 256,
@@ -702,7 +715,7 @@ namespace RobloxFiles.Enums
         Water = 2048
     }
 
-    public enum MeshPartHeads
+    public enum MeshPartHeadsAndAccessories
     {
         Default,
         Disabled,
@@ -963,6 +976,22 @@ namespace RobloxFiles.Enums
         Compatibility,
         ShadowMap,
         Future
+    }
+
+    public enum TerrainAcquisitionMethod
+    {
+        None,
+        Legacy,
+        Template,
+        Generate,
+        Import,
+        Convert,
+        EditAddTool,
+        EditSeaLevelTool,
+        EditReplaceTool,
+        RegionFillTool,
+        RegionPasteTool,
+        Other
     }
 
     public enum TextTruncate
