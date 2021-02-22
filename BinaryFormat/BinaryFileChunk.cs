@@ -29,7 +29,6 @@ namespace RobloxFiles.BinaryFormat
         public override string ToString()
         {
             string chunkType = ChunkType.Replace('\0', ' ');
-            
             return $"'{chunkType}' Chunk ({Size} bytes) [{Handler?.ToString()}]";
         }
 
