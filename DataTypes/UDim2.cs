@@ -20,12 +20,6 @@
             Y = y;
         }
 
-        internal UDim2(Attribute attr)
-        {
-            X = new UDim(attr);
-            Y = new UDim(attr);
-        }
-        
         public UDim2 Lerp(UDim2 other, float alpha)
         {
             float scaleX = X.Scale + ((other.X.Scale - X.Scale) * alpha);

@@ -29,27 +29,21 @@ namespace RobloxFiles.DataTypes
             Y = y;
         }
 
-        internal Vector2(float[] coords)
+        public Vector2(params float[] coords)
         {
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
         }
 
-        internal Vector2(Attribute attr)
-        {
-            X = attr.ReadFloat();
-            Y = attr.ReadFloat();
-        }
-
         private delegate Vector2 Operator(Vector2 a, Vector2 b);
 
-        private static Vector2 upcastFloatOp(Vector2 vec, float num, Operator upcast)
+        private static Vector2 UpcastFloatOp(Vector2 vec, float num, Operator upcast)
         {
             Vector2 numVec = new Vector2(num, num);
             return upcast(vec, numVec);
         }
 
-        private static Vector2 upcastFloatOp(float num, Vector2 vec, Operator upcast)
+        private static Vector2 UpcastFloatOp(float num, Vector2 vec, Operator upcast)
         {
             Vector2 numVec = new Vector2(num, num);
             return upcast(numVec, vec);
@@ -61,20 +55,20 @@ namespace RobloxFiles.DataTypes
         private static readonly Operator div = new Operator((a, b) => new Vector2(a.X / b.X, a.Y / b.Y));
 
         public static Vector2 operator +(Vector2 a, Vector2 b) => add(a, b);
-        public static Vector2 operator +(Vector2 v, float n) => upcastFloatOp(v, n, add);
-        public static Vector2 operator +(float n, Vector2 v) => upcastFloatOp(n, v, add);
+        public static Vector2 operator +(Vector2 v, float n) => UpcastFloatOp(v, n, add);
+        public static Vector2 operator +(float n, Vector2 v) => UpcastFloatOp(n, v, add);
 
         public static Vector2 operator -(Vector2 a, Vector2 b) => sub(a, b);
-        public static Vector2 operator -(Vector2 v, float n) => upcastFloatOp(v, n, sub);
-        public static Vector2 operator -(float n, Vector2 v) => upcastFloatOp(n, v, sub);
+        public static Vector2 operator -(Vector2 v, float n) => UpcastFloatOp(v, n, sub);
+        public static Vector2 operator -(float n, Vector2 v) => UpcastFloatOp(n, v, sub);
 
         public static Vector2 operator *(Vector2 a, Vector2 b) => mul(a, b);
-        public static Vector2 operator *(Vector2 v, float n) => upcastFloatOp(v, n, mul);
-        public static Vector2 operator *(float n, Vector2 v) => upcastFloatOp(n, v, mul);
+        public static Vector2 operator *(Vector2 v, float n) => UpcastFloatOp(v, n, mul);
+        public static Vector2 operator *(float n, Vector2 v) => UpcastFloatOp(n, v, mul);
 
         public static Vector2 operator /(Vector2 a, Vector2 b) => div(a, b);
-        public static Vector2 operator /(Vector2 v, float n) => upcastFloatOp(v, n, div);
-        public static Vector2 operator /(float n, Vector2 v) => upcastFloatOp(n, v, div);
+        public static Vector2 operator /(Vector2 v, float n) => UpcastFloatOp(v, n, div);
+        public static Vector2 operator /(float n, Vector2 v) => UpcastFloatOp(n, v, div);
 
         public static Vector2 operator -(Vector2 v)
         {

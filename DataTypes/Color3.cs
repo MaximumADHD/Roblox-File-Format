@@ -40,13 +40,6 @@ namespace RobloxFiles.DataTypes
             return true;
         }
 
-        internal Color3(Attribute attr)
-        {
-            R = attr.ReadFloat();
-            G = attr.ReadFloat();
-            B = attr.ReadFloat();
-        }
-
         public static Color3 FromRGB(uint r = 0, uint g = 0, uint b = 0)
         {
             return new Color3(r / 255f, g / 255f, b / 255f);

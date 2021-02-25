@@ -2,221 +2,221 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
-using RobloxFiles.DataTypes;
+using System.Reflection;
+using System.Text;
 
 namespace RobloxFiles
 {
+    // This enum defines existing attributes
+    // Commented out values are known types
+    // which are unsupported at this time.
+
     public enum AttributeType
     {
-        Null = 1,
-        String,
-        Bool,
-        Int,
-        Float,
-        Double,
-        Array,
-        Dictionary,
-        UDim,
-        UDim2,
-        Ray,
-        Faces,
-        Axes,
-        BrickColor,
-        Color3,
-        Vector2,
-        Vector3,
-        Vector2int16,
-        Vector3int16,
-        CFrame,
-        Enum,
+        // Null = 1,
+        String = 2,
+        Bool = 3,
+        // Int = 4,
+        Float = 5,
+        Double = 6,
+        // Array = 7,
+        // Dictionary = 8,
+        UDim = 9,
+        UDim2 = 10,
+        // Ray = 11,
+        // Faces = 12,
+        // Axes = 13
+        BrickColor = 14,
+        Color3 = 15,
+        Vector2 = 16,
+        Vector3 = 17,
+        // Vector2int16 = 18,
+        // Vector3int16 = 19,
+        // CFrame = 20,
+        // Enum = 21,
         NumberSequence = 23,
-        NumberSequenceKeypoint,
-        ColorSequence,
-        ColorSequenceKeypoint,
-        NumberRange,
-        Rect,
-        PhysicalProperties,
-        Region3 = 31,
-        Region3int16,
+        // NumberSequenceKeypoint = 24,
+        ColorSequence = 25,
+        // ColorSequenceKeypoint = 26,
+        NumberRange = 27,
+        Rect = 28,
+        // PhysicalProperties = 29
+        // Region3 = 31,
+        // Region3int16 = 32
     }
 
     public class Attribute : IDisposable
     {
+        private static readonly IReadOnlyDictionary<AttributeType, Tokenizer> AttributeSupport;
+        private static readonly IReadOnlyDictionary<Type, AttributeType> SupportedTypes;
+
         public AttributeType DataType { get; private set; }
         public object Value { get; private set; }
 
+        private struct Tokenizer
+        {
+            public readonly Type Support;
+            public readonly object Token;
+
+            public readonly MethodInfo Reader;
+            public readonly MethodInfo Writer;
+
+            public Tokenizer(Type tokenType, Type support)
+            {
+                Support = support;
+                Token = Activator.CreateInstance(tokenType);
+
+                Reader = support.GetMethod("ReadAttribute");
+                Writer = support.GetMethod("WriteAttribute");
+            }
+
+            public object ReadAttribute(Attribute attr)
+            {
+                var args = new object[1] { attr };
+                return Reader.Invoke(Token, args);
+            }
+
+            public void WriteAttribute(Attribute attr, object value)
+            {
+                var args = new object[2] { attr, value };
+                Writer.Invoke(Token, args);
+            }
+        }
+
+        static Attribute()
+        {
+            var attributeSupport = new Dictionary<AttributeType, Tokenizer>();
+            var supportedTypes = new Dictionary<Type, AttributeType>();
+
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var handlerTypes =
+                from type in assembly.GetTypes()
+                    let typeInfo = type.GetTypeInfo()
+                    let support = typeInfo.GetInterface("IAttributeToken`1")
+                where (support != null)
+                    select new Tokenizer(typeInfo, support);
+            
+            foreach (var tokenizer in handlerTypes)
+            {
+                var token = tokenizer.Token;
+                var support = tokenizer.Support;
+                
+                var genericType = support.GenericTypeArguments.FirstOrDefault();
+                var getAttributeType = support.GetMethod("get_AttributeType");
+                var attributeType = (AttributeType)getAttributeType.Invoke(token, null);
+
+                attributeSupport.Add(attributeType, tokenizer);
+                supportedTypes.Add(genericType, attributeType);
+            }
+
+            AttributeSupport = attributeSupport;
+            SupportedTypes = supportedTypes;
+        }
+
+        /// <summary>
+        /// Returns true if the provided type is supported by attributes.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static bool SupportsType(Type type)
+        {
+            return SupportedTypes.ContainsKey(type);
+        }
+
+        /// <summary>
+        /// Returns true if the provided type is supported by attributes.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static bool SupportsType<T>()
+        {
+            Type type = typeof(T);
+            return SupportsType(type);
+        }
+
         public override string ToString()
         {
-            string type = Enum.GetName(typeof(AttributeType), DataType);
             string value = Value?.ToString() ?? "null";
-            return $"[{type}: {value}]";
+            return $"[{DataType}: {value}]";
         }
 
-        internal BinaryReader reader;
-        // internal BinaryWriter writer;
+        internal BinaryReader Reader;
+        internal BinaryWriter Writer;
 
-        internal int ReadInt() => reader.ReadInt32();
-        internal byte ReadByte() => reader.ReadByte();
-        internal bool ReadBool() => reader.ReadBoolean();
-        internal short ReadShort() => reader.ReadInt16();
-        internal float ReadFloat() => reader.ReadSingle();
-        internal double ReadDouble() => reader.ReadDouble();
-        internal string ReadString() => reader.ReadString(true);
+        internal int ReadInt() => Reader.ReadInt32();
+        internal byte ReadByte() => Reader.ReadByte();
+        internal bool ReadBool() => Reader.ReadBoolean();
+        internal short ReadShort() => Reader.ReadInt16();
+        internal float ReadFloat() => Reader.ReadSingle();
+        internal double ReadDouble() => Reader.ReadDouble();
+        internal string ReadString() => Reader.ReadString(true);
 
-        internal Attribute[] ReadArray()
+        internal void WriteInt(int value) => Writer.Write(value);
+        internal void WriteBool(bool value) => Writer.Write(value);
+        internal void WriteFloat(float value) => Writer.Write(value);
+        internal void WriteDouble(double value) => Writer.Write(value);
+
+        internal void WriteString(string value)
         {
-            int count = ReadInt();
-            var result = new Attribute[count];
+            int length = value.Length;
+            Writer.Write(length);
 
-            for (int i = 0; i < count; i++)
-                result[i] = new Attribute(reader);
-
-            return result;
+            byte[] utf8 = Encoding.UTF8.GetBytes(value);
+            Writer.Write(utf8);
         }
 
-        internal object readEnum()
+        internal void Read()
         {
-            string name = ReadString();
-            int value = ReadInt();
-
-            try
-            {
-                Type enumType = Type.GetType($"RobloxFiles.Enums.{name}");
-                return Enum.ToObject(enumType, value);
-            }
-            catch
-            {
-                if (RobloxFile.LogErrors)
-                    Console.Error.WriteLine($"RobloxFile - Got unknown Enum {name} in Attribute.");
-
-                return null;
-            }
-        }
-
-        private void readData()
-        {
-            if (reader == null)
+            if (Reader == null)
                 return;
 
-            DataType = (AttributeType)reader.ReadByte();
+            var dataType = Reader.ReadByte();
+            DataType = (AttributeType)dataType;
 
-            switch (DataType)
-            {
-                case AttributeType.Null:
-                    break;
-                case AttributeType.String:
-                    Value = ReadString();
-                    break;
-                case AttributeType.Bool:
-                    Value = ReadBool();
-                    break;
-                case AttributeType.Int:
-                    Value = ReadInt();
-                    break;
-                case AttributeType.Float:
-                    Value = ReadFloat();
-                    break;
-                case AttributeType.Double:
-                    Value = ReadDouble();
-                    break;
-                case AttributeType.Array:
-                    Value = ReadArray();
-                    break;
-                case AttributeType.Dictionary:
-                    Value = new Attributes(reader);
-                    break;
-                case AttributeType.UDim:
-                    Value = new UDim(this);
-                    break;
-                case AttributeType.UDim2:
-                    Value = new UDim2(this);
-                    break;
-                case AttributeType.Ray:
-                    Value = new Ray(this);
-                    break;
-                case AttributeType.Faces:
-                    Value = (Faces)ReadInt();
-                    break;
-                case AttributeType.Axes:
-                    Value = (Axes)ReadInt();
-                    break;
-                case AttributeType.BrickColor:
-                    Value = (BrickColor)ReadInt();
-                    break;
-                case AttributeType.Color3:
-                    Value = new Color3(this);
-                    break;
-                case AttributeType.Vector2:
-                    Value = new Vector2(this);
-                    break;
-                case AttributeType.Vector3:
-                    Value = new Vector3(this);
-                    break;
-                case AttributeType.Vector2int16:
-                    Value = new Vector2int16(this);
-                    break;
-                case AttributeType.Vector3int16:
-                    Value = new Vector3int16(this);
-                    break;
-                case AttributeType.CFrame:
-                    Value = new CFrame(this);
-                    break;
-                case AttributeType.Enum:
-                    Value = readEnum();
-                    break;
-                case AttributeType.NumberSequence:
-                    Value = new NumberSequence(this);
-                    break;
-                case AttributeType.NumberSequenceKeypoint:
-                    Value = new NumberSequenceKeypoint(this);
-                    break;
-                case AttributeType.ColorSequence:
-                    Value = new ColorSequence(this);
-                    break;
-                case AttributeType.ColorSequenceKeypoint:
-                    Value = new ColorSequenceKeypoint(this);
-                    break;
-                case AttributeType.NumberRange:
-                    Value = new NumberRange(this);
-                    break;
-                case AttributeType.Rect:
-                    Value = new Rect(this);
-                    break;
-                case AttributeType.PhysicalProperties:
-                    bool custom = ReadBool();
+            var tokenizer = AttributeSupport[DataType];
+            Value = tokenizer.ReadAttribute(this);
 
-                    if (custom)
-                        Value = new PhysicalProperties(this);
-
-                    break;
-                case AttributeType.Region3:
-                    Value = new Region3(this);
-                    break;
-                case AttributeType.Region3int16:
-                    Value = new Region3int16(this);
-                    break;
-                default: throw new InvalidDataException($"Cannot handle AttributeType {DataType}!");
-            }
-
-            reader = null;
+            Reader = null;
         }
 
         public void Dispose()
         {
-            reader.Dispose();
+            Reader?.Dispose();
+        }
+
+        internal void Write(BinaryWriter writer)
+        {
+            var tokenizer = AttributeSupport[DataType];
+            Writer = writer;
+
+            writer.Write((byte)DataType);
+            tokenizer.WriteAttribute(this, Value);
+
+            Writer = null;
         }
 
         internal Attribute(BinaryReader reader)
         {
-            this.reader = reader;
-            readData();
+            Reader = reader;
+            Read();
         }
 
         internal Attribute(MemoryStream stream)
         {
-            reader = new BinaryReader(stream);
-            readData();
+            Reader = new BinaryReader(stream);
+            Read();
+        }
+
+        internal Attribute(object value)
+        {
+            Type type = value.GetType();
+
+            if (SupportedTypes.TryGetValue(type, out AttributeType dataType))
+            {
+                DataType = dataType;
+                Value = value;
+            }
         }
     }
 
@@ -248,15 +248,32 @@ namespace RobloxFiles
         internal Attributes(MemoryStream stream)
         {
             using (BinaryReader reader = new BinaryReader(stream))
-            {
                 Initialize(reader);
-            }
+
+            stream.Dispose();
         }
 
         internal byte[] Serialize()
         {
-            // TODO
-            return Array.Empty<byte>();
+            if (Count == 0)
+                return Array.Empty<byte>();
+
+            using (var output = new MemoryStream())
+            using (var writer = new BinaryWriter(output))
+            {
+                writer.Write(Count);
+
+                foreach (string key in Keys)
+                {
+                    var attribute = this[key];
+                    attribute.Writer = writer;
+
+                    attribute.WriteString(key);
+                    attribute.Write(writer);
+                }
+
+                return output.ToArray();
+            }
         }
     }
 }

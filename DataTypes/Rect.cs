@@ -22,12 +22,6 @@
             Max = new Vector2(maxX, maxY);
         }
 
-        internal Rect(Attribute attr)
-        {
-            Min = new Vector2(attr);
-            Max = new Vector2(attr);
-        }
-
         public override int GetHashCode()
         {
             int hash = Min.GetHashCode()

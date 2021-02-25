@@ -52,17 +52,6 @@ namespace RobloxFiles.DataTypes
             Keypoints = keypoints;
         }
 
-        public NumberSequence(Attribute attr)
-        {
-            int numKeys = attr.ReadInt();
-            var keypoints = new NumberSequenceKeypoint[numKeys];
-
-            for (int i = 0; i < numKeys; i++)
-                keypoints[i] = new NumberSequenceKeypoint(attr);
-
-            Keypoints = keypoints;
-        }
-
         public override int GetHashCode()
         {
             int hash = 0;

@@ -64,19 +64,22 @@ namespace RobloxFiles
         public HashSet<string> Tags { get; } = new HashSet<string>();
 
         /// <summary>The attributes defined for this Instance.</summary>
-        public Attributes Attributes { get; private set; }
+        private Attributes AttributesImpl;
+        
+        /// <summary>The public readonly access point of the attributes on this Instance.</summary>
+        public IReadOnlyDictionary<string, Attribute> Attributes => AttributesImpl;
 
         /// <summary>The internal serialized data of this Instance's attributes</summary>
         internal byte[] AttributesSerialize
         {
             get
             {
-                return Attributes?.Serialize() ?? Array.Empty<byte>();
+                return AttributesImpl?.Serialize() ?? Array.Empty<byte>();
             }
             set
             {
-                MemoryStream data = new MemoryStream(value);
-                Attributes = new Attributes(data);
+                var data = new MemoryStream(value);
+                AttributesImpl = new Attributes(data);
             }
         }
 
@@ -121,6 +124,55 @@ namespace RobloxFiles
                 }
             }
         }
+
+        /// <summary>
+        /// Attempts to get the value of an attribute whose type is T.
+        /// Returns false if no attribute was found with that type.
+        /// </summary>
+        /// <typeparam name="T">The expected type of the attribute.</typeparam>
+        /// <param name="key">The name of the attribute.</param>
+        /// <param name="value">The out value to set.</param>
+        /// <returns>True if the attribute could be read and the out value was set, false otherwise.</returns>
+        public bool GetAttribute<T>(string key, out T value)
+        {
+            if (AttributesImpl.TryGetValue(key, out Attribute attr))
+            {
+                object result = attr.Value;
+
+                if (result is T)
+                {
+                    value = (T)result;
+                    return true;
+                }
+            }
+
+            value = default;
+            return false;
+        }
+
+        /// <summary>
+        /// Attempts to set an attribute to the provided value. The provided key must be no longer than 100 characters.
+        /// Returns false if the key is too long or the provided type is not supported by Roblox.
+        /// If an attribute with the provide key already exists, it will be overwritten.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The name of the attribute.</param>
+        /// <param name="value">The value to be assigned to the attribute.</param>
+        /// <returns>True if the attribute was set, false otherwise.</returns>
+        public bool SetAttribute<T>(string key, T value)
+        {
+            if (key.Length > 100)
+                return false;
+
+            if (!Attribute.SupportsType<T>())
+                return false;
+
+            var attr = new Attribute(value);
+            AttributesImpl[key] = attr;
+
+            return true;
+        }
+
 
         /// <summary>Returns true if this Instance is an ancestor to the provided Instance.</summary>
         /// <param name="descendant">The instance whose descendance will be tested against this Instance.</param>
@@ -432,7 +484,7 @@ namespace RobloxFiles
             ParentLocked = true;
 
             Tags?.Clear();
-            Attributes?.Clear();
+            AttributesImpl?.Clear();
 
             while (Children.Any())
             {

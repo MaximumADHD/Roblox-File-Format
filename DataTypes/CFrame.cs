@@ -6,9 +6,11 @@ namespace RobloxFiles.DataTypes
 {
     public class CFrame
     {
-        private float m11 = 1, m12, m13, m14;
-        private float m21, m22 = 1, m23, m24;
-        private float m31, m32, m33 = 1, m34;
+        private float m14, m24, m34;
+
+        private readonly float m11 = 1, m12, m13;
+        private readonly float m21, m22 = 1, m23;
+        private readonly float m31, m32, m33 = 1;
 
         private const float m41 = 0, m42 = 0, m43 = 0, m44 = 1;
 
@@ -160,49 +162,17 @@ namespace RobloxFiles.DataTypes
             m31 = comp[9]; m32 = comp[10]; m33 = comp[11];
         }
 
-        private void InitFromMatrix(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
+        public CFrame(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
         {
+            Contract.Requires(pos != null && vX != null && vY != null);
+
             if (vZ == null)
                 vZ = vX.Cross(vY);
 
             m14 = pos.X; m24 = pos.Y; m34 = pos.Z;
-            m11 =  vX.X; m12 =  vX.Y; m13 =  vX.Z;
-            m21 =  vY.X; m22 =  vY.Y; m23 =  vY.Z;
-            m31 =  vZ.X; m32 =  vZ.Y; m33 =  vZ.Z;
-        }
-
-        public CFrame(Vector3 pos, Vector3 vX, Vector3 vY, Vector3 vZ = null)
-        {
-            Contract.Requires(pos != null && vX != null && vY != null);
-            InitFromMatrix(pos, vX, vY, vZ);
-        }
-
-        internal CFrame(Attribute attr)
-        {
-            Vector3 pos = new Vector3(attr);
-            byte rawOrientId = attr.ReadByte();
-
-            if (rawOrientId > 0)
-            {
-                // Make sure this value is in a safe range.
-                int orientId = (rawOrientId - 1) % 36;
-
-                NormalId xColumn = (NormalId)(orientId / 6);
-                Vector3 vX = Vector3.FromNormalId(xColumn);
-
-                NormalId yColumn = (NormalId)(orientId % 6);
-                Vector3 vY = Vector3.FromNormalId(yColumn);
-
-                InitFromMatrix(pos, vX, vY);
-            }
-            else
-            {
-                Vector3 vX = new Vector3(attr),
-                        vY = new Vector3(attr),
-                        vZ = new Vector3(attr);
-
-                InitFromMatrix(pos, vX, vY, vZ);
-            }
+            m11 = vX.X;  m12 = vX.Y;  m13 = vX.Z;
+            m21 = vY.X;  m22 = vY.Y;  m23 = vY.Z;
+            m31 = vZ.X;  m32 = vZ.Y;  m33 = vZ.Z;
         }
 
         public static CFrame operator +(CFrame a, Vector3 b)

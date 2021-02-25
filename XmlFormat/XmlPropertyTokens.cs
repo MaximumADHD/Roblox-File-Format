@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml;
 
+using RobloxFiles.Tokens;
+
 namespace RobloxFiles.XmlFormat
 {
     public static class XmlPropertyTokens
@@ -27,7 +29,7 @@ namespace RobloxFiles.XmlFormat
 
             foreach (IXmlPropertyToken propToken in propTokens)
             {
-                var tokens = propToken.Token.Split(';')
+                var tokens = propToken.XmlPropertyToken.Split(';')
                     .Select(token => token.Trim())
                     .ToList();
 

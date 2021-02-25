@@ -19,13 +19,6 @@
             Envelope = envelope;
         }
 
-        internal ColorSequenceKeypoint(Attribute attr)
-        {
-            Envelope = attr.ReadInt();
-            Time = attr.ReadFloat();
-            Value = new Color3(attr);
-        }
-
         public override int GetHashCode()
         {
             int hash = Time.GetHashCode()

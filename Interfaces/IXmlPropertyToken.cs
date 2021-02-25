@@ -1,10 +1,10 @@
 ﻿using System.Xml;
 
-namespace RobloxFiles.XmlFormat
+namespace RobloxFiles.Tokens
 {
     public interface IXmlPropertyToken
     {
-        string Token { get; }
+        string XmlPropertyToken { get; }
 
         bool ReadProperty(Property prop, XmlNode token);
         void WriteProperty(Property prop, XmlDocument doc, XmlNode node);

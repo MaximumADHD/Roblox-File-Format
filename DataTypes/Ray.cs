@@ -28,12 +28,6 @@
             Direction = direction ?? new Vector3();
         }
 
-        internal Ray(Attribute attr)
-        {
-            Origin = new Vector3(attr);
-            Direction = new Vector3(attr);
-        }
-
         public Vector3 ClosestPoint(Vector3 point)
         {
             Vector3 result = Origin;

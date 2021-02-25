@@ -25,10 +25,6 @@ namespace RobloxFiles.DataTypes
             Max = max;
         }
 
-        internal NumberRange(Attribute attr) : this(attr.ReadFloat(), attr.ReadFloat())
-        {
-        }
-
         public override int GetHashCode()
         {
             return Min.GetHashCode() ^ Max.GetHashCode();

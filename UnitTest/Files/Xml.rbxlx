@@ -1,12 +1,12 @@
 <roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
 	<External>null</External>
 	<External>nil</External>
-	<Item class="Workspace" referent="RBX2B05C816F5A344E09A1AD2589484305C">
+	<Item class="Workspace" referent="RBX318F30A5F1074C90965EFC1E6F34379D">
 		<Properties>
 			<bool name="AllowThirdPartySales">false</bool>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="CollisionGroups">Default^0^1</string>
-			<Ref name="CurrentCamera">RBX13AE292CAA514434A884BD688FFBC5B1</Ref>
+			<Ref name="CurrentCamera">RBXB6729B4B8E0F4D3398108C05AFD9B65E</Ref>
 			<double name="DistributedGameTime">0</double>
 			<bool name="ExplicitAutoJoints">true</bool>
 			<float name="FallenPartsDestroyHeight">-500</float>
@@ -61,7 +61,7 @@
 			<bool name="TerrainWeldsFixed">true</bool>
 			<bool name="TouchesUseCollisionGroups">false</bool>
 		</Properties>
-		<Item class="MeshPart" referent="RBX4505E5A832D34DE9AB4CFCCE81FA9C25">
+		<Item class="MeshPart" referent="RBX580BF8B5700441CB8A4BFE0778528E2A">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -157,7 +157,7 @@
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="MeshPart" referent="RBXE0A6436D4A6E47B88F879A95E47498C6">
+		<Item class="MeshPart" referent="RBX65BBCC8F96FF40868547242F54022C39">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -253,7 +253,7 @@
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="Model" referent="RBX99AC696FCA72409DA02A94979478649E">
+		<Item class="Model" referent="RBXCCCD839329D94ADD87403A62E16B0295">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
@@ -296,7 +296,7 @@
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
-			<Item class="MeshPart" referent="RBX902312628ED74D7AA09EFB8679B6D1A9">
+			<Item class="MeshPart" referent="RBX96BA5D40D1264B36A634911EF79DB05E">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -392,7 +392,7 @@
 					</Vector3>
 				</Properties>
 			</Item>
-			<Item class="MeshPart" referent="RBX0DB86BDECF714237935C38F3287B21C0">
+			<Item class="MeshPart" referent="RBXD083987D15824DED99110CE8A926AFC8">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -488,7 +488,7 @@
 					</Vector3>
 				</Properties>
 			</Item>
-			<Item class="MeshPart" referent="RBXE2D4F57E4508419A89E953DDA0CE625E">
+			<Item class="MeshPart" referent="RBX3F69C1D23F1945B7AACB8E0AD16947E9">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -584,7 +584,7 @@
 					</Vector3>
 				</Properties>
 			</Item>
-			<Item class="MeshPart" referent="RBX4EC1C39F9F974D5CAD9C934178473D6C">
+			<Item class="MeshPart" referent="RBX915930BD132B4A7DBFB5DA66992BFBD9">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -680,7 +680,7 @@
 					</Vector3>
 				</Properties>
 			</Item>
-			<Item class="MeshPart" referent="RBXB71D155E3B3A4C499EF5235DEBA2A121">
+			<Item class="MeshPart" referent="RBXEB5B566DD1B145A6AB9864335564FE3A">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -777,7 +777,7 @@
 				</Properties>
 			</Item>
 		</Item>
-		<Item class="Camera" referent="RBX13AE292CAA514434A884BD688FFBC5B1">
+		<Item class="Camera" referent="RBXB6729B4B8E0F4D3398108C05AFD9B65E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
@@ -819,7 +819,7 @@
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Terrain" referent="RBXD040B9F5E34F416EA31C5CB930F42CBB">
+		<Item class="Terrain" referent="RBX473F017243BF4D4CBB814CA63559A93A">
 			<Properties>
 				<token name="AcquisitionMethod">0</token>
 				<bool name="Anchored">true</bool>
@@ -1179,7 +1179,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="BoolValue" referent="RBX0E9495EAF0FA49A19353C5F0DD9BCCFD">
+		<Item class="BoolValue" referent="RBXA7EF17215424413C9A78CCCDF888736B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BoolValue</string>
@@ -1188,7 +1188,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<bool name="Value">false</bool>
 			</Properties>
 		</Item>
-		<Item class="BrickColorValue" referent="RBXABCE24B703724664B3C5145CDE487CF6">
+		<Item class="BrickColorValue" referent="RBX07C1751EA88A40BBAFC54B032D693A32">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BrickColorValue</string>
@@ -1197,7 +1197,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<int name="Value">194</int>
 			</Properties>
 		</Item>
-		<Item class="Color3Value" referent="RBX1B193F8BE9A1439D817B1695A9E8FF61">
+		<Item class="Color3Value" referent="RBX92BC01C8246C40B7BC7A9E88696E218B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Color3Value</string>
@@ -1210,7 +1210,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				</Color3>
 			</Properties>
 		</Item>
-		<Item class="CFrameValue" referent="RBX7A2BA312376A4E129863768933020955">
+		<Item class="CFrameValue" referent="RBXAFF8394E177E4466A78748D26F14C779">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">CFrameValue</string>
@@ -1232,7 +1232,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				</CoordinateFrame>
 			</Properties>
 		</Item>
-		<Item class="IntValue" referent="RBX59046C7DA85143B79A0581B9D6176C64">
+		<Item class="IntValue" referent="RBX9E79CFA026FC434B9D92A3EEAEF95DD4">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">IntValue</string>
@@ -1241,7 +1241,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<int64 name="Value">1234</int64>
 			</Properties>
 		</Item>
-		<Item class="NumberValue" referent="RBXC6B2124603844C9A9EB708190E79A2C8">
+		<Item class="NumberValue" referent="RBX1798B3A304224C1191F47F76CFE70AAC">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">NumberValue</string>
@@ -1250,16 +1250,16 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<double name="Value">9.0000999999999997669</double>
 			</Properties>
 		</Item>
-		<Item class="ObjectValue" referent="RBXD3773D53B16F4D78989F545F153FBB79">
+		<Item class="ObjectValue" referent="RBXFD20E8F1178346BFAC0A27F0BA9E0D2C">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ObjectValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<Ref name="Value">RBXD040B9F5E34F416EA31C5CB930F42CBB</Ref>
+				<Ref name="Value">RBX473F017243BF4D4CBB814CA63559A93A</Ref>
 			</Properties>
 		</Item>
-		<Item class="RayValue" referent="RBX874730DFED1B4302BFB3B85178B9081B">
+		<Item class="RayValue" referent="RBX86B6729F52214B7AADC786053E3C2B0B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">RayValue</string>
@@ -1279,7 +1279,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				</Ray>
 			</Properties>
 		</Item>
-		<Item class="StringValue" referent="RBXF558EA2CC158439EB77E965E646CFA15">
+		<Item class="StringValue" referent="RBXD3A762DD09CD428BB7978BE9C843C0E6">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StringValue</string>
@@ -1288,7 +1288,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Value">TestingLol</string>
 			</Properties>
 		</Item>
-		<Item class="Part" referent="RBX6125755126B1409EB37AE2D8CA726D10">
+		<Item class="Part" referent="RBX31EFCF342C8F4FEBA9CBF3E1E39463CB">
 			<Properties>
 				<bool name="Anchored">true</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -1370,9 +1370,9 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<Z>1</Z>
 				</Vector3>
 			</Properties>
-			<Item class="ArcHandles" referent="RBX79384EB7A7DC47B9A4B1CB146516ADCE">
+			<Item class="ArcHandles" referent="RBX17B19A77C30442FEAD7D63737C1E08A9">
 				<Properties>
-					<Ref name="Adornee">RBX6125755126B1409EB37AE2D8CA726D10</Ref>
+					<Ref name="Adornee">RBX31EFCF342C8F4FEBA9CBF3E1E39463CB</Ref>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<Axes name="Axes">
 						<axes>0</axes>
@@ -1389,9 +1389,9 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<bool name="Visible">false</bool>
 				</Properties>
 			</Item>
-			<Item class="Handles" referent="RBX7F32A05BD8494EBB83803114FD96E4BD">
+			<Item class="Handles" referent="RBX7D9690C41C6A43EBAA51C560235AFB61">
 				<Properties>
-					<Ref name="Adornee">RBX6125755126B1409EB37AE2D8CA726D10</Ref>
+					<Ref name="Adornee">RBX31EFCF342C8F4FEBA9CBF3E1E39463CB</Ref>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<Color3 name="Color3">
 						<R>1</R>
@@ -1409,7 +1409,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<bool name="Visible">false</bool>
 				</Properties>
 			</Item>
-			<Item class="ParticleEmitter" referent="RBXA2D227D8247B436BAC3AB91EECF77770">
+			<Item class="ParticleEmitter" referent="RBX7F4A257EEE9F4319868F617DF0B284AB">
 				<Properties>
 					<Vector3 name="Acceleration">
 						<X>0</X>
@@ -1444,7 +1444,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<float name="VelocityInheritance">1</float>
 					<float name="ZOffset">0</float>
 				</Properties>
-				<Item class="Script" referent="RBXCBE2A6FB250C4A34B87D2211C2A9E53F">
+				<Item class="Script" referent="RBX5D44F4AE41D64C198E3D8C4AF16A26A9">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<bool name="Disabled">false</bool>
@@ -1469,7 +1469,7 @@ script.Parent.Color = ColorSequence.new(keyPoints)]]></ProtectedString>
 						<BinaryString name="Tags"></BinaryString>
 					</Properties>
 				</Item>
-				<Item class="Script" referent="RBX9C643B4B0A6941958E40C18AB876FF2B">
+				<Item class="Script" referent="RBX7FA3B99ABA8D463CB8111BD7FF387E5C">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<bool name="Disabled">false</bool>
@@ -1495,7 +1495,7 @@ script.Parent.Size = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<BinaryString name="Tags"></BinaryString>
 					</Properties>
 				</Item>
-				<Item class="Script" referent="RBXDADA4578319D4EB6837D6C3D4D29F2A6">
+				<Item class="Script" referent="RBX0A4888F344A44F4F93AE692064FFCE59">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<bool name="Disabled">false</bool>
@@ -1523,7 +1523,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Item>
 			</Item>
 		</Item>
-		<Item class="Vector3Value" referent="RBX8C9698D14CCA4AE5B38D089BBAE1F27D">
+		<Item class="Vector3Value" referent="RBX2E383299757F4D1FB6B9817568C9DD17">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Vector3Value</string>
@@ -1536,7 +1536,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="Frame" referent="RBX12D76C97406E4D218639CCF1B4FFF274">
+		<Item class="Frame" referent="RBX6022DA9C15CD44F8B820D425916615B7">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
@@ -1590,7 +1590,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
-			<Item class="UIPadding" referent="RBXA676CEAE8C594A4EB347B07BA3E39C3C">
+			<Item class="UIPadding" referent="RBX085E111454F847E48CB966415537A7AF">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<string name="Name">UDimTest</string>
@@ -1615,7 +1615,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Properties>
 			</Item>
 		</Item>
-		<Item class="Model" referent="RBX4872AFA3E9FA46A08866EF4820D33276">
+		<Item class="Model" referent="RBX2F1F76CD6A3C460EBC306E284E72BBDF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
@@ -1658,7 +1658,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
-			<Item class="Part" referent="RBXFDF4476EED694D329231A2E6017C4CFC">
+			<Item class="Part" referent="RBX9D8A90BD0B5F4005B78E261E571314BE">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -1735,7 +1735,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>2</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBX0C65F8EDD7214F49A0953FB82B30AACD">
+				<Item class="SpecialMesh" referent="RBX4D6A5FBD29A4428A8C3472FE9FD3D5AA">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -1764,7 +1764,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBXEB8C3B8ACFCE4EDC97E7D8B4732A54C9">
+			<Item class="Part" referent="RBX5E765465FB4D4AA1934CAE169CC3A5BF">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -1841,7 +1841,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>5</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBXAF534CFD32644905A118740A2F50EB1F">
+				<Item class="SpecialMesh" referent="RBX001F1FC02A9E4DD483412A76D6B4BD66">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -1870,7 +1870,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBX7DF994439EF54D16B9604BC307F249B1">
+			<Item class="Part" referent="RBX14482162F7C74513B9C8795438B2A522">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -1947,7 +1947,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>1</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBX93D5659CDE9845B28135F78B000B6C10">
+				<Item class="SpecialMesh" referent="RBX89BEE31CC45F4664B04F6B061B96BA0F">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -1976,7 +1976,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBX58DF781C62924FA3A6C697BAF3A7A78D">
+			<Item class="Part" referent="RBX4423DD3C31664AF288AF969DEDB3B26E">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2053,7 +2053,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>1</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBX285C66F9D8634F079F20B2C43A3755C8">
+				<Item class="SpecialMesh" referent="RBXA4D9EB250DD0465A805E56AAA8FD109F">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -2082,7 +2082,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBX7425DAB62E764930B57B4FDA7A1ED259">
+			<Item class="Part" referent="RBX25627E53945148CEAD31BA812D7EED04">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2159,7 +2159,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>2</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBXD37E3B8902744844803B749FB49AE453">
+				<Item class="SpecialMesh" referent="RBXEAA1FA60F845481BAC6B0BC3C3F6EF84">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -2188,7 +2188,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBX33008920C0EC42DF8D58424192C70C99">
+			<Item class="Part" referent="RBX2EA297C007F84EB79D538F196602AA30">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2265,7 +2265,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>1</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBX04073F7DC67B43868EBF96DF1719A7E3">
+				<Item class="SpecialMesh" referent="RBXE4086669E38F4CAE854E49F8D437540B">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -2294,7 +2294,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBX8122DEC4EA314CB684EAD5D5409EEDBD">
+			<Item class="Part" referent="RBXC36C503909004E2E8D97E7AA2D17F9B8">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2371,7 +2371,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>2</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBX6A77291895184FB6B17439D40224E72F">
+				<Item class="SpecialMesh" referent="RBXBC0EBDC32DC844199D56B7C02B0A7DEB">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -2400,7 +2400,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBX82B66B6B92354041AE53FFCCD4A9A5AC">
+			<Item class="Part" referent="RBX614EA746474441E08CC173640FB98DE1">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2477,7 +2477,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>1</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBXD0A6BFCFE1304F8FA5E58650ADC16B74">
+				<Item class="SpecialMesh" referent="RBX56EFB9D1C8014086B4FF672FD3F2C063">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -2506,7 +2506,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBXD13B486870694CE79CB7343B6F6D8A80">
+			<Item class="Part" referent="RBXB579355B087F46EA990EFF0D948A0C0D">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2583,7 +2583,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>1</Z>
 					</Vector3>
 				</Properties>
-				<Item class="SpecialMesh" referent="RBXACAB3ABB4453400283FC94B72F5F5413">
+				<Item class="SpecialMesh" referent="RBX1170DF8AAD854A5BA8C0DDFF5549D853">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<token name="LODX">2</token>
@@ -2612,7 +2612,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="Part" referent="RBXF2297C1F2E004CCF92F2902FDC4EFD8A">
+			<Item class="Part" referent="RBX3D93332E188342BBAAEB03642C0A8016">
 				<Properties>
 					<bool name="Anchored">false</bool>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2689,7 +2689,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<Z>2</Z>
 					</Vector3>
 				</Properties>
-				<Item class="Sound" referent="RBX07C4684F2552408DA0FC1B48EF19BDC4">
+				<Item class="Sound" referent="RBX2C8EA57EEB4F441798E9BCA3D3146F7F">
 					<Properties>
 						<BinaryString name="AttributesSerialize"></BinaryString>
 						<float name="EmitterSize">10</float>
@@ -2710,7 +2710,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Item>
 			</Item>
 		</Item>
-		<Item class="DoubleConstrainedValue" referent="RBX5B3CE1953F204A1FB64705C94FF94DC7">
+		<Item class="DoubleConstrainedValue" referent="RBX8B7FC786A674464EA7D26509F58E74EB">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<double name="MaxValue">INF</double>
@@ -2721,7 +2721,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<double name="value">1.3337000000000001076</double>
 			</Properties>
 		</Item>
-		<Item class="MeshPart" referent="RBX63CAC64CC8C34E8FAF4CC720E1C3882D">
+		<Item class="MeshPart" referent="RBXD37D2C581227465F805B429DCADFC106">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2817,8 +2817,23 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
+		<Item class="Folder" referent="RBX19D5918D48A34B339ACB3C56C8A89EAF">
+			<Properties>
+				<BinaryString name="AttributesSerialize"><![CDATA[DQAAABIAAABUZXN0TnVtYmVyU2VxdWVuY2UXAgAAAAAAAAAAAAAAAACAPwAAAAAAAIA/AACA
+PwgAAABUZXN0UmVjdBwAAGBBAABwQQAAgEEAAIhBEQAAAFRlc3RDb2xvclNlcXVlbmNlGQIA
+AAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAAAAAAIA/AACAPwAAgD8AAIA/CwAAAFRlc3RWZWN0
+b3IzEQAAEEEAACBBAAAwQQ8AAABUZXN0TnVtYmVyUmFuZ2UbAABAQQAAUEELAAAAVGVzdFZl
+Y3RvcjIQAADgQAAAAEEOAAAAVGVzdEJyaWNrQ29sb3IO7AMAAAoAAABUZXN0Q29sb3IzD6uq
+qj4AAAAAAACAPwgAAABUZXN0VURpbQkAAIA/AgAAAAkAAABUZXN0VURpbTIKAABAQAQAAAAA
+AKBABgAAAAoAAABUZXN0TnVtYmVyBgAAAAAAAPA/CwAAAFRlc3RCb29sZWFuAwEKAAAAVGVz
+dFN0cmluZwIEAAAAVGVzdA==]]></BinaryString>
+				<string name="Name">Attributes</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+		</Item>
 	</Item>
-	<Item class="SoundService" referent="RBX2CF13B785DBA4810987983EB2B9C3DCE">
+	<Item class="SoundService" referent="RBX654F5FEA090A434599D81E1EBE793EE8">
 		<Properties>
 			<token name="AmbientReverb">0</token>
 			<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2831,7 +2846,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="NonReplicatedCSGDictionaryService" referent="RBX0AA428F254D347908FB578AD67A161AB">
+	<Item class="NonReplicatedCSGDictionaryService" referent="RBXF2166B3269E04BE8911966385D5EB367">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">NonReplicatedCSGDictionaryService</string>
@@ -2839,7 +2854,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="CSGDictionaryService" referent="RBXA0970C6C589847A882BAC07B9559CC1A">
+	<Item class="CSGDictionaryService" referent="RBXF256F56B31B34612884A4420FA07F17F">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">CSGDictionaryService</string>
@@ -2847,7 +2862,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Chat" referent="RBX073C4CF8B8B2407DA4BAB5D5EFF99D68">
+	<Item class="Chat" referent="RBX0B7DB6BFF4C44F7BB354680652AFEAC3">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="BubbleChatEnabled">false</bool>
@@ -2857,7 +2872,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="TimerService" referent="RBX9388665815444BF4BC627772B1F674C0">
+	<Item class="TimerService" referent="RBX3E3525A74263486BAB3E8ED8D44DB20A">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TimerService</string>
@@ -2865,7 +2880,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Players" referent="RBX22C3AC886F3B47A0A75BB2000F408D97">
+	<Item class="Players" referent="RBXAA3B2C4AD99B4821BE988661EBAE1D0D">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="CharacterAutoLoads">true</bool>
@@ -2877,7 +2892,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="ReplicatedFirst" referent="RBX77A752593CCD432EABF42C6F8FFE4253">
+	<Item class="ReplicatedFirst" referent="RBX003F534A70FD4CD58A0BD5035465A501">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ReplicatedFirst</string>
@@ -2885,7 +2900,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="TweenService" referent="RBX4722E17010DD4533B152E967D1A21FE7">
+	<Item class="TweenService" referent="RBX1F534CFB897D4D5F8B16745E0A2B70A3">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TweenService</string>
@@ -2893,7 +2908,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="PermissionsService" referent="RBX5A7101A1C994432F850F6EC5E6926C20">
+	<Item class="PermissionsService" referent="RBX77776F8F301F498A989C522184B32F48">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">PermissionsService</string>
@@ -2901,7 +2916,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="PlayerEmulatorService" referent="RBX32EC0E32BD664CAA97F69663884E383C">
+	<Item class="PlayerEmulatorService" referent="RBXCB7EC65C350144878E4896AB7C336F47">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="EmulatedCountryCode"></string>
@@ -2913,7 +2928,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="StudioData" referent="RBXC2C0412B5AAC49BE9A8994A1CF19951F">
+	<Item class="StudioData" referent="RBXB47D568AD3744CC6ABB2D036FFFC9A53">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<int64 name="CommitInflightAuthorId">0</int64>
@@ -2928,7 +2943,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="StarterPlayer" referent="RBX6DA1DA67C170487AAE4BA749D9B444C7">
+	<Item class="StarterPlayer" referent="RBXBCD6E795FD974FD48997C5FB08FCB38A">
 		<Properties>
 			<bool name="AllowCustomAnimations">true</bool>
 			<BinaryString name="AttributesSerialize"></BinaryString>
@@ -2972,7 +2987,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 			<bool name="UserEmotesEnabled">true</bool>
 		</Properties>
-		<Item class="StarterPlayerScripts" referent="RBX437375DECEAD463BAEFBE791D730BD86">
+		<Item class="StarterPlayerScripts" referent="RBX2FA521DC0D7C41E3B076E7693DEB4DE9">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StarterPlayerScripts</string>
@@ -2980,7 +2995,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="StarterCharacterScripts" referent="RBXBAC4723907994761B1BB15610F8DCD49">
+		<Item class="StarterCharacterScripts" referent="RBX00CFF109DD8044299C9C2AF437BEFC6A">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StarterCharacterScripts</string>
@@ -2989,7 +3004,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			</Properties>
 		</Item>
 	</Item>
-	<Item class="StarterPack" referent="RBX442AE19D5B4740CB96BDC8E02D069983">
+	<Item class="StarterPack" referent="RBX3184F233EEE84F1EA49EE4072EC005BE">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">StarterPack</string>
@@ -2997,7 +3012,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="StarterGui" referent="RBX6E3BE6763A294CF982D5BCD2B2817270">
+	<Item class="StarterGui" referent="RBX01F34722676A455389D17E99A76E5593">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">StarterGui</string>
@@ -3008,7 +3023,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="LocalizationService" referent="RBX31ABB4FA99994F70B94558CA97DB4508">
+	<Item class="LocalizationService" referent="RBX04B423A9B96B4228931E844357135B31">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">LocalizationService</string>
@@ -3016,7 +3031,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="TeleportService" referent="RBX6D316B8CB0B84366849122C6834A16C9">
+	<Item class="TeleportService" referent="RBX209866C06AD041299E4DE07AE7E7DE88">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TeleportService</string>
@@ -3024,7 +3039,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="CollectionService" referent="RBX3EDBAD6E939D4811974F4C26087D5231">
+	<Item class="CollectionService" referent="RBX21CC54D324004DC5A6438A91297CA94D">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">CollectionService</string>
@@ -3032,7 +3047,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="PhysicsService" referent="RBX6484EFC6504144388ABB548747D07DFE">
+	<Item class="PhysicsService" referent="RBXCBFCCB9CD905418EA9375F8C8DDF8410">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">PhysicsService</string>
@@ -3040,7 +3055,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Geometry" referent="RBX3CC45D4B8AF94EA1AD3700936A85A6BF">
+	<Item class="Geometry" referent="RBXCAF162352B574F7DAE9B53532CC1C846">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">Geometry</string>
@@ -3048,7 +3063,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="InsertService" referent="RBXB3EFED82B4184F09AACA69CFB3270242">
+	<Item class="InsertService" referent="RBXAACC1E5F85C5478ABEF14C61D1F2CB9D">
 		<Properties>
 			<bool name="AllowClientInsertModels">false</bool>
 			<bool name="AllowInsertFreeModels">false</bool>
@@ -3058,7 +3073,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="GamePassService" referent="RBXC6EE2CC1536646F9AE6A01FDF568EBE4">
+	<Item class="GamePassService" referent="RBX2C379E0BF0CC4160B7D768FFE80F972F">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">GamePassService</string>
@@ -3066,7 +3081,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Debris" referent="RBXA4A8A82260C645D597DA47A8A4925444">
+	<Item class="Debris" referent="RBX9898FE2F48454F9194CECB25BD5997FC">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<int name="MaxItems">1000</int>
@@ -3075,7 +3090,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="CookiesService" referent="RBX00FE068CA85C4050B406109EBCDC04DE">
+	<Item class="CookiesService" referent="RBXFD53E1AEAE0448F1A1B80AE32D5D1CBB">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">CookiesService</string>
@@ -3083,7 +3098,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="VRService" referent="RBX65645613DEF74F6EAE5883A6D80CFE77">
+	<Item class="VRService" referent="RBXDE7F7DD061054805A13ED9672BBD0E19">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">VRService</string>
@@ -3091,7 +3106,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="ContextActionService" referent="RBXA7D6A7BE8D644F9EAEE07FD3A0CCF489">
+	<Item class="ContextActionService" referent="RBXB4313B0E9E9449AB8ECE973BD0200213">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ContextActionService</string>
@@ -3099,7 +3114,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="ScriptService" referent="RBXDBE0C80BC2834031B5C51445C64ECD3C">
+	<Item class="ScriptService" referent="RBX79C0D6AA3C0047C599E34192EB8BF27C">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ScriptService</string>
@@ -3107,7 +3122,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="AssetService" referent="RBX695A0B5A5A6049C0A2775753A6F759CE">
+	<Item class="AssetService" referent="RBX0D8974D7911E42CA95CD3C9745D00BB7">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">AssetService</string>
@@ -3115,7 +3130,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="TouchInputService" referent="RBXA04AE8C00AA8450DA1E7AAF49ED803F6">
+	<Item class="TouchInputService" referent="RBXFD28BCFFAC294C90BE041538847B827E">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">TouchInputService</string>
@@ -3123,7 +3138,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="AnalyticsService" referent="RBX8A5992A987744119BB725C2554E2BEFA">
+	<Item class="AnalyticsService" referent="RBX345425D9D6234F4185ED6E797A3D76DF">
 		<Properties>
 			<string name="ApiKey"></string>
 			<BinaryString name="AttributesSerialize"></BinaryString>
@@ -3132,7 +3147,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Selection" referent="RBXF4F2C3340A2645BDB8FE9A69C9D5CA59">
+	<Item class="Selection" referent="RBX740B0301043C434FAA0E2C966900B03C">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">Selection</string>
@@ -3140,7 +3155,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="ServerScriptService" referent="RBXA931BE6CE3E04A5893D7F4B19DB63B1B">
+	<Item class="ServerScriptService" referent="RBXEBF608131BAE40908A14B33B6AA7602F">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="LoadStringEnabled">false</bool>
@@ -3149,7 +3164,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="ServerStorage" referent="RBXE5CC820426BE4DADBB9EE6423ECA00B9">
+	<Item class="ServerStorage" referent="RBX1BAB1452795D4AD78EAE46A24940BEF9">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ServerStorage</string>
@@ -3157,7 +3172,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="ReplicatedStorage" referent="RBX0DFB14F3E4A24F6CAA6CB7A4E1C1BACA">
+	<Item class="ReplicatedStorage" referent="RBX03B13E595B464886A95EB4A611283A62">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">ReplicatedStorage</string>
@@ -3165,7 +3180,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="LuaWebService" referent="RBXDD295EB4BCF9407BB1CF7EDFEE1334DB">
+	<Item class="LuaWebService" referent="RBX5E425E56998E4CAE8BEF6B57BBF82365">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">LuaWebService</string>
@@ -3173,7 +3188,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Lighting" referent="RBX5ACD11FC7D9A4F96AEEC05F1EF5B3404">
+	<Item class="Lighting" referent="RBX7E15EEE8CE7342C79D28ED82A2BFFFCD">
 		<Properties>
 			<Color3 name="Ambient">
 				<R>0</R>
@@ -3218,7 +3233,68 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<string name="TimeOfDay">00:00:00</string>
 		</Properties>
 	</Item>
-	<Item class="TestService" referent="RBXCE0A79249CEF48B085BBDF37CBEF7DEA">
+	<Item class="DataStoreService" referent="RBX523CE85A43BA4E0097D5AF7808859729">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="AutomaticRetry">true</bool>
+			<bool name="LegacyNamingScheme">false</bool>
+			<string name="Name">DataStoreService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="FlyweightService" referent="RBXA62095E13BD442838880DB547B8C5539">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">FlyweightService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="HttpService" referent="RBX279BD72FACF04238A459A0769227C659">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="HttpEnabled">true</bool>
+			<string name="Name">HttpService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="LanguageService" referent="RBX6A1CE05345404E3F8403C674F2A08952">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">LanguageService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="ProximityPromptService" referent="RBX95005FFFA2D14BB0AB56069B54A03FFC">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="Enabled">true</bool>
+			<int name="MaxPromptsVisible">16</int>
+			<string name="Name">ProximityPromptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedScriptService" referent="RBXC74B7E1AE7C149128E78ADC416BF77FE">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">ReplicatedScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="Teams" referent="RBX35647E2DEBB9402EA3530C27A9CE54AC">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">Teams</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="TestService" referent="RBXFF4F40FFBADE49F4B69BF9606FBFC677">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<bool name="AutoRuns">true</bool>
@@ -3235,76 +3311,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<double name="Timeout">10</double>
 		</Properties>
 	</Item>
-	<Item class="DataStoreService" referent="RBX115843495DD2459198F72212770FFEEF">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<bool name="AutomaticRetry">true</bool>
-			<bool name="LegacyNamingScheme">false</bool>
-			<string name="Name">DataStoreService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="FlyweightService" referent="RBX665342A240DC4E85B6CAB67E4A872558">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">FlyweightService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="HttpService" referent="RBX3B4F983611294D6DBB316DD14DB4D0A9">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<bool name="HttpEnabled">true</bool>
-			<string name="Name">HttpService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="LanguageService" referent="RBXE61A4D8FE3654265A98E938FC79233D4">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">LanguageService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="ReplicatedScriptService" referent="RBX727C0F37F62A4E6D85B7BDF752990120">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">ReplicatedScriptService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="Teams" referent="RBXA388A5B524624628A9C2A3A4EE8CCF9F">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">Teams</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="VirtualInputManager" referent="RBX25476ACAA9E74A7CB4B55247F292A1CC">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">VirtualInputManager</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="ProximityPromptService" referent="RBXDCCBB18E77904652B0F4A254035F46AB">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<bool name="Enabled">true</bool>
-			<int name="MaxPromptsVisible">16</int>
-			<string name="Name">ProximityPromptService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="UnvalidatedAssetService" referent="RBX2458509285BF4FC69CAD46A2974123A8">
+	<Item class="UnvalidatedAssetService" referent="RBXD92C8D6C34264D419D0B8147BF427340">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="CachedData">{&quot;lastSaveTime&quot;:0,&quot;lastKnownPublishRequest&quot;:0,&quot;users&quot;:[]}</string>
@@ -3313,14 +3320,22 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
 	</Item>
-	<Item class="Folder" referent="RBX91DD6960EC5A411FB3B0B2AB14BB0F77">
+	<Item class="VirtualInputManager" referent="RBX6B9B8982F8FC4CED8C02DC97A417AD8F">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">VirtualInputManager</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="Folder" referent="RBXDD6BB67FDD9942B8AF087EA54EAF03A9">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<string name="Name">DumpFolder</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 		</Properties>
-		<Item class="UICorner" referent="RBX18714845B86C47658B7A7FC14C455151">
+		<Item class="UICorner" referent="RBX7E9DCD4F7A83465185FB1BB2C102F5C8">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<UDim name="CornerRadius">
@@ -3332,7 +3347,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Accoutrement" referent="RBXA9FA44C4B9504A28802676E309F17A05">
+		<Item class="Accoutrement" referent="RBX1518F6D6F4864CE4874DD5F65056918E">
 			<Properties>
 				<CoordinateFrame name="AttachmentPoint">
 					<X>0</X>
@@ -3354,7 +3369,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Accessory" referent="RBXB56270D67D314FB69EC8BB879DE8A370">
+		<Item class="Accessory" referent="RBX73A4348DCB934D9885F4A5DD74E3D6A4">
 			<Properties>
 				<CoordinateFrame name="AttachmentPoint">
 					<X>0</X>
@@ -3376,7 +3391,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Hat" referent="RBXB7013D237DEF49848B9AA4732CA6733F">
+		<Item class="Hat" referent="RBXB0F32C900ECB4776A74767DDD63A5BD8">
 			<Properties>
 				<CoordinateFrame name="AttachmentPoint">
 					<X>0</X>
@@ -3398,7 +3413,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Animation" referent="RBX3127F42473C54173B99C18D754142E52">
+		<Item class="Animation" referent="RBXFD54E5E1C65F4F4594EC48EA8E0296E3">
 			<Properties>
 				<Content name="AnimationId"><null></null></Content>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -3407,7 +3422,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Atmosphere" referent="RBX73CFD6E54785443C9DCBC7E8E01A90C4">
+		<Item class="Atmosphere" referent="RBXD7C72A5352784D76931E5A1694F987DF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color">
@@ -3429,7 +3444,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Backpack" referent="RBX7581B4DEDDF84DB69A71E9F6D03DD866">
+		<Item class="Backpack" referent="RBX3FB0ED19F5D74F848EA01504D27BCDD6">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Backpack</string>
@@ -3437,7 +3452,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="HopperBin" referent="RBX6D7FEE514C6B4223A3581D46B374C106">
+		<Item class="HopperBin" referent="RBX352C0BA01CAD4A3D9FC610A1D9BDC39F">
 			<Properties>
 				<bool name="Active">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -3448,7 +3463,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Content name="TextureId"><null></null></Content>
 			</Properties>
 		</Item>
-		<Item class="Tool" referent="RBX77E43E4AA66745B48C64EB5A9E8362E1">
+		<Item class="Tool" referent="RBX960EE5EE270B4720B36CD8019E48FFBC">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="CanBeDropped">true</bool>
@@ -3476,7 +3491,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="ToolTip"></string>
 			</Properties>
 		</Item>
-		<Item class="Flag" referent="RBXD9D9157D61504FA7B9D3460BB956C48B">
+		<Item class="Flag" referent="RBX0F987FBFD53644D2AC26704F12BFF57B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="CanBeDropped">true</bool>
@@ -3505,7 +3520,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="ToolTip"></string>
 			</Properties>
 		</Item>
-		<Item class="Beam" referent="RBXD8D08ABAEA67446ABA213406EC4B939E">
+		<Item class="Beam" referent="RBXF6ACC8327BC2475BBA870A4D910F5DB8">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -3531,7 +3546,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="ZOffset">0</float>
 			</Properties>
 		</Item>
-		<Item class="BindableEvent" referent="RBX8408098546814C1A8C798B7E72F4F2F1">
+		<Item class="BindableEvent" referent="RBXA8CC1E2C5F4E4BD0B93A5B97BD7C9A72">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BindableEvent</string>
@@ -3539,7 +3554,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BindableFunction" referent="RBX0C73E0A0AC5C4EF1A99BA6C0B75CCC88">
+		<Item class="BindableFunction" referent="RBX15BBA467847F45D79DEEEB78A90AE0E2">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BindableFunction</string>
@@ -3547,7 +3562,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BodyAngularVelocity" referent="RBX62DC687A75434C0C8121471BD27DCDB9">
+		<Item class="BodyAngularVelocity" referent="RBXDC290C0955EA49E2AC930ACAED26171D">
 			<Properties>
 				<Vector3 name="AngularVelocity">
 					<X>0</X>
@@ -3566,7 +3581,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BodyForce" referent="RBX5B2C0C9FE1BB408C87D80C475A7DA68F">
+		<Item class="BodyForce" referent="RBXBEEF1E437D3342649911622E3CA2A15C">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Vector3 name="Force">
@@ -3579,7 +3594,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BodyGyro" referent="RBX0964EBCDACF54E0EBFA95B537DAE626B">
+		<Item class="BodyGyro" referent="RBX1B92C22A1CE44F49B6D91294BAB7B71F">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
@@ -3608,7 +3623,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BodyPosition" referent="RBX6239EFE30A6B4F0995D3AD703ED63046">
+		<Item class="BodyPosition" referent="RBXCBABA8C5BB3B4FC0B251A18349001961">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="D">1250</float>
@@ -3628,7 +3643,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BodyThrust" referent="RBX6603503B710F465BA2808ED0B95E3B19">
+		<Item class="BodyThrust" referent="RBX1AA44542C0654D4EB337948B67A6EBD4">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Vector3 name="Force">
@@ -3646,7 +3661,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BodyVelocity" referent="RBXF97E423C392A4137A8DE08D8DB74B885">
+		<Item class="BodyVelocity" referent="RBXB67FCDD387984419A7E32036517ED7FB">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Vector3 name="MaxForce">
@@ -3665,7 +3680,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="RocketPropulsion" referent="RBX749D0815EC77470989C9E3CAB7BB9E84">
+		<Item class="RocketPropulsion" referent="RBX56DB03626FBB435EA05C327C26DA48A4">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="CartoonFactor">0.699999988</float>
@@ -3692,7 +3707,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="TurnP">3000</float>
 			</Properties>
 		</Item>
-		<Item class="Camera" referent="RBX12E30D6B458844D2A49203736094B248">
+		<Item class="Camera" referent="RBXFF5DF2F03AF14419AE0CC3629BFB4AE6">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
@@ -3734,7 +3749,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BodyColors" referent="RBX26D4285609E84C68A22FEBE869DFA45D">
+		<Item class="BodyColors" referent="RBXB0D1758CAB1D4A658B6698113173A07E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="HeadColor3">
@@ -3772,7 +3787,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Color3>
 			</Properties>
 		</Item>
-		<Item class="CharacterMesh" referent="RBX1E28E9F3B8E847D8B77CC123F4EA5D38">
+		<Item class="CharacterMesh" referent="RBX0904B913B88A424A94AE6DEAE6129BFF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<int64 name="BaseTextureId">0</int64>
@@ -3784,7 +3799,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Pants" referent="RBX302CFE4A8FD84DF1A645D081DF773388">
+		<Item class="Pants" referent="RBX7A30F7E776274595AD8DDFDF02D91520">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -3798,7 +3813,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Shirt" referent="RBX6230DE8FB3A54469B79C88DACD156670">
+		<Item class="Shirt" referent="RBXA59A4C073B814FF280D4AB2D118C48B8">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -3812,7 +3827,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ShirtGraphic" referent="RBX2549120AE1D34D54BAA27A60812EC989">
+		<Item class="ShirtGraphic" referent="RBX55008737B9E94F8D90CBD19FF6107EB7">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -3826,7 +3841,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Skin" referent="RBXA7EEACA5A421431EAC9372076789A082">
+		<Item class="Skin" referent="RBX28B2ADAC3E50476ABEB7F5FE93688AB9">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Skin</string>
@@ -3835,7 +3850,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Clouds" referent="RBX3F18E1B4C39243F2BA95F131B0D6114B">
+		<Item class="Clouds" referent="RBXF1F05DAADD7446BF8A6E2F13FE44292B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Cover">0.5</float>
@@ -3845,7 +3860,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Configuration" referent="RBXE705021FA3FB4CDD8524DA886D5D09C2">
+		<Item class="Configuration" referent="RBX87A47A6969B5452C9CBE484C1C90A643">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Configuration</string>
@@ -3853,7 +3868,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="AlignOrientation" referent="RBX3C27718B19BA44BBBFCDD27F9C7C2E38">
+		<Item class="AlignOrientation" referent="RBX5395192FC6364BFF9555E48FC4C26A7D">
 			<Properties>
 				<token name="AlignType">0</token>
 				<Ref name="Attachment0">null</Ref>
@@ -3873,7 +3888,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="AlignPosition" referent="RBX38812349F4304D9286721A25F2052A7E">
+		<Item class="AlignPosition" referent="RBX3640237E8A8E472083A5AF4208ED3AB2">
 			<Properties>
 				<bool name="ApplyAtCenterOfMass">false</bool>
 				<Ref name="Attachment0">null</Ref>
@@ -3892,7 +3907,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="AngularVelocity" referent="RBXF6DC23EAEE39466DA6E9788A91C18091">
+		<Item class="AngularVelocity" referent="RBXDD8084562EEE4B16A230BFD050E66586">
 			<Properties>
 				<Vector3 name="AngularVelocity">
 					<X>0</X>
@@ -3913,7 +3928,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="BallSocketConstraint" referent="RBX5079C4C0C71B444BB6362D945D52718C">
+		<Item class="BallSocketConstraint" referent="RBX576A74351D3A455B9F3E6FAA0FF4791A">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -3934,7 +3949,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="HingeConstraint" referent="RBX93BE7EF7F02C4671BD686C5F1F93DF72">
+		<Item class="HingeConstraint" referent="RBX0F0B5E7DE27E4352925AD526E5A7CFBB">
 			<Properties>
 				<token name="ActuatorType">0</token>
 				<float name="AngularSpeed">0</float>
@@ -3959,7 +3974,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="LineForce" referent="RBXF019312ACC1C43B5B5D8E712726E5231">
+		<Item class="LineForce" referent="RBXD7B48A96E41F4B5FA6BD54CDE16CBB56">
 			<Properties>
 				<bool name="ApplyAtCenterOfMass">false</bool>
 				<Ref name="Attachment0">null</Ref>
@@ -3977,7 +3992,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="RodConstraint" referent="RBXEF06143B73674AFAA505BF39AE4A4B3A">
+		<Item class="RodConstraint" referent="RBX1E43C0DB44B946CFAF00E508F7A077C6">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -3992,7 +4007,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="RopeConstraint" referent="RBXAE52819315D04347AB400BF418D265A4">
+		<Item class="RopeConstraint" referent="RBX20E737D0DD254830A768F010B327A605">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -4008,7 +4023,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="CylindricalConstraint" referent="RBX2F1A7E2A02E8480381EAB1D1FAAA3DF9">
+		<Item class="CylindricalConstraint" referent="RBX0DDDB3013E0748E1ADD3A252E22DFA8B">
 			<Properties>
 				<token name="ActuatorType">0</token>
 				<token name="AngularActuatorType">0</token>
@@ -4046,7 +4061,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="PrismaticConstraint" referent="RBX4AD7FB1D237543ECA275BF6C087C24A1">
+		<Item class="PrismaticConstraint" referent="RBXA0A177895F074168A29AF6939075D6C1">
 			<Properties>
 				<token name="ActuatorType">0</token>
 				<Ref name="Attachment0">null</Ref>
@@ -4071,7 +4086,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="SpringConstraint" referent="RBX5A4BCB8E00954E548C7C5617523BE602">
+		<Item class="SpringConstraint" referent="RBXF6239951ACBD40A6AF5EB92B05064437">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -4094,7 +4109,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="UniversalConstraint" referent="RBX6FCEA68DC41943FCBEAFD7F57B4AB994">
+		<Item class="UniversalConstraint" referent="RBXBDA7AE530B5F4063B8A3BCC8877ADAC8">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -4111,7 +4126,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="VectorForce" referent="RBXC1F3BFB8EE5D4150999C9CB179801536">
+		<Item class="VectorForce" referent="RBX0FEAACFF8C8F4D8696181016F8A539FF">
 			<Properties>
 				<bool name="ApplyAtCenterOfMass">false</bool>
 				<Ref name="Attachment0">null</Ref>
@@ -4131,7 +4146,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="HumanoidController" referent="RBXF5AFD01BBD6342B99BD4664F176C4A09">
+		<Item class="HumanoidController" referent="RBXAC0143A6EFB94663ACC0E5893885F754">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">HumanoidController</string>
@@ -4139,7 +4154,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="SkateboardController" referent="RBX48CA2DA4EAF546EE98313695540714F3">
+		<Item class="SkateboardController" referent="RBX04C7196FE2A14F7FB5629CE3ABCBCAAF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">SkateboardController</string>
@@ -4147,7 +4162,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="VehicleController" referent="RBXE95076943F854506A3E1B977D6806E59">
+		<Item class="VehicleController" referent="RBX406EC047FF2C47CB881D856E29A03169">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">VehicleController</string>
@@ -4155,7 +4170,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="CustomEvent" referent="RBX6F01E4A1F9D44DE0A049F7BDA598F2B8">
+		<Item class="CustomEvent" referent="RBX31DCF2ACBC344DB78C756466DD87FC9C">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">CustomEvent</string>
@@ -4164,7 +4179,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="CustomEventReceiver" referent="RBX3035D7952EB44A74AD43D230DD9FD537">
+		<Item class="CustomEventReceiver" referent="RBXA55A67E359FB463988DB209756A88F75">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">CustomEventReceiver</string>
@@ -4173,7 +4188,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BlockMesh" referent="RBXBC4164A438DA475EA267AACC5AA28241">
+		<Item class="BlockMesh" referent="RBXC668A1BB8DDB4DC4886F6B433EB38AFA">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Bevel">0</float>
@@ -4201,7 +4216,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="CylinderMesh" referent="RBX498957866C8F421FA8151800657892A9">
+		<Item class="CylinderMesh" referent="RBXDAB86DC54C31456C8E4F818E86BD4F61">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Bevel">0</float>
@@ -4229,7 +4244,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="FileMesh" referent="RBXF44964FBDDFE4E8189AAC182EBC4EF60">
+		<Item class="FileMesh" referent="RBXC0DB9DDECB034C5C8419F714682AB85C">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LODX">2</token>
@@ -4256,7 +4271,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="Dialog" referent="RBXCFB83AA79C0641E187FC706F77F11C96">
+		<Item class="Dialog" referent="RBX4A3A85E18788481FAEB5E78F0209E3F5">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="BehaviorType">0</token>
@@ -4277,7 +4292,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="DialogChoice" referent="RBX96968F6396314E18A62FA1AA38500F03">
+		<Item class="DialogChoice" referent="RBX22397E9CE1674AF1922CF7E0D76FEF22">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="GoodbyeChoiceActive">true</bool>
@@ -4289,7 +4304,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="UserDialog"></string>
 			</Properties>
 		</Item>
-		<Item class="Explosion" referent="RBXFC2837C24AD24FD7BD220C12BC6F3786">
+		<Item class="Explosion" referent="RBXB21F39FFBAA24DD29DF6D3CDF502AC0C">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="BlastPressure">500000</float>
@@ -4307,7 +4322,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="Decal" referent="RBX1D9748F2C689420984A08A366E3AE4AD">
+		<Item class="Decal" referent="RBX1896614F57934CE7802953E3DE4F9D97">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -4323,7 +4338,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Transparency">0</float>
 			</Properties>
 		</Item>
-		<Item class="Texture" referent="RBX50CE6D3EFEF546B5AA56A232F41A5D66">
+		<Item class="Texture" referent="RBX4D0CB9B2D003484B90EE872F06E8D9BD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -4343,7 +4358,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Transparency">0</float>
 			</Properties>
 		</Item>
-		<Item class="Hole" referent="RBXD3775A1F8A0348A89B80A6EFA0DAFAF9">
+		<Item class="Hole" referent="RBX27BF9128430141659B232FF3C4859E35">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="FaceId">0</token>
@@ -4355,7 +4370,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="TopBottom">1</token>
 			</Properties>
 		</Item>
-		<Item class="MotorFeature" referent="RBXF2295B34005B4AA2B36415F684B1F404">
+		<Item class="MotorFeature" referent="RBXB2BB1C3828594CB19F63DCCB7F659CE6">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="FaceId">0</token>
@@ -4367,7 +4382,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="TopBottom">1</token>
 			</Properties>
 		</Item>
-		<Item class="Fire" referent="RBXE62C621B66B4456EA6656A54D725BBED">
+		<Item class="Fire" referent="RBXEF0983E33F37456F83C6702D96405343">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color">
@@ -4388,7 +4403,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="size_xml">5</float>
 			</Properties>
 		</Item>
-		<Item class="Folder" referent="RBXD889C2F57E3D46A8902B8852007E2DFF">
+		<Item class="Folder" referent="RBXAC2C203892954998AF888FDC5417D594">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Folder</string>
@@ -4396,7 +4411,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ForceField" referent="RBXB449375BE31E44C39CA2E629E1B689D1">
+		<Item class="ForceField" referent="RBXDC4D452F57074EE4997300F1ADD4C4AD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ForceField</string>
@@ -4405,7 +4420,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="Frame" referent="RBX3146E92CB39D48EE8C1D91D9029C4BB7">
+		<Item class="Frame" referent="RBX9D6A6E09DC7743A1A171FBD25AD0C201">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
@@ -4460,7 +4475,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="ImageButton" referent="RBX16E70E8524274DDAB1F2F68C07BAB630">
+		<Item class="ImageButton" referent="RBX7DADEA162D4D45ADA0FA3E8F106F96E5">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -4553,7 +4568,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="TextButton" referent="RBXC0D67CC548B2464AB11F5A6C5DF115E1">
+		<Item class="TextButton" referent="RBX8FE1A8A4BB764353B72B2513A968BB2C">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -4633,7 +4648,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="ImageLabel" referent="RBXEAB0B0B59D6246B0BF66BEF97E94B36D">
+		<Item class="ImageLabel" referent="RBXA320E62E3BE64CCFA50B58725E7A89CD">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
@@ -4720,7 +4735,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="TextLabel" referent="RBX51B2261423EC4A7B8568ABC1C45A3B6D">
+		<Item class="TextLabel" referent="RBX1BA13EC8B7FE44CE8C1BE1671B6CE63D">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
@@ -4796,7 +4811,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="ScrollingFrame" referent="RBXE0D37EF502DF4B94A7B98B7423218682">
+		<Item class="ScrollingFrame" referent="RBX3F6E900CA1654601BEF6F51E11F694A0">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
@@ -4877,7 +4892,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="VideoFrame" referent="RBXA9F97AF8399643F68B681DC02524A401">
+		<Item class="VideoFrame" referent="RBX9F51809F5F2E4E4D808D1437265DE1FE">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
@@ -4936,7 +4951,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="ViewportFrame" referent="RBX508391ED790A4E98A0B1103FDD425632">
+		<Item class="ViewportFrame" referent="RBX2ABE972603D14164BD0AC673928A15D1">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Color3 name="Ambient">
@@ -5026,7 +5041,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="BillboardGui" referent="RBXCB93145284C74A95BCDF79863C310465">
+		<Item class="BillboardGui" referent="RBX80BEE8E215264777A858F08CF625128C">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Ref name="Adornee">null</Ref>
@@ -5079,7 +5094,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="ZIndexBehavior">0</token>
 			</Properties>
 		</Item>
-		<Item class="ScreenGui" referent="RBXE08F22E858F94DF0A903CD8AB5315356">
+		<Item class="ScreenGui" referent="RBXCEF315F3732848479DD7E332A531E723">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
@@ -5094,7 +5109,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="ZIndexBehavior">0</token>
 			</Properties>
 		</Item>
-		<Item class="GuiMain" referent="RBXE8DFD6F6FDE64956BECDA893B8A1E8C8">
+		<Item class="GuiMain" referent="RBX360CAE5FC0F14181A42463A69BE8D041">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
@@ -5109,7 +5124,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="ZIndexBehavior">0</token>
 			</Properties>
 		</Item>
-		<Item class="SurfaceGui" referent="RBX2C53F4DF519A475DB583E07E4AB2BE09">
+		<Item class="SurfaceGui" referent="RBX69A1E172CEA34BC79AFCDF1AC75CDC85">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Ref name="Adornee">null</Ref>
@@ -5136,7 +5151,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="ZOffset">0</float>
 			</Properties>
 		</Item>
-		<Item class="SelectionBox" referent="RBXF5073B3DD9AF4256B5108C0011457FCF">
+		<Item class="SelectionBox" referent="RBX5FD04E9917C84C05BA504E7F701A9DC1">
 			<Properties>
 				<Ref name="Adornee">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -5159,7 +5174,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="BoxHandleAdornment" referent="RBX0030B2B5D0A34299A891460D7C216D31">
+		<Item class="BoxHandleAdornment" referent="RBX51E345C4EC37411783CB53445B9141B6">
 			<Properties>
 				<token name="AdornCullingMode">0</token>
 				<Ref name="Adornee">null</Ref>
@@ -5202,7 +5217,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">-1</int>
 			</Properties>
 		</Item>
-		<Item class="ConeHandleAdornment" referent="RBX95EE4C1DB95C4ED4972DAF4998FE318D">
+		<Item class="ConeHandleAdornment" referent="RBX5AD07A8C16714666A3B926ECB6DE3E83">
 			<Properties>
 				<token name="AdornCullingMode">0</token>
 				<Ref name="Adornee">null</Ref>
@@ -5242,7 +5257,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">-1</int>
 			</Properties>
 		</Item>
-		<Item class="CylinderHandleAdornment" referent="RBX8572E3C6EF08468CB7B789C75DEB4023">
+		<Item class="CylinderHandleAdornment" referent="RBX3F0681786A6144F5A1A70636B5EBC407">
 			<Properties>
 				<token name="AdornCullingMode">0</token>
 				<Ref name="Adornee">null</Ref>
@@ -5284,7 +5299,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">-1</int>
 			</Properties>
 		</Item>
-		<Item class="ImageHandleAdornment" referent="RBX50DE2D105F354AF68645352262490EB1">
+		<Item class="ImageHandleAdornment" referent="RBXB73B85BCBCEE4157BE9E177F0973257E">
 			<Properties>
 				<token name="AdornCullingMode">0</token>
 				<Ref name="Adornee">null</Ref>
@@ -5327,7 +5342,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">-1</int>
 			</Properties>
 		</Item>
-		<Item class="LineHandleAdornment" referent="RBX12F3179B331943D1A7925A33789D83F9">
+		<Item class="LineHandleAdornment" referent="RBXE562F22033FE4683A07344FDC1AF3994">
 			<Properties>
 				<token name="AdornCullingMode">0</token>
 				<Ref name="Adornee">null</Ref>
@@ -5367,7 +5382,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">-1</int>
 			</Properties>
 		</Item>
-		<Item class="SphereHandleAdornment" referent="RBX3485714FC91F497D94B4BA33CFE5DD50">
+		<Item class="SphereHandleAdornment" referent="RBX5587449B5DE840B8A61F1C0E9B2FC95B">
 			<Properties>
 				<token name="AdornCullingMode">0</token>
 				<Ref name="Adornee">null</Ref>
@@ -5406,7 +5421,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">-1</int>
 			</Properties>
 		</Item>
-		<Item class="FloorWire" referent="RBX2AFF42EE284D424ABFFE3760B27AB6BA">
+		<Item class="FloorWire" referent="RBX35DCE42CB9DA44E792CA9CBF199928AB">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -5432,7 +5447,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="WireRadius">0.0625</float>
 			</Properties>
 		</Item>
-		<Item class="ParabolaAdornment" referent="RBXCDED77D269FE47578BD93E7832AC6852">
+		<Item class="ParabolaAdornment" referent="RBX0A0E73BBB1A84D6EAE823A9C05044822">
 			<Properties>
 				<Ref name="Adornee">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -5448,7 +5463,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="SelectionSphere" referent="RBX63CE9DAD2883457BB3C8163ABCC39C25">
+		<Item class="SelectionSphere" referent="RBXC1DA90CBE2DD419D8D99FF10C44F52C9">
 			<Properties>
 				<Ref name="Adornee">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -5470,7 +5485,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="ArcHandles" referent="RBXD9F84C684B4744C796A334FFDCFEC337">
+		<Item class="ArcHandles" referent="RBX57DB7A80A5BD4CE387300485264D1CF9">
 			<Properties>
 				<Ref name="Adornee">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -5489,7 +5504,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="Handles" referent="RBX14E4DC07550B49C8A2943689B765BBA5">
+		<Item class="Handles" referent="RBXBB526423CBDB4B41A578F1FF8B43B10D">
 			<Properties>
 				<Ref name="Adornee">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -5509,7 +5524,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="SurfaceSelection" referent="RBX10E8B93029794590BA0EED318A5CBA0B">
+		<Item class="SurfaceSelection" referent="RBX792ADD381956468F879D27EE05E170AC">
 			<Properties>
 				<Ref name="Adornee">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -5526,7 +5541,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="SelectionPartLasso" referent="RBXAF5E9E7AE4284948A02CE9B0BCBC7585">
+		<Item class="SelectionPartLasso" referent="RBXBDCEFBC4BAE443619214E66897909B3A">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -5543,7 +5558,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="SelectionPointLasso" referent="RBXED56E57646FE4BE8ACCFC3FD872CC3B8">
+		<Item class="SelectionPointLasso" referent="RBX6B1FC91FF9BF4760A0BE9ADB351EFC98">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color3">
@@ -5564,7 +5579,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
-		<Item class="Humanoid" referent="RBXDE518574E8774C4BB3B028B7E7A14162">
+		<Item class="Humanoid" referent="RBX9B92802897194FE7A71D955C8494AB31">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoJumpEnabled">true</bool>
@@ -5599,7 +5614,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="WalkSpeed">16</float>
 			</Properties>
 		</Item>
-		<Item class="HumanoidDescription" referent="RBXD93279CE72EA4DE3856A11E1D173978E">
+		<Item class="HumanoidDescription" referent="RBXE26D7F0B9E8944DAA6F02771E37FA90C">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="BackAccessory"></string>
@@ -5670,7 +5685,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="WidthScale">1</float>
 			</Properties>
 		</Item>
-		<Item class="RotateP" referent="RBX96AD2E6710CD47EF853F116E687F7E28">
+		<Item class="RotateP" referent="RBX781DA706414B422EBBAF2675E57732A2">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="BaseAngle">0</float>
@@ -5710,7 +5725,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="RotateV" referent="RBX76CA4208356C42549666FB124ABA3FEF">
+		<Item class="RotateV" referent="RBXB1046D6ADDDF433DABB0F12669C5F815">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="BaseAngle">0</float>
@@ -5750,7 +5765,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Glue" referent="RBX563AE13FE4E94F26AB1CE958B0D984C2">
+		<Item class="Glue" referent="RBX9E99BA52F7C24BB0A9C2AFF37E1118FF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -5809,7 +5824,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ManualGlue" referent="RBXEE0D7AA9FCFA415781F1DD906170C7A6">
+		<Item class="ManualGlue" referent="RBX4630153316034A87977BA37EA03F1E7F">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -5850,7 +5865,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ManualWeld" referent="RBX179BF18C595A4E94B4C1F64B5A4E8B59">
+		<Item class="ManualWeld" referent="RBXE3D8AEEE71DA43CBBFBB0230031A492B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -5891,7 +5906,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Motor" referent="RBX2467988FB92043DD9BC9D5E2927FB67E">
+		<Item class="Motor" referent="RBX9F7CD1BA49A54507AB5986322E85C5C5">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -5932,7 +5947,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Motor6D" referent="RBX966AA9D21D0A4B008AFDE60003B4E936">
+		<Item class="Motor6D" referent="RBX2F8CEC048EAF4F8DA3644E4DB2DF1532">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -5973,7 +5988,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Rotate" referent="RBXC9249082CD074466AD12110617A32E19">
+		<Item class="Rotate" referent="RBX4F80311DE6C04B9BAB0EB60050FCE3A7">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -6012,7 +6027,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Snap" referent="RBX409937E7EA30477FB6107BE0211F4F54">
+		<Item class="Snap" referent="RBXD10956BB94634EE3AA159D8ACDB36A05">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -6051,7 +6066,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="VelocityMotor" referent="RBX19841190586344E4A948CF4C063A1B3A">
+		<Item class="VelocityMotor" referent="RBX20DDC3476FEE4DD896C3E11796CD4D82">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -6094,7 +6109,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Weld" referent="RBX2B5555CF045C42E9A048CF69F7389749">
+		<Item class="Weld" referent="RBX20C73C7C2ED44D95AE2A1C9606F9E285">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="C0">
@@ -6133,7 +6148,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Keyframe" referent="RBX78B179DDAB264377B07D208CC963DFCE">
+		<Item class="Keyframe" referent="RBX4B905CC17A244BCC9AE448EA4FB5EAA6">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Keyframe</string>
@@ -6142,7 +6157,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Time">0</float>
 			</Properties>
 		</Item>
-		<Item class="KeyframeMarker" referent="RBX51CA7181B77C458BA84741111520516C">
+		<Item class="KeyframeMarker" referent="RBX5114372156FB40649866A8A39091353D">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">KeyframeMarker</string>
@@ -6151,7 +6166,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="Value"></string>
 			</Properties>
 		</Item>
-		<Item class="KeyframeSequence" referent="RBX5B11AD8BBC464D758446FED3AB15BB55">
+		<Item class="KeyframeSequence" referent="RBX0A449A9317314005BD92FCA8162B0C05">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="AuthoredHipHeight">2</float>
@@ -6162,7 +6177,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="PointLight" referent="RBX300D060EEFE34240B0C9D8E125415247">
+		<Item class="PointLight" referent="RBXAAD6409F64094117827A697E0405F00E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Brightness">1</float>
@@ -6179,7 +6194,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="SpotLight" referent="RBX1C23CE07E83449E69C2508133F855075">
+		<Item class="SpotLight" referent="RBX80B0E26870EE481D9566F162AB823416">
 			<Properties>
 				<float name="Angle">90</float>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6198,7 +6213,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="SurfaceLight" referent="RBXEE0A19B1C5D14DEF8B0CCEC56D4EC3FC">
+		<Item class="SurfaceLight" referent="RBX4636DC60518846ABA254F3F864028CB7">
 			<Properties>
 				<float name="Angle">90</float>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6217,17 +6232,17 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="LocalizationTable" referent="RBX9124F22905C646E6B2371A81F91C4D88">
+		<Item class="LocalizationTable" referent="RBXDB55056846084DF894BD754F510BD214">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
-				<string name="Contents"></string>
+				<string name="Contents">[]</string>
 				<string name="Name">LocalizationTable</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<string name="SourceLocaleId">en-us</string>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Script" referent="RBX24C5EF28D8AF47218331FDCDB51574D3">
+		<Item class="Script" referent="RBX37A7CD20C58F42AAAE41C5597FB1BDB7">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Disabled">false</bool>
@@ -6239,7 +6254,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="LocalScript" referent="RBX0AB43EAFB9064338B25399D62C82AABB">
+		<Item class="LocalScript" referent="RBXED832DD3343D4E60B150F9D23CB5029B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Disabled">false</bool>
@@ -6251,7 +6266,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ModuleScript" referent="RBX8FD0325525624B1B80B96CE856216AEA">
+		<Item class="ModuleScript" referent="RBXEBCC770AF0C8466BAEF550BF53AB72DE">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Content name="LinkedSource"><null></null></Content>
@@ -6262,7 +6277,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Message" referent="RBXEBC435721B18471382A39ADD286B12E9">
+		<Item class="Message" referent="RBXDBF7CDB82CA545E0AE4906BD81F083D0">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Message</string>
@@ -6271,7 +6286,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="Text"></string>
 			</Properties>
 		</Item>
-		<Item class="Hint" referent="RBX41EB3F9D0CAD491A91472AD4D7FD7E30">
+		<Item class="Hint" referent="RBX67D22B903D25465B9CC7C2F8CBDAB900">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Hint</string>
@@ -6280,7 +6295,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="Text"></string>
 			</Properties>
 		</Item>
-		<Item class="NoCollisionConstraint" referent="RBXECF49CFCA57240FF9DFAF5C0D8EF2B9D">
+		<Item class="NoCollisionConstraint" referent="RBX41FFF9EF2BDB482D93AB79E920A7521D">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -6291,7 +6306,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="CornerWedgePart" referent="RBX92B8EDFE1CC34FE197E7B44C4B235DD5">
+		<Item class="CornerWedgePart" referent="RBX4215FFBE51B84CE5A38559CECD2A2D1A">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6367,7 +6382,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="Part" referent="RBX74A667BC7ADA4C289B4A3DA6EC8A78D2">
+		<Item class="Part" referent="RBXDDD377D13E504BFD8D96BE864E431432">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6445,7 +6460,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="FlagStand" referent="RBX7F5B548FBD1B4F91B3FB25570F26E209">
+		<Item class="FlagStand" referent="RBX3B747B09F8714B179E1EF3776E95CF04">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6524,7 +6539,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="Seat" referent="RBXC97172C97A16450FBD4C18DBD4BEC07B">
+		<Item class="Seat" referent="RBXF0B05B267F484B238A894C3E7A264CF4">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6603,7 +6618,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="SkateboardPlatform" referent="RBXA62C56F9EEFE4DCD9E07963724CC3D94">
+		<Item class="SkateboardPlatform" referent="RBXF70BFF491FA3452992FED4E658311B98">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6684,7 +6699,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="SpawnLocation" referent="RBXC0CFAA8F3F7D4A31B77C5F02883670EA">
+		<Item class="SpawnLocation" referent="RBX22B80F16748540C69F2185EB3FBC3CE8">
 			<Properties>
 				<bool name="AllowTeamChangeOnTouch">false</bool>
 				<bool name="Anchored">false</bool>
@@ -6767,7 +6782,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="WedgePart" referent="RBXEDDFBC5A616F45D8BD1EDAF03A08617D">
+		<Item class="WedgePart" referent="RBX6CF00F65147B46308B2E89BBF4E6CDF7">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6844,7 +6859,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="MeshPart" referent="RBXE8D0CD66DF804073AEC0CD14437A56ED">
+		<Item class="MeshPart" referent="RBX8A2759A8E4E74AFBBF5928BF4BEDB556">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -6940,7 +6955,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="PartOperation" referent="RBX0CA2D8374DC24875A938B74342A67373">
+		<Item class="PartOperation" referent="RBX085B3A83DCDF4612989261A73D12EBB7">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<Content name="AssetId"><null></null></Content>
@@ -7033,7 +7048,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="NegateOperation" referent="RBXC8D4F4A2379547DEA8EDF1D1202B172A">
+		<Item class="NegateOperation" referent="RBXBFFE2DC9FE174F9196D9CB5A60713C5A">
 			<Properties>
 				<bool name="Anchored">true</bool>
 				<Content name="AssetId"><null></null></Content>
@@ -7126,7 +7141,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="UnionOperation" referent="RBXBF7E0D32F56D49DCAC37D57D711F99BB">
+		<Item class="UnionOperation" referent="RBX5484360C8F2C4D28B38564A6441E866B">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<Content name="AssetId"><null></null></Content>
@@ -7219,7 +7234,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="TrussPart" referent="RBX4295C035EEC647CC8B19D5114B8D311A">
+		<Item class="TrussPart" referent="RBXF88AFA88D10341D2B50CFADEE9940C09">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -7296,7 +7311,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="style">0</token>
 			</Properties>
 		</Item>
-		<Item class="VehicleSeat" referent="RBXB3873FADBDAD46E99EAB478F674D13AC">
+		<Item class="VehicleSeat" referent="RBX7C7D2E5BC5A44DA6810EC53366148A79">
 			<Properties>
 				<bool name="Anchored">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -7381,7 +7396,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="WorldModel" referent="RBX7F17414331DE46D2B03D183B85B9363D">
+		<Item class="WorldModel" referent="RBX294801AD5A384391A3E87678900E2123">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
@@ -7425,7 +7440,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="PartOperationAsset" referent="RBXD86B907BBD444D2AA7FAC4C5448B7B93">
+		<Item class="PartOperationAsset" referent="RBXA0F58028598D4DE29603E6A17A797123">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<BinaryString name="ChildData"></BinaryString>
@@ -7435,7 +7450,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="NumberPose" referent="RBX3B15241026464429862362A1C9DFBB1A">
+		<Item class="NumberPose" referent="RBXD3E1BBC2D6894842B26E141BE35514E1">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="EasingDirection">0</token>
@@ -7447,7 +7462,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Weight">1</float>
 			</Properties>
 		</Item>
-		<Item class="Pose" referent="RBX2C1F8706C41346C3B96CB1997D2DD20A">
+		<Item class="Pose" referent="RBX7F5A217193414841A8B70319CA297BD2">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
@@ -7472,7 +7487,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Weight">1</float>
 			</Properties>
 		</Item>
-		<Item class="BloomEffect" referent="RBX740AA10801D64140B1A8E57B1344B298">
+		<Item class="BloomEffect" referent="RBX2236E526491D495CA01CA9834707E0BA">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -7484,7 +7499,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Threshold">0.949999988</float>
 			</Properties>
 		</Item>
-		<Item class="BlurEffect" referent="RBXB36F624E0BD4436FBBD342047C4147CD">
+		<Item class="BlurEffect" referent="RBX8E129AF3688940958F072B84E1361F83">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -7494,7 +7509,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="DepthOfFieldEffect" referent="RBX2796D87A0F7945F6A2BDB0F4B557D8E3">
+		<Item class="DepthOfFieldEffect" referent="RBX529D82D6FE7D4D8CA8E3C7E4100E6A21">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -7507,7 +7522,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ProximityPrompt" referent="RBX70148B86AF604E1B9E20F135967ADDE9">
+		<Item class="ProximityPrompt" referent="RBX042F7C2617FE4607936EC3352B30280C">
 			<Properties>
 				<string name="ActionText">Interact</string>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -7532,7 +7547,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector2>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadata" referent="RBX650F5D9B181143A8A2865C792B21D931">
+		<Item class="ReflectionMetadata" referent="RBXB2655E9BDE194D3FA465029EE66B5A35">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadata</string>
@@ -7540,7 +7555,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataCallbacks" referent="RBXB5DD0C0EDB044A7C975FE489466F9F47">
+		<Item class="ReflectionMetadataCallbacks" referent="RBXC6125532D0254D67B5EBE7026E5636CE">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadataCallbacks</string>
@@ -7548,7 +7563,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataClasses" referent="RBX6805DAA2868A4AF2BBE8CCAD91EBFB0E">
+		<Item class="ReflectionMetadataClasses" referent="RBX78E06513C9134A6599BB91CE2B80EBB3">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadataClasses</string>
@@ -7556,7 +7571,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataEnums" referent="RBX456CFC3EFA95442888FB12AFC3DA2A94">
+		<Item class="ReflectionMetadataEnums" referent="RBXB5C7AAE4706C4B28B5BFEF890A4EC772">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadataEnums</string>
@@ -7564,7 +7579,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataEvents" referent="RBX7D8882177AE44EF7AC6DA81775021B7D">
+		<Item class="ReflectionMetadataEvents" referent="RBXE08FFD979C254FA684DB9482F3CBE69B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadataEvents</string>
@@ -7572,7 +7587,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataFunctions" referent="RBX149CEAA4174743C1A79192A40BD0E3B6">
+		<Item class="ReflectionMetadataFunctions" referent="RBX5C92B803C9164FB0BF3A13B2442A3CC6">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadataFunctions</string>
@@ -7580,7 +7595,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataClass" referent="RBXB05A6E8C81B74D6DAD394D750B2C1149">
+		<Item class="ReflectionMetadataClass" referent="RBXED2A885937014D1FB33698D57B4A66B8">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Browsable">true</bool>
@@ -7606,7 +7621,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="summary"></string>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataEnum" referent="RBXFE3DB4022EC340D6ABF5E85A25C7CB13">
+		<Item class="ReflectionMetadataEnum" referent="RBX8F7DC73FFA4D43A0A0173B265CA21511">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Browsable">true</bool>
@@ -7628,7 +7643,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="summary"></string>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataEnumItem" referent="RBX03D3BE660EED447A9E5D109551FE1D78">
+		<Item class="ReflectionMetadataEnumItem" referent="RBXAF1C060F4D8E4F059A4E4F0C23744F7F">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Browsable">true</bool>
@@ -7650,7 +7665,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="summary"></string>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataMember" referent="RBXDF93A954BE504C6F835B63207C5C7E1B">
+		<Item class="ReflectionMetadataMember" referent="RBXA58448F839864AEB9535B222DB7043F7">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Browsable">true</bool>
@@ -7672,7 +7687,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="summary"></string>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataProperties" referent="RBXF65B927191464053A80B025776A62146">
+		<Item class="ReflectionMetadataProperties" referent="RBX7A081DE0368D4EEA9360CECF1F8DD759">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadataProperties</string>
@@ -7680,7 +7695,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReflectionMetadataYieldFunctions" referent="RBX8D57A1336E744ABAA728CE32399FCBF6">
+		<Item class="ReflectionMetadataYieldFunctions" referent="RBX0C20B52AE99840DEB66276C40BAFA29D">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ReflectionMetadataYieldFunctions</string>
@@ -7688,7 +7703,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="RemoteEvent" referent="RBXA365BF29A72F4DC0A289C431636765A1">
+		<Item class="RemoteEvent" referent="RBX7F5B2CE4CF7D4C68B2C9ADBB6A76CCAD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">RemoteEvent</string>
@@ -7696,7 +7711,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="RemoteFunction" referent="RBXF5319029EFE7497E8B724A8A3B9C26E7">
+		<Item class="RemoteFunction" referent="RBX115FA029AFD146948535EC4654F184AB">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">RemoteFunction</string>
@@ -7704,7 +7719,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="RenderingTest" referent="RBXA7B8998A0AD34EA89697046D545BDA66">
+		<Item class="RenderingTest" referent="RBX4FEA5BF0C75F4FD58C35EDEB027D2B98">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
@@ -7734,7 +7749,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="Ticket"></string>
 			</Properties>
 		</Item>
-		<Item class="Sky" referent="RBX17EEDF4B7F9C4441980FE4596D609222">
+		<Item class="Sky" referent="RBXDA7A29CC57CD410FB88DDD1630562AFD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="CelestialBodiesShown">true</bool>
@@ -7754,7 +7769,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Smoke" referent="RBXE1ED6EAC391745F58EF68D58BEBFF75D">
+		<Item class="Smoke" referent="RBX683939599E40485CB3F3328406E172B5">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Color3 name="Color">
@@ -7771,7 +7786,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="size_xml">1</float>
 			</Properties>
 		</Item>
-		<Item class="Sound" referent="RBX55E8CE1DEBD94A74BB2EBC0701F553B9">
+		<Item class="Sound" referent="RBXC924CB842E9041CBA62CE3DA423A7804">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="EmitterSize">10</float>
@@ -7790,7 +7805,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="xmlRead_MaxDistance_3">10000</float>
 			</Properties>
 		</Item>
-		<Item class="ChorusSoundEffect" referent="RBX3CF70C1D6B064D5EBBE2C54F79EE923A">
+		<Item class="ChorusSoundEffect" referent="RBX0B1857946C774B3A83E1898BEFFBBCAB">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Depth">0.150000006</float>
@@ -7803,7 +7818,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="CompressorSoundEffect" referent="RBX9C6CB8152CBB4CC99908ACE9664EF6C2">
+		<Item class="CompressorSoundEffect" referent="RBXE96E9A14B53B493F869F4BEFB8E97C82">
 			<Properties>
 				<float name="Attack">0.100000001</float>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -7819,7 +7834,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Threshold">-40</float>
 			</Properties>
 		</Item>
-		<Item class="DistortionSoundEffect" referent="RBX7339DB21A22C41BA8DBB266B54AD1F25">
+		<Item class="DistortionSoundEffect" referent="RBX4FA5EADED9414BACABFCE69D6C96F177">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -7830,7 +7845,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="EchoSoundEffect" referent="RBX000A93C4B9DF4C2D88B0809D67DFC136">
+		<Item class="EchoSoundEffect" referent="RBX7DC75AB4E4214E68AAB591DF401331B5">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Delay">1</float>
@@ -7844,7 +7859,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="WetLevel">0</float>
 			</Properties>
 		</Item>
-		<Item class="EqualizerSoundEffect" referent="RBX39C538D53BA64D2C87DABD4E4198FF3C">
+		<Item class="EqualizerSoundEffect" referent="RBXE7FA75D718234BF29307B0746F801FF9">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -7857,7 +7872,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="FlangeSoundEffect" referent="RBX83A7DAD512704866AAD8AD5ADE616686">
+		<Item class="FlangeSoundEffect" referent="RBXA475E4BD90F04EF59928334932E825C3">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Depth">0.449999988</float>
@@ -7870,7 +7885,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="PitchShiftSoundEffect" referent="RBX1AFD12A848DB46769D716D8BE551A4E5">
+		<Item class="PitchShiftSoundEffect" referent="RBX966B8263FD4A4F1B8342FE960C26C206">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -7881,7 +7896,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ReverbSoundEffect" referent="RBXF816D9DE65CF45CA9A5D45E860683A89">
+		<Item class="ReverbSoundEffect" referent="RBX7B4A6341775A48709F3C6ADA1BD4B2AD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="DecayTime">1.5</float>
@@ -7896,7 +7911,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="WetLevel">0</float>
 			</Properties>
 		</Item>
-		<Item class="TremoloSoundEffect" referent="RBX0729A710954A48F08B7E1C6BBDF9A1CD">
+		<Item class="TremoloSoundEffect" referent="RBX6CE0FC235B494D2093C898C08F53A59E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Depth">1</float>
@@ -7909,7 +7924,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="SoundGroup" referent="RBX2EC0B3DCD01A4437AC675EF516EA8274">
+		<Item class="SoundGroup" referent="RBX748FA3453EAF482EB86B17BA60434EC4">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">SoundGroup</string>
@@ -7918,7 +7933,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Volume">0.5</float>
 			</Properties>
 		</Item>
-		<Item class="StandalonePluginScripts" referent="RBXA38727B6E2E54BCAA738918282480B86">
+		<Item class="StandalonePluginScripts" referent="RBXB18EA3B8C81B456697EDA54390E50EF9">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StandalonePluginScripts</string>
@@ -7926,7 +7941,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="SurfaceAppearance" referent="RBX754D20BB58BD40B6BA924CEAF597C789">
+		<Item class="SurfaceAppearance" referent="RBXD2767A6FD1DB4791A6117C299465D553">
 			<Properties>
 				<token name="AlphaMode">0</token>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -7940,7 +7955,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Content name="TexturePack"><null></null></Content>
 			</Properties>
 		</Item>
-		<Item class="TeleportOptions" referent="RBX04935B00C4A94957ADF99E337F7A6370">
+		<Item class="TeleportOptions" referent="RBXA95A7DF0525B4465BCD0067081273E4E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">TeleportOptions</string>
@@ -7951,7 +7966,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="TerrainRegion" referent="RBXEE83C518E4F64CB2857B9A4253526C05">
+		<Item class="TerrainRegion" referent="RBX0BD7168BEDF0453C9AA46E88C99FE051">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Vector3int16 name="ExtentsMax">
@@ -7970,7 +7985,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Trail" referent="RBXDF861DADE80E4A91BDEF76906CAD69C2">
+		<Item class="Trail" referent="RBX9BA20D8461D84C1088CF1EAD9AC7BA7B">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -7993,7 +8008,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<NumberSequence name="WidthScale">0 1 0 1 1 0 </NumberSequence>
 			</Properties>
 		</Item>
-		<Item class="Tween" referent="RBX4FBC26D64AE842CB8B54E947A0EE8E01">
+		<Item class="Tween" referent="RBXF537E2A9B336405F9260DF7A19F67601">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Tween</string>
@@ -8001,7 +8016,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="UIAspectRatioConstraint" referent="RBX45779A6D51F240EFB78888EEFE4C0CEC">
+		<Item class="UIAspectRatioConstraint" referent="RBX3D3640D7ABE349C89F2DAA0268C342FA">
 			<Properties>
 				<float name="AspectRatio">1</float>
 				<token name="AspectType">0</token>
@@ -8012,7 +8027,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="UISizeConstraint" referent="RBXAAE52D48B6DF41E490EB295C3B83EF79">
+		<Item class="UISizeConstraint" referent="RBXB1F23B7E943C4D09AA97EB49B71C6533">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Vector2 name="MaxSize">
@@ -8028,7 +8043,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="UIGradient" referent="RBX1E0969A889D845129F963546DD9717F6">
+		<Item class="UIGradient" referent="RBX039C87E2CDFD4A89AF671951ECDFA659">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
@@ -8044,7 +8059,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<NumberSequence name="Transparency">0 0 0 1 0 0 </NumberSequence>
 			</Properties>
 		</Item>
-		<Item class="UIGridLayout" referent="RBX62899BC5E0044A4F8E52738350E7E3F7">
+		<Item class="UIGridLayout" referent="RBXEBC46156078E4C8E813415D62E165BFF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<UDim2 name="CellPadding">
@@ -8070,7 +8085,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
-		<Item class="UIListLayout" referent="RBX359D962FEABA4D0CAB37775E655B5038">
+		<Item class="UIListLayout" referent="RBX1A66C542233149488EC866AF01AC699B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="FillDirection">1</token>
@@ -8086,7 +8101,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
-		<Item class="UIPageLayout" referent="RBX2045F09E58F745F897F61C57FD7E7F5C">
+		<Item class="UIPageLayout" referent="RBX4AE50952FED0414EB964A1E19B1AE77B">
 			<Properties>
 				<bool name="Animated">true</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -8110,7 +8125,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
-		<Item class="UITableLayout" referent="RBX78606BC31A814561997D27682D4826AB">
+		<Item class="UITableLayout" referent="RBXDF99A70695834B4D83E142CD19C7E761">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="FillDirection">1</token>
@@ -8131,7 +8146,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
-		<Item class="UIPadding" referent="RBXE3D0E8596E5B405BAB71EB5765CD2A2D">
+		<Item class="UIPadding" referent="RBXE61959A6264345ACB375B050DB858386">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">UIPadding</string>
@@ -8155,7 +8170,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="UIStroke" referent="RBX123FEA3EEDA249D1AE82A0C221F25396">
+		<Item class="UIStroke" referent="RBX6F7AC571601E4474BDC5E8D23408E154">
 			<Properties>
 				<token name="ApplyStrokeMode">0</token>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -8173,7 +8188,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="Transparency">0</float>
 			</Properties>
 		</Item>
-		<Item class="BinaryStringValue" referent="RBX30EBC9F831AD494991071457AADF8090">
+		<Item class="BinaryStringValue" referent="RBXB3DC2FB6AD0E4C1B9DA071AF0082F386">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BinaryStringValue</string>
@@ -8182,7 +8197,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Value"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="BoolValue" referent="RBXAED086DF4D6F4BC0B9A879453D3F7989">
+		<Item class="BoolValue" referent="RBX6BB0B890AA3F4F0C98B864E7F2BB7A9B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BoolValue</string>
@@ -8191,7 +8206,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Value">false</bool>
 			</Properties>
 		</Item>
-		<Item class="BrickColorValue" referent="RBX95F3EDE7906844FFA0B2FF3A024A7FC0">
+		<Item class="BrickColorValue" referent="RBX2304859C4AFF436A9480F1BDE76DF2F3">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">BrickColorValue</string>
@@ -8200,7 +8215,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="Value">194</int>
 			</Properties>
 		</Item>
-		<Item class="CFrameValue" referent="RBX2FED81B0AF3C4484B15620CC89D49A24">
+		<Item class="CFrameValue" referent="RBXA1B7E62380F14FD1A4C1A561C329E8C9">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">CFrameValue</string>
@@ -8222,7 +8237,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</CoordinateFrame>
 			</Properties>
 		</Item>
-		<Item class="Color3Value" referent="RBX7C5CA326EB35407C8D1EACE8F07014DA">
+		<Item class="Color3Value" referent="RBX98EA4D12432946F795F14060787D42CD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Color3Value</string>
@@ -8235,7 +8250,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Color3>
 			</Properties>
 		</Item>
-		<Item class="DoubleConstrainedValue" referent="RBXF931D29363024E7D87ACBE0D658FE303">
+		<Item class="DoubleConstrainedValue" referent="RBX6348D130C7B240C6B6BFF6B45A5DF350">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<double name="MaxValue">1</double>
@@ -8246,7 +8261,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<double name="value">0</double>
 			</Properties>
 		</Item>
-		<Item class="IntConstrainedValue" referent="RBXA1659BA3375C47AA9FEC1AD005C26CB5">
+		<Item class="IntConstrainedValue" referent="RBXA2298628AC3B462DB57B498AA82216B0">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<int64 name="MaxValue">10</int64>
@@ -8257,7 +8272,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int64 name="value">0</int64>
 			</Properties>
 		</Item>
-		<Item class="IntValue" referent="RBXD3277FBC5D6F40209D651921CD9B294A">
+		<Item class="IntValue" referent="RBXAD04BA220253471CB923BB5FEC1F37FD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">IntValue</string>
@@ -8266,7 +8281,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int64 name="Value">0</int64>
 			</Properties>
 		</Item>
-		<Item class="NumberValue" referent="RBXC176F1EBBEFD41679E5947838BAC8961">
+		<Item class="NumberValue" referent="RBX22AC02D317DA407D828A96E4C37FFCAD">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">NumberValue</string>
@@ -8275,7 +8290,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<double name="Value">0</double>
 			</Properties>
 		</Item>
-		<Item class="ObjectValue" referent="RBX13E445435D514560AC18D3497FF45B14">
+		<Item class="ObjectValue" referent="RBX56456173CA6E43C88AA187F0A5267CB0">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">ObjectValue</string>
@@ -8284,7 +8299,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Ref name="Value">null</Ref>
 			</Properties>
 		</Item>
-		<Item class="RayValue" referent="RBX5971BD8899EB4F3A816B38885115790F">
+		<Item class="RayValue" referent="RBX90820061E12C482283B70080B44B74B8">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">RayValue</string>
@@ -8304,7 +8319,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Ray>
 			</Properties>
 		</Item>
-		<Item class="StringValue" referent="RBX93FD14291F5A453287A9B48CC82A37A1">
+		<Item class="StringValue" referent="RBX1B13EABD09634FDD88CD79597DABE74B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StringValue</string>
@@ -8313,7 +8328,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="Value"></string>
 			</Properties>
 		</Item>
-		<Item class="Vector3Value" referent="RBX5421B66829664E1B92E3E26F92930B1E">
+		<Item class="Vector3Value" referent="RBXFA2CFF1CA2024DA98FA1739CECDF94D1">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">Vector3Value</string>
@@ -8326,7 +8341,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="UITextSizeConstraint" referent="RBX1C85F1E84D0D4EC98D69A7D5DCE595EE">
+		<Item class="UITextSizeConstraint" referent="RBX87400992562E43E4BC72475423CD030E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<int name="MaxTextSize">100</int>
@@ -8336,7 +8351,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="TextBox" referent="RBX8E6435428B134B75879A7C22DB47487D">
+		<Item class="TextBox" referent="RBX2D819016BD024D94A6AD8680F7D9970B">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -8422,7 +8437,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
-		<Item class="AnimationController" referent="RBX28F8127A282148A08506D5C12569B776">
+		<Item class="AnimationController" referent="RBXB0A11B783AC84E5D84D6D5AC133F903F">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">AnimationController</string>
@@ -8430,7 +8445,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ColorCorrectionEffect" referent="RBX8EFBF5D508134F11BA2468BFD800E7DA">
+		<Item class="ColorCorrectionEffect" referent="RBX71496E4F3A82451EB18A1A7806A3F8D9">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<float name="Brightness">0</float>
@@ -8447,7 +8462,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Color3>
 			</Properties>
 		</Item>
-		<Item class="Actor" referent="RBX8D0113A3806248B8BB5F17B6C53A8810">
+		<Item class="Actor" referent="RBX17BE73A2054A402999EE448EBF7DC397">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
@@ -8491,7 +8506,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="StarterGear" referent="RBXEAB52AFE74D84A5F8CF41B9CD3AD8D71">
+		<Item class="StarterGear" referent="RBXC26C5E5FE1D442E9BEED5D11FB0A608B">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">StarterGear</string>
@@ -8499,7 +8514,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ClickDetector" referent="RBX37B7C1CB5D2547B2A6386E9BAAE593A2">
+		<Item class="ClickDetector" referent="RBXCD8D8E75694943298FA6CA647F7E6C2E">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Content name="CursorIcon"><null></null></Content>
@@ -8509,7 +8524,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Torque" referent="RBXE09D81DA69C74881889F66F3DE80EDF4">
+		<Item class="Torque" referent="RBX30134092119C4906A5B63086281F9E25">
 			<Properties>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
@@ -8528,7 +8543,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
-		<Item class="SpecialMesh" referent="RBXAABD4C1A97194CB6B327438FD2369DB5">
+		<Item class="SpecialMesh" referent="RBX76EB1EA5D0BF4E629D68997598BEC155">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LODX">2</token>
@@ -8556,7 +8571,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="FunctionalTest" referent="RBX95FCAA0A7ADD47D592F0E6A67EF4428B">
+		<Item class="FunctionalTest" referent="RBX00C5E47F45994FEDA9B566DB85C66D0D">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Description">?</string>
@@ -8566,7 +8581,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Model" referent="RBX49DA0A74D0CB43D880F4227C0C5FE7AB">
+		<Item class="Model" referent="RBX5866AD84F65E42F2A2979BD21F8F1E06">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
@@ -8610,7 +8625,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="ParticleEmitter" referent="RBX47A3C8F01ADF4B07839D58DDA3938820">
+		<Item class="ParticleEmitter" referent="RBX3061A83BABE34B3D87123546F0645B94">
 			<Properties>
 				<Vector3 name="Acceleration">
 					<X>0</X>
@@ -8646,7 +8661,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<float name="ZOffset">0</float>
 			</Properties>
 		</Item>
-		<Item class="SunRaysEffect" referent="RBX51AFEE293D6D44C09D7C768207DCBB05">
+		<Item class="SunRaysEffect" referent="RBX78F2D92AA7224C8084146A495F4527AF">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -8657,7 +8672,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Sparkles" referent="RBX4C6F4035F747480B88BBC675899710F4">
+		<Item class="Sparkles" referent="RBX637A91E6D2BB41EA9DED28ADDDDBCBC5">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="Enabled">true</bool>
@@ -8671,7 +8686,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="Team" referent="RBX2B76B61D0B9340DFBC868E648F7DB4AA">
+		<Item class="Team" referent="RBXAF08FAFE4482437BBFDACD5972355CF8">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoAssignable">true</bool>
@@ -8681,7 +8696,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int name="TeamColor">1</int>
 			</Properties>
 		</Item>
-		<Item class="UIScale" referent="RBXCA5AE42E8C8347E28AE30A6ABAC0C6CB">
+		<Item class="UIScale" referent="RBXCA18B9D480E04F429928B75391093818">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="Name">UIScale</string>
@@ -8690,7 +8705,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
-		<Item class="WeldConstraint" referent="RBX3ABBE641344C42B6BF0A19893B1F5955">
+		<Item class="WeldConstraint" referent="RBXEFFD937EC8134D46A67494EEE48BB647">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame0">

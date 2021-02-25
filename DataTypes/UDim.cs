@@ -13,12 +13,6 @@
             Offset = offset;
         }
 
-        internal UDim(Attribute attr)
-        {
-            Scale = attr.ReadFloat();
-            Offset = attr.ReadInt();
-        }
-
         public static UDim operator+(UDim a, UDim b)
         {
             return new UDim(a.Scale + b.Scale, a.Offset + b.Offset);

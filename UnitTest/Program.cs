@@ -120,6 +120,8 @@ namespace RobloxFiles.UnitTest
                 RobloxFile bin = RobloxFile.Open(@"Files\Binary.rbxl");
                 RobloxFile xml = RobloxFile.Open(@"Files\Xml.rbxlx");
 
+                Folder attributes = bin.FindFirstChild<Folder>("Attributes", true);
+
                 Console.WriteLine("Files opened! Pausing execution for debugger analysis...");
                 Debugger.Break();
 

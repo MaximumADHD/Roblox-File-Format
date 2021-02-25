@@ -32,18 +32,11 @@ namespace RobloxFiles.DataTypes
             Z = z;
         }
 
-        public Vector3(float[] coords)
+        public Vector3(params float[] coords)
         {
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
             Z = coords.Length > 2 ? coords[2] : 0;
-        }
-
-        internal Vector3(Attribute attr)
-        {
-            X = attr.ReadFloat();
-            Y = attr.ReadFloat();
-            Z = attr.ReadFloat();
         }
 
         public static Vector3 FromAxis(Axis axis)
@@ -68,13 +61,13 @@ namespace RobloxFiles.DataTypes
 
         private delegate Vector3 Operator(Vector3 a, Vector3 b);
         
-        private static Vector3 upcastFloatOp(Vector3 vec, float num, Operator upcast)
+        private static Vector3 UpcastFloatOp(Vector3 vec, float num, Operator upcast)
         {
             Vector3 numVec = new Vector3(num, num, num);
             return upcast(vec, numVec);
         }
 
-        private static Vector3 upcastFloatOp(float num, Vector3 vec, Operator upcast)
+        private static Vector3 UpcastFloatOp(float num, Vector3 vec, Operator upcast)
         {
             Vector3 numVec = new Vector3(num, num, num);
             return upcast(numVec, vec);
@@ -86,30 +79,30 @@ namespace RobloxFiles.DataTypes
         private static readonly Operator div = new Operator((a, b) => new Vector3(a.X / b.X, a.Y / b.Y, a.Z / b.Z));
 
         public static Vector3 operator +(Vector3 a, Vector3 b) => add(a, b);
-        public static Vector3 operator +(Vector3 v, float n)   => upcastFloatOp(v, n, add);
-        public static Vector3 operator +(float n, Vector3 v)   => upcastFloatOp(n, v, add);
+        public static Vector3 operator +(Vector3 v, float n)   => UpcastFloatOp(v, n, add);
+        public static Vector3 operator +(float n, Vector3 v)   => UpcastFloatOp(n, v, add);
 
         public static Vector3 operator -(Vector3 a, Vector3 b) => sub(a, b);
-        public static Vector3 operator -(Vector3 v, float n)   => upcastFloatOp(v, n, sub);
-        public static Vector3 operator -(float n, Vector3 v)   => upcastFloatOp(n, v, sub);
+        public static Vector3 operator -(Vector3 v, float n)   => UpcastFloatOp(v, n, sub);
+        public static Vector3 operator -(float n, Vector3 v)   => UpcastFloatOp(n, v, sub);
 
         public static Vector3 operator *(Vector3 a, Vector3 b) => mul(a, b);
-        public static Vector3 operator *(Vector3 v, float n)   => upcastFloatOp(v, n, mul);
-        public static Vector3 operator *(float n, Vector3 v)   => upcastFloatOp(n, v, mul);
+        public static Vector3 operator *(Vector3 v, float n)   => UpcastFloatOp(v, n, mul);
+        public static Vector3 operator *(float n, Vector3 v)   => UpcastFloatOp(n, v, mul);
 
         public static Vector3 operator /(Vector3 a, Vector3 b) => div(a, b);
-        public static Vector3 operator /(Vector3 v, float n)   => upcastFloatOp(v, n, div);
-        public static Vector3 operator /(float n, Vector3 v)   => upcastFloatOp(n, v, div);
+        public static Vector3 operator /(Vector3 v, float n)   => UpcastFloatOp(v, n, div);
+        public static Vector3 operator /(float n, Vector3 v)   => UpcastFloatOp(n, v, div);
 
         public static Vector3 operator -(Vector3 v)
         {
             return new Vector3(-v.X, -v.Y, -v.Z);
         }
 
-        public static Vector3 Zero  => new Vector3(0, 0, 0);
-        public static Vector3 Right => new Vector3(1, 0, 0);
-        public static Vector3 Up    => new Vector3(0, 1, 0);
-        public static Vector3 Back  => new Vector3(0, 0, 1);
+        public static readonly Vector3 Zero  = new Vector3(0, 0, 0);
+        public static readonly Vector3 Right = new Vector3(1, 0, 0);
+        public static readonly Vector3 Up    = new Vector3(0, 1, 0);
+        public static readonly Vector3 Back  = new Vector3(0, 0, 1);
 
         public float Dot(Vector3 other)
         {

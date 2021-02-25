@@ -17,12 +17,6 @@ namespace RobloxFiles.DataTypes
             Max = max;
         }
 
-        internal Region3(Attribute attr)
-        {
-            Min = new Vector3(attr);
-            Max = new Vector3(attr);
-        }
-        
         public Region3 ExpandToGrid(float resolution)
         {
             Vector3 emin = new Vector3
