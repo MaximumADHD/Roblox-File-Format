@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.466.1.418149
+// Updated as of 0.467.0.418297
 
 using System;
 
@@ -665,6 +665,9 @@ namespace RobloxFiles
     public class RodConstraint : Constraint
     {
         public float Length = 5;
+        public bool LimitsEnabled;
+        public float LimitAngle0 = 90f;
+        public float LimitAngle1 = 90f;
         public float Thickness = 0.1f;
     }
 
