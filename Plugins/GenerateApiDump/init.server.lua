@@ -10,6 +10,7 @@ local stackLevel = 0
 local singletons = 
 {
 	Terrain = workspace:WaitForChild("Terrain", 1000);
+	ParabolaAdornment = Instance.new("BoxHandleAdornment"); -- close enough
 	StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts");
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts");
 }
@@ -610,6 +611,11 @@ local function generateClasses()
 								local enumName = tostring(value.EnumType)
 								enumMap[enumName] = true
 							end
+						end
+
+						if className == "Sound" and propName == "EmitterSize" then
+							-- .____.
+							propTags.Deprecated = false
 						end
 						
 						if propTags.Deprecated then

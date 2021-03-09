@@ -1,3 +1,5 @@
+local HttpService = game:GetService("HttpService")
+
 local function UseColor3(propName)
 	return
 	{
@@ -447,6 +449,21 @@ return
 	{
 		Defaults = { MaxPlayersInternal = 16 }
 	};
+
+	PolicyService =
+	{
+		Add =
+		{
+			IsLuobuServer = TryDefineEnum("TriStateBoolean");
+			LuobuWhitelisted = TryDefineEnum("TriStateBoolean");
+		};
+
+		Defaults =
+		{
+			IsLuobuServer = TryGetEnumItem("TriStateBoolean", "Unknown");
+			LuobuWhitelisted = TryGetEnumItem("TriStateBoolean", "Unknown");
+		};
+	};
 	
 	SelectionBox =
 	{
@@ -501,7 +518,6 @@ return
 		Add = 
 		{
 			MaxDistance = "float"; -- ?!
-			
 			xmlRead_MaxDistance_3 = "float";
 			xmlRead_MinDistance_3 = "float";
 		};
@@ -628,6 +644,22 @@ return
 	UnvalidatedAssetService =
 	{
 		Add = { CachedData = "string" };
+
+		Defaults = 
+		{
+			CachedData = HttpService:JSONEncode
+			{
+				users = {};
+				lastSaveTime = 0;
+				lastKnownPublishRequest = 0;
+			}
+		}
+	};
+
+	UserInputService =
+	{
+		Add = { LegacyInputEventsEnabled = "bool" };
+		Defaults = { LegacyInputEventsEnabled = true };
 	};
 	
 	ViewportFrame = 

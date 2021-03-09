@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.467.0.418297
+// Updated as of 0.469.0.418830
 
 using System;
 
@@ -428,6 +428,14 @@ namespace RobloxFiles
         }
     }
 
+    public class CalloutService : Instance
+    {
+        public CalloutService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Camera : Instance
     {
         public CFrame CFrame = new CFrame(0, 20, 20, 1, 0, 0, 0, 0.70711f, 0.70711f, 0, -0.70711f, 0.70711f);
@@ -665,8 +673,8 @@ namespace RobloxFiles
     public class RodConstraint : Constraint
     {
         public float Length = 5;
-        public float LimitAngle0 = 90f;
-        public float LimitAngle1 = 90f;
+        public float LimitAngle0 = 90;
+        public float LimitAngle1 = 90;
         public bool LimitsEnabled;
         public float Thickness = 0.1f;
     }
@@ -1216,6 +1224,7 @@ namespace RobloxFiles
         }
 
         public float LineHeight = 1;
+        public int MaxVisibleGraphemes = -1;
         public bool RichText;
         public string Text = "Button";
 
@@ -1286,6 +1295,7 @@ namespace RobloxFiles
         }
 
         public float LineHeight = 1;
+        public int MaxVisibleGraphemes = -1;
         public bool RichText;
         public string Text = "Label";
 
@@ -1359,6 +1369,7 @@ namespace RobloxFiles
         }
 
         public float LineHeight = 1;
+        public int MaxVisibleGraphemes = -1;
         public bool MultiLine;
         public Color3 PlaceholderColor3 = Color3.FromRGB(178, 178, 178);
         public string PlaceholderText = "";
@@ -2906,9 +2917,7 @@ namespace RobloxFiles
 
     public class Sound : Instance
     {
-        [Obsolete]
         public float EmitterSize = 10;
-
         public bool Looped;
 
         [Obsolete]
@@ -3432,7 +3441,7 @@ namespace RobloxFiles
             IsService = true;
         }
 
-        public string CachedData = "";
+        public string CachedData = "{\"lastKnownPublishRequest\":0,\"users\":[],\"lastSaveTime\":0}";
     }
 
     public class UserInputService : Instance
