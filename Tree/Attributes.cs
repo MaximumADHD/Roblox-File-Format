@@ -220,7 +220,7 @@ namespace RobloxFiles
         }
     }
 
-    public class Attributes : Dictionary<string, Attribute>
+    public class Attributes : SortedDictionary<string, Attribute>
     {
         private void Initialize(BinaryReader reader)
         {
