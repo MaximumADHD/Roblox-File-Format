@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.469.0.418830
+// Updated as of 0.470.0.419147
 
 using System;
 
@@ -648,6 +648,7 @@ namespace RobloxFiles
     public class HingeConstraint : Constraint
     {
         public ActuatorType ActuatorType = ActuatorType.None;
+        public float AngularResponsiveness = 45;
         public float AngularSpeed;
         public float AngularVelocity;
         public bool LimitsEnabled;
@@ -690,6 +691,7 @@ namespace RobloxFiles
     {
         public ActuatorType ActuatorType = ActuatorType.None;
         public bool LimitsEnabled;
+        public float LinearResponsiveness = 45;
         public float LowerLimit;
         public float MotorMaxAcceleration = float.MaxValue;
         public float MotorMaxForce;
@@ -706,6 +708,7 @@ namespace RobloxFiles
     {
         public ActuatorType AngularActuatorType = ActuatorType.None;
         public bool AngularLimitsEnabled;
+        public float AngularResponsiveness = 45;
         public float AngularRestitution;
         public float AngularSpeed;
         public float AngularVelocity;
@@ -741,6 +744,18 @@ namespace RobloxFiles
     {
         public ActuatorRelativeTo RelativeTo = ActuatorRelativeTo.Attachment0;
         public Vector3 Torque_ = new Vector3();
+    }
+
+    public class TorsionSpringConstraint : Constraint
+    {
+        public float Coils = 8;
+        public float Damping = 0.01f;
+        public bool LimitEnabled;
+        public float MaxAngle = 45;
+        public float MaxTorque = float.MaxValue;
+        public float Radius = 0.4f;
+        public float Restitution;
+        public float Stiffness = 100;
     }
 
     public class UniversalConstraint : Constraint
@@ -2191,6 +2206,7 @@ namespace RobloxFiles
         public bool Locked;
         public bool Massless;
         public Material Material = Material.Plastic;
+        public CFrame PivotOffset = new CFrame();
 
         public Vector3 Position
         {
@@ -2392,6 +2408,7 @@ namespace RobloxFiles
         public SharedString ModelMeshData = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public Vector3 ModelMeshSize = new Vector3();
         public BasePart PrimaryPart;
+        public CFrame WorldPivot = new CFrame();
     }
 
     public class Actor : Model
