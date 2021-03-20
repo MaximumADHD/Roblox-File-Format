@@ -137,11 +137,9 @@ namespace RobloxFiles
         {
             if (AttributesImpl.TryGetValue(key, out Attribute attr))
             {
-                object result = attr.Value;
-
-                if (result is T)
+                if (attr.Value is T result)
                 {
-                    value = (T)result;
+                    value = result;
                     return true;
                 }
             }
@@ -193,8 +191,7 @@ namespace RobloxFiles
         /// <param name="ancestor">The instance whose ancestry will be tested against this Instance.</param>
         public bool IsDescendantOf(Instance ancestor)
         {
-            Contract.Requires(ancestor != null);
-            return ancestor.IsAncestorOf(this);
+            return ancestor?.IsAncestorOf(this) ?? false;
         }
 
         /// <summary>
@@ -203,9 +200,7 @@ namespace RobloxFiles
         [Obsolete("Use the `is` operator instead.")]
         public bool IsA<T>() where T : Instance
         {
-            Type myType = GetType();
-            Type classType = typeof(T);
-            return classType.IsAssignableFrom(myType);
+            return this is T;
         }
 
         /// <summary>
@@ -214,14 +209,10 @@ namespace RobloxFiles
         /// </summary>
         /// <typeparam name="T">The type of Instance to cast to.</typeparam>
         /// <returns>The instance as the type '<typeparamref name="T"/>' if it can be converted, or null.</returns>
+        [Obsolete("Use the `as` operator instead.")]
         public T Cast<T>() where T : Instance
         {
-            T result = null;
-
-            if (this is T)
-                result = this as T;
-
-            return result;
+            return this as T;
         }
 
         /// <summary>
