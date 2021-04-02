@@ -9,6 +9,7 @@ local stackLevel = 0
 
 local singletons = 
 {
+	Speaker = Instance.new("Sound"); -- close enough
 	Terrain = workspace:WaitForChild("Terrain", 1000);
 	ParabolaAdornment = Instance.new("BoxHandleAdornment"); -- close enough
 	StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts");
@@ -56,11 +57,11 @@ end
 
 local function openStack()
 	writeLine('{')
-	stackLevel = stackLevel + 1
+	stackLevel += 1
 end
 
 local function closeStack()
-	stackLevel = stackLevel - 1
+	stackLevel -= 1
 	writeLine('}')
 end
 
@@ -362,11 +363,12 @@ local function generateClasses()
 	writeLine("namespace RobloxFiles")
 	openStack()
 	
-	for i,className in ipairs(classNames) do
+	for i, className in ipairs(classNames) do
 		local class = classes[className]
 		local classTags = getTags(class)
 		
 		local registerClass = canCreateClass(class)
+		local object = class.Object
 		
 		if class.Inherited then
 			registerClass = true
@@ -375,8 +377,16 @@ local function generateClasses()
 		if class.Name == "Instance" or class.Name == "Studio" then
 			registerClass = false
 		end
-		
-		local object = class.Object
+
+		local noSecurityCheck = pcall(function ()
+			if not classTags.Service then
+				return tostring(object)
+			end
+		end)
+
+		if not noSecurityCheck then
+			object = nil
+		end
 		
 		if not object then
 			if class.Inherited then
@@ -442,7 +452,7 @@ local function generateClasses()
 				closeStack()
 			end
 			
-			for i, propName in ipairs(propNames) do
+			for j, propName in ipairs(propNames) do
 				local prop = propMap[propName]
 				local propTags = getTags(prop)
 				
@@ -533,7 +543,7 @@ local function generateClasses()
 							writeLine("public %s %s => %s;", valueType, name, get)
 						end
 						
-						if i ~= #propNames and set then
+						if j ~= #propNames and set then
 							writeLine()
 						end
 					else
@@ -579,7 +589,7 @@ local function generateClasses()
 							if gotValue then
 								warn(src, "Fell back to implicit value for property:", id)
 							else
-								warn(src, "!! Could not figure out default value for property:", id)
+								warn(src, "!! Could not figure out default value for property:", id, "value error was:", value)
 							end
 						end
 						
@@ -628,7 +638,7 @@ local function generateClasses()
 						
 						writeLine("public %s %s%s;", valueType, name, default)
 						
-						if propTags.Deprecated and i ~= #propNames then
+						if propTags.Deprecated and j ~= #propNames then
 							writeLine()
 						end
 					end
@@ -682,7 +692,7 @@ local function generateEnums(whiteList)
 			return a.Value < b.Value
 		end)
 		
-		for i, enumItem in ipairs(enumItems) do
+		for j, enumItem in ipairs(enumItems) do
 			local text = ""
 			local comma = ','
 						
@@ -694,7 +704,7 @@ local function generateEnums(whiteList)
 					text = " = " .. value;
 				end
 				
-				if i == #enumItems then
+				if j == #enumItems then
 					comma = ""
 				end
 				

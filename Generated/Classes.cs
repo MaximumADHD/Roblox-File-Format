@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.470.0.419147
+// Updated as of 0.472.0.419960
 
 using System;
 
@@ -912,11 +912,6 @@ namespace RobloxFiles
 
         [Obsolete]
         public int MaxItems = 1000;
-    }
-
-    public class DebuggerWatch : Instance
-    {
-        public string Expression = "";
     }
 
     public class Dialog : Instance
@@ -3085,6 +3080,14 @@ namespace RobloxFiles
         }
     }
 
+    public class Speaker : Instance
+    {
+        public RollOffMode RollOffMode = RollOffMode.Inverse;
+        public SoundGroup SoundGroup;
+        public Instance Source;
+        public float Volume = 0.5f;
+    }
+
     public class StandalonePluginScripts : Instance
     {
     }
@@ -3174,7 +3177,6 @@ namespace RobloxFiles
         public string CommitInflightGuid = "";
         public int CommitInflightPlaceVersion;
         public bool EnableScriptCollabByDefaultOnLoad;
-        public bool EnableScriptCollabOnLoad;
         public long SrcPlaceId;
         public long SrcUniverseId;
     }
