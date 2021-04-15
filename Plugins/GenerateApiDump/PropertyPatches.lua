@@ -724,6 +724,7 @@ return
 			StreamingTargetRadius = "int";
 
 			MeshPartHeads = TryDefineEnum("MeshPartHeads");
+			SignalBehavior = TryDefineEnum("SignalBehavior");
 			StreamingPauseMode = TryDefineEnum("StreamingPauseMode");
 			PhysicsSteppingMethod = TryDefineEnum("PhysicsSteppingMethod");
 			MeshPartHeadsAndAccessories = TryDefineEnum("MeshPartHeadsAndAccessories");
@@ -741,6 +742,7 @@ return
 			StreamingTargetRadius = 1024;
 
 			MeshPartHeads = TryGetEnumItem("MeshPartHeads", "Default");
+			SignalBehavior = TryGetEnumItem("SignalBehavior", "Default");
 			StreamingPauseMode = TryGetEnumItem("StreamingPauseMode", "Default");
 			PhysicsSteppingMethod = TryGetEnumItem("PhysicsSteppingMethod", "Default");
 			MeshPartHeadsAndAccessories = TryGetEnumItem("MeshPartHeadsAndAccessories", "Default");

@@ -72,9 +72,10 @@ end
 
 local function exportStream(label)
 	local results = outStream:gsub("\n\n\n", "\n\n")
+	local export
 	
 	if plugin then
-		local export = Instance.new("Script")
+		export = Instance.new("Script")
 		export.Archivable = false
 		export.Source = results
 		export.Name = label
@@ -88,6 +89,9 @@ local function exportStream(label)
 	elseif not plugin then
 		warn(label)
 		print(results)
+	else
+		wait()
+		plugin:OpenScript(export)
 	end
 end
 
@@ -734,5 +738,9 @@ end
 if plugin then
 	button.Click:Connect(generateAll)
 else
+	generateAll()
+end
+
+if game.Name:sub(1, 9) == "Null.rbxl" then
 	generateAll()
 end

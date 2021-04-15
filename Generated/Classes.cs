@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.472.0.419960
+// Updated as of 0.474.0.420553
 
 using System;
 
@@ -218,7 +218,7 @@ namespace RobloxFiles
 
     public class WrapTarget : BaseWrap
     {
-        public float Stiffness = 0.9f;
+        public float Stiffness;
     }
 
     public class Beam : Instance
@@ -2403,7 +2403,6 @@ namespace RobloxFiles
         public SharedString ModelMeshData = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public Vector3 ModelMeshSize = new Vector3();
         public BasePart PrimaryPart;
-        public CFrame WorldPivot = new CFrame();
     }
 
     public class Actor : Model
@@ -2432,6 +2431,7 @@ namespace RobloxFiles
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
+        public SignalBehavior SignalBehavior = SignalBehavior.Default;
         public bool StreamingEnabled;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
@@ -3275,6 +3275,14 @@ namespace RobloxFiles
     public class TimerService : Instance
     {
         public TimerService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class ToastNotificationService : Instance
+    {
+        public ToastNotificationService()
         {
             IsService = true;
         }

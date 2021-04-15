@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.472.0.419960
+// Updated as of 0.473.0.420291
 
 namespace RobloxFiles.Enums
 {
@@ -905,6 +905,13 @@ namespace RobloxFiles.Enums
         X = 1,
         Y,
         XY = 4
+    }
+
+    public enum SignalBehavior
+    {
+        Default,
+        Immediate,
+        Deferred
     }
 
     public enum SizeConstraint
