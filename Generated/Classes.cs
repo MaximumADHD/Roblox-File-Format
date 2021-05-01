@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.474.0.420553
+// Updated as of 0.476.0.421371
 
 using System;
 
@@ -7,10 +7,6 @@ using RobloxFiles.DataTypes;
 using RobloxFiles.Enums;
 using RobloxFiles.Utility;
 
-#pragma warning disable CA1041  // Provide ObsoleteAttribute message
-#pragma warning disable CA1051  // Do not declare visible instance fields
-#pragma warning disable CA1707  // Identifiers should not contain underscores
-#pragma warning disable CA1716  // Identifiers should not match keywords
 #pragma warning disable IDE1006 // Naming Styles
 
 namespace RobloxFiles
@@ -2095,6 +2091,14 @@ namespace RobloxFiles
         }
     }
 
+    public class MemoryStoreService : Instance
+    {
+        public MemoryStoreService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Message : Instance
     {
         public string Text = "";
@@ -2402,7 +2406,9 @@ namespace RobloxFiles
         public CFrame ModelMeshCFrame = new CFrame();
         public SharedString ModelMeshData = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public Vector3 ModelMeshSize = new Vector3();
+        public bool NeedsPivotMigration;
         public BasePart PrimaryPart;
+        public CFrame WorldPivotData;
     }
 
     public class Actor : Model
@@ -2421,6 +2427,7 @@ namespace RobloxFiles
         }
 
         public bool AllowThirdPartySales;
+        public ClientAnimatorThrottlingMode ClientAnimatorThrottling = ClientAnimatorThrottlingMode.Default;
         public string CollisionGroups = "Default^0^1";
         public Camera CurrentCamera;
         public double DistributedGameTime;
@@ -2532,10 +2539,11 @@ namespace RobloxFiles
             IsService = true;
         }
 
+        public string DEPRECATED_SerializedEmulatedPolicyInfo = "";
         public string EmulatedCountryCode = "";
         public string EmulatedGameLocale = "";
         public bool PlayerEmulationEnabled;
-        public string SerializedEmulatedPolicyInfo = "";
+        public byte[] SerializedEmulatedPolicyInfo = Array.Empty<byte>();
     }
 
     public class Players : Instance
@@ -2676,6 +2684,14 @@ namespace RobloxFiles
 
         public bool Enabled = true;
         public int MaxPromptsVisible = 16;
+    }
+
+    public class PublishService : Instance
+    {
+        public PublishService()
+        {
+            IsService = true;
+        }
     }
 
     public class RbxAnalyticsService : Instance

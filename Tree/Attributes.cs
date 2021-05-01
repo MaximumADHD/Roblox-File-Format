@@ -13,36 +13,36 @@ namespace RobloxFiles
 
     public enum AttributeType
     {
-        // Null = 1,
+     // Null = 1,
         String = 2,
         Bool = 3,
-        // Int = 4,
+     // Int = 4,
         Float = 5,
         Double = 6,
-        // Array = 7,
-        // Dictionary = 8,
+     // Array = 7,
+     // Dictionary = 8,
         UDim = 9,
         UDim2 = 10,
-        // Ray = 11,
-        // Faces = 12,
-        // Axes = 13
+     // Ray = 11,
+     // Faces = 12,
+     // Axes = 13
         BrickColor = 14,
         Color3 = 15,
         Vector2 = 16,
         Vector3 = 17,
-        // Vector2int16 = 18,
-        // Vector3int16 = 19,
-        // CFrame = 20,
-        // Enum = 21,
+     // Vector2int16 = 18,
+     // Vector3int16 = 19,
+     // CFrame = 20,
+     // Enum = 21,
         NumberSequence = 23,
-        // NumberSequenceKeypoint = 24,
+     // NumberSequenceKeypoint = 24,
         ColorSequence = 25,
-        // ColorSequenceKeypoint = 26,
+     // ColorSequenceKeypoint = 26,
         NumberRange = 27,
         Rect = 28,
-        // PhysicalProperties = 29
-        // Region3 = 31,
-        // Region3int16 = 32
+     // PhysicalProperties = 29
+     // Region3 = 31,
+     // Region3int16 = 32
     }
 
     public class Attribute : IDisposable
@@ -87,7 +87,6 @@ namespace RobloxFiles
         {
             var attributeSupport = new Dictionary<AttributeType, Tokenizer>();
             var supportedTypes = new Dictionary<Type, AttributeType>();
-
             var assembly = Assembly.GetExecutingAssembly();
 
             var handlerTypes =
@@ -247,7 +246,7 @@ namespace RobloxFiles
 
         internal Attributes(MemoryStream stream)
         {
-            using (BinaryReader reader = new BinaryReader(stream))
+            using (var reader = new BinaryReader(stream))
                 Initialize(reader);
 
             stream.Dispose();

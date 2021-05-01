@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.473.0.420291
+// Updated as of 0.476.0.421371
 
 namespace RobloxFiles.Enums
 {
@@ -122,6 +122,13 @@ namespace RobloxFiles.Enums
         Custom,
         Scriptable,
         Orbital
+    }
+
+    public enum ClientAnimatorThrottlingMode
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum DevCameraOcclusionMode

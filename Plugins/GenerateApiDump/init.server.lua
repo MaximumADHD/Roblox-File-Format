@@ -217,6 +217,7 @@ local formatLinks =
 	["Instance"] = "Null";
 	
 	["Color3uint8"] = "Color3";
+	["OptionalCFrame"] = "Null";
 	["ProtectedString"] = "String";
 }
 
@@ -357,10 +358,10 @@ local function generateClasses()
 	writeLine("using RobloxFiles.Utility;")
 	writeLine()
 	
-	writeLine("#pragma warning disable CA1041  // Provide ObsoleteAttribute message")
-	writeLine("#pragma warning disable CA1051  // Do not declare visible instance fields")
-	writeLine("#pragma warning disable CA1707  // Identifiers should not contain underscores")
-	writeLine("#pragma warning disable CA1716  // Identifiers should not match keywords")
+	-- writeLine("#pragma warning disable CA1041  // Provide ObsoleteAttribute message")
+	-- writeLine("#pragma warning disable CA1051  // Do not declare visible instance fields")
+	-- writeLine("#pragma warning disable CA1707  // Identifiers should not contain underscores")
+	-- writeLine("#pragma warning disable CA1716  // Identifiers should not match keywords")
 	writeLine("#pragma warning disable IDE1006 // Naming Styles")
 	writeLine()
 	
@@ -638,6 +639,10 @@ local function generateClasses()
 							end
 							
 							writeLine("[Obsolete]")
+						end
+
+						if valueType == "OptionalCFrame" then
+							valueType = "CFrame"
 						end
 						
 						writeLine("public %s %s%s;", valueType, name, default)

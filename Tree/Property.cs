@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 
-using RobloxFiles.BinaryFormat;
 using RobloxFiles.BinaryFormat.Chunks;
-
 using RobloxFiles.DataTypes;
 using RobloxFiles.Utility;
 
@@ -42,14 +39,14 @@ namespace RobloxFiles
         Color3uint8,
         Int64,
         SharedString,
-        ProtectedString
+        ProtectedString,
+        OptionalCFrame
     }
 
     public class Property
     {
         public string Name { get; internal set; }
         public Instance Instance { get; internal set; }
-
         public PropertyType Type { get; internal set; }
 
         public string XmlToken { get; internal set; }
@@ -58,8 +55,10 @@ namespace RobloxFiles
         internal object RawValue;
         
         internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
-        
-        // !! FIXME: Map typeof(ProtectedString) to PropertyType.ProtectedString when binary files are allowed to read it.
+
+        // TODO: Map typeof(ProtectedString) to PropertyType.ProtectedString
+        //       if binary files are ever publically allowed to read it.
+
         public static readonly IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {
             { typeof(Axes),   PropertyType.Axes  },
@@ -103,8 +102,7 @@ namespace RobloxFiles
                 RawBuffer = RawValue as byte[];
                 return;
             }
-
-            if (RawValue is SharedString sharedString)
+            else if (RawValue is SharedString sharedString)
             {
                 if (sharedString != null)
                 {
@@ -112,8 +110,7 @@ namespace RobloxFiles
                     return;
                 }
             }
-           
-            if (RawValue is ProtectedString protectedString)
+            else if (RawValue is ProtectedString protectedString)
             {
                 if (protectedString != null)
                 {
@@ -128,27 +125,36 @@ namespace RobloxFiles
             switch (Type)
             {
                 case PropertyType.Int:
+                {
                     if (Value is long)
                     {
                         Type = PropertyType.Int64;
                         goto case PropertyType.Int64;
                     }
-                    
+
                     RawBuffer = BitConverter.GetBytes((int)Value);
                     break;
+                }
                 case PropertyType.Bool:
+                {
                     RawBuffer = BitConverter.GetBytes((bool)Value);
                     break;
+                }
                 case PropertyType.Int64:
+                {
                     RawBuffer = BitConverter.GetBytes((long)Value);
                     break;
+                }
                 case PropertyType.Float:
+                {
                     RawBuffer = BitConverter.GetBytes((float)Value);
                     break;
+                }
                 case PropertyType.Double:
+                {
                     RawBuffer = BitConverter.GetBytes((double)Value);
                     break;
-                default: break;
+                }
             }
         }
 
@@ -163,8 +169,7 @@ namespace RobloxFiles
 
                     if (typeName == Name)
                     {
-                        FieldInfo directField = instType
-                            .GetFields()
+                        FieldInfo directField = instType.GetFields()
                             .Where(field => field.Name.StartsWith(Name, StringComparison.InvariantCulture))
                             .Where(field => field.DeclaringType == instType)
                             .FirstOrDefault();
@@ -276,6 +281,7 @@ namespace RobloxFiles
             get
             {
                 // Improvise what the buffer should be if this is a primitive.
+
                 if (RawBuffer == null && Value != null)
                     ImproviseRawBuffer();
 

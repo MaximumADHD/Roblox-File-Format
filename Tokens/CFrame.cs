@@ -30,6 +30,23 @@ namespace RobloxFiles.Tokens
             return new CFrame(components);
         }
 
+        public static void WriteCFrame(Property prop, XmlDocument doc, XmlNode node)
+        {
+            CFrame cf = prop.CastValue<CFrame>();
+            float[] components = cf.GetComponents();
+
+            for (int i = 0; i < 12; i++)
+            {
+                string coordName = Coords[i];
+                float coordValue = components[i];
+
+                XmlElement coord = doc.CreateElement(coordName);
+                coord.InnerText = coordValue.ToInvariantString();
+
+                node.AppendChild(coord);
+            }
+        }
+
         public bool ReadProperty(Property prop, XmlNode token)
         {
             CFrame result = ReadCFrame(token);
@@ -46,19 +63,7 @@ namespace RobloxFiles.Tokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            CFrame cf = prop.CastValue<CFrame>();
-            float[] components = cf.GetComponents();
-
-            for (int i = 0; i < 12; i++)
-            {
-                string coordName = Coords[i];
-                float coordValue = components[i];
-
-                XmlElement coord = doc.CreateElement(coordName);
-                coord.InnerText = coordValue.ToInvariantString();
-
-                node.AppendChild(coord);
-            }
+            WriteCFrame(prop, doc, node);
         }
     }
 }

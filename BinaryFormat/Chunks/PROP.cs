@@ -1,31 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 
 using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
 using RobloxFiles.Utility;
-
 using System.Diagnostics;
+using System.IO;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
     public class PROP : IBinaryFileChunk
     {
         private BinaryRobloxFile File;
+        
         public string Name { get; internal set; }
-
         public int ClassIndex { get; internal set; }
-        public string ClassName { get; private set; }
+
+        private INST Class => File.Classes[ClassIndex];
+        public string ClassName => Class?.ClassName;
 
         public PropertyType Type { get; internal set; }
 
-        public byte TypeId
+        internal byte TypeId
         {
             get { return (byte)Type; }
-            internal set { Type = (PropertyType)value; }
+            set { Type = (PropertyType)value; }
         }
 
         public override string ToString()
@@ -35,26 +36,29 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
         public void Load(BinaryRobloxFileReader reader)
         {
-            BinaryRobloxFile file = reader.File;
-            File = file;
-
+            File = reader.File;
             ClassIndex = reader.ReadInt32();
             Name = reader.ReadString();
             
-            byte propType = reader.ReadByte();
-            Type = (PropertyType)propType;
-            
-            INST inst = file.Classes[ClassIndex];
-            ClassName = inst.ClassName;
+            try
+            {
+                byte propType = reader.ReadByte();
+                Type = (PropertyType)propType;
+            }
+            catch (EndOfStreamException)
+            {
+                RobloxFile.LogError($"Got corrupted PROP chunk (@ {this})!");
+                return;
+            }
 
-            var ids = inst.InstanceIds;
-            int instCount = inst.NumInstances;
-            var props = new Property[inst.NumInstances];
+            var ids = Class.InstanceIds;
+            int instCount = Class.NumInstances;
+            var props = new Property[instCount];
 
             for (int i = 0; i < instCount; i++)
             {
                 int id = ids[i];
-                Instance instance = file.Instances[id];
+                Instance instance = File.Instances[id];
 
                 if (instance == null)
                 {
@@ -62,7 +66,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     continue;
                 }
 
-                Property prop = new Property(instance, this);
+                var prop = new Property(instance, this);
                 props[i] = prop;
 
                 instance.AddProperty(ref prop);
@@ -88,10 +92,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
             switch (Type)
             {
                 case PropertyType.String:
+                {
                     readProperties(i =>
                     {
                         string value = reader.ReadString();
-                        
+
                         // Leave an access point for the original byte sequence, in case this is a BinaryString.
                         // This will allow the developer to read the sequence without any mangling from C# strings.
                         byte[] buffer = reader.GetLastStringBuffer();
@@ -104,7 +109,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         {
                             case "Tags":
                             case "AttributesSerialize":
+                            {
                                 return buffer;
+                            }
                             default:
                             {
                                 Property prop = props[i];
@@ -130,21 +137,31 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Bool:
+                {
                     readProperties(i => reader.ReadBoolean());
                     break;
+                }
                 case PropertyType.Int:
+                {
                     int[] ints = readInts();
                     readProperties(i => ints[i]);
                     break;
+                }
                 case PropertyType.Float:
+                {
                     float[] floats = readFloats();
                     readProperties(i => floats[i]);
                     break;
+                }
                 case PropertyType.Double:
+                {
                     readProperties(i => reader.ReadDouble());
                     break;
+                }
                 case PropertyType.UDim:
+                {
                     float[] UDim_Scales = readFloats();
                     int[] UDim_Offsets = readInts();
 
@@ -156,11 +173,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.UDim2:
-                    float[] UDim2_Scales_X = readFloats(), 
+                {
+                    float[] UDim2_Scales_X = readFloats(),
                             UDim2_Scales_Y = readFloats();
 
-                    int[] UDim2_Offsets_X = readInts(), 
+                    int[] UDim2_Offsets_X = readInts(),
                           UDim2_Offsets_Y = readInts();
 
                     readProperties(i =>
@@ -175,7 +194,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Ray:
+                {
                     readProperties(i =>
                     {
                         float posX = reader.ReadFloat(),
@@ -186,14 +207,16 @@ namespace RobloxFiles.BinaryFormat.Chunks
                               dirY = reader.ReadFloat(),
                               dirZ = reader.ReadFloat();
 
-                        Vector3 origin = new Vector3(posX, posY, posZ);
-                        Vector3 direction = new Vector3(dirX, dirY, dirZ);
+                        var origin = new Vector3(posX, posY, posZ);
+                        var direction = new Vector3(dirX, dirY, dirZ);
 
                         return new Ray(origin, direction);
                     });
 
                     break;
+                }
                 case PropertyType.Faces:
+                {
                     readProperties(i =>
                     {
                         byte faces = reader.ReadByte();
@@ -201,7 +224,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Axes:
+                {
                     readProperties(i =>
                     {
                         byte axes = reader.ReadByte();
@@ -209,17 +234,21 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.BrickColor:
+                {
                     int[] BrickColorIds = readInts();
 
                     readProperties(i =>
                     {
-                        int number = BrickColorIds[i];
-                        return BrickColor.FromNumber(number);
+                        BrickColor color = BrickColorIds[i];
+                        return color;
                     });
 
                     break;
+                }
                 case PropertyType.Color3:
+                {
                     float[] Color3_R = readFloats(),
                             Color3_G = readFloats(),
                             Color3_B = readFloats();
@@ -234,7 +263,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Vector2:
+                {
                     float[] Vector2_X = readFloats(),
                             Vector2_Y = readFloats();
 
@@ -247,7 +278,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Vector3:
+                {
                     float[] Vector3_X = readFloats(),
                             Vector3_Y = readFloats(),
                             Vector3_Z = readFloats();
@@ -262,16 +295,30 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.CFrame:
                 case PropertyType.Quaternion:
-                    // Temporarily load the rotation matrices into their properties.
-                    // We'll update them to CFrames once we iterate over the position data.
+                case PropertyType.OptionalCFrame:
+                {
                     float[][] matrices = new float[instCount][];
 
+                    if (Type == PropertyType.OptionalCFrame)
+                    {
+                        byte cframeType = (byte)PropertyType.CFrame;
+                        byte readType = reader.ReadByte();
+
+                        if (readType != cframeType)
+                        {
+                            RobloxFile.LogError($"Unexpected property type in OptionalCFrame (expected {cframeType}, got {readType})");
+                            readProperties(i => null);
+                            break;
+                        }
+                    }
+                    
                     for (int i = 0; i < instCount; i++)
                     {
                         byte rawOrientId = reader.ReadByte();
-
+                        
                         if (rawOrientId > 0)
                         {
                             // Make sure this value is in a safe range.
@@ -296,11 +343,14 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         }
                         else if (Type == PropertyType.Quaternion)
                         {
-                            float qx = reader.ReadFloat(), qy = reader.ReadFloat(),
-                                  qz = reader.ReadFloat(), qw = reader.ReadFloat();
+                            float qx = reader.ReadFloat(),
+                                  qy = reader.ReadFloat(),
+                                  qz = reader.ReadFloat(),
+                                  qw = reader.ReadFloat();
 
-                            Quaternion quaternion = new Quaternion(qx, qy, qz, qw);
+                            var quaternion = new Quaternion(qx, qy, qz, qw);
                             var rotation = quaternion.ToCFrame();
+
                             matrices[i] = rotation.GetComponents();
                         }
                         else
@@ -321,7 +371,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             CFrame_Y = readFloats(),
                             CFrame_Z = readFloats();
 
-                    readProperties(i =>
+                    var CFrames = new CFrame[instCount];
+
+                    for (int i = 0; i < instCount; i++)
                     {
                         float[] matrix = matrices[i];
 
@@ -345,11 +397,34 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             components = position.Concat(matrix).ToArray();
                         }
 
-                        return new CFrame(components);
-                    });
+                        CFrames[i] = new CFrame(components);
+                    }
 
+                    if (Type == PropertyType.OptionalCFrame)
+                    {
+                        byte boolType = (byte)PropertyType.Bool;
+                        byte readType = reader.ReadByte();
+
+                        if (readType != boolType)
+                        {
+                            RobloxFile.LogError($"Unexpected property type in OptionalCFrame (expected {boolType}, got {readType})");
+                            readProperties(i => null);
+                            break;
+                        }
+
+                        for (int i = 0; i < instCount; i++)
+                        {
+                            var cf = CFrames[i];
+                            bool active = reader.ReadBoolean();
+                            CFrames[i] = active ? cf : null;
+                        }
+                    }
+
+                    readProperties(i => CFrames[i]);
                     break;
+                }
                 case PropertyType.Enum:
+                {
                     uint[] enums = reader.ReadUInts(instCount);
 
                     readProperties(i =>
@@ -366,31 +441,35 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                             if (info == null)
                             {
-                                RobloxFile.LogError($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
+                                RobloxFile.LogError($"Enum cast failed for {ClassName}.{Name} using value {value}!");
                                 return value;
                             }
-                            
+
                             return Enum.Parse(info.MemberType, value.ToInvariantString());
                         }
                         catch
                         {
-                            RobloxFile.LogError($"Enum cast failed for {inst.ClassName}.{Name} using value {value}!");
+                            RobloxFile.LogError($"Enum cast failed for {ClassName}.{Name} using value {value}!");
                             return value;
                         }
                     });
 
                     break;
+                }
                 case PropertyType.Ref:
+                {
                     var instIds = reader.ReadInstanceIds(instCount);
 
                     readProperties(i =>
                     {
                         int instId = instIds[i];
-                        return instId >= 0 ? file.Instances[instId] : null;
+                        return instId >= 0 ? File.Instances[instId] : null;
                     });
 
                     break;
+                }
                 case PropertyType.Vector3int16:
+                {
                     readProperties(i =>
                     {
                         short x = reader.ReadInt16(),
@@ -401,7 +480,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.NumberSequence:
+                {
                     readProperties(i =>
                     {
                         int numKeys = reader.ReadInt32();
@@ -420,7 +501,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.ColorSequence:
+                {
                     readProperties(i =>
                     {
                         int numKeys = reader.ReadInt32();
@@ -443,7 +526,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.NumberRange:
+                {
                     readProperties(i =>
                     {
                         float min = reader.ReadFloat();
@@ -453,7 +538,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Rect:
+                {
                     float[] Rect_X0 = readFloats(), Rect_Y0 = readFloats(),
                             Rect_X1 = readFloats(), Rect_Y1 = readFloats();
 
@@ -466,11 +553,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.PhysicalProperties:
+                {
                     readProperties(i =>
                     {
                         bool custom = reader.ReadBoolean();
-                        
+
                         if (custom)
                         {
                             float Density = reader.ReadFloat(),
@@ -493,11 +582,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Color3uint8:
+                {
                     byte[] Color3uint8_R = reader.ReadBytes(instCount),
                            Color3uint8_G = reader.ReadBytes(instCount),
                            Color3uint8_B = reader.ReadBytes(instCount);
-                    
+
                     readProperties(i =>
                     {
                         byte r = Color3uint8_R[i],
@@ -509,26 +600,32 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Int64:
-                    long[] Int64s = reader.ReadInterleaved(instCount, (buffer, start) =>
+                {
+                    long[] longs = reader.ReadInterleaved(instCount, (buffer, start) =>
                     {
                         long result = BitConverter.ToInt64(buffer, start);
                         return (long)((ulong)result >> 1) ^ (-(result & 1));
                     });
 
-                    readProperties(i => Int64s[i]);
+                    readProperties(i => longs[i]);
                     break;
+                }
                 case PropertyType.SharedString:
+                {
                     uint[] SharedKeys = reader.ReadUInts(instCount);
 
                     readProperties(i =>
                     {
                         uint key = SharedKeys[i];
-                        return file.SharedStrings[key];
+                        return File.SharedStrings[key];
                     });
 
                     break;
+                }
                 case PropertyType.ProtectedString:
+                {
                     readProperties(i =>
                     {
                         int length = reader.ReadInt32();
@@ -538,10 +635,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 default:
-                    RobloxFile.LogError($"Unhandled property type: {Type}!");
+                {
+                    RobloxFile.LogError($"Unhandled property type: {Type} in {this}!");
                     break;
-                //
+                }
             }
 
             reader.Dispose();
@@ -574,7 +673,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             Name = prop.Name,
                             Type = prop.Type,
 
-                            ClassName = inst.ClassName,
+                            File = writer.File,
                             ClassIndex = inst.ClassIndex
                         };
 
@@ -630,6 +729,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 case PropertyType.Bool:
+                {
                     props.ForEach(prop =>
                     {
                         bool value = prop.CastValue<bool>();
@@ -637,29 +737,27 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Int:
-                    var ints = new List<int>();
-
-                    props.ForEach(prop =>
-                    {
-                        int value = prop.CastValue<int>();
-                        ints.Add(value);
-                    });
+                {
+                    var ints = props
+                        .Select(prop => prop.CastValue<int>())
+                        .ToList();
 
                     writer.WriteInts(ints);
                     break;
+                }
                 case PropertyType.Float:
-                    var floats = new List<float>();
-
-                    props.ForEach(prop =>
-                    {
-                        float value = prop.CastValue<float>();
-                        floats.Add(value);
-                    });
+                {
+                    var floats = props
+                        .Select(prop => prop.CastValue<float>())
+                        .ToList();
 
                     writer.WriteFloats(floats);
                     break;
+                }
                 case PropertyType.Double:
+                {
                     props.ForEach(prop =>
                     {
                         double value = prop.CastValue<double>();
@@ -667,7 +765,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.UDim:
+                {
                     var UDim_Scales = new List<float>();
                     var UDim_Offsets = new List<int>();
 
@@ -682,7 +782,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteInts(UDim_Offsets);
 
                     break;
+                }
                 case PropertyType.UDim2:
+                {
                     var UDim2_Scales_X = new List<float>();
                     var UDim2_Scales_Y = new List<float>();
 
@@ -707,7 +809,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteInts(UDim2_Offsets_Y);
 
                     break;
+                }
                 case PropertyType.Ray:
+                {
                     props.ForEach(prop =>
                     {
                         Ray ray = prop.CastValue<Ray>();
@@ -724,27 +828,30 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Faces:
                 case PropertyType.Axes:
+                {
                     props.ForEach(prop =>
                     {
                         byte value = prop.CastValue<byte>();
                         writer.Write(value);
                     });
-                    
+
                     break;
+                }
                 case PropertyType.BrickColor:
-                    var BrickColorIds = new List<int>();
+                {
+                    var brickColorIds = props
+                        .Select(prop => prop.CastValue<BrickColor>())
+                        .Select(value => value.Number)
+                        .ToList();
 
-                    props.ForEach(prop =>
-                    {
-                        BrickColor value = prop.CastValue<BrickColor>();
-                        BrickColorIds.Add(value.Number);
-                    });
-
-                    writer.WriteInts(BrickColorIds);
+                    writer.WriteInts(brickColorIds);
                     break;
+                }
                 case PropertyType.Color3:
+                {
                     var Color3_R = new List<float>();
                     var Color3_G = new List<float>();
                     var Color3_B = new List<float>();
@@ -762,7 +869,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteFloats(Color3_B);
 
                     break;
+                }
                 case PropertyType.Vector2:
+                {
                     var Vector2_X = new List<float>();
                     var Vector2_Y = new List<float>();
 
@@ -777,7 +886,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteFloats(Vector2_Y);
 
                     break;
+                }
                 case PropertyType.Vector3:
+                {
                     var Vector3_X = new List<float>();
                     var Vector3_Y = new List<float>();
                     var Vector3_Z = new List<float>();
@@ -795,11 +906,17 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteFloats(Vector3_Z);
 
                     break;
+                }
                 case PropertyType.CFrame:
                 case PropertyType.Quaternion:
+                case PropertyType.OptionalCFrame:
+                {
                     var CFrame_X = new List<float>();
                     var CFrame_Y = new List<float>();
                     var CFrame_Z = new List<float>();
+
+                    if (Type == PropertyType.OptionalCFrame)
+                        writer.Write((byte)PropertyType.CFrame);
 
                     props.ForEach(prop =>
                     {
@@ -809,7 +926,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             value = q.ToCFrame();
                         else
                             value = prop.CastValue<CFrame>();
-                        
+
+                        if (value == null)
+                            value = new CFrame();
+
                         Vector3 pos = value.Position;
                         CFrame_X.Add(pos.X);
                         CFrame_Y.Add(pos.Y);
@@ -845,27 +965,47 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteFloats(CFrame_Y);
                     writer.WriteFloats(CFrame_Z);
 
+                    if (Type == PropertyType.OptionalCFrame)
+                    {
+                        writer.Write((byte)PropertyType.Bool);
+
+                        props.ForEach(prop =>
+                        {
+                            if (prop.Value is null)
+                            {
+                                writer.Write(false);
+                                return;
+                            }
+
+                            writer.Write(true);
+                        });
+                    }
+
                     break;
+                }
                 case PropertyType.Enum:
-                    var Enums = new List<uint>();
+                {
+                    var enums = new List<uint>();
 
                     props.ForEach(prop =>
                     {
                         if (prop.Value is uint raw)
                         {
-                            Enums.Add(raw);
+                            enums.Add(raw);
                             return;
                         }
 
                         int signed = (int)prop.Value;
                         uint value = (uint)signed;
 
-                        Enums.Add(value);
+                        enums.Add(value);
                     });
 
-                    writer.WriteInterleaved(Enums);
+                    writer.WriteInterleaved(enums);
                     break;
+                }
                 case PropertyType.Ref:
+                {
                     var InstanceIds = new List<int>();
 
                     props.ForEach(prop =>
@@ -883,7 +1023,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     writer.WriteInstanceIds(InstanceIds);
                     break;
+                }
                 case PropertyType.Vector3int16:
+                {
                     props.ForEach(prop =>
                     {
                         Vector3int16 value = prop.CastValue<Vector3int16>();
@@ -891,9 +1033,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         writer.Write(value.Y);
                         writer.Write(value.Z);
                     });
-                        
+
                     break;
+                }
                 case PropertyType.NumberSequence:
+                {
                     props.ForEach(prop =>
                     {
                         NumberSequence value = prop.CastValue<NumberSequence>();
@@ -910,7 +1054,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.ColorSequence:
+                {
                     props.ForEach(prop =>
                     {
                         ColorSequence value = prop.CastValue<ColorSequence>();
@@ -932,7 +1078,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.NumberRange:
+                {
                     props.ForEach(prop =>
                     {
                         NumberRange value = prop.CastValue<NumberRange>();
@@ -941,7 +1089,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Rect:
+                {
                     var Rect_X0 = new List<float>();
                     var Rect_Y0 = new List<float>();
 
@@ -966,9 +1116,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     writer.WriteFloats(Rect_X1);
                     writer.WriteFloats(Rect_Y1);
-                        
+
                     break;
+                }
                 case PropertyType.PhysicalProperties:
+                {
                     props.ForEach(prop =>
                     {
                         bool custom = (prop.Value != null);
@@ -988,7 +1140,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Color3uint8:
+                {
                     var Color3uint8_R = new List<byte>();
                     var Color3uint8_G = new List<byte>();
                     var Color3uint8_B = new List<byte>();
@@ -1011,23 +1165,27 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.Write(bBuffer);
 
                     break;
+                }
                 case PropertyType.Int64:
-                    var Int64s = new List<long>();
+                {
+                    var longs = new List<long>();
 
                     props.ForEach(prop =>
                     {
                         long value = prop.CastValue<long>();
-                        Int64s.Add(value);
+                        longs.Add(value);
                     });
 
-                    writer.WriteInterleaved(Int64s, value =>
+                    writer.WriteInterleaved(longs, value =>
                     {
                         // Move the sign bit to the front.
                         return (value << 1) ^ (value >> 63);
                     });
 
                     break;
+                }
                 case PropertyType.SharedString:
+                {
                     var sharedKeys = new List<uint>();
                     SSTR sstr = file.SSTR;
 
@@ -1048,10 +1206,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         }
 
                         string key = shared.Key;
-                        
+
                         if (!sstr.Lookup.ContainsKey(key))
                         {
-                            uint id = (uint)(sstr.Lookup.Count);
+                            uint id = (uint)sstr.Lookup.Count;
                             sstr.Strings.Add(id, shared);
                             sstr.Lookup.Add(key, id);
                         }
@@ -1062,7 +1220,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     writer.WriteInterleaved(sharedKeys);
                     break;
+                }
                 case PropertyType.ProtectedString:
+                {
                     props.ForEach(prop =>
                     {
                         var protect = prop.CastValue<ProtectedString>();
@@ -1073,7 +1233,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
-                default: break;
+                }
+                default:
+                {
+                    RobloxFile.LogError($"Unhandled property type: {Type} in {this}!");
+                    break;
+                }
             }
         }
 

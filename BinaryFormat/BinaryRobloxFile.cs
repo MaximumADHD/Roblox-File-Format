@@ -82,31 +82,46 @@ namespace RobloxFiles
                         switch (chunk.ChunkType)
                         {
                             case "INST":
+                            {
                                 handler = new INST();
                                 break;
+                            }
                             case "PROP":
+                            {
                                 handler = new PROP();
                                 break;
+                            }
                             case "PRNT":
+                            {
                                 handler = new PRNT();
                                 break;
+                            }
                             case "META":
+                            {
                                 handler = new META();
                                 break;
+                            }
                             case "SSTR":
+                            {
                                 handler = new SSTR();
                                 break;
+                            }
                             case "SIGN":
+                            {
                                 handler = new SIGN();
                                 break;
+                            }
                             case "END\0":
+                            {
                                 ChunksImpl.Add(chunk);
                                 reading = false;
                                 break;
+                            }
                             case string unhandled:
-                                Console.Error.WriteLine("BinaryRobloxFile - Unhandled chunk-type: {0}!", unhandled);
+                            {
+                                LogError($"BinaryRobloxFile - Unhandled chunk-type: {unhandled}!");
                                 break;
-                            default: break;
+                            }
                         }
 
                         if (handler != null)

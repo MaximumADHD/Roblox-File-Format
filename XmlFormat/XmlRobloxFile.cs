@@ -65,6 +65,10 @@ namespace RobloxFiles
                     if (child.Name == "Item")
                     {
                         Instance item = XmlRobloxFileReader.ReadInstance(child, this);
+
+                        if (item == null)
+                            continue;
+
                         item.Parent = this;
                     }
                     else if (child.Name == "SharedStrings")

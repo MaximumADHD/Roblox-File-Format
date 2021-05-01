@@ -377,6 +377,8 @@ return
 			ModelMeshCFrame = "CFrame";
 			ModelMeshData = "SharedString";
 			ModelMeshSize = "Vector3";
+			NeedsPivotMigration = "bool";
+			WorldPivotData = "OptionalCFrame";
 		};
 	};
 

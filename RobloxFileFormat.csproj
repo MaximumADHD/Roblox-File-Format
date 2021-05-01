@@ -98,6 +98,7 @@
     <Compile Include="Generated\Classes.cs" />
     <Compile Include="Generated\Enums.cs" />
     <Compile Include="Interfaces\IAttributeToken.cs" />
+    <Compile Include="Tokens\OptionalCFrame.cs" />
     <Compile Include="Tree\Attributes.cs" />
     <Compile Include="Tree\Property.cs" />
     <Compile Include="Tree\Instance.cs" />

@@ -13,8 +13,8 @@ namespace RobloxFiles.Tokens
         public bool ReadProperty(Property prop, XmlNode token)
         {
             ProtectedString contents = token.InnerText;
-            prop.Type = PropertyType.ProtectedString;
-            prop.Value = contents;
+            prop.Type = PropertyType.String;
+            prop.Value = contents.ToString();
 
             return true;
         }
