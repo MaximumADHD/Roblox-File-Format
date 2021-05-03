@@ -68,25 +68,42 @@ namespace RobloxFiles.XmlFormat
                 {
                     case PropertyType.CFrame:
                     case PropertyType.Quaternion:
+                    {
                         propType = "CoordinateFrame";
                         break;
+                    }
                     case PropertyType.Enum:
+                    {
                         propType = "token";
                         break;
+                    }
                     case PropertyType.Rect:
+                    {
                         propType = "Rect2D";
                         break;
+                    }
                     case PropertyType.Int:
                     case PropertyType.Bool:
                     case PropertyType.Float:
                     case PropertyType.Int64:
                     case PropertyType.Double:
+                    {
                         propType = propType.ToLower(CultureInfo.InvariantCulture);
                         break;
+                    }
                     case PropertyType.String:
-                        propType = (prop.HasRawBuffer ? "BinaryString" : "string");
+                    {
+                        if (prop.Value is Content)
+                            propType = "Content";
+                        else if (prop.Value is ProtectedString)
+                            propType = "ProtectedString";
+                        else if (prop.Value is byte[])
+                            propType = "BinaryString";
+                        else
+                            propType = "string";
+
                         break;
-                    default: break;
+                    }
                 }
             }
             

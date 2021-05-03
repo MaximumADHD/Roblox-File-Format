@@ -91,13 +91,12 @@ namespace RobloxFiles
         {
             get
             {
-                string fullString = string.Join("\0", Tags.ToArray());
+                if (Tags.Count == 0)
+                    return null;
 
-                byte[] buffer = fullString.ToCharArray()
-                    .Select(ch => (byte)ch)
-                    .ToArray();
-
-                return buffer;
+                string fullString = string.Join("\0", Tags);
+                char[] buffer = fullString.ToCharArray();
+                return Encoding.UTF8.GetBytes(buffer);
             }
             set
             {
@@ -587,11 +586,7 @@ namespace RobloxFiles
                 string fieldName = field.Name;
                 Type fieldType = field.FieldType;
 
-                if (field.GetCustomAttribute<ObsoleteAttribute>() != null)
-                    continue;
-
                 // A few specific edge case hacks. I wish these didn't need to exist :(
-
                 if (fieldName == "Archivable" || fieldName.EndsWith("k__BackingField"))
                     continue;
                 else if (fieldName == "Bevel_Roundness")
