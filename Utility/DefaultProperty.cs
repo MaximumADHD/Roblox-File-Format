@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace RobloxFiles.Utility
 {
-    static class DefaultProperty
+    public static class DefaultProperty
     {
         private static readonly Dictionary<string, Instance> ClassMap;
         private static readonly HashSet<Instance> Refreshed = new HashSet<Instance>();
