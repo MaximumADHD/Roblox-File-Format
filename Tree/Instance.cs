@@ -644,6 +644,14 @@ namespace RobloxFiles
                             xmlToken = "CoordinateFrame";
                             break;
                         }
+                        case "Optional`1":
+                        {
+                            // TODO: If more optional types are added,
+                            //       this needs disambiguation.
+
+                            xmlToken = "OptionalCoordinateFrame";
+                            break;
+                        }
                     }
 
                     if (!props.ContainsKey(fieldName))

@@ -1,4 +1,6 @@
-﻿namespace RobloxFiles.DataTypes
+﻿using System;
+
+namespace RobloxFiles.DataTypes
 {
     // Optional represents a value that can be explicitly
     // marked as an optional variant to a specified type.
@@ -17,6 +19,29 @@
         public override string ToString()
         {
             return Value?.ToString() ?? "null";
+        }
+
+        public override int GetHashCode()
+        {
+            if (HasValue)
+                return Value.GetHashCode();
+
+            var T = typeof(T);
+            return T.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Optional<T> optional))
+                return false;
+
+            if (HasValue != optional.HasValue)
+                return false;
+
+            if (HasValue)
+                return Value.Equals(optional.Value);
+
+            return true; // Both have no value.
         }
 
         public static implicit operator T(Optional<T> optional)
