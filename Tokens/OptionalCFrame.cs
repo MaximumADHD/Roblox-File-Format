@@ -10,23 +10,29 @@ namespace RobloxFiles.Tokens
         public bool ReadProperty(Property prop, XmlNode token)
         {
             XmlNode first = token.FirstChild;
-            prop.Type = PropertyType.OptionalCFrame;
+            CFrame value = null;
 
             if (first?.Name == "CFrame")
-                prop.Value = CFrameToken.ReadCFrame(first);
-
+                value = CFrameToken.ReadCFrame(first);
+                
+            prop.Value = new Optional<CFrame>(value);
+            prop.Type = PropertyType.OptionalCFrame;
+            
             return true;
         }
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            CFrame value = prop.CastValue<CFrame>();
-
-            if (value != null)
+            if (prop.Value is Optional<CFrame> optional)
             {
-                XmlElement cfNode = doc.CreateElement("CFrame");
-                CFrameToken.WriteCFrame(prop, doc, cfNode);
-                node.AppendChild(cfNode);
+                if (optional.HasValue)
+                {
+                    CFrame value = optional.Value;
+                    XmlElement cfNode = doc.CreateElement("CFrame");
+
+                    CFrameToken.WriteCFrame(value, doc, cfNode);
+                    node.AppendChild(cfNode);
+                }
             }
         }
     }

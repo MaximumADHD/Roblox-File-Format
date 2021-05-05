@@ -30,9 +30,8 @@ namespace RobloxFiles.Tokens
             return new CFrame(components);
         }
 
-        public static void WriteCFrame(Property prop, XmlDocument doc, XmlNode node)
+        public static void WriteCFrame(CFrame cf, XmlDocument doc, XmlNode node)
         {
-            CFrame cf = prop.CastValue<CFrame>();
             float[] components = cf.GetComponents();
 
             for (int i = 0; i < 12; i++)
@@ -63,7 +62,8 @@ namespace RobloxFiles.Tokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            WriteCFrame(prop, doc, node);
+            CFrame value = prop.Value as CFrame;
+            WriteCFrame(value, doc, node);
         }
     }
 }
