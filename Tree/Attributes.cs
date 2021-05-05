@@ -158,10 +158,8 @@ namespace RobloxFiles
 
         internal void WriteString(string value)
         {
-            int length = value.Length;
-            Writer.Write(length);
-
             byte[] utf8 = Encoding.UTF8.GetBytes(value);
+            Writer.Write(utf8.Length);
             Writer.Write(utf8);
         }
 
@@ -237,6 +235,10 @@ namespace RobloxFiles
                 var attribute = new Attribute(reader);
                 Add(key, attribute);
             }
+        }
+
+        public Attributes() : base()
+        {
         }
 
         internal Attributes(BinaryReader reader)

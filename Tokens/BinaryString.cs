@@ -22,6 +22,9 @@ namespace RobloxFiles.Tokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
+            if (!prop.HasRawBuffer)
+                return;
+
             byte[] data = prop.RawBuffer;
             string value = Convert.ToBase64String(data);
             

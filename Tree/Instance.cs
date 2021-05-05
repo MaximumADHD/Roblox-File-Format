@@ -64,7 +64,7 @@ namespace RobloxFiles
         public HashSet<string> Tags { get; } = new HashSet<string>();
 
         /// <summary>The attributes defined for this Instance.</summary>
-        private Attributes AttributesImpl;
+        private Attributes AttributesImpl = new Attributes();
         
         /// <summary>The public readonly access point of the attributes on this Instance.</summary>
         public IReadOnlyDictionary<string, Attribute> Attributes => AttributesImpl;
@@ -161,7 +161,9 @@ namespace RobloxFiles
             if (key.Length > 100)
                 return false;
 
-            if (!Attribute.SupportsType<T>())
+            Type type = value.GetType();
+
+            if (!Attribute.SupportsType(type))
                 return false;
 
             var attr = new Attribute(value);
@@ -169,7 +171,6 @@ namespace RobloxFiles
 
             return true;
         }
-
 
         /// <summary>Returns true if this Instance is an ancestor to the provided Instance.</summary>
         /// <param name="descendant">The instance whose descendance will be tested against this Instance.</param>

@@ -463,6 +463,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     readProperties(i =>
                     {
                         int instId = instIds[i];
+
+                        if (instId >= File.NumInstances)
+                        {
+                            RobloxFile.LogError($"Got out of bounds referent index in {ClassName}.{Name}!");
+                            return null;
+                        }
+
                         return instId >= 0 ? File.Instances[instId] : null;
                     });
 
@@ -1015,7 +1022,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         if (prop.Value != null)
                         {
                             Instance value = prop.CastValue<Instance>();
-                            referent = int.Parse(value.Referent);
+
+                            if (value.IsDescendantOf(File))
+                            {
+                                string refValue = value.Referent;
+                                int.TryParse(refValue, out referent);
+                            }
                         }
 
                         InstanceIds.Add(referent);
