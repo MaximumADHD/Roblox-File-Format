@@ -88,8 +88,9 @@ namespace RobloxFiles
             { typeof(SharedString), PropertyType.SharedString },
             { typeof(Vector3int16), PropertyType.Vector3int16 },
 
-            { typeof(ColorSequence),  PropertyType.ColorSequence  },
-            { typeof(NumberSequence), PropertyType.NumberSequence },
+            { typeof(ColorSequence),    PropertyType.ColorSequence  },
+            { typeof(NumberSequence),   PropertyType.NumberSequence },
+            { typeof(Optional<CFrame>), PropertyType.OptionalCFrame },
 
             { typeof(ProtectedString),    PropertyType.String             }, 
             { typeof(PhysicalProperties), PropertyType.PhysicalProperties },

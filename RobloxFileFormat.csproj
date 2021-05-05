@@ -89,6 +89,7 @@
     <Compile Include="BinaryFormat\IO\BinaryFileReader.cs" />
     <Compile Include="BinaryFormat\IO\BinaryFileWriter.cs" />
     <Compile Include="DataTypes\Color3uint8.cs" />
+    <Compile Include="DataTypes\Optional.cs" />
     <Compile Include="DataTypes\ProtectedString.cs" />
     <Compile Include="DataTypes\Content.cs" />
     <Compile Include="DataTypes\Region3int16.cs" />

@@ -599,7 +599,7 @@ namespace RobloxFiles
                     propType = Property.Types[fieldType];
                 else if (fieldType.IsEnum)
                     propType = PropertyType.Enum;
-                
+
                 if (propType != PropertyType.Unknown)
                 {
                     if (fieldName.EndsWith("_"))
@@ -615,24 +615,35 @@ namespace RobloxFiles
                         case "String":
                         case "Double":
                         case "Int64":
+                        {
                             xmlToken = xmlToken.ToLowerInvariant();
                             break;
+                        }
                         case "Boolean":
+                        {
                             xmlToken = "bool";
                             break;
+                        }
                         case "Single":
+                        {
                             xmlToken = "float";
                             break;
+                        }
                         case "Int32":
+                        {
                             xmlToken = "int";
                             break;
+                        }
                         case "Rect":
+                        {
                             xmlToken = "Rect2D";
                             break;
+                        }
                         case "CFrame":
+                        {
                             xmlToken = "CoordinateFrame";
                             break;
-                        default: break;
+                        }
                     }
 
                     if (!props.ContainsKey(fieldName))

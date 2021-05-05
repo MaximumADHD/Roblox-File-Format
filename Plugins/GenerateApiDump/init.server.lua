@@ -640,10 +640,6 @@ local function generateClasses()
 							
 							writeLine("[Obsolete]")
 						end
-
-						if valueType == "OptionalCFrame" then
-							valueType = "CFrame"
-						end
 						
 						writeLine("public %s %s%s;", valueType, name, default)
 						

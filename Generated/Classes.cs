@@ -2408,7 +2408,7 @@ namespace RobloxFiles
         public Vector3 ModelMeshSize = new Vector3();
         public bool NeedsPivotMigration;
         public BasePart PrimaryPart;
-        public CFrame WorldPivotData;
+        public Optional<CFrame> WorldPivotData;
     }
 
     public class Actor : Model

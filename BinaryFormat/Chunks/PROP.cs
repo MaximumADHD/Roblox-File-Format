@@ -414,9 +414,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                         for (int i = 0; i < instCount; i++)
                         {
-                            var cf = CFrames[i];
-                            bool active = reader.ReadBoolean();
-                            CFrames[i] = active ? cf : null;
+                            CFrame cf = CFrames[i];
+                            bool archivable = reader.ReadBoolean();
+
+                            if (!archivable)
+                                cf = null;
+                            
+                            CFrames[i] = new Optional<CFrame>(cf);
                         }
                     }
 
@@ -984,7 +988,14 @@ namespace RobloxFiles.BinaryFormat.Chunks
                                 return;
                             }
 
-                            writer.Write(true);
+                            if (prop.Value is Optional<CFrame> optional)
+                            {
+                                writer.Write(optional.HasValue);
+                                return;
+                            }
+
+                            var cf = prop.Value as CFrame;
+                            writer.Write(cf != null);
                         });
                     }
 
