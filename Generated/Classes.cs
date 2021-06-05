@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.476.0.421371
+// Updated as of 0.481.1.423973
 
 using System;
 
@@ -192,6 +192,7 @@ namespace RobloxFiles
 
         public ScreenOrientation ScreenOrientation = ScreenOrientation.LandscapeSensor;
         public bool ShowDevelopmentGui = true;
+        public VirtualCursorMode VirtualCursorMode = VirtualCursorMode.Default;
     }
 
     public abstract class BaseWrap : Instance
@@ -943,6 +944,14 @@ namespace RobloxFiles
     {
     }
 
+    public class DraggerService : Instance
+    {
+        public DraggerService()
+        {
+            IsService = true;
+        }
+    }
+
     public class EventIngestService : Instance
     {
         public EventIngestService()
@@ -1454,6 +1463,7 @@ namespace RobloxFiles
         public bool Active;
         public Instance Adornee;
         public bool AlwaysOnTop;
+        public float Brightness = 1;
         public bool ClipsDescendants;
         public float DistanceLowerLimit;
         public float DistanceStep;
@@ -1484,6 +1494,7 @@ namespace RobloxFiles
         public bool Active = true;
         public Instance Adornee;
         public bool AlwaysOnTop;
+        public float Brightness = 1;
         public Vector2 CanvasSize = new Vector2(800, 600);
         public bool ClipsDescendants;
         public NormalId Face = NormalId.Front;
@@ -1737,6 +1748,7 @@ namespace RobloxFiles
 
     public class HumanoidDescription : Instance
     {
+        public string AccessoryBlob = "";
         public string BackAccessory = "";
         public float BodyTypeScale = 0.3f;
         public long ClimbAnimation;
@@ -2158,13 +2170,27 @@ namespace RobloxFiles
     public abstract class BasePart : PVInstance
     {
         public bool Anchored;
+
+        [Obsolete]
         public float BackParamA = -0.5f;
+
+        [Obsolete]
         public float BackParamB = 0.5f;
+
         public SurfaceType BackSurface = SurfaceType.Smooth;
+
+        [Obsolete]
         public InputType BackSurfaceInput = InputType.NoInput;
+
+        [Obsolete]
         public float BottomParamA = -0.5f;
+
+        [Obsolete]
         public float BottomParamB = 0.5f;
+
         public SurfaceType BottomSurface = SurfaceType.Smooth;
+
+        [Obsolete]
         public InputType BottomSurfaceInput = InputType.NoInput;
 
         public BrickColor BrickColor
@@ -2194,14 +2220,28 @@ namespace RobloxFiles
         [Obsolete]
         public float Friction = 0.3f;
 
+        [Obsolete]
         public float FrontParamA = -0.5f;
+
+        [Obsolete]
         public float FrontParamB = 0.5f;
+
         public SurfaceType FrontSurface = SurfaceType.Smooth;
+
+        [Obsolete]
         public InputType FrontSurfaceInput = InputType.NoInput;
+
+        [Obsolete]
         public float LeftParamA = -0.5f;
+
+        [Obsolete]
         public float LeftParamB = 0.5f;
+
         public SurfaceType LeftSurface = SurfaceType.Smooth;
+
+        [Obsolete]
         public InputType LeftSurfaceInput = InputType.NoInput;
+
         public bool Locked;
         public bool Massless;
         public Material Material = Material.Plastic;
@@ -2214,10 +2254,18 @@ namespace RobloxFiles
         }
 
         public float Reflectance;
+
+        [Obsolete]
         public float RightParamA = -0.5f;
+
+        [Obsolete]
         public float RightParamB = 0.5f;
+
         public SurfaceType RightSurface = SurfaceType.Smooth;
+
+        [Obsolete]
         public InputType RightSurfaceInput = InputType.NoInput;
+
         public int RootPriority;
 
         [Obsolete]
@@ -2229,10 +2277,17 @@ namespace RobloxFiles
             set => size = value;
         }
 
+        [Obsolete]
         public float TopParamA = -0.5f;
+
+        [Obsolete]
         public float TopParamB = 0.5f;
+
         public SurfaceType TopSurface = SurfaceType.Smooth;
+
+        [Obsolete]
         public InputType TopSurfaceInput = InputType.NoInput;
+
         public float Transparency;
 
         [Obsolete]
@@ -2427,13 +2482,17 @@ namespace RobloxFiles
         }
 
         public bool AllowThirdPartySales;
+        public NewAnimationRuntimeSetting AnimationWeightedBlendFix = NewAnimationRuntimeSetting.Default;
         public ClientAnimatorThrottlingMode ClientAnimatorThrottling = ClientAnimatorThrottlingMode.Default;
         public string CollisionGroups = "Default^0^1";
         public Camera CurrentCamera;
         public double DistributedGameTime;
         public bool ExplicitAutoJoints = true;
         public float FallenPartsDestroyHeight = -500;
-        public bool FilteringEnabled;
+
+        [Obsolete]
+        public bool FilteringEnabled = true;
+
         public float Gravity = 196.2f;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
@@ -2574,6 +2633,14 @@ namespace RobloxFiles
     public class PluginGuiService : Instance
     {
         public PluginGuiService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class PluginPolicyService : Instance
+    {
+        public PluginPolicyService()
         {
             IsService = true;
         }
@@ -3162,6 +3229,7 @@ namespace RobloxFiles
         public NumberRange GameSettingsScaleRangeWidth = new NumberRange(0.7f, 1);
         public float HealthDisplayDistance = 100;
         public bool LoadCharacterAppearance = true;
+        public LoadCharacterLayeredClothing LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default;
         public float NameDisplayDistance = 100;
         public bool UserEmotesEnabled = true;
     }
@@ -3291,14 +3359,6 @@ namespace RobloxFiles
     public class TimerService : Instance
     {
         public TimerService()
-        {
-            IsService = true;
-        }
-    }
-
-    public class ToastNotificationService : Instance
-    {
-        public ToastNotificationService()
         {
             IsService = true;
         }

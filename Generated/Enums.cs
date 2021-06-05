@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.476.0.421371
+// Updated as of 0.481.1.423973
 
 namespace RobloxFiles.Enums
 {
@@ -681,6 +681,13 @@ namespace RobloxFiles.Enums
         Miter
     }
 
+    public enum LoadCharacterLayeredClothing
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
     public enum Material
     {
         Plastic = 256,
@@ -764,6 +771,13 @@ namespace RobloxFiles.Enums
         NoOcclusion,
         EnemyOcclusion,
         OccludeAll
+    }
+
+    public enum NewAnimationRuntimeSetting
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum NormalId
@@ -1060,6 +1074,13 @@ namespace RobloxFiles.Enums
     {
         Right,
         Left
+    }
+
+    public enum VirtualCursorMode
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum ZIndexBehavior

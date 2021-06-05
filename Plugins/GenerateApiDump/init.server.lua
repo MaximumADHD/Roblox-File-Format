@@ -586,6 +586,24 @@ local function generateClasses()
 										gotValue = true
 									end)
 								end
+							elseif category == "Enum" then
+								local enum = Enum[typeName]
+								local lowestId = math.huge
+								local lowest
+
+								for _,item in pairs(enum:GetEnumItems()) do
+									local itemValue = item.Value
+
+									if itemValue < lowestId then
+										lowest = item
+										lowestId = itemValue
+									end
+								end
+
+								if lowest then
+									value = lowest
+									gotValue = true
+								end
 							end
 
 							local id = string.format("%s.%s", className, propName)
