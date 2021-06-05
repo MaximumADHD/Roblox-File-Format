@@ -11,12 +11,6 @@
             Max = max ?? new Vector3int16();
         }
 
-        internal Region3int16(Attribute attr)
-        {
-            Min = new Vector3int16(attr);
-            Max = new Vector3int16(attr);
-        }
-
         public override int GetHashCode()
         {
             int hash = Min.GetHashCode()

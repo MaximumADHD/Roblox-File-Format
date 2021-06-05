@@ -4,7 +4,7 @@
     {
         AttributeType AttributeType { get; }
 
-        T ReadAttribute(Attribute attribute);
-        void WriteAttribute(Attribute attribute, T value);
+        T ReadAttribute(RbxAttribute attribute);
+        void WriteAttribute(RbxAttribute attribute, T value);
     }
 }

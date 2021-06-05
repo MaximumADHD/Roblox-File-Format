@@ -37,16 +37,6 @@ namespace RobloxFiles.DataTypes
             ElasticityWeight = elasticityWeight;
         }
 
-        internal PhysicalProperties(Attribute attr)
-        {
-            Density = attr.ReadFloat();
-            Friction = attr.ReadFloat();
-            Elasticity = attr.ReadFloat();
-
-            FrictionWeight = attr.ReadFloat();
-            ElasticityWeight = attr.ReadFloat();
-        }
-
         public override int GetHashCode()
         {
             int hash = Density.GetHashCode()

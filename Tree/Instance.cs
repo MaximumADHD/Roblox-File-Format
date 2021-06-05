@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -61,26 +59,16 @@ namespace RobloxFiles
         public bool Destroyed { get; internal set; }
 
         /// <summary>A hashset of CollectionService tags assigned to this Instance.</summary>
-        public HashSet<string> Tags { get; } = new HashSet<string>();
+        public readonly HashSet<string> Tags = new HashSet<string>();
 
-        /// <summary>The attributes defined for this Instance.</summary>
-        private Attributes AttributesImpl = new Attributes();
-        
         /// <summary>The public readonly access point of the attributes on this Instance.</summary>
-        public IReadOnlyDictionary<string, Attribute> Attributes => AttributesImpl;
+        public readonly RbxAttributes Attributes = new RbxAttributes();
 
         /// <summary>The internal serialized data of this Instance's attributes</summary>
         internal byte[] AttributesSerialize
         {
-            get
-            {
-                return AttributesImpl?.Serialize() ?? Array.Empty<byte>();
-            }
-            set
-            {
-                var data = new MemoryStream(value);
-                AttributesImpl = new Attributes(data);
-            }
+            get => Attributes.Save();
+            set => Attributes.Load(value);
         }
 
         /// <summary>
@@ -134,7 +122,7 @@ namespace RobloxFiles
         /// <returns>True if the attribute could be read and the out value was set, false otherwise.</returns>
         public bool GetAttribute<T>(string key, out T value)
         {
-            if (AttributesImpl.TryGetValue(key, out Attribute attr))
+            if (Attributes.TryGetValue(key, out RbxAttribute attr))
             {
                 if (attr.Value is T result)
                 {
@@ -161,13 +149,16 @@ namespace RobloxFiles
             if (key.Length > 100)
                 return false;
 
-            Type type = value.GetType();
-
-            if (!Attribute.SupportsType(type))
+            if (key.StartsWith("RBX", StringComparison.InvariantCulture))
                 return false;
 
-            var attr = new Attribute(value);
-            AttributesImpl[key] = attr;
+            Type type = value.GetType();
+
+            if (!RbxAttribute.SupportsType(type))
+                return false;
+
+            var attr = new RbxAttribute(value);
+            Attributes[key] = attr;
 
             return true;
         }
@@ -474,8 +465,8 @@ namespace RobloxFiles
             Parent = null;
             ParentLocked = true;
 
-            Tags?.Clear();
-            AttributesImpl?.Clear();
+            Tags.Clear();
+            Attributes.Clear();
 
             while (Children.Any())
             {

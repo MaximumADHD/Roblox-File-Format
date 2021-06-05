@@ -9,8 +9,8 @@ namespace RobloxFiles.Tokens
         private static readonly string[] XmlCoords = new string[3] { "X", "Y", "Z" };
 
         public AttributeType AttributeType => AttributeType.Vector3;
-        public Vector3 ReadAttribute(Attribute attr) => ReadVector3(attr);
-        public void WriteAttribute(Attribute attr, Vector3 value) => WriteVector3(attr, value);
+        public Vector3 ReadAttribute(RbxAttribute attr) => ReadVector3(attr);
+        public void WriteAttribute(RbxAttribute attr, Vector3 value) => WriteVector3(attr, value);
 
         public static Vector3 ReadVector3(XmlNode token)
         {
@@ -49,7 +49,7 @@ namespace RobloxFiles.Tokens
             node.AppendChild(z);
         }
 
-        public static Vector3 ReadVector3(Attribute attr)
+        public static Vector3 ReadVector3(RbxAttribute attr)
         {
             float x = attr.ReadFloat(),
                   y = attr.ReadFloat(),
@@ -58,7 +58,7 @@ namespace RobloxFiles.Tokens
             return new Vector3(x, y, z);
         }
 
-        public static void WriteVector3(Attribute attr, Vector3 value)
+        public static void WriteVector3(RbxAttribute attr, Vector3 value)
         {
             attr.WriteFloat(value.X);
             attr.WriteFloat(value.Y);

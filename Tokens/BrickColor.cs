@@ -12,8 +12,8 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "BrickColor";
         public AttributeType AttributeType => AttributeType.BrickColor;
 
-        public BrickColor ReadAttribute(Attribute attr) => attr.ReadInt();
-        public void WriteAttribute(Attribute attr, BrickColor value) => attr.WriteInt(value.Number);
+        public BrickColor ReadAttribute(RbxAttribute attr) => attr.ReadInt();
+        public void WriteAttribute(RbxAttribute attr, BrickColor value) => attr.WriteInt(value.Number);
         
         public bool ReadProperty(Property prop, XmlNode token)
         {

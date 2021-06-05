@@ -18,13 +18,6 @@
             Envelope = envelope;
         }
 
-        internal NumberSequenceKeypoint(Attribute attr)
-        {
-            Envelope = attr.ReadFloat();
-            Time = attr.ReadFloat();
-            Value = attr.ReadFloat();
-        }
-
         public override int GetHashCode()
         {
             int hash = Time.GetHashCode()

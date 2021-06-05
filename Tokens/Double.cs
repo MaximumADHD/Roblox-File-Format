@@ -8,8 +8,8 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "double";
         public AttributeType AttributeType => AttributeType.Double;
 
-        public double ReadAttribute(Attribute attr) => attr.ReadDouble();
-        public void WriteAttribute(Attribute attr, double value) => attr.WriteDouble(value);
+        public double ReadAttribute(RbxAttribute attr) => attr.ReadDouble();
+        public void WriteAttribute(RbxAttribute attr, double value) => attr.WriteDouble(value);
 
         public bool ReadProperty(Property prop, XmlNode token)
         {

@@ -8,8 +8,8 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "bool";
         public AttributeType AttributeType => AttributeType.Bool;
 
-        public bool ReadAttribute(Attribute attr) => attr.ReadBool();
-        public void WriteAttribute(Attribute attr, bool value) => attr.WriteBool(value);
+        public bool ReadAttribute(RbxAttribute attr) => attr.ReadBool();
+        public void WriteAttribute(RbxAttribute attr, bool value) => attr.WriteBool(value);
 
         public bool ReadProperty(Property prop, XmlNode token)
         {

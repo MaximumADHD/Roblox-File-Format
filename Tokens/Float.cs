@@ -8,8 +8,8 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "float";
         public AttributeType AttributeType => AttributeType.Float;
 
-        public float ReadAttribute(Attribute attr) => attr.ReadFloat();
-        public void WriteAttribute(Attribute attr, float value) => attr.WriteFloat(value);
+        public float ReadAttribute(RbxAttribute attr) => attr.ReadFloat();
+        public void WriteAttribute(RbxAttribute attr, float value) => attr.WriteFloat(value);
 
         public bool ReadProperty(Property prop, XmlNode token)
         {

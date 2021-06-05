@@ -8,7 +8,7 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "UDim2";
         public AttributeType AttributeType => AttributeType.UDim2;
 
-        public UDim2 ReadAttribute(Attribute attr)
+        public UDim2 ReadAttribute(RbxAttribute attr)
         {
             UDim x = UDimToken.ReadUDim(attr);
             UDim y = UDimToken.ReadUDim(attr);
@@ -16,7 +16,7 @@ namespace RobloxFiles.Tokens
             return new UDim2(x, y);
         }
 
-        public void WriteAttribute(Attribute attr, UDim2 value)
+        public void WriteAttribute(RbxAttribute attr, UDim2 value)
         {
             UDimToken.WriteUDim(attr, value.X);
             UDimToken.WriteUDim(attr, value.Y);

@@ -49,7 +49,7 @@ namespace RobloxFiles.Tokens
             node.InnerText = value.ToString() + ' ';
         }
 
-        public NumberSequence ReadAttribute(Attribute attr)
+        public NumberSequence ReadAttribute(RbxAttribute attr)
         {
             int numKeys = attr.ReadInt();
             var keypoints = new NumberSequenceKeypoint[numKeys];
@@ -66,7 +66,7 @@ namespace RobloxFiles.Tokens
             return new NumberSequence(keypoints);
         }
 
-        public void WriteAttribute(Attribute attr, NumberSequence value)
+        public void WriteAttribute(RbxAttribute attr, NumberSequence value)
         {
             attr.WriteInt(value.Keypoints.Length);
 

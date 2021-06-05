@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace RobloxFiles
@@ -45,7 +46,7 @@ namespace RobloxFiles
      // Region3int16 = 32
     }
 
-    public class Attribute : IDisposable
+    public class RbxAttribute : IDisposable
     {
         private static readonly IReadOnlyDictionary<AttributeType, Tokenizer> AttributeSupport;
         private static readonly IReadOnlyDictionary<Type, AttributeType> SupportedTypes;
@@ -70,20 +71,20 @@ namespace RobloxFiles
                 Writer = support.GetMethod("WriteAttribute");
             }
 
-            public object ReadAttribute(Attribute attr)
+            public object ReadAttribute(RbxAttribute attr)
             {
                 var args = new object[1] { attr };
                 return Reader.Invoke(Token, args);
             }
 
-            public void WriteAttribute(Attribute attr, object value)
+            public void WriteAttribute(RbxAttribute attr, object value)
             {
                 var args = new object[2] { attr, value };
                 Writer.Invoke(Token, args);
             }
         }
 
-        static Attribute()
+        static RbxAttribute()
         {
             var attributeSupport = new Dictionary<AttributeType, Tokenizer>();
             var supportedTypes = new Dictionary<Type, AttributeType>();
@@ -193,19 +194,19 @@ namespace RobloxFiles
             Writer = null;
         }
 
-        internal Attribute(BinaryReader reader)
+        internal RbxAttribute(BinaryReader reader)
         {
             Reader = reader;
             Read();
         }
 
-        internal Attribute(MemoryStream stream)
+        internal RbxAttribute(MemoryStream stream)
         {
             Reader = new BinaryReader(stream);
             Read();
         }
 
-        internal Attribute(object value)
+        internal RbxAttribute(object value)
         {
             Type type = value.GetType();
 
@@ -217,44 +218,31 @@ namespace RobloxFiles
         }
     }
 
-    public class Attributes : SortedDictionary<string, Attribute>
+    public class RbxAttributes : SortedDictionary<string, RbxAttribute>
     {
-        private void Initialize(BinaryReader reader)
+        internal void Load(byte[] buffer)
         {
-            Stream stream = reader.BaseStream;
+            Clear();
 
-            if (stream.Length - stream.Position < 4)
+            if (buffer == null || buffer.Length < 4)
                 // Not enough room to read the entry count, possibly empty?
                 return;
 
-            int numEntries = reader.ReadInt32();
-
-            for (int i = 0; i < numEntries; i++)
+            using (var input = new MemoryStream(buffer))
+            using (var reader = new BinaryReader(input))
             {
-                string key = reader.ReadString(true);
-                var attribute = new Attribute(reader);
-                Add(key, attribute);
+                int numEntries = reader.ReadInt32();
+
+                for (int i = 0; i < numEntries; i++)
+                {
+                    string key = reader.ReadString(true);
+                    var attribute = new RbxAttribute(reader);
+                    Add(key, attribute);
+                }
             }
         }
 
-        public Attributes() : base()
-        {
-        }
-
-        internal Attributes(BinaryReader reader)
-        {
-            Initialize(reader);
-        }
-
-        internal Attributes(MemoryStream stream)
-        {
-            using (var reader = new BinaryReader(stream))
-                Initialize(reader);
-
-            stream.Dispose();
-        }
-
-        internal byte[] Serialize()
+        internal byte[] Save()
         {
             if (Count == 0)
                 return Array.Empty<byte>();

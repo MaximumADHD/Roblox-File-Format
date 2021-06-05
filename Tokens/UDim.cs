@@ -9,8 +9,8 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "UDim";
         public AttributeType AttributeType => AttributeType.UDim;
         
-        public UDim ReadAttribute(Attribute attr) => ReadUDim(attr);
-        public void WriteAttribute(Attribute attr, UDim value) => WriteUDim(attr, value);
+        public UDim ReadAttribute(RbxAttribute attr) => ReadUDim(attr);
+        public void WriteAttribute(RbxAttribute attr, UDim value) => WriteUDim(attr, value);
         
         public static UDim ReadUDim(XmlNode token, string prefix = "")
         {
@@ -41,7 +41,7 @@ namespace RobloxFiles.Tokens
             node.AppendChild(offset);
         }
 
-        public static UDim ReadUDim(Attribute attr)
+        public static UDim ReadUDim(RbxAttribute attr)
         {
             float scale = attr.ReadFloat();
             int offset = attr.ReadInt();
@@ -49,7 +49,7 @@ namespace RobloxFiles.Tokens
             return new UDim(scale, offset);
         }
 
-        public static void WriteUDim(Attribute attr, UDim value)
+        public static void WriteUDim(RbxAttribute attr, UDim value)
         {
             float scale = value.Scale;
             attr.WriteFloat(scale);

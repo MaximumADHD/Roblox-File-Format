@@ -52,7 +52,7 @@ namespace RobloxFiles.Tokens
             node.InnerText = value.ToString() + ' ';
         }
 
-        public ColorSequence ReadAttribute(Attribute attr)
+        public ColorSequence ReadAttribute(RbxAttribute attr)
         {
             int numKeys = attr.ReadInt();
             var keypoints = new ColorSequenceKeypoint[numKeys];
@@ -69,7 +69,7 @@ namespace RobloxFiles.Tokens
             return new ColorSequence(keypoints);
         }
 
-        public void WriteAttribute(Attribute attr, ColorSequence value)
+        public void WriteAttribute(RbxAttribute attr, ColorSequence value)
         {
             attr.WriteInt(value.Keypoints.Length);
 

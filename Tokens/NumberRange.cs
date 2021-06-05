@@ -40,7 +40,7 @@ namespace RobloxFiles.Tokens
             node.InnerText = value.ToString() + ' ';
         }
 
-        public NumberRange ReadAttribute(Attribute attr)
+        public NumberRange ReadAttribute(RbxAttribute attr)
         {
             float min = attr.ReadFloat();
             float max = attr.ReadFloat();
@@ -48,7 +48,7 @@ namespace RobloxFiles.Tokens
             return new NumberRange(min, max);
         }
 
-        public void WriteAttribute(Attribute attr, NumberRange value)
+        public void WriteAttribute(RbxAttribute attr, NumberRange value)
         {
             attr.WriteFloat(value.Min);
             attr.WriteFloat(value.Max);

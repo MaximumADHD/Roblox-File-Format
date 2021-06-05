@@ -10,10 +10,10 @@ namespace RobloxFiles.Tokens
         private readonly string[] XmlFields = new string[3] { "R", "G", "B" };
 
         public AttributeType AttributeType => AttributeType.Color3;
-        public Color3 ReadAttribute(Attribute attr) => ReadColor3(attr);
-        public void WriteAttribute(Attribute attr, Color3 value) => WriteColor3(attr, value);
+        public Color3 ReadAttribute(RbxAttribute attr) => ReadColor3(attr);
+        public void WriteAttribute(RbxAttribute attr, Color3 value) => WriteColor3(attr, value);
 
-        public static Color3 ReadColor3(Attribute attr)
+        public static Color3 ReadColor3(RbxAttribute attr)
         {
             float r = attr.ReadFloat(),
                   g = attr.ReadFloat(),
@@ -22,7 +22,7 @@ namespace RobloxFiles.Tokens
             return new Color3(r, g, b);
         }
 
-        public static void WriteColor3(Attribute attr, Color3 value)
+        public static void WriteColor3(RbxAttribute attr, Color3 value)
         {
             attr.WriteFloat(value.R);
             attr.WriteFloat(value.G);

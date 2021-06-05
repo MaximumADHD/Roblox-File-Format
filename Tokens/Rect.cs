@@ -51,7 +51,7 @@ namespace RobloxFiles.Tokens
             node.AppendChild(max);
         }
 
-        public Rect ReadAttribute(Attribute attr)
+        public Rect ReadAttribute(RbxAttribute attr)
         {
             Vector2 min = Vector2Token.ReadVector2(attr);
             Vector2 max = Vector2Token.ReadVector2(attr);
@@ -59,7 +59,7 @@ namespace RobloxFiles.Tokens
             return new Rect(min, max);
         }
 
-        public void WriteAttribute(Attribute attr, Rect value)
+        public void WriteAttribute(RbxAttribute attr, Rect value)
         {
             Vector2Token.WriteVector2(attr, value.Min);
             Vector2Token.WriteVector2(attr, value.Max);

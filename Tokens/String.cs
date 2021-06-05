@@ -7,8 +7,8 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "string";
         public AttributeType AttributeType => AttributeType.String;
 
-        public string ReadAttribute(Attribute attr) => attr.ReadString();
-        public void WriteAttribute(Attribute attr, string value) => attr.WriteString(value);
+        public string ReadAttribute(RbxAttribute attr) => attr.ReadString();
+        public void WriteAttribute(RbxAttribute attr, string value) => attr.WriteString(value);
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
