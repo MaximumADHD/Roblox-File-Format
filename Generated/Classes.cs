@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.481.1.423973
+// Updated as of 0.483.1.425021
 
 using System;
 
@@ -911,6 +911,14 @@ namespace RobloxFiles
         public int MaxItems = 1000;
     }
 
+    public class DebuggerManager : Instance
+    {
+        public DebuggerManager()
+        {
+            IsService = true;
+        }
+    }
+
     public class Dialog : Instance
     {
         public DialogBehaviorType BehaviorType = DialogBehaviorType.SinglePlayer;
@@ -987,6 +995,7 @@ namespace RobloxFiles
 
         public Content Texture = "";
         public float Transparency;
+        public int ZIndex = 1;
     }
 
     public class Texture : Decal
@@ -2489,10 +2498,6 @@ namespace RobloxFiles
         public double DistributedGameTime;
         public bool ExplicitAutoJoints = true;
         public float FallenPartsDestroyHeight = -500;
-
-        [Obsolete]
-        public bool FilteringEnabled = true;
-
         public float Gravity = 196.2f;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
@@ -2801,6 +2806,7 @@ namespace RobloxFiles
         public string Constraint = "";
         public bool Deprecated;
         public bool EditingDisabled;
+        public string FFlag = "";
         public bool IsBackend;
         public int PropertyOrder = 5000;
         public string ScriptContext = "";
@@ -3359,6 +3365,14 @@ namespace RobloxFiles
     public class TimerService : Instance
     {
         public TimerService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class ToastNotificationService : Instance
+    {
+        public ToastNotificationService()
         {
             IsService = true;
         }
