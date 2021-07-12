@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.483.1.425021
+// Updated as of 0.485.0.425755
 
 using System;
 
@@ -79,6 +79,14 @@ namespace RobloxFiles
     public class AssetCounterService : Instance
     {
         public AssetCounterService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class AssetImportService : Instance
+    {
+        public AssetImportService()
         {
             IsService = true;
         }
@@ -576,8 +584,10 @@ namespace RobloxFiles
 
     public class Clouds : Instance
     {
+        public Color3 Color = new Color3(1, 1, 1);
         public float Cover = 0.5f;
         public float Density = 0.7f;
+        public bool Enabled = true;
     }
 
     public class CollectionService : Instance
@@ -2210,6 +2220,7 @@ namespace RobloxFiles
 
         public CFrame CFrame = new CFrame();
         public bool CanCollide = true;
+        public bool CanQuery = true;
         public bool CanTouch = true;
         public bool CastShadow = true;
         public int CollisionGroupId;
@@ -2499,6 +2510,7 @@ namespace RobloxFiles
         public bool ExplicitAutoJoints = true;
         public float FallenPartsDestroyHeight = -500;
         public float Gravity = 196.2f;
+        public HumanoidOnlySetCollisionsOnStateChange HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
@@ -3269,6 +3281,14 @@ namespace RobloxFiles
         public bool EnableScriptCollabByDefaultOnLoad;
         public long SrcPlaceId;
         public long SrcUniverseId;
+    }
+
+    public class StudioDeviceEmulatorService : Instance
+    {
+        public StudioDeviceEmulatorService()
+        {
+            IsService = true;
+        }
     }
 
     public class StudioService : Instance

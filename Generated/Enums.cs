@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.481.1.423973
+// Updated as of 0.485.0.425755
 
 namespace RobloxFiles.Enums
 {
@@ -373,6 +373,13 @@ namespace RobloxFiles.Enums
         DisplayWhenDamaged,
         AlwaysOn,
         AlwaysOff
+    }
+
+    public enum HumanoidOnlySetCollisionsOnStateChange
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum HumanoidRigType
