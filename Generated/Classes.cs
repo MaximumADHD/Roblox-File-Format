@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.485.0.425755
+// Updated as of 0.487.1.426995
 
 using System;
 
@@ -26,6 +26,7 @@ namespace RobloxFiles
 
     public class Accessory : Accoutrement
     {
+        public AccessoryType AccessoryType = AccessoryType.Unknown;
     }
 
     public class Hat : Accoutrement
@@ -692,6 +693,11 @@ namespace RobloxFiles
         public float Length = 5;
         public float Restitution;
         public float Thickness = 0.1f;
+        public bool WinchEnabled;
+        public float WinchForce = 10000;
+        public float WinchResponsiveness = 45;
+        public float WinchSpeed = 2;
+        public float WinchTarget = 5;
     }
 
     public abstract class SlidingBallConstraint : Constraint
@@ -757,7 +763,11 @@ namespace RobloxFiles
     {
         public float Coils = 8;
         public float Damping = 0.01f;
+
+        [Obsolete]
         public bool LimitEnabled;
+
+        public bool LimitsEnabled;
         public float MaxAngle = 45;
         public float MaxTorque = float.MaxValue;
         public float Radius = 0.4f;
@@ -986,6 +996,10 @@ namespace RobloxFiles
         public ExplosionType ExplosionType = ExplosionType.Craters;
         public Vector3 Position = new Vector3();
         public bool Visible = true;
+    }
+
+    public class FaceControls : Instance
+    {
     }
 
     public abstract class FaceInstance : Instance
@@ -2818,6 +2832,7 @@ namespace RobloxFiles
         public string Constraint = "";
         public bool Deprecated;
         public bool EditingDisabled;
+        public string EditorType = "";
         public string FFlag = "";
         public bool IsBackend;
         public int PropertyOrder = 5000;
@@ -2826,7 +2841,6 @@ namespace RobloxFiles
         public double UIMaximum;
         public double UIMinimum;
         public double UINumTicks;
-        public string summary = "";
     }
 
     public class ReflectionMetadataClass : ReflectionMetadataItem

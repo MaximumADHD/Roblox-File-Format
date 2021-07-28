@@ -1,8 +1,30 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.485.0.425755
+// Updated as of 0.487.1.426995
 
 namespace RobloxFiles.Enums
 {
+    public enum AccessoryType
+    {
+        Unknown,
+        Hat,
+        Hair,
+        Face,
+        Neck,
+        Shoulder,
+        Front,
+        Back,
+        Waist,
+        TShirt,
+        Shirt,
+        Pants,
+        Jacket,
+        Sweater,
+        Shorts,
+        LeftShoe,
+        RightShoe,
+        DressSkirt
+    }
+
     public enum ActuatorRelativeTo
     {
         Attachment0,
