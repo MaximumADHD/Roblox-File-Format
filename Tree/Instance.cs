@@ -124,7 +124,7 @@ namespace RobloxFiles
         {
             if (Attributes.TryGetValue(key, out RbxAttribute attr))
             {
-                if (attr.Value is T result)
+                if (attr?.Value is T result)
                 {
                     value = result;
                     return true;
@@ -151,6 +151,12 @@ namespace RobloxFiles
 
             if (key.StartsWith("RBX", StringComparison.InvariantCulture))
                 return false;
+
+            if (value == null)
+            {
+                Attributes[key] = null;
+                return true;
+            }
 
             Type type = value.GetType();
 

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.487.1.426995
+// Updated as of 0.489.1.4890338
 
 using System;
 
@@ -903,6 +903,11 @@ namespace RobloxFiles
     {
     }
 
+    public class DataStoreOptions : Instance
+    {
+        public bool AllScopes;
+    }
+
     public class DataStoreService : Instance
     {
         public DataStoreService()
@@ -1146,11 +1151,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-    }
-
-    public class GetDataStoreOptions : Instance
-    {
-        public bool AllScopes;
     }
 
     public class GroupService : Instance
@@ -2593,6 +2593,11 @@ namespace RobloxFiles
         }
 
         public float ZOffset;
+    }
+
+    public class PathfindingModifier : Instance
+    {
+        public string ModifierId = "";
     }
 
     public class PathfindingService : Instance
