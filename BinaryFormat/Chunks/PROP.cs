@@ -6,7 +6,6 @@ using System.Text;
 using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
 using RobloxFiles.Utility;
-using System.Diagnostics;
 using System.IO;
 
 namespace RobloxFiles.BinaryFormat.Chunks
@@ -48,6 +47,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
             catch (EndOfStreamException)
             {
                 RobloxFile.LogError($"Got corrupted PROP chunk (@ {this})!");
+                return;
+            }
+
+            if (Class == null)
+            {
+                RobloxFile.LogError($"Unknown class index {ClassIndex} (@ {this})!");
                 return;
             }
 

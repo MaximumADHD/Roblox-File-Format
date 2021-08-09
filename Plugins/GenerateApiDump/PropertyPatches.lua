@@ -491,6 +491,15 @@ return
 		}
 	};
 	
+	ScriptDebugger =
+	{
+		Add =
+		{
+			CoreScriptIdentifier = "string";
+			ScriptGuid = "string";
+		}
+	};
+	
 	Smoke =
 	{
 		Add =

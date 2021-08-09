@@ -16,6 +16,12 @@ local singletons =
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts");
 }
 
+local exceptionClasses =
+{
+	PackageLink = true;
+	ScriptDebugger = true;
+}
+
 local numberTypes =
 {
 	int = true;
@@ -403,7 +409,7 @@ local function generateClasses()
 			end
 		end
 		
-		if class.Name == "PackageLink" then
+		if exceptionClasses[class.Name] then
 			registerClass = true
 		end
 		

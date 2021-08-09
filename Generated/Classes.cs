@@ -137,6 +137,14 @@ namespace RobloxFiles
         }
     }
 
+    public class AvatarImportService : Instance
+    {
+        public AvatarImportService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Backpack : Instance
     {
     }
@@ -2951,6 +2959,12 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+    }
+
+    public class ScriptDebugger : Instance
+    {
+        public string CoreScriptIdentifier = "";
+        public string ScriptGuid = "";
     }
 
     public class ScriptService : Instance
