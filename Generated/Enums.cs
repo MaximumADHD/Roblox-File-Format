@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.487.1.426995
+// Updated as of 0.490.0.4900359
 
 namespace RobloxFiles.Enums
 {
@@ -889,6 +889,12 @@ namespace RobloxFiles.Enums
         diff
     }
 
+    public enum ResamplerMode
+    {
+        Default,
+        Pixelated
+    }
+
     public enum ReverbType
     {
         NoReverb,
@@ -1090,6 +1096,13 @@ namespace RobloxFiles.Enums
         Unknown,
         True,
         False
+    }
+
+    public enum VelocityConstraintMode
+    {
+        Line,
+        Plane,
+        Vector
     }
 
     public enum VerticalAlignment

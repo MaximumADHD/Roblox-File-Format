@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.489.1.4890338
+// Updated as of 0.490.0.4900359
 
 using System;
 
@@ -687,6 +687,19 @@ namespace RobloxFiles
         public bool ReactionForceEnabled;
     }
 
+    public class LinearVelocityConstraint : Constraint
+    {
+        public Vector3 LineDirection = new Vector3(1, 0, 0);
+        public float LineVelocity;
+        public float MaxForce = 1000;
+        public Vector2 PlaneVelocity = new Vector2();
+        public Vector3 PrimaryTangentAxis = new Vector3(1, 0, 0);
+        public ActuatorRelativeTo RelativeTo = ActuatorRelativeTo.World;
+        public Vector3 SecondaryTangentAxis = new Vector3(0, 1, 0);
+        public Vector3 VectorVelocity = new Vector3();
+        public VelocityConstraintMode VelocityConstraintMode = VelocityConstraintMode.Vector;
+    }
+
     public class RodConstraint : Constraint
     {
         public float Length = 5;
@@ -1262,6 +1275,7 @@ namespace RobloxFiles
         public Vector2 ImageRectSize = new Vector2();
         public float ImageTransparency;
         public Content PressedImage = "";
+        public ResamplerMode ResampleMode = ResamplerMode.Default;
         public ScaleType ScaleType = ScaleType.Stretch;
         public Rect SliceCenter = new Rect(new Vector2(), new Vector2());
         public float SliceScale = 1;
@@ -1333,6 +1347,7 @@ namespace RobloxFiles
         public Vector2 ImageRectOffset = new Vector2();
         public Vector2 ImageRectSize = new Vector2();
         public float ImageTransparency;
+        public ResamplerMode ResampleMode = ResamplerMode.Default;
         public ScaleType ScaleType = ScaleType.Stretch;
         public Rect SliceCenter = new Rect(new Vector2(), new Vector2());
         public float SliceScale = 1;
@@ -3768,6 +3783,14 @@ namespace RobloxFiles
     public class Visit : Instance
     {
         public Visit()
+        {
+            IsService = true;
+        }
+    }
+
+    public class VoiceChatService : Instance
+    {
+        public VoiceChatService()
         {
             IsService = true;
         }
