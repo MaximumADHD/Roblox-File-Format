@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.490.0.4900359
+// Updated as of 0.492.0.4920395
 
 namespace RobloxFiles.Enums
 {
@@ -990,6 +990,13 @@ namespace RobloxFiles.Enums
         TopRight,
         BottomLeft,
         BottomRight
+    }
+
+    public enum StreamOutBehavior
+    {
+        Default,
+        LowMemory,
+        Opportunistic
     }
 
     public enum StreamingPauseMode

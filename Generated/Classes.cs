@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.490.0.4900359
+// Updated as of 0.492.0.4920395
 
 using System;
 
@@ -1767,7 +1767,10 @@ namespace RobloxFiles
         public bool AutoRotate = true;
         public bool AutomaticScalingEnabled = true;
         public bool BreakJointsOnDeath = true;
+
+        [Obsolete]
         public HumanoidCollisionType CollisionType = HumanoidCollisionType.OuterBox;
+
         public HumanoidDisplayDistanceType DisplayDistanceType = HumanoidDisplayDistanceType.Viewer;
         public string DisplayName = "";
 
@@ -2176,6 +2179,14 @@ namespace RobloxFiles
     {
     }
 
+    public class MessageBusService : Instance
+    {
+        public MessageBusService()
+        {
+            IsService = true;
+        }
+    }
+
     public class MessagingService : Instance
     {
         public MessagingService()
@@ -2552,6 +2563,7 @@ namespace RobloxFiles
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
         public SignalBehavior SignalBehavior = SignalBehavior.Default;
+        public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
         public bool StreamingEnabled;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
@@ -3121,7 +3133,7 @@ namespace RobloxFiles
 
     public abstract class SoundEffect : Instance
     {
-        public bool Enabled = true;
+        public bool Enabled;
         public int Priority;
     }
 
