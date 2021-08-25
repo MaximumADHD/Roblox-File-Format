@@ -482,6 +482,81 @@ namespace RobloxFiles
         }
 
         /// <summary>
+        /// Creates a deep copy of this instance and its descendants.
+        /// Any instances that have Archivable set to false are not included.
+        /// This can include the instance itself, in which case this will return null.
+        /// </summary>
+        public Instance Clone()
+        {
+            var mitosis = new Dictionary<Instance, Instance>();
+            var refProps = new List<Property>();
+
+            var insts = GetDescendants().ToList();
+            insts.Insert(0, this);
+
+            foreach (var oldInst in insts)
+            {
+                if (!oldInst.Archivable)
+                    continue;
+
+                var type = oldInst.GetType();
+                var newInst = Activator.CreateInstance(type) as Instance;
+
+                foreach (var pair in oldInst.Properties)
+                {
+                    // Create memberwise copy of the property.
+                    var oldProp = pair.Value;
+
+                    var newProp = new Property()
+                    {
+                        Instance = newInst,
+
+                        Name = oldProp.Name,
+                        Type = oldProp.Type,
+
+                        Value = oldProp.Value,
+                        XmlToken = oldProp.XmlToken,
+                    };
+
+                    if (newProp.Type == PropertyType.Ref)
+                        refProps.Add(newProp);
+
+                    newInst.AddProperty(ref newProp);
+                }
+
+                var oldParent = oldInst.Parent;
+                mitosis[oldInst] = newInst;
+
+                if (oldParent == null)
+                    continue;
+
+                if (!mitosis.TryGetValue(oldParent, out var newParent))
+                    continue;
+
+                newInst.Parent = newParent;
+            }
+
+            // Patch referents where applicable.
+            foreach (var prop in refProps)
+            {
+                var source = prop.Value as Instance;
+
+                if (source == null)
+                    continue;
+
+                if (!mitosis.TryGetValue(source, out var copy))
+                    continue;
+
+                prop.Value = copy;
+            }
+
+            // Grab the copy of ourselves that we created.
+            mitosis.TryGetValue(this, out Instance clone);
+
+            return clone;
+        }
+
+        /// <summary>
         /// Returns the first child of this Instance which derives from the provided type <typeparamref name="T"/>.
         /// If the instance is not found, this returns null.
         /// </summary>
