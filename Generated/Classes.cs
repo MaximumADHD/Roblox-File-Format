@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.492.0.4920395
+// Updated as of 0.493.0.4930373
 
 using System;
 
@@ -2633,6 +2633,7 @@ namespace RobloxFiles
     public class PathfindingModifier : Instance
     {
         public string ModifierId = "";
+        public bool PassThrough;
     }
 
     public class PathfindingService : Instance
@@ -2669,6 +2670,7 @@ namespace RobloxFiles
             IsService = true;
         }
 
+        public bool CustomPoliciesEnabled;
         public string DEPRECATED_SerializedEmulatedPolicyInfo = "";
         public string EmulatedCountryCode = "";
         public string EmulatedGameLocale = "";

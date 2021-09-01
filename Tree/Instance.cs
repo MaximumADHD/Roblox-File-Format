@@ -79,6 +79,10 @@ namespace RobloxFiles
         {
             get
             {
+                if (Tags == null)
+                    // ?????
+                    return null;
+
                 if (Tags.Count == 0)
                     return null;
 
@@ -539,9 +543,7 @@ namespace RobloxFiles
             // Patch referents where applicable.
             foreach (var prop in refProps)
             {
-                var source = prop.Value as Instance;
-
-                if (source == null)
+                if (!(prop.Value is Instance source))
                     continue;
 
                 if (!mitosis.TryGetValue(source, out var copy))
