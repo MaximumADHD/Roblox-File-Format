@@ -668,11 +668,13 @@ namespace RobloxFiles
                     fieldName = "Bevel Roundness";
 
                 PropertyType propType = PropertyType.Unknown;
-                
-                if (Property.Types.ContainsKey(fieldType))
-                    propType = Property.Types[fieldType];
-                else if (fieldType.IsEnum)
+
+                if (fieldType.IsEnum)
                     propType = PropertyType.Enum;
+                else if (Property.Types.ContainsKey(fieldType))
+                    propType = Property.Types[fieldType];
+                else if (typeof(Instance).IsAssignableFrom(fieldType))
+                    propType = PropertyType.Ref;
 
                 if (propType != PropertyType.Unknown)
                 {
