@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.493.0.4930373
+// Updated as of 0.494.2.4940343
 
 using System;
 
@@ -62,6 +62,10 @@ namespace RobloxFiles
     }
 
     public class AnimationController : Instance
+    {
+    }
+
+    public class AnimationRigData : Instance
     {
     }
 
@@ -132,14 +136,6 @@ namespace RobloxFiles
     public class AvatarEditorService : Instance
     {
         public AvatarEditorService()
-        {
-            IsService = true;
-        }
-    }
-
-    public class AvatarImportService : Instance
-    {
-        public AvatarImportService()
         {
             IsService = true;
         }
@@ -623,12 +619,16 @@ namespace RobloxFiles
     public class AlignOrientation : Constraint
     {
         public AlignType AlignType = AlignType.Parallel;
+        public CFrame CoordindateFrame = new CFrame();
         public float MaxAngularVelocity = float.MaxValue;
         public float MaxTorque = 10000;
+        public OrientationAlignmentMode Mode = OrientationAlignmentMode.TwoAttachment;
+        public Vector3 PrimaryAxis = new Vector3(1, 0, 0);
         public bool PrimaryAxisOnly;
         public bool ReactionTorqueEnabled;
         public float Responsiveness = 10;
         public bool RigidityEnabled;
+        public Vector3 SecondaryAxis = new Vector3(0, 1, 0);
     }
 
     public class AlignPosition : Constraint
@@ -636,6 +636,8 @@ namespace RobloxFiles
         public bool ApplyAtCenterOfMass;
         public float MaxForce = 10000;
         public float MaxVelocity = float.MaxValue;
+        public PositionAlignmentMode Mode = PositionAlignmentMode.TwoAttachment;
+        public Vector3 Position = new Vector3();
         public bool ReactionForceEnabled;
         public float Responsiveness = 10;
         public bool RigidityEnabled;
@@ -687,7 +689,7 @@ namespace RobloxFiles
         public bool ReactionForceEnabled;
     }
 
-    public class LinearVelocityConstraint : Constraint
+    public class LinearVelocity : Constraint
     {
         public Vector3 LineDirection = new Vector3(1, 0, 0);
         public float LineVelocity;
@@ -1251,6 +1253,12 @@ namespace RobloxFiles
 
         public bool Visible = true;
         public int ZIndex = 1;
+    }
+
+    public class CanvasGroup : GuiObject
+    {
+        public Color3 GroupColor = new Color3(1, 1, 1);
+        public float Transparency;
     }
 
     public class Frame : GuiObject
@@ -2154,6 +2162,44 @@ namespace RobloxFiles
         }
     }
 
+    public class MaterialService : Instance
+    {
+        public MaterialService()
+        {
+            IsService = true;
+        }
+
+        public MaterialVariant Brick;
+        public MaterialVariant Cobblestone;
+        public MaterialVariant Concrete;
+        public MaterialVariant CorrodedMetal;
+        public MaterialVariant DiamondPlate;
+        public MaterialVariant Fabric;
+        public MaterialVariant Foil;
+        public MaterialVariant Granite;
+        public MaterialVariant Grass;
+        public MaterialVariant Ice;
+        public MaterialVariant Marble;
+        public MaterialVariant Metal;
+        public MaterialVariant Pebble;
+        public MaterialVariant Plastic;
+        public MaterialVariant Sand;
+        public MaterialVariant Slate;
+        public MaterialVariant SmoothPlastic;
+        public MaterialVariant Wood;
+        public MaterialVariant WoodPlanks;
+    }
+
+    public class MaterialVariant : Instance
+    {
+        public Material BaseMaterial = Material.Plastic;
+        public Content ColorMap = "";
+        public Content MetalnessMap = "";
+        public Content NormalMap = "";
+        public Content RoughnessMap = "";
+        public float StudsPerTile = 10;
+    }
+
     public class MemStorageService : Instance
     {
         public MemStorageService()
@@ -2313,6 +2359,7 @@ namespace RobloxFiles
         public bool Locked;
         public bool Massless;
         public Material Material = Material.Plastic;
+        public MaterialVariant MaterialVariant;
         public CFrame PivotOffset = new CFrame();
 
         public Vector3 Position
@@ -2562,6 +2609,7 @@ namespace RobloxFiles
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
+        public AnimatorRetargetingMode Retargeting = AnimatorRetargetingMode.Default;
         public SignalBehavior SignalBehavior = SignalBehavior.Default;
         public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
         public bool StreamingEnabled;

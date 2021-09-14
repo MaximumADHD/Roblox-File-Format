@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.493.0.4930373
+// Updated as of 0.494.2.4940343
 
 namespace RobloxFiles.Enums
 {
@@ -63,6 +63,13 @@ namespace RobloxFiles.Enums
         Movement,
         Action,
         Core = 1000
+    }
+
+    public enum AnimatorRetargetingMode
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum ApplyStrokeMode
@@ -819,6 +826,12 @@ namespace RobloxFiles.Enums
         Front
     }
 
+    public enum OrientationAlignmentMode
+    {
+        OneAttachment,
+        TwoAttachment
+    }
+
     public enum PartType
     {
         Ball,
@@ -855,6 +868,12 @@ namespace RobloxFiles.Enums
         Elastic,
         Cubic,
         Bounce
+    }
+
+    public enum PositionAlignmentMode
+    {
+        OneAttachment,
+        TwoAttachment
     }
 
     public enum ProximityPromptExclusivity
