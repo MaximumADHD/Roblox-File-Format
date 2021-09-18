@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Roblox File Format")]
 [assembly: AssemblyDescription("Implementation of Roblox's File Format in C# for .NET 4.0")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Written by CloneTrooper1019")]
+[assembly: AssemblyCompany("Written by MaximumADHD")]
 [assembly: AssemblyProduct("Roblox File Format")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

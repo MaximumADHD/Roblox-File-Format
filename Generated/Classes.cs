@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.494.2.4940343
+// Updated as of 0.495.0.4950268
 
 using System;
 
@@ -619,7 +619,7 @@ namespace RobloxFiles
     public class AlignOrientation : Constraint
     {
         public AlignType AlignType = AlignType.Parallel;
-        public CFrame CoordindateFrame = new CFrame();
+        public CFrame CFrame = new CFrame();
         public float MaxAngularVelocity = float.MaxValue;
         public float MaxTorque = 10000;
         public OrientationAlignmentMode Mode = OrientationAlignmentMode.TwoAttachment;
@@ -3183,7 +3183,7 @@ namespace RobloxFiles
 
     public abstract class SoundEffect : Instance
     {
-        public bool Enabled;
+        public bool Enabled = true;
         public int Priority;
     }
 
@@ -3202,6 +3202,10 @@ namespace RobloxFiles
         public float Release = 0.1f;
         public Instance SideChain;
         public float Threshold = -40;
+    }
+
+    public abstract class CustomDspSoundEffect : SoundEffect
+    {
     }
 
     public class DistortionSoundEffect : SoundEffect
