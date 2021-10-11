@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.495.0.4950268
+// Updated as of 0.498.0.4980398
 
 using System;
 
@@ -59,6 +59,21 @@ namespace RobloxFiles
     public class Animation : Instance
     {
         public Content AnimationId = "";
+    }
+
+    public abstract class AnimationClip : Instance
+    {
+        public bool Loop = true;
+        public AnimationPriority Priority = AnimationPriority.Action;
+    }
+
+    public class CurveAnimation : AnimationClip
+    {
+    }
+
+    public class KeyframeSequence : AnimationClip
+    {
+        public float AuthoredHipHeight = 2;
     }
 
     public class AnimationController : Instance
@@ -136,6 +151,14 @@ namespace RobloxFiles
     public class AvatarEditorService : Instance
     {
         public AvatarEditorService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class AvatarImportService : Instance
+    {
+        public AvatarImportService()
         {
             IsService = true;
         }
@@ -235,6 +258,7 @@ namespace RobloxFiles
     {
         public Attachment Attachment0;
         public Attachment Attachment1;
+        public float Brightness = 1;
         public ColorSequence Color = new ColorSequence(1, 1, 1);
         public float CurveSize0;
         public float CurveSize1;
@@ -1008,6 +1032,11 @@ namespace RobloxFiles
         }
     }
 
+    public class EulerRotationCurve : Instance
+    {
+        public RotationOrder RotationOrder = RotationOrder.XYZ;
+    }
+
     public class EventIngestService : Instance
     {
         public EventIngestService()
@@ -1103,6 +1132,10 @@ namespace RobloxFiles
         }
 
         public float size_xml = 5;
+    }
+
+    public class FloatCurve : Instance
+    {
     }
 
     public class FlyweightService : Instance
@@ -1994,13 +2027,6 @@ namespace RobloxFiles
         public string Value = "";
     }
 
-    public class KeyframeSequence : Instance
-    {
-        public float AuthoredHipHeight = 2;
-        public bool Loop = true;
-        public AnimationPriority Priority = AnimationPriority.Action;
-    }
-
     public class KeyframeSequenceProvider : Instance
     {
         public KeyframeSequenceProvider()
@@ -2256,6 +2282,14 @@ namespace RobloxFiles
     public class NetworkClient : NetworkPeer
     {
         public NetworkClient()
+        {
+            IsService = true;
+        }
+    }
+
+    public class NewVoiceChatService : Instance
+    {
+        public NewVoiceChatService()
         {
             IsService = true;
         }
@@ -2648,6 +2682,7 @@ namespace RobloxFiles
     public class ParticleEmitter : Instance
     {
         public Vector3 Acceleration = new Vector3();
+        public float Brightness = 1;
         public ColorSequence Color = new ColorSequence(1, 1, 1);
         public float Drag;
         public NormalId EmissionDirection = NormalId.Top;
@@ -2660,9 +2695,14 @@ namespace RobloxFiles
         public float Rate = 20;
         public NumberRange RotSpeed = new NumberRange(0);
         public NumberRange Rotation = new NumberRange(0);
+        public ParticleEmitterShape Shape = ParticleEmitterShape.Box;
+        public ParticleEmitterShapeInOut ShapeInOut = ParticleEmitterShapeInOut.Outward;
+        public float ShapePartial = 1;
+        public ParticleEmitterShapeStyle ShapeStyle = ParticleEmitterShapeStyle.Volume;
         public NumberSequence Size = new NumberSequence(1);
         public NumberRange Speed = new NumberRange(5);
         public Vector2 SpreadAngle = new Vector2();
+        public NumberSequence Squash = new NumberSequence(0);
         public Content Texture = "rbxasset://textures/particles/sparkles_main.dds";
         public float TimeScale = 1;
         public NumberSequence Transparency = new NumberSequence(0);
@@ -2676,6 +2716,13 @@ namespace RobloxFiles
         }
 
         public float ZOffset;
+    }
+
+    public class PathfindingLink : Instance
+    {
+        public Attachment Attachment0;
+        public Attachment Attachment1;
+        public bool IsBidirectional = true;
     }
 
     public class PathfindingModifier : Instance
@@ -2719,7 +2766,6 @@ namespace RobloxFiles
         }
 
         public bool CustomPoliciesEnabled;
-        public string DEPRECATED_SerializedEmulatedPolicyInfo = "";
         public string EmulatedCountryCode = "";
         public string EmulatedGameLocale = "";
         public bool PlayerEmulationEnabled;
@@ -3020,6 +3066,10 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+    }
+
+    public class RotationCurve : Instance
+    {
     }
 
     public class RunService : Instance
@@ -3393,6 +3443,7 @@ namespace RobloxFiles
         public string CommitInflightGuid = "";
         public int CommitInflightPlaceVersion;
         public bool EnableScriptCollabByDefaultOnLoad;
+        public bool EnableTeamCreateStreamingOnLoad;
         public long SrcPlaceId;
         public long SrcUniverseId;
     }
@@ -3488,12 +3539,28 @@ namespace RobloxFiles
         public double Timeout = 10;
     }
 
+    public class TextChannel : Instance
+    {
+    }
+
+    public class TextChatService : Instance
+    {
+        public TextChatService()
+        {
+            IsService = true;
+        }
+    }
+
     public class TextService : Instance
     {
         public TextService()
         {
             IsService = true;
         }
+    }
+
+    public class TextSource : Instance
+    {
     }
 
     public class TimerService : Instance
@@ -3532,6 +3599,7 @@ namespace RobloxFiles
     {
         public Attachment Attachment0;
         public Attachment Attachment1;
+        public float Brightness = 1;
         public ColorSequence Color = new ColorSequence(1, 1, 1);
         public bool Enabled = true;
         public bool FaceCamera;
@@ -3820,6 +3888,10 @@ namespace RobloxFiles
     public class Vector3Value : ValueBase
     {
         public Vector3 Value = new Vector3();
+    }
+
+    public class Vector3Curve : Instance
+    {
     }
 
     public class VersionControlService : Instance

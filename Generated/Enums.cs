@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.495.0.4950268
+// Updated as of 0.498.0.4980398
 
 namespace RobloxFiles.Enums
 {
@@ -839,6 +839,27 @@ namespace RobloxFiles.Enums
         Cylinder
     }
 
+    public enum ParticleEmitterShape
+    {
+        Box,
+        Sphere,
+        Cylinder,
+        Disc
+    }
+
+    public enum ParticleEmitterShapeInOut
+    {
+        Outward,
+        Inward,
+        InAndOut
+    }
+
+    public enum ParticleEmitterShapeStyle
+    {
+        Volume,
+        Surface
+    }
+
     public enum ParticleOrientation
     {
         FacingCamera,
@@ -948,6 +969,16 @@ namespace RobloxFiles.Enums
         Linear,
         LinearSquare,
         InverseTapered
+    }
+
+    public enum RotationOrder
+    {
+        XYZ,
+        XZY,
+        YZX,
+        YXZ,
+        ZXY,
+        ZYX
     }
 
     public enum ScaleType
