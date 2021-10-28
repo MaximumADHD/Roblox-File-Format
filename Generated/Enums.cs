@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.498.0.4980398
+// Updated as of 0.501.0.5010363
 
 namespace RobloxFiles.Enums
 {
@@ -377,6 +377,12 @@ namespace RobloxFiles.Enums
         Movement
     }
 
+    public enum HighlightDepthMode
+    {
+        AlwaysOnTop,
+        Default
+    }
+
     public enum HorizontalAlignment
     {
         Center,
@@ -715,13 +721,6 @@ namespace RobloxFiles.Enums
         Round,
         Bevel,
         Miter
-    }
-
-    public enum LoadCharacterLayeredClothing
-    {
-        Default,
-        Disabled,
-        Enabled
     }
 
     public enum Material

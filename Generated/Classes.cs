@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.498.0.4980398
+// Updated as of 0.501.0.5010363
 
 using System;
 
@@ -724,6 +724,10 @@ namespace RobloxFiles
         public Vector3 SecondaryTangentAxis = new Vector3(0, 1, 0);
         public Vector3 VectorVelocity = new Vector3();
         public VelocityConstraintMode VelocityConstraintMode = VelocityConstraintMode.Vector;
+    }
+
+    public class Plane : Constraint
+    {
     }
 
     public class RodConstraint : Constraint
@@ -1784,6 +1788,16 @@ namespace RobloxFiles
         }
     }
 
+    public class Highlight : Instance
+    {
+        public HighlightDepthMode DepthMode = HighlightDepthMode.AlwaysOnTop;
+        public bool Enabled = true;
+        public Color3 FillColor = new Color3(1, 0, 0);
+        public float FillTransparency = 0.5f;
+        public Color3 OutlineColor = new Color3(1, 1, 1);
+        public float OutlineTransparency;
+    }
+
     public class HttpRbxApiService : Instance
     {
         public HttpRbxApiService()
@@ -2287,14 +2301,6 @@ namespace RobloxFiles
         }
     }
 
-    public class NewVoiceChatService : Instance
-    {
-        public NewVoiceChatService()
-        {
-            IsService = true;
-        }
-    }
-
     public class NoCollisionConstraint : Instance
     {
         public bool Enabled = true;
@@ -2393,7 +2399,6 @@ namespace RobloxFiles
         public bool Locked;
         public bool Massless;
         public Material Material = Material.Plastic;
-        public MaterialVariant MaterialVariant;
         public CFrame PivotOffset = new CFrame();
 
         public Vector3 Position
@@ -2891,6 +2896,14 @@ namespace RobloxFiles
         public float Spread = 1;
     }
 
+    public class ProcessInstancePhysicsService : Instance
+    {
+        public ProcessInstancePhysicsService()
+        {
+            IsService = true;
+        }
+    }
+
     public class ProximityPrompt : Instance
     {
         public string ActionText = "Interact";
@@ -3075,6 +3088,14 @@ namespace RobloxFiles
     public class RunService : Instance
     {
         public RunService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class ScriptChangeService : Instance
+    {
+        public ScriptChangeService()
         {
             IsService = true;
         }
@@ -3411,7 +3432,6 @@ namespace RobloxFiles
         public NumberRange GameSettingsScaleRangeWidth = new NumberRange(0.7f, 1);
         public float HealthDisplayDistance = 100;
         public bool LoadCharacterAppearance = true;
-        public LoadCharacterLayeredClothing LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default;
         public float NameDisplayDistance = 100;
         public bool UserEmotesEnabled = true;
     }
@@ -3427,6 +3447,14 @@ namespace RobloxFiles
     public class Stats : Instance
     {
         public Stats()
+        {
+            IsService = true;
+        }
+    }
+
+    public class StudioAssetService : Instance
+    {
+        public StudioAssetService()
         {
             IsService = true;
         }
@@ -3559,10 +3587,6 @@ namespace RobloxFiles
         }
     }
 
-    public class TextSource : Instance
-    {
-    }
-
     public class TimerService : Instance
     {
         public TimerService()
@@ -3574,6 +3598,14 @@ namespace RobloxFiles
     public class ToastNotificationService : Instance
     {
         public ToastNotificationService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class ToolboxService : Instance
+    {
+        public ToolboxService()
         {
             IsService = true;
         }
@@ -3760,7 +3792,7 @@ namespace RobloxFiles
             IsService = true;
         }
 
-        public string CachedData = "{\"lastKnownPublishRequest\":0,\"users\":[],\"lastSaveTime\":0}";
+        public string CachedData = "{\"lastSaveTime\":0,\"users\":[],\"lastKnownPublishRequest\":0}";
     }
 
     public class UserInputService : Instance
@@ -3921,6 +3953,14 @@ namespace RobloxFiles
     public class Visit : Instance
     {
         public Visit()
+        {
+            IsService = true;
+        }
+    }
+
+    public class VoiceChatInternal : Instance
+    {
+        public VoiceChatInternal()
         {
             IsService = true;
         }
