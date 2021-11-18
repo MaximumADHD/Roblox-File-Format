@@ -30,7 +30,7 @@ This library contains a full implementation of Roblox's DOM, meaning that you ca
 The `RobloxFile` class inherits from the provided `Instance` class in this library, serving as the root entry point to the contents of the file:
 
 ```cs
-foreach (Instance descendant in file.GetDescendants()) do
+foreach (Instance descendant in file.GetDescendants())
     Console.WriteLine(descendant.GetFullName());
 ```
 
