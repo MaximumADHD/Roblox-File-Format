@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29920.165
+VisualStudioVersion = 16.0.31507.150
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobloxFileFormat", "RobloxFileFormat.csproj", "{CF50C0E2-23A7-4DC1-B4B2-E60CDE716253}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobloxFileFormat", "RobloxFileFormat.csproj", "{19400E0B-6CA3-4171-9644-657E9858275C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobloxFileFormat.UnitTest", "UnitTest\RobloxFileFormat.UnitTest.csproj", "{6BCA31B2-58D8-4689-9929-88E16040BF29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobloxFileFormat.UnitTest", "UnitTest\RobloxFileFormat.UnitTest.csproj", "{E9FF1680-6FB9-41CD-9A73-7D072CB91118}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF50C0E2-23A7-4DC1-B4B2-E60CDE716253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF50C0E2-23A7-4DC1-B4B2-E60CDE716253}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF50C0E2-23A7-4DC1-B4B2-E60CDE716253}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF50C0E2-23A7-4DC1-B4B2-E60CDE716253}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BCA31B2-58D8-4689-9929-88E16040BF29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BCA31B2-58D8-4689-9929-88E16040BF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BCA31B2-58D8-4689-9929-88E16040BF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BCA31B2-58D8-4689-9929-88E16040BF29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19400E0B-6CA3-4171-9644-657E9858275C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19400E0B-6CA3-4171-9644-657E9858275C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19400E0B-6CA3-4171-9644-657E9858275C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19400E0B-6CA3-4171-9644-657E9858275C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9FF1680-6FB9-41CD-9A73-7D072CB91118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9FF1680-6FB9-41CD-9A73-7D072CB91118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9FF1680-6FB9-41CD-9A73-7D072CB91118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9FF1680-6FB9-41CD-9A73-7D072CB91118}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C024FBF2-2DCC-4AFD-B6D9-68E1AD3CF00A}
+		SolutionGuid = {D3301D5B-7D5A-429E-A2FC-AA83B2414EE3}
 	EndGlobalSection
 EndGlobal

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Roblox File Format")]
-[assembly: AssemblyDescription("Implementation of Roblox's File Format in C# for .NET 4.0")]
+[assembly: AssemblyDescription("Implementation of Roblox's File Format in C# for .NET 4.7.2")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Written by MaximumADHD")]
 [assembly: AssemblyProduct("Roblox File Format")]
