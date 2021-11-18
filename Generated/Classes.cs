@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.501.0.5010363
+// Updated as of 0.504.0.5040410
 
 using System;
 
@@ -76,6 +76,14 @@ namespace RobloxFiles
         public float AuthoredHipHeight = 2;
     }
 
+    public class AnimationClipProvider : Instance
+    {
+        public AnimationClipProvider()
+        {
+            IsService = true;
+        }
+    }
+
     public class AnimationController : Instance
     {
     }
@@ -91,14 +99,6 @@ namespace RobloxFiles
     public class AppUpdateService : Instance
     {
         public AppUpdateService()
-        {
-            IsService = true;
-        }
-    }
-
-    public class AssetCounterService : Instance
-    {
-        public AssetCounterService()
         {
             IsService = true;
         }
@@ -730,6 +730,14 @@ namespace RobloxFiles
     {
     }
 
+    public class RigidConstraint : Constraint
+    {
+        public bool Broken;
+        public bool DestructionEnabled;
+        public float DestructionForce = float.MaxValue;
+        public float DestructionTorque = float.MaxValue;
+    }
+
     public class RodConstraint : Constraint
     {
         public float Length = 5;
@@ -948,6 +956,14 @@ namespace RobloxFiles
     public class SpecialMesh : FileMesh
     {
         public MeshType MeshType = MeshType.Head;
+    }
+
+    public class DataModelPatchService : Instance
+    {
+        public DataModelPatchService()
+        {
+            IsService = true;
+        }
     }
 
     public class DataStoreIncrementOptions : Instance
@@ -2154,6 +2170,14 @@ namespace RobloxFiles
         public string SourceLocaleId = "en-us";
     }
 
+    public class LodDataService : Instance
+    {
+        public LodDataService()
+        {
+            IsService = true;
+        }
+    }
+
     public class LogService : Instance
     {
         public LogService()
@@ -2192,6 +2216,18 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+    }
+
+    public class LuauScriptAnalyzerService : Instance
+    {
+        public LuauScriptAnalyzerService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class MarkerCurve : Instance
+    {
     }
 
     public class MarketplaceService : Instance
@@ -2678,6 +2714,14 @@ namespace RobloxFiles
         }
     }
 
+    public class PackageUIService : Instance
+    {
+        public PackageUIService()
+        {
+            IsService = true;
+        }
+    }
+
     public class PartOperationAsset : Instance
     {
         public byte[] ChildData = Array.Empty<byte>();
@@ -2728,6 +2772,7 @@ namespace RobloxFiles
         public Attachment Attachment0;
         public Attachment Attachment1;
         public bool IsBidirectional = true;
+        public string ModifierId = "";
     }
 
     public class PathfindingModifier : Instance
@@ -3113,6 +3158,14 @@ namespace RobloxFiles
     {
         public string CoreScriptIdentifier = "";
         public string ScriptGuid = "";
+    }
+
+    public class ScriptRegistrationService : Instance
+    {
+        public ScriptRegistrationService()
+        {
+            IsService = true;
+        }
     }
 
     public class ScriptService : Instance
@@ -3539,6 +3592,14 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool CustomizedTeleportUI;
+    }
+
+    public class TemporaryScriptService : Instance
+    {
+        public TemporaryScriptService()
+        {
+            IsService = true;
+        }
     }
 
     public class TerrainRegion : Instance
