@@ -652,6 +652,16 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 }
+                case PropertyType.UniqueId:
+                {
+                    readProperties(i =>
+                    {
+                        var buffer = reader.ReadBytes(16);
+                        return new Guid(buffer);
+                    });
+
+                    break;
+                }
                 default:
                 {
                     RobloxFile.LogError($"Unhandled property type: {Type} in {this}!");
@@ -1257,6 +1267,17 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         byte[] buffer = protect.RawBuffer;
 
                         writer.Write(buffer.Length);
+                        writer.Write(buffer);
+                    });
+
+                    break;
+                }
+                case PropertyType.UniqueId:
+                {
+                    props.ForEach(prop =>
+                    {
+                        var guid = prop.CastValue<Guid>();
+                        byte[] buffer = guid.ToByteArray();
                         writer.Write(buffer);
                     });
 

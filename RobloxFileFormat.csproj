@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{19400E0B-6CA3-4171-9644-657E9858275C}</ProjectGuid>
+    <ProjectGuid>{CF50C0E2-23A7-4DC1-B4B2-E60CDE716253}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RobloxFiles</RootNamespace>
@@ -129,6 +129,7 @@
     <Compile Include="Tokens\String.cs" />
     <Compile Include="Tokens\UDim.cs" />
     <Compile Include="Tokens\UDim2.cs" />
+    <Compile Include="Tokens\UniqueId.cs" />
     <Compile Include="Tokens\Vector2.cs" />
     <Compile Include="Tokens\Vector3.cs" />
     <Compile Include="Tokens\Vector3int16.cs" />

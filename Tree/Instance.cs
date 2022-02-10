@@ -42,11 +42,14 @@ namespace RobloxFiles
 
         /// <summary>The source AssetId this instance was created in.</summary>
         public long SourceAssetId = -1;
-        
+
+        /// <summary>A unique identifier declared for this instance.</summary>
+        public Guid UniqueId = Guid.NewGuid();
+
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public override string ToString() => Name;
 
-        /// <summary>A unique identifier for this instance when being serialized.</summary>
+        /// <summary>A context-dependent unique identifier for this instance when being serialized.</summary>
         public string Referent { get; set; }
 
         /// <summary>Indicates whether the parent of this object is locked.</summary>

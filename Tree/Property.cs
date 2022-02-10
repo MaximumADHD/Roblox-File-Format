@@ -40,7 +40,8 @@ namespace RobloxFiles
         Int64,
         SharedString,
         ProtectedString,
-        OptionalCFrame
+        OptionalCFrame,
+        UniqueId
     }
 
     public class Property

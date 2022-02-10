@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.504.0.5040410
+// Updated as of 0.513.0.5130420
 
 using System;
 
@@ -88,6 +88,22 @@ namespace RobloxFiles
     {
     }
 
+    public class AnimationFromVideoCreatorService : Instance
+    {
+        public AnimationFromVideoCreatorService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class AnimationFromVideoCreatorStudioService : Instance
+    {
+        public AnimationFromVideoCreatorStudioService()
+        {
+            IsService = true;
+        }
+    }
+
     public class AnimationRigData : Instance
     {
     }
@@ -99,6 +115,14 @@ namespace RobloxFiles
     public class AppUpdateService : Instance
     {
         public AppUpdateService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class AssetCounterService : Instance
+    {
+        public AssetCounterService()
         {
             IsService = true;
         }
@@ -235,6 +259,7 @@ namespace RobloxFiles
     {
         public Content CageMeshId = "";
         public CFrame CageOrigin = new CFrame();
+        public Content HSRAssetId = "";
         public CFrame ImportOrigin = new CFrame();
     }
 
@@ -732,7 +757,6 @@ namespace RobloxFiles
 
     public class RigidConstraint : Constraint
     {
-        public bool Broken;
         public bool DestructionEnabled;
         public float DestructionForce = float.MaxValue;
         public float DestructionTorque = float.MaxValue;
@@ -1072,6 +1096,7 @@ namespace RobloxFiles
         public float DestroyJointRadiusPercent = 1;
         public ExplosionType ExplosionType = ExplosionType.Craters;
         public Vector3 Position = new Vector3();
+        public float TimeScale = 1;
         public bool Visible = true;
     }
 
@@ -1142,6 +1167,7 @@ namespace RobloxFiles
             set => size_xml = value;
         }
 
+        public float TimeScale = 1;
         public float heat_xml = 9;
 
         [Obsolete]
@@ -1219,6 +1245,8 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public bool GamepadCursorEnabled;
     }
 
     public class Geometry : Instance
@@ -1311,7 +1339,7 @@ namespace RobloxFiles
     public class CanvasGroup : GuiObject
     {
         public Color3 GroupColor = new Color3(1, 1, 1);
-        public float Transparency;
+        public float GroupTransparency;
     }
 
     public class Frame : GuiObject
@@ -1804,8 +1832,13 @@ namespace RobloxFiles
         }
     }
 
+    public class HiddenSurfaceRemovalAsset : Instance
+    {
+    }
+
     public class Highlight : Instance
     {
+        public Instance Adornee;
         public HighlightDepthMode DepthMode = HighlightDepthMode.AlwaysOnTop;
         public bool Enabled = true;
         public Color3 FillColor = new Color3(1, 0, 0);
@@ -2065,6 +2098,14 @@ namespace RobloxFiles
         }
     }
 
+    public class LSPService : Instance
+    {
+        public LSPService()
+        {
+            IsService = true;
+        }
+    }
+
     public class LanguageService : Instance
     {
         public LanguageService()
@@ -2262,6 +2303,28 @@ namespace RobloxFiles
         public MaterialVariant Sand;
         public MaterialVariant Slate;
         public MaterialVariant SmoothPlastic;
+        public MaterialVariant TerrainAsphalt;
+        public MaterialVariant TerrainBasalt;
+        public MaterialVariant TerrainBrick;
+        public MaterialVariant TerrainCobblestone;
+        public MaterialVariant TerrainConcrete;
+        public MaterialVariant TerrainCrackedLava;
+        public MaterialVariant TerrainGlacier;
+        public MaterialVariant TerrainGrass;
+        public MaterialVariant TerrainGround;
+        public MaterialVariant TerrainIce;
+        public MaterialVariant TerrainLeafyGrass;
+        public MaterialVariant TerrainLimestone;
+        public MaterialVariant TerrainMud;
+        public MaterialVariant TerrainPavement;
+        public MaterialVariant TerrainRock;
+        public MaterialVariant TerrainSalt;
+        public MaterialVariant TerrainSand;
+        public MaterialVariant TerrainSandstone;
+        public MaterialVariant TerrainSlate;
+        public MaterialVariant TerrainSnow;
+        public MaterialVariant TerrainWoodPlanks;
+        public bool Use2022Materials;
         public MaterialVariant Wood;
         public MaterialVariant WoodPlanks;
     }
@@ -2270,6 +2333,7 @@ namespace RobloxFiles
     {
         public Material BaseMaterial = Material.Plastic;
         public Content ColorMap = "";
+        public MaterialPattern MaterialPattern = MaterialPattern.Regular;
         public Content MetalnessMap = "";
         public Content NormalMap = "";
         public Content RoughnessMap = "";
@@ -2679,11 +2743,13 @@ namespace RobloxFiles
         public double DistributedGameTime;
         public bool ExplicitAutoJoints = true;
         public float FallenPartsDestroyHeight = -500;
+        public Vector3 GlobalWind = new Vector3();
         public float Gravity = 196.2f;
         public HumanoidOnlySetCollisionsOnStateChange HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
+        public ReplicateInstanceDestroySetting ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default;
         public AnimatorRetargetingMode Retargeting = AnimatorRetargetingMode.Default;
         public SignalBehavior SignalBehavior = SignalBehavior.Default;
         public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
@@ -2736,6 +2802,11 @@ namespace RobloxFiles
         public float Drag;
         public NormalId EmissionDirection = NormalId.Top;
         public bool Enabled = true;
+        public NumberRange FlipbookFramerate = new NumberRange(1);
+        public string FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks.";
+        public ParticleFlipbookLayout FlipbookLayout = ParticleFlipbookLayout.None;
+        public ParticleFlipbookMode FlipbookMode = ParticleFlipbookMode.Loop;
+        public bool FlipbookStartRandom;
         public NumberRange Lifetime = new NumberRange(5, 10);
         public float LightEmission;
         public float LightInfluence;
@@ -2772,12 +2843,12 @@ namespace RobloxFiles
         public Attachment Attachment0;
         public Attachment Attachment1;
         public bool IsBidirectional = true;
-        public string ModifierId = "";
+        public string Label = "";
     }
 
     public class PathfindingModifier : Instance
     {
-        public string ModifierId = "";
+        public string Label = "";
         public bool PassThrough;
     }
 
@@ -3249,6 +3320,7 @@ namespace RobloxFiles
             set => size_xml = value;
         }
 
+        public float TimeScale = 1;
         public float opacity_xml = 0.5f;
         public float riseVelocity_xml = 1;
         public float size_xml = 1;
@@ -3409,6 +3481,7 @@ namespace RobloxFiles
 
         public bool Enabled = true;
         public Color3 SparkleColor = Color3.FromRGB(144, 25, 255);
+        public float TimeScale = 1;
     }
 
     public class SpawnerService : Instance
@@ -3485,6 +3558,7 @@ namespace RobloxFiles
         public NumberRange GameSettingsScaleRangeWidth = new NumberRange(0.7f, 1);
         public float HealthDisplayDistance = 100;
         public bool LoadCharacterAppearance = true;
+        public LoadCharacterLayeredClothing LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default;
         public float NameDisplayDistance = 100;
         public bool UserEmotesEnabled = true;
     }
@@ -3532,6 +3606,22 @@ namespace RobloxFiles
     public class StudioDeviceEmulatorService : Instance
     {
         public StudioDeviceEmulatorService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class StudioHighDpiService : Instance
+    {
+        public StudioHighDpiService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class StudioPublishService : Instance
+    {
+        public StudioPublishService()
         {
             IsService = true;
         }
@@ -3628,7 +3718,19 @@ namespace RobloxFiles
         public double Timeout = 10;
     }
 
+    public class TextBoxService : Instance
+    {
+        public TextBoxService()
+        {
+            IsService = true;
+        }
+    }
+
     public class TextChannel : Instance
+    {
+    }
+
+    public class TextChatMessageProperties : Instance
     {
     }
 
@@ -4033,6 +4135,8 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public bool GenerateDefaultChannel = true;
     }
 
     public class WeldConstraint : Instance

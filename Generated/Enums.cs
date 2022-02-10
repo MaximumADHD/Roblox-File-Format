@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.504.0.5040410
+// Updated as of 0.513.0.5130420
 
 namespace RobloxFiles.Enums
 {
@@ -380,7 +380,7 @@ namespace RobloxFiles.Enums
     public enum HighlightDepthMode
     {
         AlwaysOnTop,
-        Default
+        Occluded
     }
 
     public enum HorizontalAlignment
@@ -723,6 +723,13 @@ namespace RobloxFiles.Enums
         Miter
     }
 
+    public enum LoadCharacterLayeredClothing
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
     public enum Material
     {
         Plastic = 256,
@@ -762,6 +769,12 @@ namespace RobloxFiles.Enums
         ForceField = 1584,
         Air = 1792,
         Water = 2048
+    }
+
+    public enum MaterialPattern
+    {
+        Regular,
+        Organic
     }
 
     public enum MeshPartHeadsAndAccessories
@@ -859,6 +872,22 @@ namespace RobloxFiles.Enums
         Surface
     }
 
+    public enum ParticleFlipbookLayout
+    {
+        None,
+        TwoByTwo,
+        FourByFour,
+        EightByEight
+    }
+
+    public enum ParticleFlipbookMode
+    {
+        Loop,
+        OneShot,
+        PingPong,
+        Random
+    }
+
     public enum ParticleOrientation
     {
         FacingCamera,
@@ -926,6 +955,13 @@ namespace RobloxFiles.Enums
     {
         psnr,
         diff
+    }
+
+    public enum ReplicateInstanceDestroySetting
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum ResamplerMode

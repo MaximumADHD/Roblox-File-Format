@@ -4,32 +4,24 @@
 	<Item class="Workspace" referent="RBX8B2224A281CC4E658F99CC0ADA0C3E08">
 		<Properties>
 			<bool name="AllowThirdPartySales">false</bool>
+			<token name="AnimationWeightedBlendFix">0</token>
 			<BinaryString name="AttributesSerialize"></BinaryString>
 			<token name="ClientAnimatorThrottling">0</token>
-			<string name="CollisionGroups">Default^0^1</string>
+			<string name="CollisionGroups">Default^0^-1</string>
 			<Ref name="CurrentCamera">RBX3A482CA70FD44861880A3A8DC2E280B0</Ref>
 			<double name="DistributedGameTime">0</double>
 			<bool name="ExplicitAutoJoints">true</bool>
 			<float name="FallenPartsDestroyHeight">-500</float>
-			<bool name="FilteringEnabled">true</bool>
-			<float name="Gravity">196.199997</float>
-			<token name="InterpolationThrottling">0</token>
-			<token name="LevelOfDetail">0</token>
-			<token name="MeshPartHeadsAndAccessories">0</token>
-			<CoordinateFrame name="ModelInPrimary">
+			<Vector3 name="GlobalWind">
 				<X>0</X>
 				<Y>0</Y>
 				<Z>0</Z>
-				<R00>1</R00>
-				<R01>0</R01>
-				<R02>0</R02>
-				<R10>0</R10>
-				<R11>1</R11>
-				<R12>0</R12>
-				<R20>0</R20>
-				<R21>0</R21>
-				<R22>1</R22>
-			</CoordinateFrame>
+			</Vector3>
+			<float name="Gravity">196.199997</float>
+			<token name="HumanoidOnlySetCollisionsOnStateChange">0</token>
+			<token name="InterpolationThrottling">0</token>
+			<token name="LevelOfDetail">0</token>
+			<token name="MeshPartHeadsAndAccessories">0</token>
 			<CoordinateFrame name="ModelMeshCFrame">
 				<X>0</X>
 				<Y>0</Y>
@@ -54,8 +46,11 @@
 			<bool name="NeedsPivotMigration">false</bool>
 			<token name="PhysicsSteppingMethod">0</token>
 			<Ref name="PrimaryPart">null</Ref>
+			<token name="ReplicateInstanceDestroySetting">0</token>
+			<token name="Retargeting">0</token>
 			<token name="SignalBehavior">0</token>
 			<int64 name="SourceAssetId">-1</int64>
+			<token name="StreamOutBehavior">0</token>
 			<bool name="StreamingEnabled">false</bool>
 			<int name="StreamingMinRadius">64</int>
 			<token name="StreamingPauseMode">0</token>
@@ -63,6 +58,7 @@
 			<BinaryString name="Tags"></BinaryString>
 			<bool name="TerrainWeldsFixed">true</bool>
 			<bool name="TouchesUseCollisionGroups">false</bool>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f00018f3e</UniqueId>
 			<OptionalCoordinateFrame name="WorldPivotData">
 				<CFrame>
 					<X>0</X>
@@ -80,6 +76,134 @@
 				</CFrame>
 			</OptionalCoordinateFrame>
 		</Properties>
+		<Item class="MeshPart" referent="RBXF01824DDEE824FDEBF8BE75FDBD081C7">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>-8</X>
+					<Y>15.4042997</Y>
+					<Z>9</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<bool name="CastShadow">false</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="DoubleSided">false</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<bool name="HasJointOffset">false</bool>
+				<bool name="HasSkinnedMesh">false</bool>
+				<Vector3 name="InitialSize">
+					<X>1.90382576</X>
+					<Y>4.49005699</Y>
+					<Z>0.858924985</Z>
+				</Vector3>
+				<Vector3 name="JointOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<BinaryString name="LODData"></BinaryString>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<Content name="MeshID"><url>rbxassetid://3186730087</url></Content>
+				<Content name="MeshId"><url>rbxassetid://3186730087</url></Content>
+				<string name="Name">Default</string>
+				<SharedString name="PhysicalConfigData">wqN+0m4YPEAIF5tOPQwXdA==</SharedString>
+				<BinaryString name="PhysicsData"></BinaryString>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<token name="RenderFidelity">1</token>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<Content name="TextureID"><url>rbxassetid://3186730114</url></Content>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3db</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Vector3 name="size">
+					<X>1.90382576</X>
+					<Y>4.49005699</Y>
+					<Z>0.858924985</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="Folder" referent="RBX60046EB647F84E5EB4192E210459B31A">
+			<Properties>
+				<BinaryString name="AttributesSerialize"><![CDATA[DQAAAAsAAABUZXN0Qm9vbGVhbgMBDgAAAFRlc3RCcmlja0NvbG9yDuwDAAAKAAAAVGVzdENv
+bG9yMw+rqqo+AAAAAAAAgD8RAAAAVGVzdENvbG9yU2VxdWVuY2UZAgAAAAAAAAAAAAAAAACA
+PwAAgD8AAIA/AAAAAAAAgD8AAIA/AACAPwAAgD8KAAAAVGVzdE51bWJlcgYAAAAAAADwPw8A
+AABUZXN0TnVtYmVyUmFuZ2UbAABAQQAAUEESAAAAVGVzdE51bWJlclNlcXVlbmNlFwIAAAAA
+AAAAAAAAAAAAgD8AAAAAAACAPwAAgD8IAAAAVGVzdFJlY3QcAABgQQAAcEEAAIBBAACIQQoA
+AABUZXN0U3RyaW5nAgQAAABUZXN0CAAAAFRlc3RVRGltCQAAgD8CAAAACQAAAFRlc3RVRGlt
+MgoAAEBABAAAAAAAoEAGAAAACwAAAFRlc3RWZWN0b3IyEAAA4EAAAABBCwAAAFRlc3RWZWN0
+b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
+				<string name="Name">Attributes</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3dc</UniqueId>
+			</Properties>
+		</Item>
 		<Item class="MeshPart" referent="RBX5D324CE61645427FBFC4E786A17DDBFA">
 			<Properties>
 				<bool name="Anchored">false</bool>
@@ -107,6 +231,7 @@
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">false</bool>
 				<int name="CollisionGroupId">0</int>
@@ -178,6 +303,7 @@
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3b3</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -217,6 +343,7 @@
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">false</bool>
 				<int name="CollisionGroupId">0</int>
@@ -288,6 +415,7 @@
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3b4</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -304,20 +432,6 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
-				<CoordinateFrame name="ModelInPrimary">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
 				<CoordinateFrame name="ModelMeshCFrame">
 					<X>0</X>
 					<Y>0</Y>
@@ -343,6 +457,7 @@
 				<Ref name="PrimaryPart">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3b5</UniqueId>
 				<OptionalCoordinateFrame name="WorldPivotData">
 					<CFrame>
 						<X>8</X>
@@ -387,6 +502,7 @@
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="CanCollide">true</bool>
+					<bool name="CanQuery">true</bool>
 					<bool name="CanTouch">true</bool>
 					<bool name="CastShadow">true</bool>
 					<int name="CollisionGroupId">0</int>
@@ -458,6 +574,7 @@
 					<token name="TopSurface">0</token>
 					<token name="TopSurfaceInput">0</token>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3b6</UniqueId>
 					<Vector3 name="Velocity">
 						<X>0</X>
 						<Y>0</Y>
@@ -497,6 +614,7 @@
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="CanCollide">false</bool>
+					<bool name="CanQuery">true</bool>
 					<bool name="CanTouch">true</bool>
 					<bool name="CastShadow">false</bool>
 					<int name="CollisionGroupId">0</int>
@@ -568,6 +686,7 @@
 					<token name="TopSurface">0</token>
 					<token name="TopSurfaceInput">0</token>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3b7</UniqueId>
 					<Vector3 name="Velocity">
 						<X>0</X>
 						<Y>0</Y>
@@ -607,6 +726,7 @@
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="CanCollide">false</bool>
+					<bool name="CanQuery">true</bool>
 					<bool name="CanTouch">true</bool>
 					<bool name="CastShadow">false</bool>
 					<int name="CollisionGroupId">0</int>
@@ -678,6 +798,7 @@
 					<token name="TopSurface">0</token>
 					<token name="TopSurfaceInput">0</token>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3b8</UniqueId>
 					<Vector3 name="Velocity">
 						<X>0</X>
 						<Y>0</Y>
@@ -717,6 +838,7 @@
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="CanCollide">false</bool>
+					<bool name="CanQuery">true</bool>
 					<bool name="CanTouch">true</bool>
 					<bool name="CastShadow">false</bool>
 					<int name="CollisionGroupId">0</int>
@@ -788,6 +910,7 @@
 					<token name="TopSurface">0</token>
 					<token name="TopSurfaceInput">0</token>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3b9</UniqueId>
 					<Vector3 name="Velocity">
 						<X>0</X>
 						<Y>0</Y>
@@ -827,6 +950,7 @@
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="CanCollide">false</bool>
+					<bool name="CanQuery">true</bool>
 					<bool name="CanTouch">true</bool>
 					<bool name="CastShadow">false</bool>
 					<int name="CollisionGroupId">0</int>
@@ -898,6 +1022,7 @@
 					<token name="TopSurface">0</token>
 					<token name="TopSurfaceInput">0</token>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ba</UniqueId>
 					<Vector3 name="Velocity">
 						<X>0</X>
 						<Y>0</Y>
@@ -915,27 +1040,27 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>-96.3363647</X>
-					<Y>232.183411</Y>
-					<Z>219.286392</Z>
-					<R00>0.87256825</R00>
-					<R01>0.357689083</R01>
-					<R02>-0.332690984</R02>
-					<R10>2.98023224e-08</R10>
-					<R11>0.681056798</R11>
-					<R12>0.732230723</R12>
-					<R20>0.48849234</R20>
-					<R21>-0.638921261</R21>
-					<R22>0.594268441</R22>
+					<X>95.9516983</X>
+					<Y>158.052811</Y>
+					<Z>226.980164</Z>
+					<R00>0.939951718</R00>
+					<R01>-0.162711754</R01>
+					<R02>0.300026149</R02>
+					<R10>-0</R10>
+					<R11>0.87904948</R11>
+					<R12>0.476730675</R12>
+					<R20>-0.341307491</R20>
+					<R21>-0.448103815</R21>
+					<R22>0.826264024</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
 				<float name="FieldOfView">70</float>
 				<token name="FieldOfViewMode">0</token>
 				<CoordinateFrame name="Focus">
-					<X>-95.6709824</X>
-					<Y>230.718948</Y>
-					<Z>218.097855</Z>
+					<X>95.3516464</X>
+					<Y>157.09935</Y>
+					<Z>225.327637</Z>
 					<R00>1</R00>
 					<R01>0</R01>
 					<R02>0</R02>
@@ -951,6 +1076,7 @@
 				<string name="Name">Camera</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3bb</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Terrain" referent="RBX5440245BA17340CFA5B3B3B0A58C0598">
@@ -981,6 +1107,7 @@
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -1306,6 +1433,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<token name="TopSurface">3</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3bc</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -1333,6 +1461,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">BoolValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3bd</UniqueId>
 				<bool name="Value">false</bool>
 			</Properties>
 		</Item>
@@ -1342,6 +1471,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">BrickColorValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3be</UniqueId>
 				<int name="Value">194</int>
 			</Properties>
 		</Item>
@@ -1351,6 +1481,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">Color3Value</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3bf</UniqueId>
 				<Color3 name="Value">
 					<R>1</R>
 					<G>0.498039246</G>
@@ -1364,6 +1495,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">CFrameValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c0</UniqueId>
 				<CoordinateFrame name="Value">
 					<X>0</X>
 					<Y>0</Y>
@@ -1386,6 +1518,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">IntValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c1</UniqueId>
 				<int64 name="Value">1234</int64>
 			</Properties>
 		</Item>
@@ -1395,6 +1528,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">NumberValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c2</UniqueId>
 				<double name="Value">9.0000999999999997669</double>
 			</Properties>
 		</Item>
@@ -1404,6 +1538,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">ObjectValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c3</UniqueId>
 				<Ref name="Value">RBX5440245BA17340CFA5B3B3B0A58C0598</Ref>
 			</Properties>
 		</Item>
@@ -1413,6 +1548,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">RayValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c4</UniqueId>
 				<Ray name="Value">
 					<origin>
 						<X>1</X>
@@ -1433,6 +1569,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<string name="Name">StringValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c5</UniqueId>
 				<string name="Value">TestingLol</string>
 			</Properties>
 		</Item>
@@ -1463,6 +1600,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -1519,6 +1657,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c6</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -1548,6 +1687,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c7</UniqueId>
 					<bool name="Visible">false</bool>
 				</Properties>
 			</Item>
@@ -1568,6 +1708,7 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<token name="Style">1</token>
 					<BinaryString name="Tags"></BinaryString>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c8</UniqueId>
 					<bool name="Visible">false</bool>
 				</Properties>
 			</Item>
@@ -1579,10 +1720,16 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 						<Z>0</Z>
 					</Vector3>
 					<BinaryString name="AttributesSerialize"></BinaryString>
+					<float name="Brightness">1</float>
 					<ColorSequence name="Color">0 1 0 0 0 0.0526316 1 0.315789 0 0 0.105263 1 0.631579 0 0 0.157895 1 0.947368 0 0 0.210526 0.736842 1 0 0 0.263158 0.421053 1 0 0 0.315789 0.105263 1 0 0 0.368421 0 1 0.210526 0 0.421053 0 1 0.526316 0 0.473684 0 1 0.842105 0 0.526316 0 0.842105 1 0 0.578947 0 0.526316 1 0 0.631579 0 0.210526 1 0 0.684211 0.105263 0 1 0 0.736842 0.421052 0 1 0 0.789474 0.736842 0 1 0 0.842105 1 0 0.947369 0 0.894737 1 0 0.631579 0 0.947368 1 0 0.315789 0 1 1 0 0 0 </ColorSequence>
 					<float name="Drag">0.5</float>
 					<token name="EmissionDirection">1</token>
 					<bool name="Enabled">true</bool>
+					<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+					<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+					<token name="FlipbookLayout">0</token>
+					<token name="FlipbookMode">0</token>
+					<bool name="FlipbookStartRandom">false</bool>
 					<NumberRange name="Lifetime">5 10 </NumberRange>
 					<float name="LightEmission">0.75</float>
 					<float name="LightInfluence">0</float>
@@ -1592,6 +1739,10 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 					<float name="Rate">72</float>
 					<NumberRange name="RotSpeed">-360 360 </NumberRange>
 					<NumberRange name="Rotation">0 360 </NumberRange>
+					<token name="Shape">0</token>
+					<token name="ShapeInOut">0</token>
+					<float name="ShapePartial">1</float>
+					<token name="ShapeStyle">0</token>
 					<NumberSequence name="Size">0 0 0 0.0526316 1.0543 1.0543 0.105263 3.77257 3.11371 0.157895 7.00848 1.49576 0.210526 9.39737 0.301316 0.263158 9.93181 0.0340967 0.315789 8.38641 0.806796 0.368421 5.4129 2.29355 0.421053 2.26526 2.26526 0.473684 0.270914 0.270914 0.526316 0.270914 0.270914 0.578947 2.26526 2.26526 0.631579 5.4129 2.29355 0.684211 8.38641 0.806796 0.736842 9.93181 0.0340967 0.789474 9.39737 0.301316 0.842105 7.00848 1.49576 0.894737 3.77257 3.11371 0.947368 1.0543 1.0543 1 0 0 </NumberSequence>
 					<int64 name="SourceAssetId">-1</int64>
 					<NumberRange name="Speed">5 10 </NumberRange>
@@ -1599,10 +1750,12 @@ SIdI3ghI3oAbSM5I/kjxSKWAGkiISO5I/Ei/gBxIzUjWSISA/4C7RqiAHkaogP+A/4D/gP+A
 						<X>360</X>
 						<Y>360</Y>
 					</Vector2>
+					<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
 					<BinaryString name="Tags"></BinaryString>
 					<Content name="Texture"><url>rbxasset://textures/particles/sparkles_main.dds</url></Content>
 					<float name="TimeScale">1</float>
 					<NumberSequence name="Transparency">0 1 0 0.0526316 0.972909 0.027091 0.105263 0.89457 0.10543 0.157895 0.773474 0.226526 0.210526 0.622743 0.377257 0.263158 0.45871 0.45871 0.315789 0.299152 0.299152 0.368421 0.161359 0.161359 0.421053 0.0602631 0.0602631 0.473684 0.00681935 0.00681935 0.526316 0.00681935 0.00681935 0.578947 0.0602631 0.0602631 0.631579 0.161359 0.161359 0.684211 0.299152 0.299152 0.736842 0.45871 0.45871 0.789474 0.622743 0.377257 0.842105 0.773474 0.226526 0.894737 0.89457 0.10543 0.947368 0.972909 0.027091 1 1 0 </NumberSequence>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3c9</UniqueId>
 					<float name="VelocityInheritance">1</float>
 					<float name="ZOffset">0</float>
 				</Properties>
@@ -1629,6 +1782,7 @@ table.insert(keyPoints, lastPoint)
 script.Parent.Color = ColorSequence.new(keyPoints)]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ca</UniqueId>
 					</Properties>
 				</Item>
 				<Item class="Script" referent="RBX4172011E4F6549B0BF3D74F3FBE63AEA">
@@ -1655,6 +1809,7 @@ table.insert(keyPoints, lastPoint)
 script.Parent.Size = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3cb</UniqueId>
 					</Properties>
 				</Item>
 				<Item class="Script" referent="RBXF9364CC84D664BAF9F6924F22F79DECA">
@@ -1681,6 +1836,7 @@ table.insert(keyPoints, lastPoint)
 script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3cc</UniqueId>
 					</Properties>
 				</Item>
 			</Item>
@@ -1691,6 +1847,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="Name">Vector3Value</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3d4</UniqueId>
 				<Vector3 name="Value">
 					<X>1</X>
 					<Y>2</Y>
@@ -1749,6 +1906,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<token name="Style">0</token>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3d5</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -1774,6 +1932,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					</UDim>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3d6</UniqueId>
 				</Properties>
 			</Item>
 		</Item>
@@ -1781,20 +1940,6 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
-				<CoordinateFrame name="ModelInPrimary">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
 				<CoordinateFrame name="ModelMeshCFrame">
 					<X>0</X>
 					<Y>0</Y>
@@ -1820,6 +1965,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<Ref name="PrimaryPart">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3d7</UniqueId>
 				<OptionalCoordinateFrame name="WorldPivotData">
 					<CFrame>
 						<X>0</X>
@@ -1864,6 +2010,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="CanCollide">true</bool>
+					<bool name="CanQuery">true</bool>
 					<bool name="CanTouch">true</bool>
 					<bool name="CastShadow">true</bool>
 					<int name="CollisionGroupId">0</int>
@@ -1915,6 +2062,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<token name="TopSurface">0</token>
 					<token name="TopSurfaceInput">0</token>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3d8</UniqueId>
 					<Vector3 name="Velocity">
 						<X>0</X>
 						<Y>0</Y>
@@ -1956,6 +2104,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 						<R22>1</R22>
 					</CoordinateFrame>
 					<bool name="CanCollide">true</bool>
+					<bool name="CanQuery">true</bool>
 					<bool name="CanTouch">true</bool>
 					<bool name="CastShadow">true</bool>
 					<int name="CollisionGroupId">0</int>
@@ -2007,6 +2156,7 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 					<token name="TopSurface">0</token>
 					<token name="TopSurfaceInput">0</token>
 					<float name="Transparency">0</float>
+					<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3d9</UniqueId>
 					<Vector3 name="Velocity">
 						<X>0</X>
 						<Y>0</Y>
@@ -2030,132 +2180,8 @@ script.Parent.Transparency = NumberSequence.new(keyPoints)]]></ProtectedString>
 				<string name="Name">DoubleValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3da</UniqueId>
 				<double name="value">1.3337000000000001076</double>
-			</Properties>
-		</Item>
-		<Item class="MeshPart" referent="RBXF01824DDEE824FDEBF8BE75FDBD081C7">
-			<Properties>
-				<bool name="Anchored">false</bool>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<float name="BackParamA">-0.5</float>
-				<float name="BackParamB">0.5</float>
-				<token name="BackSurface">0</token>
-				<token name="BackSurfaceInput">0</token>
-				<float name="BottomParamA">-0.5</float>
-				<float name="BottomParamB">0.5</float>
-				<token name="BottomSurface">0</token>
-				<token name="BottomSurfaceInput">0</token>
-				<CoordinateFrame name="CFrame">
-					<X>-8</X>
-					<Y>15.4042997</Y>
-					<Z>9</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
-				<bool name="CanCollide">false</bool>
-				<bool name="CanTouch">true</bool>
-				<bool name="CastShadow">false</bool>
-				<int name="CollisionGroupId">0</int>
-				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
-				<PhysicalProperties name="CustomPhysicalProperties">
-					<CustomPhysics>false</CustomPhysics>
-				</PhysicalProperties>
-				<bool name="DoubleSided">false</bool>
-				<float name="FrontParamA">-0.5</float>
-				<float name="FrontParamB">0.5</float>
-				<token name="FrontSurface">0</token>
-				<token name="FrontSurfaceInput">0</token>
-				<bool name="HasJointOffset">false</bool>
-				<bool name="HasSkinnedMesh">false</bool>
-				<Vector3 name="InitialSize">
-					<X>1.90382576</X>
-					<Y>4.49005699</Y>
-					<Z>0.858924985</Z>
-				</Vector3>
-				<Vector3 name="JointOffset">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-				</Vector3>
-				<BinaryString name="LODData"></BinaryString>
-				<float name="LeftParamA">-0.5</float>
-				<float name="LeftParamB">0.5</float>
-				<token name="LeftSurface">0</token>
-				<token name="LeftSurfaceInput">0</token>
-				<bool name="Locked">false</bool>
-				<bool name="Massless">false</bool>
-				<token name="Material">256</token>
-				<Content name="MeshID"><url>rbxassetid://3186730087</url></Content>
-				<Content name="MeshId"><url>rbxassetid://3186730087</url></Content>
-				<string name="Name">Default</string>
-				<SharedString name="PhysicalConfigData">wqN+0m4YPEAIF5tOPQwXdA==</SharedString>
-				<BinaryString name="PhysicsData"></BinaryString>
-				<CoordinateFrame name="PivotOffset">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
-				<float name="Reflectance">0</float>
-				<token name="RenderFidelity">1</token>
-				<float name="RightParamA">-0.5</float>
-				<float name="RightParamB">0.5</float>
-				<token name="RightSurface">0</token>
-				<token name="RightSurfaceInput">0</token>
-				<int name="RootPriority">0</int>
-				<Vector3 name="RotVelocity">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-				</Vector3>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<Content name="TextureID"><url>rbxassetid://3186730114</url></Content>
-				<float name="TopParamA">-0.5</float>
-				<float name="TopParamB">0.5</float>
-				<token name="TopSurface">0</token>
-				<token name="TopSurfaceInput">0</token>
-				<float name="Transparency">0</float>
-				<Vector3 name="Velocity">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-				</Vector3>
-				<Vector3 name="size">
-					<X>1.90382576</X>
-					<Y>4.49005699</Y>
-					<Z>0.858924985</Z>
-				</Vector3>
-			</Properties>
-		</Item>
-		<Item class="Folder" referent="RBX60046EB647F84E5EB4192E210459B31A">
-			<Properties>
-				<BinaryString name="AttributesSerialize"><![CDATA[DQAAAAsAAABUZXN0Qm9vbGVhbgMBDgAAAFRlc3RCcmlja0NvbG9yDuwDAAAKAAAAVGVzdENv
-bG9yMw+rqqo+AAAAAAAAgD8RAAAAVGVzdENvbG9yU2VxdWVuY2UZAgAAAAAAAAAAAAAAAACA
-PwAAgD8AAIA/AAAAAAAAgD8AAIA/AACAPwAAgD8KAAAAVGVzdE51bWJlcgYAAAAAAADwPw8A
-AABUZXN0TnVtYmVyUmFuZ2UbAABAQQAAUEESAAAAVGVzdE51bWJlclNlcXVlbmNlFwIAAAAA
-AAAAAAAAAAAAgD8AAAAAAACAPwAAgD8IAAAAVGVzdFJlY3QcAABgQQAAcEEAAIBBAACIQQoA
-AABUZXN0U3RyaW5nAgQAAABUZXN0CAAAAFRlc3RVRGltCQAAgD8CAAAACQAAAFRlc3RVRGlt
-MgoAAEBABAAAAAAAoEAGAAAACwAAAFRlc3RWZWN0b3IyEAAA4EAAAABBCwAAAFRlc3RWZWN0
-b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
-				<string name="Name">Attributes</string>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
 			</Properties>
 		</Item>
 	</Item>
@@ -2170,6 +2196,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<float name="RolloffScale">1</float>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a2e9</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="NonReplicatedCSGDictionaryService" referent="RBX5048CB9ADEC7465AA2CAF30D7351E831">
@@ -2178,6 +2205,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">NonReplicatedCSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a2f5</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="CSGDictionaryService" referent="RBXA6E4D9327E7E4A9CACC008915C4BE171">
@@ -2186,6 +2214,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">CSGDictionaryService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a2f6</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Chat" referent="RBX8685A1F44A004A2FB3A6B49556D37ED7">
@@ -2196,6 +2225,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">Chat</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a2fb</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TimerService" referent="RBX5D74742850D34A27B85144BD3BCEB7E7">
@@ -2204,6 +2234,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">TimerService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a2fc</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Players" referent="RBXA2C39B2CC43A4A71B3E6B7F5BC75E718">
@@ -2216,6 +2247,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<float name="RespawnTime">5</float>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a2fe</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ReplicatedFirst" referent="RBX9A449B1160234F0DAE1CE82404A13CC9">
@@ -2224,6 +2256,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ReplicatedFirst</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a302</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TweenService" referent="RBX320BEA4666864F1EAE467A403F205F6F">
@@ -2232,6 +2265,57 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">TweenService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a304</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="MaterialService" referent="RBXF5B5A5E6717044B183E81ED0EA2C2B19">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<Ref name="Brick">null</Ref>
+			<Ref name="Cobblestone">null</Ref>
+			<Ref name="Concrete">null</Ref>
+			<Ref name="CorrodedMetal">null</Ref>
+			<Ref name="DiamondPlate">null</Ref>
+			<Ref name="Fabric">null</Ref>
+			<Ref name="Foil">null</Ref>
+			<Ref name="Granite">null</Ref>
+			<Ref name="Grass">null</Ref>
+			<Ref name="Ice">null</Ref>
+			<Ref name="Marble">null</Ref>
+			<Ref name="Metal">null</Ref>
+			<string name="Name">MaterialService</string>
+			<Ref name="Pebble">null</Ref>
+			<Ref name="Plastic">null</Ref>
+			<Ref name="Sand">null</Ref>
+			<Ref name="Slate">null</Ref>
+			<Ref name="SmoothPlastic">null</Ref>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<Ref name="TerrainAsphalt">null</Ref>
+			<Ref name="TerrainBasalt">null</Ref>
+			<Ref name="TerrainBrick">null</Ref>
+			<Ref name="TerrainCobblestone">null</Ref>
+			<Ref name="TerrainConcrete">null</Ref>
+			<Ref name="TerrainCrackedLava">null</Ref>
+			<Ref name="TerrainGlacier">null</Ref>
+			<Ref name="TerrainGrass">null</Ref>
+			<Ref name="TerrainGround">null</Ref>
+			<Ref name="TerrainIce">null</Ref>
+			<Ref name="TerrainLeafyGrass">null</Ref>
+			<Ref name="TerrainLimestone">null</Ref>
+			<Ref name="TerrainMud">null</Ref>
+			<Ref name="TerrainPavement">null</Ref>
+			<Ref name="TerrainRock">null</Ref>
+			<Ref name="TerrainSalt">null</Ref>
+			<Ref name="TerrainSand">null</Ref>
+			<Ref name="TerrainSandstone">null</Ref>
+			<Ref name="TerrainSlate">null</Ref>
+			<Ref name="TerrainSnow">null</Ref>
+			<Ref name="TerrainWoodPlanks">null</Ref>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a305</UniqueId>
+			<bool name="Use2022Materials">false</bool>
+			<Ref name="Wood">null</Ref>
+			<Ref name="WoodPlanks">null</Ref>
 		</Properties>
 	</Item>
 	<Item class="PermissionsService" referent="RBXD64A324129D74F2A8020F9F4999BE23C">
@@ -2240,12 +2324,13 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">PermissionsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a309</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="PlayerEmulatorService" referent="RBX1CDE69D649644980BEF9CCE7A16E9FD4">
 		<Properties>
 			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="DEPRECATED_SerializedEmulatedPolicyInfo"></string>
+			<bool name="CustomPoliciesEnabled">false</bool>
 			<string name="EmulatedCountryCode"></string>
 			<string name="EmulatedGameLocale"></string>
 			<string name="Name">PlayerEmulatorService</string>
@@ -2253,6 +2338,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<BinaryString name="SerializedEmulatedPolicyInfo"></BinaryString>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a30b</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="StudioData" referent="RBXB2CCA500A71D4FE1841044D7982450E0">
@@ -2262,11 +2348,13 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="CommitInflightGuid"></string>
 			<int name="CommitInflightPlaceVersion">0</int>
 			<bool name="EnableScriptCollabByDefaultOnLoad">false</bool>
+			<bool name="EnableTeamCreateStreamingOnLoad">false</bool>
 			<string name="Name">StudioData</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<int64 name="SrcPlaceId">0</int64>
 			<int64 name="SrcUniverseId">0</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a30d</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="StarterPlayer" referent="RBX6473962641664E669D8265BC40FB7A35">
@@ -2307,10 +2395,12 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<NumberRange name="GameSettingsScaleRangeWidth">0.7 1 </NumberRange>
 			<float name="HealthDisplayDistance">100</float>
 			<bool name="LoadCharacterAppearance">true</bool>
+			<token name="LoadCharacterLayeredClothing">0</token>
 			<string name="Name">StarterPlayer</string>
 			<float name="NameDisplayDistance">100</float>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a30e</UniqueId>
 			<bool name="UserEmotesEnabled">true</bool>
 		</Properties>
 		<Item class="StarterPlayerScripts" referent="RBX71E0A6B40D55417083063174CC8AFE0B">
@@ -2319,6 +2409,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">StarterPlayerScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3dd</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="StarterCharacterScripts" referent="RBX725188AF5C9A43C2BD877B4B04622561">
@@ -2327,6 +2418,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">StarterCharacterScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3de</UniqueId>
 			</Properties>
 		</Item>
 	</Item>
@@ -2336,6 +2428,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">StarterPack</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a30f</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="StarterGui" referent="RBXD5A94C59026641F8AF7EDAABE4511547">
@@ -2347,6 +2440,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<bool name="ShowDevelopmentGui">true</bool>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a310</UniqueId>
+			<token name="VirtualCursorMode">0</token>
 		</Properties>
 	</Item>
 	<Item class="LocalizationService" referent="RBX6191AB5D07B341C984CC6D1E298D0C3D">
@@ -2355,6 +2450,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">LocalizationService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a312</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TeleportService" referent="RBX9383B27E512049148428AC8900CFC6FD">
@@ -2363,6 +2459,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">TeleportService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a316</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="CollectionService" referent="RBX9A5A3E7D00D04671B9B5FF1DF43BD14B">
@@ -2371,6 +2468,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">CollectionService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a318</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="PhysicsService" referent="RBXA646AD39FB2D433D882E63E9FA17F4C1">
@@ -2379,6 +2477,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">PhysicsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a319</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Geometry" referent="RBX8B700150729A48EFAD0E618A598754F1">
@@ -2387,6 +2486,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">Geometry</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a31b</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="InsertService" referent="RBXC554EF33DF414CD8BB9628CD5FECC0CB">
@@ -2397,6 +2497,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">InsertService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a31d</UniqueId>
 		</Properties>
 		<Item class="StringValue" referent="RBXA8BBE763655740CCAB88AA98A5E967A1">
 			<Properties>
@@ -2404,6 +2505,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">InsertionHash</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3df</UniqueId>
 				<string name="Value">{13812C15-10FD-484C-84A8-A73EEF4CA830}</string>
 			</Properties>
 		</Item>
@@ -2414,6 +2516,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">GamePassService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a31e</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Debris" referent="RBX2293A1FABB20465B9A541002B9C41AB9">
@@ -2423,6 +2526,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">Debris</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a31f</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="CookiesService" referent="RBX0C7A2789834741148F067D2DC154103E">
@@ -2431,6 +2535,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">CookiesService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a320</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="VRService" referent="RBX62938F7733C64983BCDAB6D1D40B0E28">
@@ -2439,6 +2544,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">VRService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a32a</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ContextActionService" referent="RBXAE367D9B38644D7498EE400E32A043D5">
@@ -2447,6 +2553,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ContextActionService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a32b</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ScriptService" referent="RBXC6C8BD24497F49D6899E96C46F3FD0DD">
@@ -2455,6 +2562,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ScriptService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a32d</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="AssetService" referent="RBXE6EFCE7A1FE948C2ABA06CD9D88ADD60">
@@ -2463,6 +2571,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">AssetService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a32e</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TouchInputService" referent="RBX8EC851F640814E7AACB2918EB0115017">
@@ -2471,6 +2580,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">TouchInputService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a32f</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="AnalyticsService" referent="RBX459B585BE0654C99BF1EE527232CEE10">
@@ -2480,6 +2590,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">AnalyticsService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a332</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Selection" referent="RBX8988CFD88D7D4252877812C0A684133E">
@@ -2488,6 +2599,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">Selection</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a335</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ServerScriptService" referent="RBX412D528611DA4177BB2C081191904813">
@@ -2497,6 +2609,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ServerScriptService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a337</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ServerStorage" referent="RBX97F9653F32274001924CC3DDB0E74391">
@@ -2505,7 +2618,17 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ServerStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a338</UniqueId>
 		</Properties>
+		<Item class="Folder" referent="RBX38DA64AD68814531BC94CBD8F7C36FE9">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">NodePresets</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f00024702</UniqueId>
+			</Properties>
+		</Item>
 	</Item>
 	<Item class="ReplicatedStorage" referent="RBX9AE8B057FF9C470AB53C7DF46DD928BB">
 		<Properties>
@@ -2513,6 +2636,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ReplicatedStorage</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a339</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="LuaWebService" referent="RBX08209954F8F7434CACAC8F2D8A0C6DCC">
@@ -2521,6 +2645,25 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">LuaWebService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a340</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ProcessInstancePhysicsService" referent="RBX8334FDF73DBE47E2A4B4A5828ABAD601">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">ProcessInstancePhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a343</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LanguageService" referent="RBX0E23398E39754ADDB580BAC800FC257E">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">LanguageService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a34a</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Lighting" referent="RBXC0AAF49745A8421984450771CBB9431B">
@@ -2566,6 +2709,16 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<BinaryString name="Tags"></BinaryString>
 			<token name="Technology">1</token>
 			<string name="TimeOfDay">00:00:00</string>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a383</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LodDataService" referent="RBX947DBF4C8B5A46F681C9808A8373FA0B">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">Instance</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a385</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="DataStoreService" referent="RBXE134211C7CD84D06980DAF9CF1EE9346">
@@ -2576,6 +2729,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">DataStoreService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e0</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="FlyweightService" referent="RBX39020099E5754139A4C37BCA1A4FFE60">
@@ -2584,6 +2738,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">FlyweightService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e1</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="HttpService" referent="RBX82E257B3467646B3AF42BBBBB2014520">
@@ -2593,14 +2748,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">HttpService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
-		</Properties>
-	</Item>
-	<Item class="LanguageService" referent="RBX0E23398E39754ADDB580BAC800FC257E">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<string name="Name">LanguageService</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e2</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="MemoryStoreService" referent="RBXE568C56833DB449AAF5915BB05BE0946">
@@ -2609,6 +2757,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">MemoryStoreService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e3</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ProximityPromptService" referent="RBXF579F6D021264AD08EDBA4D28880DE1C">
@@ -2619,6 +2768,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ProximityPromptService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e4</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="ReplicatedScriptService" referent="RBX9FB66BBB3FEC4D64854A8D80C0049514">
@@ -2627,6 +2777,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">ReplicatedScriptService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e5</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Teams" referent="RBX79C36D96AE91408A9A98FA9C309BEF94">
@@ -2635,6 +2786,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">Teams</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e6</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="TestService" referent="RBXCBA9DF65CE0443E7A62557D049E36F94">
@@ -2652,6 +2804,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
 			<double name="Timeout">10</double>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e7</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="UnvalidatedAssetService" referent="RBX198854EA0F014F10A5742EEB1BF70161">
@@ -2661,6 +2814,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">UnvalidatedAssetService</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e8</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="VirtualInputManager" referent="RBX95A6FF431C2A40DDBFA60EBD70150486">
@@ -2669,6 +2823,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">VirtualInputManager</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3e9</UniqueId>
 		</Properties>
 	</Item>
 	<Item class="Folder" referent="RBXA789982793CF447CA9367A9CFDD320FD">
@@ -2677,6 +2832,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<string name="Name">DumpFolder</string>
 			<int64 name="SourceAssetId">-1</int64>
 			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ea</UniqueId>
 		</Properties>
 		<Item class="UITextSizeConstraint" referent="RBX740C3A55A52C470C9919F706A1B2520F">
 			<Properties>
@@ -2686,6 +2842,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">UITextSizeConstraint</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3eb</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Vector3Value" referent="RBX700E26D51127452690268EC26545289D">
@@ -2694,6 +2851,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Vector3Value</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ec</UniqueId>
 				<Vector3 name="Value">
 					<X>0</X>
 					<Y>0</Y>
@@ -2721,10 +2879,12 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Accoutrement</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ed</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Accessory" referent="RBX643F1BF500BA47188344880B8C7E871D">
 			<Properties>
+				<token name="AccessoryType">0</token>
 				<CoordinateFrame name="AttachmentPoint">
 					<X>0</X>
 					<Y>0</Y>
@@ -2743,6 +2903,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Accessory</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ee</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Hat" referent="RBX913192F8EC1D43E7986860F012E95F28">
@@ -2765,6 +2926,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Hat</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ef</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="AnimationController" referent="RBXCBE8C5B31FA64774AD5C71917E6C0D4E">
@@ -2773,6 +2935,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">AnimationController</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f0</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Atmosphere" referent="RBXEABE2037FF7D459390FD1B6CCA176819">
@@ -2795,6 +2958,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Offset">0</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f1</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Backpack" referent="RBX66294B2240604DC188F52DEBFE6C16F9">
@@ -2803,6 +2967,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Backpack</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f2</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="HopperBin" referent="RBX571F9A5BCA7D41ADB291548B1DBD7FF1">
@@ -2814,6 +2979,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TextureId"><null></null></Content>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f3</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Tool" referent="RBX184E1D6A862D434787BBB3E43A91ECFA">
@@ -2842,6 +3008,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TextureId"><null></null></Content>
 				<string name="ToolTip"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f4</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Flag" referent="RBX694C321E494749039238AD1E8F7E3C0B">
@@ -2871,6 +3038,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="TeamColor">194</int>
 				<Content name="TextureId"><null></null></Content>
 				<string name="ToolTip"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f5</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Beam" referent="RBXF88B26F9452B416C8A1092E9B39F00E4">
@@ -2878,6 +3046,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="Brightness">1</float>
 				<ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
 				<float name="CurveSize0">0</float>
 				<float name="CurveSize1">0</float>
@@ -2894,6 +3063,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TextureMode">0</token>
 				<float name="TextureSpeed">1</float>
 				<NumberSequence name="Transparency">0 0.5 0 1 0.5 0 </NumberSequence>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f6</UniqueId>
 				<float name="Width0">1</float>
 				<float name="Width1">1</float>
 				<float name="ZOffset">0</float>
@@ -2905,6 +3075,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">BindableEvent</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f7</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BindableFunction" referent="RBXA47675603B4041A8A7F5B9E1EDCEFF44">
@@ -2913,6 +3084,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">BindableFunction</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f8</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BodyAngularVelocity" referent="RBX131F4DCC55BC4CA4AB40A9C989E069CD">
@@ -2932,6 +3104,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="P">1250</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3f9</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BodyForce" referent="RBX3F050FD584654F108EA6B85160DFAC2B">
@@ -2945,6 +3118,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">BodyForce</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3fa</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BodyGyro" referent="RBX1DB1F0AAACE6428793379867244AFF6F">
@@ -2974,6 +3148,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="P">3000</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3fb</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BodyPosition" referent="RBXAEB09F2013CD45A8AB7C46AF7EAEC79D">
@@ -2994,6 +3169,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				</Vector3>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3fc</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BodyThrust" referent="RBXB3BB4624F7874C7FBE2D52AE007C25E0">
@@ -3012,6 +3188,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">BodyThrust</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3fd</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BodyVelocity" referent="RBXCF1DAD656F1A4167ADAF68CBF8BFD744">
@@ -3026,6 +3203,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="P">1250</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3fe</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>2</Y>
@@ -3058,6 +3236,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="ThrustP">5</float>
 				<float name="TurnD">500</float>
 				<float name="TurnP">3000</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a3ff</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Camera" referent="RBX6F6FC53E8A8E4DB8B3A24ABECA9F7408">
@@ -3100,6 +3279,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Camera</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a400</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BodyColors" referent="RBX4D360554C9274A0FBFD85E7A65A0AD47">
@@ -3138,6 +3318,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<G>0.498039246</G>
 					<B>0.278431386</B>
 				</Color3>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a401</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="CharacterMesh" referent="RBXF3EBDC25314B41E7BC681650FFA7FCFB">
@@ -3150,6 +3331,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="OverlayTextureId">0</int64>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a402</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Pants" referent="RBX416949232E584814B7DB94CFDB4BB2EB">
@@ -3164,6 +3346,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Content name="PantsTemplate"><null></null></Content>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a403</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Shirt" referent="RBX6040E0C594FE4CE09302A359DCD0166E">
@@ -3178,6 +3361,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Content name="ShirtTemplate"><null></null></Content>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a404</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ShirtGraphic" referent="RBXBB0DCFCF36A443EDA6FE97774F5BF2CE">
@@ -3192,6 +3376,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ShirtGraphic</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a405</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ClickDetector" referent="RBXDEE393FCE9C649D2A19BA939D3075846">
@@ -3202,16 +3387,24 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ClickDetector</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a406</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Clouds" referent="RBXF545090344AF409583A5FBE8C9121C1F">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Color3 name="Color">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
 				<float name="Cover">0.5</float>
 				<float name="Density">0.699999988</float>
+				<bool name="Enabled">true</bool>
 				<string name="Name">Clouds</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a407</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Configuration" referent="RBX215A7EC6074E4CCE903460ED16CFC4D8">
@@ -3220,6 +3413,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Configuration</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a408</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="AlignOrientation" referent="RBXB5F94BF9A8B14176886F5A47A64C1F3E">
@@ -3228,17 +3422,43 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
 				<int name="Color">23</int>
 				<bool name="Enabled">true</bool>
 				<float name="MaxAngularVelocity">INF</float>
 				<float name="MaxTorque">10000</float>
+				<token name="Mode">1</token>
 				<string name="Name">AlignOrientation</string>
+				<Vector3 name="PrimaryAxis">
+					<X>1</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
 				<bool name="PrimaryAxisOnly">false</bool>
 				<bool name="ReactionTorqueEnabled">false</bool>
 				<float name="Responsiveness">10</float>
 				<bool name="RigidityEnabled">false</bool>
+				<Vector3 name="SecondaryAxis">
+					<X>0</X>
+					<Y>1</Y>
+					<Z>0</Z>
+				</Vector3>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a409</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3252,12 +3472,19 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="Enabled">true</bool>
 				<float name="MaxForce">10000</float>
 				<float name="MaxVelocity">INF</float>
+				<token name="Mode">1</token>
 				<string name="Name">AlignPosition</string>
+				<Vector3 name="Position">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
 				<bool name="ReactionForceEnabled">false</bool>
 				<float name="Responsiveness">10</float>
 				<bool name="RigidityEnabled">false</bool>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a40a</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3279,6 +3506,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="RelativeTo">2</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a40b</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3299,6 +3527,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="TwistLimitsEnabled">false</bool>
 				<float name="TwistLowerAngle">-45</float>
 				<float name="TwistUpperAngle">45</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a40c</UniqueId>
 				<float name="UpperAngle">45</float>
 				<bool name="Visible">false</bool>
 			</Properties>
@@ -3325,6 +3554,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="TargetAngle">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a40d</UniqueId>
 				<float name="UpperAngle">45</float>
 				<bool name="Visible">false</bool>
 			</Properties>
@@ -3344,6 +3574,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="ReactionForceEnabled">false</bool>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a40e</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3362,6 +3593,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Thickness">0.100000001</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a40f</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3378,7 +3610,13 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Thickness">0.100000001</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a410</UniqueId>
 				<bool name="Visible">false</bool>
+				<bool name="WinchEnabled">false</bool>
+				<float name="WinchForce">10000</float>
+				<float name="WinchResponsiveness">45</float>
+				<float name="WinchSpeed">2</float>
+				<float name="WinchTarget">5</float>
 			</Properties>
 		</Item>
 		<Item class="CylindricalConstraint" referent="RBXB8AFB1B3B9364A02A2FEFB7FC22A44F7">
@@ -3415,6 +3653,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="TargetAngle">0</float>
 				<float name="TargetPosition">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a411</UniqueId>
 				<float name="UpperAngle">45</float>
 				<float name="UpperLimit">5</float>
 				<float name="Velocity">0</float>
@@ -3442,6 +3681,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Speed">0</float>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="TargetPosition">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a412</UniqueId>
 				<float name="UpperLimit">5</float>
 				<float name="Velocity">0</float>
 				<bool name="Visible">false</bool>
@@ -3457,6 +3697,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Damping">0.00999999978</float>
 				<bool name="Enabled">true</bool>
 				<bool name="LimitEnabled">false</bool>
+				<bool name="LimitsEnabled">false</bool>
 				<float name="MaxAngle">45</float>
 				<float name="MaxTorque">INF</float>
 				<string name="Name">TorsionSpringConstraint</string>
@@ -3465,6 +3706,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<float name="Stiffness">100</float>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a413</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3482,6 +3724,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Restitution">0</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a414</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3502,6 +3745,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="RelativeTo">0</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a415</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -3511,6 +3755,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">HumanoidController</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a416</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="SkateboardController" referent="RBXFF1812DBE8354A73840CFD294FC03EF1">
@@ -3519,6 +3764,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">SkateboardController</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a417</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="VehicleController" referent="RBX212561E625514A74A6344B0ECEC8D2F7">
@@ -3527,6 +3773,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">VehicleController</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a418</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="CustomEvent" referent="RBXD6259C868FA94E4B9D1A5250F750B3AE">
@@ -3536,6 +3783,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="PersistedCurrentValue">0</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a419</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="CustomEventReceiver" referent="RBXBE3D6FE90DFA4DA9B2FB912974DD7066">
@@ -3545,6 +3793,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Source">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a41a</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BlockMesh" referent="RBX0F9D85B6BFD54C549FFBFFD5ABD5EB83">
@@ -3568,6 +3817,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				</Vector3>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a41b</UniqueId>
 				<Vector3 name="VertexColor">
 					<X>1</X>
 					<Y>1</Y>
@@ -3596,6 +3846,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				</Vector3>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a41c</UniqueId>
 				<Vector3 name="VertexColor">
 					<X>1</X>
 					<Y>1</Y>
@@ -3622,6 +3873,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<Y>0</Y>
 					<Z>0</Z>
 				</Vector3>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a41d</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="DialogChoice" referent="RBX0E1BAEF1BA8E4EF19ACD633B6069CDBD">
@@ -3633,6 +3885,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="ResponseDialog"></string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a41e</UniqueId>
 				<string name="UserDialog"></string>
 			</Properties>
 		</Item>
@@ -3651,6 +3904,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				</Vector3>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<float name="TimeScale">1</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a41f</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -3668,6 +3923,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="Texture"><null></null></Content>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a420</UniqueId>
+				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
 		<Item class="Texture" referent="RBXF9839758CADB4C10B6AB41F51674E474">
@@ -3688,6 +3945,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="Texture"><null></null></Content>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a421</UniqueId>
+				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
 		<Item class="Hole" referent="RBXBA2624B99D284086A702B3C529B9E59F">
@@ -3700,6 +3959,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<token name="TopBottom">1</token>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a422</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="MotorFeature" referent="RBX86C0ED5D19DC453E837068AD3DCF9BC6">
@@ -3712,6 +3972,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<token name="TopBottom">1</token>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a423</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Fire" referent="RBXF5879C2F7A9045BDBC870B0AB1C125E2">
@@ -3731,6 +3992,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				</Color3>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<float name="TimeScale">1</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a424</UniqueId>
 				<float name="heat_xml">9</float>
 				<float name="size_xml">5</float>
 			</Properties>
@@ -3741,6 +4004,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Folder</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a425</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Frame" referent="RBXC9BF10B65B0D4526BF48B97C3EA148E4">
@@ -3794,6 +4058,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<token name="Style">0</token>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a426</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -3854,6 +4119,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<YO>0</YO>
 				</UDim2>
 				<Content name="PressedImage"><null></null></Content>
+				<token name="ResampleMode">0</token>
 				<Ref name="RootLocalizationTable">null</Ref>
 				<float name="Rotation">0</float>
 				<token name="ScaleType">0</token>
@@ -3887,6 +4153,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<YS>1</YS>
 					<YO>0</YO>
 				</UDim2>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a427</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -3968,6 +4235,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="TextWrapped">false</bool>
 				<token name="TextXAlignment">2</token>
 				<token name="TextYAlignment">1</token>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a428</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -4024,6 +4292,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<YS>0</YS>
 					<YO>0</YO>
 				</UDim2>
+				<token name="ResampleMode">0</token>
 				<Ref name="RootLocalizationTable">null</Ref>
 				<float name="Rotation">0</float>
 				<token name="ScaleType">0</token>
@@ -4055,6 +4324,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<YS>1</YS>
 					<YO>0</YO>
 				</UDim2>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a429</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -4132,6 +4402,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="TextWrapped">false</bool>
 				<token name="TextXAlignment">2</token>
 				<token name="TextYAlignment">1</token>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a42a</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -4219,6 +4490,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="TextWrapped">false</bool>
 				<token name="TextXAlignment">2</token>
 				<token name="TextYAlignment">1</token>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a42b</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -4276,6 +4548,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<double name="TimePosition">0</double>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a42c</UniqueId>
 				<Content name="Video"><null></null></Content>
 				<bool name="Visible">true</bool>
 				<float name="Volume">1</float>
@@ -4368,6 +4641,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="SizeConstraint">0</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a42d</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
@@ -4379,6 +4653,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="AlwaysOnTop">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
+				<float name="Brightness">1</float>
 				<bool name="ClipsDescendants">false</bool>
 				<float name="DistanceLowerLimit">0</float>
 				<float name="DistanceStep">0</float>
@@ -4422,6 +4697,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<Z>0</Z>
 				</Vector3>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a42e</UniqueId>
 				<token name="ZIndexBehavior">0</token>
 			</Properties>
 		</Item>
@@ -4437,6 +4713,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="RootLocalizationTable">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a42f</UniqueId>
 				<token name="ZIndexBehavior">0</token>
 			</Properties>
 		</Item>
@@ -4452,6 +4729,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="RootLocalizationTable">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a430</UniqueId>
 				<token name="ZIndexBehavior">0</token>
 			</Properties>
 		</Item>
@@ -4476,6 +4754,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				</Vector2>
 				<Ref name="To">null</Ref>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a431</UniqueId>
 				<float name="Velocity">2</float>
 				<bool name="Visible">true</bool>
 				<float name="WireRadius">0.0625</float>
@@ -4501,6 +4780,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="SurfaceTransparency">1</float>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a432</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4543,6 +4823,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a433</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">-1</int>
 			</Properties>
@@ -4583,6 +4864,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a434</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">-1</int>
 			</Properties>
@@ -4625,6 +4907,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a435</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">-1</int>
 			</Properties>
@@ -4668,6 +4951,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a436</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">-1</int>
 			</Properties>
@@ -4708,6 +4992,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Thickness">1</float>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a437</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">-1</int>
 			</Properties>
@@ -4719,6 +5004,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="AlwaysOnTop">false</bool>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
+				<float name="Brightness">1</float>
 				<Vector2 name="CanvasSize">
 					<X>800</X>
 					<Y>600</Y>
@@ -4735,6 +5021,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="ToolPunchThroughDistance">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a438</UniqueId>
 				<token name="ZIndexBehavior">0</token>
 				<float name="ZOffset">0</float>
 			</Properties>
@@ -4752,6 +5039,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a439</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4790,6 +5078,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a43a</UniqueId>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">-1</int>
 			</Properties>
@@ -4813,6 +5102,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="SurfaceTransparency">1</float>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a43b</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4832,6 +5122,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a43c</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4852,6 +5143,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="Style">0</token>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a43d</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4869,6 +5161,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<token name="TargetSurface">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a43e</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4886,6 +5179,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a43f</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4907,6 +5201,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a440</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -4941,12 +5236,14 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="RigType">0</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a441</UniqueId>
 				<bool name="UseJumpPower">true</bool>
 				<float name="WalkSpeed">16</float>
 			</Properties>
 		</Item>
 		<Item class="HumanoidDescription" referent="RBXB39A6BD255C6467E911C63A962AC9CC4">
 			<Properties>
+				<string name="AccessoryBlob">[]</string>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<string name="BackAccessory"></string>
 				<float name="BodyTypeScale">0.300000012</float>
@@ -5011,6 +5308,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<G>0</G>
 					<B>0</B>
 				</Color3>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a442</UniqueId>
 				<string name="WaistAccessory"></string>
 				<int64 name="WalkAnimation">0</int64>
 				<float name="WidthScale">1</float>
@@ -5054,6 +5352,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a443</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="RotateV" referent="RBXBE99D98AA4C9434282146963101C494E">
@@ -5094,6 +5393,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a444</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Glue" referent="RBX5468E5255E18479B8B83115B08588461">
@@ -5153,6 +5453,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a445</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ManualGlue" referent="RBX2436C0DB41394CB7B5780B21B83CDC7F">
@@ -5191,9 +5492,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part0">null</Ref>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
-				<int name="Surface0">-1</int>
-				<int name="Surface1">-1</int>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a446</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ManualWeld" referent="RBXA9D1C4DF3C4D45979E52A045643AE7FB">
@@ -5232,9 +5532,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part0">null</Ref>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
-				<int name="Surface0">-1</int>
-				<int name="Surface1">-1</int>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a447</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Motor" referent="RBX87EF0CA0EC784F7EAB58A0DC0F9F6C66">
@@ -5276,6 +5575,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a448</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Motor6D" referent="RBX3D39031ACC954F3F8C58665D05CB6154">
@@ -5317,6 +5617,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a449</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Rotate" referent="RBX969B030A12D048EE98608A4FB5990DD9">
@@ -5356,6 +5657,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a44a</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Snap" referent="RBX5CA19FB9C0FD4B9C8D37DBBDA9C5CAF6">
@@ -5395,6 +5697,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a44b</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="VelocityMotor" referent="RBXFDCCC7B174F7450DAA67F0F3F9E253C4">
@@ -5438,6 +5741,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a44c</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Weld" referent="RBX07140CB7A9E84797ACF1AF9F395AD9D5">
@@ -5477,6 +5781,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a44d</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Keyframe" referent="RBX789234D8B05D4FDA853774A38239E27D">
@@ -5486,6 +5791,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Time">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a44e</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="KeyframeMarker" referent="RBX46FEB170321F4B4DB319CB53F9373C1E">
@@ -5494,6 +5800,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">KeyframeMarker</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a44f</UniqueId>
 				<string name="Value"></string>
 			</Properties>
 		</Item>
@@ -5506,6 +5813,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="Priority">2</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a450</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="PointLight" referent="RBXE12395362AD74C568F555F48299DB518">
@@ -5523,6 +5831,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="Shadows">false</bool>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a451</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="SpotLight" referent="RBX1B9A92A22ADB46D19DB859CDC46B6FF7">
@@ -5542,6 +5851,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="Shadows">false</bool>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a452</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="SurfaceLight" referent="RBX24504E34ACD6427990A875D601D2C36D">
@@ -5561,6 +5871,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="Shadows">false</bool>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a453</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="LocalizationTable" referent="RBX2F9F15828AEE4BA79067F5D516FAB097">
@@ -5571,6 +5882,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<string name="SourceLocaleId">en-us</string>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a454</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Script" referent="RBXA6036C69C5C64040A9B7CD35E8E0DDF0">
@@ -5579,10 +5891,11 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="Disabled">false</bool>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">Script</string>
-				<string name="ScriptGuid"></string>
+				<string name="ScriptGuid">{7A7656A4-A0FA-40C9-BA11-2257FCD00851}</string>
 				<ProtectedString name="Source"></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a455</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="LocalScript" referent="RBX7E6D4D4B7AA149D396E7CD2735F1C89D">
@@ -5591,10 +5904,11 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="Disabled">false</bool>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">LocalScript</string>
-				<string name="ScriptGuid"></string>
+				<string name="ScriptGuid">{44C5B96A-BF4E-4DDD-960B-AE336DEF41B3}</string>
 				<ProtectedString name="Source"></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a456</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ModuleScript" referent="RBXA44320CA1ACB46CFA7BBD2799483E909">
@@ -5602,10 +5916,11 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<Content name="LinkedSource"><null></null></Content>
 				<string name="Name">ModuleScript</string>
-				<string name="ScriptGuid"></string>
+				<string name="ScriptGuid">{53029FFB-A2CF-488C-ADC1-62E1EE6E52F6}</string>
 				<ProtectedString name="Source"></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a457</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Message" referent="RBXA7904BA5B1994E3980A8F488D43CFD69">
@@ -5615,6 +5930,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<string name="Text"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a458</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Hint" referent="RBX1F53D54FCEE941A0B21E0E375C64CD1D">
@@ -5624,6 +5940,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<string name="Text"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a459</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="NoCollisionConstraint" referent="RBXAA1AA3EEFF444DFD89201C94221BB065">
@@ -5635,6 +5952,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Part1">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a45a</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="CornerWedgePart" referent="RBX725D5D6415514817A746BEBC8F61DF96">
@@ -5664,6 +5982,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -5715,6 +6034,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a45b</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -5754,6 +6074,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -5805,6 +6126,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">3</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a45c</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -5846,6 +6168,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -5898,6 +6221,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">3</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a45d</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -5939,6 +6263,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -5991,6 +6316,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">3</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a45e</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -6032,6 +6358,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -6086,6 +6413,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">3</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a45f</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -6128,6 +6456,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -6183,6 +6512,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">3</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a460</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -6224,6 +6554,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -6275,6 +6606,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a461</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -6315,6 +6647,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -6386,6 +6719,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a462</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -6426,6 +6760,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<BinaryString name="ChildData"></BinaryString>
@@ -6492,6 +6827,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a463</UniqueId>
 				<bool name="UsePartColor">false</bool>
 				<Vector3 name="Velocity">
 					<X>0</X>
@@ -6533,6 +6869,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">false</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<BinaryString name="ChildData"></BinaryString>
@@ -6599,6 +6936,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0.100000001</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a464</UniqueId>
 				<bool name="UsePartColor">false</bool>
 				<Vector3 name="Velocity">
 					<X>0</X>
@@ -6640,6 +6978,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<BinaryString name="ChildData"></BinaryString>
@@ -6706,6 +7045,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">0</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a465</UniqueId>
 				<bool name="UsePartColor">false</bool>
 				<Vector3 name="Velocity">
 					<X>0</X>
@@ -6746,6 +7086,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -6797,6 +7138,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="TopSurface">5</token>
 				<token name="TopSurfaceInput">0</token>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a466</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -6814,20 +7156,6 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
-				<CoordinateFrame name="ModelInPrimary">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
 				<CoordinateFrame name="ModelMeshCFrame">
 					<X>0</X>
 					<Y>0</Y>
@@ -6853,6 +7181,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="PrimaryPart">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a467</UniqueId>
 				<OptionalCoordinateFrame name="WorldPivotData"></OptionalCoordinateFrame>
 			</Properties>
 		</Item>
@@ -6860,20 +7189,6 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
-				<CoordinateFrame name="ModelInPrimary">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
 				<CoordinateFrame name="ModelMeshCFrame">
 					<X>0</X>
 					<Y>0</Y>
@@ -6899,6 +7214,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="PrimaryPart">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a468</UniqueId>
 				<OptionalCoordinateFrame name="WorldPivotData"></OptionalCoordinateFrame>
 			</Properties>
 		</Item>
@@ -6910,10 +7226,16 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<Z>0</Z>
 				</Vector3>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="Brightness">1</float>
 				<ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
 				<float name="Drag">0</float>
 				<token name="EmissionDirection">1</token>
 				<bool name="Enabled">true</bool>
+				<NumberRange name="FlipbookFramerate">1 1 </NumberRange>
+				<string name="FlipbookIncompatible">Particle texture must be 1024 by 1024 to use flipbooks.</string>
+				<token name="FlipbookLayout">0</token>
+				<token name="FlipbookMode">0</token>
+				<bool name="FlipbookStartRandom">false</bool>
 				<NumberRange name="Lifetime">5 10 </NumberRange>
 				<float name="LightEmission">0</float>
 				<float name="LightInfluence">0</float>
@@ -6923,6 +7245,10 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Rate">20</float>
 				<NumberRange name="RotSpeed">0 0 </NumberRange>
 				<NumberRange name="Rotation">0 0 </NumberRange>
+				<token name="Shape">0</token>
+				<token name="ShapeInOut">0</token>
+				<float name="ShapePartial">1</float>
+				<token name="ShapeStyle">0</token>
 				<NumberSequence name="Size">0 1 0 1 1 0 </NumberSequence>
 				<int64 name="SourceAssetId">-1</int64>
 				<NumberRange name="Speed">5 5 </NumberRange>
@@ -6930,10 +7256,12 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<X>0</X>
 					<Y>0</Y>
 				</Vector2>
+				<NumberSequence name="Squash">0 0 0 1 0 0 </NumberSequence>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="Texture"><url>rbxasset://textures/particles/sparkles_main.dds</url></Content>
 				<float name="TimeScale">1</float>
 				<NumberSequence name="Transparency">0 0 0 1 0 0 </NumberSequence>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a469</UniqueId>
 				<float name="VelocityInheritance">0</float>
 				<float name="ZOffset">0</float>
 			</Properties>
@@ -6946,6 +7274,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">NumberPose</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a46a</UniqueId>
 				<double name="Value">0</double>
 				<float name="Weight">1</float>
 			</Properties>
@@ -6972,6 +7301,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Pose</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a46b</UniqueId>
 				<float name="Weight">1</float>
 			</Properties>
 		</Item>
@@ -6985,6 +7315,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Threshold">0.949999988</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a46c</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ColorCorrectionEffect" referent="RBX4C5A74DF86D74348ABE2BFF5C17EFCEC">
@@ -7002,6 +7333,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<G>1</G>
 					<B>1</B>
 				</Color3>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a46d</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="SunRaysEffect" referent="RBX1F5BEDB65C674B2EB50396D2BE75EF4F">
@@ -7013,6 +7345,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<float name="Spread">1</float>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a46e</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ProximityPrompt" referent="RBXEB822DA9A0F8459CBBE2E18D8286259A">
@@ -7038,6 +7371,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<X>0</X>
 					<Y>0</Y>
 				</Vector2>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a46f</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadata" referent="RBXD26CDD5BC69C461BAA4A6CC643709DA1">
@@ -7046,6 +7380,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadata</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a470</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataCallbacks" referent="RBXF2634AF21DD1449EB4CFDC26ACE04690">
@@ -7054,6 +7389,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadataCallbacks</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a471</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataClasses" referent="RBX8C6FC3A1B63C4FFCB02353A10A542F46">
@@ -7062,6 +7398,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadataClasses</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a472</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataEnums" referent="RBXED9D3D64FEA64B43B41D9E2EE250DD18">
@@ -7070,6 +7407,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadataEnums</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a473</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataEvents" referent="RBXB2186E5861024C3F84ED21A5843088DB">
@@ -7078,6 +7416,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadataEvents</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a474</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataFunctions" referent="RBXE756CE80069A467B8A5374FBEBC02A50">
@@ -7086,6 +7425,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadataFunctions</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a475</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataClass" referent="RBX7FE5E4BAAB9945229447436E5916754F">
@@ -7097,8 +7437,10 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Constraint"></string>
 				<bool name="Deprecated">false</bool>
 				<bool name="EditingDisabled">false</bool>
+				<string name="EditorType"></string>
 				<int name="ExplorerImageIndex">0</int>
 				<int name="ExplorerOrder">2147483647</int>
+				<string name="FFlag"></string>
 				<bool name="Insertable">true</bool>
 				<bool name="IsBackend">false</bool>
 				<string name="Name">ReflectionMetadataClass</string>
@@ -7111,7 +7453,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<double name="UIMaximum">0</double>
 				<double name="UIMinimum">0</double>
 				<double name="UINumTicks">0</double>
-				<string name="summary"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a476</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataEnum" referent="RBXA6E6DEC134974AF3B48D07CF9E4BD145">
@@ -7123,6 +7465,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Constraint"></string>
 				<bool name="Deprecated">false</bool>
 				<bool name="EditingDisabled">false</bool>
+				<string name="EditorType"></string>
+				<string name="FFlag"></string>
 				<bool name="IsBackend">false</bool>
 				<string name="Name">ReflectionMetadataEnum</string>
 				<int name="PropertyOrder">5000</int>
@@ -7133,7 +7477,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<double name="UIMaximum">0</double>
 				<double name="UIMinimum">0</double>
 				<double name="UINumTicks">0</double>
-				<string name="summary"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a477</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataEnumItem" referent="RBX4F660E456D2649A888B8E20C2A867670">
@@ -7145,6 +7489,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Constraint"></string>
 				<bool name="Deprecated">false</bool>
 				<bool name="EditingDisabled">false</bool>
+				<string name="EditorType"></string>
+				<string name="FFlag"></string>
 				<bool name="IsBackend">false</bool>
 				<string name="Name">ReflectionMetadataEnumItem</string>
 				<int name="PropertyOrder">5000</int>
@@ -7155,7 +7501,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<double name="UIMaximum">0</double>
 				<double name="UIMinimum">0</double>
 				<double name="UINumTicks">0</double>
-				<string name="summary"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a478</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataMember" referent="RBX5728698A740B4527B0AEFA64CA2D18CD">
@@ -7167,6 +7513,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Constraint"></string>
 				<bool name="Deprecated">false</bool>
 				<bool name="EditingDisabled">false</bool>
+				<string name="EditorType"></string>
+				<string name="FFlag"></string>
 				<bool name="IsBackend">false</bool>
 				<string name="Name">ReflectionMetadataMember</string>
 				<int name="PropertyOrder">5000</int>
@@ -7177,7 +7525,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<double name="UIMaximum">0</double>
 				<double name="UIMinimum">0</double>
 				<double name="UINumTicks">0</double>
-				<string name="summary"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a479</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataProperties" referent="RBX95284B65C8BD4D549F4830FC4B9E1ABC">
@@ -7186,6 +7534,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadataProperties</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a47a</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReflectionMetadataYieldFunctions" referent="RBX719F725FEC81452299A6F43BCA4C8D3A">
@@ -7194,6 +7543,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ReflectionMetadataYieldFunctions</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a47b</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="RemoteEvent" referent="RBX9B46AB8A76064C9E9AE11725A5EB0F28">
@@ -7202,6 +7552,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">RemoteEvent</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a47c</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="RemoteFunction" referent="RBXD172A8132D8A4B928A5AC5E86B8BB4EB">
@@ -7210,6 +7561,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">RemoteFunction</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a47d</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="RenderingTest" referent="RBXC217F6887FC941888FA6716E4CB5064F">
@@ -7240,6 +7592,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<string name="Ticket"></string>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a47e</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Sky" referent="RBX87380524F52D4052B7BD5BF2D51C3484">
@@ -7260,6 +7613,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="SunAngularSize">21</float>
 				<Content name="SunTextureId"><url>rbxasset://sky/sun.jpg</url></Content>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a47f</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Smoke" referent="RBX9F50E2366D7343CFA6625684F63A2C25">
@@ -7274,6 +7628,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Smoke</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<float name="TimeScale">1</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a480</UniqueId>
 				<float name="opacity_xml">0.5</float>
 				<float name="riseVelocity_xml">1</float>
 				<float name="size_xml">1</float>
@@ -7294,6 +7650,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<double name="TimePosition">0</double>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a481</UniqueId>
 				<float name="Volume">0.5</float>
 				<float name="xmlRead_MaxDistance_3">10000</float>
 			</Properties>
@@ -7309,6 +7666,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Rate">0.5</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a482</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="CompressorSoundEffect" referent="RBX58A79164A9DC492986497E722E3E3DCC">
@@ -7325,6 +7683,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Threshold">-40</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a483</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="DistortionSoundEffect" referent="RBX17DF2CE336884211927CBE8CB01D21FF">
@@ -7336,6 +7695,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="Priority">0</int>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a484</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="EchoSoundEffect" referent="RBXF5A1A90B4BEF4B69BF4D21C5BB44063B">
@@ -7349,6 +7709,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="Priority">0</int>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a485</UniqueId>
 				<float name="WetLevel">0</float>
 			</Properties>
 		</Item>
@@ -7363,6 +7724,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="Priority">0</int>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a486</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="FlangeSoundEffect" referent="RBX7FE3D7619A3D4D409F28913756F4A9B6">
@@ -7376,6 +7738,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Rate">5</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a487</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="PitchShiftSoundEffect" referent="RBXB190DFE14E424A45963201D02ACCAB5B">
@@ -7387,6 +7750,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="Priority">0</int>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a488</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ReverbSoundEffect" referent="RBX4CF0B76DAADF4343ABC0FE68DCD38F76">
@@ -7401,6 +7765,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="Priority">0</int>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a489</UniqueId>
 				<float name="WetLevel">0</float>
 			</Properties>
 		</Item>
@@ -7415,6 +7780,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="Priority">0</int>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a48a</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Sparkles" referent="RBX637A0867D6F844F794417E0D9DA3655F">
@@ -7429,6 +7795,8 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<B>1</B>
 				</Color3>
 				<BinaryString name="Tags"></BinaryString>
+				<float name="TimeScale">1</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a48b</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="StarterGear" referent="RBXCA32D826D70947FF92782A2ED13E521C">
@@ -7437,6 +7805,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">StarterGear</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a48c</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Team" referent="RBXA6302DEBF67D417FB10B4FE61A14F8C7">
@@ -7447,6 +7816,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<int name="TeamColor">1</int>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a48d</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="TeleportOptions" referent="RBX6E20FE773B374B938544396C63A316B4">
@@ -7458,6 +7828,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<bool name="ShouldReserveServer">false</bool>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a48e</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="TerrainRegion" referent="RBX932F3B2E8B93405B964352EDBFD91DD9">
@@ -7477,6 +7848,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="SmoothGrid">AQU=</BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a48f</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Trail" referent="RBX17D349A3D3C34332B717B42CBEF8FDA8">
@@ -7484,6 +7856,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="Attachment0">null</Ref>
 				<Ref name="Attachment1">null</Ref>
 				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="Brightness">1</float>
 				<ColorSequence name="Color">0 1 1 1 0 1 1 1 1 0 </ColorSequence>
 				<bool name="Enabled">true</bool>
 				<bool name="FaceCamera">false</bool>
@@ -7499,6 +7872,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="TextureLength">1</float>
 				<token name="TextureMode">0</token>
 				<NumberSequence name="Transparency">0 0.5 0 1 0.5 0 </NumberSequence>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a490</UniqueId>
 				<NumberSequence name="WidthScale">0 1 0 1 1 0 </NumberSequence>
 			</Properties>
 		</Item>
@@ -7508,6 +7882,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Tween</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a491</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="UIAspectRatioConstraint" referent="RBX7BB6F5A58D224A1A824C56A3370644A1">
@@ -7519,6 +7894,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">UIAspectRatioConstraint</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a492</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="UICorner" referent="RBX4DAC8AAC81BF4C8982AFF792F889296B">
@@ -7531,6 +7907,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">UICorner</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a493</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="UIGradient" referent="RBX8D00BEBF72A5476F80A95321C4F731A0">
@@ -7547,6 +7924,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<NumberSequence name="Transparency">0 0 0 1 0 0 </NumberSequence>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a494</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="UIGridLayout" referent="RBXF32DB5343C9549C2B78CB057ADDEED62">
@@ -7572,6 +7950,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<token name="StartCorner">0</token>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a495</UniqueId>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
@@ -7588,6 +7967,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="SortOrder">0</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a496</UniqueId>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
@@ -7612,6 +7992,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<bool name="TouchInputEnabled">true</bool>
 				<float name="TweenTime">1</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a497</UniqueId>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
@@ -7633,6 +8014,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<token name="SortOrder">0</token>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a498</UniqueId>
 				<token name="VerticalAlignment">1</token>
 			</Properties>
 		</Item>
@@ -7643,6 +8025,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Scale">1</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a499</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="UIStroke" referent="RBX994EDA961C4048828B1F42236B8AAFAA">
@@ -7661,6 +8044,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Thickness">1</float>
 				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a49a</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BinaryStringValue" referent="RBX10F63A45E0A544A0886271DBA47463D5">
@@ -7669,6 +8053,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">BinaryStringValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a49b</UniqueId>
 				<BinaryString name="Value"></BinaryString>
 			</Properties>
 		</Item>
@@ -7678,6 +8063,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">BoolValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a49c</UniqueId>
 				<bool name="Value">false</bool>
 			</Properties>
 		</Item>
@@ -7687,6 +8073,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">BrickColorValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a49d</UniqueId>
 				<int name="Value">194</int>
 			</Properties>
 		</Item>
@@ -7696,6 +8083,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">CFrameValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a49e</UniqueId>
 				<CoordinateFrame name="Value">
 					<X>0</X>
 					<Y>0</Y>
@@ -7718,6 +8106,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Color3Value</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a49f</UniqueId>
 				<Color3 name="Value">
 					<R>0</R>
 					<G>0</G>
@@ -7733,6 +8122,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">DoubleConstrainedValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a0</UniqueId>
 				<double name="value">0</double>
 			</Properties>
 		</Item>
@@ -7744,6 +8134,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">IntConstrainedValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a1</UniqueId>
 				<int64 name="value">0</int64>
 			</Properties>
 		</Item>
@@ -7753,6 +8144,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">IntValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a2</UniqueId>
 				<int64 name="Value">0</int64>
 			</Properties>
 		</Item>
@@ -7762,6 +8154,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">NumberValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a3</UniqueId>
 				<double name="Value">0</double>
 			</Properties>
 		</Item>
@@ -7771,6 +8164,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ObjectValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a4</UniqueId>
 				<Ref name="Value">null</Ref>
 			</Properties>
 		</Item>
@@ -7780,6 +8174,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">RayValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a5</UniqueId>
 				<Ray name="Value">
 					<origin>
 						<X>0</X>
@@ -7800,6 +8195,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">StringValue</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a6</UniqueId>
 				<string name="Value"></string>
 			</Properties>
 		</Item>
@@ -7817,6 +8213,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">UISizeConstraint</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a7</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="ScrollingFrame" referent="RBX50A803E89C114531AA8C5E5BBBBF949C">
@@ -7894,6 +8291,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-top.png</url></Content>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a8</UniqueId>
 				<token name="VerticalScrollBarInset">0</token>
 				<token name="VerticalScrollBarPosition">0</token>
 				<bool name="Visible">true</bool>
@@ -7907,6 +8305,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">Animation</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4a9</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="BlurEffect" referent="RBX0A3DD10F620547EBBCCD12DDF1AE238E">
@@ -7917,26 +8316,13 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Size">24</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4aa</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Model" referent="RBX97AA6921DC6844EC9A0314DFA08855DC">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="LevelOfDetail">0</token>
-				<CoordinateFrame name="ModelInPrimary">
-					<X>0</X>
-					<Y>0</Y>
-					<Z>0</Z>
-					<R00>1</R00>
-					<R01>0</R01>
-					<R02>0</R02>
-					<R10>0</R10>
-					<R11>1</R11>
-					<R12>0</R12>
-					<R20>0</R20>
-					<R21>0</R21>
-					<R22>1</R22>
-				</CoordinateFrame>
 				<CoordinateFrame name="ModelMeshCFrame">
 					<X>0</X>
 					<Y>0</Y>
@@ -7962,6 +8348,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<Ref name="PrimaryPart">null</Ref>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4ab</UniqueId>
 				<OptionalCoordinateFrame name="WorldPivotData"></OptionalCoordinateFrame>
 			</Properties>
 		</Item>
@@ -7971,6 +8358,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">StandalonePluginScripts</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4ac</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Skin" referent="RBXB296F7E72F2E4BEC876F63E9C3AD09D2">
@@ -7980,6 +8368,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int name="SkinColor">226</int>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4ad</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="SpringConstraint" referent="RBX5A31583748B141CCBA52EDA29F35B249">
@@ -8002,6 +8391,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Stiffness">0</float>
 				<BinaryString name="Tags"></BinaryString>
 				<float name="Thickness">0.100000001</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4ae</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -8025,6 +8415,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TextureId"><null></null></Content>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4af</UniqueId>
 				<Vector3 name="VertexColor">
 					<X>1</X>
 					<Y>1</Y>
@@ -8038,6 +8429,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">ForceField</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b0</UniqueId>
 				<bool name="Visible">true</bool>
 			</Properties>
 		</Item>
@@ -8068,6 +8460,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<R22>1</R22>
 				</CoordinateFrame>
 				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
 				<bool name="CanTouch">true</bool>
 				<bool name="CastShadow">true</bool>
 				<int name="CollisionGroupId">0</int>
@@ -8128,6 +8521,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="Torque">10</float>
 				<float name="Transparency">0</float>
 				<float name="TurnSpeed">1</float>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b1</UniqueId>
 				<Vector3 name="Velocity">
 					<X>0</X>
 					<Y>0</Y>
@@ -8148,6 +8542,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">PartOperationAsset</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b2</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="DepthOfFieldEffect" referent="RBXDED2BECA2C984AA0828CFDA8262A6E4E">
@@ -8161,6 +8556,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<float name="NearIntensity">0.75</float>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b3</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="SoundGroup" referent="RBXE7E9A55BE66C4DFF99E9AC42D06C7629">
@@ -8169,6 +8565,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">SoundGroup</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b4</UniqueId>
 				<float name="Volume">0.5</float>
 			</Properties>
 		</Item>
@@ -8184,6 +8581,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TexturePack"><null></null></Content>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b5</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="UIPadding" referent="RBXE327D65CD11E44118F3994D8690F85A3">
@@ -8208,6 +8606,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				</UDim>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b6</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="Torque" referent="RBXBFF6E171F73E4D08BDA14088959C3F1A">
@@ -8226,6 +8625,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 					<Y>0</Y>
 					<Z>0</Z>
 				</Vector3>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b7</UniqueId>
 				<bool name="Visible">false</bool>
 			</Properties>
 		</Item>
@@ -8250,6 +8650,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<Content name="TextureId"><null></null></Content>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b8</UniqueId>
 				<Vector3 name="VertexColor">
 					<X>1</X>
 					<Y>1</Y>
@@ -8265,6 +8666,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<string name="Name">FunctionalTest</string>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4b9</UniqueId>
 			</Properties>
 		</Item>
 		<Item class="WeldConstraint" referent="RBXFCB16C5828C9467DAA2FF56D5D8F4FA5">
@@ -8290,6 +8692,7 @@ b3IzEQAAEEEAACBBAAAwQQ==]]></BinaryString>
 				<int64 name="SourceAssetId">-1</int64>
 				<int name="State">3</int>
 				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2c3758b9147ff16b01b8290f0001a4ba</UniqueId>
 			</Properties>
 		</Item>
 	</Item>
