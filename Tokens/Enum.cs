@@ -42,8 +42,21 @@ namespace RobloxFiles.Tokens
             Contract.Requires(prop != null && node != null);
             object rawValue = prop.Value;
             
-            int signed = (int)rawValue;
-            uint value = (uint)signed;
+            if (!(rawValue is uint value))
+            {
+                Type type = rawValue.GetType();
+
+                if (type.IsEnum)
+                {
+                    var signed = (int)rawValue;
+                    value = (uint)signed;
+                }
+                else
+                {
+                    value = 0;
+                    RobloxFile.LogError($"Raw value for enum property {prop} could not be casted to uint!");
+                }
+            }
 
             node.InnerText = value.ToInvariantString();
         }

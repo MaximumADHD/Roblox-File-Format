@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.513.0.5130420
+// Updated as of 0.514.0.5140398
 
 namespace RobloxFiles.Enums
 {
@@ -62,6 +62,9 @@ namespace RobloxFiles.Enums
         Idle,
         Movement,
         Action,
+        Action2,
+        Action3,
+        Action4,
         Core = 1000
     }
 
@@ -151,6 +154,12 @@ namespace RobloxFiles.Enums
         Custom,
         Scriptable,
         Orbital
+    }
+
+    public enum ChatVersion
+    {
+        LegacyChatService,
+        TextChatService
     }
 
     public enum ClientAnimatorThrottlingMode

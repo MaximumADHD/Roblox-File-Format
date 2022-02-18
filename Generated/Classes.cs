@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.513.0.5130420
+// Updated as of 0.514.0.5140398
 
 using System;
 
@@ -466,6 +466,14 @@ namespace RobloxFiles
     public abstract class CacheableContentProvider : Instance
     {
         public CacheableContentProvider()
+        {
+            IsService = true;
+        }
+    }
+
+    public class HSRDataContentProvider : CacheableContentProvider
+    {
+        public HSRDataContentProvider()
         {
             IsService = true;
         }
@@ -1911,13 +1919,13 @@ namespace RobloxFiles
 
     public class HumanoidDescription : Instance
     {
-        public string AccessoryBlob = "";
+        public string AccessoryBlob = "[]";
         public string BackAccessory = "";
         public float BodyTypeScale = 0.3f;
         public long ClimbAnimation;
         public float DepthScale = 1;
-        public string EmotesDataInternal = "";
-        public string EquippedEmotesDataInternal = "";
+        public string EmotesDataInternal = "[]";
+        public string EquippedEmotesDataInternal = "[]";
         public long Face;
         public string FaceAccessory = "";
         public long FallAnimation;
@@ -2022,8 +2030,6 @@ namespace RobloxFiles
 
     public abstract class ManualSurfaceJointInstance : JointInstance
     {
-        public int Surface0 = -1;
-        public int Surface1 = -1;
     }
 
     public class ManualGlue : ManualSurfaceJointInstance
@@ -2711,7 +2717,6 @@ namespace RobloxFiles
     public class Model : PVInstance
     {
         public ModelLevelOfDetail LevelOfDetail = ModelLevelOfDetail.Automatic;
-        public CFrame ModelInPrimary = new CFrame();
         public CFrame ModelMeshCFrame = new CFrame();
         public SharedString ModelMeshData = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public Vector3 ModelMeshSize = new Vector3();
@@ -3730,6 +3735,13 @@ namespace RobloxFiles
     {
     }
 
+    public class TextChatCommand : Instance
+    {
+        public bool Enabled = true;
+        public string PrimaryAlias = "";
+        public string SecondaryAlias = "";
+    }
+
     public class TextChatMessageProperties : Instance
     {
     }
@@ -3740,6 +3752,10 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public ChatVersion ChatVersion = ChatVersion.LegacyChatService;
+        public bool CreateDefaultCommands = true;
+        public bool CreateDefaultTextChannels = true;
     }
 
     public class TextService : Instance

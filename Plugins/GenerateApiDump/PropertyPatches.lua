@@ -287,6 +287,13 @@ return
 			EmotesDataInternal = "string";
 			EquippedEmotesDataInternal = "string";
 		};
+
+		Defaults =
+		{
+			AccessoryBlob = "[]";
+			EmotesDataInternal = "[]";
+			EquippedEmotesDataInternal = "[]";
+		}
 	};
 	
 	InsertService = 
@@ -349,21 +356,6 @@ return
 		};
 	};
 	
-	ManualSurfaceJointInstance = 
-	{
-		Add = 
-		{
-			Surface0 = "int";
-			Surface1 = "int";
-		};
-		
-		Defaults = 
-		{
-			Surface0 = -1;
-			Surface1 = -1;			
-		}
-	};
-	
 	MeshPart =
 	{
 		Redirect = { MeshID = "MeshId" }
@@ -373,7 +365,6 @@ return
 	{
 		Add =
 		{
-			ModelInPrimary = "CFrame";
 			ModelMeshCFrame = "CFrame";
 			ModelMeshData = "SharedString";
 			ModelMeshSize = "Vector3";
@@ -556,10 +547,16 @@ return
 
 	StarterPlayer =
 	{
+		Add =
+		{
+			LoadCharacterLayeredClothing = "Enum:LoadCharacterLayeredClothing";
+		};
+
 		Defaults =
 		{
 			GameSettingsAvatar = Enum.GameAvatarType.R15;
 			GameSettingsR15Collision = Enum.R15CollisionType.OuterBox;
+			LoadCharacterLayeredClothing = Enum.LoadCharacterLayeredClothing.Default;
 			
 			GameSettingsScaleRangeHead       = NumberRange.new(0.95, 1.00);
 			GameSettingsScaleRangeWidth      = NumberRange.new(0.70, 1.00);
@@ -627,6 +624,15 @@ return
 			GridV3 = "";
 			SmoothGrid = "AQU=";
 		};
+	};
+
+	TextChatService =
+	{
+		Defaults =
+		{
+			CreateDefaultCommands = true;
+			CreateDefaultTextChannels = true;
+		}
 	};
 	
 	TriangleMeshPart =
