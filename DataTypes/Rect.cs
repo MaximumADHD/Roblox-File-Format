@@ -12,8 +12,8 @@
 
         public Rect(Vector2 min = null, Vector2 max = null)
         {
-            Min = min ?? Vector2.Zero;
-            Max = max ?? Vector2.Zero;
+            Min = min ?? Vector2.zero;
+            Max = max ?? Vector2.zero;
         }
 
         public Rect(float minX, float minY, float maxX, float maxY)

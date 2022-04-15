@@ -6,7 +6,7 @@ namespace RobloxFiles.Tokens
     {
         string XmlPropertyToken { get; }
 
-        bool ReadProperty(Property prop, XmlNode token);
+        bool ReadProperty(Property prop, XmlNode node);
         void WriteProperty(Property prop, XmlDocument doc, XmlNode node);
     }
 }

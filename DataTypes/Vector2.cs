@@ -1,27 +1,13 @@
-﻿using System;
+﻿#pragma warning disable IDE1006 // Naming Styles
+using System;
 
 namespace RobloxFiles.DataTypes
 {
+
     public class Vector2
     {
         public readonly float X, Y;
         public override string ToString() => $"{X}, {Y}";
-
-        public float Magnitude
-        {
-            get
-            {
-                float product = Dot(this);
-                double magnitude = Math.Sqrt(product);
-
-                return (float)magnitude;
-            }
-        }
-
-        public Vector2 Unit
-        {
-            get { return this / Magnitude; }
-        }
 
         public Vector2(float x = 0, float y = 0)
         {
@@ -34,18 +20,21 @@ namespace RobloxFiles.DataTypes
             X = coords.Length > 0 ? coords[0] : 0;
             Y = coords.Length > 1 ? coords[1] : 0;
         }
+        
+        public float Magnitude => (float)Math.Sqrt(X*X + Y*Y);
+        public Vector2 Unit => this / Magnitude;
 
         private delegate Vector2 Operator(Vector2 a, Vector2 b);
 
         private static Vector2 UpcastFloatOp(Vector2 vec, float num, Operator upcast)
         {
-            Vector2 numVec = new Vector2(num, num);
+            var numVec = new Vector2(num, num);
             return upcast(vec, numVec);
         }
 
         private static Vector2 UpcastFloatOp(float num, Vector2 vec, Operator upcast)
         {
-            Vector2 numVec = new Vector2(num, num);
+            var numVec = new Vector2(num, num);
             return upcast(numVec, vec);
         }
 
@@ -70,29 +59,17 @@ namespace RobloxFiles.DataTypes
         public static Vector2 operator /(Vector2 v, float n) => UpcastFloatOp(v, n, div);
         public static Vector2 operator /(float n, Vector2 v) => UpcastFloatOp(n, v, div);
 
-        public static Vector2 operator -(Vector2 v)
-        {
-            return new Vector2(-v.X, -v.Y);
-        }
+        public static Vector2 operator -(Vector2 v) => new Vector2(-v.X, -v.Y);
 
-        public static Vector2 Zero => new Vector2(0, 0);
+        public static Vector2 zero => new Vector2(0, 0);
+        public static Vector2 one  => new Vector2(1, 1);
 
-        public float Dot(Vector2 other)
-        {
-            float dotX = X * other.X;
-            float dotY = Y * other.Y;
+        public static Vector2 x => new Vector2(1, 0);
+        public static Vector2 y => new Vector2(0, 1);
 
-            return dotX + dotY;
-        }
-
-        public Vector2 Cross(Vector2 other)
-        {
-            float crossX = X * other.Y;
-            float crossY = Y * other.X;
-
-            return new Vector2(crossX, crossY);
-        }
-
+        public float Dot(Vector2 other) => (X * other.X) + (Y * other.Y);
+        public Vector2 Cross(Vector2 other) => new Vector2(X * other.Y, Y * other.X);
+        
         public Vector2 Lerp(Vector2 other, float t)
         {
             return this + (other - this) * t;

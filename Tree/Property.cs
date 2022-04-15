@@ -41,7 +41,8 @@ namespace RobloxFiles
         SharedString,
         ProtectedString,
         OptionalCFrame,
-        UniqueId
+        UniqueId,
+        FontFace
     }
 
     public class Property
@@ -72,29 +73,30 @@ namespace RobloxFiles
             { typeof(double),  PropertyType.Double },
             { typeof(string),  PropertyType.String },
 
-            { typeof(Ray),      PropertyType.Ray     },
-            { typeof(Rect),     PropertyType.Rect    },
-            { typeof(UDim),     PropertyType.UDim    },
-            { typeof(UDim2),    PropertyType.UDim2   },
-            { typeof(CFrame),   PropertyType.CFrame  },
-            { typeof(Color3),   PropertyType.Color3  },
-            { typeof(Content),  PropertyType.String  },
-            { typeof(Vector2),  PropertyType.Vector2 },
-            { typeof(Vector3),  PropertyType.Vector3 },
+            { typeof(Ray),       PropertyType.Ray      },
+            { typeof(Rect),      PropertyType.Rect     },
+            { typeof(UDim),      PropertyType.UDim     },
+            { typeof(UDim2),     PropertyType.UDim2    },
+            { typeof(CFrame),    PropertyType.CFrame   },
+            { typeof(Color3),    PropertyType.Color3   },
+            { typeof(Content),   PropertyType.String   },
+            { typeof(Vector2),   PropertyType.Vector2  },
+            { typeof(Vector3),   PropertyType.Vector3  },
+            { typeof(FontFace),  PropertyType.FontFace },
             
-            { typeof(BrickColor),   PropertyType.BrickColor   },
-            { typeof(Quaternion),   PropertyType.Quaternion   },
-            { typeof(Color3uint8),  PropertyType.Color3uint8  },
-            { typeof(NumberRange),  PropertyType.NumberRange  },
-            { typeof(SharedString), PropertyType.SharedString },
-            { typeof(Vector3int16), PropertyType.Vector3int16 },
+            { typeof(BrickColor),    PropertyType.BrickColor   },
+            { typeof(Quaternion),    PropertyType.Quaternion   },
+            { typeof(Color3uint8),   PropertyType.Color3uint8  },
+            { typeof(NumberRange),   PropertyType.NumberRange  },
+            { typeof(SharedString),  PropertyType.SharedString },
+            { typeof(Vector3int16),  PropertyType.Vector3int16 },
 
-            { typeof(ColorSequence),    PropertyType.ColorSequence  },
-            { typeof(NumberSequence),   PropertyType.NumberSequence },
-            { typeof(Optional<CFrame>), PropertyType.OptionalCFrame },
+            { typeof(ColorSequence),     PropertyType.ColorSequence  },
+            { typeof(NumberSequence),    PropertyType.NumberSequence },
+            { typeof(Optional<CFrame>),  PropertyType.OptionalCFrame },
 
-            { typeof(ProtectedString),    PropertyType.String             }, 
-            { typeof(PhysicalProperties), PropertyType.PhysicalProperties },
+            { typeof(ProtectedString),     PropertyType.String             }, 
+            { typeof(PhysicalProperties),  PropertyType.PhysicalProperties },
         };
 
         private void ImproviseRawBuffer()

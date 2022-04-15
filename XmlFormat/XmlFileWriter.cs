@@ -66,6 +66,11 @@ namespace RobloxFiles.XmlFormat
 
                 switch (prop.Type)
                 {
+                    case PropertyType.Ref:
+                    {
+                        propType = "Ref";
+                        break;
+                    }
                     case PropertyType.CFrame:
                     case PropertyType.Quaternion:
                     {
@@ -106,6 +111,9 @@ namespace RobloxFiles.XmlFormat
                     }
                 }
             }
+
+            if (prop.Type == PropertyType.Ref)
+                propType = "Ref";
             
             IXmlPropertyToken handler = XmlPropertyTokens.GetHandler(propType);
 

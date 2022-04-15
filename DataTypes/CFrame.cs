@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using RobloxFiles.Enums;
 
 namespace RobloxFiles.DataTypes
 {
     public class CFrame
     {
-        private float m14, m24, m34;
+        private readonly float m14, m24, m34;
 
         private readonly float m11 = 1, m12, m13;
         private readonly float m21, m22 = 1, m23;
@@ -18,27 +17,22 @@ namespace RobloxFiles.DataTypes
         public float Y => m24;
         public float Z => m34;
 
-        public Vector3 Position
-        {
-            get => new Vector3(X, Y, Z);
+        public Vector3 Position => new Vector3(m41, m42, m43);
+        public CFrame  Rotation => (this - Position);
 
-            set
-            {
-                Contract.Requires(value != null);
+        public Vector3 XVector => new Vector3(m11, m21, m31);
+        public Vector3 YVector => new Vector3(m12, m22, m32);
+        public Vector3 ZVector => new Vector3(m13, m23, m33);
 
-                m14 = value.X;
-                m24 = value.Y;
-                m34 = value.Z;
-            }
-        }
-
-        public Vector3 RightVector => new Vector3( m11,  m21,  m31);
-        public Vector3 UpVector    => new Vector3( m12,  m22,  m32);
-        public Vector3 LookVector  => new Vector3(-m13, -m23, -m33);
+        public Vector3 RightVector =>  XVector;
+        public Vector3 UpVector    =>  YVector;
+        public Vector3 LookVector  => -ZVector;
 
         public Vector3 ColumnX => new Vector3(m11, m12, m13);
         public Vector3 ColumnY => new Vector3(m21, m22, m23);
         public Vector3 ColumnZ => new Vector3(m31, m32, m33);
+
+        public static readonly CFrame Identity = new CFrame();
 
         public override int GetHashCode()
         {
@@ -96,23 +90,20 @@ namespace RobloxFiles.DataTypes
 
         public CFrame(Vector3 eye, Vector3 look)
         {
-            Vector3 zAxis = (eye - look).Unit;
-            Vector3 xAxis = Vector3.Up.Cross(zAxis);
-            Vector3 yAxis = zAxis.Cross(xAxis);
+            Vector3 zAxis = (eye - look).Unit,
+                    xAxis = Vector3.Up.Cross(zAxis),
+                    yAxis = zAxis.Cross(xAxis);
 
             if (xAxis.Magnitude == 0)
             {
+                xAxis = Vector3.z;
+                yAxis = Vector3.x;
+                zAxis = Vector3.y;
+
                 if (zAxis.Y < 0)
                 {
-                    xAxis = new Vector3(0, 0, -1);
-                    yAxis = new Vector3(1,  0, 0);
-                    zAxis = new Vector3(0, -1, 0);
-                }
-                else
-                {
-                    xAxis = new Vector3(0, 0, 1);
-                    yAxis = new Vector3(1, 0, 0);
-                    zAxis = new Vector3(0, 1, 0);
+                    xAxis = -xAxis;
+                    zAxis = -zAxis;
                 }
             }
 
@@ -123,9 +114,9 @@ namespace RobloxFiles.DataTypes
 
         public CFrame(float nx, float ny, float nz, float i, float j, float k, float w)
         {
-            float ii = i * i;
-            float jj = j * j;
-            float kk = k * k;
+            float ii = i * i,
+                  jj = j * j,
+                  kk = k * k;
 
             m14 = nx;
             m24 = ny;
@@ -308,18 +299,18 @@ namespace RobloxFiles.DataTypes
 
         public static CFrame FromAxisAngle(Vector3 axis, float theta)
         {
-            Vector3 u = VectorAxisAngle(axis, Vector3.Up,    theta);
-            Vector3 b = VectorAxisAngle(axis, Vector3.Back,  theta);
-            Vector3 r = VectorAxisAngle(axis, Vector3.Right, theta);
+            Vector3 r = VectorAxisAngle(axis, Vector3.x, theta),
+                    u = VectorAxisAngle(axis, Vector3.y, theta),
+                    b = VectorAxisAngle(axis, Vector3.z, theta);
 
             return new CFrame(0, 0, 0, r.X, u.X, b.X, r.Y, u.Y, b.Y, r.Z, u.Z, b.Z);
         }
 
         public static CFrame FromEulerAnglesXYZ(float x, float y, float z)
         {
-            CFrame cfx = FromAxisAngle(Vector3.Right, x),
-                   cfy = FromAxisAngle(Vector3.Up, y),
-                   cfz = FromAxisAngle(Vector3.Back, z);
+            CFrame cfx = FromAxisAngle(Vector3.x, x),
+                   cfy = FromAxisAngle(Vector3.y, y),
+                   cfz = FromAxisAngle(Vector3.z, z);
 
             return cfx * cfy * cfz;
         }
@@ -386,7 +377,13 @@ namespace RobloxFiles.DataTypes
 
         public float[] GetComponents()
         {
-            return new float[] { m14, m24, m34, m11, m12, m13, m21, m22, m23, m31, m32, m33 };
+            return new float[] 
+            { 
+                m14, m24, m34,
+                m11, m12, m13, 
+                m21, m22, m23, 
+                m31, m32, m33 
+            };
         }
 
         public EulerAngles ToEulerAngles() => new EulerAngles
@@ -411,28 +408,27 @@ namespace RobloxFiles.DataTypes
 
         public bool IsAxisAligned()
         {
-            float[] matrix = GetComponents();
-
-            byte sum0 = 0, 
-                 sum1 = 0;
-
-            for (int i = 3; i < 12; i++)
+            var tests = new float[3]
             {
-                float t = Math.Abs(matrix[i]);
+                XVector.Dot(Vector3.x),
+                YVector.Dot(Vector3.y),
+                ZVector.Dot(Vector3.z)
+            };
 
-                if (t.FuzzyEquals(1, 1e-8f))
-                {
-                    // Approximately ±1
-                    sum1++;
-                }
-                else if (t.FuzzyEquals(0, 1e-8f))
-                {
-                    // Approximately ±0
-                    sum0++;
-                }
+            foreach (var test in tests)
+            {
+                float dot = Math.Abs(test);
+
+                if (dot.FuzzyEquals(1))
+                    continue;
+
+                if (dot.FuzzyEquals(0))
+                    continue;
+
+                return false;
             }
 
-            return (sum0 == 6 && sum1 == 3);
+            return true;
         }
 
         private static bool IsLegalOrientId(int orientId)
@@ -450,7 +446,6 @@ namespace RobloxFiles.DataTypes
 
             int xNormal = ColumnX.ToNormalId();
             int yNormal = ColumnY.ToNormalId();
-
             int orientId = (6 * xNormal) + yNormal;
 
             if (!IsLegalOrientId(orientId))

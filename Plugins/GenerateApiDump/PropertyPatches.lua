@@ -63,6 +63,29 @@ local GuiTextMixIn =
 
 return
 {
+	AnimationRigData =
+	{
+		Add =
+		{
+			label = "BinaryString";
+			name = "BinaryString";
+			parent = "BinaryString";
+			postTransform = "BinaryString";
+			preTransform = "BinaryString";
+			transform = "BinaryString";
+		};
+
+		Defaults =
+		{
+			label = "AQAAAAEAAAAAAAAA";
+			name = "AQAAAAEAAAAAAAAA";
+			parent = "AQAAAAEAAAAAAA==";
+			postTransform = "AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=";
+			preTransform = "AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=";
+			transform = "AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=";
+		}
+	};
+
 	BallSocketConstraint =
 	{
 		-- Why does this even exist?
@@ -73,13 +96,21 @@ return
 	{
 		Add = 
 		{
+			MaterialVariantSerialized = "string";
+			MaterialVariant = "string";
 			Color3uint8 = "Color3uint8";
 			size = "Vector3";
 		};
 		
 		Redirect =
 		{
-			Position = "CFrame.Position";
+			Position = 
+			{
+				Get = "CFrame.Position";
+				Set = "CFrame = new CFrame(value) * CFrame.Rotation";
+			};
+
+			MaterialVariant = "MaterialVariantSerialized";
 			BrickColor = UseColor3("Color");
 			Color = "Color3uint8";
 			Size = "size";
@@ -88,6 +119,7 @@ return
 		Defaults =
 		{
 			Color3uint8 = Color3.fromRGB(163, 162, 165);
+			MaterialVariantSerialized = "";
 			size = Vector3.new(4, 1.2, 2);
 		};
 	};
@@ -200,6 +232,12 @@ return
 			Size = "size_xml";
 		};
 	};
+
+	FloatCurve =
+	{
+		Add = { ValuesAndTimes = "BinaryString" };
+		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" };
+	};
 	
 	FormFactorPart =
 	{
@@ -242,6 +280,15 @@ return
 			BackgroundColor = UseColor3("BackgroundColor3");
 			BorderColor = UseColor3("BorderColor3");
 			Transparency = "BackgroundTransparency";
+		}
+	};
+
+	HiddenSurfaceRemovalAsset =
+	{
+		Add =
+		{
+			HSRData = "BinaryString";
+			HSRMeshIdData = "BinaryString";
 		}
 	};
 	
@@ -355,6 +402,60 @@ return
 			Source = "ProtectedString";
 		};
 	};
+
+	MarkerCurve =
+	{
+		Add = { ValuesAndTimes = "BinaryString" };
+		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" };
+	};
+
+	MaterialService =
+	{
+		Defaults =
+		{
+			AsphaltName = "Asphalt";
+			BasaltName = "Basalt";
+			BrickName = "Brick";
+			CobblestoneName = "Cobblestone";
+			ConcreteName = "Concrete";
+			CorrodedMetalName = "CorrodedMetal";
+			CrackedLavaName = "CrackedLava";
+			DiamondPlateName = "DiamondPlate";
+			FabricName = "Fabric";
+			FoilName = "Foil";
+			GlacierName = "Glacier";
+			GraniteName = "Granite";
+			GrassName = "Grass";
+			GroundName = "Ground";
+			IceName = "Ice";
+			LeafyGrassName = "LeafyGrass";
+			LimestoneName = "Limestone";
+			MarbleName = "Marble";
+			MetalName = "Metal";
+			MudName = "Mud";
+			PavementName = "Pavement";
+			PebbleName = "Pebble";
+			PlasticName = "Plastic";
+			RockName = "Rock";
+			SaltName = "Salt";
+			SandName = "Sand";
+			SandstoneName = "Sandstone";
+			SlateName = "Slate";
+			SmoothPlasticName = "SmoothPlastic";
+			SnowName = "Snow";
+			WoodName = "Wood";
+			WoodPlanksName = "WoodPlanks";
+		}
+	};
+
+	MaterialVariant =
+	{
+		Add =
+		{
+			TexturePack0 = "Content";
+			TexturePack1 = "Content";
+		}
+	};
 	
 	MeshPart =
 	{
@@ -456,6 +557,12 @@ return
 			IsLuobuServer = TryGetEnumItem("TriStateBoolean", "Unknown");
 			LuobuWhitelisted = TryGetEnumItem("TriStateBoolean", "Unknown");
 		};
+	};
+
+	RotationCurve =
+	{
+		Add = { ValuesAndTimes = "BinaryString" };
+		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" };
 	};
 	
 	SelectionBox =
@@ -603,6 +710,11 @@ return
 			AcquisitionMethod = TryGetEnumItem("TerrainAcquisitionMethod", "None");
 			MaterialColors = "AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM";
 		};
+	};
+
+	TerrainDetail =
+	{
+		Add = { TexturePack1 = "Content"; }
 	};
 	
 	TerrainRegion = 

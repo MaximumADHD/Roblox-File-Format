@@ -77,6 +77,7 @@
     <Compile Include="DataTypes\Content.cs" />
     <Compile Include="DataTypes\EulerAngles.cs" />
     <Compile Include="DataTypes\Faces.cs" />
+    <Compile Include="DataTypes\FontFace.cs" />
     <Compile Include="DataTypes\NumberRange.cs" />
     <Compile Include="DataTypes\NumberSequence.cs" />
     <Compile Include="DataTypes\NumberSequenceKeypoint.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Tokens\Enum.cs" />
     <Compile Include="Tokens\Faces.cs" />
     <Compile Include="Tokens\Float.cs" />
+    <Compile Include="Tokens\Font.cs" />
     <Compile Include="Tokens\Int.cs" />
     <Compile Include="Tokens\Int64.cs" />
     <Compile Include="Tokens\NumberRange.cs" />

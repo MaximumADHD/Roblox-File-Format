@@ -43,7 +43,8 @@ namespace RobloxFiles
         Rect = 28,
      // PhysicalProperties = 29
      // Region3 = 31,
-     // Region3int16 = 32
+     // Region3int16 = 32,
+        FontFace = 33
     }
 
     public class RbxAttribute : IDisposable

@@ -2,6 +2,7 @@ local Selection = game:GetService("Selection")
 local HttpService = game:GetService("HttpService")
 local StarterPlayer = game:GetService("StarterPlayer")
 local StudioService = game:GetService("StudioService")
+local TextChatService = game:GetService("TextChatService")
 
 local classes = {}
 local outStream = ""
@@ -14,12 +15,16 @@ local singletons =
 	ParabolaAdornment = Instance.new("BoxHandleAdornment"); -- close enough
 	StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts");
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts");
+	ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration");
+	ChatInputBarConfiguration = TextChatService:WaitForChild("ChatInputBarConfiguration");
 }
 
 local exceptionClasses =
 {
 	PackageLink = true;
 	ScriptDebugger = true;
+	ChatWindowConfiguration = true;
+	ChatInputBarConfiguration = true;
 }
 
 local numberTypes =
@@ -205,7 +210,10 @@ end
 -- Formatting
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local formatting = require(script.Formatting)
+type FormatFunc = (any) -> string;
+type Format = { [string]: FormatFunc }
+
+local formatting: Format = require(script.Formatting)
 
 local formatLinks = 
 {
@@ -227,7 +235,7 @@ local formatLinks =
 	["ProtectedString"] = "String";
 }
 
-local function getFormatFunction(valueType)
+local function getFormatFunction(valueType: string): FormatFunc?
 	if not formatting[valueType] then
 		valueType = formatLinks[valueType]
 	end
@@ -307,6 +315,8 @@ local function generateClasses()
 	{
 		Axis = true;
 		FontSize = true;
+		FontStyle = true;
+		FontWeight = true;
 	}
 	
 	for _,class in ipairs(apiDump.Classes) do
@@ -323,7 +333,9 @@ local function generateClasses()
 			
 			if classTags.Service then
 				pcall(function ()
-					class.Object = game:GetService(className)
+					if not className:find("Network") then
+						class.Object = game:GetService(className)
+					end
 				end)
 			elseif not classTags.NotCreatable then
 				pcall(function ()
@@ -364,10 +376,6 @@ local function generateClasses()
 	writeLine("using RobloxFiles.Utility;")
 	writeLine()
 	
-	-- writeLine("#pragma warning disable CA1041  // Provide ObsoleteAttribute message")
-	-- writeLine("#pragma warning disable CA1051  // Do not declare visible instance fields")
-	-- writeLine("#pragma warning disable CA1707  // Identifiers should not contain underscores")
-	-- writeLine("#pragma warning disable CA1716  // Identifiers should not match keywords")
 	writeLine("#pragma warning disable IDE1006 // Naming Styles")
 	writeLine()
 	
@@ -468,7 +476,10 @@ local function generateClasses()
 				local propTags = getTags(prop)
 				
 				local serial = prop.Serialization
-				local valueType = prop.ValueType.Name
+				local typeData = prop.ValueType
+
+				local category = typeData.Category
+				local valueType = typeData.Name
 				
 				local redirect = redirectProps[propName]
 				local couldSave = (serial.CanSave or propTags.Deprecated or redirect)
@@ -489,6 +500,8 @@ local function generateClasses()
 						valueType = "long"
 					elseif valueType == "BinaryString" then
 						valueType = "byte[]"
+					elseif valueType == "Font" and category ~= "Enum" then
+						valueType = "FontFace"
 					end
 					
 					local first = name:sub(1, 1)
@@ -567,33 +580,29 @@ local function generateClasses()
 							end)
 						end
 						
-						local typeData = prop.ValueType
-						local category = typeData.Category
-						
 						if not gotValue and category ~= "Class" then
 							-- Fallback to implicit defaults
-							local typeName = typeData.Name
-
-							if numberTypes[typeName] then
+							
+							if numberTypes[valueType] then
 								value = 0
 								gotValue = true
-							elseif stringTypes[typeName] then
+							elseif stringTypes[valueType] then
 								value = ""
 								gotValue = true
-							elseif typeName == "SharedString" then
+							elseif valueType == "SharedString" then
 								value = "yuZpQdnvvUBOTYh1jqZ2cA=="
 								gotValue = true
 							elseif category == "DataType" then
-								local DataType = env[typeName]
+								local DataType = env[valueType]
 								
-								if DataType and typeof(DataType) == "table" and not rawget(env, typeName) then
+								if DataType and typeof(DataType) == "table" and not rawget(env, valueType) then
 									pcall(function ()
 										value = DataType.new()
 										gotValue = true
 									end)
 								end
 							elseif category == "Enum" then
-								local enum = Enum[typeName]
+								local enum = Enum[valueType]
 								local lowestId = math.huge
 								local lowest
 
@@ -623,7 +632,8 @@ local function generateClasses()
 						end
 						
 						if gotValue then
-							local formatFunc = getFormatFunction(valueType)
+							local formatKey = if category == "Enum" then "Enum" else valueType
+							local formatFunc = getFormatFunction(formatKey)
 							
 							if not formatFunc then
 								local literal = typeof(value)
@@ -636,10 +646,12 @@ local function generateClasses()
 							
 							local result
 							
-							if typeof(formatFunc) == "string" then
-								result = formatFunc
-							else
-								result = formatFunc(value)
+							if formatFunc then
+								if typeof(formatFunc) == "string" then
+									result = formatFunc
+								else
+									result = formatFunc(value)
+								end
 							end
 							
 							if result ~= nil then

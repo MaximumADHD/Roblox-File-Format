@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using RobloxFiles.Enums;
 
 namespace RobloxFiles.DataTypes
@@ -19,7 +18,7 @@ namespace RobloxFiles.DataTypes
                 return (float)magnitude;
             }
         }
-        
+
         public Vector3 Unit
         {
             get { return this / Magnitude; }
@@ -60,7 +59,7 @@ namespace RobloxFiles.DataTypes
         }
 
         private delegate Vector3 Operator(Vector3 a, Vector3 b);
-        
+
         private static Vector3 UpcastFloatOp(Vector3 vec, float num, Operator upcast)
         {
             Vector3 numVec = new Vector3(num, num, num);
@@ -73,36 +72,39 @@ namespace RobloxFiles.DataTypes
             return upcast(numVec, vec);
         }
 
-        private static readonly Operator add = new Operator((a, b) => new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z));
-        private static readonly Operator sub = new Operator((a, b) => new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z));
-        private static readonly Operator mul = new Operator((a, b) => new Vector3(a.X * b.X, a.Y * b.Y, a.Z * b.Z));
-        private static readonly Operator div = new Operator((a, b) => new Vector3(a.X / b.X, a.Y / b.Y, a.Z / b.Z));
+        private static readonly Operator add = (a, b) => new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+        private static readonly Operator sub = (a, b) => new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+        private static readonly Operator mul = (a, b) => new Vector3(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+        private static readonly Operator div = (a, b) => new Vector3(a.X / b.X, a.Y / b.Y, a.Z / b.Z);
 
         public static Vector3 operator +(Vector3 a, Vector3 b) => add(a, b);
-        public static Vector3 operator +(Vector3 v, float n)   => UpcastFloatOp(v, n, add);
-        public static Vector3 operator +(float n, Vector3 v)   => UpcastFloatOp(n, v, add);
+        public static Vector3 operator +(Vector3 v, float n) => UpcastFloatOp(v, n, add);
+        public static Vector3 operator +(float n, Vector3 v) => UpcastFloatOp(n, v, add);
 
         public static Vector3 operator -(Vector3 a, Vector3 b) => sub(a, b);
-        public static Vector3 operator -(Vector3 v, float n)   => UpcastFloatOp(v, n, sub);
-        public static Vector3 operator -(float n, Vector3 v)   => UpcastFloatOp(n, v, sub);
+        public static Vector3 operator -(Vector3 v, float n) => UpcastFloatOp(v, n, sub);
+        public static Vector3 operator -(float n, Vector3 v) => UpcastFloatOp(n, v, sub);
 
         public static Vector3 operator *(Vector3 a, Vector3 b) => mul(a, b);
-        public static Vector3 operator *(Vector3 v, float n)   => UpcastFloatOp(v, n, mul);
-        public static Vector3 operator *(float n, Vector3 v)   => UpcastFloatOp(n, v, mul);
+        public static Vector3 operator *(Vector3 v, float n) => UpcastFloatOp(v, n, mul);
+        public static Vector3 operator *(float n, Vector3 v) => UpcastFloatOp(n, v, mul);
 
         public static Vector3 operator /(Vector3 a, Vector3 b) => div(a, b);
-        public static Vector3 operator /(Vector3 v, float n)   => UpcastFloatOp(v, n, div);
-        public static Vector3 operator /(float n, Vector3 v)   => UpcastFloatOp(n, v, div);
+        public static Vector3 operator /(Vector3 v, float n) => UpcastFloatOp(v, n, div);
+        public static Vector3 operator /(float n, Vector3 v) => UpcastFloatOp(n, v, div);
 
-        public static Vector3 operator -(Vector3 v)
-        {
-            return new Vector3(-v.X, -v.Y, -v.Z);
-        }
+        public static Vector3 operator -(Vector3 v) => new Vector3(-v.X, -v.Y, -v.Z);
+        
+        public static readonly Vector3 zero = new Vector3(0, 0, 0);
+        public static readonly Vector3 one = new Vector3(1, 1, 1);
 
-        public static readonly Vector3 Zero  = new Vector3(0, 0, 0);
-        public static readonly Vector3 Right = new Vector3(1, 0, 0);
-        public static readonly Vector3 Up    = new Vector3(0, 1, 0);
-        public static readonly Vector3 Back  = new Vector3(0, 0, 1);
+        public static readonly Vector3 x = new Vector3(1, 0, 0);
+        public static readonly Vector3 y = new Vector3(0, 1, 0);
+        public static readonly Vector3 z = new Vector3(0, 0, 1);
+
+        public static Vector3 Right => x;
+        public static Vector3 Up    => y;
+        public static Vector3 Back  => z;
 
         public float Dot(Vector3 other)
         {

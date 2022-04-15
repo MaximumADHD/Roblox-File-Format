@@ -1,43 +1,67 @@
+--!strict
 local Format = {}
 
-function Format.Null(value)
+type IFlags = { [string]: boolean }
+type IEnum = { GetEnumItems: (IEnum) -> {EnumItem} }
+
+type IAxes =
+{
+	X: boolean;
+	Y: boolean;
+	Z: boolean;
+}
+
+type IFaces =
+{
+	Left:   boolean;
+	Right:  boolean;
+	
+	Top:    boolean;
+	Bottom: boolean;
+	
+	Front:  boolean;
+	Back:   boolean;
+}
+
+function Format.Null(value: any): nil
 	return nil
 end
 
-function Format.Bytes(value)
+function Format.Bytes(value: string): string
 	if #value > 0 then
-		local fmt = "Convert.FromBase64String(%q)"
-		return fmt:format(value)
-	else
-		return "Array.Empty<byte>()"
+		return string.format("Convert.FromBase64String(%q)", value)
 	end
+	
+	return "Array.Empty<byte>()"
 end
 
-function Format.Bool(value)
+function Format.Bool(value: boolean?): string?
 	if value then
 		return "true"
 	end
+
+	return nil
 end
 
-function Format.String(value)
+function Format.String(value: string): string
 	return string.format("%q", value)
 end
 
-function Format.Int(value, default)
-	if value == 2147483647 then
+function Format.Int(value: number): string
+	if value == 2^31-1 then
 		return "int.MaxValue"
-	elseif value == -2147483648 then
+	elseif value == -2^31 then
 		return "int.MinValue"
-	elseif value ~= 0 or default then
+	else
 		return string.format("%i", value)
 	end
 end
 
-function Format.Number(value, default)
+function Format.Number(value: number): string
 	local int = math.floor(value)
 	
 	if math.abs(value - int) < 0.001 then
-		return Format.Int(int, default)
+		return Format.Int(int)
 	end
 	
 	local result = string.format("%.5f", value)
@@ -46,12 +70,10 @@ function Format.Number(value, default)
 	return result
 end
 
-function Format.Double(value, default)
-	local result = Format.Number(value, default)
+function Format.Double(value: number): string
+	local result = Format.Number(value)
 	
-	if not result then
-		return nil
-	elseif result == "inf" then
+	if result == "inf" then
 		return "double.MaxValue"
 	elseif result == "-inf" then
 		return "double.MinValue"
@@ -60,12 +82,10 @@ function Format.Double(value, default)
 	end
 end
 
-function Format.Float(value, default)
-	local result = Format.Number(value, default)
+function Format.Float(value: number): string
+	local result = Format.Number(value)
 	
-	if not result then
-		return nil
-	elseif result == "inf" then
+	if result == "inf" then
 		return "float.MaxValue"
 	elseif result == "-inf" then
 		return "float.MinValue"
@@ -78,44 +98,44 @@ function Format.Float(value, default)
 	end
 end
 
-function Format.Flags(flag, enum)
+function Format.Flags(flags: IFlags, enum: IEnum): string
 	local value = 0
 	
 	for _,item in pairs(enum:GetEnumItems()) do
-		if flag[item.Name] then
+		if flags[item.Name] then
 			value += (2 ^ item.Value)
 		end
 	end
 	
-	return value
+	return tostring(value)
 end
 
-function Format.Axes(axes)
+function Format.Axes(axes: IAxes): string
 	return "(Axes)" .. Format.Flags(axes, Enum.Axis)
 end
 
-function Format.Faces(faces)
+function Format.Faces(faces: IFaces): string
 	return "(Faces)" .. Format.Flags(faces, Enum.NormalId)
 end
 
-function Format.EnumItem(item)
+function Format.EnumItem(item: EnumItem): string
 	local enum = tostring(item.EnumType)
 	return enum .. '.' .. item.Name
 end
 
-function Format.BrickColor(brickColor)
+function Format.BrickColor(brickColor: BrickColor): string
 	local fmt = "BrickColor.FromNumber(%i)"
 	return fmt:format(brickColor.Number)
 end
 
-function Format.Color3(color)
+function Format.Color3(color: Color3): string
 	if color == Color3.new() then
 		return "new Color3()"
 	end
 	
-	local r = Format.Float(color.R, true)
-	local g = Format.Float(color.G, true)
-	local b = Format.Float(color.B, true)
+	local r = Format.Float(color.R)
+	local g = Format.Float(color.G)
+	local b = Format.Float(color.B)
 	
 	local fmt = "%s(%s, %s, %s)";
 	local constructor = "new Color3";
@@ -131,159 +151,176 @@ function Format.Color3(color)
 	return fmt:format(constructor, r, g, b)
 end
 
-function Format.UDim(udim)
+function Format.UDim(udim: UDim): string
 	if udim == UDim.new() then
 		return "new UDim()"
 	end
 	
-	local scale = Format.Float(udim.Scale, true)
-	local offset = Format.Int(udim.Offset, true)
+	local scale = Format.Float(udim.Scale)
+	local offset = Format.Int(udim.Offset)
 	
 	local fmt = "new UDim(%s, %s)"
 	return fmt:format(scale, offset)
 end
 
-function Format.UDim2(udim2)
+function Format.UDim2(udim2: UDim2): string
 	if udim2 == UDim2.new() then
 		return "new UDim2()"
 	end
 	
-	local xScale = Format.Float(udim2.X.Scale, true)
-	local yScale = Format.Float(udim2.Y.Scale, true)
+	local xScale = Format.Float(udim2.X.Scale)
+	local yScale = Format.Float(udim2.Y.Scale)
 	
-	local xOffset = Format.Int(udim2.X.Offset, true)
-	local yOffset = Format.Int(udim2.Y.Offset, true)
+	local xOffset = Format.Int(udim2.X.Offset)
+	local yOffset = Format.Int(udim2.Y.Offset)
 	
 	local fmt = "new UDim2(%s, %s, %s, %s)"
 	return fmt:format(xScale, xOffset, yScale, yOffset)
 end
 
-function Format.Vector2(v2)
+function Format.Vector2(v2: Vector2): string
 	if v2.Magnitude < 0.001 then
 		return "new Vector2()"
 	end
 	
-	local x = Format.Float(v2.X, true)
-	local y = Format.Float(v2.Y, true)
+	local x = Format.Float(v2.X)
+	local y = Format.Float(v2.Y)
 	
 	local fmt = "new Vector2(%s, %s)"
 	return fmt:format(x, y)
 end
 
-function Format.Vector3(v3)
+function Format.Vector3(v3: Vector3): string
 	if v3.Magnitude < 0.001 then
 		return "new Vector3()"
 	end
 	
-	local x = Format.Float(v3.X, true)
-	local y = Format.Float(v3.Y, true)
-	local z = Format.Float(v3.Z, true)
+	local x = Format.Float(v3.X)
+	local y = Format.Float(v3.Y)
+	local z = Format.Float(v3.Z)
 	
 	local fmt = "new Vector3(%s, %s, %s)"
 	return fmt:format(x, y, z)
 end
 
-function Format.CFrame(cf)
-	local blankCF = CFrame.new()
-	
-	if cf == blankCF then
+function Format.CFrame(cf: CFrame): string
+	if cf == CFrame.identity then
 		return "new CFrame()"
 	end
 	
-	local rot = cf - cf.p
-	
-	if rot == blankCF then
-		local fmt = "new CFrame(%s, %s, %s)"
+	if cf.Rotation == CFrame.identity then
+		local x = Format.Float(cf.X)
+		local y = Format.Float(cf.Y)
+		local z = Format.Float(cf.Z)
 		
-		local x = Format.Float(cf.X, true)
-		local y = Format.Float(cf.Y, true)
-		local z = Format.Float(cf.Z, true)
-		
-		return fmt:format(x, y, z)
+		return string.format("new CFrame(%s, %s, %s)", x, y, z)
 	else
 		local comp = { cf:GetComponents() }
+		local matrix = ""
 		
-		for i = 1,12 do
-			comp[i] = Format.Float(comp[i], true)
+		for i = 1, 12 do
+			local sep = (if i > 1 then ", " else "")
+			matrix ..= sep .. Format.Float(comp[i])
 		end
 		
-		local fmt = "new CFrame(%s)"
-		local matrix = table.concat(comp, ", ")
-		
-		return fmt:format(matrix)
+		return string.format("new CFrame(%s)", matrix)
 	end
 end
 
-function Format.NumberRange(nr)
+function Format.NumberRange(nr: NumberRange): string
 	local min = nr.Min
 	local max = nr.Max
 	
 	local fmt = "new NumberRange(%s)"
-	local value = Format.Float(min, true)
+	local value = Format.Float(min)
 	
 	if min ~= max then
-		value = value .. ", " .. Format.Float(max, true)
+		value = value .. ", " .. Format.Float(max)
 	end
 	
 	return fmt:format(value)
 end
 
-function Format.Ray(ray)
+function Format.Ray(ray: Ray): string
 	if ray == Ray.new() then
 		return "new Ray()"
 	end
 	
-	local fmt = "new Ray(%s, %s)"
-	
 	local origin = Format.Vector3(ray.Origin)
 	local direction = Format.Vector3(ray.Direction)
 	
+	local fmt = "new Ray(%s, %s)"
 	return fmt:format(origin, direction)
 end
 
-function Format.Rect(rect)
+function Format.Rect(rect: Rect): string
+	local min: any = rect.Min
+	local max: any = rect.Max
+	
+	if min == max and min == Vector2.zero then
+		return "new Rect()"
+	end
+	
+	min = Format.Vector2(min)
+	max = Format.Vector2(max)
+	
 	local fmt = "new Rect(%s, %s)"
-	
-	local min = Format.Vector2(rect.Min)
-	local max = Format.Vector2(rect.Max)
-	
 	return fmt:format(min, max)
 end
 
-function Format.ColorSequence(cs)
+function Format.ColorSequence(cs: ColorSequence): string
 	local csKey = cs.Keypoints[1]
-	
-	local fmt = "new ColorSequence(%s)"
 	local value = tostring(csKey.Value)
 	
+	local fmt = "new ColorSequence(%s)"
 	return fmt:format(value)
 end
 
-function Format.NumberSequence(ns)
+function Format.NumberSequence(ns: NumberSequence): string
 	local nsKey = ns.Keypoints[1]
-	
 	local fmt = "new NumberSequence(%s)"
-	local value = Format.Float(nsKey.Value, true)
 	
+	local value = Format.Float(nsKey.Value)	
 	return fmt:format(value)
 end
 
-function Format.Vector3int16(v3)
+function Format.Vector3int16(v3: Vector3int16): string
 	if v3 == Vector3int16.new() then
 		return "new Vector3int16()"
 	end
 	
-	local x = Format.Int(v3.X, true)
-	local y = Format.Int(v3.Y, true)
-	local z = Format.Int(v3.Z, true)
+	local x = Format.Int(v3.X)
+	local y = Format.Int(v3.Y)
+	local z = Format.Int(v3.Z)
 	
 	local fmt = "new Vector3int16(%s, %s, %s)"
 	return fmt:format(x, y, z)
 end
 
-function Format.SharedString(str)
+function Format.SharedString(str: string): string
 	local fmt = "SharedString.FromBase64(%q)"
 	return fmt:format(str)
+end
+
+function Format.FontFace(font: Font): string
+	local family = string.format("%q", font.Family)
+	local args = { family }
+	
+	local style = font.Style
+	local weight = font.Weight
+	
+	if style ~= Enum.FontStyle.Normal then
+		table.insert(args, "FontStyle." .. style.Name)
+	end
+
+	if #args > 1 or weight ~= Enum.FontWeight.Regular then
+		table.insert(args, "FontWeight." .. weight.Name)
+	end
+	
+	local fmt = "new FontFace(%s)"
+	local argStr = table.concat(args, ", ")
+	
+	return fmt:format(argStr)
 end
 
 return Format

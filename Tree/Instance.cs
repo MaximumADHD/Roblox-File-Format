@@ -688,6 +688,8 @@ namespace RobloxFiles
 
                     if (fieldType.IsEnum)
                         xmlToken = "token";
+                    else if (propType == PropertyType.Ref)
+                        xmlToken = "Ref";
 
                     switch (xmlToken)
                     {
@@ -721,6 +723,11 @@ namespace RobloxFiles
                         case "CFrame":
                         {
                             xmlToken = "CoordinateFrame";
+                            break;
+                        }
+                        case "FontFace":
+                        {
+                            xmlToken = "Font";
                             break;
                         }
                         case "Optional`1":

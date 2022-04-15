@@ -662,6 +662,23 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     break;
                 }
+                case PropertyType.FontFace:
+                {
+                    readProperties(i =>
+                    {
+                        string family = reader.ReadString();
+
+                        if (family.EndsWith(".otf") || family.EndsWith(".ttf"))
+                            return new FontFace(family);
+
+                        var weight = (FontWeight)reader.ReadUInt16();
+                        var style = (FontStyle)reader.ReadByte();
+
+                        return new FontFace(family, weight, style);
+                    });
+
+                    break;
+                }
                 default:
                 {
                     RobloxFile.LogError($"Unhandled property type: {Type} in {this}!");
@@ -1279,6 +1296,27 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         var guid = prop.CastValue<Guid>();
                         byte[] buffer = guid.ToByteArray();
                         writer.Write(buffer);
+                    });
+
+                    break;
+                }
+                case PropertyType.FontFace:
+                {
+                    props.ForEach(prop =>
+                    {
+                        var font = prop.CastValue<FontFace>();
+
+                        string family = font.Family;
+                        writer.WriteString(font.Family);
+
+                        if (family.EndsWith(".otf") || family.EndsWith(".ttf"))
+                            return;
+
+                        var weight = (ushort)font.Weight;
+                        writer.Write(weight);
+
+                        var style = (byte)font.Style;
+                        writer.Write(style);
                     });
 
                     break;

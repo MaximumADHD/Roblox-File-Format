@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.514.0.5140398
+// Updated as of 0.522.0.5220281
 
 namespace RobloxFiles.Enums
 {
@@ -332,7 +332,8 @@ namespace RobloxFiles.Enums
         Sarpanch,
         SpecialElite,
         TitilliumWeb,
-        Ubuntu
+        Ubuntu,
+        Unknown = 100
     }
 
     public enum FontSize
@@ -352,6 +353,25 @@ namespace RobloxFiles.Enums
         Size42,
         Size60,
         Size96
+    }
+
+    public enum FontStyle
+    {
+        Normal,
+        Italic
+    }
+
+    public enum FontWeight
+    {
+        Thin = 100,
+        ExtraLight = 200,
+        Light = 300,
+        Regular = 400,
+        Medium = 500,
+        SemiBold = 600,
+        Bold = 700,
+        ExtraBold = 800,
+        Heavy = 900
     }
 
     public enum FormFactor
@@ -1061,7 +1081,8 @@ namespace RobloxFiles.Enums
     {
         Default,
         Immediate,
-        Deferred
+        Deferred,
+        AncestryDeferred
     }
 
     public enum SizeConstraint
@@ -1156,6 +1177,13 @@ namespace RobloxFiles.Enums
         RegionFillTool,
         RegionPasteTool,
         Other
+    }
+
+    public enum TerrainFace
+    {
+        Top,
+        Side,
+        Bottom
     }
 
     public enum TextTruncate
