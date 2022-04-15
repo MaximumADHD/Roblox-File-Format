@@ -15,8 +15,8 @@ local singletons =
 	ParabolaAdornment = Instance.new("BoxHandleAdornment"); -- close enough
 	StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts");
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts");
-	ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration");
-	ChatInputBarConfiguration = TextChatService:WaitForChild("ChatInputBarConfiguration");
+	ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration", 10);
+	ChatInputBarConfiguration = TextChatService:WaitForChild("ChatInputBarConfiguration", 10);
 }
 
 local exceptionClasses =
