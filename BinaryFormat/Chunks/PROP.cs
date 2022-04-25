@@ -656,8 +656,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 {
                     readProperties(i =>
                     {
-                        var buffer = reader.ReadBytes(16);
-                        return new Guid(buffer);
+                        var index = reader.ReadUInt32();
+                        var time = reader.ReadUInt32();
+                        var random = reader.ReadUInt64();
+                        return new UniqueId(index, time, random);
                     });
 
                     break;
@@ -1293,9 +1295,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 {
                     props.ForEach(prop =>
                     {
-                        var guid = prop.CastValue<Guid>();
-                        byte[] buffer = guid.ToByteArray();
-                        writer.Write(buffer);
+                        var uniqueId = prop.CastValue<UniqueId>();
+                        writer.Write(uniqueId.Index);
+                        writer.Write(uniqueId.Time);
+                        writer.Write(uniqueId.Random);
                     });
 
                     break;
