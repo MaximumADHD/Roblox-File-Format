@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -44,7 +44,7 @@ namespace RobloxFiles
         public long SourceAssetId = -1;
 
         /// <summary>A unique identifier declared for this instance.</summary>
-        public Guid UniqueId = Guid.NewGuid();
+        public UniqueId UniqueId;
 
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public override string ToString() => Name;
