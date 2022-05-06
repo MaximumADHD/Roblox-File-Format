@@ -1,6 +1,7 @@
+--!strict
 local HttpService = game:GetService("HttpService")
 
-local function UseColor3(propName)
+local function UseColor3(propName: string)
 	return
 	{
 		Get = string.format("BrickColor.FromColor3(%s)", propName);
@@ -8,30 +9,34 @@ local function UseColor3(propName)
 	}
 end
 
-local function TryDefineEnum(enumName)
+local function TryDefineEnum(enumName: string): string?
 	local gotEnum, enum = pcall(function ()
-		return Enum[enumName]
+		return (Enum :: any)[enumName] :: Enum
 	end)
 
 	if gotEnum then
 		return "Enum:" .. tostring(enum)
 	end
+
+	return nil
 end
 
-local function TryGetEnumItem(enumName, itemName)
+local function TryGetEnumItem(enumName, itemName): EnumItem?
 	local gotEnum, enum = pcall(function ()
-		return Enum[enumName]
+		return (Enum :: any)[enumName] :: Enum
 	end)
 
 	if gotEnum then
 		local gotEnumItem, item = pcall(function ()
-			return enum[itemName]
+			return (enum :: any)[itemName] :: EnumItem
 		end)
 
 		if gotEnumItem then
 			return item
 		end
 	end
+
+	return nil
 end
 
 local GuiTextMixIn = 
@@ -61,7 +66,9 @@ local GuiTextMixIn =
 	};
 }
 
-return
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+local PropertyPatches =
 {
 	AnimationRigData =
 	{
@@ -411,6 +418,14 @@ return
 
 	MaterialService =
 	{
+		Add = 
+		{
+			Use2022Materials = "bool";
+			Use2022MaterialsXml = "bool" 
+		};
+
+		Redirect = { Use2022Materials = "Use2022MaterialsXml" };
+		
 		Defaults =
 		{
 			AsphaltName = "Asphalt";
@@ -878,3 +893,29 @@ return
 		}
 	}
 }
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+export type GetSetProp =
+{
+	Get: string;
+	Set: string;
+	Flags: string?;
+}
+
+export type Redirect = 
+	GetSetProp |
+	string;
+
+export type ClassPatch =
+{
+	Add: { [string]: string }?;
+	Redirect: { [string]: Redirect }?;
+	Defaults: { [string]: any }?;
+	Remove: {string}?;
+}
+
+export type PropertyPatches = { [string]: ClassPatch }
+return (PropertyPatches :: any) :: PropertyPatches
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

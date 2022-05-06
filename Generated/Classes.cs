@@ -2387,6 +2387,14 @@ namespace RobloxFiles
         public MaterialVariant TerrainSlate;
         public MaterialVariant TerrainSnow;
         public MaterialVariant TerrainWoodPlanks;
+
+        public bool Use2022Materials
+        {
+            get => Use2022MaterialsXml;
+            set => Use2022MaterialsXml = value;
+        }
+
+        public bool Use2022MaterialsXml;
         public MaterialVariant Wood;
         public string WoodName = "Wood";
         public MaterialVariant WoodPlanks;
