@@ -303,24 +303,32 @@ function Format.SharedString(str: string): string
 end
 
 function Format.FontFace(font: Font): string
-	local family = string.format("%q", font.Family)
-	local args = { family }
-	
-	local style = font.Style
-	local weight = font.Weight
-	
-	if style ~= Enum.FontStyle.Normal then
-		table.insert(args, "FontStyle." .. style.Name)
+	local success, result = pcall(function ()
+		local family = string.format("%q", font.Family)
+		local args = { family }
+		
+		local style = font.Style
+		local weight = font.Weight
+		
+		if style ~= Enum.FontStyle.Normal then
+			table.insert(args, "FontStyle." .. style.Name)
+		end
+
+		if #args > 1 or weight ~= Enum.FontWeight.Regular then
+			table.insert(args, "FontWeight." .. weight.Name)
+		end
+		
+		local fmt = "new FontFace(%s)"
+		local argStr = table.concat(args, ", ")
+		
+		return fmt:format(argStr)
+	end)
+
+	if success then
+		return result
 	end
 
-	if #args > 1 or weight ~= Enum.FontWeight.Regular then
-		table.insert(args, "FontWeight." .. weight.Name)
-	end
-	
-	local fmt = "new FontFace(%s)"
-	local argStr = table.concat(args, ", ")
-	
-	return fmt:format(argStr)
+	return nil
 end
 
 return Format

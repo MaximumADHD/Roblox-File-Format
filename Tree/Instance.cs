@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
+using RobloxFiles.DataTypes;
+
 namespace RobloxFiles
 {
     /// <summary>

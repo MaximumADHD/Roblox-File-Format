@@ -92,6 +92,7 @@
     <Compile Include="DataTypes\SharedString.cs" />
     <Compile Include="DataTypes\UDim.cs" />
     <Compile Include="DataTypes\UDim2.cs" />
+    <Compile Include="DataTypes\UniqueId.cs" />
     <Compile Include="DataTypes\Vector2.cs" />
     <Compile Include="DataTypes\Vector2int16.cs" />
     <Compile Include="DataTypes\Vector3.cs" />
@@ -164,4 +165,7 @@
     <Error Condition="!Exists('packages\Fody.6.0.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Fody.6.0.0\build\Fody.targets'))" />
     <Error Condition="!Exists('packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Costura.Fody.4.1.0\build\Costura.Fody.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>copy /y $(TargetPath) $(ProjectDir)$(TargetFileName)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

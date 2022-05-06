@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.522.0.5220281
+// Updated as of 0.525.0.5250378
 
 using System;
 
@@ -1114,6 +1114,14 @@ namespace RobloxFiles
         public bool Visible = true;
     }
 
+    public class FaceAnimatorService : Instance
+    {
+        public FaceAnimatorService()
+        {
+            IsService = true;
+        }
+    }
+
     public class FaceControls : Instance
     {
     }
@@ -1296,6 +1304,11 @@ namespace RobloxFiles
         }
 
         public LocalizationTable RootLocalizationTable;
+        public SelectionBehavior SelectionBehaviorDown = SelectionBehavior.Escape;
+        public SelectionBehavior SelectionBehaviorLeft = SelectionBehavior.Escape;
+        public SelectionBehavior SelectionBehaviorRight = SelectionBehavior.Escape;
+        public SelectionBehavior SelectionBehaviorUp = SelectionBehavior.Escape;
+        public bool SelectionGroup;
     }
 
     public abstract class GuiObject : GuiBase2d
@@ -1338,6 +1351,7 @@ namespace RobloxFiles
         public float Rotation = 0;
         public bool Selectable;
         public GuiObject SelectionImageObject;
+        public int SelectionOrder = 0;
         public UDim2 Size = new UDim2();
         public SizeConstraint SizeConstraint = SizeConstraint.RelativeXY;
 
@@ -2373,7 +2387,6 @@ namespace RobloxFiles
         public MaterialVariant TerrainSlate;
         public MaterialVariant TerrainSnow;
         public MaterialVariant TerrainWoodPlanks;
-        public bool Use2022Materials;
         public MaterialVariant Wood;
         public string WoodName = "Wood";
         public MaterialVariant WoodPlanks;
@@ -3155,6 +3168,7 @@ namespace RobloxFiles
         public int PropertyOrder = 5000;
         public string ScriptContext = "";
         public bool ServerOnly;
+        public string SliderScaling = "";
         public double UIMaximum = 0;
         public double UIMinimum = 0;
         public double UINumTicks = 0;
@@ -3265,6 +3279,14 @@ namespace RobloxFiles
     public class ScriptChangeService : Instance
     {
         public ScriptChangeService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class ScriptCloneWatcherHelperV2 : Instance
+    {
+        public ScriptCloneWatcherHelperV2()
         {
             IsService = true;
         }

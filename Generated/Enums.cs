@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.522.0.5220281
+// Updated as of 0.525.0.5250378
 
 namespace RobloxFiles.Enums
 {
@@ -22,7 +22,9 @@ namespace RobloxFiles.Enums
         Shorts,
         LeftShoe,
         RightShoe,
-        DressSkirt
+        DressSkirt,
+        Eyebrow,
+        Eyelash
     }
 
     public enum ActuatorRelativeTo
@@ -1075,6 +1077,12 @@ namespace RobloxFiles.Enums
         X = 1,
         Y,
         XY = 4
+    }
+
+    public enum SelectionBehavior
+    {
+        Escape,
+        Stop
     }
 
     public enum SignalBehavior
