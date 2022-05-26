@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.525.0.5250378
+// Updated as of 0.528.0.5280404
 
 namespace RobloxFiles.Enums
 {
@@ -927,6 +927,13 @@ namespace RobloxFiles.Enums
         VelocityPerpendicular
     }
 
+    public enum PhysicsInertiaAndVolumeFix
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
     public enum PhysicsSteppingMethod
     {
         Default,
@@ -1260,6 +1267,13 @@ namespace RobloxFiles.Enums
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum WrapLayerAutoSkin
+    {
+        Disabled,
+        EnabledPreserve,
+        EnabledOverride
     }
 
     public enum ZIndexBehavior

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.525.0.5250378
+// Updated as of 0.528.0.5280404
 
 using System;
 
@@ -271,6 +271,7 @@ namespace RobloxFiles
 
     public class WrapLayer : BaseWrap
     {
+        public WrapLayerAutoSkin AutoSkin = WrapLayerAutoSkin.Disabled;
         public CFrame BindOffset = new CFrame();
         public bool Enabled = true;
         public int Order = 1;
@@ -765,7 +766,11 @@ namespace RobloxFiles
         public VelocityConstraintMode VelocityConstraintMode = VelocityConstraintMode.Vector;
     }
 
-    public class Plane : Constraint
+    public class PlaneConstraint : Constraint
+    {
+    }
+
+    public class Plane : PlaneConstraint
     {
     }
 
@@ -1154,6 +1159,14 @@ namespace RobloxFiles
         public float StudsPerTileV = 2;
     }
 
+    public class FacialAnimationStreamingService : Instance
+    {
+        public FacialAnimationStreamingService()
+        {
+            IsService = true;
+        }
+    }
+
     public abstract class Feature : Instance
     {
         public NormalId FaceId = NormalId.Right;
@@ -1367,7 +1380,7 @@ namespace RobloxFiles
 
     public class CanvasGroup : GuiObject
     {
-        public Color3 GroupColor = new Color3(1, 1, 1);
+        public Color3 GroupColor3 = new Color3(1, 1, 1);
         public float GroupTransparency = 0;
     }
 
@@ -2130,9 +2143,9 @@ namespace RobloxFiles
         }
     }
 
-    public class LSPService : Instance
+    public class LSPFileSyncService : Instance
     {
-        public LSPService()
+        public LSPFileSyncService()
         {
             IsService = true;
         }
@@ -2821,6 +2834,7 @@ namespace RobloxFiles
         public HumanoidOnlySetCollisionsOnStateChange HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
+        public PhysicsInertiaAndVolumeFix PhysicsInertiaAndVolumeFix = PhysicsInertiaAndVolumeFix.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
         public ReplicateInstanceDestroySetting ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default;
         public AnimatorRetargetingMode Retargeting = AnimatorRetargetingMode.Default;
@@ -3210,6 +3224,14 @@ namespace RobloxFiles
     {
     }
 
+    public class RemoteDebuggerServer : Instance
+    {
+        public RemoteDebuggerServer()
+        {
+            IsService = true;
+        }
+    }
+
     public class RemoteEvent : Instance
     {
     }
@@ -3234,14 +3256,6 @@ namespace RobloxFiles
     public class ReplicatedFirst : Instance
     {
         public ReplicatedFirst()
-        {
-            IsService = true;
-        }
-    }
-
-    public class ReplicatedScriptService : Instance
-    {
-        public ReplicatedScriptService()
         {
             IsService = true;
         }
@@ -3276,6 +3290,14 @@ namespace RobloxFiles
         public byte[] ValuesAndTimes = Convert.FromBase64String("AAAAAAEAAAAKAAAAAAAAFkUAAAAA");
     }
 
+    public class RtMessagingService : Instance
+    {
+        public RtMessagingService()
+        {
+            IsService = true;
+        }
+    }
+
     public class RunService : Instance
     {
         public RunService()
@@ -3292,9 +3314,9 @@ namespace RobloxFiles
         }
     }
 
-    public class ScriptCloneWatcherHelperV2 : Instance
+    public class ScriptCloneWatcherHelper : Instance
     {
-        public ScriptCloneWatcherHelperV2()
+        public ScriptCloneWatcherHelper()
         {
             IsService = true;
         }
@@ -3312,6 +3334,14 @@ namespace RobloxFiles
     {
         public string CoreScriptIdentifier = "";
         public string ScriptGuid = "";
+    }
+
+    public class ScriptEditorService : Instance
+    {
+        public ScriptEditorService()
+        {
+            IsService = true;
+        }
     }
 
     public class ScriptRegistrationService : Instance
@@ -3407,6 +3437,14 @@ namespace RobloxFiles
         public float opacity_xml = 0.5f;
         public float riseVelocity_xml = 1;
         public float size_xml = 1;
+    }
+
+    public class SnippetService : Instance
+    {
+        public SnippetService()
+        {
+            IsService = true;
+        }
     }
 
     public class SocialService : Instance
@@ -4231,9 +4269,6 @@ namespace RobloxFiles
         {
             IsService = true;
         }
-
-        public bool Active;
-        public string CameraID = "";
     }
 
     public class VirtualInputManager : Instance
