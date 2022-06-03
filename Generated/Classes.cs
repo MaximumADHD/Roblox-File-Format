@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.528.0.5280404
+// Updated as of 0.529.1.5290370
 
 using System;
 
@@ -1293,6 +1293,14 @@ namespace RobloxFiles
         }
     }
 
+    public class GetTextBoundsParams : Instance
+    {
+        public FontFace Font = new FontFace("rbxasset://fonts/families/SourceSansPro.json");
+        public float Size = 20;
+        public string Text = "";
+        public float Width = 0;
+    }
+
     public class GroupService : Instance
     {
         public GroupService()
@@ -2334,72 +2342,34 @@ namespace RobloxFiles
 
         public string AsphaltName = "Asphalt";
         public string BasaltName = "Basalt";
-        public MaterialVariant Brick;
         public string BrickName = "Brick";
-        public MaterialVariant Cobblestone;
         public string CobblestoneName = "Cobblestone";
-        public MaterialVariant Concrete;
         public string ConcreteName = "Concrete";
-        public MaterialVariant CorrodedMetal;
         public string CorrodedMetalName = "CorrodedMetal";
         public string CrackedLavaName = "CrackedLava";
-        public MaterialVariant DiamondPlate;
         public string DiamondPlateName = "DiamondPlate";
-        public MaterialVariant Fabric;
         public string FabricName = "Fabric";
-        public MaterialVariant Foil;
         public string FoilName = "Foil";
         public string GlacierName = "Glacier";
-        public MaterialVariant Granite;
         public string GraniteName = "Granite";
-        public MaterialVariant Grass;
         public string GrassName = "Grass";
         public string GroundName = "Ground";
-        public MaterialVariant Ice;
         public string IceName = "Ice";
         public string LeafyGrassName = "LeafyGrass";
         public string LimestoneName = "Limestone";
-        public MaterialVariant Marble;
         public string MarbleName = "Marble";
-        public MaterialVariant Metal;
         public string MetalName = "Metal";
         public string MudName = "Mud";
         public string PavementName = "Pavement";
-        public MaterialVariant Pebble;
         public string PebbleName = "Pebble";
-        public MaterialVariant Plastic;
         public string PlasticName = "Plastic";
         public string RockName = "Rock";
         public string SaltName = "Salt";
-        public MaterialVariant Sand;
         public string SandName = "Sand";
         public string SandstoneName = "Sandstone";
-        public MaterialVariant Slate;
         public string SlateName = "Slate";
-        public MaterialVariant SmoothPlastic;
         public string SmoothPlasticName = "SmoothPlastic";
         public string SnowName = "Snow";
-        public MaterialVariant TerrainAsphalt;
-        public MaterialVariant TerrainBasalt;
-        public MaterialVariant TerrainBrick;
-        public MaterialVariant TerrainCobblestone;
-        public MaterialVariant TerrainConcrete;
-        public MaterialVariant TerrainCrackedLava;
-        public MaterialVariant TerrainGlacier;
-        public MaterialVariant TerrainGrass;
-        public MaterialVariant TerrainGround;
-        public MaterialVariant TerrainIce;
-        public MaterialVariant TerrainLeafyGrass;
-        public MaterialVariant TerrainLimestone;
-        public MaterialVariant TerrainMud;
-        public MaterialVariant TerrainPavement;
-        public MaterialVariant TerrainRock;
-        public MaterialVariant TerrainSalt;
-        public MaterialVariant TerrainSand;
-        public MaterialVariant TerrainSandstone;
-        public MaterialVariant TerrainSlate;
-        public MaterialVariant TerrainSnow;
-        public MaterialVariant TerrainWoodPlanks;
 
         public bool Use2022Materials
         {
@@ -2408,9 +2378,7 @@ namespace RobloxFiles
         }
 
         public bool Use2022MaterialsXml;
-        public MaterialVariant Wood;
         public string WoodName = "Wood";
-        public MaterialVariant WoodPlanks;
         public string WoodPlanksName = "WoodPlanks";
     }
 

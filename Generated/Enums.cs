@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.528.0.5280404
+// Updated as of 0.529.1.5290370
 
 namespace RobloxFiles.Enums
 {
@@ -307,7 +307,7 @@ namespace RobloxFiles.Enums
         Antique,
         SourceSansSemibold,
         Gotham,
-        GothamSemibold,
+        GothamMedium,
         GothamBold,
         GothamBlack,
         AmaticSC,
