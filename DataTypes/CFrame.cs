@@ -17,7 +17,7 @@ namespace RobloxFiles.DataTypes
         public float Y => m24;
         public float Z => m34;
 
-        public Vector3 Position => new Vector3(m41, m42, m43);
+        public Vector3 Position => new Vector3(X, Y, Z);
         public CFrame  Rotation => (this - Position);
 
         public Vector3 XVector => new Vector3(m11, m21, m31);

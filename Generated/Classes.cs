@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.529.1.5290370
+// Updated as of 0.530.0.5300290
 
 using System;
 
@@ -3770,14 +3770,6 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool CustomizedTeleportUI;
-    }
-
-    public class TemporaryCageMeshProvider : Instance
-    {
-        public TemporaryCageMeshProvider()
-        {
-            IsService = true;
-        }
     }
 
     public class TemporaryScriptService : Instance
