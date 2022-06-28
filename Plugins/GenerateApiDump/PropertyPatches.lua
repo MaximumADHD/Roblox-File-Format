@@ -1,7 +1,29 @@
 --!strict
 local HttpService = game:GetService("HttpService")
 
-local function UseColor3(propName: string)
+export type GetSet = string |
+{
+	Get: string;
+	Set: string;
+	Flags: string?;
+}
+
+export type Patch =
+{
+	Add: { [string]: string }?;
+	Redirect: { [string]: GetSet }?;
+	Defaults: { [string]: any }?;
+	Remove: {string}?;
+}
+
+-- strict type reaffirmation?
+-- this is some bug with Luau.
+
+local function GetSet(getSet: GetSet): GetSet
+	return getSet
+end
+
+local function UseColor3(propName: string): GetSet
 	return
 	{
 		Get = string.format("BrickColor.FromColor3(%s)", propName);
@@ -25,7 +47,7 @@ local function TryGetEnumItem(enumName, itemName): EnumItem?
 	local gotEnum, enum = pcall(function ()
 		return (Enum :: any)[enumName] :: Enum
 	end)
-
+	
 	if gotEnum then
 		local gotEnumItem, item = pcall(function ()
 			return (enum :: any)[itemName] :: EnumItem
@@ -39,25 +61,25 @@ local function TryGetEnumItem(enumName, itemName): EnumItem?
 	return nil
 end
 
-local GuiTextMixIn = 
+local GuiTextMixIn: Patch = 
 {
 	Add = { Transparency = "float" };
 	
 	Redirect =
 	{
-		FontSize = 
+		FontSize = GetSet
 		{
 			Get = "FontUtility.GetFontSize(TextSize)";
 			Set = "TextSize = FontUtility.GetFontSize(value)";
 		};
 		
-		TextColor = UseColor3("TextColor3");
-		TextWrap = "TextWrapped";
-
-		Transparency = 
+		TextColor = UseColor3 "TextColor3";
+		TextWrap = GetSet "TextWrapped";
+		
+		Transparency = GetSet
 		{
 			Get = "base.Transparency";
-
+			
 			Set = "base.Transparency = value;\n" ..
 				  "TextTransparency  = value;";
 			
@@ -68,7 +90,7 @@ local GuiTextMixIn =
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local PropertyPatches =
+local PropertyPatches: { [string]: Patch } =
 {
 	AnimationRigData =
 	{
@@ -92,7 +114,7 @@ local PropertyPatches =
 			transform = "AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=";
 		}
 	};
-
+	
 	BallSocketConstraint =
 	{
 		-- Why does this even exist?
@@ -111,16 +133,16 @@ local PropertyPatches =
 		
 		Redirect =
 		{
-			Position = 
+			Position = GetSet
 			{
 				Get = "CFrame.Position";
 				Set = "CFrame = new CFrame(value) * CFrame.Rotation";
 			};
 
-			MaterialVariant = "MaterialVariantSerialized";
-			BrickColor = UseColor3("Color");
-			Color = "Color3uint8";
-			Size = "size";
+			MaterialVariant = GetSet "MaterialVariantSerialized";
+			BrickColor = UseColor3 "Color";
+			Color = GetSet "Color3uint8";
+			Size = GetSet "size";
 		};
 		
 		Defaults =
@@ -130,7 +152,7 @@ local PropertyPatches =
 			size = Vector3.new(4, 1.2, 2);
 		};
 	};
-
+	
 	BaseScript =
 	{
 		Remove = {"LinkedSource"};
@@ -155,30 +177,30 @@ local PropertyPatches =
 	{
 		Redirect =
 		{
-			HeadColor     = UseColor3("HeadColor3");
-			LeftArmColor  = UseColor3("LeftArmColor3");
-			RightArmColor = UseColor3("RightArmColor3");
-			LeftLegColor  = UseColor3("LeftLegColor3");
-			RightLegColor = UseColor3("RightLegColor3");
-			TorsoColor    = UseColor3("TorsoColor3");
+			HeadColor     = UseColor3 "HeadColor3";
+			LeftArmColor  = UseColor3 "LeftArmColor3";
+			RightArmColor = UseColor3 "RightArmColor3";
+			LeftLegColor  = UseColor3 "LeftLegColor3";
+			RightLegColor = UseColor3 "RightLegColor3";
+			TorsoColor    = UseColor3 "TorsoColor3";
 		}
 	};
 	
 	BodyAngularVelocity =
 	{
-		Redirect = { angularvelocity = "AngularVelocity" };
+		Redirect = { angularvelocity = GetSet "AngularVelocity" };
 	};
 	
 	BodyGyro =
 	{
-		Redirect = { cframe = "CFrame" };
+		Redirect = { cframe = GetSet "CFrame" };
 	};
 	
 	Camera = 
 	{
-		Redirect = { CoordinateFrame = "CFrame" }
+		Redirect = { CoordinateFrame = GetSet "CFrame" }
 	};
-
+	
 	CustomEvent =
 	{
 		Add = { PersistedCurrentValue = "float" };
@@ -214,8 +236,8 @@ local PropertyPatches =
 		
 		Redirect = 
 		{
-			Value = "value";
-			ConstrainedValue = "value"; 
+			Value = GetSet "value";
+			ConstrainedValue = GetSet "value"; 
 		}
 	};
 	
@@ -235,8 +257,8 @@ local PropertyPatches =
 		
 		Redirect = 
 		{
-			Heat = "heat_xml";
-			Size = "size_xml";
+			Heat = GetSet "heat_xml";
+			Size = GetSet "size_xml";
 		};
 	};
 
@@ -260,7 +282,7 @@ local PropertyPatches =
 		
 		Redirect = 
 		{
-			FormFactor = "formFactorRaw";
+			FormFactor = GetSet "formFactorRaw";
 		};
 	};
 
@@ -272,21 +294,21 @@ local PropertyPatches =
 	
 	GuiBase2d = 
 	{
-		Redirect = { Localize = "AutoLocalize" }
+		Redirect = { Localize = GetSet "AutoLocalize" }
 	};
 	
 	GuiBase3d = 
 	{
-		Redirect = { Color = UseColor3("Color3") }
+		Redirect = { Color = UseColor3 "Color3" }
 	};
 	
 	GuiObject = 
 	{
 		Redirect = 
 		{
-			BackgroundColor = UseColor3("BackgroundColor3");
-			BorderColor = UseColor3("BorderColor3");
-			Transparency = "BackgroundTransparency";
+			Transparency = GetSet "BackgroundTransparency";
+			BackgroundColor = UseColor3 "BackgroundColor3";
+			BorderColor = UseColor3 "BorderColor3";
 		}
 	};
 
@@ -322,7 +344,7 @@ local PropertyPatches =
 		
 		Redirect = 
 		{
-			Health = "Health_XML";
+			Health = GetSet "Health_XML";
 		};
 		
 		Remove = 
@@ -358,12 +380,12 @@ local PropertyPatches =
 	
 	IntConstrainedValue = 
 	{
-		Add      = { value = "int64" };
+		Add = { value = "int64" };
 		
 		Redirect = 
 		{
-			Value = "value";
-			ConstrainedValue = "value";
+			Value = GetSet "value";
+			ConstrainedValue = GetSet "value";
 		}
 	};
 	
@@ -387,7 +409,7 @@ local PropertyPatches =
 		
 		Redirect =
 		{
-			DevelopmentLanguage = "SourceLocaleId";
+			DevelopmentLanguage = GetSet "SourceLocaleId";
 		}
 	};
 
@@ -424,7 +446,7 @@ local PropertyPatches =
 			Use2022MaterialsXml = "bool" 
 		};
 
-		Redirect = { Use2022Materials = "Use2022MaterialsXml" };
+		Redirect = { Use2022Materials = GetSet "Use2022MaterialsXml" };
 		
 		Defaults =
 		{
@@ -474,7 +496,9 @@ local PropertyPatches =
 	
 	MeshPart =
 	{
-		Redirect = { MeshID = "MeshId" }
+		Add = { VertexCount = "int" };
+		Defaults = { VertexCount = 0 };
+		Redirect = { MeshID = GetSet "MeshId" }
 	};
 	
 	Model = 
@@ -512,14 +536,14 @@ local PropertyPatches =
 	Part = 
 	{
 		Add = { shape = TryDefineEnum("PartType") };
-		Redirect = { Shape = "shape" };
+		Redirect = { Shape = GetSet "shape" };
 	};
 	
 	ParticleEmitter = 
 	{
 		Redirect = 
 		{
-			VelocitySpread = 
+			VelocitySpread = GetSet
 			{
 				Get = "SpreadAngle.X";
 				Set = "SpreadAngle = new Vector2(value, value)";
@@ -582,12 +606,12 @@ local PropertyPatches =
 	
 	SelectionBox =
 	{
-		Redirect = { SurfaceColor = UseColor3("SurfaceColor3") }
+		Redirect = { SurfaceColor = UseColor3 "SurfaceColor3" }
 	};
 	
 	SelectionSphere =
 	{
-		Redirect = { SurfaceColor = UseColor3("SurfaceColor3") }
+		Redirect = { SurfaceColor = UseColor3 "SurfaceColor3" }
 	};
 	
 	ServerScriptService = 
@@ -631,9 +655,9 @@ local PropertyPatches =
 		
 		Redirect = 
 		{
-			Size = "size_xml";
-			Opacity = "opacity_xml";
-			RiseVelocity = "riseVelocity_xml";
+			Size = GetSet "size_xml";
+			Opacity = GetSet "opacity_xml";
+			RiseVelocity = GetSet "riseVelocity_xml";
 		};
 	};
 	
@@ -654,17 +678,17 @@ local PropertyPatches =
 		
 		Redirect =
 		{
-			MaxDistance = "xmlRead_MaxDistance_3";
-			xmlRead_MinDistance_3 = "EmitterSize";
-			RollOffMinDistance = "EmitterSize";
-			MinDistance = "EmitterSize";
-			Pitch = "PlaybackSpeed";
+			MaxDistance = GetSet "xmlRead_MaxDistance_3";
+			xmlRead_MinDistance_3 = GetSet "EmitterSize";
+			RollOffMinDistance = GetSet "EmitterSize";
+			MinDistance = GetSet "EmitterSize";
+			Pitch = GetSet "PlaybackSpeed";
 		};
 	};
 	
 	Sparkles = 
 	{
-		Redirect = { Color = "SparkleColor" };
+		Redirect = { Color = GetSet "SparkleColor" };
 	};
 
 	StarterPlayer =
@@ -782,7 +806,7 @@ local PropertyPatches =
 	TrussPart =
 	{
 		Add = { style = TryDefineEnum("Style") };
-		Redirect = { Style = "style" };
+		Redirect = { Style = GetSet "style" };
 	};
 
 	UnvalidatedAssetService =
@@ -849,9 +873,9 @@ local PropertyPatches =
 		
 		Redirect =
 		{
-			Part0 = "Part0Internal";
-			Part1 = "Part1Internal";
-			Enabled = "EnabledInternal";
+			Part0 = GetSet "Part0Internal";
+			Part1 = GetSet "Part1Internal";
+			Enabled = GetSet "EnabledInternal";
 		};
 	};
 	
@@ -896,26 +920,6 @@ local PropertyPatches =
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-export type GetSetProp =
-{
-	Get: string;
-	Set: string;
-	Flags: string?;
-}
-
-export type Redirect = 
-	GetSetProp |
-	string;
-
-export type ClassPatch =
-{
-	Add: { [string]: string }?;
-	Redirect: { [string]: Redirect }?;
-	Defaults: { [string]: any }?;
-	Remove: {string}?;
-}
-
-export type PropertyPatches = { [string]: ClassPatch }
-return (PropertyPatches :: any) :: PropertyPatches
+return PropertyPatches
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

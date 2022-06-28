@@ -1,30 +1,24 @@
 --!strict
-local Format = {}
+local Format: Format = {}
 
-type IFlags = { [string]: boolean }
-type IEnum = { GetEnumItems: (IEnum) -> {EnumItem} }
+export type FormatFunc = (any) -> string
+export type Format = { [string]: FormatFunc }
+export type IEnum = { GetEnumItems: (IEnum) -> {EnumItem} }
 
-type IAxes =
-{
-	X: boolean;
-	Y: boolean;
-	Z: boolean;
-}
-
-type IFaces =
-{
-	Left:   boolean;
-	Right:  boolean;
+local function flags<T>(flags: T, enum: IEnum): string
+	local value = 0
 	
-	Top:    boolean;
-	Bottom: boolean;
+	for i, item in enum:GetEnumItems() do
+		if (flags :: any)[item.Name] then
+			value += (2 ^ item.Value)
+		end
+	end
 	
-	Front:  boolean;
-	Back:   boolean;
-}
+	return tostring(value)
+end
 
-function Format.Null(value: any): nil
-	return nil
+function Format.Null(value: any): string
+	return ""
 end
 
 function Format.Bytes(value: string): string
@@ -35,12 +29,8 @@ function Format.Bytes(value: string): string
 	return "Array.Empty<byte>()"
 end
 
-function Format.Bool(value: boolean?): string?
-	if value then
-		return "true"
-	end
-
-	return nil
+function Format.Bool(value: boolean?): string
+	return (if value then "true" else "")
 end
 
 function Format.String(value: string): string
@@ -98,24 +88,12 @@ function Format.Float(value: number): string
 	end
 end
 
-function Format.Flags(flags: IFlags, enum: IEnum): string
-	local value = 0
-	
-	for _,item in pairs(enum:GetEnumItems()) do
-		if flags[item.Name] then
-			value += (2 ^ item.Value)
-		end
-	end
-	
-	return tostring(value)
+function Format.Axes(axes: Axes): string
+	return "(Axes)" .. flags(axes, Enum.Axis)
 end
 
-function Format.Axes(axes: IAxes): string
-	return "(Axes)" .. Format.Flags(axes, Enum.Axis)
-end
-
-function Format.Faces(faces: IFaces): string
-	return "(Faces)" .. Format.Flags(faces, Enum.NormalId)
+function Format.Faces(faces: Faces): string
+	return "(Faces)" .. flags(faces, Enum.NormalId)
 end
 
 function Format.EnumItem(item: EnumItem): string
@@ -179,7 +157,7 @@ function Format.UDim2(udim2: UDim2): string
 end
 
 function Format.Vector2(v2: Vector2): string
-	if v2.Magnitude < 0.001 then
+	if v2 == Vector2.zero then
 		return "new Vector2()"
 	end
 	
@@ -191,7 +169,7 @@ function Format.Vector2(v2: Vector2): string
 end
 
 function Format.Vector3(v3: Vector3): string
-	if v3.Magnitude < 0.001 then
+	if v3 == Vector3.zero then
 		return "new Vector3()"
 	end
 	
@@ -228,22 +206,24 @@ function Format.CFrame(cf: CFrame): string
 end
 
 function Format.NumberRange(nr: NumberRange): string
-	local min = nr.Min
-	local max = nr.Max
+	local min = Format.Float(nr.Min)
+	local max = Format.Float(nr.Max)
 	
 	local fmt = "new NumberRange(%s)"
-	local value = Format.Float(min)
+	local value = min
 	
 	if min ~= max then
-		value = value .. ", " .. Format.Float(max)
+		value ..= ", " .. max
 	end
 	
 	return fmt:format(value)
 end
 
 function Format.Ray(ray: Ray): string
-	if ray == Ray.new() then
-		return "new Ray()"
+	if ray.Origin == Vector3.zero then
+		if ray.Direction == Vector3.zero then
+			return "new Ray()"
+		end
 	end
 	
 	local origin = Format.Vector3(ray.Origin)
@@ -303,32 +283,24 @@ function Format.SharedString(str: string): string
 end
 
 function Format.FontFace(font: Font): string
-	local success, result = pcall(function ()
-		local family = string.format("%q", font.Family)
-		local args = { family }
-		
-		local style = font.Style
-		local weight = font.Weight
-		
-		if style ~= Enum.FontStyle.Normal then
-			table.insert(args, "FontStyle." .. style.Name)
-		end
-
-		if #args > 1 or weight ~= Enum.FontWeight.Regular then
-			table.insert(args, "FontWeight." .. weight.Name)
-		end
-		
-		local fmt = "new FontFace(%s)"
-		local argStr = table.concat(args, ", ")
-		
-		return fmt:format(argStr)
-	end)
-
-	if success then
-		return result
+	local family = string.format("%q", font.Family)
+	local args = { family }
+	
+	local style = font.Style
+	local weight = font.Weight
+	
+	if style ~= Enum.FontStyle.Normal then
+		table.insert(args, "FontStyle." .. style.Name)
 	end
 
-	return nil
+	if #args > 1 or weight ~= Enum.FontWeight.Regular then
+		table.insert(args, "FontWeight." .. weight.Name)
+	end
+	
+	local fmt = "new FontFace(%s)"
+	local argStr = table.concat(args, ", ")
+	
+	return fmt:format(argStr)
 end
 
 return Format

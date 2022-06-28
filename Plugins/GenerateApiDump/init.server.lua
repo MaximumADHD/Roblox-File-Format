@@ -210,15 +210,13 @@ end
 -- Formatting
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-type FormatFunc = (any) -> string;
-type Format = { [string]: FormatFunc }
-
 local formatting: Format = require(script.Formatting)
+type FormatFunc = formatting.FormatFunc
+type Format = formatting.Format
 
 local formatLinks = 
 {
 	["int"]  = "Int";
-	["nil"]  = "Null";
 	["long"] = "Int";
 	
 	["float"]   = "Float";
@@ -228,19 +226,17 @@ local formatLinks =
 	
 	["string"]   = "String";
 	["Content"]  = "String";
-	["Instance"] = "Null";
 	
 	["Color3uint8"] = "Color3";
-	["OptionalCFrame"] = "Null";
 	["ProtectedString"] = "String";
 }
 
-local function getFormatFunction(valueType: string): FormatFunc?
+local function getFormatFunction(valueType: string): FormatFunc
 	if not formatting[valueType] then
 		valueType = formatLinks[valueType]
 	end
 	
-	return formatting[valueType]
+	return formatting[valueType] or formatting.Null
 end
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -269,7 +265,7 @@ setmetatable(patches, patchIndex)
 -- Main
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-local baseUrl = "https://raw.githubusercontent.com/CloneTrooper1019/Roblox-Client-Tracker/roblox/"
+local baseUrl = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/"
 local toolbar, button
 
 if plugin then
@@ -635,13 +631,9 @@ local function generateClasses()
 							local formatKey = if category == "Enum" then "Enum" else valueType
 							local formatFunc = getFormatFunction(formatKey)
 							
-							if not formatFunc then
+							if formatFunc == formatting.Null then
 								local literal = typeof(value)
 								formatFunc = getFormatFunction(literal)
-							end
-							
-							if not formatFunc then
-								formatFunc = tostring
 							end
 							
 							local result
@@ -652,6 +644,10 @@ local function generateClasses()
 								else
 									result = formatFunc(value)
 								end
+							end
+
+							if result == "" then
+								result = nil
 							end
 							
 							if result ~= nil then

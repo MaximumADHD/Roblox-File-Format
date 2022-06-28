@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.530.0.5300290
+// Updated as of 0.532.0.5320475
 
 using System;
 
@@ -1054,6 +1054,14 @@ namespace RobloxFiles
         }
     }
 
+    public class DeviceIdService : Instance
+    {
+        public DeviceIdService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Dialog : Instance
     {
         public DialogBehaviorType BehaviorType = DialogBehaviorType.SinglePlayer;
@@ -1358,7 +1366,7 @@ namespace RobloxFiles
         public Color3 BorderColor3 = Color3.FromRGB(27, 42, 53);
         public BorderMode BorderMode = BorderMode.Outline;
         public int BorderSizePixel = 1;
-        public bool ClipsDescendants;
+        public bool ClipsDescendants = true;
 
         [Obsolete]
         public bool Draggable;
@@ -2716,6 +2724,7 @@ namespace RobloxFiles
         public Content MeshId = "";
         public RenderFidelity RenderFidelity = RenderFidelity.Precise;
         public Content TextureID = "";
+        public int VertexCount = 0;
     }
 
     public class PartOperation : TriangleMeshPart
@@ -3489,7 +3498,7 @@ namespace RobloxFiles
         public float Threshold = -40;
     }
 
-    public abstract class CustomDspSoundEffect : SoundEffect
+    public abstract class CustomSoundEffect : SoundEffect
     {
     }
 
