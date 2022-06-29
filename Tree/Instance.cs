@@ -203,7 +203,6 @@ namespace RobloxFiles
         /// <summary>
         /// Returns true if the provided instance inherits from the provided instance type.
         /// </summary>
-        [Obsolete("Use the `is` operator instead.")]
         public bool IsA<T>() where T : Instance
         {
             return this is T;
@@ -215,7 +214,6 @@ namespace RobloxFiles
         /// </summary>
         /// <typeparam name="T">The type of Instance to cast to.</typeparam>
         /// <returns>The instance as the type '<typeparamref name="T"/>' if it can be converted, or null.</returns>
-        [Obsolete("Use the `as` operator instead.")]
         public T Cast<T>() where T : Instance
         {
             return this as T;

@@ -1366,7 +1366,7 @@ namespace RobloxFiles
         public Color3 BorderColor3 = Color3.FromRGB(27, 42, 53);
         public BorderMode BorderMode = BorderMode.Outline;
         public int BorderSizePixel = 1;
-        public bool ClipsDescendants = true;
+        public bool ClipsDescendants = false;
 
         [Obsolete]
         public bool Draggable;
