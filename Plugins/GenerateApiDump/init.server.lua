@@ -457,15 +457,98 @@ local function generateClasses()
 			end
 			
 			local firstLine = true
-			table.sort(propNames)
+			class.PropertyMap = propMap
 			
-			if classTags.Service then
-				writeLine("public %s()", className)
+			local ancestor = class
+			local diffProps = {}
+			
+			while object do
+				ancestor = classes[ancestor.Superclass]
+
+				if not ancestor then
+					break
+				end
+
+				local inheritProps = ancestor.PropertyMap
+				local inherited = ancestor.Inherited
+				
+				local baseObject = if inherited
+					then inherited.Object
+					else nil
+				
+				if inheritProps and baseObject then
+					for name, prop in pairs(inheritProps) do
+						local tags = getTags(prop)
+						
+						if tags.ReadOnly then
+							continue
+						end
+						
+						local gotPropValue, propValue = pcall(function ()
+							return object[name]
+						end)
+
+						local gotBaseValue, baseValue = pcall(function ()
+							return baseObject[name]
+						end)
+						
+						if gotBaseValue and gotPropValue then
+							if propValue ~= baseValue then
+								diffProps[name] = propValue
+							end
+						end
+					end
+				end
+			end
+			
+			if classTags.Service or next(diffProps) then
+				local headerFormat = "public %s()"
+
+				if next(diffProps) then
+					headerFormat ..= " : base()"
+				end
+
+				writeLine(headerFormat, className)
 				openStack()
 				
-				writeLine("IsService = true;")
+				if classTags.Service then
+					writeLine("IsService = true;")
+					
+					if next(diffProps) then
+						writeLine()
+					end
+				end
+
+				if next(diffProps) then
+					local diffNames = {}
+
+					for name in pairs(diffProps) do
+						table.insert(diffNames, name)
+					end
+
+					table.sort(diffNames)
+
+					for i, name in ipairs(diffNames) do
+						local value = diffProps[name]
+						local valueType = typeof(value)
+						local formatFunc = getFormatFunction(valueType)
+						
+						if formatFunc ~= formatting.Null then
+							local result = formatFunc(value)
+
+							if result == "" then
+								result = tostring(value)
+							end
+
+							writeLine("%s = %s;", name, result)
+						end
+					end
+				end
+				
 				closeStack()
 			end
+			
+			table.sort(propNames)
 			
 			for j, propName in ipairs(propNames) do
 				local prop = propMap[propName]
@@ -481,7 +564,7 @@ local function generateClasses()
 				local couldSave = (serial.CanSave or propTags.Deprecated or redirect)
 				
 				if serial.CanLoad and couldSave then
-					if firstLine and classTags.Service then
+					if firstLine and (classTags.Service or next(diffProps)) then
 						writeLine()
 					end
 					

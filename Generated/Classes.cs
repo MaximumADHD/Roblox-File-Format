@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.532.0.5320475
+// Updated as of 0.533.0.5330256
 
 using System;
 
@@ -697,6 +697,11 @@ namespace RobloxFiles
 
     public class AlignPosition : Constraint
     {
+        public AlignPosition() : base()
+        {
+            Color = BrickColor.FromNumber(194);
+        }
+
         public bool ApplyAtCenterOfMass;
         public float MaxForce = 10000;
         public float MaxVelocity = float.MaxValue;
@@ -717,6 +722,11 @@ namespace RobloxFiles
 
     public class BallSocketConstraint : Constraint
     {
+        public BallSocketConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(1009);
+        }
+
         public bool LimitsEnabled;
         public float MaxFrictionTorqueXml = 0;
         public float Radius = 0.15f;
@@ -729,6 +739,11 @@ namespace RobloxFiles
 
     public class HingeConstraint : Constraint
     {
+        public HingeConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(1009);
+        }
+
         public ActuatorType ActuatorType = ActuatorType.None;
         public float AngularResponsiveness = 45;
         public float AngularSpeed = 0;
@@ -755,6 +770,11 @@ namespace RobloxFiles
 
     public class LinearVelocity : Constraint
     {
+        public LinearVelocity() : base()
+        {
+            Color = BrickColor.FromNumber(26);
+        }
+
         public Vector3 LineDirection = new Vector3(1, 0, 0);
         public float LineVelocity = 0;
         public float MaxForce = 1000;
@@ -768,21 +788,35 @@ namespace RobloxFiles
 
     public class PlaneConstraint : Constraint
     {
+        public PlaneConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(194);
+        }
     }
 
     public class Plane : PlaneConstraint
     {
+        public Plane() : base()
+        {
+            Color = BrickColor.FromNumber(194);
+        }
     }
 
     public class RigidConstraint : Constraint
     {
-        public bool DestructionEnabled;
-        public float DestructionForce = float.MaxValue;
-        public float DestructionTorque = float.MaxValue;
+        public RigidConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(194);
+        }
     }
 
     public class RodConstraint : Constraint
     {
+        public RodConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(26);
+        }
+
         public float Length = 5;
         public float LimitAngle0 = 90;
         public float LimitAngle1 = 90;
@@ -792,6 +826,11 @@ namespace RobloxFiles
 
     public class RopeConstraint : Constraint
     {
+        public RopeConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(25);
+        }
+
         public float Length = 5;
         public float Restitution = 0;
         public float Thickness = 0.1f;
@@ -804,6 +843,11 @@ namespace RobloxFiles
 
     public abstract class SlidingBallConstraint : Constraint
     {
+        public SlidingBallConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(1009);
+        }
+
         public ActuatorType ActuatorType = ActuatorType.None;
         public bool LimitsEnabled;
         public float LinearResponsiveness = 45;
@@ -821,6 +865,11 @@ namespace RobloxFiles
 
     public class CylindricalConstraint : SlidingBallConstraint
     {
+        public CylindricalConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(1009);
+        }
+
         public ActuatorType AngularActuatorType = ActuatorType.None;
         public bool AngularLimitsEnabled;
         public float AngularResponsiveness = 45;
@@ -839,10 +888,19 @@ namespace RobloxFiles
 
     public class PrismaticConstraint : SlidingBallConstraint
     {
+        public PrismaticConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(1009);
+        }
     }
 
     public class SpringConstraint : Constraint
     {
+        public SpringConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(200);
+        }
+
         public float Coils = 3;
         public float Damping = 0;
         public float FreeLength = 1;
@@ -863,6 +921,11 @@ namespace RobloxFiles
 
     public class TorsionSpringConstraint : Constraint
     {
+        public TorsionSpringConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(200);
+        }
+
         public float Coils = 8;
         public float Damping = 0.01f;
 
@@ -879,6 +942,11 @@ namespace RobloxFiles
 
     public class UniversalConstraint : Constraint
     {
+        public UniversalConstraint() : base()
+        {
+            Color = BrickColor.FromNumber(1009);
+        }
+
         public bool LimitsEnabled;
         public float MaxAngle = 45;
         public float Radius = 0.2f;
@@ -1366,7 +1434,7 @@ namespace RobloxFiles
         public Color3 BorderColor3 = Color3.FromRGB(27, 42, 53);
         public BorderMode BorderMode = BorderMode.Outline;
         public int BorderSizePixel = 1;
-        public bool ClipsDescendants = false;
+        public bool ClipsDescendants = true;
 
         [Obsolete]
         public bool Draggable;
@@ -1402,11 +1470,23 @@ namespace RobloxFiles
 
     public class Frame : GuiObject
     {
+        public Frame() : base()
+        {
+            ClipsDescendants = false;
+        }
+
         public FrameStyle Style = FrameStyle.Custom;
     }
 
     public abstract class GuiButton : GuiObject
     {
+        public GuiButton() : base()
+        {
+            Active = true;
+            ClipsDescendants = false;
+            Selectable = true;
+        }
+
         public bool AutoButtonColor = true;
         public bool Modal;
         public bool Selected;
@@ -1415,6 +1495,13 @@ namespace RobloxFiles
 
     public class ImageButton : GuiButton
     {
+        public ImageButton() : base()
+        {
+            Active = true;
+            ClipsDescendants = false;
+            Selectable = true;
+        }
+
         public Content HoverImage = "";
         public Content Image = "";
         public Color3 ImageColor3 = new Color3(1, 1, 1);
@@ -1431,6 +1518,13 @@ namespace RobloxFiles
 
     public class TextButton : GuiButton
     {
+        public TextButton() : base()
+        {
+            Active = true;
+            ClipsDescendants = false;
+            Selectable = true;
+        }
+
         public Font Font = Font.Legacy;
         public FontFace FontFace = new FontFace("rbxasset://fonts/families/LegacyArial.json");
 
@@ -1486,10 +1580,19 @@ namespace RobloxFiles
 
     public abstract class GuiLabel : GuiObject
     {
+        public GuiLabel() : base()
+        {
+            ClipsDescendants = false;
+        }
     }
 
     public class ImageLabel : GuiLabel
     {
+        public ImageLabel() : base()
+        {
+            ClipsDescendants = false;
+        }
+
         public Content Image = "";
         public Color3 ImageColor3 = new Color3(1, 1, 1);
         public Vector2 ImageRectOffset = new Vector2();
@@ -1504,6 +1607,11 @@ namespace RobloxFiles
 
     public class TextLabel : GuiLabel
     {
+        public TextLabel() : base()
+        {
+            ClipsDescendants = false;
+        }
+
         public Font Font = Font.Legacy;
         public FontFace FontFace = new FontFace("rbxasset://fonts/families/LegacyArial.json");
 
@@ -1559,6 +1667,12 @@ namespace RobloxFiles
 
     public class ScrollingFrame : GuiObject
     {
+        public ScrollingFrame() : base()
+        {
+            Selectable = true;
+            SelectionGroup = true;
+        }
+
         public AutomaticSize AutomaticCanvasSize = AutomaticSize.None;
         public Content BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png";
         public Vector2 CanvasPosition = new Vector2();
@@ -1578,6 +1692,13 @@ namespace RobloxFiles
 
     public class TextBox : GuiObject
     {
+        public TextBox() : base()
+        {
+            Active = true;
+            ClipsDescendants = false;
+            Selectable = true;
+        }
+
         public bool ClearTextOnFocus = true;
         public Font Font = Font.Legacy;
         public FontFace FontFace = new FontFace("rbxasset://fonts/families/LegacyArial.json");
@@ -1639,6 +1760,11 @@ namespace RobloxFiles
 
     public class VideoFrame : GuiObject
     {
+        public VideoFrame() : base()
+        {
+            ClipsDescendants = false;
+        }
+
         public bool Looped;
         public bool Playing;
         public double TimePosition = 0;
@@ -1648,6 +1774,11 @@ namespace RobloxFiles
 
     public class ViewportFrame : GuiObject
     {
+        public ViewportFrame() : base()
+        {
+            ClipsDescendants = false;
+        }
+
         public Color3 Ambient = Color3.FromRGB(200, 200, 200);
         public CFrame CameraCFrame = new CFrame();
         public float CameraFieldOfView = 70;
@@ -1792,6 +1923,12 @@ namespace RobloxFiles
 
     public class ImageHandleAdornment : HandleAdornment
     {
+        public ImageHandleAdornment() : base()
+        {
+            Color = BrickColor.FromNumber(1);
+            Color3 = Color3.FromRGB(242, 243, 243);
+        }
+
         public Content Image = "rbxasset://textures/SurfacesDefault.png";
         public Vector2 Size = new Vector2(1, 1);
     }
@@ -2626,6 +2763,14 @@ namespace RobloxFiles
 
     public abstract class FormFactorPart : BasePart
     {
+        public FormFactorPart() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         [Obsolete]
         public FormFactor FormFactor
         {
@@ -2645,6 +2790,14 @@ namespace RobloxFiles
 
     public class Part : FormFactorPart
     {
+        public Part() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public PartType Shape
         {
             get => shape;
@@ -2656,16 +2809,40 @@ namespace RobloxFiles
 
     public class FlagStand : Part
     {
+        public FlagStand() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public BrickColor TeamColor = BrickColor.FromNumber(194);
     }
 
     public class Seat : Part
     {
+        public Seat() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public bool Disabled;
     }
 
     public class SkateboardPlatform : Part
     {
+        public SkateboardPlatform() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public int Steer = 0;
         public bool StickyWheels = true;
         public int Throttle = 0;
@@ -2673,6 +2850,14 @@ namespace RobloxFiles
 
     public class SpawnLocation : Part
     {
+        public SpawnLocation() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public bool AllowTeamChangeOnTouch;
         public int Duration = 10;
         public bool Enabled = true;
@@ -2682,10 +2867,26 @@ namespace RobloxFiles
 
     public class WedgePart : FormFactorPart
     {
+        public WedgePart() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            size = new Vector3(4, 1.2f, 2);
+        }
     }
 
     public class Terrain : BasePart
     {
+        public Terrain() : base()
+        {
+            Anchored = true;
+            BottomSurface = SurfaceType.Inlet;
+            Locked = true;
+            Size = new Vector3(2044, 252, 2044);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(2044, 252, 2044);
+        }
+
         public TerrainAcquisitionMethod AcquisitionMethod = TerrainAcquisitionMethod.None;
         public byte[] ClusterGridV3;
         public bool Decoration;
@@ -2701,6 +2902,12 @@ namespace RobloxFiles
 
     public abstract class TriangleMeshPart : BasePart
     {
+        public TriangleMeshPart() : base()
+        {
+            Size = new Vector3(4, 1.2f, 2);
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public Vector3 InitialSize = new Vector3(1, 1, 1);
         public byte[] LODData;
         public SharedString PhysicalConfigData = SharedString.FromBase64("1B2M2Y8AsgTpgAmY7PhCfg==");
@@ -2709,6 +2916,12 @@ namespace RobloxFiles
 
     public class MeshPart : TriangleMeshPart
     {
+        public MeshPart() : base()
+        {
+            Size = new Vector3(4, 1.2f, 2);
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public bool DoubleSided;
         public bool HasJointOffset;
         public bool HasSkinnedMesh;
@@ -2729,6 +2942,15 @@ namespace RobloxFiles
 
     public class PartOperation : TriangleMeshPart
     {
+        public PartOperation() : base()
+        {
+            BrickColor = BrickColor.FromNumber(1001);
+            Color = new Color3(1, 1, 1);
+            Size = new Vector3(4, 1.2f, 2);
+            brickColor = BrickColor.FromNumber(1001);
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public Content AssetId = "";
         public byte[] ChildData;
         public SharedString ChildData2 = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
@@ -2742,14 +2964,42 @@ namespace RobloxFiles
 
     public class NegateOperation : PartOperation
     {
+        public NegateOperation() : base()
+        {
+            Anchored = true;
+            BrickColor = BrickColor.FromNumber(1001);
+            CanCollide = false;
+            Color = new Color3(1, 1, 1);
+            Size = new Vector3(4, 1.2f, 2);
+            brickColor = BrickColor.FromNumber(1001);
+            size = new Vector3(4, 1.2f, 2);
+        }
     }
 
     public class UnionOperation : PartOperation
     {
+        public UnionOperation() : base()
+        {
+            BrickColor = BrickColor.FromNumber(1001);
+            Color = new Color3(1, 1, 1);
+            Size = new Vector3(4, 1.2f, 2);
+            brickColor = BrickColor.FromNumber(1001);
+            size = new Vector3(4, 1.2f, 2);
+        }
     }
 
     public class TrussPart : BasePart
     {
+        public TrussPart() : base()
+        {
+            BackSurface = SurfaceType.Universal;
+            BottomSurface = SurfaceType.Universal;
+            FrontSurface = SurfaceType.Universal;
+            LeftSurface = SurfaceType.Universal;
+            RightSurface = SurfaceType.Universal;
+            TopSurface = SurfaceType.Universal;
+        }
+
         public Style Style
         {
             get => style;
@@ -2761,6 +3011,14 @@ namespace RobloxFiles
 
     public class VehicleSeat : BasePart
     {
+        public VehicleSeat() : base()
+        {
+            BottomSurface = SurfaceType.Inlet;
+            Size = new Vector3(4, 1.2f, 2);
+            TopSurface = SurfaceType.Studs;
+            size = new Vector3(4, 1.2f, 2);
+        }
+
         public bool Disabled;
         public bool HeadsUpDisplay = true;
         public float MaxSpeed = 25;
@@ -3755,6 +4013,14 @@ namespace RobloxFiles
         public BrickColor TeamColor = BrickColor.FromNumber(1);
     }
 
+    public class TeamCreateService : Instance
+    {
+        public TeamCreateService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Teams : Instance
     {
         public Teams()
@@ -3779,6 +4045,14 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool CustomizedTeleportUI;
+    }
+
+    public class TemporaryCageMeshProvider : Instance
+    {
+        public TemporaryCageMeshProvider()
+        {
+            IsService = true;
+        }
     }
 
     public class TemporaryScriptService : Instance
@@ -4036,6 +4310,11 @@ namespace RobloxFiles
 
     public class UIListLayout : UIGridStyleLayout
     {
+        public UIListLayout() : base()
+        {
+            FillDirection = FillDirection.Vertical;
+        }
+
         public UDim Padding = new UDim();
     }
 
@@ -4054,6 +4333,11 @@ namespace RobloxFiles
 
     public class UITableLayout : UIGridStyleLayout
     {
+        public UITableLayout() : base()
+        {
+            FillDirection = FillDirection.Vertical;
+        }
+
         public bool FillEmptySpaceColumns;
         public bool FillEmptySpaceRows;
         public TableMajorAxis MajorAxis = TableMajorAxis.RowMajor;
