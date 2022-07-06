@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.532.0.5320475
+// Updated as of 0.534.0.5340446
 
 namespace RobloxFiles.Enums
 {
@@ -1052,6 +1052,14 @@ namespace RobloxFiles.Enums
         YXZ,
         ZXY,
         ZYX
+    }
+
+    public enum RunContext
+    {
+        Legacy,
+        Server,
+        Client,
+        Plugin
     }
 
     public enum ScaleType

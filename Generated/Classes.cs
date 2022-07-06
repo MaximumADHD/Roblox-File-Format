@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.533.0.5330256
+// Updated as of 0.534.0.5340446
 
 using System;
 
@@ -2435,6 +2435,7 @@ namespace RobloxFiles
     public abstract class BaseScript : LuaSourceContainer
     {
         public bool Disabled;
+        public RunContext RunContext = RunContext.Legacy;
     }
 
     public class Script : BaseScript
