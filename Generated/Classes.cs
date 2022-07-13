@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.534.0.5340446
+// Updated as of 0.535.0.5350277
 
 using System;
 
@@ -3082,6 +3082,7 @@ namespace RobloxFiles
         public int StreamingTargetRadius = 1024;
         public bool TerrainWeldsFixed = true;
         public bool TouchesUseCollisionGroups;
+        public UnionsScaleNonuniformly UnionsScaleNonuniformly = UnionsScaleNonuniformly.Default;
     }
 
     public class WorldModel : WorldRoot
@@ -4046,14 +4047,6 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool CustomizedTeleportUI;
-    }
-
-    public class TemporaryCageMeshProvider : Instance
-    {
-        public TemporaryCageMeshProvider()
-        {
-            IsService = true;
-        }
     }
 
     public class TemporaryScriptService : Instance

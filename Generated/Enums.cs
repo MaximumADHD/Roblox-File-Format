@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.534.0.5340446
+// Updated as of 0.535.0.5350277
 
 namespace RobloxFiles.Enums
 {
@@ -1248,6 +1248,13 @@ namespace RobloxFiles.Enums
         Unknown,
         True,
         False
+    }
+
+    public enum UnionsScaleNonuniformly
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum VelocityConstraintMode
