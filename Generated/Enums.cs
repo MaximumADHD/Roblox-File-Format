@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.535.0.5350277
+// Updated as of 0.538.0.5380364
 
 namespace RobloxFiles.Enums
 {
@@ -1281,6 +1281,13 @@ namespace RobloxFiles.Enums
     {
         Default,
         Disabled,
+        Enabled
+    }
+
+    public enum VolumetricAudio
+    {
+        Disabled,
+        Automatic,
         Enabled
     }
 

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.535.0.5350277
+// Updated as of 0.538.0.5380364
 
 using System;
 
@@ -11,14 +11,6 @@ using RobloxFiles.Utility;
 
 namespace RobloxFiles
 {
-    public class ABTestService : Instance
-    {
-        public ABTestService()
-        {
-            IsService = true;
-        }
-    }
-
     public class Accoutrement : Instance
     {
         public CFrame AttachmentPoint = new CFrame();
@@ -1235,6 +1227,14 @@ namespace RobloxFiles
         public float StudsPerTileV = 2;
     }
 
+    public class FacialAnimationRecordingService : Instance
+    {
+        public FacialAnimationRecordingService()
+        {
+            IsService = true;
+        }
+    }
+
     public class FacialAnimationStreamingService : Instance
     {
         public FacialAnimationStreamingService()
@@ -1944,6 +1944,10 @@ namespace RobloxFiles
         public float Radius = 1;
     }
 
+    public class WireframeHandleAdornment : HandleAdornment
+    {
+    }
+
     public class ParabolaAdornment : PVAdornment
     {
     }
@@ -2009,7 +2013,6 @@ namespace RobloxFiles
         }
 
         public bool AutoSelectGuiEnabled = true;
-        public bool CoreGuiNavigationEnabled = true;
         public bool GuiNavigationEnabled = true;
         public GuiObject SelectedObject;
     }
@@ -2532,6 +2535,7 @@ namespace RobloxFiles
     {
         public Material BaseMaterial = Material.Plastic;
         public Content ColorMap = "";
+        public PhysicalProperties CustomPhysicalProperties;
         public MaterialPattern MaterialPattern = MaterialPattern.Regular;
         public Content MetalnessMap = "";
         public Content NormalMap = "";
@@ -2927,14 +2931,6 @@ namespace RobloxFiles
         public bool HasJointOffset;
         public bool HasSkinnedMesh;
         public Vector3 JointOffset = new Vector3();
-
-        [Obsolete]
-        public Content MeshID
-        {
-            get => MeshId;
-            set => MeshId = value;
-        }
-
         public Content MeshId = "";
         public RenderFidelity RenderFidelity = RenderFidelity.Precise;
         public Content TextureID = "";
@@ -3245,6 +3241,14 @@ namespace RobloxFiles
     public class PluginGuiService : Instance
     {
         public PluginGuiService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class PluginManagementService : Instance
+    {
+        public PluginManagementService()
         {
             IsService = true;
         }
@@ -3827,6 +3831,7 @@ namespace RobloxFiles
         public float DopplerScale = 1;
         public bool RespectFilteringEnabled;
         public float RolloffScale = 1;
+        public VolumetricAudio VolumetricAudio = VolumetricAudio.Disabled;
     }
 
     public class Sparkles : Instance
@@ -4047,6 +4052,14 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool CustomizedTeleportUI;
+    }
+
+    public class TemporaryCageMeshProvider : Instance
+    {
+        public TemporaryCageMeshProvider()
+        {
+            IsService = true;
+        }
     }
 
     public class TemporaryScriptService : Instance
