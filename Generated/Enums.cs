@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.538.0.5380364
+// Updated as of 0.540.0.5400503
 
 namespace RobloxFiles.Enums
 {
@@ -761,6 +761,13 @@ namespace RobloxFiles.Enums
         Enabled
     }
 
+    public enum LoadDynamicHeads
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
     public enum Material
     {
         Plastic = 256,
@@ -925,13 +932,6 @@ namespace RobloxFiles.Enums
         FacingCameraWorldUp,
         VelocityParallel,
         VelocityPerpendicular
-    }
-
-    public enum PhysicsInertiaAndVolumeFix
-    {
-        Default,
-        Disabled,
-        Enabled
     }
 
     public enum PhysicsSteppingMethod

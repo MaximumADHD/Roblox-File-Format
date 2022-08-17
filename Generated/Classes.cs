@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.538.0.5380364
+// Updated as of 0.540.0.5400503
 
 using System;
 
@@ -659,6 +659,14 @@ namespace RobloxFiles
         }
     }
 
+    public class CommandService : Instance
+    {
+        public CommandService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Configuration : Instance
     {
     }
@@ -982,6 +990,57 @@ namespace RobloxFiles
 
     public class VehicleController : Controller
     {
+    }
+
+    public abstract class ControllerBase : Instance
+    {
+        public float MoveSpeedFactor = 1;
+        public bool RigidityEnabled;
+    }
+
+    public class AirController : ControllerBase
+    {
+        public bool CancelAirMomentum;
+        public float MoveMaxForce = 10000;
+        public float OrientationMaxTorque = 10000;
+        public float OrientationSpeed = 100;
+        public Vector3 VectorForce = new Vector3();
+    }
+
+    public class ClimbController : ControllerBase
+    {
+        public float AccelerationTime = 0;
+        public float MoveMaxForce = float.MaxValue;
+        public float OrientationMaxTorque = float.MaxValue;
+        public float OrientationSpeed = 100;
+    }
+
+    public class GroundController : ControllerBase
+    {
+        public float AccelerationLean = 1;
+        public float AccelerationTime = 0;
+        public float AlignSpeed = 100;
+        public float AlignTorque = float.MaxValue;
+        public float DecelerationTime = 0;
+        public float Friction = 2;
+        public float FrictionWeight = 1;
+        public float MaxSlopeAngle = 89;
+        public float StandForce = 10000;
+        public float StandSpeed = 100;
+        public float TurningFactor = 1;
+    }
+
+    public class SwimController : ControllerBase
+    {
+        public float AccelerationTime = 0;
+        public float OrientationMaxTorque = 100000;
+        public float OrientationSpeed = 100;
+    }
+
+    public class ControllerManager : Instance
+    {
+        public float BaseMoveSpeed = 16;
+        public float HipHeight = 0;
     }
 
     public class ControllerService : Instance
@@ -1826,15 +1885,19 @@ namespace RobloxFiles
     {
     }
 
-    public class SurfaceGui : LayerCollector
+    public abstract class SurfaceGuiBase : LayerCollector
     {
         public bool Active = true;
         public Instance Adornee;
+        public NormalId Face = NormalId.Front;
+    }
+
+    public class SurfaceGui : SurfaceGuiBase
+    {
         public bool AlwaysOnTop;
         public float Brightness = 1;
         public Vector2 CanvasSize = new Vector2(800, 600);
         public bool ClipsDescendants;
-        public NormalId Face = NormalId.Front;
         public float LightInfluence = 0;
         public float PixelsPerStud = 50;
         public SurfaceGuiSizingMode SizingMode = SurfaceGuiSizingMode.FixedSize;
@@ -2138,6 +2201,7 @@ namespace RobloxFiles
         public Color3 LeftArmColor = new Color3();
         public long LeftLeg = 0;
         public Color3 LeftLegColor = new Color3();
+        public long MoodAnimation = 0;
         public string NeckAccessory = "";
         public long Pants = 0;
         public float ProportionScale = 1;
@@ -3066,7 +3130,6 @@ namespace RobloxFiles
         public HumanoidOnlySetCollisionsOnStateChange HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
-        public PhysicsInertiaAndVolumeFix PhysicsInertiaAndVolumeFix = PhysicsInertiaAndVolumeFix.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
         public ReplicateInstanceDestroySetting ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default;
         public AnimatorRetargetingMode Retargeting = AnimatorRetargetingMode.Default;
@@ -3901,6 +3964,7 @@ namespace RobloxFiles
         public DevComputerMovementMode DevComputerMovementMode = DevComputerMovementMode.UserChoice;
         public DevTouchCameraMovementMode DevTouchCameraMovementMode = DevTouchCameraMovementMode.UserChoice;
         public DevTouchMovementMode DevTouchMovementMode = DevTouchMovementMode.UserChoice;
+        public LoadDynamicHeads EnableDynamicHeads = LoadDynamicHeads.Default;
         public bool EnableMouseLockOption = true;
         public long GameSettingsAssetIDFace = 0;
         public long GameSettingsAssetIDHead = 0;
@@ -4054,14 +4118,6 @@ namespace RobloxFiles
         public bool CustomizedTeleportUI;
     }
 
-    public class TemporaryCageMeshProvider : Instance
-    {
-        public TemporaryCageMeshProvider()
-        {
-            IsService = true;
-        }
-    }
-
     public class TemporaryScriptService : Instance
     {
         public TemporaryScriptService()
@@ -4177,14 +4233,6 @@ namespace RobloxFiles
     public class ToastNotificationService : Instance
     {
         public ToastNotificationService()
-        {
-            IsService = true;
-        }
-    }
-
-    public class ToolboxService : Instance
-    {
-        public ToolboxService()
         {
             IsService = true;
         }
