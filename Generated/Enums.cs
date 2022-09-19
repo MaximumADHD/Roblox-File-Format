@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.540.0.5400503
+// Updated as of 0.544.0.5440300
 
 namespace RobloxFiles.Enums
 {
@@ -452,6 +452,16 @@ namespace RobloxFiles.Enums
     {
         R6,
         R15
+    }
+
+    public enum IKControlType
+    {
+        Null,
+        Position,
+        Rotation,
+        Transform,
+        LookAt,
+        Length
     }
 
     public enum InOut
@@ -1135,6 +1145,13 @@ namespace RobloxFiles.Enums
         Default,
         LowMemory,
         Opportunistic
+    }
+
+    public enum StreamingIntegrityMode
+    {
+        Default,
+        Disabled,
+        MinimumRadiusPause
     }
 
     public enum StreamingPauseMode

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.540.0.5400503
+// Updated as of 0.544.0.5440300
 
 using System;
 
@@ -121,6 +121,14 @@ namespace RobloxFiles
     public class AssetCounterService : Instance
     {
         public AssetCounterService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class AssetDeliveryProxy : Instance
+    {
+        public AssetDeliveryProxy()
         {
             IsService = true;
         }
@@ -659,14 +667,6 @@ namespace RobloxFiles
         }
     }
 
-    public class CommandService : Instance
-    {
-        public CommandService()
-        {
-            IsService = true;
-        }
-    }
-
     public class Configuration : Instance
     {
     }
@@ -687,12 +687,10 @@ namespace RobloxFiles
         public float MaxAngularVelocity = float.MaxValue;
         public float MaxTorque = 10000;
         public OrientationAlignmentMode Mode = OrientationAlignmentMode.TwoAttachment;
-        public Vector3 PrimaryAxis = new Vector3(1, 0, 0);
         public bool PrimaryAxisOnly;
         public bool ReactionTorqueEnabled;
         public float Responsiveness = 10;
         public bool RigidityEnabled;
-        public Vector3 SecondaryAxis = new Vector3(0, 1, 0);
     }
 
     public class AlignPosition : Constraint
@@ -1000,10 +998,10 @@ namespace RobloxFiles
 
     public class AirController : ControllerBase
     {
-        public bool CancelAirMomentum;
+        public bool CancelAirMomentum = true;
         public float MoveMaxForce = 10000;
         public float OrientationMaxTorque = 10000;
-        public float OrientationSpeed = 100;
+        public float OrientationSpeedFactor = 1;
         public Vector3 VectorForce = new Vector3();
     }
 
@@ -1012,7 +1010,7 @@ namespace RobloxFiles
         public float AccelerationTime = 0;
         public float MoveMaxForce = float.MaxValue;
         public float OrientationMaxTorque = float.MaxValue;
-        public float OrientationSpeed = 100;
+        public float OrientationSpeedFactor = 1;
     }
 
     public class GroundController : ControllerBase
@@ -1020,7 +1018,7 @@ namespace RobloxFiles
         public float AccelerationLean = 1;
         public float AccelerationTime = 0;
         public float AlignSpeed = 100;
-        public float AlignTorque = float.MaxValue;
+        public float AlignTorque = 10000;
         public float DecelerationTime = 0;
         public float Friction = 2;
         public float FrictionWeight = 1;
@@ -1033,14 +1031,19 @@ namespace RobloxFiles
     public class SwimController : ControllerBase
     {
         public float AccelerationTime = 0;
-        public float OrientationMaxTorque = 100000;
-        public float OrientationSpeed = 100;
+        public float PitchMaxTorque = 10000;
+        public float PitchSpeedFactor = 1;
+        public float RollMaxTorque = 10000;
+        public float RollSpeedFactor = 1;
     }
 
     public class ControllerManager : Instance
     {
         public float BaseMoveSpeed = 16;
+        public float BaseTurnSpeed = 8;
+        public Vector3 FacingDirection = new Vector3(0, 0, 1);
         public float HipHeight = 0;
+        public Vector3 MovingDirection = new Vector3();
     }
 
     public class ControllerService : Instance
@@ -2220,6 +2223,19 @@ namespace RobloxFiles
         public float WidthScale = 1;
     }
 
+    public class IKControl : Instance
+    {
+        public Instance ChainRoot;
+        public bool Enabled = true;
+        public Instance EndEffector;
+        public CFrame Offset = new CFrame();
+        public Instance Pole;
+        public int Priority = 0;
+        public Instance Target;
+        public IKControlType Type = IKControlType.Null;
+        public float Weight = 1;
+    }
+
     public abstract class ILegacyStudioBridge : Instance
     {
         public ILegacyStudioBridge()
@@ -2239,6 +2255,14 @@ namespace RobloxFiles
     public class IXPService : Instance
     {
         public IXPService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class IncrementalPatchBuilder : Instance
+    {
+        public IncrementalPatchBuilder()
         {
             IsService = true;
         }
@@ -2718,6 +2742,7 @@ namespace RobloxFiles
         public bool CanQuery = true;
         public bool CanTouch = true;
         public bool CastShadow = true;
+        public string CollisionGroup = "Default";
         public int CollisionGroupId = 0;
 
         public Color3 Color
@@ -3136,6 +3161,7 @@ namespace RobloxFiles
         public SignalBehavior SignalBehavior = SignalBehavior.Default;
         public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
         public bool StreamingEnabled;
+        public StreamingIntegrityMode StreamingIntegrityMode = StreamingIntegrityMode.Default;
         public int StreamingMinRadius = 64;
         public StreamingPauseMode StreamingPauseMode = StreamingPauseMode.Default;
         public int StreamingTargetRadius = 1024;
@@ -4116,6 +4142,14 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool CustomizedTeleportUI;
+    }
+
+    public class TemporaryCageMeshProvider : Instance
+    {
+        public TemporaryCageMeshProvider()
+        {
+            IsService = true;
+        }
     }
 
     public class TemporaryScriptService : Instance
