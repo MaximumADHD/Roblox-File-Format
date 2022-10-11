@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.544.0.5440300
+// Updated as of 0.547.0.5470549
 
 using System;
 
@@ -23,6 +23,11 @@ namespace RobloxFiles
 
     public class Hat : Accoutrement
     {
+    }
+
+    public class AdPortal : Instance
+    {
+        public AdPortalType PortalType = AdPortalType.Forward;
     }
 
     public class AdService : Instance
@@ -108,6 +113,7 @@ namespace RobloxFiles
 
     public class Animator : Instance
     {
+        public bool PreferLodEnabled = true;
     }
 
     public class AppUpdateService : Instance
@@ -998,7 +1004,7 @@ namespace RobloxFiles
 
     public class AirController : ControllerBase
     {
-        public bool CancelAirMomentum = true;
+        public bool CancelAirMomentum;
         public float MoveMaxForce = 10000;
         public float OrientationMaxTorque = 10000;
         public float OrientationSpeedFactor = 1;
@@ -1022,7 +1028,7 @@ namespace RobloxFiles
         public float DecelerationTime = 0;
         public float Friction = 2;
         public float FrictionWeight = 1;
-        public float MaxSlopeAngle = 89;
+        public float GroundOffset = 1;
         public float StandForce = 10000;
         public float StandSpeed = 100;
         public float TurningFactor = 1;
@@ -1042,7 +1048,6 @@ namespace RobloxFiles
         public float BaseMoveSpeed = 16;
         public float BaseTurnSpeed = 8;
         public Vector3 FacingDirection = new Vector3(0, 0, 1);
-        public float HipHeight = 0;
         public Vector3 MovingDirection = new Vector3();
     }
 
@@ -1892,11 +1897,21 @@ namespace RobloxFiles
     {
         public bool Active = true;
         public Instance Adornee;
-        public NormalId Face = NormalId.Front;
+        public NormalId Face = NormalId.Back;
+    }
+
+    public class AdGui : SurfaceGuiBase
+    {
+        public AdShape AdShape = AdShape.HorizontalRectangle;
     }
 
     public class SurfaceGui : SurfaceGuiBase
     {
+        public SurfaceGui() : base()
+        {
+            Face = NormalId.Front;
+        }
+
         public bool AlwaysOnTop;
         public float Brightness = 1;
         public Vector2 CanvasSize = new Vector2(800, 600);
@@ -2146,6 +2161,7 @@ namespace RobloxFiles
 
         public HumanoidDisplayDistanceType DisplayDistanceType = HumanoidDisplayDistanceType.Viewer;
         public string DisplayName = "";
+        public bool EvaluateStateMachine = true;
 
         public float Health
         {
@@ -2229,10 +2245,9 @@ namespace RobloxFiles
         public bool Enabled = true;
         public Instance EndEffector;
         public CFrame Offset = new CFrame();
-        public Instance Pole;
         public int Priority = 0;
         public Instance Target;
-        public IKControlType Type = IKControlType.Null;
+        public IKControlType Type = IKControlType.Transform;
         public float Weight = 1;
     }
 
@@ -2266,6 +2281,9 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public bool HighCompression;
+        public bool ZstdCompression;
     }
 
     public class InsertService : Instance

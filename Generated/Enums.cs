@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.544.0.5440300
+// Updated as of 0.547.0.5470549
 
 namespace RobloxFiles.Enums
 {
@@ -39,6 +39,17 @@ namespace RobloxFiles.Enums
         None,
         Motor,
         Servo
+    }
+
+    public enum AdPortalType
+    {
+        Forward,
+        Return
+    }
+
+    public enum AdShape
+    {
+        HorizontalRectangle = 1
     }
 
     public enum AdornCullingMode
@@ -456,12 +467,10 @@ namespace RobloxFiles.Enums
 
     public enum IKControlType
     {
-        Null,
+        Transform,
         Position,
         Rotation,
-        Transform,
-        LookAt,
-        Length
+        LookAt
     }
 
     public enum InOut
