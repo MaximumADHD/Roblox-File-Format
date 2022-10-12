@@ -193,7 +193,7 @@ namespace RobloxFiles.XmlFormat
                 else if (a == b)
                     isDefault = true;
                 
-                if (!isDefault)
+                if (!isDefault || propName == "Name")
                 {
                     XmlNode propNode = WriteProperty(prop, doc, file);
 
