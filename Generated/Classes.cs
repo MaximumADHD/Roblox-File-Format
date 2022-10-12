@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.547.0.5470549
+// Updated as of 0.548.0.5480523
 
 using System;
 
@@ -1004,7 +1004,7 @@ namespace RobloxFiles
 
     public class AirController : ControllerBase
     {
-        public bool CancelAirMomentum;
+        public bool CancelAirMomentum = true;
         public float MoveMaxForce = 10000;
         public float OrientationMaxTorque = 10000;
         public float OrientationSpeedFactor = 1;
@@ -2241,10 +2241,12 @@ namespace RobloxFiles
 
     public class IKControl : Instance
     {
+        public CFrame AlignmentOffset = new CFrame();
         public Instance ChainRoot;
         public bool Enabled = true;
         public Instance EndEffector;
         public CFrame Offset = new CFrame();
+        public Instance Pole;
         public int Priority = 0;
         public Instance Target;
         public IKControlType Type = IKControlType.Transform;
@@ -3140,6 +3142,7 @@ namespace RobloxFiles
         public CFrame ModelMeshCFrame = new CFrame();
         public SharedString ModelMeshData = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
         public Vector3 ModelMeshSize = new Vector3();
+        public ModelStreamingMode ModelStreamingMode = ModelStreamingMode.Default;
         public bool NeedsPivotMigration;
         public BasePart PrimaryPart;
         public Optional<CFrame> WorldPivotData;

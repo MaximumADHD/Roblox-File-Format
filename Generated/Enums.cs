@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.547.0.5470549
+// Updated as of 0.548.0.5480523
 
 namespace RobloxFiles.Enums
 {
@@ -864,6 +864,12 @@ namespace RobloxFiles.Enums
         Disabled
     }
 
+    public enum ModelStreamingMode
+    {
+        Default,
+        Atomic
+    }
+
     public enum MouseBehavior
     {
         Default,
@@ -1160,7 +1166,8 @@ namespace RobloxFiles.Enums
     {
         Default,
         Disabled,
-        MinimumRadiusPause
+        MinimumRadiusPause,
+        PauseOutsideLoadedArea
     }
 
     public enum StreamingPauseMode
