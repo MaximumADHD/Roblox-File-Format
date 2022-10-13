@@ -2,8 +2,9 @@
 
 namespace RobloxFiles.DataTypes
 {
-    // Implementation of Roblox's Font datatype.
-    // Renamed to FontFace to avoid disambiguation with System.Font and the Font enum.
+    // Implementation of Roblox's FontFace datatype.
+    // In Luau this type is named Font, but we avoid that name
+    // to avoid ambiguity with System.Font and Roblox's Font enum.
 
     public class FontFace
     {
@@ -11,8 +12,16 @@ namespace RobloxFiles.DataTypes
         public readonly FontWeight Weight = FontWeight.Regular;
         public readonly FontStyle Style = FontStyle.Normal;
 
-        public FontFace(Content family, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal)
+        // Roblox caches the asset of the font's face to make it
+        // load faster. At runtime both the Family and the CachedFaceId
+        // are loaded in parallel. If the CachedFaceId doesn't match with
+        // the family file's face asset, then the correct one will be loaded late.
+        // Setting this is not required, it's just a throughput optimization.
+        public Content CachedFaceId { get; set; } = "";
+
+        public FontFace(Content family, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal, string cachedFaceId = "")
         {
+            CachedFaceId = cachedFaceId;
             Family = family;
             Weight = weight;
             Style = style;

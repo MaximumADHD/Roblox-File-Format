@@ -91,20 +91,14 @@ namespace RobloxFiles.DataTypes
         public CFrame(Vector3 eye, Vector3 look)
         {
             Vector3 zAxis = (eye - look).Unit,
-                    xAxis = Vector3.Up.Cross(zAxis),
+                    xAxis = Vector3.yAxis.Cross(zAxis),
                     yAxis = zAxis.Cross(xAxis);
 
             if (xAxis.Magnitude == 0)
             {
-                xAxis = Vector3.z;
-                yAxis = Vector3.x;
-                zAxis = Vector3.y;
-
-                if (zAxis.Y < 0)
-                {
-                    xAxis = -xAxis;
-                    zAxis = -zAxis;
-                }
+                xAxis = Vector3.zAxis;
+                yAxis = Vector3.xAxis;
+                zAxis = Vector3.yAxis;
             }
 
             m11 = xAxis.X; m12 = yAxis.X; m13 = zAxis.X; m14 = eye.X;
@@ -299,18 +293,18 @@ namespace RobloxFiles.DataTypes
 
         public static CFrame FromAxisAngle(Vector3 axis, float theta)
         {
-            Vector3 r = VectorAxisAngle(axis, Vector3.x, theta),
-                    u = VectorAxisAngle(axis, Vector3.y, theta),
-                    b = VectorAxisAngle(axis, Vector3.z, theta);
+            Vector3 r = VectorAxisAngle(axis, Vector3.xAxis, theta),
+                    u = VectorAxisAngle(axis, Vector3.yAxis, theta),
+                    b = VectorAxisAngle(axis, Vector3.zAxis, theta);
 
             return new CFrame(0, 0, 0, r.X, u.X, b.X, r.Y, u.Y, b.Y, r.Z, u.Z, b.Z);
         }
 
         public static CFrame FromEulerAnglesXYZ(float x, float y, float z)
         {
-            CFrame cfx = FromAxisAngle(Vector3.x, x),
-                   cfy = FromAxisAngle(Vector3.y, y),
-                   cfz = FromAxisAngle(Vector3.z, z);
+            CFrame cfx = FromAxisAngle(Vector3.xAxis, x),
+                   cfy = FromAxisAngle(Vector3.yAxis, y),
+                   cfz = FromAxisAngle(Vector3.zAxis, z);
 
             return cfx * cfy * cfz;
         }
@@ -410,9 +404,9 @@ namespace RobloxFiles.DataTypes
         {
             var tests = new float[3]
             {
-                XVector.Dot(Vector3.x),
-                YVector.Dot(Vector3.y),
-                ZVector.Dot(Vector3.z)
+                XVector.Dot(Vector3.xAxis),
+                YVector.Dot(Vector3.yAxis),
+                ZVector.Dot(Vector3.zAxis)
             };
 
             foreach (var test in tests)

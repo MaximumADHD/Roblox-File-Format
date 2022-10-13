@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -17,43 +17,46 @@ namespace RobloxFiles.BinaryFormat
             File = file;
         }
 
-        // Reads 'count * sizeof(T)' interleaved bytes and converts 
-        // them into an array of T[count] where each value in the 
-        // array has been decoded by the provided 'decode' function.
-        public T[] ReadInterleaved<T>(int count, Func<byte[], int, T> decode) where T : struct
+        // Reads 'count * sizeof(T)' interleaved bytes
+        public T[] ReadInterleaved<T>(int count, Func<byte[], int, T> transform) where T : struct
         {
-            int bufferSize = Marshal.SizeOf<T>();
-            byte[] interleaved = ReadBytes(count * bufferSize);
+            int sizeof_T = Marshal.SizeOf<T>();
+            int blobSize = count * sizeof_T;
 
-            T[] values = new T[count];
+            var blob = ReadBytes(blobSize);
+            var work = new byte[sizeof_T];
+            var values = new T[count];
 
-            for (int i = 0; i < count; i++)
+            for (int offset = 0; offset < count; offset++)
             {
-                long buffer = 0;
-
-                for (int column = 0; column < bufferSize; column++)
+                for (int i = 0; i < sizeof_T; i++)
                 {
-                    long block = interleaved[(column * count) + i];
-                    int shift = (bufferSize - column - 1) * 8;
-                    buffer |= (block << shift);
+                    int index = (i * count) + offset;
+                    work[sizeof_T - i - 1] = blob[index];
                 }
 
-                byte[] sequence = BitConverter.GetBytes(buffer);
-                values[i] = decode(sequence, 0);
+                values[offset] = transform(work, 0);
             }
 
             return values;
         }
         
-        // Decodes an int from an interleaved buffer.
-        private int DecodeInt(byte[] buffer, int startIndex)
+        // Rotates the sign bit of an int32 buffer.
+        public int RotateInt32(byte[] buffer, int startIndex)
         {
             int value = BitConverter.ToInt32(buffer, startIndex);
-            return (value >> 1) ^ (-(value & 1));
+            return (int)((uint)value >> 1) ^ (-(value & 1));
         }
-        
-        // Decodes a float from an interleaved buffer.
-        private float DecodeFloat(byte[] buffer, int startIndex)
+
+        // Rotates the sign bit of an int64 buffer.
+        public long RotateInt64(byte[] buffer, int startIndex)
+        {
+            long value = BitConverter.ToInt64(buffer, startIndex);
+            return (long)((ulong)value >> 1) ^ (-(value & 1));
+        }
+
+        // Rotates the sign bit of a float buffer.
+        public float RotateFloat(byte[] buffer, int startIndex)
         {
             uint u = BitConverter.ToUInt32(buffer, startIndex);
             uint i = (u >> 1) | (u << 31);
@@ -62,28 +65,10 @@ namespace RobloxFiles.BinaryFormat
             return BitConverter.ToSingle(b, 0);
         }
         
-        // Reads an interleaved buffer of integers.
-        public int[] ReadInts(int count)
-        {
-            return ReadInterleaved(count, DecodeInt);
-        }
-        
-        // Reads an interleaved buffer of floats.
-        public float[] ReadFloats(int count)
-        {
-            return ReadInterleaved(count, DecodeFloat);
-        }
-
-        // Reads an interleaved buffer of unsigned integers.
-        public uint[] ReadUInts(int count)
-        {
-            return ReadInterleaved(count, BitConverter.ToUInt32);
-        }
-        
-        // Reads and accumulates an interleaved buffer of integers.
+        // Reads and accumulates an interleaved int32 buffer.
         public List<int> ReadInstanceIds(int count)
         {
-            int[] values = ReadInts(count);
+            int[] values = ReadInterleaved(count, RotateInt32);
 
             for (int i = 1; i < count; ++i)
                 values[i] += values[i - 1];

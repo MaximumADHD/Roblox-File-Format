@@ -59,7 +59,7 @@ namespace RobloxFiles
         internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
 
         // TODO: Map typeof(ProtectedString) to PropertyType.ProtectedString
-        //       if binary files are ever publically allowed to read it.
+        //       if binary files are ever publicly allowed to read it.
 
         public static readonly IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {

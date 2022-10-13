@@ -5,10 +5,10 @@ export type FormatFunc = (any) -> string
 export type Format = { [string]: FormatFunc }
 export type IEnum = { GetEnumItems: (IEnum) -> {EnumItem} }
 
-local function flags<T>(flags: T, enum: IEnum): string
+local function flags(flagType: any, enum: Enum): string
 	local value = 0
 	
-	for i, item in enum:GetEnumItems() do
+	for i, item: EnumItem in enum:GetEnumItems() do
 		if (flags :: any)[item.Name] then
 			value += (2 ^ item.Value)
 		end

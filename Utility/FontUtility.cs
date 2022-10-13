@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Collections.Generic;
 
 using RobloxFiles.Enums;
+using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.Utility
 {
@@ -24,6 +25,56 @@ namespace RobloxFiles.Utility
             { 48, FontSize.Size48 },
             { 60, FontSize.Size60 },
             { 96, FontSize.Size96 },
+        };
+
+        public static readonly IReadOnlyDictionary<Font, FontFace> FontFaces = new Dictionary<Font, FontFace>()
+        {
+            { Font.Legacy,             new FontFace("rbxasset://fonts/families/LegacyArial.json") },
+            { Font.Arial,              new FontFace("rbxasset://fonts/families/Arial.json") },
+            { Font.ArialBold,          new FontFace("rbxasset://fonts/families/Arial.json", FontWeight.Bold) },
+            { Font.SourceSans,         new FontFace("rbxasset://fonts/families/SourceSansPro.json") },
+            { Font.SourceSansBold,     new FontFace("rbxasset://fonts/families/SourceSansPro.json", FontWeight.Bold) },
+            { Font.SourceSansSemibold, new FontFace("rbxasset://fonts/families/SourceSansPro.json", FontWeight.SemiBold) },
+            { Font.SourceSansLight,    new FontFace("rbxasset://fonts/families/SourceSansPro.json", FontWeight.Light) },
+            { Font.SourceSansItalic,   new FontFace("rbxasset://fonts/families/SourceSansPro.json", FontWeight.Regular, FontStyle.Italic) },
+            { Font.Bodoni,             new FontFace("rbxasset://fonts/families/AccanthisADFStd.json") },
+            { Font.Garamond,           new FontFace("rbxasset://fonts/families/Guru.json") },
+            { Font.Cartoon,            new FontFace("rbxasset://fonts/families/ComicNeueAngular.json") },
+            { Font.Code,               new FontFace("rbxasset://fonts/families/Inconsolata.json") },
+            { Font.Highway,            new FontFace("rbxasset://fonts/families/HighwayGothic.json") },
+            { Font.SciFi,              new FontFace("rbxasset://fonts/families/Zekton.json") },
+            { Font.Arcade,             new FontFace("rbxasset://fonts/families/PressStart2P.json") },
+            { Font.Fantasy,            new FontFace("rbxasset://fonts/families/Balthazar.json") },
+            { Font.Antique,            new FontFace("rbxasset://fonts/families/RomanAntique.json") },
+            { Font.Gotham,             new FontFace("rbxasset://fonts/families/GothamSSm.json") },
+            { Font.GothamMedium,       new FontFace("rbxasset://fonts/families/GothamSSm.json", FontWeight.Medium) },
+            { Font.GothamBold,         new FontFace("rbxasset://fonts/families/GothamSSm.json", FontWeight.Bold) },
+            { Font.GothamBlack,        new FontFace("rbxasset://fonts/families/GothamSSm.json", FontWeight.Heavy) },
+            { Font.AmaticSC,           new FontFace("rbxasset://fonts/families/AmaticSC.json") },
+            { Font.Bangers,            new FontFace("rbxasset://fonts/families/Bangers.json") },
+            { Font.Creepster,          new FontFace("rbxasset://fonts/families/Creepster.json") },
+            { Font.DenkOne,            new FontFace("rbxasset://fonts/families/DenkOne.json") },
+            { Font.Fondamento,         new FontFace("rbxasset://fonts/families/Fondamento.json") },
+            { Font.FredokaOne,         new FontFace("rbxasset://fonts/families/FredokaOne.json") },
+            { Font.GrenzeGotisch,      new FontFace("rbxasset://fonts/families/GrenzeGotisch.json") },
+            { Font.IndieFlower,        new FontFace("rbxasset://fonts/families/IndieFlower.json") },
+            { Font.JosefinSans,        new FontFace("rbxasset://fonts/families/JosefinSans.json") },
+            { Font.Jura,               new FontFace("rbxasset://fonts/families/Jura.json") },
+            { Font.Kalam,              new FontFace("rbxasset://fonts/families/Kalam.json") },
+            { Font.LuckiestGuy,        new FontFace("rbxasset://fonts/families/LuckiestGuy.json") },
+            { Font.Merriweather,       new FontFace("rbxasset://fonts/families/Merriweather.json") },
+            { Font.Michroma,           new FontFace("rbxasset://fonts/families/Michroma.json") },
+            { Font.Nunito,             new FontFace("rbxasset://fonts/families/Nunito.json") },
+            { Font.Oswald,             new FontFace("rbxasset://fonts/families/Oswald.json") },
+            { Font.PatrickHand,        new FontFace("rbxasset://fonts/families/PatrickHand.json") },
+            { Font.PermanentMarker,    new FontFace("rbxasset://fonts/families/PermanentMarker.json") },
+            { Font.Roboto,             new FontFace("rbxasset://fonts/families/Roboto.json") },
+            { Font.RobotoCondensed,    new FontFace("rbxasset://fonts/families/RobotoCondensed.json") },
+            { Font.RobotoMono,         new FontFace("rbxasset://fonts/families/RobotoMono.json") },
+            { Font.Sarpanch,           new FontFace("rbxasset://fonts/families/Sarpanch.json") },
+            { Font.SpecialElite,       new FontFace("rbxasset://fonts/families/SpecialElite.json") },
+            { Font.TitilliumWeb,       new FontFace("rbxasset://fonts/families/TitilliumWeb.json") },
+            { Font.Ubuntu,             new FontFace("rbxasset://fonts/families/Ubuntu.json") },
         };
 
         public static FontSize GetFontSize(int fontSize)
@@ -56,6 +107,20 @@ namespace RobloxFiles.Utility
                 .First();
 
             return value;
+        }
+
+        public static Font GetFont(FontFace face)
+        {
+            var result = Font.Unknown;
+
+            var faceQuery = FontFaces
+                .Where(pair => face.Equals(pair.Value))
+                .Select(pair => pair.Key);
+
+            if (faceQuery.Any())
+                result = faceQuery.First();
+
+            return result;
         }
     }
 }

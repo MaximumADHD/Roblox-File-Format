@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Xml;
 using RobloxFiles.DataTypes;
 
@@ -14,13 +15,21 @@ namespace RobloxFiles.Tokens
 
             if (Guid.TryParse(hex, out var guid))
             {
-                var bytes = guid.ToByteArray();
-                var random = BitConverter.ToUInt64(bytes, 0);
+                var bytes = new byte[16];
 
-                var time = BitConverter.ToUInt32(bytes, 8);
-                var index = BitConverter.ToUInt32(bytes, 12);
+                for (int i = 0; i < 16; i++)
+                {
+                    var hexChar = hex.Substring(i * 2, 2);
+                    bytes[15 - i] = Convert.ToByte(hexChar, 16);
+                }
 
-                prop.Value = new UniqueId(time, index, random);
+                var rand = BitConverter.ToInt64(bytes, 8);
+                var time = BitConverter.ToUInt32(bytes, 4);
+                var index = BitConverter.ToUInt32(bytes, 0);
+
+                var uniqueId = new UniqueId(rand, time, index);
+                prop.Value = uniqueId;
+
                 return true;
             }
 
@@ -30,8 +39,8 @@ namespace RobloxFiles.Tokens
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
             var uniqueId = prop.CastValue<UniqueId>();
-            var random = BitConverter.GetBytes(uniqueId.Random);
 
+            var random = BitConverter.GetBytes(uniqueId.Random);
             var time = BitConverter.GetBytes(uniqueId.Time);
             var index = BitConverter.GetBytes(uniqueId.Index);
 

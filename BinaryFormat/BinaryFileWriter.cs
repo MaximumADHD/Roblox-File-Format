@@ -103,15 +103,21 @@ namespace RobloxFiles.BinaryFormat
 
             Marshal.FreeHGlobal(converter);
         }
-        
-        // Encodes an int for an interleaved buffer.
-        private static int EncodeInt(int value)
+
+        // Rotates the sign bit of the provided int.
+        public int RotateInt(int value)
         {
             return (value << 1) ^ (value >> 31);
         }
-        
-        // Encodes a float for an interleaved buffer.
-        private static float EncodeFloat(float value)
+
+        // Rotates the sign bit of the provided long.
+        public long RotateLong(long value)
+        {
+            return (value << 1) ^ (value >> 63);
+        }
+
+        // Rotates the sign bit of the provided float.
+        public float RotateFloat(float value)
         {
             byte[] buffer = BitConverter.GetBytes(value);
             uint bits = BitConverter.ToUInt32(buffer, 0);
@@ -125,13 +131,19 @@ namespace RobloxFiles.BinaryFormat
         // Writes an interleaved list of integers.
         public void WriteInts(List<int> values)
         {
-            WriteInterleaved(values, EncodeInt);
+            WriteInterleaved(values, RotateInt);
+        }
+
+        // Writes an interleaved list of longs
+        public void WriteLongs(List<long> values)
+        {
+            WriteInterleaved(values, RotateLong);
         }
 
         // Writes an interleaved list of floats
         public void WriteFloats(List<float> values)
         {
-            WriteInterleaved(values, EncodeFloat);
+            WriteInterleaved(values, RotateFloat);
         }
 
         // Accumulatively writes an interleaved array of integers.

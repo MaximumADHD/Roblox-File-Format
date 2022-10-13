@@ -78,8 +78,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
             }
 
             // Setup some short-hand functions for actions used during the read procedure.
-            var readInts = new Func<int[]>(() => reader.ReadInts(instCount));
-            var readFloats = new Func<float[]>(() => reader.ReadFloats(instCount));
+            var readInts = new Func<int[]>(() => reader.ReadInterleaved(instCount, reader.RotateInt32));
+            var readFloats = new Func<float[]>(() => reader.ReadInterleaved(instCount, reader.RotateFloat));
             
             var readProperties = new Action<Func<int, object>>(read =>
             {
@@ -434,7 +434,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.Enum:
                 {
-                    uint[] enums = reader.ReadUInts(instCount);
+                    uint[] enums = reader.ReadInterleaved(instCount, BitConverter.ToUInt32);
 
                     readProperties(i =>
                     {
@@ -619,22 +619,17 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.Int64:
                 {
-                    long[] longs = reader.ReadInterleaved(instCount, (buffer, start) =>
-                    {
-                        long result = BitConverter.ToInt64(buffer, start);
-                        return (long)((ulong)result >> 1) ^ (-(result & 1));
-                    });
-
-                    readProperties(i => longs[i]);
+                    var values = reader.ReadInterleaved(instCount, reader.RotateInt64);
+                    readProperties(i => values[i]);
                     break;
                 }
                 case PropertyType.SharedString:
                 {
-                    uint[] SharedKeys = reader.ReadUInts(instCount);
+                    var keys = reader.ReadInterleaved(instCount, BitConverter.ToUInt32);
 
                     readProperties(i =>
                     {
-                        uint key = SharedKeys[i];
+                        uint key = keys[i];
                         return File.SharedStrings[key];
                     });
 
@@ -654,14 +649,16 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.UniqueId:
                 {
-                    readProperties(i =>
+                    var uniqueIds = reader.ReadInterleaved(instCount, (buffer, offset) =>
                     {
-                        var index = reader.ReadUInt32();
-                        var time = reader.ReadUInt32();
-                        var random = reader.ReadUInt64();
-                        return new UniqueId(index, time, random);
+                        var random = reader.RotateInt64(buffer, 0);
+                        var time = BitConverter.ToUInt32(buffer, 8);
+                        var index = BitConverter.ToUInt32(buffer, 12);
+
+                        return new UniqueId(random, time, index);
                     });
 
+                    readProperties(i => uniqueIds[i]);
                     break;
                 }
                 case PropertyType.FontFace:
@@ -670,13 +667,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     {
                         string family = reader.ReadString();
 
-                        if (family.EndsWith(".otf") || family.EndsWith(".ttf"))
-                            return new FontFace(family);
-
                         var weight = (FontWeight)reader.ReadUInt16();
                         var style = (FontStyle)reader.ReadByte();
+                        var cachedFaceId = reader.ReadString();
 
-                        return new FontFace(family, weight, style);
+                        return new FontFace(family, weight, style, cachedFaceId);
                     });
 
                     break;
@@ -1233,12 +1228,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         longs.Add(value);
                     });
 
-                    writer.WriteInterleaved(longs, value =>
-                    {
-                        // Move the sign bit to the front.
-                        return (value << 1) ^ (value >> 63);
-                    });
-
+                    writer.WriteLongs(longs);
                     break;
                 }
                 case PropertyType.SharedString:
@@ -1293,14 +1283,16 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.UniqueId:
                 {
+                    var uniqueIds = new List<UniqueId>();
+
                     props.ForEach(prop =>
                     {
                         var uniqueId = prop.CastValue<UniqueId>();
-                        writer.Write(uniqueId.Index);
-                        writer.Write(uniqueId.Time);
-                        writer.Write(uniqueId.Random);
+                        var rotated = writer.RotateLong(uniqueId.Random);
+                        uniqueIds.Add(new UniqueId(rotated, uniqueId.Time, uniqueId.Index));
                     });
 
+                    writer.WriteInterleaved(uniqueIds);
                     break;
                 }
                 case PropertyType.FontFace:
@@ -1310,16 +1302,16 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         var font = prop.CastValue<FontFace>();
 
                         string family = font.Family;
-                        writer.WriteString(font.Family);
-
-                        if (family.EndsWith(".otf") || family.EndsWith(".ttf"))
-                            return;
+                        writer.WriteString(family);
 
                         var weight = (ushort)font.Weight;
                         writer.Write(weight);
 
                         var style = (byte)font.Style;
                         writer.Write(style);
+
+                        var cachedFaceId = font.CachedFaceId;
+                        writer.WriteString(cachedFaceId);
                     });
 
                     break;

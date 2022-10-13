@@ -98,13 +98,13 @@ namespace RobloxFiles.DataTypes
         public static readonly Vector3 zero = new Vector3(0, 0, 0);
         public static readonly Vector3 one = new Vector3(1, 1, 1);
 
-        public static readonly Vector3 x = new Vector3(1, 0, 0);
-        public static readonly Vector3 y = new Vector3(0, 1, 0);
-        public static readonly Vector3 z = new Vector3(0, 0, 1);
+        public static readonly Vector3 xAxis = new Vector3(1, 0, 0);
+        public static readonly Vector3 yAxis = new Vector3(0, 1, 0);
+        public static readonly Vector3 zAxis = new Vector3(0, 0, 1);
 
-        public static Vector3 Right => x;
-        public static Vector3 Up    => y;
-        public static Vector3 Back  => z;
+        public static Vector3 Right => xAxis;
+        public static Vector3 Up    => yAxis;
+        public static Vector3 Back  => zAxis;
 
         public float Dot(Vector3 other)
         {

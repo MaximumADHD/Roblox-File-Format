@@ -66,9 +66,9 @@ namespace RobloxFiles.Tokens
             var style = (FontWeight)attribute.ReadByte();
 
             var family = attribute.ReadString();
-            _ = attribute.ReadInt(); // Reserved
+            var cachedFaceId = attribute.ReadString();
 
-            return new FontFace(family, style, weight);
+            return new FontFace(family, style, weight, cachedFaceId);
         }
 
         public void WriteAttribute(RbxAttribute attribute, FontFace value)
