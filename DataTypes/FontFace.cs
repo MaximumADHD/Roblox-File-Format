@@ -1,4 +1,5 @@
 ﻿using RobloxFiles.Enums;
+using RobloxFiles.Utility;
 
 namespace RobloxFiles.DataTypes
 {
@@ -25,6 +26,23 @@ namespace RobloxFiles.DataTypes
             Family = family;
             Weight = weight;
             Style = style;
+        }
+
+        public static FontFace FromEnum(Font font)
+        {
+            return FontUtility.FontFaces[font];
+        }
+
+        public static FontFace FromName(string name, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal)
+        {
+            Content url = $"rbxasset://fonts/families/{name}.json";
+            return new FontFace(url, weight, style);
+        }
+
+        public static FontFace FromId(ulong id, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal)
+        {
+            Content url = $"rbxassetid://{id}";
+            return new FontFace(url, weight, style);
         }
 
         public override string ToString()

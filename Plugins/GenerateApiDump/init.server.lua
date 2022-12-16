@@ -182,8 +182,7 @@ local function createProperty(propName, propType)
 		name = data[2]
 	end
 
-	return
-{
+	return {
 		Name = propName,
 
 		Serialization = {
@@ -302,6 +301,7 @@ local function generateClasses()
 
 	local enumMap = {
 		Axis = true,
+		Font = true,
 		FontSize = true,
 		FontStyle = true,
 		FontWeight = true,
@@ -389,6 +389,8 @@ local function generateClasses()
 			if not classTags.Service then
 				return tostring(object)
 			end
+
+			return nil
 		end)
 
 		if not noSecurityCheck then
@@ -519,6 +521,10 @@ local function generateClasses()
 					table.sort(diffNames)
 
 					for i, name in ipairs(diffNames) do
+						if redirectProps[name] then
+							continue
+						end
+
 						local value = diffProps[name]
 						local valueType = typeof(value)
 						local formatFunc = getFormatFunction(valueType)
@@ -671,7 +677,7 @@ local function generateClasses()
 									end)
 								end
 							elseif category == "Enum" then
-								local enum = Enum[valueType]
+								local enum = (Enum :: any)[valueType]
 								local lowestId = math.huge
 								local lowest
 

@@ -64,8 +64,8 @@ namespace RobloxFiles.DataTypes
         public static Vector2 zero => new Vector2(0, 0);
         public static Vector2 one  => new Vector2(1, 1);
 
-        public static Vector2 x => new Vector2(1, 0);
-        public static Vector2 y => new Vector2(0, 1);
+        public static Vector2 xAxis => new Vector2(1, 0);
+        public static Vector2 yAxis => new Vector2(0, 1);
 
         public float Dot(Vector2 other) => (X * other.X) + (Y * other.Y);
         public Vector2 Cross(Vector2 other) => new Vector2(X * other.Y, Y * other.X);

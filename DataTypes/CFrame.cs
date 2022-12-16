@@ -32,7 +32,7 @@ namespace RobloxFiles.DataTypes
         public Vector3 ColumnY => new Vector3(m21, m22, m23);
         public Vector3 ColumnZ => new Vector3(m31, m32, m33);
 
-        public static readonly CFrame Identity = new CFrame();
+        public static readonly CFrame identity = new CFrame();
 
         public override int GetHashCode()
         {

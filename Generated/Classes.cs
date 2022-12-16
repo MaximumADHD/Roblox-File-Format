@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.548.0.5480523
+// Updated as of 0.554.1.5540506
 
 using System;
 
@@ -13,7 +13,7 @@ namespace RobloxFiles
 {
     public class Accoutrement : Instance
     {
-        public CFrame AttachmentPoint = new CFrame();
+        public CFrame AttachmentPoint = CFrame.identity;
     }
 
     public class Accessory : Accoutrement
@@ -103,12 +103,17 @@ namespace RobloxFiles
 
     public class AnimationRigData : Instance
     {
+        public byte[] articulatedJoint = Convert.FromBase64String("AQAAAAAAAAA=");
+        public byte[] endEffectorRotationConstraint = Convert.FromBase64String("AQAAAAAAAAA=");
+        public byte[] endEffectorTranslationConstraint = Convert.FromBase64String("AQAAAAAAAAA=");
+        public byte[] facsControl = Convert.FromBase64String("AQAAAAAAAAA=");
         public byte[] label = Convert.FromBase64String("AQAAAAEAAAAAAAAA");
         public byte[] name = Convert.FromBase64String("AQAAAAEAAAAAAAAA");
         public byte[] parent = Convert.FromBase64String("AQAAAAEAAAAAAA==");
         public byte[] postTransform = Convert.FromBase64String("AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=");
         public byte[] preTransform = Convert.FromBase64String("AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=");
         public byte[] transform = Convert.FromBase64String("AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=");
+        public byte[] weight = Convert.FromBase64String("AQAAAAAAAAA=");
     }
 
     public class Animator : Instance
@@ -138,6 +143,10 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+
+        public string Interface = "";
+        public int Port = 0;
+        public bool StartServer;
     }
 
     public class AssetImportService : Instance
@@ -176,7 +185,7 @@ namespace RobloxFiles
 
     public class Attachment : Instance
     {
-        public CFrame CFrame = new CFrame();
+        public CFrame CFrame = CFrame.identity;
         public bool Visible;
     }
 
@@ -219,7 +228,7 @@ namespace RobloxFiles
     {
         public bool CanBeDropped = true;
         public bool Enabled = true;
-        public CFrame Grip = new CFrame();
+        public CFrame Grip = CFrame.identity;
         public bool ManualActivationOnly;
         public bool RequiresHandle = true;
         public string ToolTip = "";
@@ -270,20 +279,20 @@ namespace RobloxFiles
     public abstract class BaseWrap : Instance
     {
         public Content CageMeshId = "";
-        public CFrame CageOrigin = new CFrame();
+        public CFrame CageOrigin = CFrame.identity;
         public Content HSRAssetId = "";
-        public CFrame ImportOrigin = new CFrame();
+        public CFrame ImportOrigin = CFrame.identity;
     }
 
     public class WrapLayer : BaseWrap
     {
         public WrapLayerAutoSkin AutoSkin = WrapLayerAutoSkin.Disabled;
-        public CFrame BindOffset = new CFrame();
+        public CFrame BindOffset = CFrame.identity;
         public bool Enabled = true;
         public int Order = 1;
         public float Puffiness = 1;
         public Content ReferenceMeshId = "";
-        public CFrame ReferenceOrigin = new CFrame();
+        public CFrame ReferenceOrigin = CFrame.identity;
         public float ShrinkFactor = 0;
     }
 
@@ -350,7 +359,7 @@ namespace RobloxFiles
 
     public class BodyForce : BodyMover
     {
-        public Vector3 Force = new Vector3(0, 1, 0);
+        public Vector3 Force = Vector3.yAxis;
 
         [Obsolete]
         public Vector3 force
@@ -362,7 +371,7 @@ namespace RobloxFiles
 
     public class BodyGyro : BodyMover
     {
-        public CFrame CFrame = new CFrame();
+        public CFrame CFrame = CFrame.identity;
         public float D = 500;
         public Vector3 MaxTorque = new Vector3(400000, 0, 400000);
         public float P = 3000;
@@ -406,8 +415,8 @@ namespace RobloxFiles
 
     public class BodyThrust : BodyMover
     {
-        public Vector3 Force = new Vector3(0, 1, 0);
-        public Vector3 Location = new Vector3();
+        public Vector3 Force = Vector3.yAxis;
+        public Vector3 Location = Vector3.zero;
 
         [Obsolete]
         public Vector3 force
@@ -452,7 +461,7 @@ namespace RobloxFiles
         public float MaxThrust = 4000;
         public Vector3 MaxTorque = new Vector3(400000, 400000, 0);
         public BasePart Target;
-        public Vector3 TargetOffset = new Vector3();
+        public Vector3 TargetOffset = Vector3.zero;
         public float TargetRadius = 4;
         public float ThrustD = 0.001f;
         public float ThrustP = 5;
@@ -689,7 +698,7 @@ namespace RobloxFiles
     public class AlignOrientation : Constraint
     {
         public AlignType AlignType = AlignType.Parallel;
-        public CFrame CFrame = new CFrame();
+        public CFrame CFrame = CFrame.identity;
         public float MaxAngularVelocity = float.MaxValue;
         public float MaxTorque = 10000;
         public OrientationAlignmentMode Mode = OrientationAlignmentMode.TwoAttachment;
@@ -710,7 +719,7 @@ namespace RobloxFiles
         public float MaxForce = 10000;
         public float MaxVelocity = float.MaxValue;
         public PositionAlignmentMode Mode = PositionAlignmentMode.TwoAttachment;
-        public Vector3 Position = new Vector3();
+        public Vector3 Position = Vector3.zero;
         public bool ReactionForceEnabled;
         public float Responsiveness = 10;
         public bool RigidityEnabled;
@@ -718,10 +727,17 @@ namespace RobloxFiles
 
     public class AngularVelocity : Constraint
     {
-        public Vector3 AngularVelocity_ = new Vector3();
+        public Vector3 AngularVelocity_ = Vector3.zero;
         public float MaxTorque = 0;
         public bool ReactionTorqueEnabled;
         public ActuatorRelativeTo RelativeTo = ActuatorRelativeTo.World;
+    }
+
+    public class AnimationConstraint : Constraint
+    {
+        public float MaxForce = 10000;
+        public float MaxTorque = 10000;
+        public CFrame Transform = CFrame.identity;
     }
 
     public class BallSocketConstraint : Constraint
@@ -732,6 +748,13 @@ namespace RobloxFiles
         }
 
         public bool LimitsEnabled;
+
+        public float MaxFrictionTorque
+        {
+            get => MaxFrictionTorqueXml;
+            set => MaxFrictionTorqueXml = value;
+        }
+
         public float MaxFrictionTorqueXml = 0;
         public float Radius = 0.15f;
         public float Restitution = 0;
@@ -779,14 +802,14 @@ namespace RobloxFiles
             Color = BrickColor.FromNumber(26);
         }
 
-        public Vector3 LineDirection = new Vector3(1, 0, 0);
+        public Vector3 LineDirection = Vector3.xAxis;
         public float LineVelocity = 0;
         public float MaxForce = 1000;
-        public Vector2 PlaneVelocity = new Vector2();
-        public Vector3 PrimaryTangentAxis = new Vector3(1, 0, 0);
+        public Vector2 PlaneVelocity = Vector2.zero;
+        public Vector3 PrimaryTangentAxis = Vector3.xAxis;
         public ActuatorRelativeTo RelativeTo = ActuatorRelativeTo.World;
-        public Vector3 SecondaryTangentAxis = new Vector3(0, 1, 0);
-        public Vector3 VectorVelocity = new Vector3();
+        public Vector3 SecondaryTangentAxis = Vector3.yAxis;
+        public Vector3 VectorVelocity = Vector3.zero;
         public VelocityConstraintMode VelocityConstraintMode = VelocityConstraintMode.Vector;
     }
 
@@ -920,7 +943,7 @@ namespace RobloxFiles
     public class Torque : Constraint
     {
         public ActuatorRelativeTo RelativeTo = ActuatorRelativeTo.Attachment0;
-        public Vector3 Torque_ = new Vector3();
+        public Vector3 Torque_ = Vector3.zero;
     }
 
     public class TorsionSpringConstraint : Constraint
@@ -1005,10 +1028,12 @@ namespace RobloxFiles
     public class AirController : ControllerBase
     {
         public bool CancelAirMomentum = true;
-        public float MoveMaxForce = 10000;
+        public bool MaintainAngularMomentum = true;
+        public bool MaintainLinearMomentum = true;
+        public float MoveMaxForce = 1000;
         public float OrientationMaxTorque = 10000;
         public float OrientationSpeedFactor = 1;
-        public Vector3 VectorForce = new Vector3();
+        public Vector3 VectorForce = Vector3.zero;
     }
 
     public class ClimbController : ControllerBase
@@ -1047,8 +1072,8 @@ namespace RobloxFiles
     {
         public float BaseMoveSpeed = 16;
         public float BaseTurnSpeed = 8;
-        public Vector3 FacingDirection = new Vector3(0, 0, 1);
-        public Vector3 MovingDirection = new Vector3();
+        public Vector3 FacingDirection = Vector3.zAxis;
+        public Vector3 MovingDirection = Vector3.zero;
     }
 
     public class ControllerService : Instance
@@ -1097,9 +1122,9 @@ namespace RobloxFiles
     {
         public LevelOfDetailSetting LODX = LevelOfDetailSetting.High;
         public LevelOfDetailSetting LODY = LevelOfDetailSetting.High;
-        public Vector3 Offset = new Vector3();
-        public Vector3 Scale = new Vector3(1, 1, 1);
-        public Vector3 VertexColor = new Vector3(1, 1, 1);
+        public Vector3 Offset = Vector3.zero;
+        public Vector3 Scale = Vector3.one;
+        public Vector3 VertexColor = Vector3.one;
     }
 
     public abstract class BevelMesh : DataModelMesh
@@ -1199,7 +1224,7 @@ namespace RobloxFiles
         public DialogPurpose Purpose = DialogPurpose.Help;
         public DialogTone Tone = DialogTone.Neutral;
         public float TriggerDistance = 0;
-        public Vector3 TriggerOffset = new Vector3();
+        public Vector3 TriggerOffset = Vector3.zero;
     }
 
     public class DialogChoice : Instance
@@ -1243,13 +1268,29 @@ namespace RobloxFiles
         }
     }
 
+    public class ExperienceAuthService : Instance
+    {
+        public ExperienceAuthService()
+        {
+            IsService = true;
+        }
+    }
+
+    public class ExperienceInviteOptions : Instance
+    {
+        public string InviteMessageId = "";
+        public long InviteUser = 0;
+        public string LaunchData = "";
+        public string PromptMessage = "";
+    }
+
     public class Explosion : Instance
     {
         public float BlastPressure = 500000;
         public float BlastRadius = 4;
         public float DestroyJointRadiusPercent = 1;
         public ExplosionType ExplosionType = ExplosionType.Craters;
-        public Vector3 Position = new Vector3();
+        public Vector3 Position = Vector3.zero;
         public float TimeScale = 1;
         public bool Visible = true;
     }
@@ -1308,6 +1349,16 @@ namespace RobloxFiles
         {
             IsService = true;
         }
+    }
+
+    public class FacialAnimationStreamingServiceV2 : Instance
+    {
+        public FacialAnimationStreamingServiceV2()
+        {
+            IsService = true;
+        }
+
+        public int ServiceState = 0;
     }
 
     public abstract class Feature : Instance
@@ -1438,7 +1489,7 @@ namespace RobloxFiles
 
     public class GetTextBoundsParams : Instance
     {
-        public FontFace Font = new FontFace("rbxasset://fonts/families/SourceSansPro.json");
+        public FontFace Font = FontFace.FromEnum(Enums.Font.SourceSans);
         public float Size = 20;
         public string Text = "";
         public float Width = 0;
@@ -1478,7 +1529,7 @@ namespace RobloxFiles
     public abstract class GuiObject : GuiBase2d
     {
         public bool Active;
-        public Vector2 AnchorPoint = new Vector2();
+        public Vector2 AnchorPoint = Vector2.zero;
         public AutomaticSize AutomaticSize = AutomaticSize.None;
 
         [Obsolete]
@@ -1572,8 +1623,8 @@ namespace RobloxFiles
         public Content HoverImage = "";
         public Content Image = "";
         public Color3 ImageColor3 = new Color3(1, 1, 1);
-        public Vector2 ImageRectOffset = new Vector2();
-        public Vector2 ImageRectSize = new Vector2();
+        public Vector2 ImageRectOffset = Vector2.zero;
+        public Vector2 ImageRectSize = Vector2.zero;
         public float ImageTransparency = 0;
         public Content PressedImage = "";
         public ResamplerMode ResampleMode = ResamplerMode.Default;
@@ -1592,8 +1643,13 @@ namespace RobloxFiles
             Selectable = true;
         }
 
-        public Font Font = Font.Legacy;
-        public FontFace FontFace = new FontFace("rbxasset://fonts/families/LegacyArial.json");
+        public Font Font
+        {
+            get => FontUtility.GetLegacyFont(FontFace);
+            set => FontUtility.TryGetFontFace(value, out FontFace);
+        }
+
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.Legacy);
 
         [Obsolete]
         public FontSize FontSize
@@ -1662,8 +1718,8 @@ namespace RobloxFiles
 
         public Content Image = "";
         public Color3 ImageColor3 = new Color3(1, 1, 1);
-        public Vector2 ImageRectOffset = new Vector2();
-        public Vector2 ImageRectSize = new Vector2();
+        public Vector2 ImageRectOffset = Vector2.zero;
+        public Vector2 ImageRectSize = Vector2.zero;
         public float ImageTransparency = 0;
         public ResamplerMode ResampleMode = ResamplerMode.Default;
         public ScaleType ScaleType = ScaleType.Stretch;
@@ -1679,8 +1735,13 @@ namespace RobloxFiles
             ClipsDescendants = false;
         }
 
-        public Font Font = Font.Legacy;
-        public FontFace FontFace = new FontFace("rbxasset://fonts/families/LegacyArial.json");
+        public Font Font
+        {
+            get => FontUtility.GetLegacyFont(FontFace);
+            set => FontUtility.TryGetFontFace(value, out FontFace);
+        }
+
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.Legacy);
 
         [Obsolete]
         public FontSize FontSize
@@ -1742,7 +1803,7 @@ namespace RobloxFiles
 
         public AutomaticSize AutomaticCanvasSize = AutomaticSize.None;
         public Content BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png";
-        public Vector2 CanvasPosition = new Vector2();
+        public Vector2 CanvasPosition = Vector2.zero;
         public UDim2 CanvasSize = new UDim2(0, 0, 2, 0);
         public ElasticBehavior ElasticBehavior = ElasticBehavior.WhenScrollable;
         public ScrollBarInset HorizontalScrollBarInset = ScrollBarInset.None;
@@ -1767,8 +1828,14 @@ namespace RobloxFiles
         }
 
         public bool ClearTextOnFocus = true;
-        public Font Font = Font.Legacy;
-        public FontFace FontFace = new FontFace("rbxasset://fonts/families/LegacyArial.json");
+
+        public Font Font
+        {
+            get => FontUtility.GetLegacyFont(FontFace);
+            set => FontUtility.TryGetFontFace(value, out FontFace);
+        }
+
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.Legacy);
 
         [Obsolete]
         public FontSize FontSize
@@ -1847,7 +1914,7 @@ namespace RobloxFiles
         }
 
         public Color3 Ambient = Color3.FromRGB(200, 200, 200);
-        public CFrame CameraCFrame = new CFrame();
+        public CFrame CameraCFrame = CFrame.identity;
         public float CameraFieldOfView = 70;
         public Color3 ImageColor3 = new Color3(1, 1, 1);
         public float ImageTransparency = 0;
@@ -1872,21 +1939,23 @@ namespace RobloxFiles
         public float DistanceLowerLimit = 0;
         public float DistanceStep = 0;
         public float DistanceUpperLimit = -1;
-        public Vector3 ExtentsOffset = new Vector3();
-        public Vector3 ExtentsOffsetWorldSpace = new Vector3();
+        public Vector3 ExtentsOffset = Vector3.zero;
+        public Vector3 ExtentsOffsetWorldSpace = Vector3.zero;
         public float LightInfluence = 0;
         public float MaxDistance = float.MaxValue;
         public Instance PlayerToHideFrom;
         public UDim2 Size = new UDim2();
-        public Vector2 SizeOffset = new Vector2();
-        public Vector3 StudsOffset = new Vector3();
-        public Vector3 StudsOffsetWorldSpace = new Vector3();
+        public Vector2 SizeOffset = Vector2.zero;
+        public Vector3 StudsOffset = Vector3.zero;
+        public Vector3 StudsOffsetWorldSpace = Vector3.zero;
     }
 
     public class ScreenGui : LayerCollector
     {
+        public bool ClipToDeviceSafeArea = true;
         public int DisplayOrder = 0;
-        public bool IgnoreGuiInset;
+        public SafeAreaCompatibility SafeAreaCompatibility = SafeAreaCompatibility.FullscreenExtension;
+        public ScreenInsets ScreenInsets = ScreenInsets.CoreUISafeInsets;
     }
 
     public class GuiMain : ScreenGui
@@ -1897,7 +1966,7 @@ namespace RobloxFiles
     {
         public bool Active = true;
         public Instance Adornee;
-        public NormalId Face = NormalId.Back;
+        public NormalId Face = NormalId.Front;
     }
 
     public class AdGui : SurfaceGuiBase
@@ -1907,11 +1976,6 @@ namespace RobloxFiles
 
     public class SurfaceGui : SurfaceGuiBase
     {
-        public SurfaceGui() : base()
-        {
-            Face = NormalId.Front;
-        }
-
         public bool AlwaysOnTop;
         public float Brightness = 1;
         public Vector2 CanvasSize = new Vector2(800, 600);
@@ -1943,7 +2007,7 @@ namespace RobloxFiles
         public BasePart From;
         public float StudsBetweenTextures = 4;
         public Content Texture = "";
-        public Vector2 TextureSize = new Vector2(1, 1);
+        public Vector2 TextureSize = Vector2.one;
         public BasePart To;
         public float Velocity = 2;
         public float WireRadius = 0.0625f;
@@ -1978,14 +2042,14 @@ namespace RobloxFiles
     {
         public AdornCullingMode AdornCullingMode = AdornCullingMode.Automatic;
         public bool AlwaysOnTop;
-        public CFrame CFrame = new CFrame();
-        public Vector3 SizeRelativeOffset = new Vector3();
+        public CFrame CFrame = CFrame.identity;
+        public Vector3 SizeRelativeOffset = Vector3.zero;
         public int ZIndex = -1;
     }
 
     public class BoxHandleAdornment : HandleAdornment
     {
-        public Vector3 Size = new Vector3(1, 1, 1);
+        public Vector3 Size = Vector3.one;
     }
 
     public class ConeHandleAdornment : HandleAdornment
@@ -2011,7 +2075,7 @@ namespace RobloxFiles
         }
 
         public Content Image = "rbxasset://textures/SurfacesDefault.png";
-        public Vector2 Size = new Vector2(1, 1);
+        public Vector2 Size = Vector2.one;
     }
 
     public class LineHandleAdornment : HandleAdornment
@@ -2083,7 +2147,7 @@ namespace RobloxFiles
 
     public class SelectionPointLasso : SelectionLasso
     {
-        public Vector3 Point = new Vector3();
+        public Vector3 Point = Vector3.zero;
     }
 
     public class GuiService : Instance
@@ -2173,7 +2237,7 @@ namespace RobloxFiles
         public HumanoidHealthDisplayType HealthDisplayType = HumanoidHealthDisplayType.DisplayWhenDamaged;
         public float Health_XML = 100;
         public float HipHeight = 0;
-        public Vector3 InternalBodyScale = new Vector3(1, 1, 1);
+        public Vector3 InternalBodyScale = Vector3.one;
         public float InternalHeadScale = 1;
         public float JumpHeight = 7.2f;
         public float JumpPower = 50;
@@ -2241,11 +2305,11 @@ namespace RobloxFiles
 
     public class IKControl : Instance
     {
-        public CFrame AlignmentOffset = new CFrame();
         public Instance ChainRoot;
         public bool Enabled = true;
         public Instance EndEffector;
-        public CFrame Offset = new CFrame();
+        public CFrame EndEffectorOffset = CFrame.identity;
+        public CFrame Offset = CFrame.identity;
         public Instance Pole;
         public int Priority = 0;
         public Instance Target;
@@ -2303,8 +2367,8 @@ namespace RobloxFiles
 
     public abstract class JointInstance : Instance
     {
-        public CFrame C0 = new CFrame();
-        public CFrame C1 = new CFrame();
+        public CFrame C0 = CFrame.identity;
+        public CFrame C1 = CFrame.identity;
         public bool Enabled = true;
         public BasePart Part0;
         public BasePart Part1;
@@ -2325,10 +2389,10 @@ namespace RobloxFiles
 
     public class Glue : JointInstance
     {
-        public Vector3 F0 = new Vector3();
-        public Vector3 F1 = new Vector3();
-        public Vector3 F2 = new Vector3();
-        public Vector3 F3 = new Vector3();
+        public Vector3 F0 = Vector3.zero;
+        public Vector3 F1 = Vector3.zero;
+        public Vector3 F2 = Vector3.zero;
+        public Vector3 F3 = Vector3.zero;
     }
 
     public abstract class ManualSurfaceJointInstance : JointInstance
@@ -2757,7 +2821,7 @@ namespace RobloxFiles
             set => Color = value?.Color;
         }
 
-        public CFrame CFrame = new CFrame();
+        public CFrame CFrame = CFrame.identity;
         public bool CanCollide = true;
         public bool CanQuery = true;
         public bool CanTouch = true;
@@ -2813,7 +2877,7 @@ namespace RobloxFiles
         }
 
         public string MaterialVariantSerialized = "";
-        public CFrame PivotOffset = new CFrame();
+        public CFrame PivotOffset = CFrame.identity;
 
         public Vector3 Position
         {
@@ -2837,7 +2901,7 @@ namespace RobloxFiles
         public int RootPriority = 0;
 
         [Obsolete]
-        public Vector3 RotVelocity = new Vector3();
+        public Vector3 RotVelocity = Vector3.zero;
 
         public Vector3 Size
         {
@@ -2859,7 +2923,7 @@ namespace RobloxFiles
         public float Transparency = 0;
 
         [Obsolete]
-        public Vector3 Velocity = new Vector3();
+        public Vector3 Velocity = Vector3.zero;
 
         [Obsolete]
         public BrickColor brickColor
@@ -3006,6 +3070,7 @@ namespace RobloxFiles
         public bool Decoration;
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
         public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
+        public bool ShorelinesUpgraded;
         public byte[] SmoothGrid = Convert.FromBase64String("AQU=");
         public Color3 WaterColor = Color3.FromRGB(12, 84, 91);
         public float WaterReflectance = 1;
@@ -3022,7 +3087,7 @@ namespace RobloxFiles
             size = new Vector3(4, 1.2f, 2);
         }
 
-        public Vector3 InitialSize = new Vector3(1, 1, 1);
+        public Vector3 InitialSize = Vector3.one;
         public byte[] LODData;
         public SharedString PhysicalConfigData = SharedString.FromBase64("1B2M2Y8AsgTpgAmY7PhCfg==");
         public byte[] PhysicsData;
@@ -3039,7 +3104,7 @@ namespace RobloxFiles
         public bool DoubleSided;
         public bool HasJointOffset;
         public bool HasSkinnedMesh;
-        public Vector3 JointOffset = new Vector3();
+        public Vector3 JointOffset = Vector3.zero;
         public Content MeshId = "";
         public RenderFidelity RenderFidelity = RenderFidelity.Precise;
         public Content TextureID = "";
@@ -3139,9 +3204,9 @@ namespace RobloxFiles
     public class Model : PVInstance
     {
         public ModelLevelOfDetail LevelOfDetail = ModelLevelOfDetail.Automatic;
-        public CFrame ModelMeshCFrame = new CFrame();
+        public CFrame ModelMeshCFrame = CFrame.identity;
         public SharedString ModelMeshData = SharedString.FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
-        public Vector3 ModelMeshSize = new Vector3();
+        public Vector3 ModelMeshSize = Vector3.zero;
         public ModelStreamingMode ModelStreamingMode = ModelStreamingMode.Default;
         public bool NeedsPivotMigration;
         public BasePart PrimaryPart;
@@ -3171,7 +3236,7 @@ namespace RobloxFiles
         public double DistributedGameTime = 0;
         public bool ExplicitAutoJoints = true;
         public float FallenPartsDestroyHeight = -500;
-        public Vector3 GlobalWind = new Vector3();
+        public Vector3 GlobalWind = Vector3.zero;
         public float Gravity = 196.2f;
         public HumanoidOnlySetCollisionsOnStateChange HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default;
         public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
@@ -3226,7 +3291,7 @@ namespace RobloxFiles
 
     public class ParticleEmitter : Instance
     {
-        public Vector3 Acceleration = new Vector3();
+        public Vector3 Acceleration = Vector3.zero;
         public float Brightness = 1;
         public ColorSequence Color = new ColorSequence(1, 1, 1);
         public float Drag = 0;
@@ -3251,7 +3316,7 @@ namespace RobloxFiles
         public ParticleEmitterShapeStyle ShapeStyle = ParticleEmitterShapeStyle.Volume;
         public NumberSequence Size = new NumberSequence(1);
         public NumberRange Speed = new NumberRange(5);
-        public Vector2 SpreadAngle = new Vector2();
+        public Vector2 SpreadAngle = Vector2.zero;
         public NumberSequence Squash = new NumberSequence(0);
         public Content Texture = "rbxasset://textures/particles/sparkles_main.dds";
         public float TimeScale = 1;
@@ -3334,6 +3399,7 @@ namespace RobloxFiles
         public int MaxPlayersInternal = 16;
         public int PreferredPlayersInternal = 0;
         public float RespawnTime = 5;
+        public bool UseStrafingAnimations;
     }
 
     public class PluginAction : Instance
@@ -3405,7 +3471,7 @@ namespace RobloxFiles
 
     public class Pose : PoseBase
     {
-        public CFrame CFrame = new CFrame();
+        public CFrame CFrame = CFrame.identity;
 
         [Obsolete]
         public float MaskWeight = 0;
@@ -3473,7 +3539,7 @@ namespace RobloxFiles
         public bool RequiresLineOfSight = true;
         public LocalizationTable RootLocalizationTable;
         public ProximityPromptStyle Style = ProximityPromptStyle.Default;
-        public Vector2 UIOffset = new Vector2();
+        public Vector2 UIOffset = Vector2.zero;
     }
 
     public class ProximityPromptService : Instance
@@ -3593,7 +3659,7 @@ namespace RobloxFiles
 
     public class RenderingTest : Instance
     {
-        public CFrame CFrame = new CFrame();
+        public CFrame CFrame = CFrame.identity;
         public int ComparisonDiffThreshold = 10;
         public RenderingTestComparisonMethod ComparisonMethod = RenderingTestComparisonMethod.psnr;
         public float ComparisonPsnrThreshold = 50;
@@ -3745,6 +3811,14 @@ namespace RobloxFiles
         }
     }
 
+    public class ShorelineUpgraderService : Instance
+    {
+        public ShorelineUpgraderService()
+        {
+            IsService = true;
+        }
+    }
+
     public class Sky : Instance
     {
         public bool CelestialBodiesShown = true;
@@ -3809,6 +3883,7 @@ namespace RobloxFiles
     public class Sound : Instance
     {
         public float EmitterSize = 10;
+        public NumberRange LoopRegion = new NumberRange(0, 60000);
         public bool Looped;
 
         [Obsolete]
@@ -3833,6 +3908,8 @@ namespace RobloxFiles
         }
 
         public bool PlayOnRemove;
+        public NumberRange PlaybackRegion = new NumberRange(0, 60000);
+        public bool PlaybackRegionsEnabled;
         public float PlaybackSpeed = 1;
         public bool Playing;
         public RollOffMode RollOffMode = RollOffMode.Inverse;
@@ -4031,6 +4108,7 @@ namespace RobloxFiles
         public NumberRange GameSettingsScaleRangeProportion = new NumberRange(0, 1);
         public NumberRange GameSettingsScaleRangeWidth = new NumberRange(0.7f, 1);
         public float HealthDisplayDistance = 100;
+        public HumanoidStateMachineMode HumanoidStateMachineMode = HumanoidStateMachineMode.Default;
         public bool LoadCharacterAppearance = true;
         public LoadCharacterLayeredClothing LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default;
         public float NameDisplayDistance = 100;
@@ -4072,8 +4150,6 @@ namespace RobloxFiles
         public string CommitInflightGuid = "";
         public int CommitInflightPlaceVersion = 0;
         public bool EnableScriptCollabByDefaultOnLoad;
-        public long SrcPlaceId = 0;
-        public long SrcUniverseId = 0;
     }
 
     public class StudioDeviceEmulatorService : Instance
@@ -4190,7 +4266,7 @@ namespace RobloxFiles
         public Content NormalMap = "";
         public Content RoughnessMap = "";
         public float StudsPerTile = 10;
-        public Content TexturePack1 = "";
+        public Content TexturePack = "";
     }
 
     public class TerrainRegion : Instance
@@ -4244,13 +4320,32 @@ namespace RobloxFiles
 
     public class ChatInputBarConfiguration : TextChatConfigurations
     {
+        public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);
+        public double BackgroundTransparency = 0.2;
         public bool Enabled = true;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.GothamMedium);
+        public Color3 PlaceholderColor3 = Color3.FromRGB(178, 178, 178);
         public TextChannel TargetTextChannel;
+        public Color3 TextColor3 = new Color3(1, 1, 1);
+        public long TextSize = 14;
+        public Color3 TextStrokeColor3 = new Color3();
+        public double TextStrokeTransparency = 0.5;
     }
 
     public class ChatWindowConfiguration : TextChatConfigurations
     {
+        public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);
+        public double BackgroundTransparency = 0.3;
         public bool Enabled = true;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.GothamMedium);
+        public float HeightScale = 1;
+        public HorizontalAlignment HorizontalAlignment = HorizontalAlignment.Left;
+        public Color3 TextColor3 = new Color3(1, 1, 1);
+        public long TextSize = 14;
+        public Color3 TextStrokeColor3 = new Color3();
+        public double TextStrokeTransparency = 0.5;
+        public VerticalAlignment VerticalAlignment = VerticalAlignment.Top;
+        public float WidthScale = 1;
     }
 
     public class TextChatMessageProperties : Instance
@@ -4375,7 +4470,7 @@ namespace RobloxFiles
     public class UISizeConstraint : UIConstraint
     {
         public Vector2 MaxSize = new Vector2(float.MaxValue, float.MaxValue);
-        public Vector2 MinSize = new Vector2();
+        public Vector2 MinSize = Vector2.zero;
     }
 
     public class UITextSizeConstraint : UIConstraint
@@ -4393,7 +4488,7 @@ namespace RobloxFiles
     {
         public ColorSequence Color = new ColorSequence(1, 1, 1);
         public bool Enabled = true;
-        public Vector2 Offset = new Vector2();
+        public Vector2 Offset = Vector2.zero;
         public float Rotation = 0;
         public NumberSequence Transparency = new NumberSequence(0);
     }
@@ -4536,7 +4631,7 @@ namespace RobloxFiles
 
     public class CFrameValue : ValueBase
     {
-        public CFrame Value = new CFrame();
+        public CFrame Value = CFrame.identity;
     }
 
     public class Color3Value : ValueBase
@@ -4611,7 +4706,7 @@ namespace RobloxFiles
 
     public class Vector3Value : ValueBase
     {
-        public Vector3 Value = new Vector3();
+        public Vector3 Value = Vector3.zero;
     }
 
     public class Vector3Curve : Instance
@@ -4650,6 +4745,14 @@ namespace RobloxFiles
         }
     }
 
+    public class VisibilityCheckDispatcher : Instance
+    {
+        public VisibilityCheckDispatcher()
+        {
+            IsService = true;
+        }
+    }
+
     public class Visit : Instance
     {
         public Visit()
@@ -4678,8 +4781,8 @@ namespace RobloxFiles
 
     public class WeldConstraint : Instance
     {
-        public CFrame CFrame0 = new CFrame();
-        public CFrame CFrame1 = new CFrame();
+        public CFrame CFrame0 = CFrame.identity;
+        public CFrame CFrame1 = CFrame.identity;
 
         public bool Enabled
         {

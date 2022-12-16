@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.IO.Compression;
+
 using LZ4;
+using ZstdSharp;
 
 namespace RobloxFiles.BinaryFormat
 {
@@ -44,7 +47,34 @@ namespace RobloxFiles.BinaryFormat
             if (HasCompressedData)
             {
                 CompressedData = reader.ReadBytes(CompressedSize);
-                Data = LZ4Codec.Decode(CompressedData, 0, CompressedSize, Size);
+                Data = new byte[Size];
+
+                using (var compStream = new MemoryStream(CompressedData))
+                {
+                    Stream decompStream = null;
+
+                    if (CompressedData[0] >= 0xF0)
+                    {
+                        // Probably LZ4
+                        decompStream = new LZ4Stream(compStream, CompressionMode.Decompress);
+                    }
+                    else if (CompressedData[0] == 0x78 || CompressedData[0] == 0x58)
+                    {
+                        // Probably zlib
+                        decompStream = new DeflateStream(compStream, CompressionMode.Decompress);
+                    }
+                    else if (BitConverter.ToString(CompressedData, 1, 3) == "B5-2F-FD")
+                    {
+                        // Probably zstd
+                        decompStream = new DecompressionStream(compStream);
+                    }
+
+                    if (decompStream == null)
+                        throw new Exception("Unsupported compression scheme!");
+
+                    decompStream.Read(Data, 0, Size);
+                    decompStream.Dispose();
+                }
             }
             else
             {

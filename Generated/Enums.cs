@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.548.0.5480523
+// Updated as of 0.554.1.5540506
 
 namespace RobloxFiles.Enums
 {
@@ -465,6 +465,14 @@ namespace RobloxFiles.Enums
         R15
     }
 
+    public enum HumanoidStateMachineMode
+    {
+        Default,
+        Legacy,
+        NoStateMachine,
+        LuaStateMachine
+    }
+
     public enum IKControlType
     {
         Transform,
@@ -867,7 +875,8 @@ namespace RobloxFiles.Enums
     public enum ModelStreamingMode
     {
         Default,
-        Atomic
+        Atomic,
+        Persistent
     }
 
     public enum MouseBehavior
@@ -938,9 +947,9 @@ namespace RobloxFiles.Enums
     public enum ParticleFlipbookLayout
     {
         None,
-        TwoByTwo,
-        FourByFour,
-        EightByEight
+        Grid2x2,
+        Grid4x4,
+        Grid8x8
     }
 
     public enum ParticleFlipbookMode
@@ -1087,6 +1096,12 @@ namespace RobloxFiles.Enums
         Plugin
     }
 
+    public enum SafeAreaCompatibility
+    {
+        None,
+        FullscreenExtension
+    }
+
     public enum ScaleType
     {
         Stretch,
@@ -1094,6 +1109,13 @@ namespace RobloxFiles.Enums
         Tile,
         Fit,
         Crop
+    }
+
+    public enum ScreenInsets
+    {
+        None,
+        DeviceSafeInsets,
+        CoreUISafeInsets
     }
 
     public enum ScreenOrientation

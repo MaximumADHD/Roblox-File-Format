@@ -1,5 +1,6 @@
 {
-    "Lua.diagnostics.ignore": [
-        "CopyToClipboard"
-    ]
+    "[lua]": {
+		"editor.defaultFormatter": "JohnnyMorganz.stylua",
+		"editor.formatOnSave": true
+	}
 }

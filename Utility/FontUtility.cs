@@ -109,7 +109,7 @@ namespace RobloxFiles.Utility
             return value;
         }
 
-        public static Font GetFont(FontFace face)
+        public static Font GetLegacyFont(FontFace face)
         {
             var result = Font.Unknown;
 
@@ -121,6 +121,11 @@ namespace RobloxFiles.Utility
                 result = faceQuery.First();
 
             return result;
+        }
+
+        public static bool TryGetFontFace(Font font, out FontFace face)
+        {
+            return FontFaces.TryGetValue(font, out face);
         }
     }
 }

@@ -24,7 +24,10 @@ namespace RobloxFiles.Tokens
                 var styleNode = node["Style"];
                 Enum.TryParse(styleNode.InnerText, out FontStyle style);
 
-                prop.Value = new FontFace(family, weight, style);
+                var cachedFaceNode = node["CachedFaceId"];
+                var cachedFaceId = cachedFaceNode?.InnerText;
+
+                prop.Value = new FontFace(family, weight, style, cachedFaceId);
                 return true;
             }
             catch
@@ -77,13 +80,14 @@ namespace RobloxFiles.Tokens
             var style = (byte)value.Style;
 
             var family = value.Family;
-            var writer = attribute.Writer;
+            var cachedFaceId = value.CachedFaceId;
 
+            var writer = attribute.Writer;
             writer.Write(weight);
             writer.Write(style);
 
             attribute.WriteString(family);
-            attribute.WriteInt(0); // Reserved
+            attribute.WriteString(cachedFaceId);
         }
     }
 }
