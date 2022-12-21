@@ -53,12 +53,8 @@ namespace RobloxFiles.BinaryFormat
                 {
                     Stream decompStream = null;
 
-                    if (CompressedData[0] >= 0xF0)
-                    {
-                        // Probably LZ4
-                        decompStream = new LZ4Stream(compStream, CompressionMode.Decompress);
-                    }
-                    else if (CompressedData[0] == 0x78 || CompressedData[0] == 0x58)
+                    
+                    if (CompressedData[0] == 0x78 || CompressedData[0] == 0x58)
                     {
                         // Probably zlib
                         decompStream = new DeflateStream(compStream, CompressionMode.Decompress);
@@ -67,6 +63,12 @@ namespace RobloxFiles.BinaryFormat
                     {
                         // Probably zstd
                         decompStream = new DecompressionStream(compStream);
+                    }
+                    else
+                    {
+                        // Probably LZ4
+                        var decomp = LZ4Codec.Decode(CompressedData, 0, CompressedSize, Size);
+                        decompStream = new MemoryStream(decomp);
                     }
 
                     if (decompStream == null)
