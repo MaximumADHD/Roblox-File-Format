@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text;
 
 namespace RobloxFiles
@@ -33,7 +32,7 @@ namespace RobloxFiles
         Vector3 = 17,
      // Vector2int16 = 18,
      // Vector3int16 = 19,
-     // CFrame = 20,
+        CFrame = 20,
      // Enum = 21,
         NumberSequence = 23,
      // NumberSequenceKeypoint = 24,
@@ -154,6 +153,7 @@ namespace RobloxFiles
         internal string ReadString() => Reader.ReadString(true);
 
         internal void WriteInt(int value) => Writer.Write(value);
+        internal void WriteByte(byte value) => Writer.Write(value);
         internal void WriteBool(bool value) => Writer.Write(value);
         internal void WriteFloat(float value) => Writer.Write(value);
         internal void WriteDouble(double value) => Writer.Write(value);

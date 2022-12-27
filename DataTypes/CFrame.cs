@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RobloxFiles.Enums;
+using System;
 using System.Diagnostics.Contracts;
 
 namespace RobloxFiles.DataTypes
@@ -446,6 +447,26 @@ namespace RobloxFiles.DataTypes
                 return -1;
 
             return orientId;
+        }
+
+        internal static CFrame FromOrientId(int orientId)
+        {
+            var xColumn = (NormalId)(orientId / 6);
+            var yColumn = (NormalId)(orientId % 6);
+
+            var R0 = Vector3.FromNormalId(xColumn);
+            var R1 = Vector3.FromNormalId(yColumn);
+            var R2 = R0.Cross(R1);
+
+            var matrix = new float[12]
+            {
+                0,    0,    0,
+                R0.X, R0.Y, R0.Z,
+                R1.X, R1.Y, R1.Z,
+                R2.X, R2.Y, R2.Z
+            };
+
+            return new CFrame(matrix);
         }
     }
 }

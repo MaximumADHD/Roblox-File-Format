@@ -14,6 +14,7 @@ local singletons = {
 	ParabolaAdornment = Instance.new("BoxHandleAdornment"), -- close enough
 	StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts"),
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts"),
+	BubbleChatConfiguration = TextChatService:WaitForChild("BubbleChatConfiguration", 10),
 	ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration", 10),
 	ChatInputBarConfiguration = TextChatService:WaitForChild("ChatInputBarConfiguration", 10),
 }

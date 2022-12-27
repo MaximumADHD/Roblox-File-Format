@@ -328,23 +328,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         {
                             // Make sure this value is in a safe range.
                             int orientId = (rawOrientId - 1) % 36;
-
-                            NormalId xColumn = (NormalId)(orientId / 6);
-                            Vector3 R0 = Vector3.FromNormalId(xColumn);
-
-                            NormalId yColumn = (NormalId)(orientId % 6);
-                            Vector3 R1 = Vector3.FromNormalId(yColumn);
-
-                            // Compute R2 using the cross product of R0 and R1.
-                            Vector3 R2 = R0.Cross(R1);
-
-                            // Generate the rotation matrix.
-                            matrices[i] = new float[9]
-                            {
-                                R0.X, R0.Y, R0.Z,
-                                R1.X, R1.Y, R1.Z,
-                                R2.X, R2.Y, R2.Z,
-                            };
+                            var cf = CFrame.FromOrientId(orientId);
+                            matrices[i] = cf.GetComponents();
                         }
                         else if (Type == PropertyType.Quaternion)
                         {

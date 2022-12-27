@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
-using System.Reflection;
 using System.Xml;
 
+using RobloxFiles.Utility;
 using RobloxFiles.XmlFormat;
 
 namespace RobloxFiles.Tokens
@@ -19,12 +19,11 @@ namespace RobloxFiles.Tokens
             {
                 Instance inst = prop.Instance;
                 Type instType = inst?.GetType();
-
-                FieldInfo info = instType.GetField(prop.Name, Property.BindingFlags);
+                var info = ImplicitMember.Get(instType, prop.Name);
 
                 if (info != null)
                 {
-                    Type enumType = info.FieldType;
+                    Type enumType = info.MemberType;
                     string item = value.ToInvariantString();
 
                     prop.Type = PropertyType.Enum;

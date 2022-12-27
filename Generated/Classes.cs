@@ -4318,6 +4318,24 @@ namespace RobloxFiles
     {
     }
 
+    public class BubbleChatConfiguration : TextChatConfigurations
+    {
+        public string AdorneeName = "HumanoidRootPart";
+        public Color3 BackgroundColor3 = Color3.FromRGB(250, 250, 250);
+        public double BackgroundTransparency = 0.1;
+        public float BubbleDuration = 15;
+        public float BubblesSpacing = 6;
+        public bool Enabled = true;
+        public Font Font = Font.GothamMedium;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.GothamMedium);
+        public Vector3 LocalPlayerStudsOffset = Vector3.zero;
+        public float MaxDistance = 100;
+        public float MinimizeDistance = 40;
+        public Color3 TextColor3 = Color3.FromRGB(57, 59, 61);
+        public long TextSize = 16;
+        public float VerticalStudsOffset = 0;
+    }
+
     public class ChatInputBarConfiguration : TextChatConfigurations
     {
         public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);

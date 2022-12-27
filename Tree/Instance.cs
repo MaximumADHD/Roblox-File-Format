@@ -45,6 +45,9 @@ namespace RobloxFiles
         /// <summary>The source AssetId this instance was created in.</summary>
         public long SourceAssetId = -1;
 
+        /// <summary>A unique identifier declared for the history of this instance.</summary>
+        public UniqueId HistoryId;
+
         /// <summary>A unique identifier declared for this instance.</summary>
         public UniqueId UniqueId;
 
