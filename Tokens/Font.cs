@@ -44,17 +44,20 @@ namespace RobloxFiles.Tokens
             string family = font.Family;
             string familyType = "null";
 
+            string cached = font.CachedFaceId;
             string cachedType = "null";
-            string cachedId = font.CachedFaceId;
 
             if (family.Length > 0)
                 familyType = "url";
 
-            if (cachedId.Length > 0)
+            if (cached.Length > 0)
                 cachedType = "url";
 
             var familyNode = doc.CreateElement("Family");
-            familyNode.InnerText = $"<{familyType}>{family}</{familyType}>";
+            var familyTypeNode = doc.CreateElement(familyType);
+            
+            familyTypeNode.InnerText = family;
+            familyNode.AppendChild(familyTypeNode);
             node.AppendChild(familyNode);
 
             var weightNode = doc.CreateElement("Weight");
@@ -65,9 +68,12 @@ namespace RobloxFiles.Tokens
             styleNode.InnerText = $"{font.Style}";
             node.AppendChild(styleNode);
 
-            var cacheNode = doc.CreateElement("CachedFaceId");
-            cacheNode.InnerText = $"<{cachedType}>{cachedId}</{cachedType}>";
-            node.AppendChild(cacheNode);
+            var cachedNode = doc.CreateElement("CachedFaceId");
+            var cachedTypeNode = doc.CreateElement(cachedType);
+            
+            cachedTypeNode.InnerText = cached;
+            cachedNode.AppendChild(cachedTypeNode);
+            node.AppendChild(cachedNode);
         }
 
         public FontFace ReadAttribute(RbxAttribute attribute)
