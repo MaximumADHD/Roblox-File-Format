@@ -767,19 +767,25 @@ namespace RobloxFiles
                 }
             }
 
-            Property tags = GetProperty("Tags");
-            Property attributes = GetProperty("AttributesSerialize");
-            
-            if (tags == null)
+            var extraProps = new Dictionary<string, PropertyType>()
             {
-                tags = new Property("Tags", PropertyType.String);
-                AddProperty(ref tags);
-            }
+                { "Tags", PropertyType.String },
+                { "AttributesSerialize", PropertyType.String },
 
-            if (attributes == null)
+                { "UniqueId", PropertyType.UniqueId },
+                { "HistoryId", PropertyType.UniqueId },
+            };
+
+            foreach (var extraProp in extraProps)
             {
-                attributes = new Property("AttributesSerialize", PropertyType.String);
-                AddProperty(ref attributes);
+                string name = extraProp.Key;
+                var propType = extraProp.Value;
+                
+                if (GetProperty(name) == null)
+                {
+                    var prop = new Property(name, propType);
+                    AddProperty(ref prop);
+                }
             }
 
             return Properties;
