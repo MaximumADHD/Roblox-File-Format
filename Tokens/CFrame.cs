@@ -105,9 +105,7 @@ namespace RobloxFiles.Tokens
         public void WriteAttribute(RbxAttribute attribute, CFrame value)
         {
             Vector3 pos = value.Position;
-            attribute.WriteFloat(pos.X);
-            attribute.WriteFloat(pos.Y);
-            attribute.WriteFloat(pos.Z);
+            Vector3Token.WriteVector3(attribute, pos);
 
             int orientId = value.GetOrientId();
             attribute.WriteByte((byte)(orientId + 1));

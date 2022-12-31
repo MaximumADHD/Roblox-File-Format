@@ -46,10 +46,10 @@ namespace RobloxFiles
         public long SourceAssetId = -1;
 
         /// <summary>A unique identifier declared for the history of this instance.</summary>
-        public UniqueId HistoryId;
+        public UniqueId HistoryId = new UniqueId(0, 0, 0);
 
         /// <summary>A unique identifier declared for this instance.</summary>
-        public UniqueId UniqueId;
+        public UniqueId UniqueId = new UniqueId(0, 0, 0);
 
         /// <summary>The name of this Instance, if a Name property is defined.</summary>
         public override string ToString() => Name;
