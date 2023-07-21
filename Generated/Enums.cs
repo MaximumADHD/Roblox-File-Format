@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.554.1.5540506
+// Updated as of 0.586.0.5860000
 
 namespace RobloxFiles.Enums
 {
@@ -100,12 +100,25 @@ namespace RobloxFiles.Enums
         ScaleWithParentSize
     }
 
+    public enum AudioSubType
+    {
+        Music = 1,
+        SoundEffect
+    }
+
     public enum AutomaticSize
     {
         None,
         X,
         Y,
         XY
+    }
+
+    public enum AvatarUnificationMode
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum Axis
@@ -250,6 +263,26 @@ namespace RobloxFiles.Enums
         Height
     }
 
+    public enum DragDetectorDragStyle
+    {
+        TranslateLine,
+        TranslatePlane,
+        TranslatePlaneOrLine,
+        TranslateLineOrPlane,
+        TranslateViewPlane,
+        RotateAxis,
+        RotateTrackball,
+        Scriptable,
+        BestForDevice
+    }
+
+    public enum DragDetectorResponseStyle
+    {
+        Geometric,
+        Physical,
+        Custom
+    }
+
     public enum EasingDirection
     {
         In,
@@ -387,6 +420,12 @@ namespace RobloxFiles.Enums
         Heavy = 900
     }
 
+    public enum ForceLimitMode
+    {
+        Magnitude,
+        PerAxis
+    }
+
     public enum FormFactor
     {
         Symmetric,
@@ -471,6 +510,13 @@ namespace RobloxFiles.Enums
         Legacy,
         NoStateMachine,
         LuaStateMachine
+    }
+
+    public enum IKControlConstraintSupport
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum IKControlType
@@ -767,13 +813,6 @@ namespace RobloxFiles.Enums
         Right
     }
 
-    public enum LevelOfDetailSetting
-    {
-        Low,
-        Medium,
-        High
-    }
-
     public enum LineJoinMode
     {
         Round,
@@ -872,11 +911,20 @@ namespace RobloxFiles.Enums
         Disabled
     }
 
+    public enum ModelStreamingBehavior
+    {
+        Default,
+        Legacy,
+        Improved
+    }
+
     public enum ModelStreamingMode
     {
         Default,
         Atomic,
-        Persistent
+        Persistent,
+        PersistentPerPlayer,
+        Nonatomic
     }
 
     public enum MouseBehavior
@@ -891,13 +939,6 @@ namespace RobloxFiles.Enums
         NoOcclusion,
         EnemyOcclusion,
         OccludeAll
-    }
-
-    public enum NewAnimationRuntimeSetting
-    {
-        Default,
-        Disabled,
-        Enabled
     }
 
     public enum NormalId
@@ -920,7 +961,9 @@ namespace RobloxFiles.Enums
     {
         Ball,
         Block,
-        Cylinder
+        Cylinder,
+        Wedge,
+        CornerWedge
     }
 
     public enum ParticleEmitterShape
@@ -1016,6 +1059,13 @@ namespace RobloxFiles.Enums
         InnerBox
     }
 
+    public enum RejectCharacterDeletions
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
     public enum RenderFidelity
     {
         Automatic,
@@ -1088,6 +1138,13 @@ namespace RobloxFiles.Enums
         ZYX
     }
 
+    public enum RtlTextSupport
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
     public enum RunContext
     {
         Legacy,
@@ -1147,6 +1204,25 @@ namespace RobloxFiles.Enums
         Stop
     }
 
+    public enum SensorMode
+    {
+        Floor,
+        Ladder
+    }
+
+    public enum SensorUpdateType
+    {
+        OnRead,
+        Manual
+    }
+
+    public enum ServiceVisibility
+    {
+        Always,
+        Off,
+        WithChildren
+    }
+
     public enum SignalBehavior
     {
         Default,
@@ -1190,13 +1266,6 @@ namespace RobloxFiles.Enums
         Disabled,
         MinimumRadiusPause,
         PauseOutsideLoadedArea
-    }
-
-    public enum StreamingPauseMode
-    {
-        Default,
-        Disabled,
-        ClientPhysicsPause
     }
 
     public enum Style
@@ -1264,6 +1333,13 @@ namespace RobloxFiles.Enums
         Bottom
     }
 
+    public enum TextDirection
+    {
+        Auto,
+        LeftToRight,
+        RightToLeft
+    }
+
     public enum TextTruncate
     {
         None,
@@ -1303,13 +1379,6 @@ namespace RobloxFiles.Enums
         Unknown,
         True,
         False
-    }
-
-    public enum UnionsScaleNonuniformly
-    {
-        Default,
-        Disabled,
-        Enabled
     }
 
     public enum VelocityConstraintMode

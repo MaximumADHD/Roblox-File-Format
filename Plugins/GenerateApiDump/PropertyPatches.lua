@@ -8,10 +8,8 @@ export type GetSet = string | {
 }
 
 export type Patch = {
-	Add: { [string]: string }?,
 	Redirect: { [string]: GetSet }?,
 	Defaults: { [string]: any }?,
-	Remove: { string }?,
 }
 
 -- strict type reaffirmation?
@@ -26,18 +24,6 @@ local function UseColor3(propName: string): GetSet
 		Get = string.format("BrickColor.FromColor3(%s)", propName),
 		Set = propName .. " = value?.Color",
 	}
-end
-
-local function TryDefineEnum(enumName: string): string?
-	local gotEnum, enum = pcall(function()
-		return (Enum :: any)[enumName] :: Enum
-	end)
-
-	if gotEnum then
-		return "Enum:" .. tostring(enum)
-	end
-
-	return nil
 end
 
 local function TryGetEnumItem(enumName, itemName): EnumItem?
@@ -59,8 +45,6 @@ local function TryGetEnumItem(enumName, itemName): EnumItem?
 end
 
 local GuiTextMixIn: Patch = {
-	Add = { Transparency = "float" },
-
 	Redirect = {
 		Font = GetSet({
 			Get = "FontUtility.GetLegacyFont(FontFace)",
@@ -87,20 +71,6 @@ local GuiTextMixIn: Patch = {
 
 local PropertyPatches: { [string]: Patch } = {
 	AnimationRigData = {
-		Add = {
-			name = "BinaryString",
-			label = "BinaryString",
-			parent = "BinaryString",
-			weight = "BinaryString",
-			transform = "BinaryString",
-			facsControl = "BinaryString",
-			preTransform = "BinaryString",
-			postTransform = "BinaryString",
-			articulatedJoint = "BinaryString",
-			endEffectorRotationConstraint = "BinaryString",
-			endEffectorTranslationConstraint = "BinaryString",
-		},
-
 		Defaults = {
 			name = "AQAAAAEAAAAAAAAA",
 			label = "AQAAAAEAAAAAAAAA",
@@ -111,33 +81,23 @@ local PropertyPatches: { [string]: Patch } = {
 			postTransform = "AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=",
 
 			weight = "AQAAAAAAAAA=",
-			facsControl = "AQAAAAAAAAA=",
-			articulatedJoint = "AQAAAAAAAAA=",
-			endEffectorRotationConstraint = "AQAAAAAAAAA=",
-			endEffectorTranslationConstraint = "AQAAAAAAAAA=",
+		},
+	},
+
+	AudioSearchParams = {
+		Redirect = {
+			AudioSubtype = GetSet("AudioSubType"),
 		},
 	},
 
 	BallSocketConstraint = {
 		-- Why does this even exist?
-		Add = {
-			MaxFrictionTorqueXml = "float",
-			MaxFrictionTorque = "float",
-		},
-
 		Redirect = {
 			MaxFrictionTorque = GetSet("MaxFrictionTorqueXml"),
 		},
 	},
 
 	BasePart = {
-		Add = {
-			MaterialVariantSerialized = "string",
-			MaterialVariant = "string",
-			Color3uint8 = "Color3uint8",
-			size = "Vector3",
-		},
-
 		Redirect = {
 			Position = GetSet({
 				Get = "CFrame.Position",
@@ -155,22 +115,6 @@ local PropertyPatches: { [string]: Patch } = {
 			MaterialVariantSerialized = "",
 			size = Vector3.new(4, 1.2, 2),
 		},
-	},
-
-	BaseScript = {
-		Remove = { "LinkedSource" },
-	},
-
-	BevelMesh = {
-		Add = {
-			Bevel = "float",
-			Bevel_Roundness = "float",
-			Bulge = "float",
-		},
-	},
-
-	BinaryStringValue = {
-		Add = { Value = "BinaryString" },
 	},
 
 	BodyColors = {
@@ -196,22 +140,6 @@ local PropertyPatches: { [string]: Patch } = {
 		Redirect = { CoordinateFrame = GetSet("CFrame") },
 	},
 
-	CustomEvent = {
-		Add = { PersistedCurrentValue = "float" },
-	},
-
-	DataModelMesh = {
-		Add = {
-			LODX = TryDefineEnum("LevelOfDetailSetting"),
-			LODY = TryDefineEnum("LevelOfDetailSetting"),
-		},
-
-		Defaults = {
-			LODX = TryGetEnumItem("LevelOfDetailSetting", "High"),
-			LODY = TryGetEnumItem("LevelOfDetailSetting", "High"),
-		},
-	},
-
 	DataStoreService = {
 		Defaults = {
 			AutomaticRetry = true,
@@ -220,8 +148,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	DoubleConstrainedValue = {
-		Add = { value = "double" },
-
 		Redirect = {
 			Value = GetSet("value"),
 			ConstrainedValue = GetSet("value"),
@@ -229,11 +155,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	Fire = {
-		Add = {
-			heat_xml = "float",
-			size_xml = "float",
-		},
-
 		Defaults = {
 			heat_xml = 9,
 			size_xml = 5,
@@ -246,15 +167,10 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	FloatCurve = {
-		Add = { ValuesAndTimes = "BinaryString" },
 		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" },
 	},
 
 	FormFactorPart = {
-		Add = {
-			formFactorRaw = TryDefineEnum("FormFactor"),
-		},
-
 		Defaults = {
 			formFactorRaw = TryGetEnumItem("FormFactor", "Brick"),
 		},
@@ -265,7 +181,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	FunctionalTest = {
-		Add = { HasMigratedSettingsToTestService = "bool" },
 		Defaults = { HasMigratedSettingsToTestService = false },
 	},
 
@@ -285,24 +200,11 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
-	HiddenSurfaceRemovalAsset = {
-		Add = {
-			HSRData = "BinaryString",
-			HSRMeshIdData = "BinaryString",
-		},
-	},
-
 	HttpService = {
 		Defaults = { HttpEnabled = false },
 	},
 
 	Humanoid = {
-		Add = {
-			Health_XML = "float",
-			InternalHeadScale = "float",
-			InternalBodyScale = "Vector3",
-		},
-
 		Defaults = {
 			Health_XML = 100,
 			InternalHeadScale = 1,
@@ -312,21 +214,9 @@ local PropertyPatches: { [string]: Patch } = {
 		Redirect = {
 			Health = GetSet("Health_XML"),
 		},
-
-		Remove = {
-			"Jump",
-			"Torso",
-			"LeftLeg",
-			"RightLeg",
-		},
 	},
 
 	HumanoidDescription = {
-		Add = {
-			EmotesDataInternal = "string",
-			EquippedEmotesDataInternal = "string",
-		},
-
 		Defaults = {
 			AccessoryBlob = "[]",
 			EmotesDataInternal = "[]",
@@ -335,13 +225,10 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	InsertService = {
-		Add = { AllowClientInsertModels = "bool" },
 		Defaults = { AllowClientInsertModels = false },
 	},
 
 	IntConstrainedValue = {
-		Add = { value = "int64" },
-
 		Redirect = {
 			Value = GetSet("value"),
 			ConstrainedValue = GetSet("value"),
@@ -349,17 +236,12 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	Lighting = {
-		Add = {
-			Technology = TryDefineEnum("Technology"),
-		},
-
 		Defaults = {
 			Technology = TryGetEnumItem("Technology", "Compatibility"),
 		},
 	},
 
 	LocalizationTable = {
-		Add = { Contents = "string" },
 		Defaults = { Contents = "[]" },
 
 		Redirect = {
@@ -367,32 +249,11 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
-	LocalScript = {
-		Remove = {
-			"LinkedSource",
-			"Source",
-		},
-	},
-
-	LuaSourceContainer = {
-		Add = {
-			LinkedSource = "Content",
-			ScriptGuid = "string",
-			Source = "ProtectedString",
-		},
-	},
-
 	MarkerCurve = {
-		Add = { ValuesAndTimes = "BinaryString" },
 		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" },
 	},
 
 	MaterialService = {
-		Add = {
-			Use2022Materials = "bool",
-			Use2022MaterialsXml = "bool",
-		},
-
 		Redirect = { Use2022Materials = GetSet("Use2022MaterialsXml") },
 
 		Defaults = {
@@ -431,47 +292,20 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
-	MaterialVariant = {
-		Add = {
-			TexturePack0 = "Content",
-			TexturePack1 = "Content",
-		},
-	},
-
 	MeshPart = {
-		Add = { VertexCount = "int" },
 		Defaults = { VertexCount = 0 },
 		Redirect = { MeshID = GetSet("MeshId") },
 	},
 
 	Model = {
-		Add = {
-			ModelMeshCFrame = "CFrame",
-			ModelMeshData = "SharedString",
-			ModelMeshSize = "Vector3",
-			NeedsPivotMigration = "bool",
-			WorldPivotData = "Optional<CFrame>",
-		},
-	},
-
-	ModuleScript = {
-		Remove = {
-			"LinkedSource",
-			"Source",
-		},
+		Defaults = { ScaleFactor = 1 },
 	},
 
 	PackageLink = {
-		Add = {
-			VersionIdSerialize = "int64",
-			PackageIdSerialize = "Content",
-		},
-
 		Defaults = { AutoUpdate = false },
 	},
 
 	Part = {
-		Add = { shape = TryDefineEnum("PartType") },
 		Redirect = { Shape = GetSet("shape") },
 	},
 
@@ -485,26 +319,7 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	PartOperation = {
-		Add = {
-			AssetId = "Content",
-
-			ChildData = "BinaryString",
-			ChildData2 = "SharedString",
-
-			MeshData = "BinaryString",
-			MeshData2 = "SharedString",
-
-			FormFactor = TryDefineEnum("FormFactor"),
-		},
-
 		Defaults = { FormFactor = Enum.FormFactor.Custom },
-	},
-
-	PartOperationAsset = {
-		Add = {
-			ChildData = "BinaryString",
-			MeshData = "BinaryString",
-		},
 	},
 
 	Players = {
@@ -512,11 +327,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	PolicyService = {
-		Add = {
-			IsLuobuServer = TryDefineEnum("TriStateBoolean"),
-			LuobuWhitelisted = TryDefineEnum("TriStateBoolean"),
-		},
-
 		Defaults = {
 			IsLuobuServer = TryGetEnumItem("TriStateBoolean", "Unknown"),
 			LuobuWhitelisted = TryGetEnumItem("TriStateBoolean", "Unknown"),
@@ -524,7 +334,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	RotationCurve = {
-		Add = { ValuesAndTimes = "BinaryString" },
 		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" },
 	},
 
@@ -540,27 +349,7 @@ local PropertyPatches: { [string]: Patch } = {
 		Defaults = { LoadStringEnabled = false },
 	},
 
-	Script = {
-		Remove = {
-			"LinkedSource",
-			"Source",
-		},
-	},
-
-	ScriptDebugger = {
-		Add = {
-			CoreScriptIdentifier = "string",
-			ScriptGuid = "string",
-		},
-	},
-
 	Smoke = {
-		Add = {
-			size_xml = "float",
-			opacity_xml = "float",
-			riseVelocity_xml = "float",
-		},
-
 		Defaults = {
 			size_xml = 1,
 			opacity_xml = 0.5,
@@ -575,12 +364,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	Sound = {
-		Add = {
-			MaxDistance = "float", -- ?!
-			xmlRead_MaxDistance_3 = "float",
-			xmlRead_MinDistance_3 = "float",
-		},
-
 		Defaults = {
 			xmlRead_MinDistance_3 = 10,
 			xmlRead_MaxDistance_3 = 10000,
@@ -600,10 +383,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	StarterPlayer = {
-		Add = {
-			LoadCharacterLayeredClothing = "Enum:LoadCharacterLayeredClothing",
-		},
-
 		Defaults = {
 			GameSettingsAvatar = Enum.GameAvatarType.R15,
 			GameSettingsR15Collision = Enum.R15CollisionType.OuterBox,
@@ -617,14 +396,6 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
-	StudioData = {
-		Add = {
-			CommitInflightGuid = "string",
-			CommitInflightAuthorId = "int64",
-			CommitInflightPlaceVersion = "int",
-		},
-	},
-
 	SurfaceAppearance = {
 		Defaults = { AlphaMode = Enum.AlphaMode.Overlay },
 	},
@@ -634,13 +405,6 @@ local PropertyPatches: { [string]: Patch } = {
 	TextButton = GuiTextMixIn,
 
 	Terrain = {
-		Add = {
-			AcquisitionMethod = TryDefineEnum("TerrainAcquisitionMethod"),
-			ClusterGridV3 = "BinaryString",
-			PhysicsGrid = "BinaryString",
-			SmoothGrid = "BinaryString",
-		},
-
 		Defaults = {
 			Decoration = false,
 			SmoothGrid = "AQU=",
@@ -650,19 +414,7 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
-	TerrainDetail = {
-		Add = { TexturePack = "Content" },
-	},
-
 	TerrainRegion = {
-		Add = {
-			ExtentsMax = "Vector3int16",
-			ExtentsMin = "Vector3int16",
-
-			GridV3 = "BinaryString",
-			SmoothGrid = "BinaryString",
-		},
-
 		Defaults = {
 			ExtentsMax = Vector3int16.new(),
 			ExtentsMin = Vector3int16.new(),
@@ -680,13 +432,6 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	TriangleMeshPart = {
-		Add = {
-			InitialSize = "Vector3",
-			LODData = "BinaryString",
-			PhysicsData = "BinaryString",
-			PhysicalConfigData = "SharedString",
-		},
-
 		Defaults = {
 			InitialSize = Vector3.new(1, 1, 1),
 			PhysicalConfigData = "1B2M2Y8AsgTpgAmY7PhCfg==",
@@ -694,13 +439,10 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	TrussPart = {
-		Add = { style = TryDefineEnum("Style") },
 		Redirect = { Style = GetSet("style") },
 	},
 
 	UnvalidatedAssetService = {
-		Add = { CachedData = "string" },
-
 		Defaults = {
 			CachedData = HttpService:JSONEncode({
 				users = {},
@@ -711,39 +453,19 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	UserInputService = {
-		Add = { LegacyInputEventsEnabled = "bool" },
 		Defaults = { LegacyInputEventsEnabled = true },
 	},
 
 	ViewportFrame = {
-		Add = {
-			CameraCFrame = "CFrame",
-			CameraFieldOfView = "float",
-		},
-
 		Defaults = {
-			CameraCFrame = CFrame.new(),
+			CameraCFrame = CFrame.identity,
 			CameraFieldOfView = 70,
 		},
 	},
 
 	WeldConstraint = {
-		Add = {
-			Part0Internal = "Class:BasePart",
-			Part1Internal = "Class:BasePart",
-
-			EnabledInternal = "bool",
-			State = "int",
-
-			CFrame0 = "CFrame",
-			CFrame1 = "CFrame",
-		},
-
 		Defaults = {
-			CFrame0 = CFrame.new(),
-			CFrame1 = CFrame.new(),
-
-			EnabledInternal = true,
+			CFrame0 = CFrame.identity,
 			State = 3,
 
 			Part0 = Instance.new("Part"),
@@ -753,29 +475,12 @@ local PropertyPatches: { [string]: Patch } = {
 		Redirect = {
 			Part0 = GetSet("Part0Internal"),
 			Part1 = GetSet("Part1Internal"),
-			Enabled = GetSet("EnabledInternal"),
 		},
 	},
 
 	Workspace = {
-		Add = {
-			CollisionGroups = "string",
-
-			ExplicitAutoJoints = "bool",
-			TerrainWeldsFixed = "bool",
-
-			StreamingMinRadius = "int",
-			StreamingTargetRadius = "int",
-
-			MeshPartHeads = TryDefineEnum("MeshPartHeads"),
-			SignalBehavior = TryDefineEnum("SignalBehavior"),
-			StreamingPauseMode = TryDefineEnum("StreamingPauseMode"),
-			PhysicsSteppingMethod = TryDefineEnum("PhysicsSteppingMethod"),
-			MeshPartHeadsAndAccessories = TryDefineEnum("MeshPartHeadsAndAccessories"),
-		},
-
 		Defaults = {
-			CollisionGroups = "Default^0^1",
+			CollisionGroupData = "AQEABP////8HRGVmYXVsdA==",
 
 			TouchesUseCollisionGroups = false,
 			ExplicitAutoJoints = true,

@@ -173,33 +173,6 @@ local function collectProperties(class)
 	return propMap
 end
 
-local function createProperty(propName, propType)
-	local category = "DataType"
-	local name = propType
-
-	if propType:find(":") then
-		local data = string.split(propType, ":")
-		category = data[1]
-		name = data[2]
-	end
-
-	return {
-		Name = propName,
-
-		Serialization = {
-			CanSave = true,
-			CanLoad = true,
-		},
-
-		ValueType = {
-			Category = category,
-			Name = name,
-		},
-
-		Security = "None",
-	}
-end
-
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Formatting
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -222,6 +195,7 @@ local formatLinks = {
 
 	["Color3uint8"] = "Color3",
 	["ProtectedString"] = "String",
+	["OptionalCoordinateFrame"] = "Optional<CFrame>",
 }
 
 local function getFormatFunction(valueType: string): FormatFunc
@@ -294,7 +268,7 @@ local function generateClasses()
 	local env = getfenv()
 	local version = getAsync(baseUrl .. "version.txt")
 
-	local apiDump = getAsync(baseUrl .. "API-Dump.json")
+	local apiDump = getAsync(baseUrl .. "Full-API-Dump.json")
 	apiDump = HttpService:JSONDecode(apiDump)
 
 	local classNames = {}
@@ -306,6 +280,7 @@ local function generateClasses()
 		FontSize = true,
 		FontStyle = true,
 		FontWeight = true,
+		AdPortalType = true,
 	}
 
 	for _, class in ipairs(apiDump.Classes) do
@@ -366,6 +341,7 @@ local function generateClasses()
 	writeLine()
 
 	writeLine("#pragma warning disable IDE1006 // Naming Styles")
+	writeLine("#pragma warning disable CS0612 // Type or member is obsolete")
 	writeLine()
 
 	writeLine("namespace RobloxFiles")
@@ -430,14 +406,17 @@ local function generateClasses()
 			local propMap = collectProperties(class)
 			local propNames = {}
 
+			--[[
 			for _, propName in pairs(classPatches.Remove) do
 				propMap[propName] = nil
 			end
+			]]
 
 			for propName in pairs(propMap) do
 				table.insert(propNames, propName)
 			end
 
+			--[[
 			for propName, propType in pairs(classPatches.Add) do
 				local prop = propMap[propName]
 
@@ -450,6 +429,7 @@ local function generateClasses()
 					table.insert(propNames, propName)
 				end
 			end
+			]]
 
 			local firstLine = true
 			class.PropertyMap = propMap
@@ -569,7 +549,11 @@ local function generateClasses()
 					local default = ""
 
 					if propName == className then
-						name = name .. "_"
+						name ..= "_"
+					end
+
+					if name:find(" ") then
+						name = name:gsub(" ", "_")
 					end
 
 					if valueType == "int64" then
@@ -578,6 +562,8 @@ local function generateClasses()
 						valueType = "byte[]"
 					elseif valueType == "Font" and category ~= "Enum" then
 						valueType = "FontFace"
+					elseif valueType == "OptionalCoordinateFrame" then
+						valueType = "Optional<CFrame>"
 					end
 
 					local first = name:sub(1, 1)
