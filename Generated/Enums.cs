@@ -1,8 +1,14 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.586.0.5860000
+// Updated as of 0.589.0.5890596
 
 namespace RobloxFiles.Enums
 {
+    public enum AccessModifierType
+    {
+        Allow,
+        Deny
+    }
+
     public enum AccessoryType
     {
         Unknown,
@@ -39,12 +45,6 @@ namespace RobloxFiles.Enums
         None,
         Motor,
         Servo
-    }
-
-    public enum AdPortalType
-    {
-        Forward,
-        Return
     }
 
     public enum AdShape
@@ -112,6 +112,13 @@ namespace RobloxFiles.Enums
         X,
         Y,
         XY
+    }
+
+    public enum AvatarJointUpgrade
+    {
+        Default,
+        Enabled,
+        Disabled
     }
 
     public enum AvatarUnificationMode
@@ -193,6 +200,14 @@ namespace RobloxFiles.Enums
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum DeathStyle
+    {
+        Default,
+        ClassicBreakApart,
+        NonGraphic,
+        Scriptable
     }
 
     public enum DevCameraOcclusionMode
@@ -329,6 +344,12 @@ namespace RobloxFiles.Enums
     {
         Horizontal,
         Vertical
+    }
+
+    public enum FluidForces
+    {
+        Default,
+        Experimental
     }
 
     public enum Font
@@ -872,7 +893,15 @@ namespace RobloxFiles.Enums
         Glass = 1568,
         ForceField = 1584,
         Air = 1792,
-        Water = 2048
+        Water = 2048,
+        Cardboard = 2304,
+        Carpet,
+        CeramicTiles,
+        ClayRoofTiles,
+        RoofShingles,
+        Leather,
+        Plaster,
+        Rubber
     }
 
     public enum MaterialPattern

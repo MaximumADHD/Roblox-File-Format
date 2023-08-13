@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.586.0.5860000
+// Updated as of 0.589.0.5890596
 
 using System;
 
@@ -28,9 +28,6 @@ namespace RobloxFiles
 
     public class AdPortal : Instance
     {
-        [Obsolete]
-        public AdPortalType PortalType = AdPortalType.Forward;
-
     }
 
     public class AdService : Instance
@@ -196,6 +193,112 @@ namespace RobloxFiles
 
     public class Bone : Attachment
     {
+    }
+
+    public class AudioAnalyzer : Instance
+    {
+    }
+
+    public class AudioChorus : Instance
+    {
+        public float Depth = 0.45f;
+        public float Mix = 0.85f;
+        public float Rate = 5;
+    }
+
+    public class AudioCompressor : Instance
+    {
+        public float Attack = 0.1f;
+        public float MakeupGain = 0;
+        public float Ratio = 40;
+        public float Release = 0.1f;
+        public float Threshold = -40;
+    }
+
+    public class AudioDeviceInput : Instance
+    {
+        public AccessModifierType AccessType = AccessModifierType.Deny;
+        public bool Active = true;
+        public bool Muted;
+    }
+
+    public class AudioDeviceOutput : Instance
+    {
+    }
+
+    public class AudioDistortion : Instance
+    {
+        public float Level = 0.5f;
+    }
+
+    public class AudioEcho : Instance
+    {
+        public float DelayTime = 1;
+        public float DryLevel = 0;
+        public float Feedback = 0.5f;
+        public float WetLevel = 0;
+    }
+
+    public class AudioEmitter : Instance
+    {
+        public string AudioInteractionGroup = "";
+    }
+
+    public class AudioEqualizer : Instance
+    {
+        public float HighGain = 0;
+        public float LowGain = 0;
+        public float MidGain = 0;
+        public NumberRange MidRange = new NumberRange(400, 4000);
+    }
+
+    public class AudioFader : Instance
+    {
+        public float Volume = 1;
+    }
+
+    public class AudioFlanger : Instance
+    {
+        public float Depth = 0.45f;
+        public float Mix = 0.85f;
+        public float Rate = 5;
+    }
+
+    public class AudioListener : Instance
+    {
+        public string AudioInteractionGroup = "";
+    }
+
+    public class AudioPitchShifter : Instance
+    {
+        public float Pitch = 1.25f;
+    }
+
+    public class AudioPlayer : Instance
+    {
+        public string AssetId = "";
+        public bool AutoLoad = true;
+        public NumberRange LoopRegion = new NumberRange(0, 60000);
+        public bool Looping;
+        public NumberRange PlaybackRegion = new NumberRange(0, 60000);
+        public double PlaybackSpeed = 1;
+        public double TimePosition = 0;
+    }
+
+    public class AudioReverb : Instance
+    {
+        public float DecayRatio = 0.5f;
+        public float DecayTime = 1.5f;
+        public float Density = 1;
+        public float Diffusion = 1;
+        public float DryLevel = 0;
+        public float EarlyDelayTime = 0.02f;
+        public float HighCutFrequency = 20000;
+        public float LateDelayTime = 0.04f;
+        public float LowShelfFrequency = 250;
+        public float LowShelfGain = 0;
+        public float ReferenceFrequency = 5000;
+        public float WetLevel = -6;
     }
 
     public class AudioSearchParams : Instance
@@ -685,6 +788,14 @@ namespace RobloxFiles
         public bool LoadDefaultChat = true;
     }
 
+    public class ChatbotUIService : Instance
+    {
+        public ChatbotUIService()
+        {
+            IsService = true;
+        }
+    }
+
     public class ClickDetector : Instance
     {
         public Content CursorIcon = "";
@@ -722,6 +833,14 @@ namespace RobloxFiles
         public float Cover = 0.5f;
         public float Density = 0.7f;
         public bool Enabled = true;
+    }
+
+    public class CollaboratorsService : Instance
+    {
+        public CollaboratorsService()
+        {
+            IsService = true;
+        }
     }
 
     public class CollectionService : Instance
@@ -1202,14 +1321,14 @@ namespace RobloxFiles
     {
     }
 
+    public class DynamicMesh : DataModelMesh
+    {
+    }
+
     public class FileMesh : DataModelMesh
     {
         public Content MeshId = "";
         public Content TextureId = "";
-    }
-
-    public class DynamicMesh : FileMesh
-    {
     }
 
     public class SpecialMesh : FileMesh
@@ -1621,6 +1740,7 @@ namespace RobloxFiles
         [Obsolete]
         public bool Draggable;
 
+        public bool Interactable = true;
         public int LayoutOrder = 0;
         public GuiObject NextSelectionDown;
         public GuiObject NextSelectionLeft;
@@ -2742,6 +2862,10 @@ namespace RobloxFiles
         public string AsphaltName = "Asphalt";
         public string BasaltName = "Basalt";
         public string BrickName = "Brick";
+        public string CardboardName = "";
+        public string CarpetName = "";
+        public string CeramicTilesName = "";
+        public string ClayRoofTilesName = "";
         public string CobblestoneName = "Cobblestone";
         public string ConcreteName = "Concrete";
         public string CorrodedMetalName = "CorrodedMetal";
@@ -2755,14 +2879,18 @@ namespace RobloxFiles
         public string GroundName = "Ground";
         public string IceName = "Ice";
         public string LeafyGrassName = "LeafyGrass";
+        public string LeatherName = "";
         public string LimestoneName = "Limestone";
         public string MarbleName = "Marble";
         public string MetalName = "Metal";
         public string MudName = "Mud";
         public string PavementName = "Pavement";
         public string PebbleName = "Pebble";
+        public string PlasterName = "";
         public string PlasticName = "Plastic";
         public string RockName = "Rock";
+        public string RoofShinglesName = "";
+        public string RubberName = "";
         public string SaltName = "Salt";
         public string SandName = "Sand";
         public string SandstoneName = "Sandstone";
@@ -3360,9 +3488,9 @@ namespace RobloxFiles
         public byte[] CollisionGroupData = Convert.FromBase64String("AQEABP////8HRGVmYXVsdA==");
         public Camera CurrentCamera;
         public double DistributedGameTime = 0;
-        public bool EnableFluidForces;
         public bool ExplicitAutoJoints = true;
         public float FallenPartsDestroyHeight = -500;
+        public FluidForces FluidForces = FluidForces.Default;
         public Vector3 GlobalWind = Vector3.zero;
         public float Gravity = 196.2f;
         public HumanoidOnlySetCollisionsOnStateChange HumanoidOnlySetCollisionsOnStateChange = HumanoidOnlySetCollisionsOnStateChange.Default;
@@ -3528,6 +3656,14 @@ namespace RobloxFiles
         }
     }
 
+    public class PlatformFriendsService : Instance
+    {
+        public PlatformFriendsService()
+        {
+            IsService = true;
+        }
+    }
+
     public class PlayerEmulatorService : Instance
     {
         public PlayerEmulatorService()
@@ -3558,6 +3694,11 @@ namespace RobloxFiles
 
     public class PluginAction : Instance
     {
+    }
+
+    public class PluginCapabilities : Instance
+    {
+        public string Manifest = "";
     }
 
     public class PluginDebugService : Instance
@@ -3867,6 +4008,14 @@ namespace RobloxFiles
         }
     }
 
+    public class RobloxServerStorage : Instance
+    {
+        public RobloxServerStorage()
+        {
+            IsService = true;
+        }
+    }
+
     public class RomarkService : Instance
     {
         public RomarkService()
@@ -4031,6 +4180,7 @@ namespace RobloxFiles
             IsService = true;
         }
 
+        public byte[] HiddenServices;
         public byte[] VisibleServices;
     }
 
@@ -4303,6 +4453,7 @@ namespace RobloxFiles
 
         public bool AllowCustomAnimations = true;
         public bool AutoJumpEnabled = true;
+        public AvatarJointUpgrade AvatarJointUpgrade_Serialized = AvatarJointUpgrade.Default;
         public float CameraMaxZoomDistance = 400;
         public float CameraMinZoomDistance = 0.5f;
         public CameraMode CameraMode = CameraMode.Classic;
@@ -4311,6 +4462,7 @@ namespace RobloxFiles
         public float CharacterMaxSlopeAngle = 89;
         public bool CharacterUseJumpPower = true;
         public float CharacterWalkSpeed = 16;
+        public DeathStyle DeathStyle = DeathStyle.Default;
         public DevCameraOcclusionMode DevCameraOcclusionMode = DevCameraOcclusionMode.Zoom;
         public DevComputerCameraMovementMode DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice;
         public DevComputerMovementMode DevComputerMovementMode = DevComputerMovementMode.UserChoice;
@@ -4528,6 +4680,14 @@ namespace RobloxFiles
         public bool CustomizedTeleportUI;
     }
 
+    public class TemporaryCageMeshProvider : Instance
+    {
+        public TemporaryCageMeshProvider()
+        {
+            IsService = true;
+        }
+    }
+
     public class TemporaryScriptService : Instance
     {
         public TemporaryScriptService()
@@ -4618,6 +4778,7 @@ namespace RobloxFiles
 
     public class ChatInputBarConfiguration : TextChatConfigurations
     {
+        public bool AutocompleteEnabled = true;
         public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);
         public double BackgroundTransparency = 0.2;
         public bool Enabled = true;
@@ -4926,6 +5087,14 @@ namespace RobloxFiles
         }
     }
 
+    public class VRStatusService : Instance
+    {
+        public VRStatusService()
+        {
+            IsService = true;
+        }
+    }
+
     public abstract class ValueBase : Instance
     {
     }
@@ -5101,7 +5270,6 @@ namespace RobloxFiles
         }
 
         public bool EnableDefaultVoice = true;
-        public bool UseNewJoinFlow;
     }
 
     public class WeldConstraint : Instance
@@ -5124,5 +5292,13 @@ namespace RobloxFiles
 
         public BasePart Part1Internal;
         public int State = 3;
+    }
+
+    public class Wire : Instance
+    {
+        public Instance SourceInstance;
+        public string SourceName = "Output";
+        public Instance TargetInstance;
+        public string TargetName = "Input";
     }
 }
