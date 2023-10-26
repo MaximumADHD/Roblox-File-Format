@@ -41,6 +41,13 @@ local stringTypes = {
 	ProtectedString = true,
 }
 
+local defaultIgnore = {
+	["__api_dump_skipped_class__"] = true,
+	["__api_dump_no_string_value__"] = true,
+	["__api_dump_class_not_creatable__"] = true,
+	["__api_dump_write_only_property__"] = true,
+}
+
 local isCoreScript = pcall(function()
 	local restricted = game:GetService("RobloxPluginGuiService")
 	return tostring(restricted)
@@ -406,30 +413,9 @@ local function generateClasses()
 			local propMap = collectProperties(class)
 			local propNames = {}
 
-			--[[
-			for _, propName in pairs(classPatches.Remove) do
-				propMap[propName] = nil
-			end
-			]]
-
 			for propName in pairs(propMap) do
 				table.insert(propNames, propName)
 			end
-
-			--[[
-			for propName, propType in pairs(classPatches.Add) do
-				local prop = propMap[propName]
-
-				if prop then
-					local serial = prop.Serialization
-					serial.CanSave = true
-					serial.CanLoad = true
-				else
-					propMap[propName] = createProperty(propName, propType)
-					table.insert(propNames, propName)
-				end
-			end
-			]]
 
 			local firstLine = true
 			class.PropertyMap = propMap
@@ -447,7 +433,7 @@ local function generateClasses()
 				local inheritProps = ancestor.PropertyMap
 				local inherited = ancestor.Inherited
 
-				local baseObject = if inherited then inherited.Object else nil
+				local baseObject = inherited and inherited.Object
 
 				if inheritProps and baseObject then
 					for name, prop in pairs(inheritProps) do
@@ -533,6 +519,7 @@ local function generateClasses()
 
 				local serial = prop.Serialization
 				local typeData = prop.ValueType
+				local apiDefault: string? = prop.Default
 
 				local category = typeData.Category
 				local valueType = typeData.Name
@@ -643,43 +630,69 @@ local function generateClasses()
 						end
 
 						if not gotValue and category ~= "Class" then
-							-- Fallback to implicit defaults
+							-- Fallback to implicit defaults, or default defined by API Dump.
+							if defaultIgnore[apiDefault] then
+								apiDefault = nil
+							end
 
 							if numberTypes[valueType] then
-								value = 0
+								value = tonumber(apiDefault) or 0
 								gotValue = true
 							elseif stringTypes[valueType] then
-								value = ""
+								value = apiDefault or ""
 								gotValue = true
 							elseif valueType == "SharedString" then
-								value = "yuZpQdnvvUBOTYh1jqZ2cA=="
+								value = apiDefault or "yuZpQdnvvUBOTYh1jqZ2cA=="
 								gotValue = true
 							elseif category == "DataType" then
 								local DataType = env[valueType]
 
 								if DataType and typeof(DataType) == "table" and not rawget(env, valueType) then
+									local args = {}
+
+									if type(apiDefault) == "string" then
+										args = string.split(apiDefault, ", ")
+									end
+									
 									pcall(function()
-										value = DataType.new()
+										value = DataType.new(unpack(args))
 										gotValue = true
 									end)
 								end
+							elseif valueType == "boolean" then
+								if apiDefault == "true" then
+									value = true
+									gotValue = true
+								elseif apiDefault == "false" then
+									value = false
+									gotValue = true
+								end
 							elseif category == "Enum" then
 								local enum = (Enum :: any)[valueType]
-								local lowestId = math.huge
-								local lowest
 
-								for _, item in pairs(enum:GetEnumItems()) do
-									local itemValue = item.Value
-
-									if itemValue < lowestId then
-										lowest = item
-										lowestId = itemValue
-									end
+								if apiDefault then
+									gotValue, value = pcall(function()
+										return enum[apiDefault]
+									end)
 								end
 
-								if lowest then
-									value = lowest
-									gotValue = true
+								if not gotValue then
+									local lowestId = math.huge
+									local lowest
+
+									for _, item in pairs(enum:GetEnumItems()) do
+										local itemValue = item.Value
+
+										if itemValue < lowestId then
+											lowest = item
+											lowestId = itemValue
+										end
+									end
+
+									if lowest then
+										value = lowest
+										gotValue = true
+									end
 								end
 							end
 

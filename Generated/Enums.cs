@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.589.0.5890596
+// Updated as of 0.600.1.6000716
 
 namespace RobloxFiles.Enums
 {
@@ -68,6 +68,13 @@ namespace RobloxFiles.Enums
     {
         Overlay,
         Transparency
+    }
+
+    public enum AnimationCompositorMode
+    {
+        Default,
+        Enabled,
+        Disabled
     }
 
     public enum AnimationPriority
@@ -320,6 +327,13 @@ namespace RobloxFiles.Enums
         Cubic
     }
 
+    public enum EditorLiveScripting
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
     public enum ElasticBehavior
     {
         WhenScrollable,
@@ -344,6 +358,13 @@ namespace RobloxFiles.Enums
     {
         Horizontal,
         Vertical
+    }
+
+    public enum FluidFidelity
+    {
+        Automatic,
+        UseCollisionGeometry,
+        UsePreciseGeometry
     }
 
     public enum FluidForces
@@ -512,13 +533,6 @@ namespace RobloxFiles.Enums
         AlwaysOff
     }
 
-    public enum HumanoidOnlySetCollisionsOnStateChange
-    {
-        Default,
-        Disabled,
-        Enabled
-    }
-
     public enum HumanoidRigType
     {
         R6,
@@ -567,6 +581,15 @@ namespace RobloxFiles.Enums
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum ItemLineAlignment
+    {
+        Automatic,
+        Start,
+        Center,
+        End,
+        Stretch
     }
 
     public enum KeyCode
@@ -1069,6 +1092,13 @@ namespace RobloxFiles.Enums
         TwoAttachment
     }
 
+    public enum PrimalPhysicsSolver
+    {
+        Default,
+        Experimental,
+        Disabled
+    }
+
     public enum ProximityPromptExclusivity
     {
         OnePerButton,
@@ -1201,7 +1231,8 @@ namespace RobloxFiles.Enums
     {
         None,
         DeviceSafeInsets,
-        CoreUISafeInsets
+        CoreUISafeInsets,
+        TopbarSafeInsets
     }
 
     public enum ScreenOrientation
@@ -1408,6 +1439,24 @@ namespace RobloxFiles.Enums
         Unknown,
         True,
         False
+    }
+
+    public enum UIFlexAlignment
+    {
+        None,
+        Fill,
+        SpaceAround,
+        SpaceBetween,
+        SpaceEvenly
+    }
+
+    public enum UIFlexMode
+    {
+        None,
+        Grow,
+        Shrink,
+        Fill,
+        Custom
     }
 
     public enum VelocityConstraintMode
