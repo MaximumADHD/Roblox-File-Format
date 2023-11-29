@@ -28,7 +28,15 @@ namespace RobloxFiles.DataTypes
 
         public ProtectedString(byte[] compiled)
         {
+            // This'll break in the future if Luau ever has more than 32 VM versions.
+            // Feels pretty unlikely this'll happen anytime soon, if ever.
+
             IsCompiled = true;
+
+            if (compiled.Length > 0)
+                if (compiled[0] >= 32)
+                    IsCompiled = false;
+
             RawBuffer = compiled;
         }
 

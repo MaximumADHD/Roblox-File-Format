@@ -99,7 +99,7 @@ namespace RobloxFiles
                         Instance refInst = Instances[refId];
                         refProp.Value = refInst;
                     }
-                    else if (refId != "null")
+                    else if (refId != "null" && refId != "Ref")
                     {
                         LogError($"XmlRobloxFile: Could not resolve reference for {refProp.GetFullName()}");
                         refProp.Value = null;

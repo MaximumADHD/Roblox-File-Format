@@ -113,7 +113,7 @@ namespace RobloxFiles.XmlFormat
                         RobloxFile.LogError(readError.Message);
                     }
                     
-                    instance.AddProperty(ref prop);
+                    instance.AddProperty(prop);
                 }
                 else if (RobloxFile.LogErrors)
                 {

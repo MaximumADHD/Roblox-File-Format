@@ -45,6 +45,12 @@ namespace RobloxFiles
         /// <summary>The source AssetId this instance was created in.</summary>
         public long SourceAssetId = -1;
 
+        /// <summary>Whether the instance defines security capabilities.</summary>
+        public bool DefinesCapabilities = false;
+
+        /// <summary>The SecurityCapabilities of this instance.</summary>
+        public ulong Capabilities = 0;
+
         /// <summary>A unique identifier declared for the history of this instance.</summary>
         public UniqueId HistoryId = new UniqueId(0, 0, 0);
 
@@ -531,7 +537,7 @@ namespace RobloxFiles
                     if (newProp.Type == PropertyType.Ref)
                         refProps.Add(newProp);
 
-                    newInst.AddProperty(ref newProp);
+                    newInst.AddProperty(newProp);
                 }
 
                 var oldParent = oldInst.Parent;
@@ -628,7 +634,7 @@ namespace RobloxFiles
         /// Adds a property by reference to this Instance's property list.
         /// </summary>
         /// <param name="prop">A reference to the property that will be added.</param>
-        internal void AddProperty(ref Property prop)
+        internal void AddProperty(Property prop)
         {
             string name = prop.Name;
             RemoveProperty(name);
@@ -755,7 +761,7 @@ namespace RobloxFiles
                             Instance = this
                         };
 
-                        AddProperty(ref newProp);
+                        AddProperty(newProp);
                     }
                     else
                     {
@@ -784,7 +790,7 @@ namespace RobloxFiles
                 if (GetProperty(name) == null)
                 {
                     var prop = new Property(name, propType);
-                    AddProperty(ref prop);
+                    AddProperty(prop);
                 }
             }
 

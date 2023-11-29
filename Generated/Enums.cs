@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.600.1.6000716
+// Updated as of 0.604.0.6040508
 
 namespace RobloxFiles.Enums
 {
@@ -61,7 +61,11 @@ namespace RobloxFiles.Enums
     public enum AlignType
     {
         Parallel,
-        Perpendicular
+        Perpendicular,
+        PrimaryAxisParallel,
+        PrimaryAxisPerpendicular,
+        PrimaryAxisLookAt,
+        AllAxes
     }
 
     public enum AlphaMode
@@ -105,6 +109,13 @@ namespace RobloxFiles.Enums
     {
         FitWithinMaxSize,
         ScaleWithParentSize
+    }
+
+    public enum AudioApiRollout
+    {
+        Disabled,
+        Automatic,
+        Enabled
     }
 
     public enum AudioSubType
@@ -194,6 +205,14 @@ namespace RobloxFiles.Enums
         Custom,
         Scriptable,
         Orbital
+    }
+
+    public enum CharacterControlMode
+    {
+        Default,
+        Legacy,
+        NoCharacterController,
+        LuaCharacterController
     }
 
     public enum ChatVersion
@@ -1068,6 +1087,13 @@ namespace RobloxFiles.Enums
         Default,
         Fixed,
         Adaptive
+    }
+
+    public enum PlayerCharacterDestroyBehavior
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum PoseEasingDirection

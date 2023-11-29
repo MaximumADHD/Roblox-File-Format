@@ -42,7 +42,8 @@ namespace RobloxFiles
         ProtectedString,
         OptionalCFrame,
         UniqueId,
-        FontFace
+        FontFace,
+        SecurityCapabilities,
     }
 
     public class Property
@@ -58,8 +59,7 @@ namespace RobloxFiles
         
         internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
 
-        // TODO: Map typeof(ProtectedString) to PropertyType.ProtectedString
-        //       if binary files are ever publicly allowed to read it.
+        // FIXME: Add a proper type for SecurityCapabilities once it's purpose is better understood.
 
         public static readonly IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {
@@ -95,8 +95,9 @@ namespace RobloxFiles
             { typeof(NumberSequence),    PropertyType.NumberSequence },
             { typeof(Optional<CFrame>),  PropertyType.OptionalCFrame },
 
-            { typeof(ProtectedString),     PropertyType.String             }, 
-            { typeof(PhysicalProperties),  PropertyType.PhysicalProperties },
+            { typeof(ProtectedString),     PropertyType.ProtectedString      }, 
+            { typeof(PhysicalProperties),  PropertyType.PhysicalProperties   },
+            { typeof(ulong),               PropertyType.SecurityCapabilities },
         };
 
         private void ImproviseRawBuffer()

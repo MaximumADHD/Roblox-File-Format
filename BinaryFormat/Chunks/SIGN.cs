@@ -3,35 +3,37 @@ using System.Text;
 
 namespace RobloxFiles.BinaryFormat.Chunks
 {
-    public struct Signature
+    public enum RbxSignatureType
     {
-        public int Version;
-        public long Id;
+        Ed25519
+    }
 
-        public int Length;
-        public byte[] Data;
+    public struct RbxSignature
+    {
+        public RbxSignatureType SignatureType;
+        public long PublicKeyId;
+        public byte[] Value;
     }
 
     public class SIGN : IBinaryFileChunk
     {
-        public Signature[] Signatures;
+        public RbxSignature[] Signatures;
 
         public void Load(BinaryRobloxFileReader reader)
         {
             int numSignatures = reader.ReadInt32();
-            Signatures = new Signature[numSignatures];
+            Signatures = new RbxSignature[numSignatures];
 
             for (int i = 0; i < numSignatures; i++)
             {
-                var signature = new Signature
+                var signature = new RbxSignature
                 {
-                    Version = reader.ReadInt32(),
-                    Id = reader.ReadInt64(),
-
-                    Length = reader.ReadInt32(),
+                    SignatureType = (RbxSignatureType)reader.ReadInt32(),
+                    PublicKeyId = reader.ReadInt64(),
                 };
 
-                signature.Data = reader.ReadBytes(signature.Length);
+                var length = reader.ReadInt32();
+                signature.Value = reader.ReadBytes(length);
                 Signatures[i] = signature;
             }
 
@@ -46,13 +48,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
             for (int i = 0; i < Signatures.Length; i++)
             {
                 var signature = Signatures[i];
-                signature.Length = signature.Data.Length;
 
-                writer.Write(signature.Version);
-                writer.Write(signature.Id);
+                writer.Write((int)signature.SignatureType);
+                writer.Write(signature.PublicKeyId);
 
-                writer.Write(signature.Length);
-                writer.Write(signature.Data);
+                writer.Write(signature.Value.Length);
+                writer.Write(signature.Value);
             }
         }
 
@@ -66,17 +67,14 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 var signature = Signatures[i];
                 builder.AppendLine($"## Signature {i}");
 
-                var version = signature.Version;
-                builder.AppendLine($"- Version: {version}");
+                var version = Enum.GetName(typeof(RbxSignatureType), signature.SignatureType);
+                builder.AppendLine($"- SignatureType: {version}");
 
-                var id = signature.Id;
-                builder.AppendLine($"- Id:      {id}");
+                var publicKeyId = signature.PublicKeyId;
+                builder.AppendLine($"- PublicKeyId: {publicKeyId}");
 
-                var length = signature.Length;
-                builder.AppendLine($"- Length:  {length}");
-
-                var data = Convert.ToBase64String(signature.Data);
-                builder.AppendLine($"- Data:    {data}");
+                var value = Convert.ToBase64String(signature.Value);
+                builder.AppendLine($"- Value: {value}");
             }
         }
     }

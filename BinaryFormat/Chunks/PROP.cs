@@ -74,7 +74,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 var prop = new Property(instance, this);
                 props[i] = prop;
 
-                instance.AddProperty(ref prop);
+                instance.AddProperty(prop);
             }
 
             // Setup some short-hand functions for actions used during the read procedure.
@@ -103,7 +103,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         string value = reader.ReadString();
 
                         // Leave an access point for the original byte sequence, in case this is a BinaryString.
-                        // This will allow the developer to read the sequence without any mangling from C# strings.
+                        // This will allow the developer to read the sequence without any mangling from UTF-8.
                         byte[] buffer = reader.GetLastStringBuffer();
                         props[i].RawBuffer = buffer;
 
@@ -132,6 +132,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                                     if (memberType == typeof(byte[]))
                                         result = buffer;
+                                    else if (memberType == typeof(ProtectedString) && File.HasSignatures)
+                                        result = new ProtectedString(buffer); // Very likely compiled.
 
                                     return result;
                                 }
@@ -659,6 +661,12 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         return new FontFace(family, weight, style, cachedFaceId);
                     });
 
+                    break;
+                }
+                case PropertyType.SecurityCapabilities:
+                {
+                    var capabilities = reader.ReadInterleaved(instCount, BitConverter.ToUInt64);
+                    readProperties(i => capabilities[i]);
                     break;
                 }
                 default:
@@ -1299,6 +1307,20 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         writer.WriteString(cachedFaceId);
                     });
 
+                    break;
+                }
+                case PropertyType.SecurityCapabilities:
+                {
+                    // FIXME: Verify this is correct once we know what SecurityCapabilities actually does.
+                    var capabilities = new List<ulong>();
+
+                    props.ForEach(prop =>
+                    {
+                        var value = prop.CastValue<ulong>();
+                        capabilities.Add(value);
+                    });
+
+                    writer.WriteInterleaved(capabilities);
                     break;
                 }
                 default:

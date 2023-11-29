@@ -39,7 +39,7 @@ namespace RobloxFiles
         public IReadOnlyDictionary<uint, SharedString> SharedStrings => SSTR?.Strings;
 
         public bool HasSignatures => (SIGN != null);
-        public IReadOnlyList<Signature> Signatures => SIGN?.Signatures;
+        public IReadOnlyList<RbxSignature> Signatures => SIGN?.Signatures;
 
         public BinaryRobloxFile()
         {
