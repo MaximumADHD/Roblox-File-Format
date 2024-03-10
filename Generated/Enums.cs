@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.604.0.6040508
+// Updated as of 0.616.0.6160656
 
 namespace RobloxFiles.Enums
 {
@@ -72,13 +72,6 @@ namespace RobloxFiles.Enums
     {
         Overlay,
         Transparency
-    }
-
-    public enum AnimationCompositorMode
-    {
-        Default,
-        Enabled,
-        Disabled
     }
 
     public enum AnimationPriority
@@ -187,6 +180,13 @@ namespace RobloxFiles.Enums
         RobloxRoundButton,
         RobloxRoundDefaultButton,
         RobloxRoundDropdownButton
+    }
+
+    public enum CSGAsyncDynamicCollision
+    {
+        Default,
+        Disabled,
+        Experimental
     }
 
     public enum CameraMode
@@ -317,6 +317,13 @@ namespace RobloxFiles.Enums
         BestForDevice
     }
 
+    public enum DragDetectorPermissionPolicy
+    {
+        Nobody,
+        Everybody,
+        Scriptable
+    }
+
     public enum DragDetectorResponseStyle
     {
         Geometric,
@@ -440,6 +447,10 @@ namespace RobloxFiles.Enums
         SpecialElite,
         TitilliumWeb,
         Ubuntu,
+        BuilderSans,
+        BuilderSansMedium,
+        BuilderSansBold,
+        BuilderSansExtraBold,
         Unknown = 100
     }
 
@@ -556,14 +567,6 @@ namespace RobloxFiles.Enums
     {
         R6,
         R15
-    }
-
-    public enum HumanoidStateMachineMode
-    {
-        Default,
-        Legacy,
-        NoStateMachine,
-        LuaStateMachine
     }
 
     public enum IKControlConstraintSupport
@@ -1483,6 +1486,12 @@ namespace RobloxFiles.Enums
         Shrink,
         Fill,
         Custom
+    }
+
+    public enum VRScaling
+    {
+        World,
+        Off
     }
 
     public enum VelocityConstraintMode
