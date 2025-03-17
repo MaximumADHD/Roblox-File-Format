@@ -10,7 +10,7 @@ namespace RobloxFiles.Tokens
         {
             if (ulong.TryParse(node.InnerText, out var value))
             {
-                prop.Value = value;
+                prop.Value = (SecurityCapabilities)value;
                 return true;
             }
 

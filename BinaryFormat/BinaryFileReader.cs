@@ -66,7 +66,7 @@ namespace RobloxFiles.BinaryFormat
         }
         
         // Reads and accumulates an interleaved int32 buffer.
-        public List<int> ReadInstanceIds(int count)
+        public List<int> ReadObjectIds(int count)
         {
             int[] values = ReadInterleaved(count, RotateInt32);
 

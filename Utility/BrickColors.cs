@@ -4,254 +4,990 @@ using RobloxFiles.DataTypes;
 
 namespace RobloxFiles.Utility
 {
+    internal struct BrickColorInfo
+    {
+        public string Name;
+        public uint Color;
+
+        public BrickColorInfo(string name, uint color)
+        {
+            Name = name;
+            Color = color;
+        }
+    }
+
     /// <summary>
     /// This static class defines all of Roblox's built-in BrickColor data.
     /// It is used primarily by the BrickColor DataType.
     /// </summary>
-    public static class BrickColors
+    internal static class BrickColors
     {
-        /// <summary>
-        /// This represents Roblox's static palette of BrickColors.
-        /// Each int refers to the `Number` identifying a BrickColor.
-        /// It is used by the BrickColor.palette constructor, which
-        /// is in turn used by the BrickColor.random constructor.
-        /// </summary>
-        
-        public static readonly int[] PaletteMap = new int[128]
+        public static readonly BrickColorId[] Palette = new BrickColorId[128]
         {
-             141,  301,  107,   26, 1012,  303, 1011,  304,
-              28, 1018,  302,  305,  306,  307,  308, 1021,
-             309,  310, 1019,  135,  102,   23, 1010,  312,
-             313,   37, 1022, 1020, 1027,  311,  315, 1023,
-            1031,  316,  151,  317,  318,  319, 1024,  314,
-            1013, 1006,  321,  322,  104, 1008,  119,  323,
-             324,  325,  320,   11, 1026, 1016, 1032, 1015,
-             327, 1005, 1009,   29,  328, 1028,  208,   45,
-             329,  330,  331, 1004,   21,  332,  333,   24,
-             334,  226, 1029,  335,  336,  342,  343,  338,
-            1007,  339,  133,  106,  340,  341, 1001,    1,
-               9, 1025,  337,  344,  345, 1014,  105,  346,
-             347,  348,  349, 1030,  125,  101,  350,  192,
-             351,  352,  353,  354, 1002,    5,   18,  217,
-             355,  356,  153,  357,  358,  359,  360,   38,
-             361,  362,  199,  194,  363,  364,  365, 1003,
+            BrickColorId.Earth_green,
+            BrickColorId.Slime_green,
+            BrickColorId.Bright_bluish_green,
+            BrickColorId.Black,
+            BrickColorId.Deep_blue,
+            BrickColorId.Dark_blue,
+            BrickColorId.Navy_blue,
+            BrickColorId.Parsley_green,
+            BrickColorId.Dark_green,
+            BrickColorId.Teal,
+            BrickColorId.Smoky_grey,
+            BrickColorId.Steel_blue,
+            BrickColorId.Storm_blue,
+            BrickColorId.Lapis,
+            BrickColorId.Dark_indigo,
+            BrickColorId.Camo,
+            BrickColorId.Sea_green,
+            BrickColorId.Shamrock,
+            BrickColorId.Toothpaste,
+            BrickColorId.Sand_blue,
+            BrickColorId.Medium_blue,
+            BrickColorId.Bright_blue,
+            BrickColorId.Really_blue,
+            BrickColorId.Mulberry,
+            BrickColorId.Forest_green,
+            BrickColorId.Bright_green,
+            BrickColorId.Grime,
+            BrickColorId.Lime_green,
+            BrickColorId.Pastel_bluegreen,
+            BrickColorId.Fossil,
+            BrickColorId.Electric_blue,
+            BrickColorId.Lavender,
+            BrickColorId.Royal_purple,
+            BrickColorId.Eggplant,
+            BrickColorId.Sand_green,
+            BrickColorId.Moss,
+            BrickColorId.Artichoke,
+            BrickColorId.Sage_green,
+            BrickColorId.Pastel_light_blue,
+            BrickColorId.Cadet_blue,
+            BrickColorId.Cyan,
+            BrickColorId.Alder,
+            BrickColorId.Lilac,
+            BrickColorId.Plum,
+            BrickColorId.Bright_violet,
+            BrickColorId.Olive,
+            BrickColorId.Br_yellowish_green,
+            BrickColorId.Olivine,
+            BrickColorId.Laurel_green,
+            BrickColorId.Quill_grey,
+            BrickColorId.Ghost_grey,
+            BrickColorId.Pastel_Blue,
+            BrickColorId.Pastel_violet,
+            BrickColorId.Pink,
+            BrickColorId.Hot_pink,
+            BrickColorId.Magenta,
+            BrickColorId.Crimson,
+            BrickColorId.Deep_orange,
+            BrickColorId.New_Yeller,
+            BrickColorId.Medium_green,
+            BrickColorId.Mint,
+            BrickColorId.Pastel_green,
+            BrickColorId.Light_stone_grey,
+            BrickColorId.Light_blue,
+            BrickColorId.Baby_blue,
+            BrickColorId.Carnation_pink,
+            BrickColorId.Persimmon,
+            BrickColorId.Really_red,
+            BrickColorId.Bright_red,
+            BrickColorId.Maroon,
+            BrickColorId.Gold,
+            BrickColorId.Bright_yellow,
+            BrickColorId.Daisy_orange,
+            BrickColorId.Cool_yellow,
+            BrickColorId.Pastel_yellow,
+            BrickColorId.Pearl,
+            BrickColorId.Fog,
+            BrickColorId.Mauve,
+            BrickColorId.Sunrise,
+            BrickColorId.Terra_Cotta,
+            BrickColorId.Dusty_Rose,
+            BrickColorId.Cocoa,
+            BrickColorId.Neon_orange,
+            BrickColorId.Bright_orange,
+            BrickColorId.Wheat,
+            BrickColorId.Buttermilk,
+            BrickColorId.Institutional_white,
+            BrickColorId.White,
+            BrickColorId.Light_reddish_violet,
+            BrickColorId.Pastel_orange,
+            BrickColorId.Salmon,
+            BrickColorId.Tawny,
+            BrickColorId.Rust,
+            BrickColorId.CGA_brown,
+            BrickColorId.Br_yellowish_orange,
+            BrickColorId.Cashmere,
+            BrickColorId.Khaki,
+            BrickColorId.Lily_white,
+            BrickColorId.Seashell,
+            BrickColorId.Pastel_brown,
+            BrickColorId.Light_orange,
+            BrickColorId.Medium_red,
+            BrickColorId.Burgundy,
+            BrickColorId.Reddish_brown,
+            BrickColorId.Cork,
+            BrickColorId.Burlap,
+            BrickColorId.Beige,
+            BrickColorId.Oyster,
+            BrickColorId.Mid_gray,
+            BrickColorId.Brick_yellow,
+            BrickColorId.Nougat,
+            BrickColorId.Brown,
+            BrickColorId.Pine_Cone,
+            BrickColorId.Fawn_brown,
+            BrickColorId.Sand_red,
+            BrickColorId.Hurricane_grey,
+            BrickColorId.Cloudy_grey,
+            BrickColorId.Linen,
+            BrickColorId.Copper,
+            BrickColorId.Dark_orange,
+            BrickColorId.Medium_brown,
+            BrickColorId.Bronze,
+            BrickColorId.Dark_stone_grey,
+            BrickColorId.Medium_stone_grey,
+            BrickColorId.Flint,
+            BrickColorId.Dark_taupe,
+            BrickColorId.Burnt_Sienna,
+            BrickColorId.Really_black,
         };
 
-        /// <summary>
-        /// This contains a list of all defined BrickColors on Roblox.
-        /// There are some name duplicates, but that's an issue on Roblox's end.
-        /// </summary>
-        
-        public static readonly IReadOnlyList<BrickColor> ColorMap = new List<BrickColor>()
+        public static readonly IReadOnlyDictionary<BrickColorId, BrickColorInfo> InfoMap = new Dictionary<BrickColorId, BrickColorInfo>()
         {
-            new BrickColor(   1, 0xF2F3F3, "White"),
-            new BrickColor(   2, 0xA1A5A2, "Grey"),
-            new BrickColor(   3, 0xF9E999, "Light yellow"),
-            new BrickColor(   5, 0xD7C59A, "Brick yellow"),
-            new BrickColor(   6, 0xC2DAB8, "Light green (Mint)"),
-            new BrickColor(   9, 0xE8BAC8, "Light reddish violet"),
-            new BrickColor(  11, 0x80BBDB, "Pastel Blue"),
-            new BrickColor(  12, 0xCB8442, "Light orange brown"),
-            new BrickColor(  18, 0xCC8E69, "Nougat"),
-            new BrickColor(  21, 0xC4281C, "Bright red"),
-            new BrickColor(  22, 0xC470A0, "Med. reddish violet"),
-            new BrickColor(  23, 0x0D69AC, "Bright blue"),
-            new BrickColor(  24, 0xF5CD30, "Bright yellow"),
-            new BrickColor(  25, 0x624732, "Earth orange"),
-            new BrickColor(  26, 0x1B2A35, "Black"),
-            new BrickColor(  27, 0x6D6E6C, "Dark grey"),
-            new BrickColor(  28, 0x287F47, "Dark green"),
-            new BrickColor(  29, 0xA1C48C, "Medium green"),
-            new BrickColor(  36, 0xF3CF9B, "Lig. Yellowich orange"),
-            new BrickColor(  37, 0x4B974B, "Bright green"),
-            new BrickColor(  38, 0xA05F35, "Dark orange"),
-            new BrickColor(  39, 0xC1CADE, "Light bluish violet"),
-            new BrickColor(  40, 0xECECEC, "Transparent"),
-            new BrickColor(  41, 0xCD544B, "Tr. Red"),
-            new BrickColor(  42, 0xC1DFF0, "Tr. Lg blue"),
-            new BrickColor(  43, 0x7BB6E8, "Tr. Blue"),
-            new BrickColor(  44, 0xF7F18D, "Tr. Yellow"),
-            new BrickColor(  45, 0xB4D2E4, "Light blue"),
-            new BrickColor(  47, 0xD9856C, "Tr. Flu. Reddish orange"),
-            new BrickColor(  48, 0x84B68D, "Tr. Green"),
-            new BrickColor(  49, 0xF8F184, "Tr. Flu. Green"),
-            new BrickColor(  50, 0xECE8DE, "Phosph. White"),
-            new BrickColor( 100, 0xEEC4B6, "Light red"),
-            new BrickColor( 101, 0xDA867A, "Medium red"),
-            new BrickColor( 102, 0x6E99CA, "Medium blue"),
-            new BrickColor( 103, 0xC7C1B7, "Light grey"),
-            new BrickColor( 104, 0x6B327C, "Bright violet"),
-            new BrickColor( 105, 0xE29B40, "Br. yellowish orange"),
-            new BrickColor( 106, 0xDA8541, "Bright orange"),
-            new BrickColor( 107, 0x008F9C, "Bright bluish green"),
-            new BrickColor( 108, 0x685C43, "Earth yellow"),
-            new BrickColor( 110, 0x435493, "Bright bluish violet"),
-            new BrickColor( 111, 0xBFB7B1, "Tr. Brown"),
-            new BrickColor( 112, 0x6874AC, "Medium bluish violet"),
-            new BrickColor( 113, 0xE5ADC8, "Tr. Medi. reddish violet"),
-            new BrickColor( 115, 0xC7D23C, "Med. yellowish green"),
-            new BrickColor( 116, 0x55A5AF, "Med. bluish green"),
-            new BrickColor( 118, 0xB7D7D5, "Light bluish green"),
-            new BrickColor( 119, 0xA4BD47, "Br. yellowish green"),
-            new BrickColor( 120, 0xD9E4A7, "Lig. yellowish green"),
-            new BrickColor( 121, 0xE7AC58, "Med. yellowish orange"),
-            new BrickColor( 123, 0xD36F4C, "Br. reddish orange"),
-            new BrickColor( 124, 0x923978, "Bright reddish violet"),
-            new BrickColor( 125, 0xEAB892, "Light orange"),
-            new BrickColor( 126, 0xA5A5CB, "Tr. Bright bluish violet"),
-            new BrickColor( 127, 0xDCBC81, "Gold"),
-            new BrickColor( 128, 0xAE7A59, "Dark nougat"),
-            new BrickColor( 131, 0x9CA3A8, "Silver"),
-            new BrickColor( 133, 0xD5733D, "Neon orange"),
-            new BrickColor( 134, 0xD8DD56, "Neon green"),
-            new BrickColor( 135, 0x74869D, "Sand blue"),
-            new BrickColor( 136, 0x877C90, "Sand violet"),
-            new BrickColor( 137, 0xE09864, "Medium orange"),
-            new BrickColor( 138, 0x958A73, "Sand yellow"),
-            new BrickColor( 140, 0x203A56, "Earth blue"),
-            new BrickColor( 141, 0x27462D, "Earth green"),
-            new BrickColor( 143, 0xCFE2F7, "Tr. Flu. Blue"),
-            new BrickColor( 145, 0x7988A1, "Sand blue metallic"),
-            new BrickColor( 146, 0x958EA3, "Sand violet metallic"),
-            new BrickColor( 147, 0x938767, "Sand yellow metallic"),
-            new BrickColor( 148, 0x575857, "Dark grey metallic"),
-            new BrickColor( 149, 0x161D32, "Black metallic"),
-            new BrickColor( 150, 0xABADAC, "Light grey metallic"),
-            new BrickColor( 151, 0x789082, "Sand green"),
-            new BrickColor( 153, 0x957977, "Sand red"),
-            new BrickColor( 154, 0x7B2E2F, "Dark red"),
-            new BrickColor( 157, 0xFFF67B, "Tr. Flu. Yellow"),
-            new BrickColor( 158, 0xE1A4C2, "Tr. Flu. Red"),
-            new BrickColor( 168, 0x756C62, "Gun metallic"),
-            new BrickColor( 176, 0x97695B, "Red flip/flop"),
-            new BrickColor( 178, 0xB48455, "Yellow flip/flop"),
-            new BrickColor( 179, 0x898788, "Silver flip/flop"),
-            new BrickColor( 180, 0xD7A94B, "Curry"),
-            new BrickColor( 190, 0xF9D62E, "Fire Yellow"),
-            new BrickColor( 191, 0xE8AB2D, "Flame yellowish orange"),
-            new BrickColor( 192, 0x694028, "Reddish brown"),
-            new BrickColor( 193, 0xCF6024, "Flame reddish orange"),
-            new BrickColor( 194, 0xA3A2A5, "Medium stone grey"),
-            new BrickColor( 195, 0x4667A4, "Royal blue"),
-            new BrickColor( 196, 0x23478B, "Dark Royal blue"),
-            new BrickColor( 198, 0x8E4285, "Bright reddish lilac"),
-            new BrickColor( 199, 0x635F62, "Dark stone grey"),
-            new BrickColor( 200, 0x828A5D, "Lemon metalic"),
-            new BrickColor( 208, 0xE5E4DF, "Light stone grey"),
-            new BrickColor( 209, 0xB08E44, "Dark Curry"),
-            new BrickColor( 210, 0x709578, "Faded green"),
-            new BrickColor( 211, 0x79B5B5, "Turquoise"),
-            new BrickColor( 212, 0x9FC3E9, "Light Royal blue"),
-            new BrickColor( 213, 0x6C81B7, "Medium Royal blue"),
-            new BrickColor( 216, 0x904C2A, "Rust"),
-            new BrickColor( 217, 0x7C5C46, "Brown"),
-            new BrickColor( 218, 0x96709F, "Reddish lilac"),
-            new BrickColor( 219, 0x6B629B, "Lilac"),
-            new BrickColor( 220, 0xA7A9CE, "Light lilac"),
-            new BrickColor( 221, 0xCD6298, "Bright purple"),
-            new BrickColor( 222, 0xE4ADC8, "Light purple"),
-            new BrickColor( 223, 0xDC9095, "Light pink"),
-            new BrickColor( 224, 0xF0D5A0, "Light brick yellow"),
-            new BrickColor( 225, 0xEBB87F, "Warm yellowish orange"),
-            new BrickColor( 226, 0xFDEA8D, "Cool yellow"),
-            new BrickColor( 232, 0x7DBBDD, "Dove blue"),
-            new BrickColor( 268, 0x342B75, "Medium lilac"),
-            new BrickColor( 301, 0x506D54, "Slime green"),
-            new BrickColor( 302, 0x5B5D69, "Smoky grey"),
-            new BrickColor( 303, 0x0010B0, "Dark blue"),
-            new BrickColor( 304, 0x2C651D, "Parsley green"),
-            new BrickColor( 305, 0x527CAE, "Steel blue"),
-            new BrickColor( 306, 0x335882, "Storm blue"),
-            new BrickColor( 307, 0x102ADC, "Lapis"),
-            new BrickColor( 308, 0x3D1585, "Dark indigo"),
-            new BrickColor( 309, 0x348E40, "Sea green"),
-            new BrickColor( 310, 0x5B9A4C, "Shamrock"),
-            new BrickColor( 311, 0x9FA1AC, "Fossil"),
-            new BrickColor( 312, 0x592259, "Mulberry"),
-            new BrickColor( 313, 0x1F801D, "Forest green"),
-            new BrickColor( 314, 0x9FADC0, "Cadet blue"),
-            new BrickColor( 315, 0x0989CF, "Electric blue"),
-            new BrickColor( 316, 0x7B007B, "Eggplant"),
-            new BrickColor( 317, 0x7C9C6B, "Moss"),
-            new BrickColor( 318, 0x8AAB85, "Artichoke"),
-            new BrickColor( 319, 0xB9C4B1, "Sage green"),
-            new BrickColor( 320, 0xCACBD1, "Ghost grey"),
-            new BrickColor( 321, 0xA75E9B, "Lilac"),
-            new BrickColor( 322, 0x7B2F7B, "Plum"),
-            new BrickColor( 323, 0x94BE81, "Olivine"),
-            new BrickColor( 324, 0xA8BD99, "Laurel green"),
-            new BrickColor( 325, 0xDFDFDE, "Quill grey"),
-            new BrickColor( 327, 0x970000, "Crimson"),
-            new BrickColor( 328, 0xB1E5A6, "Mint"),
-            new BrickColor( 329, 0x98C2DB, "Baby blue"),
-            new BrickColor( 330, 0xFF98DC, "Carnation pink"),
-            new BrickColor( 331, 0xFF5959, "Persimmon"),
-            new BrickColor( 332, 0x750000, "Maroon"),
-            new BrickColor( 333, 0xEFB838, "Gold"),
-            new BrickColor( 334, 0xF8D96D, "Daisy orange"),
-            new BrickColor( 335, 0xE7E7EC, "Pearl"),
-            new BrickColor( 336, 0xC7D4E4, "Fog"),
-            new BrickColor( 337, 0xFF9494, "Salmon"),
-            new BrickColor( 338, 0xBE6862, "Terra Cotta"),
-            new BrickColor( 339, 0x562424, "Cocoa"),
-            new BrickColor( 340, 0xF1E7C7, "Wheat"),
-            new BrickColor( 341, 0xFEF3BB, "Buttermilk"),
-            new BrickColor( 342, 0xE0B2D0, "Mauve"),
-            new BrickColor( 343, 0xD490BD, "Sunrise"),
-            new BrickColor( 344, 0x965555, "Tawny"),
-            new BrickColor( 345, 0x8F4C2A, "Rust"),
-            new BrickColor( 346, 0xD3BE96, "Cashmere"),
-            new BrickColor( 347, 0xE2DCBC, "Khaki"),
-            new BrickColor( 348, 0xEDEAEA, "Lily white"),
-            new BrickColor( 349, 0xE9DADA, "Seashell"),
-            new BrickColor( 350, 0x883E3E, "Burgundy"),
-            new BrickColor( 351, 0xBC9B5D, "Cork"),
-            new BrickColor( 352, 0xC7AC78, "Burlap"),
-            new BrickColor( 353, 0xCABFA3, "Beige"),
-            new BrickColor( 354, 0xBBB3B2, "Oyster"),
-            new BrickColor( 355, 0x6C584B, "Pine Cone"),
-            new BrickColor( 356, 0xA0844F, "Fawn brown"),
-            new BrickColor( 357, 0x958988, "Hurricane grey"),
-            new BrickColor( 358, 0xABA89E, "Cloudy grey"),
-            new BrickColor( 359, 0xAF9483, "Linen"),
-            new BrickColor( 360, 0x966766, "Copper"),
-            new BrickColor( 361, 0x564236, "Dirt brown"),
-            new BrickColor( 362, 0x7E683F, "Bronze"),
-            new BrickColor( 363, 0x69665C, "Flint"),
-            new BrickColor( 364, 0x5A4C42, "Dark taupe"),
-            new BrickColor( 365, 0x6A3909, "Burnt Sienna"),
-            new BrickColor(1001, 0xF8F8F8, "Institutional white"),
-            new BrickColor(1002, 0xCDCDCD, "Mid gray"),
-            new BrickColor(1003, 0x111111, "Really black"),
-            new BrickColor(1004, 0xFF0000, "Really red"),
-            new BrickColor(1005, 0xFFB000, "Deep orange"),
-            new BrickColor(1006, 0xB480FF, "Alder"),
-            new BrickColor(1007, 0xA34B4B, "Dusty Rose"),
-            new BrickColor(1008, 0xC1BE42, "Olive"),
-            new BrickColor(1009, 0xFFFF00, "New Yeller"),
-            new BrickColor(1010, 0x0000FF, "Really blue"),
-            new BrickColor(1011, 0x002060, "Navy blue"),
-            new BrickColor(1012, 0x2154B9, "Deep blue"),
-            new BrickColor(1013, 0x04AFEC, "Cyan"),
-            new BrickColor(1014, 0xAA5500, "CGA brown"),
-            new BrickColor(1015, 0xAA00AA, "Magenta"),
-            new BrickColor(1016, 0xFF66CC, "Pink"),
-            new BrickColor(1017, 0xFFAF00, "Deep orange"),
-            new BrickColor(1018, 0x12EED4, "Teal"),
-            new BrickColor(1019, 0x00FFFF, "Toothpaste"),
-            new BrickColor(1020, 0x00FF00, "Lime green"),
-            new BrickColor(1021, 0x3A7D15, "Camo"),
-            new BrickColor(1022, 0x7F8E64, "Grime"),
-            new BrickColor(1023, 0x8C5B9F, "Lavender"),
-            new BrickColor(1024, 0xAFDDFF, "Pastel light blue"),
-            new BrickColor(1025, 0xFFC9C9, "Pastel orange"),
-            new BrickColor(1026, 0xB1A7FF, "Pastel violet"),
-            new BrickColor(1027, 0x9FF3E9, "Pastel blue-green"),
-            new BrickColor(1028, 0xCCFFCC, "Pastel green"),
-            new BrickColor(1029, 0xFFFFCC, "Pastel yellow"),
-            new BrickColor(1030, 0xFFCC99, "Pastel brown"),
-            new BrickColor(1031, 0x6225D1, "Royal purple"),
-            new BrickColor(1032, 0xFF00BF, "Hot pink"),
+            {
+                BrickColorId.White,
+                new BrickColorInfo("White", 0xF2F3F3)
+            },
+            {
+                BrickColorId.Grey,
+                new BrickColorInfo("Grey", 0xA1A5A2)
+            },
+            {
+                BrickColorId.Light_yellow,
+                new BrickColorInfo("Light yellow", 0xF9E999)
+            },
+            {
+                BrickColorId.Brick_yellow,
+                new BrickColorInfo("Brick yellow", 0xD7C59A)
+            },
+            {
+                BrickColorId.Light_green_Mint,
+                new BrickColorInfo("Light green (Mint)", 0xC2DAB8)
+            },
+            {
+                BrickColorId.Light_reddish_violet,
+                new BrickColorInfo("Light reddish violet", 0xE8BAC8)
+            },
+            {
+                BrickColorId.Pastel_Blue,
+                new BrickColorInfo("Pastel Blue", 0x80BBDB)
+            },
+            {
+                BrickColorId.Light_orange_brown,
+                new BrickColorInfo("Light orange brown", 0xCB8442)
+            },
+            {
+                BrickColorId.Nougat,
+                new BrickColorInfo("Nougat", 0xCC8E69)
+            },
+            {
+                BrickColorId.Bright_red,
+                new BrickColorInfo("Bright red", 0xC4281C)
+            },
+            {
+                BrickColorId.Med_reddish_violet,
+                new BrickColorInfo("Med. reddish violet", 0xC470A0)
+            },
+            {
+                BrickColorId.Bright_blue,
+                new BrickColorInfo("Bright blue", 0x0D69AC)
+            },
+            {
+                BrickColorId.Bright_yellow,
+                new BrickColorInfo("Bright yellow", 0xF5CD30)
+            },
+            {
+                BrickColorId.Earth_orange,
+                new BrickColorInfo("Earth orange", 0x624732)
+            },
+            {
+                BrickColorId.Black,
+                new BrickColorInfo("Black", 0x1B2A35)
+            },
+            {
+                BrickColorId.Dark_grey,
+                new BrickColorInfo("Dark grey", 0x6D6E6C)
+            },
+            {
+                BrickColorId.Dark_green,
+                new BrickColorInfo("Dark green", 0x287F47)
+            },
+            {
+                BrickColorId.Medium_green,
+                new BrickColorInfo("Medium green", 0xA1C48C)
+            },
+            {
+                BrickColorId.Lig_Yellowich_orange,
+                new BrickColorInfo("Lig. Yellowich orange", 0xF3CF9B)
+            },
+            {
+                BrickColorId.Bright_green,
+                new BrickColorInfo("Bright green", 0x4B974B)
+            },
+            {
+                BrickColorId.Dark_orange,
+                new BrickColorInfo("Dark orange", 0xA05F35)
+            },
+            {
+                BrickColorId.Light_bluish_violet,
+                new BrickColorInfo("Light bluish violet", 0xC1CADE)
+            },
+            {
+                BrickColorId.Transparent,
+                new BrickColorInfo("Transparent", 0xECECEC)
+            },
+            {
+                BrickColorId.Tr_Red,
+                new BrickColorInfo("Tr. Red", 0xCD544B)
+            },
+            {
+                BrickColorId.Tr_Lg_blue,
+                new BrickColorInfo("Tr. Lg blue", 0xC1DFF0)
+            },
+            {
+                BrickColorId.Tr_Blue,
+                new BrickColorInfo("Tr. Blue", 0x7BB6E8)
+            },
+            {
+                BrickColorId.Tr_Yellow,
+                new BrickColorInfo("Tr. Yellow", 0xF7F18D)
+            },
+            {
+                BrickColorId.Light_blue,
+                new BrickColorInfo("Light blue", 0xB4D2E4)
+            },
+            {
+                BrickColorId.Tr_Flu_Reddish_orange,
+                new BrickColorInfo("Tr. Flu. Reddish orange", 0xD9856C)
+            },
+            {
+                BrickColorId.Tr_Green,
+                new BrickColorInfo("Tr. Green", 0x84B68D)
+            },
+            {
+                BrickColorId.Tr_Flu_Green,
+                new BrickColorInfo("Tr. Flu. Green", 0xF8F184)
+            },
+            {
+                BrickColorId.Phosph_White,
+                new BrickColorInfo("Phosph. White", 0xECE8DE)
+            },
+            {
+                BrickColorId.Light_red,
+                new BrickColorInfo("Light red", 0xEEC4B6)
+            },
+            {
+                BrickColorId.Medium_red,
+                new BrickColorInfo("Medium red", 0xDA867A)
+            },
+            {
+                BrickColorId.Medium_blue,
+                new BrickColorInfo("Medium blue", 0x6E99CA)
+            },
+            {
+                BrickColorId.Light_grey,
+                new BrickColorInfo("Light grey", 0xC7C1B7)
+            },
+            {
+                BrickColorId.Bright_violet,
+                new BrickColorInfo("Bright violet", 0x6B327C)
+            },
+            {
+                BrickColorId.Br_yellowish_orange,
+                new BrickColorInfo("Br. yellowish orange", 0xE29B40)
+            },
+            {
+                BrickColorId.Bright_orange,
+                new BrickColorInfo("Bright orange", 0xDA8541)
+            },
+            {
+                BrickColorId.Bright_bluish_green,
+                new BrickColorInfo("Bright bluish green", 0x008F9C)
+            },
+            {
+                BrickColorId.Earth_yellow,
+                new BrickColorInfo("Earth yellow", 0x685C43)
+            },
+            {
+                BrickColorId.Bright_bluish_violet,
+                new BrickColorInfo("Bright bluish violet", 0x435493)
+            },
+            {
+                BrickColorId.Tr_Brown,
+                new BrickColorInfo("Tr. Brown", 0xBFB7B1)
+            },
+            {
+                BrickColorId.Medium_bluish_violet,
+                new BrickColorInfo("Medium bluish violet", 0x6874AC)
+            },
+            {
+                BrickColorId.Tr_Medi_reddish_violet,
+                new BrickColorInfo("Tr. Medi. reddish violet", 0xE5ADC8)
+            },
+            {
+                BrickColorId.Med_yellowish_green,
+                new BrickColorInfo("Med. yellowish green", 0xC7D23C)
+            },
+            {
+                BrickColorId.Med_bluish_green,
+                new BrickColorInfo("Med. bluish green", 0x55A5AF)
+            },
+            {
+                BrickColorId.Light_bluish_green,
+                new BrickColorInfo("Light bluish green", 0xB7D7D5)
+            },
+            {
+                BrickColorId.Br_yellowish_green,
+                new BrickColorInfo("Br. yellowish green", 0xA4BD47)
+            },
+            {
+                BrickColorId.Lig_yellowish_green,
+                new BrickColorInfo("Lig. yellowish green", 0xD9E4A7)
+            },
+            {
+                BrickColorId.Med_yellowish_orange,
+                new BrickColorInfo("Med. yellowish orange", 0xE7AC58)
+            },
+            {
+                BrickColorId.Br_reddish_orange,
+                new BrickColorInfo("Br. reddish orange", 0xD36F4C)
+            },
+            {
+                BrickColorId.Bright_reddish_violet,
+                new BrickColorInfo("Bright reddish violet", 0x923978)
+            },
+            {
+                BrickColorId.Light_orange,
+                new BrickColorInfo("Light orange", 0xEAB892)
+            },
+            {
+                BrickColorId.Tr_Bright_bluish_violet,
+                new BrickColorInfo("Tr. Bright bluish violet", 0xA5A5CB)
+            },
+            {
+                BrickColorId.Gold,
+                new BrickColorInfo("Gold", 0xDCBC81)
+            },
+            {
+                BrickColorId.Dark_nougat,
+                new BrickColorInfo("Dark nougat", 0xAE7A59)
+            },
+            {
+                BrickColorId.Silver,
+                new BrickColorInfo("Silver", 0x9CA3A8)
+            },
+            {
+                BrickColorId.Neon_orange,
+                new BrickColorInfo("Neon orange", 0xD5733D)
+            },
+            {
+                BrickColorId.Neon_green,
+                new BrickColorInfo("Neon green", 0xD8DD56)
+            },
+            {
+                BrickColorId.Sand_blue,
+                new BrickColorInfo("Sand blue", 0x74869D)
+            },
+            {
+                BrickColorId.Sand_violet,
+                new BrickColorInfo("Sand violet", 0x877C90)
+            },
+            {
+                BrickColorId.Medium_orange,
+                new BrickColorInfo("Medium orange", 0xE09864)
+            },
+            {
+                BrickColorId.Sand_yellow,
+                new BrickColorInfo("Sand yellow", 0x958A73)
+            },
+            {
+                BrickColorId.Earth_blue,
+                new BrickColorInfo("Earth blue", 0x203A56)
+            },
+            {
+                BrickColorId.Earth_green,
+                new BrickColorInfo("Earth green", 0x27462D)
+            },
+            {
+                BrickColorId.Tr_Flu_Blue,
+                new BrickColorInfo("Tr. Flu. Blue", 0xCFE2F7)
+            },
+            {
+                BrickColorId.Sand_blue_metallic,
+                new BrickColorInfo("Sand blue metallic", 0x7988A1)
+            },
+            {
+                BrickColorId.Sand_violet_metallic,
+                new BrickColorInfo("Sand violet metallic", 0x958EA3)
+            },
+            {
+                BrickColorId.Sand_yellow_metallic,
+                new BrickColorInfo("Sand yellow metallic", 0x938767)
+            },
+            {
+                BrickColorId.Dark_grey_metallic,
+                new BrickColorInfo("Dark grey metallic", 0x575857)
+            },
+            {
+                BrickColorId.Black_metallic,
+                new BrickColorInfo("Black metallic", 0x161D32)
+            },
+            {
+                BrickColorId.Light_grey_metallic,
+                new BrickColorInfo("Light grey metallic", 0xABADAC)
+            },
+            {
+                BrickColorId.Sand_green,
+                new BrickColorInfo("Sand green", 0x789082)
+            },
+            {
+                BrickColorId.Sand_red,
+                new BrickColorInfo("Sand red", 0x957977)
+            },
+            {
+                BrickColorId.Dark_red,
+                new BrickColorInfo("Dark red", 0x7B2E2F)
+            },
+            {
+                BrickColorId.Tr_Flu_Yellow,
+                new BrickColorInfo("Tr. Flu. Yellow", 0xFFF67B)
+            },
+            {
+                BrickColorId.Tr_Flu_Red,
+                new BrickColorInfo("Tr. Flu. Red", 0xE1A4C2)
+            },
+            {
+                BrickColorId.Gun_metallic,
+                new BrickColorInfo("Gun metallic", 0x756C62)
+            },
+            {
+                BrickColorId.Red_flipflop,
+                new BrickColorInfo("Red flip/flop", 0x97695B)
+            },
+            {
+                BrickColorId.Yellow_flipflop,
+                new BrickColorInfo("Yellow flip/flop", 0xB48455)
+            },
+            {
+                BrickColorId.Silver_flipflop,
+                new BrickColorInfo("Silver flip/flop", 0x898788)
+            },
+            {
+                BrickColorId.Curry,
+                new BrickColorInfo("Curry", 0xD7A94B)
+            },
+            {
+                BrickColorId.Fire_Yellow,
+                new BrickColorInfo("Fire Yellow", 0xF9D62E)
+            },
+            {
+                BrickColorId.Flame_yellowish_orange,
+                new BrickColorInfo("Flame yellowish orange", 0xE8AB2D)
+            },
+            {
+                BrickColorId.Reddish_brown,
+                new BrickColorInfo("Reddish brown", 0x694028)
+            },
+            {
+                BrickColorId.Flame_reddish_orange,
+                new BrickColorInfo("Flame reddish orange", 0xCF6024)
+            },
+            {
+                BrickColorId.Medium_stone_grey,
+                new BrickColorInfo("Medium stone grey", 0xA3A2A5)
+            },
+            {
+                BrickColorId.Royal_blue,
+                new BrickColorInfo("Royal blue", 0x4667A4)
+            },
+            {
+                BrickColorId.Dark_Royal_blue,
+                new BrickColorInfo("Dark Royal blue", 0x23478B)
+            },
+            {
+                BrickColorId.Bright_reddish_lilac,
+                new BrickColorInfo("Bright reddish lilac", 0x8E4285)
+            },
+            {
+                BrickColorId.Dark_stone_grey,
+                new BrickColorInfo("Dark stone grey", 0x635F62)
+            },
+            {
+                BrickColorId.Lemon_metalic,
+                new BrickColorInfo("Lemon metalic", 0x828A5D)
+            },
+            {
+                BrickColorId.Light_stone_grey,
+                new BrickColorInfo("Light stone grey", 0xE5E4DF)
+            },
+            {
+                BrickColorId.Dark_Curry,
+                new BrickColorInfo("Dark Curry", 0xB08E44)
+            },
+            {
+                BrickColorId.Faded_green,
+                new BrickColorInfo("Faded green", 0x709578)
+            },
+            {
+                BrickColorId.Turquoise,
+                new BrickColorInfo("Turquoise", 0x79B5B5)
+            },
+            {
+                BrickColorId.Light_Royal_blue,
+                new BrickColorInfo("Light Royal blue", 0x9FC3E9)
+            },
+            {
+                BrickColorId.Medium_Royal_blue,
+                new BrickColorInfo("Medium Royal blue", 0x6C81B7)
+            },
+            {
+                BrickColorId.Rust,
+                new BrickColorInfo("Rust", 0x904C2A)
+            },
+            {
+                BrickColorId.Brown,
+                new BrickColorInfo("Brown", 0x7C5C46)
+            },
+            {
+                BrickColorId.Reddish_lilac,
+                new BrickColorInfo("Reddish lilac", 0x96709F)
+            },
+            {
+                BrickColorId.Lilac,
+                new BrickColorInfo("Lilac", 0x6B629B)
+            },
+            {
+                BrickColorId.Light_lilac,
+                new BrickColorInfo("Light lilac", 0xA7A9CE)
+            },
+            {
+                BrickColorId.Bright_purple,
+                new BrickColorInfo("Bright purple", 0xCD6298)
+            },
+            {
+                BrickColorId.Light_purple,
+                new BrickColorInfo("Light purple", 0xE4ADC8)
+            },
+            {
+                BrickColorId.Light_pink,
+                new BrickColorInfo("Light pink", 0xDC9095)
+            },
+            {
+                BrickColorId.Light_brick_yellow,
+                new BrickColorInfo("Light brick yellow", 0xF0D5A0)
+            },
+            {
+                BrickColorId.Warm_yellowish_orange,
+                new BrickColorInfo("Warm yellowish orange", 0xEBB87F)
+            },
+            {
+                BrickColorId.Cool_yellow,
+                new BrickColorInfo("Cool yellow", 0xFDEA8D)
+            },
+            {
+                BrickColorId.Dove_blue,
+                new BrickColorInfo("Dove blue", 0x7DBBDD)
+            },
+            {
+                BrickColorId.Medium_lilac,
+                new BrickColorInfo("Medium lilac", 0x342B75)
+            },
+            {
+                BrickColorId.Slime_green,
+                new BrickColorInfo("Slime green", 0x506D54)
+            },
+            {
+                BrickColorId.Smoky_grey,
+                new BrickColorInfo("Smoky grey", 0x5B5D69)
+            },
+            {
+                BrickColorId.Dark_blue,
+                new BrickColorInfo("Dark blue", 0x0010B0)
+            },
+            {
+                BrickColorId.Parsley_green,
+                new BrickColorInfo("Parsley green", 0x2C651D)
+            },
+            {
+                BrickColorId.Steel_blue,
+                new BrickColorInfo("Steel blue", 0x527CAE)
+            },
+            {
+                BrickColorId.Storm_blue,
+                new BrickColorInfo("Storm blue", 0x335882)
+            },
+            {
+                BrickColorId.Lapis,
+                new BrickColorInfo("Lapis", 0x102ADC)
+            },
+            {
+                BrickColorId.Dark_indigo,
+                new BrickColorInfo("Dark indigo", 0x3D1585)
+            },
+            {
+                BrickColorId.Sea_green,
+                new BrickColorInfo("Sea green", 0x348E40)
+            },
+            {
+                BrickColorId.Shamrock,
+                new BrickColorInfo("Shamrock", 0x5B9A4C)
+            },
+            {
+                BrickColorId.Fossil,
+                new BrickColorInfo("Fossil", 0x9FA1AC)
+            },
+            {
+                BrickColorId.Mulberry,
+                new BrickColorInfo("Mulberry", 0x592259)
+            },
+            {
+                BrickColorId.Forest_green,
+                new BrickColorInfo("Forest green", 0x1F801D)
+            },
+            {
+                BrickColorId.Cadet_blue,
+                new BrickColorInfo("Cadet blue", 0x9FADC0)
+            },
+            {
+                BrickColorId.Electric_blue,
+                new BrickColorInfo("Electric blue", 0x0989CF)
+            },
+            {
+                BrickColorId.Eggplant,
+                new BrickColorInfo("Eggplant", 0x7B007B)
+            },
+            {
+                BrickColorId.Moss,
+                new BrickColorInfo("Moss", 0x7C9C6B)
+            },
+            {
+                BrickColorId.Artichoke,
+                new BrickColorInfo("Artichoke", 0x8AAB85)
+            },
+            {
+                BrickColorId.Sage_green,
+                new BrickColorInfo("Sage green", 0xB9C4B1)
+            },
+            {
+                BrickColorId.Ghost_grey,
+                new BrickColorInfo("Ghost grey", 0xCACBD1)
+            },
+            {
+                BrickColorId.Lilac_2,
+                new BrickColorInfo("Lilac", 0xA75E9B)
+            },
+            {
+                BrickColorId.Plum,
+                new BrickColorInfo("Plum", 0x7B2F7B)
+            },
+            {
+                BrickColorId.Olivine,
+                new BrickColorInfo("Olivine", 0x94BE81)
+            },
+            {
+                BrickColorId.Laurel_green,
+                new BrickColorInfo("Laurel green", 0xA8BD99)
+            },
+            {
+                BrickColorId.Quill_grey,
+                new BrickColorInfo("Quill grey", 0xDFDFDE)
+            },
+            {
+                BrickColorId.Crimson,
+                new BrickColorInfo("Crimson", 0x970000)
+            },
+            {
+                BrickColorId.Mint,
+                new BrickColorInfo("Mint", 0xB1E5A6)
+            },
+            {
+                BrickColorId.Baby_blue,
+                new BrickColorInfo("Baby blue", 0x98C2DB)
+            },
+            {
+                BrickColorId.Carnation_pink,
+                new BrickColorInfo("Carnation pink", 0xFF98DC)
+            },
+            {
+                BrickColorId.Persimmon,
+                new BrickColorInfo("Persimmon", 0xFF5959)
+            },
+            {
+                BrickColorId.Maroon,
+                new BrickColorInfo("Maroon", 0x750000)
+            },
+            {
+                BrickColorId.Gold_2,
+                new BrickColorInfo("Gold", 0xEFB838)
+            },
+            {
+                BrickColorId.Daisy_orange,
+                new BrickColorInfo("Daisy orange", 0xF8D96D)
+            },
+            {
+                BrickColorId.Pearl,
+                new BrickColorInfo("Pearl", 0xE7E7EC)
+            },
+            {
+                BrickColorId.Fog,
+                new BrickColorInfo("Fog", 0xC7D4E4)
+            },
+            {
+                BrickColorId.Salmon,
+                new BrickColorInfo("Salmon", 0xFF9494)
+            },
+            {
+                BrickColorId.Terra_Cotta,
+                new BrickColorInfo("Terra Cotta", 0xBE6862)
+            },
+            {
+                BrickColorId.Cocoa,
+                new BrickColorInfo("Cocoa", 0x562424)
+            },
+            {
+                BrickColorId.Wheat,
+                new BrickColorInfo("Wheat", 0xF1E7C7)
+            },
+            {
+                BrickColorId.Buttermilk,
+                new BrickColorInfo("Buttermilk", 0xFEF3BB)
+            },
+            {
+                BrickColorId.Mauve,
+                new BrickColorInfo("Mauve", 0xE0B2D0)
+            },
+            {
+                BrickColorId.Sunrise,
+                new BrickColorInfo("Sunrise", 0xD490BD)
+            },
+            {
+                BrickColorId.Tawny,
+                new BrickColorInfo("Tawny", 0x965555)
+            },
+            {
+                BrickColorId.Rust_2,
+                new BrickColorInfo("Rust", 0x8F4C2A)
+            },
+            {
+                BrickColorId.Cashmere,
+                new BrickColorInfo("Cashmere", 0xD3BE96)
+            },
+            {
+                BrickColorId.Khaki,
+                new BrickColorInfo("Khaki", 0xE2DCBC)
+            },
+            {
+                BrickColorId.Lily_white,
+                new BrickColorInfo("Lily white", 0xEDEAEA)
+            },
+            {
+                BrickColorId.Seashell,
+                new BrickColorInfo("Seashell", 0xE9DADA)
+            },
+            {
+                BrickColorId.Burgundy,
+                new BrickColorInfo("Burgundy", 0x883E3E)
+            },
+            {
+                BrickColorId.Cork,
+                new BrickColorInfo("Cork", 0xBC9B5D)
+            },
+            {
+                BrickColorId.Burlap,
+                new BrickColorInfo("Burlap", 0xC7AC78)
+            },
+            {
+                BrickColorId.Beige,
+                new BrickColorInfo("Beige", 0xCABFA3)
+            },
+            {
+                BrickColorId.Oyster,
+                new BrickColorInfo("Oyster", 0xBBB3B2)
+            },
+            {
+                BrickColorId.Pine_Cone,
+                new BrickColorInfo("Pine Cone", 0x6C584B)
+            },
+            {
+                BrickColorId.Fawn_brown,
+                new BrickColorInfo("Fawn brown", 0xA0844F)
+            },
+            {
+                BrickColorId.Hurricane_grey,
+                new BrickColorInfo("Hurricane grey", 0x958988)
+            },
+            {
+                BrickColorId.Cloudy_grey,
+                new BrickColorInfo("Cloudy grey", 0xABA89E)
+            },
+            {
+                BrickColorId.Linen,
+                new BrickColorInfo("Linen", 0xAF9483)
+            },
+            {
+                BrickColorId.Copper,
+                new BrickColorInfo("Copper", 0x966766)
+            },
+            {
+                BrickColorId.Medium_brown,
+                new BrickColorInfo("Medium brown", 0x564236)
+            },
+            {
+                BrickColorId.Bronze,
+                new BrickColorInfo("Bronze", 0x7E683F)
+            },
+            {
+                BrickColorId.Flint,
+                new BrickColorInfo("Flint", 0x69665C)
+            },
+            {
+                BrickColorId.Dark_taupe,
+                new BrickColorInfo("Dark taupe", 0x5A4C42)
+            },
+            {
+                BrickColorId.Burnt_Sienna,
+                new BrickColorInfo("Burnt Sienna", 0x6A3909)
+            },
+            {
+                BrickColorId.Institutional_white,
+                new BrickColorInfo("Institutional white", 0xF8F8F8)
+            },
+            {
+                BrickColorId.Mid_gray,
+                new BrickColorInfo("Mid gray", 0xCDCDCD)
+            },
+            {
+                BrickColorId.Really_black,
+                new BrickColorInfo("Really black", 0x111111)
+            },
+            {
+                BrickColorId.Really_red,
+                new BrickColorInfo("Really red", 0xFF0000)
+            },
+            {
+                BrickColorId.Deep_orange,
+                new BrickColorInfo("Deep orange", 0xFFB000)
+            },
+            {
+                BrickColorId.Alder,
+                new BrickColorInfo("Alder", 0xB480FF)
+            },
+            {
+                BrickColorId.Dusty_Rose,
+                new BrickColorInfo("Dusty Rose", 0xA34B4B)
+            },
+            {
+                BrickColorId.Olive,
+                new BrickColorInfo("Olive", 0xC1BE42)
+            },
+            {
+                BrickColorId.New_Yeller,
+                new BrickColorInfo("New Yeller", 0xFFFF00)
+            },
+            {
+                BrickColorId.Really_blue,
+                new BrickColorInfo("Really blue", 0x0000FF)
+            },
+            {
+                BrickColorId.Navy_blue,
+                new BrickColorInfo("Navy blue", 0x002060)
+            },
+            {
+                BrickColorId.Deep_blue,
+                new BrickColorInfo("Deep blue", 0x2154B9)
+            },
+            {
+                BrickColorId.Cyan,
+                new BrickColorInfo("Cyan", 0x04AFEC)
+            },
+            {
+                BrickColorId.CGA_brown,
+                new BrickColorInfo("CGA brown", 0xAA5500)
+            },
+            {
+                BrickColorId.Magenta,
+                new BrickColorInfo("Magenta", 0xAA00AA)
+            },
+            {
+                BrickColorId.Pink,
+                new BrickColorInfo("Pink", 0xFF66CC)
+            },
+            {
+                BrickColorId.Deep_orange_2,
+                new BrickColorInfo("Deep orange", 0xFFAF00)
+            },
+            {
+                BrickColorId.Teal,
+                new BrickColorInfo("Teal", 0x12EED4)
+            },
+            {
+                BrickColorId.Toothpaste,
+                new BrickColorInfo("Toothpaste", 0x00FFFF)
+            },
+            {
+                BrickColorId.Lime_green,
+                new BrickColorInfo("Lime green", 0x00FF00)
+            },
+            {
+                BrickColorId.Camo,
+                new BrickColorInfo("Camo", 0x3A7D15)
+            },
+            {
+                BrickColorId.Grime,
+                new BrickColorInfo("Grime", 0x7F8E64)
+            },
+            {
+                BrickColorId.Lavender,
+                new BrickColorInfo("Lavender", 0x8C5B9F)
+            },
+            {
+                BrickColorId.Pastel_light_blue,
+                new BrickColorInfo("Pastel light blue", 0xAFDDFF)
+            },
+            {
+                BrickColorId.Pastel_orange,
+                new BrickColorInfo("Pastel orange", 0xFFC9C9)
+            },
+            {
+                BrickColorId.Pastel_violet,
+                new BrickColorInfo("Pastel violet", 0xB1A7FF)
+            },
+            {
+                BrickColorId.Pastel_bluegreen,
+                new BrickColorInfo("Pastel blue-green", 0x9FF3E9)
+            },
+            {
+                BrickColorId.Pastel_green,
+                new BrickColorInfo("Pastel green", 0xCCFFCC)
+            },
+            {
+                BrickColorId.Pastel_yellow,
+                new BrickColorInfo("Pastel yellow", 0xFFFFCC)
+            },
+            {
+                BrickColorId.Pastel_brown,
+                new BrickColorInfo("Pastel brown", 0xFFCC99)
+            },
+            {
+                BrickColorId.Royal_purple,
+                new BrickColorInfo("Royal purple", 0x6225D1)
+            },
+            {
+                BrickColorId.Hot_pink,
+                new BrickColorInfo("Hot pink", 0xFF00BF)
+            },
         };
     }
 }

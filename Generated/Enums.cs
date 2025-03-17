@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.616.0.6160656
+// Updated as of 0.664.0.6640713
 
 namespace RobloxFiles.Enums
 {
@@ -33,6 +33,22 @@ namespace RobloxFiles.Enums
         Eyelash
     }
 
+    public enum ActionOnStopSync
+    {
+        AlwaysAsk,
+        KeepLocalFiles,
+        DeleteLocalFiles
+    }
+
+    public enum ActionType
+    {
+        Nothing,
+        Pause,
+        Lose,
+        Draw,
+        Win
+    }
+
     public enum ActuatorRelativeTo
     {
         Attachment0,
@@ -47,9 +63,69 @@ namespace RobloxFiles.Enums
         Servo
     }
 
+    public enum AdAvailabilityResult
+    {
+        IsAvailable = 1,
+        DeviceIneligible,
+        ExperienceIneligible,
+        InternalError,
+        NoFill,
+        PlayerIneligible,
+        PublisherIneligible
+    }
+
+    public enum AdEventType
+    {
+        VideoLoaded,
+        VideoRemoved,
+        UserCompletedVideo,
+        RewardedAdLoaded,
+        RewardedAdGrant,
+        RewardedAdUnloaded
+    }
+
+    public enum AdFormat
+    {
+        RewardedVideo
+    }
+
     public enum AdShape
     {
         HorizontalRectangle = 1
+    }
+
+    public enum AdTeleportMethod
+    {
+        Undefined,
+        PortalForward,
+        InGameMenuBackButton,
+        UIBackButton
+    }
+
+    public enum AdUIEventType
+    {
+        AdLabelClicked,
+        VolumeButtonClicked,
+        FullscreenButtonClicked,
+        PlayButtonClicked,
+        PauseButtonClicked,
+        CloseButtonClicked,
+        WhyThisAdClicked,
+        PlayEventTriggered,
+        PauseEventTriggered
+    }
+
+    public enum AdUIType
+    {
+        None,
+        Image,
+        Video
+    }
+
+    public enum AdUnitStatus
+    {
+        Inactive,
+        Active
     }
 
     public enum AdornCullingMode
@@ -74,6 +150,79 @@ namespace RobloxFiles.Enums
         Transparency
     }
 
+    public enum AnalyticsCustomFieldKeys
+    {
+        CustomField01,
+        CustomField02,
+        CustomField03
+    }
+
+    public enum AnalyticsEconomyAction
+    {
+        Default,
+        Acquire,
+        Spend
+    }
+
+    public enum AnalyticsEconomyFlowType
+    {
+        Sink,
+        Source
+    }
+
+    public enum AnalyticsEconomyTransactionType
+    {
+        IAP,
+        Shop,
+        Gameplay,
+        ContextualPurchase,
+        TimedReward,
+        Onboarding
+    }
+
+    public enum AnalyticsLogLevel
+    {
+        Trace,
+        Debug,
+        Information,
+        Warning,
+        Error,
+        Fatal
+    }
+
+    public enum AnalyticsProgressionStatus
+    {
+        Default,
+        Begin,
+        Complete,
+        Abandon,
+        Fail
+    }
+
+    public enum AnalyticsProgressionType
+    {
+        Custom,
+        Start,
+        Fail,
+        Complete
+    }
+
+    public enum AnimationClipFromVideoStatus
+    {
+        Initializing,
+        Pending,
+        Processing,
+        ErrorGeneric = 4,
+        Success = 6,
+        ErrorVideoTooLong,
+        ErrorNoPersonDetected,
+        ErrorVideoUnstable,
+        Timeout,
+        Cancelled,
+        ErrorMultiplePeople,
+        ErrorUploadingVideo = 2001
+    }
+
     public enum AnimationPriority
     {
         Idle,
@@ -92,6 +241,74 @@ namespace RobloxFiles.Enums
         Enabled
     }
 
+    public enum AnnotationEditingMode
+    {
+        None,
+        PlacingNew,
+        WritingNew
+    }
+
+    public enum AnnotationRequestResult
+    {
+        Success,
+        ErrorInternalFailure,
+        ErrorNotFound,
+        ErrorModerated
+    }
+
+    public enum AnnotationRequestType
+    {
+        Unknown,
+        Create,
+        Resolve,
+        Delete,
+        Edit
+    }
+
+    public enum AppLifecycleManagerState
+    {
+        Detached,
+        Active,
+        Inactive,
+        Hidden
+    }
+
+    public enum AppShellActionType
+    {
+        None,
+        OpenApp,
+        TapChatTab,
+        TapConversationEntry,
+        TapAvatarTab,
+        ReadConversation,
+        TapGamePageTab,
+        TapHomePageTab,
+        GamePageLoaded,
+        HomePageLoaded,
+        AvatarEditorPageLoaded
+    }
+
+    public enum AppShellFeature
+    {
+        None,
+        Chat,
+        AvatarEditor,
+        GamePage,
+        HomePage,
+        More,
+        Landing
+    }
+
+    public enum AppUpdateStatus
+    {
+        Unknown,
+        NotSupported,
+        Failed,
+        NotAvailable,
+        Available,
+        AvailableBoundChannel
+    }
+
     public enum ApplyStrokeMode
     {
         Contextual,
@@ -104,6 +321,91 @@ namespace RobloxFiles.Enums
         ScaleWithParentSize
     }
 
+    public enum AssetCreatorType
+    {
+        User,
+        Group,
+    }
+
+    public enum AssetFetchStatus
+    {
+        Success,
+        Failure,
+        None,
+        Loading,
+        TimedOut
+    }
+
+    public enum AssetType
+    {
+        Image = 1,
+        TShirt,
+        Audio,
+        Mesh,
+        Lua,
+        Hat = 8,
+        Place,
+        Model,
+        Shirt,
+        Pants,
+        Decal,
+        Head = 17,
+        Face,
+        Gear,
+        Badge = 21,
+        Animation = 24,
+        Torso = 27,
+        RightArm,
+        LeftArm,
+        LeftLeg,
+        RightLeg,
+        Package,
+        GamePass = 34,
+        Plugin = 38,
+        MeshPart = 40,
+        HairAccessory,
+        FaceAccessory,
+        NeckAccessory,
+        ShoulderAccessory,
+        FrontAccessory,
+        BackAccessory,
+        WaistAccessory,
+        ClimbAnimation,
+        DeathAnimation,
+        FallAnimation,
+        IdleAnimation,
+        JumpAnimation,
+        RunAnimation,
+        SwimAnimation,
+        WalkAnimation,
+        PoseAnimation,
+        EarAccessory,
+        EyeAccessory,
+        EmoteAnimation = 61,
+        Video,
+        TShirtAccessory = 64,
+        ShirtAccessory,
+        PantsAccessory,
+        JacketAccessory,
+        SweaterAccessory,
+        ShortsAccessory,
+        LeftShoeAccessory,
+        RightShoeAccessory,
+        DressSkirtAccessory,
+        FontFamily,
+        EyebrowAccessory = 76,
+        EyelashAccessory,
+        MoodAnimation,
+        DynamicHead
+    }
+
+    public enum AssetTypeVerification
+    {
+        Default = 1,
+        ClientOnly,
+        Always
+    }
+
     public enum AudioApiRollout
     {
         Disabled,
@@ -111,10 +413,56 @@ namespace RobloxFiles.Enums
         Enabled
     }
 
+    public enum AudioChannelLayout
+    {
+        Mono,
+        Stereo,
+        Quad,
+        Surround_5,
+        Surround_5_1,
+        Surround_7_1,
+        Surround_7_1_4
+    }
+
+    public enum AudioFilterType
+    {
+        Peak,
+        LowShelf,
+        HighShelf,
+        Lowpass12dB,
+        Lowpass24dB,
+        Lowpass48dB,
+        Highpass12dB,
+        Highpass24dB,
+        Highpass48dB,
+        Bandpass,
+        Notch
+    }
+
+    public enum AudioSimulationFidelity
+    {
+        None,
+        Automatic
+    }
+
     public enum AudioSubType
     {
         Music = 1,
         SoundEffect
+    }
+
+    public enum AudioWindowSize
+    {
+        Small,
+        Medium,
+        Large
+    }
+
+    public enum AutoIndentRule
+    {
+        Off,
+        Absolute,
+        Relative
     }
 
     public enum AutomaticSize
@@ -125,11 +473,101 @@ namespace RobloxFiles.Enums
         XY
     }
 
-    public enum AvatarJointUpgrade
+    public enum AvatarAssetType
     {
-        Default,
-        Enabled,
-        Disabled
+        TShirt = 2,
+        Hat = 8,
+        Shirt = 11,
+        Pants,
+        Head = 17,
+        Face,
+        Gear,
+        Torso = 27,
+        RightArm,
+        LeftArm,
+        LeftLeg,
+        RightLeg,
+        HairAccessory = 41,
+        FaceAccessory,
+        NeckAccessory,
+        ShoulderAccessory,
+        FrontAccessory,
+        BackAccessory,
+        WaistAccessory,
+        ClimbAnimation,
+        FallAnimation = 50,
+        IdleAnimation,
+        JumpAnimation,
+        RunAnimation,
+        SwimAnimation,
+        WalkAnimation,
+        EmoteAnimation = 61,
+        TShirtAccessory = 64,
+        ShirtAccessory,
+        PantsAccessory,
+        JacketAccessory,
+        SweaterAccessory,
+        ShortsAccessory,
+        LeftShoeAccessory,
+        RightShoeAccessory,
+        DressSkirtAccessory,
+        EyebrowAccessory = 76,
+        EyelashAccessory,
+        MoodAnimation,
+        DynamicHead
+    }
+
+    public enum AvatarChatServiceFeature
+    {
+        None,
+        UniverseAudio,
+        UniverseVideo,
+        PlaceAudio = 4,
+        PlaceVideo = 8,
+        UserAudioEligible = 16,
+        UserAudio = 32,
+        UserVideoEligible = 64,
+        UserVideo = 128,
+        UserBanned = 256,
+        UserVerifiedForVoice = 512
+    }
+
+    public enum AvatarContextMenuOption
+    {
+        Friend,
+        Chat,
+        Emote,
+        InspectMenu
+    }
+
+    public enum AvatarGenerationError
+    {
+        None,
+        Unknown,
+        DownloadFailed,
+        Canceled,
+        Offensive,
+        Timeout,
+        JobNotFound
+    }
+
+    public enum AvatarItemType
+    {
+        Asset = 1,
+        Bundle
+    }
+
+    public enum AvatarPromptResult
+    {
+        Success = 1,
+        PermissionDenied,
+        Failed
+    }
+
+    public enum AvatarThumbnailCustomizationType
+    {
+        Closeup = 1,
+        FullBody
     }
 
     public enum AvatarUnificationMode
@@ -144,6 +582,13 @@ namespace RobloxFiles.Enums
         X,
         Y,
         Z
+    }
+
+    public enum BenefitType
+    {
+        DeveloperProduct,
+        AvatarAsset,
+        AvatarBundle
     }
 
     public enum BinType
@@ -165,11 +610,68 @@ namespace RobloxFiles.Enums
         RightLeg
     }
 
+    public enum BodyPartR15
+    {
+        Head,
+        UpperTorso,
+        LowerTorso,
+        LeftFoot,
+        LeftLowerLeg,
+        LeftUpperLeg,
+        RightFoot,
+        RightLowerLeg,
+        RightUpperLeg,
+        LeftHand,
+        LeftLowerArm,
+        LeftUpperArm,
+        RightHand,
+        RightLowerArm,
+        RightUpperArm,
+        RootPart,
+        Unknown = 17
+    }
+
     public enum BorderMode
     {
         Outline,
         Middle,
         Inset
+    }
+
+    public enum BreakReason
+    {
+        Other,
+        Error,
+        SpecialBreakpoint,
+        UserBreakpoint
+    }
+
+    public enum BreakpointRemoveReason
+    {
+        Requested,
+        ScriptChanged,
+        ScriptRemoved
+    }
+
+    public enum BulkMoveMode
+    {
+        FireAllEvents,
+        FireCFrameChanged
+    }
+
+    public enum BundleType
+    {
+        BodyParts = 1,
+        Animations,
+        Shoes,
+        DynamicHead,
+        DynamicHeadAvatar
+    }
+
+    public enum Button
+    {
+        Dismount = 8,
+        Jump = 32
     }
 
     public enum ButtonStyle
@@ -182,17 +684,29 @@ namespace RobloxFiles.Enums
         RobloxRoundDropdownButton
     }
 
-    public enum CSGAsyncDynamicCollision
+    public enum CageType
     {
-        Default,
-        Disabled,
-        Experimental
+        Inner,
+        Outer
     }
 
     public enum CameraMode
     {
         Classic,
         LockFirstPerson
+    }
+
+    public enum CameraPanMode
+    {
+        Classic,
+        EdgeBump
+    }
+
+    public enum CameraSpeedAdjustBinding
+    {
+        None,
+        RmbScroll,
+        AltScroll
     }
 
     public enum CameraType
@@ -207,12 +721,139 @@ namespace RobloxFiles.Enums
         Orbital
     }
 
+    public enum CaptureUIHideMode
+    {
+        All,
+        None,
+        Core
+    }
+
+    public enum CatalogCategoryFilter
+    {
+        None = 1,
+        Featured,
+        Collectibles,
+        CommunityCreations,
+        Premium,
+        Recommended
+    }
+
+    public enum CatalogSortAggregation
+    {
+        Past12Hours = 1,
+        PastDay,
+        Past3Days,
+        PastWeek,
+        PastMonth,
+        AllTime
+    }
+
+    public enum CatalogSortType
+    {
+        Relevance = 1,
+        PriceHighToLow,
+        PriceLowToHigh,
+        MostFavorited = 5,
+        RecentlyCreated,
+        Bestselling
+    }
+
+    public enum CellBlock
+    {
+        Solid,
+        VerticalWedge,
+        CornerWedge,
+        InverseCornerWedge,
+        HorizontalWedge
+    }
+
+    public enum CellMaterial
+    {
+        Empty,
+        Grass,
+        Sand,
+        Brick,
+        Granite,
+        Asphalt,
+        Iron,
+        Aluminum,
+        Gold,
+        WoodPlank,
+        WoodLog,
+        Gravel,
+        CinderBlock,
+        MossyStone,
+        Cement,
+        RedPlastic,
+        BluePlastic,
+        Water
+    }
+
+    public enum CellOrientation
+    {
+        NegZ,
+        X,
+        Z,
+        NegX
+    }
+
+    public enum CenterDialogType
+    {
+        UnsolicitedDialog = 1,
+        PlayerInitiatedDialog,
+        ModalDialog,
+        QuitDialog
+    }
+
     public enum CharacterControlMode
     {
         Default,
         Legacy,
         NoCharacterController,
         LuaCharacterController
+    }
+
+    public enum ChatCallbackType
+    {
+        OnCreatingChatWindow = 1,
+        OnClientSendingMessage,
+        OnClientFormattingMessage,
+        OnServerReceivingMessage = 17
+    }
+
+    public enum ChatColor
+    {
+        Blue,
+        Green,
+        Red,
+        White
+    }
+
+    public enum ChatMode
+    {
+        Menu,
+        TextAndMenu
+    }
+
+    public enum ChatPrivacyMode
+    {
+        AllUsers,
+        NoOne,
+        Friends
+    }
+
+    public enum ChatRestrictionStatus
+    {
+        Unknown,
+        NotRestricted,
+        Restricted
+    }
+
+    public enum ChatStyle
+    {
+        Classic,
+        Bubble,
+        ClassicAndBubble
     }
 
     public enum ChatVersion
@@ -228,12 +869,345 @@ namespace RobloxFiles.Enums
         Enabled
     }
 
-    public enum DeathStyle
+    public enum CloseReason
+    {
+        Unknown,
+        RobloxMaintenance,
+        DeveloperShutdown,
+        DeveloperUpdate,
+        ServerEmpty,
+        OutOfMemory
+    }
+
+    public enum CollaboratorStatus
+    {
+        None,
+        Editing3D,
+        Scripting,
+        PrivateScripting
+    }
+
+    public enum CollisionFidelity
     {
         Default,
-        ClassicBreakApart,
-        NonGraphic,
-        Scriptable
+        Hull,
+        Box,
+        PreciseConvexDecomposition
+    }
+
+    public enum CommandPermission
+    {
+        Plugin,
+        LocalUser
+    }
+
+    public enum CompileTarget
+    {
+        Client,
+        CoreScript,
+        Studio,
+        CoreScriptRaw
+    }
+
+    public enum CompletionAcceptanceBehavior
+    {
+        Insert,
+        Replace,
+        ReplaceOnEnterInsertOnTab,
+        InsertOnEnterReplaceOnTab
+    }
+
+    public enum CompletionItemKind
+    {
+        Text = 1,
+        Method,
+        Function,
+        Constructor,
+        Field,
+        Variable,
+        Class,
+        Interface,
+        Module,
+        Property,
+        Unit,
+        Value,
+        Enum,
+        Keyword,
+        Snippet,
+        Color,
+        File,
+        Reference,
+        Folder,
+        EnumMember,
+        Constant,
+        Struct,
+        Event,
+        Operator,
+        TypeParameter
+    }
+
+    public enum CompletionItemTag
+    {
+        Deprecated = 1,
+        IncorrectIndexType,
+        PluginPermissions,
+        CommandLinePermissions,
+        RobloxPermissions,
+        AddParens,
+        PutCursorInParens,
+        TypeCorrect,
+        ClientServerBoundaryViolation,
+        Invalidated,
+        PutCursorBeforeEnd
+    }
+
+    public enum CompletionTriggerKind
+    {
+        Invoked = 1,
+        TriggerCharacter,
+        TriggerForIncompleteCompletions
+    }
+
+    public enum ComputerCameraMovementMode
+    {
+        Default,
+        Classic,
+        Follow,
+        Orbital,
+        CameraToggle
+    }
+
+    public enum ComputerMovementMode
+    {
+        Default,
+        KeyboardMouse,
+        ClickToMove
+    }
+
+    public enum ConnectionError
+    {
+        OK,
+        Unknown,
+        DisconnectErrors = 256,
+        DisconnectBadhash,
+        DisconnectSecurityKeyMismatch,
+        DisconnectProtocolMismatch,
+        DisconnectReceivePacketError,
+        DisconnectReceivePacketStreamError,
+        DisconnectSendPacketError,
+        DisconnectIllegalTeleport,
+        DisconnectDuplicatePlayer,
+        DisconnectDuplicateTicket,
+        DisconnectTimeout,
+        DisconnectLuaKick,
+        DisconnectOnRemoteSysStats,
+        DisconnectHashTimeout,
+        DisconnectCloudEditKick,
+        DisconnectPlayerless,
+        DisconnectNewSecurityKeyMismatch,
+        DisconnectEvicted,
+        DisconnectDevMaintenance,
+        DisconnectRobloxMaintenance,
+        DisconnectRejoin,
+        DisconnectConnectionLost,
+        DisconnectIdle,
+        DisconnectRaknetErrors,
+        DisconnectWrongVersion,
+        DisconnectBySecurityPolicy,
+        DisconnectBlockedIP,
+        DisconnectClientFailure = 284,
+        DisconnectClientRequest,
+        DisconnectPrivateServerKickout,
+        DisconnectModeratedGame,
+        ServerShutdown,
+        ReplicatorTimeout = 290,
+        PlayerRemoved,
+        DisconnectOutOfMemoryKeepPlayingLeave,
+        DisconnectRomarkEndOfTest,
+        DisconnectCollaboratorPermissionRevoked,
+        DisconnectCollaboratorUnderage,
+        NetworkInternal,
+        NetworkSend,
+        NetworkTimeout,
+        NetworkMisbehavior,
+        NetworkSecurity,
+        ReplacementReady,
+        ServerEmpty,
+        PhantomFreeze,
+        AndroidAnticheatKick,
+        AndroidEmulatorKick,
+        PlacelaunchErrors = 512,
+        PlacelaunchDisabled = 515,
+        PlacelaunchError,
+        PlacelaunchGameEnded,
+        PlacelaunchGameFull,
+        PlacelaunchUserLeft = 522,
+        PlacelaunchRestricted,
+        PlacelaunchUnauthorized,
+        PlacelaunchFlooded,
+        PlacelaunchHashExpired,
+        PlacelaunchHashException,
+        PlacelaunchPartyCannotFit,
+        PlacelaunchHttpError,
+        PlacelaunchUserPrivacyUnauthorized = 533,
+        PlacelaunchCreatorBan = 600,
+        PlacelaunchCustomMessage = 610,
+        PlacelaunchOtherError,
+        TeleportErrors = 768,
+        TeleportFailure,
+        TeleportGameNotFound,
+        TeleportGameEnded,
+        TeleportGameFull,
+        TeleportUnauthorized,
+        TeleportFlooded,
+        TeleportIsTeleporting
+    }
+
+    public enum ConnectionState
+    {
+        Connected,
+        Disconnected
+    }
+
+    public enum ContentSourceType
+    {
+        None,
+        Uri,
+        Object
+    }
+
+    public enum ContextActionPriority
+    {
+        Low = 1000,
+        Medium = 2000,
+        High = 3000
+    }
+
+    public enum ContextActionResult
+    {
+        Sink,
+        Pass
+    }
+
+    public enum ControlMode
+    {
+        Classic,
+        MouseLockSwitch
+    }
+
+    public enum CoreGuiType
+    {
+        PlayerList,
+        Health,
+        Backpack,
+        Chat,
+        All,
+        EmotesMenu,
+        SelfView,
+        Captures
+    }
+
+    public enum CreateAssetResult
+    {
+        Success = 1,
+        PermissionDenied,
+        UploadFailed,
+        Unknown
+    }
+
+    public enum CreateOutfitFailure
+    {
+        InvalidName = 1,
+        OutfitLimitReached,
+        Other
+    }
+
+    public enum CreatorType
+    {
+        User,
+        Group
+    }
+
+    public enum CreatorTypeFilter
+    {
+        User,
+        Group,
+        All
+    }
+
+    public enum CurrencyType
+    {
+        Default,
+        Robux,
+        Tix
+    }
+
+    public enum CustomCameraMode
+    {
+        Default,
+        Classic,
+        Follow
+    }
+
+    public enum DataStoreRequestType
+    {
+        GetAsync,
+        SetIncrementAsync,
+        UpdateAsync,
+        GetSortedAsync,
+        SetIncrementSortedAsync,
+        OnUpdate,
+        ListAsync,
+        GetVersionAsync,
+        RemoveVersionAsync
+    }
+
+    public enum DebuggerEndReason
+    {
+        ClientRequest,
+        Timeout,
+        InvalidHost,
+        Disconnected,
+        ServerShutdown,
+        ServerProtocolMismatch,
+        ConfigurationFailed,
+        RpcError
+    }
+
+    public enum DebuggerExceptionBreakMode
+    {
+        Never,
+        Always,
+        Unhandled
+    }
+
+    public enum DebuggerFrameType
+    {
+        C,
+        Lua
+    }
+
+    public enum DebuggerPauseReason
+    {
+        Unknown,
+        Requested,
+        Breakpoint,
+        Exception,
+        SingleStep,
+        Entrypoint
+    }
+
+    public enum DebuggerStatus
+    {
+        Success,
+        Timeout,
+        ConnectionLost,
+        InvalidResponse,
+        InternalError,
+        InvalidState,
+        RpcError,
+        InvalidArgument,
+        ConnectionClosed
     }
 
     public enum DevCameraOcclusionMode
@@ -278,6 +1252,62 @@ namespace RobloxFiles.Enums
         DynamicThumbstick
     }
 
+    public enum DeveloperMemoryTag
+    {
+        Internal,
+        HttpCache,
+        Instances,
+        Signals,
+        LuaHeap,
+        Script,
+        PhysicsCollision,
+        PhysicsParts,
+        GraphicsSolidModels,
+        GraphicsMeshParts = 10,
+        GraphicsParticles,
+        GraphicsParts,
+        GraphicsSpatialHash,
+        GraphicsTerrain,
+        GraphicsTexture,
+        GraphicsTextureCharacter,
+        Sounds,
+        StreamingSounds,
+        TerrainVoxels,
+        Gui = 21,
+        Animation,
+        Navigation,
+        GeometryCSG
+    }
+
+    public enum DeviceFeatureType
+    {
+        DeviceCapture
+    }
+
+    public enum DeviceForm
+    {
+        Console,
+        Phone,
+        Tablet,
+        Desktop,
+        VR
+    }
+
+    public enum DeviceLevel
+    {
+        Low,
+        Medium,
+        High
+    }
+
+    public enum DeviceType
+    {
+        Unknown,
+        Desktop,
+        Tablet,
+        Phone
+    }
+
     public enum DialogBehaviorType
     {
         SinglePlayer,
@@ -302,6 +1332,14 @@ namespace RobloxFiles.Enums
     {
         Width,
         Height
+    }
+
+    public enum DraftStatusCode
+    {
+        OK,
+        DraftOutdated,
+        ScriptRemoved,
+        DraftCommitted
     }
 
     public enum DragDetectorDragStyle
@@ -331,6 +1369,25 @@ namespace RobloxFiles.Enums
         Custom
     }
 
+    public enum DraggerCoordinateSpace
+    {
+        Object,
+        World
+    }
+
+    public enum DraggerMovementMode
+    {
+        Geometric,
+        Physical
+    }
+
+    public enum DraggingScrollBar
+    {
+        None,
+        Horizontal,
+        Vertical
+    }
+
     public enum EasingDirection
     {
         In,
@@ -353,11 +1410,11 @@ namespace RobloxFiles.Enums
         Cubic
     }
 
-    public enum EditorLiveScripting
+    public enum EditableStatus
     {
-        Default,
-        Disabled,
-        Enabled
+        Unknown,
+        Allowed,
+        Disallowed
     }
 
     public enum ElasticBehavior
@@ -367,10 +1424,43 @@ namespace RobloxFiles.Enums
         Never
     }
 
+    public enum EnviromentalPhysicsThrottle
+    {
+        DefaultAuto,
+        Disabled,
+        Always,
+        Skip2,
+        Skip4,
+        Skip8,
+        Skip16
+    }
+
+    public enum ExperienceAuthScope
+    {
+        DefaultScope,
+        CreatorAssetsCreate
+    }
+
     public enum ExplosionType
     {
         NoCraters,
         Craters
+    }
+
+    public enum FACSDataLod
+    {
+        LOD0,
+        LOD1,
+        LODCount
+    }
+
+    public enum FacialAnimationStreamingState
+    {
+        None,
+        Audio,
+        Video,
+        Place = 4,
+        Server = 8
     }
 
     public enum FieldOfViewMode
@@ -384,6 +1474,42 @@ namespace RobloxFiles.Enums
     {
         Horizontal,
         Vertical
+    }
+
+    public enum FilterErrorType
+    {
+        BackslashNotEscapingAnything,
+        BadBespokeFilter,
+        BadName,
+        IncompleteOr,
+        IncompleteParenthesis,
+        InvalidDoubleStar,
+        InvalidTilde,
+        PropertyBadOperator,
+        PropertyDoesNotExist,
+        PropertyInvalidField,
+        PropertyInvalidValue,
+        PropertyUnsupportedFields,
+        PropertyUnsupportedProperty,
+        UnexpectedNameIndex,
+        UnexpectedToken,
+        UnfinishedBinaryOperator,
+        UnfinishedQuote,
+        UnknownBespokeFilter,
+        WildcardInProperty
+    }
+
+    public enum FilterResult
+    {
+        Accepted,
+        Rejected
+    }
+
+    public enum FinishRecordingOperation
+    {
+        Cancel,
+        Commit,
+        Append
     }
 
     public enum FluidFidelity
@@ -451,6 +1577,8 @@ namespace RobloxFiles.Enums
         BuilderSansMedium,
         BuilderSansBold,
         BuilderSansExtraBold,
+        Arimo,
+        ArimoBold,
         Unknown = 100
     }
 
@@ -517,6 +1645,37 @@ namespace RobloxFiles.Enums
         DropShadow
     }
 
+    public enum FramerateManagerMode
+    {
+        Automatic,
+        On,
+        Off
+    }
+
+    public enum FriendRequestEvent
+    {
+        Issue,
+        Revoke,
+        Accept,
+        Deny
+    }
+
+    public enum FriendStatus
+    {
+        Unknown,
+        NotFriend,
+        Friend,
+        FriendRequestSent,
+        FriendRequestReceived
+    }
+
+    public enum FunctionalTestResult
+    {
+        Passed,
+        Warning,
+        Error
+    }
+
     public enum GameAvatarType
     {
         R6,
@@ -524,10 +1683,99 @@ namespace RobloxFiles.Enums
         PlayerChoice
     }
 
+    public enum GamepadType
+    {
+        Unknown,
+        PS4,
+        PS5,
+        XboxOne
+    }
+
+    public enum GearGenreSetting
+    {
+        AllGenres,
+        MatchingGenreOnly
+    }
+
+    public enum GearType
+    {
+        MeleeWeapons,
+        RangedWeapons,
+        Explosives,
+        PowerUps,
+        NavigationEnhancers,
+        MusicalInstruments,
+        SocialItems,
+        BuildingTools,
+        Transport
+    }
+
+    public enum Genre
+    {
+        All,
+        TownAndCity,
+        Fantasy,
+        SciFi,
+        Ninja,
+        Scary,
+        Pirate,
+        Adventure,
+        Sports,
+        Funny,
+        WildWest,
+        War,
+        SkatePark,
+        Tutorial
+    }
+
+    public enum GraphicsMode
+    {
+        Automatic = 1,
+        Direct3D11,
+        OpenGL = 4,
+        Metal,
+        Vulkan,
+        NoGraphics = 9
+    }
+
+    public enum GraphicsOptimizationMode
+    {
+        Performance,
+        Balanced,
+        Quality
+    }
+
+    public enum GuiState
+    {
+        Idle,
+        Hover,
+        Press,
+        NonInteractable
+    }
+
+    public enum GuiType
+    {
+        Core,
+        Custom,
+        PlayerNameplates,
+        CustomBillboards,
+        CoreBillboards
+    }
+
     public enum HandlesStyle
     {
         Resize,
         Movement
+    }
+
+    public enum HapticEffectType
+    {
+        Custom,
+        UIHover,
+        UIClick,
+        UINotification,
+        GameplayExplosion,
+        GameplayCollision
     }
 
     public enum HighlightDepthMode
@@ -541,6 +1789,67 @@ namespace RobloxFiles.Enums
         Center,
         Left,
         Right
+    }
+
+    public enum HoverAnimateSpeed
+    {
+        VerySlow,
+        Slow,
+        Medium,
+        Fast,
+        VeryFast
+    }
+
+    public enum HttpCachePolicy
+    {
+        None,
+        Full,
+        DataOnly,
+        Default,
+        InternalRedirectRefresh
+    }
+
+    public enum HttpCompression
+    {
+        None,
+        Gzip
+    }
+
+    public enum HttpContentType
+    {
+        ApplicationJson,
+        ApplicationXml,
+        ApplicationUrlEncoded,
+        TextPlain,
+        TextXml
+    }
+
+    public enum HttpError
+    {
+        OK,
+        InvalidUrl,
+        DnsResolve,
+        ConnectFail,
+        OutOfMemory,
+        TimedOut,
+        TooManyRedirects,
+        InvalidRedirect,
+        NetFail,
+        Aborted,
+        SslConnectFail,
+        SslVerificationFail,
+        Unknown
+    }
+
+    public enum HttpRequestType
+    {
+        Default,
+        MarketplaceService = 2,
+        Players = 7,
+        Chat = 15,
+        Avatar,
+        Analytics = 23,
+        Localization = 25
     }
 
     public enum HumanoidCollisionType
@@ -569,6 +1878,34 @@ namespace RobloxFiles.Enums
         R15
     }
 
+    public enum HumanoidStateType
+    {
+        FallingDown,
+        Ragdoll,
+        GettingUp,
+        Jumping,
+        Swimming,
+        Freefall,
+        Flying,
+        Landed,
+        Running,
+        RunningNoPhysics = 10,
+        StrafingNoPhysics,
+        Climbing,
+        Seated,
+        PlatformStanding,
+        Dead,
+        Physics,
+        None = 18
+    }
+
+    public enum IKCollisionsMode
+    {
+        NoCollisions,
+        OtherMechanismsAnchored,
+        IncludeContactedMechanisms
+    }
+
     public enum IKControlConstraintSupport
     {
         Default,
@@ -584,11 +1921,63 @@ namespace RobloxFiles.Enums
         LookAt
     }
 
+    public enum IXPLoadingStatus
+    {
+        None,
+        Pending,
+        Initialized,
+        ErrorInvalidUser,
+        ErrorConnection,
+        ErrorJsonParse,
+        ErrorTimedOut
+    }
+
+    public enum ImageAlphaType
+    {
+        Default = 1,
+        LockCanvasAlpha,
+        LockCanvasColor
+    }
+
+    public enum ImageCombineType
+    {
+        BlendSourceOver = 1,
+        Overwrite,
+        Add,
+        Multiply,
+        AlphaBlend
+    }
+
     public enum InOut
     {
         Edge,
         Inset,
         Center
+    }
+
+    public enum InfoType
+    {
+        Asset,
+        Product,
+        GamePass,
+        Subscription,
+        Bundle
+    }
+
+    public enum InitialDockState
+    {
+        Top,
+        Bottom,
+        Left,
+        Right,
+        Float
+    }
+
+    public enum InputActionType
+    {
+        Bool,
+        Float,
+        Direction2D
     }
 
     public enum InputType
@@ -598,11 +1987,24 @@ namespace RobloxFiles.Enums
         Sin
     }
 
+    public enum IntermediateMeshGenerationResult
+    {
+        HighQualityMesh
+    }
+
     public enum InterpolationThrottlingMode
     {
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum InviteState
+    {
+        Placed,
+        Accepted,
+        Declined,
+        Missed
     }
 
     public enum ItemLineAlignment
@@ -612,6 +2014,18 @@ namespace RobloxFiles.Enums
         Center,
         End,
         Stretch
+    }
+
+    public enum JoinSource
+    {
+        CreatedItemAttribution = 1
+    }
+
+    public enum JointCreationMode
+    {
+        All,
+        Surface,
+        None
     }
 
     public enum KeyCode
@@ -869,7 +2283,32 @@ namespace RobloxFiles.Enums
         DPadUp,
         DPadDown,
         Thumbstick1,
-        Thumbstick2
+        Thumbstick2,
+        MouseLeftButton,
+        MouseRightButton,
+        MouseMiddleButton,
+        MouseBackButton,
+        MouseNoButton,
+        MouseX,
+        MouseY
+    }
+
+    public enum KeyInterpolationMode
+    {
+        Constant,
+        Linear,
+        Cubic
+    }
+
+    public enum KeywordFilterType
+    {
+        Include,
+        Exclude
+    }
+
+    public enum Language
+    {
+        Default
     }
 
     public enum LeftRight
@@ -879,11 +2318,88 @@ namespace RobloxFiles.Enums
         Right
     }
 
+    public enum LexemeType
+    {
+        Eof,
+        Name,
+        QuotedString,
+        Number,
+        And,
+        Or,
+        Equal,
+        TildeEqual,
+        GreaterThan,
+        GreaterThanEqual,
+        LessThan,
+        LessThanEqual,
+        Colon,
+        Dot,
+        LeftParenthesis,
+        RightParenthesis,
+        Star,
+        DoubleStar,
+        ReservedSpecial
+    }
+
+    public enum LightingStyle
+    {
+        Realistic,
+        Soft
+    }
+
+    public enum Limb
+    {
+        Head,
+        Torso,
+        LeftArm,
+        RightArm,
+        LeftLeg,
+        RightLeg,
+        Unknown
+    }
+
     public enum LineJoinMode
     {
         Round,
         Bevel,
         Miter
+    }
+
+    public enum ListDisplayMode
+    {
+        Horizontal,
+        Vertical
+    }
+
+    public enum ListenerLocation
+    {
+        Default,
+        None,
+        Character,
+        Camera
+    }
+
+    public enum ListenerType
+    {
+        Camera,
+        CFrame,
+        ObjectPosition,
+        ObjectCFrame
+    }
+
+    public enum LiveEditingAtomicUpdateResponse
+    {
+        Success,
+        FailureGuidNotFound,
+        FailureHashMismatch,
+        FailureOperationIllegal
+    }
+
+    public enum LiveEditingBroadcastMessageType
+    {
+        Normal,
+        Warning,
+        Error
     }
 
     public enum LoadCharacterLayeredClothing
@@ -898,6 +2414,56 @@ namespace RobloxFiles.Enums
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum LocationType
+    {
+        Character,
+        Camera,
+        ObjectPosition
+    }
+
+    public enum MarketplaceBulkPurchasePromptStatus
+    {
+        Completed = 1,
+        Aborted,
+        Error
+    }
+
+    public enum MarketplaceItemPurchaseStatus
+    {
+        Success = 1,
+        SystemError,
+        AlreadyOwned,
+        InsufficientRobux,
+        QuantityLimitExceeded,
+        QuotaExceeded,
+        NotForSale,
+        NotAvailableForPurchaser,
+        PriceMismatch,
+        SoldOut,
+        PurchaserIsSeller,
+        InsufficientMembership,
+        PlaceInvalid
+    }
+
+    public enum MarketplaceProductType
+    {
+        AvatarAsset = 1,
+        AvatarBundle
+    }
+
+    public enum MarkupKind
+    {
+        PlainText,
+        Markdown
+    }
+
+    public enum MatchmakingType
+    {
+        Default = 1,
+        XboxOnly,
+        PlayStationOnly
     }
 
     public enum Material
@@ -955,11 +2521,40 @@ namespace RobloxFiles.Enums
         Organic
     }
 
+    public enum MembershipType
+    {
+        None,
+        BuildersClub,
+        TurboBuildersClub,
+        OutrageousBuildersClub,
+        Premium
+    }
+
+    public enum MeshPartDetailLevel
+    {
+        DistanceBased,
+        Level00,
+        Level01,
+        Level02,
+        Level03,
+        Level04
+    }
+
     public enum MeshPartHeadsAndAccessories
     {
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum MeshScaleUnit
+    {
+        Stud,
+        Meter,
+        CM,
+        MM,
+        Foot,
+        Inch
     }
 
     public enum MeshType
@@ -976,6 +2571,14 @@ namespace RobloxFiles.Enums
         ParallelRamp,
         RightAngleRamp,
         CornerWedge
+    }
+
+    public enum MessageType
+    {
+        MessageOutput,
+        MessageInfo,
+        MessageWarning,
+        MessageError
     }
 
     public enum ModelLevelOfDetail
@@ -1001,6 +2604,23 @@ namespace RobloxFiles.Enums
         Nonatomic
     }
 
+    public enum ModerationStatus
+    {
+        ReviewedApproved = 1,
+        ReviewedRejected,
+        NotReviewed,
+        NotApplicable,
+        Invalid
+    }
+
+    public enum ModifierKey
+    {
+        Shift,
+        Ctrl,
+        Alt,
+        Meta
+    }
+
     public enum MouseBehavior
     {
         Default,
@@ -1008,11 +2628,52 @@ namespace RobloxFiles.Enums
         LockCurrentPosition
     }
 
+    public enum MoveState
+    {
+        Stopped,
+        Coasting,
+        Pushing,
+        Stopping,
+        AirFree
+    }
+
+    public enum MoverConstraintRootBehaviorMode
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
+    public enum MuteState
+    {
+        Unmuted,
+        Muted
+    }
+
     public enum NameOcclusion
     {
         NoOcclusion,
         EnemyOcclusion,
         OccludeAll
+    }
+
+    public enum NetworkOwnership
+    {
+        Automatic,
+        Manual,
+        OnContact
+    }
+
+    public enum NetworkStatus
+    {
+        Unknown,
+        Connected,
+        Disconnected
+    }
+
+    public enum NoiseType
+    {
+        SimplexGabor
     }
 
     public enum NormalId
@@ -1025,10 +2686,62 @@ namespace RobloxFiles.Enums
         Front
     }
 
+    public enum NotificationButtonType
+    {
+        Primary,
+        Secondary
+    }
+
+    public enum OperationType
+    {
+        Null,
+        Union,
+        Subtraction,
+        Intersection,
+        Primitive
+    }
+
     public enum OrientationAlignmentMode
     {
         OneAttachment,
         TwoAttachment
+    }
+
+    public enum OutfitSource
+    {
+        All = 1,
+        Created,
+        Purchased
+    }
+
+    public enum OutfitType
+    {
+        All = 1,
+        Avatar,
+        DynamicHead
+    }
+
+    public enum OutputLayoutMode
+    {
+        Horizontal,
+        Vertical
+    }
+
+    public enum OverrideMouseIconBehavior
+    {
+        None,
+        ForceShow,
+        ForceHide
+    }
+
+    public enum PackagePermission
+    {
+        None,
+        NoAccess,
+        Revoked,
+        UseView,
+        Edit,
+        Own
     }
 
     public enum PartType
@@ -1077,12 +2790,59 @@ namespace RobloxFiles.Enums
         Random
     }
 
+    public enum ParticleFlipbookTextureCompatible
+    {
+        NotCompatible,
+        Compatible,
+        Unknown
+    }
+
     public enum ParticleOrientation
     {
         FacingCamera,
         FacingCameraWorldUp,
         VelocityParallel,
         VelocityPerpendicular
+    }
+
+    public enum PathStatus
+    {
+        Success,
+        ClosestNoPath,
+        ClosestOutOfRange,
+        FailStartNotEmpty,
+        FailFinishNotEmpty,
+        NoPath
+    }
+
+    public enum PathWaypointAction
+    {
+        Walk,
+        Jump,
+        Custom
+    }
+
+    public enum PathfindingUseImprovedSearch
+    {
+        Default,
+        Disabled,
+        Enabled
+    }
+
+    public enum PermissionLevelShown
+    {
+        Game,
+        RobloxGame,
+        RobloxScript,
+        Studio,
+        Roblox
+    }
+
+    public enum PhysicsSimulationRate
+    {
+        Fixed240Hz,
+        Fixed120Hz,
+        Fixed60Hz
     }
 
     public enum PhysicsSteppingMethod
@@ -1092,11 +2852,77 @@ namespace RobloxFiles.Enums
         Adaptive
     }
 
+    public enum Platform
+    {
+        Windows,
+        OSX,
+        IOS,
+        Android,
+        XBoxOne,
+        PS4,
+        PS3,
+        XBox360,
+        WiiU,
+        NX,
+        Ouya,
+        AndroidTV,
+        Chromecast,
+        Linux,
+        SteamOS,
+        WebOS,
+        DOS,
+        BeOS,
+        UWP,
+        PS5,
+        MetaOS,
+        None
+    }
+
+    public enum PlaybackState
+    {
+        Begin,
+        Delayed,
+        Playing,
+        Paused,
+        Completed,
+        Cancelled
+    }
+
+    public enum PlayerActions
+    {
+        CharacterForward,
+        CharacterBackward,
+        CharacterLeft,
+        CharacterRight,
+        CharacterJump
+    }
+
     public enum PlayerCharacterDestroyBehavior
     {
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum PlayerChatType
+    {
+        All,
+        Team,
+        Whisper
+    }
+
+    public enum PlayerDataErrorState
+    {
+        LoadFailed,
+        FlushFailed,
+        None
+    }
+
+    public enum PlayerDataLoadFailureBehavior
+    {
+        Failure,
+        FallbackToDefault,
+        Kick
     }
 
     public enum PoseEasingDirection
@@ -1112,13 +2938,22 @@ namespace RobloxFiles.Enums
         Constant,
         Elastic,
         Cubic,
-        Bounce
+        Bounce,
+        CubicV2
     }
 
     public enum PositionAlignmentMode
     {
         OneAttachment,
         TwoAttachment
+    }
+
+    public enum PreferredTextSize
+    {
+        Medium = 1,
+        Large,
+        Larger,
+        Largest
     }
 
     public enum PrimalPhysicsSolver
@@ -1128,11 +2963,101 @@ namespace RobloxFiles.Enums
         Disabled
     }
 
+    public enum PrimitiveType
+    {
+        Null,
+        Ball,
+        Cylinder,
+        Block,
+        Wedge,
+        CornerWedge
+    }
+
+    public enum PrivilegeType
+    {
+        Banned,
+        Visitor = 10,
+        Member = 128,
+        Admin = 240,
+        Owner = 255
+    }
+
+    public enum ProductLocationRestriction
+    {
+        AvatarShop,
+        AllowedGames,
+        AllGames
+    }
+
+    public enum ProductPurchaseChannel
+    {
+        InExperience = 1,
+        ExperienceDetailsPage,
+        AdReward,
+        CommerceProduct
+    }
+
+    public enum ProductPurchaseDecision
+    {
+        NotProcessedYet,
+        PurchaseGranted
+    }
+
+    public enum PromptCreateAssetResult
+    {
+        Success = 1,
+        PermissionDenied,
+        Timeout,
+        UploadFailed,
+        NoUserInput,
+        UnknownFailure
+    }
+
+    public enum PromptCreateAvatarResult
+    {
+        Success = 1,
+        PermissionDenied,
+        Timeout,
+        UploadFailed,
+        NoUserInput,
+        InvalidHumanoidDescription,
+        UGCValidationFailed,
+        ModeratedName,
+        MaxOutfits,
+        PurchaseFailure,
+        UnknownFailure,
+        TokenInvalid
+    }
+
+    public enum PromptPublishAssetResult
+    {
+        Success = 1,
+        PermissionDenied,
+        Timeout,
+        UploadFailed,
+        NoUserInput,
+        UnknownFailure
+    }
+
+    public enum PropertyStatus
+    {
+        Ok,
+        Warning,
+        Error
+    }
+
     public enum ProximityPromptExclusivity
     {
         OnePerButton,
         OneGlobally,
         AlwaysShow
+    }
+
+    public enum ProximityPromptInputType
+    {
+        Keyboard,
+        Gamepad,
+        Touch
     }
 
     public enum ProximityPromptStyle
@@ -1141,10 +3066,42 @@ namespace RobloxFiles.Enums
         Custom
     }
 
+    public enum QualityLevel
+    {
+        Automatic,
+        Level01,
+        Level02,
+        Level03,
+        Level04,
+        Level05,
+        Level06,
+        Level07,
+        Level08,
+        Level09,
+        Level10,
+        Level11,
+        Level12,
+        Level13,
+        Level14,
+        Level15,
+        Level16,
+        Level17,
+        Level18,
+        Level19,
+        Level20,
+        Level21
+    }
+
     public enum R15CollisionType
     {
         OuterBox,
         InnerBox
+    }
+
+    public enum RaycastFilterType
+    {
+        Exclude,
+        Include
     }
 
     public enum RejectCharacterDeletions
@@ -1159,6 +3116,22 @@ namespace RobloxFiles.Enums
         Automatic,
         Precise,
         Performance
+    }
+
+    public enum RenderPriority
+    {
+        First,
+        Input = 100,
+        Camera = 200,
+        Character = 300,
+        Last = 2000
+    }
+
+    public enum RenderingCacheOptimizationMode
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum RenderingTestComparisonMethod
@@ -1178,6 +3151,31 @@ namespace RobloxFiles.Enums
     {
         Default,
         Pixelated
+    }
+
+    public enum ReservedHighlightId
+    {
+        Standard,
+        Active = 131072,
+        Hover = 262144,
+        Selection = 524288
+    }
+
+    public enum RestPose
+    {
+        Default,
+        RotationsReset,
+        Custom
+    }
+
+    public enum ReturnKeyType
+    {
+        Default,
+        Done,
+        Go,
+        Next,
+        Search,
+        Send
     }
 
     public enum ReverbType
@@ -1208,12 +3206,48 @@ namespace RobloxFiles.Enums
         UnderWater
     }
 
+    public enum RibbonTool
+    {
+        Select,
+        Scale,
+        Rotate,
+        Move,
+        Transform,
+        ColorPicker,
+        MaterialPicker,
+        Group,
+        Ungroup,
+        None,
+        PivotEditor
+    }
+
+    public enum RigScale
+    {
+        Default,
+        Rthro,
+        RthroNarrow
+    }
+
+    public enum RigType
+    {
+        R15,
+        Custom,
+        None
+    }
+
     public enum RollOffMode
     {
         Inverse,
         Linear,
         LinearSquare,
         InverseTapered
+    }
+
+    public enum RolloutState
+    {
+        Default,
+        Disabled,
+        Enabled
     }
 
     public enum RotationOrder
@@ -1224,6 +3258,12 @@ namespace RobloxFiles.Enums
         YXZ,
         ZXY,
         ZYX
+    }
+
+    public enum RotationType
+    {
+        MovementRelative,
+        CameraRelative
     }
 
     public enum RtlTextSupport
@@ -1241,10 +3281,69 @@ namespace RobloxFiles.Enums
         Plugin
     }
 
+    public enum RunState
+    {
+        Stopped,
+        Running,
+        Paused
+    }
+
+    public enum RuntimeUndoBehavior
+    {
+        Aggregate,
+        Snapshot,
+        Hybrid
+    }
+
     public enum SafeAreaCompatibility
     {
         None,
         FullscreenExtension
+    }
+
+    public enum SalesTypeFilter
+    {
+        All = 1,
+        Collectibles,
+        Premium
+    }
+
+    public enum SandboxedInstanceMode
+    {
+        Default,
+        Experimental
+    }
+
+    public enum SaveAvatarThumbnailCustomizationFailure
+    {
+        BadThumbnailType = 1,
+        BadYRotDeg,
+        BadFieldOfViewDeg,
+        BadDistanceScale,
+        Other,
+        Throttled
+    }
+
+    public enum SaveFilter
+    {
+        SaveWorld,
+        SaveGame,
+        SaveAll
+    }
+
+    public enum SavedQualitySetting
+    {
+        Automatic,
+        QualityLevel1,
+        QualityLevel2,
+        QualityLevel3,
+        QualityLevel4,
+        QualityLevel5,
+        QualityLevel6,
+        QualityLevel7,
+        QualityLevel8,
+        QualityLevel9,
+        QualityLevel10
     }
 
     public enum ScaleType
@@ -1254,6 +3353,18 @@ namespace RobloxFiles.Enums
         Tile,
         Fit,
         Crop
+    }
+
+    public enum ScopeCheckResult
+    {
+        ConsentAccepted,
+        InvalidScopes,
+        Timeout,
+        NoUserInput,
+        BackendError,
+        UnexpectedError,
+        InvalidArgument,
+        ConsentDenied
     }
 
     public enum ScreenInsets
@@ -1287,10 +3398,52 @@ namespace RobloxFiles.Enums
         XY = 4
     }
 
+    public enum SecurityCapability
+    {
+        RunClientScript,
+        RunServerScript,
+        AccessOutsideWrite,
+        AssetRequire,
+        LoadString,
+        ScriptGlobals,
+        CreateInstances,
+        Basic,
+        Audio,
+        DataStore,
+        Network,
+        Physics,
+        UI,
+        CSG,
+        Chat,
+        Animation,
+        Avatar,
+        Input,
+        Environment,
+        RemoteEvent,
+        LegacySound,
+        Players
+    }
+
     public enum SelectionBehavior
     {
         Escape,
         Stop
+    }
+
+    public enum SelectionRenderMode
+    {
+        Outlines,
+        BoundingBoxes,
+        Both
+    }
+
+    public enum SelfViewPosition
+    {
+        LastPosition,
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight
     }
 
     public enum SensorMode
@@ -1305,11 +3458,36 @@ namespace RobloxFiles.Enums
         Manual
     }
 
+    public enum ServerLiveEditingMode
+    {
+        Uninitialized,
+        Enabled,
+        Disabled
+    }
+
     public enum ServiceVisibility
     {
         Always,
         Off,
         WithChildren
+    }
+
+    public enum Severity
+    {
+        Error = 1,
+        Warning,
+        Information,
+        Hint
+    }
+
+    public enum ShowAdResult
+    {
+        ShowCompleted = 1,
+        AdNotReady,
+        AdAlreadyShowing,
+        InternalError,
+        ShowInterrupted,
+        InsufficientMemory
     }
 
     public enum SignalBehavior
@@ -1327,11 +3505,40 @@ namespace RobloxFiles.Enums
         RelativeYY
     }
 
+    public enum SolverConvergenceMetricType
+    {
+        IterationBased,
+        AlgorithmAgnostic
+    }
+
+    public enum SolverConvergenceVisualizationMode
+    {
+        Disabled,
+        PerIsland,
+        PerEdge
+    }
+
+    public enum SortDirection
+    {
+        Ascending,
+        Descending
+    }
+
     public enum SortOrder
     {
         Name,
         Custom,
         LayoutOrder
+    }
+
+    public enum SpecialKey
+    {
+        Insert,
+        Home,
+        End,
+        PageUp,
+        PageDown,
+        ChatHotkey
     }
 
     public enum StartCorner
@@ -1340,6 +3547,12 @@ namespace RobloxFiles.Enums
         TopRight,
         BottomLeft,
         BottomRight
+    }
+
+    public enum Status
+    {
+        Poison,
+        Confusion
     }
 
     public enum StreamOutBehavior
@@ -1357,11 +3570,286 @@ namespace RobloxFiles.Enums
         PauseOutsideLoadedArea
     }
 
+    public enum StreamingPauseMode
+    {
+        Default,
+        Disabled,
+        ClientPhysicsPause
+    }
+
+    public enum StudioCloseMode
+    {
+        None,
+        CloseStudio,
+        CloseDoc,
+        LogOut
+    }
+
+    public enum StudioDataModelType
+    {
+        Edit,
+        PlayClient,
+        PlayServer,
+        Standalone,
+        None
+    }
+
+    public enum StudioPlaceUpdateFailureReason
+    {
+        Other,
+        TeamCreateConflict
+    }
+
+    public enum StudioScriptEditorColorCategories
+    {
+        Default,
+        Operator,
+        Number,
+        String,
+        Comment,
+        Keyword,
+        Builtin,
+        Method,
+        Property,
+        Nil,
+        Bool,
+        Function,
+        Local,
+        Self,
+        LuauKeyword,
+        FunctionName,
+        TODO,
+        Background,
+        SelectionText,
+        SelectionBackground,
+        FindSelectionBackground,
+        MatchingWordBackground,
+        Warning,
+        Error,
+        Info,
+        Hint,
+        Whitespace,
+        ActiveLine,
+        DebuggerCurrentLine,
+        DebuggerErrorLine,
+        Ruler,
+        Bracket,
+        Type,
+        MenuPrimaryText,
+        MenuSecondaryText,
+        MenuSelectedText,
+        MenuBackground,
+        MenuSelectedBackground,
+        MenuScrollbarBackground,
+        MenuScrollbarHandle,
+        MenuBorder,
+        DocViewCodeBackground,
+        AICOOverlayText,
+        AICOOverlayButtonBackground,
+        AICOOverlayButtonBackgroundHover,
+        AICOOverlayButtonBackgroundPressed,
+        IndentationRuler
+    }
+
+    public enum StudioScriptEditorColorPresets
+    {
+        RobloxDefault,
+        Extra1,
+        Extra2,
+        Custom
+    }
+
+    public enum StudioStyleGuideColor
+    {
+        MainBackground,
+        Titlebar,
+        Dropdown,
+        Tooltip,
+        Notification,
+        ScrollBar,
+        ScrollBarBackground,
+        TabBar,
+        Tab,
+        FilterButtonDefault,
+        FilterButtonHover,
+        FilterButtonChecked,
+        FilterButtonAccent,
+        FilterButtonBorder,
+        FilterButtonBorderAlt,
+        RibbonTab,
+        RibbonTabTopBar,
+        Button,
+        MainButton,
+        RibbonButton,
+        ViewPortBackground,
+        InputFieldBackground,
+        Item,
+        TableItem,
+        CategoryItem,
+        GameSettingsTableItem,
+        GameSettingsTooltip,
+        EmulatorBar,
+        EmulatorDropDown,
+        ColorPickerFrame,
+        CurrentMarker,
+        Border,
+        DropShadow,
+        Shadow,
+        Light,
+        Dark,
+        Mid,
+        MainText,
+        SubText,
+        TitlebarText,
+        BrightText,
+        DimmedText,
+        LinkText,
+        WarningText,
+        ErrorText,
+        InfoText,
+        SensitiveText,
+        ScriptSideWidget,
+        ScriptBackground,
+        ScriptText,
+        ScriptSelectionText,
+        ScriptSelectionBackground,
+        ScriptFindSelectionBackground,
+        ScriptMatchingWordSelectionBackground,
+        ScriptOperator,
+        ScriptNumber,
+        ScriptString,
+        ScriptComment,
+        ScriptKeyword,
+        ScriptBuiltInFunction,
+        ScriptWarning,
+        ScriptError,
+        ScriptInformation,
+        ScriptHint,
+        ScriptWhitespace,
+        ScriptRuler,
+        DocViewCodeBackground,
+        DebuggerCurrentLine,
+        DebuggerErrorLine,
+        DiffFilePathText,
+        DiffTextHunkInfo,
+        DiffTextNoChange,
+        DiffTextAddition,
+        DiffTextDeletion,
+        DiffTextSeparatorBackground,
+        DiffTextNoChangeBackground,
+        DiffTextAdditionBackground,
+        DiffTextDeletionBackground,
+        DiffLineNum,
+        DiffLineNumSeparatorBackground,
+        DiffLineNumNoChangeBackground,
+        DiffLineNumAdditionBackground,
+        DiffLineNumDeletionBackground,
+        DiffFilePathBackground,
+        DiffFilePathBorder,
+        ChatIncomingBgColor,
+        ChatIncomingTextColor,
+        ChatOutgoingBgColor,
+        ChatOutgoingTextColor,
+        ChatModeratedMessageColor,
+        Separator,
+        ButtonBorder,
+        ButtonText,
+        InputFieldBorder,
+        CheckedFieldBackground,
+        CheckedFieldBorder,
+        CheckedFieldIndicator,
+        HeaderSection,
+        Midlight,
+        StatusBar,
+        DialogButton,
+        DialogButtonText,
+        DialogButtonBorder,
+        DialogMainButton,
+        DialogMainButtonText,
+        InfoBarWarningBackground,
+        InfoBarWarningText,
+        ScriptEditorCurrentLine,
+        ScriptMethod,
+        ScriptProperty,
+        ScriptNil,
+        ScriptBool,
+        ScriptFunction,
+        ScriptLocal,
+        ScriptSelf,
+        ScriptLuauKeyword,
+        ScriptFunctionName,
+        ScriptTodo,
+        ScriptBracket,
+        AttributeCog,
+        AICOOverlayText = 128,
+        AICOOverlayButtonBackground,
+        AICOOverlayButtonBackgroundHover,
+        AICOOverlayButtonBackgroundPressed,
+        OnboardingCover,
+        OnboardingHighlight,
+        OnboardingShadow,
+        BreakpointMarker = 136,
+        DiffLineNumHover,
+        DiffLineNumSeparatorBackgroundHover
+    }
+
+    public enum StudioStyleGuideModifier
+    {
+        Default,
+        Selected,
+        Pressed,
+        Disabled,
+        Hover
+    }
+
     public enum Style
     {
         AlternatingSupports,
         BridgeStyleSupports,
         NoSupports
+    }
+
+    public enum SubscriptionExpirationReason
+    {
+        ProductInactive,
+        ProductDeleted,
+        SubscriberCancelled,
+        SubscriberRefunded,
+        Lapsed
+    }
+
+    public enum SubscriptionPaymentStatus
+    {
+        Paid,
+        Refunded
+    }
+
+    public enum SubscriptionPeriod
+    {
+        Month
+    }
+
+    public enum SubscriptionState
+    {
+        NeverSubscribed,
+        SubscribedWillRenew,
+        SubscribedWillNotRenew,
+        SubscribedRenewalPaymentPending,
+        Expired
+    }
+
+    public enum SurfaceConstraint
+    {
+        None,
+        Hinge,
+        SteppingMotor,
+        Motor
+    }
+
+    public enum SurfaceGuiShape
+    {
+        Flat,
+        CurvedHorizontally
     }
 
     public enum SurfaceGuiSizingMode
@@ -1384,10 +3872,26 @@ namespace RobloxFiles.Enums
         SmoothNoOutlines = 10
     }
 
+    public enum SwipeDirection
+    {
+        Right,
+        Left,
+        Up,
+        Down,
+        None
+    }
+
     public enum TableMajorAxis
     {
         RowMajor,
         ColumnMajor
+    }
+
+    public enum TeamCreateErrorState
+    {
+        PlaceSizeTooLarge,
+        PlaceSizeApproachingLimit,
+        NoError
     }
 
     public enum Technology
@@ -1396,7 +3900,49 @@ namespace RobloxFiles.Enums
         Voxel,
         Compatibility,
         ShadowMap,
-        Future
+        Future,
+        Unified
+    }
+
+    public enum TeleportMethod
+    {
+        TeleportToSpawnByName,
+        TeleportToPlaceInstance,
+        TeleportToPrivateServer,
+        TeleportPartyAsync,
+        TeleportToVIPServer,
+        TeleportToInstanceBack,
+        TeleportUnknown
+    }
+
+    public enum TeleportResult
+    {
+        Success,
+        Failure,
+        GameNotFound,
+        GameEnded,
+        GameFull,
+        Unauthorized,
+        Flooded,
+        IsTeleporting
+    }
+
+    public enum TeleportState
+    {
+        RequestedFromServer,
+        Started,
+        WaitingForServer,
+        Failed,
+        InProgress
+    }
+
+    public enum TeleportType
+    {
+        ToPlace,
+        ToInstance,
+        ToReservedServer,
+        ToVIPServer,
+        ToInstanceBack
     }
 
     public enum TerrainAcquisitionMethod
@@ -1422,6 +3968,19 @@ namespace RobloxFiles.Enums
         Bottom
     }
 
+    public enum TextChatMessageStatus
+    {
+        Unknown = 1,
+        Success,
+        Sending,
+        TextFilterFailed,
+        Floodchecked,
+        InvalidPrivacySettings,
+        InvalidTextChannelPermissions,
+        MessageTooLong,
+        ModerationTimeout
+    }
+
     public enum TextDirection
     {
         Auto,
@@ -1429,10 +3988,30 @@ namespace RobloxFiles.Enums
         RightToLeft
     }
 
+    public enum TextFilterContext
+    {
+        PublicChat = 1,
+        PrivateChat
+    }
+
+    public enum TextInputType
+    {
+        Default,
+        NoSuggestions,
+        Number,
+        Email,
+        Phone,
+        Password,
+        PasswordShown,
+        Username,
+        OneTimePassword
+    }
+
     public enum TextTruncate
     {
         None,
-        AtEnd
+        AtEnd,
+        SplitWord
     }
 
     public enum TextXAlignment
@@ -1456,6 +4035,67 @@ namespace RobloxFiles.Enums
         Static
     }
 
+    public enum TextureQueryType
+    {
+        NonHumanoid,
+        NonHumanoidOrphaned,
+        Humanoid,
+        HumanoidOrphaned
+    }
+
+    public enum ThreadPoolConfig
+    {
+        Auto,
+        Threads1,
+        Threads2,
+        Threads3,
+        Threads4,
+        Threads8 = 8,
+        Threads16 = 16,
+        PerCore1 = 101,
+        PerCore2,
+        PerCore3,
+        PerCore4
+    }
+
+    public enum ThrottlingPriority
+    {
+        Default,
+        ElevatedOnServer,
+        Extreme
+    }
+
+    public enum ThumbnailSize
+    {
+        Size48x48,
+        Size180x180,
+        Size420x420,
+        Size60x60,
+        Size100x100,
+        Size150x150,
+        Size352x352
+    }
+
+    public enum ThumbnailType
+    {
+        HeadShot,
+        AvatarBust,
+        AvatarThumbnail
+    }
+
+    public enum TickCountSampleMethod
+    {
+        Fast,
+        Benchmark,
+        Precise
+    }
+
+    public enum TonemapperPreset
+    {
+        Default,
+        Retro
+    }
+
     public enum TopBottom
     {
         Top,
@@ -1463,11 +4103,146 @@ namespace RobloxFiles.Enums
         Bottom
     }
 
+    public enum TouchCameraMovementMode
+    {
+        Default,
+        Classic,
+        Follow,
+        Orbital
+    }
+
+    public enum TouchMovementMode
+    {
+        Default,
+        Thumbstick,
+        DPad,
+        Thumbpad,
+        ClickToMove,
+        DynamicThumbstick
+    }
+
+    public enum TrackerError
+    {
+        Ok,
+        NoService,
+        InitFailed,
+        NoVideo,
+        VideoError,
+        VideoNoPermission,
+        VideoUnsupported,
+        NoAudio,
+        AudioError,
+        AudioNoPermission,
+        UnsupportedDevice
+    }
+
+    public enum TrackerExtrapolationFlagMode
+    {
+        ForceDisabled,
+        ExtrapolateFacsAndPose,
+        ExtrapolateFacsOnly,
+        Auto
+    }
+
+    public enum TrackerFaceTrackingStatus
+    {
+        FaceTrackingSuccess,
+        FaceTrackingNoFaceFound,
+        FaceTrackingUnknown,
+        FaceTrackingLost,
+        FaceTrackingHasTrackingError,
+        FaceTrackingIsOccluded,
+        FaceTrackingUninitialized
+    }
+
+    public enum TrackerLodFlagMode
+    {
+        ForceFalse,
+        ForceTrue,
+        Auto
+    }
+
+    public enum TrackerLodValueMode
+    {
+        Force0,
+        Force1,
+        Auto
+    }
+
+    public enum TrackerMode
+    {
+        None,
+        Audio,
+        Video,
+        AudioVideo
+    }
+
+    public enum TrackerPromptEvent
+    {
+        LODCameraRecommendDisable
+    }
+
+    public enum TrackerType
+    {
+        None,
+        Face,
+        UpperBody
+    }
+
     public enum TriStateBoolean
     {
         Unknown,
         True,
         False
+    }
+
+    public enum TweenStatus
+    {
+        Canceled,
+        Completed
+    }
+
+    public enum UIDragDetectorBoundingBehavior
+    {
+        Automatic,
+        EntireObject,
+        HitPoint
+    }
+
+    public enum UIDragDetectorDragRelativity
+    {
+        Absolute,
+        Relative
+    }
+
+    public enum UIDragDetectorDragSpace
+    {
+        Parent,
+        LayerCollector,
+        Reference
+    }
+
+    public enum UIDragDetectorDragStyle
+    {
+        TranslatePlane,
+        TranslateLine,
+        Rotate,
+        Scriptable
+    }
+
+    public enum UIDragDetectorResponseStyle
+    {
+        Offset,
+        Scale,
+        CustomOffset,
+        CustomScale
+    }
+
+    public enum UIDragSpeedAxisMapping
+    {
+        XY,
+        XX,
+        YY
     }
 
     public enum UIFlexAlignment
@@ -1488,10 +4263,129 @@ namespace RobloxFiles.Enums
         Custom
     }
 
+    public enum UITheme
+    {
+        Light,
+        Dark
+    }
+
+    public enum UiMessageType
+    {
+        UiMessageError,
+        UiMessageInfo
+    }
+
+    public enum UsageContext
+    {
+        Default,
+        Preview
+    }
+
+    public enum UserCFrame
+    {
+        Head,
+        LeftHand,
+        RightHand,
+        Floor
+    }
+
+    public enum UserInputState
+    {
+        Begin,
+        Change,
+        End,
+        Cancel,
+        None
+    }
+
+    public enum UserInputType
+    {
+        MouseButton1,
+        MouseButton2,
+        MouseButton3,
+        MouseWheel,
+        MouseMovement,
+        Touch = 7,
+        Keyboard,
+        Focus,
+        Accelerometer,
+        Gyro,
+        Gamepad1,
+        Gamepad2,
+        Gamepad3,
+        Gamepad4,
+        Gamepad5,
+        Gamepad6,
+        Gamepad7,
+        Gamepad8,
+        TextInput,
+        InputMethod,
+        None
+    }
+
+    public enum VRComfortSetting
+    {
+        Comfort,
+        Normal,
+        Expert,
+        Custom
+    }
+
+    public enum VRControllerModelMode
+    {
+        Disabled,
+        Transparent
+    }
+
+    public enum VRDeviceType
+    {
+        Unknown,
+        OculusRift,
+        HTCVive,
+        ValveIndex,
+        OculusQuest
+    }
+
+    public enum VRLaserPointerMode
+    {
+        Disabled,
+        Pointer,
+        DualPointer
+    }
+
+    public enum VRSafetyBubbleMode
+    {
+        NoOne,
+        OnlyFriends,
+        Anyone
+    }
+
     public enum VRScaling
     {
         World,
         Off
+    }
+
+    public enum VRSessionState
+    {
+        Undefined,
+        Idle,
+        Visible,
+        Focused,
+        Stopping
+    }
+
+    public enum VRTouchpad
+    {
+        Left,
+        Right
+    }
+
+    public enum VRTouchpadMode
+    {
+        Touch,
+        VirtualThumbstick,
+        ABXY
     }
 
     public enum VelocityConstraintMode
@@ -1514,11 +4408,85 @@ namespace RobloxFiles.Enums
         Left
     }
 
+    public enum VibrationMotor
+    {
+        Large,
+        Small,
+        LeftTrigger,
+        RightTrigger,
+        LeftHand,
+        RightHand
+    }
+
+    public enum VideoDeviceCaptureQuality
+    {
+        Default,
+        Low,
+        Medium,
+        High
+    }
+
+    public enum VideoError
+    {
+        Ok,
+        Eof,
+        EAgain,
+        BadParameter,
+        AllocFailed,
+        CodecInitFailed,
+        CodecCloseFailed,
+        DecodeFailed,
+        ParsingFailed,
+        Unsupported,
+        Generic,
+        DownloadFailed,
+        StreamNotFound,
+        EncodeFailed,
+        CreateFailed,
+        NoPermission,
+        NoService,
+        ReleaseFailed,
+        Unknown
+    }
+
+    public enum ViewMode
+    {
+        None,
+        GeometryComplexity,
+        Transparent,
+        Decal
+    }
+
     public enum VirtualCursorMode
     {
         Default,
         Disabled,
         Enabled
+    }
+
+    public enum VirtualInputMode
+    {
+        None,
+        Recording,
+        Playing
+    }
+
+    public enum VoiceChatState
+    {
+        Idle,
+        Joining,
+        JoiningRetry,
+        Joined,
+        Leaving,
+        Ended,
+        Failed
+    }
+
+    public enum VoiceControlPath
+    {
+        Publish,
+        Subscribe,
+        Join
     }
 
     public enum VolumetricAudio
@@ -1528,11 +4496,74 @@ namespace RobloxFiles.Enums
         Enabled
     }
 
+    public enum WaterDirection
+    {
+        NegX,
+        X,
+        NegY,
+        Y,
+        NegZ,
+        Z
+    }
+
+    public enum WaterForce
+    {
+        None,
+        Small,
+        Medium,
+        Strong,
+        Max
+    }
+
+    public enum WeldConstraintPreserve
+    {
+        All,
+        None,
+        Touching
+    }
+
+    public enum WhisperChatPrivacyMode
+    {
+        AllUsers,
+        NoOne
+    }
+
     public enum WrapLayerAutoSkin
     {
         Disabled,
         EnabledPreserve,
         EnabledOverride
+    }
+
+    public enum WrapLayerDebugMode
+    {
+        None,
+        BoundCage,
+        LayerCage,
+        BoundCageAndLinks,
+        Reference,
+        Rbf,
+        OuterCage,
+        ReferenceMeshAfterMorph,
+        HSROuterDetail,
+        HSROuter,
+        HSRInner,
+        HSRInnerReverse,
+        LayerCageFittedToBase,
+        LayerCageFittedToPrev
+    }
+
+    public enum WrapTargetDebugMode
+    {
+        None,
+        TargetCageOriginal,
+        TargetCageCompressed,
+        TargetCageInterface,
+        TargetLayerCageOriginal,
+        TargetLayerCageCompressed,
+        TargetLayerInterface,
+        Rbf,
+        OuterCageDetail
     }
 
     public enum ZIndexBehavior

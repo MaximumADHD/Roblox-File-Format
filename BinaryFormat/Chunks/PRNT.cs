@@ -20,30 +20,30 @@ namespace RobloxFiles.BinaryFormat.Chunks
             if (format != FORMAT)
                 throw new Exception($"Unexpected PRNT format: {format} (expected {FORMAT}!)");
 
-            var childIds = reader.ReadInstanceIds(idCount);
-            var parentIds = reader.ReadInstanceIds(idCount);
+            var childIds = reader.ReadObjectIds(idCount);
+            var parentIds = reader.ReadObjectIds(idCount);
             
             for (int i = 0; i < idCount; i++)
             {
                 int childId = childIds[i];
                 int parentId = parentIds[i];
 
-                Instance child = file.Instances[childId];
-                Instance parent = (parentId >= 0 ? file.Instances[parentId] : file);
+                var child = file.Objects[childId] as Instance;
+                var parent = (parentId >= 0 ? file.Objects[parentId] : file) as Instance;
 
                 if (child == null)
                 {
-                    RobloxFile.LogError($"PRNT: could not parent {childId} to {parentId} because child {childId} was null.");
+                    RobloxFile.LogError($"PRNT: could not parent {childId} to {parentId} because child {childId} was null or not an Instance.");
                     continue;
                 }
 
                 if (parentId >= 0 && parent == null)
                 {
-                    RobloxFile.LogError($"PRNT: could not parent {childId} to {parentId} because parent {parentId} was null.");
+                    RobloxFile.LogError($"PRNT: could not parent {childId} to {parentId} because parent {parentId} was null or not an Instance.");
                     continue;
                 }
 
-                child.Parent = (parentId >= 0 ? file.Instances[parentId] : file);
+                child.Parent = parent;
             }
         }
 
@@ -75,8 +75,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
             writer.Write(FORMAT);
             writer.Write(idCount);
 
-            writer.WriteInstanceIds(childIds);
-            writer.WriteInstanceIds(parentIds);
+            writer.WriteObjectIds(childIds);
+            writer.WriteObjectIds(parentIds);
         }
 
         public void WriteInfo(StringBuilder builder)

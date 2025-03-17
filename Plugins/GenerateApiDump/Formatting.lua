@@ -1,6 +1,9 @@
 --!strict
 local Format: Format = {}
-local LegacyFonts = require(script.Parent.LegacyFonts)
+local Plugin = script.Parent
+
+local BrickColors = require(Plugin.BrickColors)
+local LegacyFonts = require(Plugin.LegacyFonts)
 
 local Vector2_consts = table.freeze({
 	[Vector2.one] = "Vector2.one",
@@ -118,8 +121,8 @@ function Format.EnumItem(item: EnumItem): string
 end
 
 function Format.BrickColor(brickColor: BrickColor): string
-	local fmt = "BrickColor.FromNumber(%i)"
-	return fmt:format(brickColor.Number)
+	local enum = BrickColors.ById[brickColor.Number]
+	return `BrickColorId.{enum}`
 end
 
 function Format.Color3(color: Color3): string
@@ -155,6 +158,15 @@ function Format.UDim(udim: UDim): string
 
 	local fmt = "new UDim(%s, %s)"
 	return fmt:format(scale, offset)
+end
+
+function Format.Content(content: Content)
+	if content.SourceType == Enum.ContentSourceType.Uri then
+		local uri = assert(content.Uri)
+		return string.format("new Content(%q)", uri)
+	else
+		return "Content.none"
+	end
 end
 
 function Format.UDim2(udim2: UDim2): string

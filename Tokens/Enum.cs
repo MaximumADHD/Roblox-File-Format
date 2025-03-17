@@ -7,9 +7,10 @@ using RobloxFiles.XmlFormat;
 
 namespace RobloxFiles.Tokens
 {
-    public class EnumToken : IXmlPropertyToken
+    public class EnumToken : IXmlPropertyToken, IAttributeToken<Enum>
     {
         public string XmlPropertyToken => "token";
+        public AttributeType AttributeType => AttributeType.Enum;
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
@@ -17,8 +18,8 @@ namespace RobloxFiles.Tokens
 
             if (XmlPropertyTokens.ReadPropertyGeneric(token, out uint value))
             {
-                Instance inst = prop.Instance;
-                Type instType = inst?.GetType();
+                RbxObject obj = prop.Object;
+                Type instType = obj?.GetType();
                 var info = ImplicitMember.Get(instType, prop.Name);
 
                 if (info != null)
@@ -58,6 +59,33 @@ namespace RobloxFiles.Tokens
             }
 
             node.InnerText = value.ToInvariantString();
+        }
+
+        Enum IAttributeToken<Enum>.ReadAttribute(RbxAttribute attribute)
+        {
+            var enumName = attribute.ReadString();
+            var enumValue = attribute.ReadUInt();
+
+            var enumType = Type.GetType($"RobloxFiles.Enums.{enumName}");
+            var isValid = enumType?.IsEnum;
+
+            if (isValid ?? false)
+            {
+                var value = Enum.ToObject(enumType, enumValue);
+                return (Enum)value;
+            }
+
+            // ... not sure what to do with this.
+            return null;
+        }
+
+        void IAttributeToken<Enum>.WriteAttribute(RbxAttribute attribute, Enum value)
+        {
+            var enumType = value?.GetType();
+            attribute.WriteString(enumType?.Name ?? "");
+
+            var valueInt = Convert.ToUInt32(value);
+            attribute.WriteUInt(valueInt);
         }
     }
 }

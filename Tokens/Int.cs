@@ -9,10 +9,11 @@ namespace RobloxFiles.Tokens
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
-            // BrickColors are represented by ints, see if 
-            // we can infer when they should be a BrickColor.
+            var obj = prop.Object;
+            var type = obj.GetType();
+            var field = type.GetField(prop.Name);
 
-            if (prop.Name.Contains("Color") || prop.Instance.ClassName.Contains("Color"))
+            if (field != null && field.FieldType.Name == "BrickColor")
             {
                 var brickColorToken = XmlPropertyTokens.GetHandler<BrickColorToken>();
                 return brickColorToken.ReadProperty(prop, token);

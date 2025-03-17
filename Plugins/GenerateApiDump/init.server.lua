@@ -1,10 +1,12 @@
+--!strict
+
 local Selection = game:GetService("Selection")
 local HttpService = game:GetService("HttpService")
+local AssetService = game:GetService("AssetService")
 local StarterPlayer = game:GetService("StarterPlayer")
 local StudioService = game:GetService("StudioService")
 local TextChatService = game:GetService("TextChatService")
 
-local classes = {}
 local outStream = ""
 local stackLevel = 0
 
@@ -17,6 +19,8 @@ local singletons = {
 	BubbleChatConfiguration = TextChatService:WaitForChild("BubbleChatConfiguration", 10),
 	ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration", 10),
 	ChatInputBarConfiguration = TextChatService:WaitForChild("ChatInputBarConfiguration", 10),
+	EditableMesh = AssetService:CreateEditableMesh(),
+	EditableImage = AssetService:CreateEditableImage(),
 }
 
 local exceptionClasses = {
@@ -36,7 +40,6 @@ local numberTypes = {
 
 local stringTypes = {
 	string = true,
-	Content = true,
 	BinaryString = true,
 	ProtectedString = true,
 }
@@ -46,6 +49,26 @@ local defaultIgnore = {
 	["__api_dump_no_string_value__"] = true,
 	["__api_dump_class_not_creatable__"] = true,
 	["__api_dump_write_only_property__"] = true,
+}
+
+local DO_NOT_CREATE = {
+	DebuggerWatch = true,
+	DebuggerBreakpoint = true,
+	AdvancedDragger = true,
+	Dragger = true,
+	ScriptDebugger = true,
+	PackageLink = true,
+	Ad = true,
+	AdPortal = true,
+	AdGui = true,
+	InternalSyncItem = true,
+	AuroraScript = true,
+}
+
+local NON_ROOTED_SERVICES = {
+	Teams = true,
+	Lighting = true,
+	SoundService = true,
 }
 
 local isCoreScript = pcall(function()
@@ -61,7 +84,7 @@ local function write(formatString, ...)
 	outStream = outStream .. value
 end
 
-local function writeLine(formatString, ...)
+local function writeLine(formatString: string?, ...: any)
 	if not formatString then
 		outStream = outStream .. "\n"
 		return
@@ -110,8 +133,276 @@ local function exportStream(label)
 	end
 end
 
-local function getTags(object)
-	local tags = {}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Formatting
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+local formatting: Format = require(script.Formatting)
+type FormatFunc = formatting.FormatFunc
+type Format = formatting.Format
+
+local formatLinks = {
+	["int"] = "Int",
+	["long"] = "Int",
+
+	["float"] = "Float",
+	["byte[]"] = "Bytes",
+	["double"] = "Double",
+	["boolean"] = "Bool",
+
+	["string"] = "String",
+	["Color3uint8"] = "Color3",
+	["ProtectedString"] = "String",
+	["OptionalCoordinateFrame"] = "Optional<CFrame>",
+}
+
+local function getFormatFunction(valueType: string): FormatFunc
+	if not formatting[valueType] then
+		valueType = formatLinks[valueType]
+	end
+
+	return formatting[valueType] or formatting.Null
+end
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Property Patches
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+local patches = require(script.PropertyPatches)
+local patchIndex = {}
+
+function patchIndex.__index(self: typeof(patches), key)
+	if not rawget(self, key) then
+		rawset(self, key, {})
+	end
+
+	return self[key]
+end
+
+local function getPatches(className)
+	local classPatches = patches[className]
+	return setmetatable(classPatches, patchIndex)
+end
+
+setmetatable(patches, patchIndex)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- API Dump Types
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+type SecurityType =
+	| "None"
+	| "PluginSecurity"
+	| "RobloxSecurity"
+	| "LocalUserSecurity"
+	| "RobloxScriptSecurity"
+	| "NotAccessibleSecurity"
+
+type SecurityCapability =
+	| "RunClientScript"
+	| "RunServerScript"
+	| "AccessOutsideWrite"
+	| "AssetRequire"
+	| "LoadString"
+	| "ScriptGlobals"
+	| "CreateInstances"
+	| "Basic"
+	| "Audio"
+	| "DataStore"
+	| "Network"
+	| "Physics"
+	| "UI"
+	| "CSG"
+	| "Chat"
+	| "Animation"
+	| "Avatar"
+	| "Input"
+	| "Environment"
+	| "RemoteEvent"
+	| "LegacySound"
+	| "Players"
+
+type ThreadSafety =
+	| "Safe"
+	| "Unsafe"
+	| "ReadSafe"
+
+type TypeCategory =
+	| "Enum"
+	| "Class"
+	| "Group"
+	| "DataType"
+	| "Primitive"
+
+type Named = {
+	Name: string,
+}
+
+type TypeInfo = Named & {
+	Category: TypeCategory,
+}
+
+type Parameter = Named & {
+	Type: TypeInfo,
+}
+
+type Descriptor = Named & {
+	Tags: { string },
+}
+
+type ClassDescriptor = Descriptor & {
+	Superclass: string,
+	MemoryCategory: string,
+    
+	Members: {
+		| EventDescriptor
+		| PropertyDescriptor
+		| FunctionDescriptor
+		| CallbackDescriptor
+	},
+}
+
+type MemberDescriptor<T> = Descriptor & {
+	MemberType: T,
+	ThreadSafety: ThreadSafety,
+}
+
+type PropertyDescriptor = MemberDescriptor<"Property"> & {
+	Category: string,
+	ValueType: TypeInfo,
+	Default: string,
+
+	Capabilities: { SecurityCapability } | {
+		Read: { SecurityCapability },
+	},
+
+	Security: {
+		Read: SecurityType,
+		Write: SecurityType,
+	},
+	
+	Serialization: {
+		CanSave: boolean,
+		CanLoad: boolean,
+	},
+}
+
+type EventDescriptor = MemberDescriptor<"Event"> & {
+	Parameters: { Parameter },
+	Security: SecurityType,
+}
+
+type FunctionDescriptor = MemberDescriptor<"Function"> & {
+	Parameters: { Parameter },
+	ReturnType: TypeInfo,
+	Security: SecurityType,
+}
+
+type CallbackDescriptor = MemberDescriptor<"Callback"> & {
+	Parameters: { Parameter },
+	ReturnType: TypeInfo,
+	Security: SecurityType,
+}
+
+type EnumDescriptor = Descriptor & {
+	Items: { EnumItemDescriptor },
+}
+
+type EnumItemDescriptor = Descriptor & {
+	Value: number,
+	LegacyNames: { string }?,
+}
+
+type ApiDump = {
+	Classes: { ClassDescriptor },
+	Enums: { EnumDescriptor },
+	Version: number,
+}
+
+type TagMap = {
+	NotCreatable: true?,
+	NotReplicated: true?,
+	ReadOnly: true?,
+	CustomLuaState: true?,
+	NotScriptable: true?,
+	Hidden: true?,
+	CanYield: true?,
+	Deprecated: true?,
+	Service: true?,
+	Settings: true?,
+	NotBrowsable: true?,
+	WriteOnly: true?,
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Main
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+local classes = {} :: {
+	[string]: ClassDescriptor
+}
+
+local classMeta = {} :: {
+	[string]: {
+		Inherited: ClassDescriptor?,
+		Singleton: boolean?,
+		Object: Object?,
+
+		PropertyMap: {
+			[string]: PropertyDescriptor
+		},
+	}
+}
+
+local baseUrl = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/"
+local toolbar, button
+
+if plugin then
+	toolbar = plugin:CreateToolbar("C# API Dump")
+
+	button = toolbar:CreateButton(
+		"Dump API",
+		"Generates a C# dump of Roblox's Class/Enum API.",
+		"rbxasset://textures/Icon_Stream_Off@2x.png"
+	)
+
+	button.ClickableWhenViewportHidden = true
+end
+
+local function getClassMeta(className: string): typeof(classMeta[""])
+	if not classMeta[className] then
+		classMeta[className] = {
+			Object = nil,
+			Inherited = nil,
+			Singleton = nil,
+			PropertyMap = {},
+		}
+	end
+
+	return classMeta[className]
+end
+
+local function getAsync(url: string)
+	local enabled
+
+	if isCoreScript then
+		enabled = HttpService:GetHttpEnabled()
+		HttpService:SetHttpEnabled(true)
+	end
+
+	local result = HttpService:GetAsync(url)
+
+	if isCoreScript then
+		HttpService:SetHttpEnabled(enabled)
+	end
+
+	return result
+end
+
+local function getTags(object: Descriptor): TagMap
+	local tags = {} :: {
+		[string]: true?
+	}
 
 	if object.Tags ~= nil then
 		for _, tag in pairs(object.Tags) do
@@ -126,7 +417,7 @@ local function getTags(object)
 	return tags
 end
 
-local function upcastInheritance(class, root)
+local function upcastInheritance(class: ClassDescriptor, root: ClassDescriptor?)
 	local superClass = classes[class.Superclass]
 
 	if not superClass then
@@ -137,14 +428,20 @@ local function upcastInheritance(class, root)
 		root = class
 	end
 
-	if not superClass.Inherited then
-		superClass.Inherited = root
+	local classMeta = getClassMeta(class.Name)
+
+	if not classMeta.Inherited then
+		classMeta.Inherited = root
 	end
 
 	upcastInheritance(superClass, root)
 end
 
-local function canCreateClass(class)
+local function canCreateClass(class: ClassDescriptor)
+	if class.Name == "Player" then
+		return false
+	end
+
 	local tags = getTags(class)
 	local canCreate = true
 
@@ -167,8 +464,10 @@ local function canCreateClass(class)
 	return canCreate
 end
 
-local function collectProperties(class)
-	local propMap = {}
+local function collectProperties(class: ClassDescriptor)
+	local propMap = {} :: {
+		[string]: PropertyDescriptor
+	}
 
 	for _, member in ipairs(class.Members) do
 		if member.MemberType == "Property" then
@@ -180,123 +479,27 @@ local function collectProperties(class)
 	return propMap
 end
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Formatting
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local version = getAsync(baseUrl .. "version.txt")
+local apiDumpJson = getAsync(baseUrl .. "Full-API-Dump.json")
+local apiDump: ApiDump = HttpService:JSONDecode(apiDumpJson)
 
-local formatting: Format = require(script.Formatting)
-type FormatFunc = formatting.FormatFunc
-type Format = formatting.Format
-
-local formatLinks = {
-	["int"] = "Int",
-	["long"] = "Int",
-
-	["float"] = "Float",
-	["byte[]"] = "Bytes",
-	["double"] = "Double",
-	["boolean"] = "Bool",
-
-	["string"] = "String",
-	["Content"] = "String",
-
-	["Color3uint8"] = "Color3",
-	["ProtectedString"] = "String",
-	["OptionalCoordinateFrame"] = "Optional<CFrame>",
-}
-
-local function getFormatFunction(valueType: string): FormatFunc
-	if not formatting[valueType] then
-		valueType = formatLinks[valueType]
-	end
-
-	return formatting[valueType] or formatting.Null
-end
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Property Patches
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-local patches = require(script.PropertyPatches)
-local patchIndex = {}
-
-function patchIndex:__index(key)
-	if not rawget(self, key) then
-		rawset(self, key, {})
-	end
-
-	return self[key]
-end
-
-local function getPatches(className)
-	local classPatches = patches[className]
-	return setmetatable(classPatches, patchIndex)
-end
-
-setmetatable(patches, patchIndex)
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Main
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-local baseUrl = "https://raw.githubusercontent.com/MaximumADHD/Roblox-Client-Tracker/roblox/"
-local toolbar, button
-
-if plugin then
-	toolbar = plugin:CreateToolbar("C# API Dump")
-
-	button = toolbar:CreateButton(
-		"Dump API",
-		"Generates a C# dump of Roblox's Class/Enum API.",
-		"rbxasset://textures/Icon_Stream_Off@2x.png"
-	)
-
-	button.ClickableWhenViewportHidden = true
-end
-
-local function getAsync(url)
-	local enabled
-
-	if isCoreScript then
-		enabled = HttpService:GetHttpEnabled()
-		HttpService:SetHttpEnabled(true)
-	end
-
-	local result = HttpService:GetAsync(url)
-
-	if isCoreScript then
-		HttpService:SetHttpEnabled(enabled)
-	end
-
-	return result
-end
+-- Clear string so debugger doesn't panic.
+apiDumpJson = ""
 
 local function generateClasses()
 	local env = getfenv()
-	local version = getAsync(baseUrl .. "version.txt")
-
-	local apiDump = getAsync(baseUrl .. "Full-API-Dump.json")
-	apiDump = HttpService:JSONDecode(apiDump)
-
+	
 	local classNames = {}
 	classes = {}
 
-	local enumMap = {
-		Axis = true,
-		Font = true,
-		FontSize = true,
-		FontStyle = true,
-		FontWeight = true,
-		AdPortalType = true,
-	}
-
 	for _, class in ipairs(apiDump.Classes) do
 		local className = class.Name
+		local classMeta = getClassMeta(className)
 		local superClass = classes[class.Superclass]
 
 		if singletons[className] then
-			class.Singleton = true
-			class.Object = singletons[className]
+			classMeta.Singleton = true
+			classMeta.Object = singletons[className]
 		end
 
 		if superClass and canCreateClass(class) then
@@ -305,23 +508,34 @@ local function generateClasses()
 			if classTags.Service then
 				pcall(function()
 					if not className:find("Network") then
-						class.Object = game:GetService(className)
+						classMeta.Object = game:GetService(className)
 					end
 				end)
-			elseif not classTags.NotCreatable then
-				pcall(function()
-					local dumpFolder = game:FindFirstChild("DumpFolder")
-					class.Object = Instance.new(className)
+			elseif not classTags.NotCreatable and not DO_NOT_CREATE[className] then
+				local dumpFolder = game:FindFirstChild("DumpFolder")
+				local old = (dumpFolder and dumpFolder:FindFirstChildOfClass(className)) or game:FindFirstChildOfClass(className)
+				
+				classMeta.Object = old or (function (): Instance?
+					local success, object = pcall(Instance.new, className)
 
-					if dumpFolder then
-						local old = dumpFolder:FindFirstChildOfClass(className)
+					if success then
+						return object
+					end
 
-						if old then
-							old:Destroy()
+					return nil
+				end)()
+
+				pcall(function ()
+					if not old then
+						local object = classMeta.Object
+
+						if object and object:IsA("Instance") then
+							if dumpFolder then
+								object.Parent = dumpFolder
+							end
+
+							object.Name = className
 						end
-
-						class.Object.Name = className
-						class.Object.Parent = dumpFolder
 					end
 				end)
 			end
@@ -355,23 +569,25 @@ local function generateClasses()
 	openStack()
 
 	for i, className in ipairs(classNames) do
-		local class = classes[className]
+		local class: ClassDescriptor = classes[className]
 		local classTags = getTags(class)
 
 		local registerClass = canCreateClass(class)
-		local object = class.Object
+		local classMeta = getClassMeta(className)
+		local object = classMeta.Object
 
-		if class.Inherited then
+		if classMeta.Inherited then
 			registerClass = true
 		end
 
-		if class.Name == "Instance" or class.Name == "Studio" then
+		if class.Name == "Instance" or class.Name == "Studio" or class.Name == "Object" then
 			registerClass = false
 		end
 
 		local noSecurityCheck = pcall(function()
 			if not classTags.Service then
-				return tostring(object)
+				-- If this throws an error, the class is security protected.
+				tostring(object)
 			end
 
 			return nil
@@ -382,8 +598,9 @@ local function generateClasses()
 		end
 
 		if not object then
-			if class.Inherited then
-				object = class.Inherited.Object
+			if classMeta.Inherited then
+				local meta = getClassMeta(classMeta.Inherited.Name)
+				object = meta.Object
 			elseif singletons[className] then
 				object = singletons[className]
 			else
@@ -398,17 +615,33 @@ local function generateClasses()
 		if registerClass then
 			local objectType
 
-			if classTags.NotCreatable and class.Inherited and not class.Singleton then
+			if classTags.NotCreatable and classMeta.Inherited and not classMeta.Singleton and not classTags.Service then
 				objectType = "abstract class"
 			else
 				objectType = "class"
 			end
 
-			writeLine("public %s %s : %s", objectType, className, class.Superclass)
+			local superclass = class.Superclass
+
+			if superclass == "Object" then
+				-- In C#, "Object" is a core type so I renamed the Roblox version 
+				-- to RbxObject to avoid disambiguation conflicts.
+				superclass = "RbxObject"
+			end
+
+			if classTags.Service then
+				if NON_ROOTED_SERVICES[className] then
+					writeLine("[RbxService(IsRooted = false)]")
+				else
+					writeLine("[RbxService]")
+				end
+			end
+
+			writeLine("public %s %s : %s", objectType, className, superclass)
 			openStack()
 
 			local classPatches = getPatches(className)
-			local redirectProps = classPatches.Redirect
+			local redirectProps: typeof(assert(classPatches.Redirect)) = classPatches.Redirect or {}
 
 			local propMap = collectProperties(class)
 			local propNames = {}
@@ -418,7 +651,7 @@ local function generateClasses()
 			end
 
 			local firstLine = true
-			class.PropertyMap = propMap
+			classMeta.PropertyMap = propMap
 
 			local ancestor = class
 			local diffProps = {}
@@ -430,10 +663,12 @@ local function generateClasses()
 					break
 				end
 
-				local inheritProps = ancestor.PropertyMap
-				local inherited = ancestor.Inherited
+				local ancestorMeta = getClassMeta(ancestor.Name)
+				local inheritProps = ancestorMeta.PropertyMap
 
-				local baseObject = inherited and inherited.Object
+				local inherited = ancestorMeta.Inherited
+				local metaInherited = inherited and getClassMeta(inherited.Name)
+				local baseObject = metaInherited and metaInherited.Object
 
 				if inheritProps and baseObject then
 					for name, prop in pairs(inheritProps) do
@@ -444,11 +679,11 @@ local function generateClasses()
 						end
 
 						local gotPropValue, propValue = pcall(function()
-							return object[name]
+							return (object :: any)[name]
 						end)
 
 						local gotBaseValue, baseValue = pcall(function()
-							return baseObject[name]
+							return (baseObject :: any)[name]
 						end)
 
 						if gotBaseValue and gotPropValue then
@@ -460,51 +695,36 @@ local function generateClasses()
 				end
 			end
 
-			if classTags.Service or next(diffProps) then
-				local headerFormat = "public %s()"
-
-				if next(diffProps) then
-					headerFormat ..= " : base()"
-				end
-
+			if next(diffProps) then
+				local headerFormat = "public %s() : base()"
 				writeLine(headerFormat, className)
 				openStack()
 
-				if classTags.Service then
-					writeLine("IsService = true;")
+				local diffNames = {}
 
-					if next(diffProps) then
-						writeLine()
-					end
+				for name in pairs(diffProps) do
+					table.insert(diffNames, name)
 				end
 
-				if next(diffProps) then
-					local diffNames = {}
+				table.sort(diffNames)
 
-					for name in pairs(diffProps) do
-						table.insert(diffNames, name)
+				for i, name in ipairs(diffNames) do
+					if redirectProps[name] then
+						continue
 					end
 
-					table.sort(diffNames)
+					local value = diffProps[name]
+					local valueType = typeof(value)
+					local formatFunc = getFormatFunction(valueType)
 
-					for i, name in ipairs(diffNames) do
-						if redirectProps[name] then
-							continue
+					if formatFunc ~= formatting.Null then
+						local result = formatFunc(value)
+
+						if result == "" then
+							result = tostring(value)
 						end
 
-						local value = diffProps[name]
-						local valueType = typeof(value)
-						local formatFunc = getFormatFunction(valueType)
-
-						if formatFunc ~= formatting.Null then
-							local result = formatFunc(value)
-
-							if result == "" then
-								result = tostring(value)
-							end
-
-							writeLine("%s = %s;", name, result)
-						end
+						writeLine("%s = %s;", name, result)
 					end
 				end
 
@@ -523,6 +743,37 @@ local function generateClasses()
 
 				local category = typeData.Category
 				local valueType = typeData.Name
+
+				if category == "Class" then
+					if valueType == "Player" then
+						continue
+					end
+
+					local valueClass = classes[valueType]
+					local valueTags = getTags(valueClass)
+					
+					if valueTags.NotCreatable then
+						local canCreate = false
+						local valueMeta = getClassMeta(valueType)
+						local inherited = valueMeta.Inherited
+
+						while inherited do
+							local atMeta = getClassMeta(inherited.Name)
+							local atTags = getTags(inherited)
+
+							if not atTags.NotCreatable then
+								canCreate = true
+								break
+							end
+
+							inherited = atMeta.Inherited
+						end
+
+						if not canCreate then
+							continue
+						end
+					end
+				end
 
 				local redirect = redirectProps[propName]
 				local couldSave = (serial.CanSave or propTags.Deprecated or redirect)
@@ -575,7 +826,7 @@ local function generateClasses()
 						else
 							get = redirect.Get
 							set = redirect.Set
-							flag = redirect.Flag
+							flag = redirect.Flags
 						end
 
 						if not firstLine and set then
@@ -619,19 +870,19 @@ local function generateClasses()
 						if j ~= #propNames and set then
 							writeLine()
 						end
-					else
+					elseif classPatches.Defaults then
 						local value = classPatches.Defaults[propName]
 						local gotValue = (value ~= nil)
 
-						if not gotValue then
+						if not gotValue and object then
 							gotValue, value = pcall(function()
-								return object[propName]
+								return (object :: any)[propName]
 							end)
 						end
 
 						if not gotValue and category ~= "Class" then
 							-- Fallback to implicit defaults, or default defined by API Dump.
-							if defaultIgnore[apiDefault] then
+							if apiDefault and defaultIgnore[apiDefault] then
 								apiDefault = nil
 							end
 
@@ -710,6 +961,7 @@ local function generateClasses()
 									value
 								)
 							end
+
 						end
 
 						if gotValue then
@@ -737,20 +989,12 @@ local function generateClasses()
 
 							if result ~= nil then
 								default = " = " .. result
-							end
-
-							if formatFunc == formatting.EnumItem then
-								local enumName = tostring(value.EnumType)
-								enumMap[enumName] = true
+							elseif category == "Class" then
+								default = " = null"
 							end
 						end
 
-						if className == "Sound" and propName == "EmitterSize" then
-							-- .____.
-							propTags.Deprecated = false
-						end
-
-						if propTags.Deprecated then
+						if propTags.Deprecated or not serial.CanSave then
 							if not firstLine then
 								writeLine()
 							end
@@ -779,11 +1023,9 @@ local function generateClasses()
 
 	closeStack()
 	exportStream("Classes")
-
-	return enumMap
 end
 
-local function generateEnums(whiteList)
+local function generateEnums()
 	local version = getfenv().version():gsub("%. ", ".")
 	clearStream()
 
@@ -794,19 +1036,38 @@ local function generateEnums(whiteList)
 	writeLine("namespace RobloxFiles.Enums")
 	openStack()
 
-	local enums = Enum:GetEnums()
+	local enums = apiDump.Enums
 
 	for i, enum in ipairs(enums) do
-		local enumName = tostring(enum)
+		local enumTags = getTags(enum)
+		local enumName = enum.Name
 
-		if whiteList and not whiteList[enumName] then
-			continue
+		local enumItems = enum.Items
+		local allDeprecated = true
+
+		for j, enumItem in ipairs(enumItems) do
+			local tags = getTags(enumItem)
+
+			if not tags.Deprecated then
+				allDeprecated = false
+				break
+			end
+		end
+
+		if allDeprecated then
+			enumTags.Deprecated = true
+		end
+
+		if enumTags.Deprecated then
+			writeLine("[Obsolete]")
 		end
 
 		writeLine("public enum %s", enumName)
 		openStack()
 
-		local enumItems = enum:GetEnumItems()
+		local legacyNames = {}
+		local legacyMap = {}
+
 		local lastValue = -1
 		local mapped = {}
 
@@ -816,24 +1077,56 @@ local function generateEnums(whiteList)
 
 		for j, enumItem in ipairs(enumItems) do
 			local text = ""
-			local comma = ","
-
 			local name = enumItem.Name
 			local value = enumItem.Value
+			local tags = getTags(enumItem)
+			local oldNames = enumItem.LegacyNames
 
 			if not mapped[value] then
 				if (value - lastValue) ~= 1 then
-					text = " = " .. value
-				end
-
-				if j == #enumItems then
-					comma = ""
+					text = ` = {value}`
 				end
 
 				lastValue = value
 				mapped[value] = true
 
-				writeLine("%s%s%s", name, text, comma)
+				if tags.Deprecated and not enumTags.Deprecated then
+					if j ~= 1 then
+						writeLine()
+					end
+
+					writeLine("[Obsolete]")
+				end
+
+				writeLine("%s%s,", name, text)
+
+				if tags.Deprecated and not enumTags.Deprecated and j ~= #enumItems then
+					writeLine()
+				end
+			end
+
+			if oldNames then
+				for i, oldName in oldNames do
+					oldName = oldName:gsub(" ", "_")
+					table.insert(legacyNames, oldName)
+					legacyMap[oldName] = name
+				end
+			end
+		end
+
+		if #legacyNames > 0 then
+			table.sort(legacyNames)
+			writeLine()
+
+			for i, legacyName in ipairs(legacyNames) do
+				local newName = legacyMap[legacyName]
+
+				writeLine("[Obsolete]")
+				writeLine("%s = %s,", legacyName, newName)
+
+				if i ~= #legacyNames then
+					writeLine()
+				end
 			end
 		end
 
@@ -849,8 +1142,8 @@ local function generateEnums(whiteList)
 end
 
 local function generateAll()
-	local enumList = generateClasses()
-	generateEnums(enumList)
+	generateClasses()
+	generateEnums()
 end
 
 if plugin then
