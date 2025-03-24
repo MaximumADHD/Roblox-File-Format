@@ -57,11 +57,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                 if (obj is Instance inst)
                 {
-                    inst.IsService = IsService;
-
-                    if (IsService)
+                    if (IsService && inst.IsService)
                     {
+                        var serviceInfo = Attribute.GetCustomAttribute(instType, typeof(RbxService)) as RbxService;
                         bool isRooted = RootedServices[i];
+
+                        if (!isRooted && serviceInfo.IsRooted)
+                            // Service MUST be a child of the DataModel.
+                            isRooted = true;
+
                         inst.Parent = (isRooted ? file : null);
                     }
                 }

@@ -9,7 +9,7 @@ using RobloxFiles.DataTypes;
 namespace RobloxFiles
 {
     /// <summary>
-    /// Describes an object in Roblox's DataModel hierarchy.
+    /// Describes an instance in Roblox's DataModel hierarchy.
     /// Instances can have sets of properties loaded from *.rbxl/*.rbxm files.
     /// </summary>
 
@@ -54,7 +54,13 @@ namespace RobloxFiles
         public bool ParentLocked { get; internal set; }
 
         /// <summary>Indicates whether this Instance is a Service.</summary>
-        public bool IsService { get; internal set; }
+        public virtual bool IsService
+        {
+            get
+            {
+                return Attribute.IsDefined(GetType(), typeof(RbxService));
+            }
+        }
 
 
         /// <summary>A hashset of CollectionService tags assigned to this Instance.</summary>
@@ -150,9 +156,6 @@ namespace RobloxFiles
         public bool SetAttribute<T>(string key, T value)
         {
             if (key.Length > 100)
-                return false;
-
-            if (key.StartsWith("RBX", StringComparison.InvariantCulture))
                 return false;
 
             if (value == null)

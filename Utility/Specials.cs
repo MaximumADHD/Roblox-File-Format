@@ -150,12 +150,12 @@ namespace RobloxFiles
 
         public static string SetAccessoryBlob(HumanoidDescription hDesc, string value)
         {
-
+            return "";
         }
 
         public static string GetAccessories(HumanoidDescription hDesc, AccessoryType accessoryType)
         {
-
+            return "";
         }
     }
 }

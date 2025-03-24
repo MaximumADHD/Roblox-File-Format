@@ -186,8 +186,10 @@
     <Compile Include="Tree\Instance.cs" />
     <Compile Include="Tree\RbxObject.cs" />
     <Compile Include="Tree\Property.cs" />
+    <Compile Include="Tree\Service.cs" />
     <Compile Include="Utility\BrickColors.cs" />
     <Compile Include="Utility\DefaultProperty.cs" />
+    <Compile Include="Utility\LostEnumValue.cs" />
     <Compile Include="Utility\FontUtility.cs" />
     <Compile Include="Utility\Formatting.cs" />
     <Compile Include="Utility\ImplicitMember.cs" />

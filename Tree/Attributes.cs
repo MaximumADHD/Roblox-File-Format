@@ -16,7 +16,7 @@ namespace RobloxFiles
      // Null = 1,
         String = 2,
         Bool = 3,
-     // Int = 4,
+        Int = 4,
         Float = 5,
         Double = 6,
      // Array = 7,

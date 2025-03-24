@@ -212,6 +212,7 @@ namespace RobloxFiles.BinaryFormat
 
                 RegisterObject(instance);
                 instance.RefreshProperties();
+                Instances.Add(instance);
 
                 foreach (var pair in instance.Properties)
                 {
@@ -230,10 +231,10 @@ namespace RobloxFiles.BinaryFormat
                     if (obj == null || obj is Instance)
                         continue;
 
-                    if (Objects.Contains(obj))
+                    if (Instances.Contains(obj))
                         continue;
 
-                    Objects.Add(obj);
+                    Instances.Add(obj);
                 }
 
                 RegisterChildren(instance);
@@ -280,6 +281,8 @@ namespace RobloxFiles.BinaryFormat
 
             File.Classes = classes;
             File.Objects = objects.ToArray();
+
+            System.Diagnostics.Debugger.Break();
         }
 
         private bool StartWritingChunk(string chunkType)

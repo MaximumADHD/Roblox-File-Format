@@ -3,9 +3,13 @@ using RobloxFiles.XmlFormat;
 
 namespace RobloxFiles.Tokens
 {
-    public class IntToken : IXmlPropertyToken
+    public class IntToken : IXmlPropertyToken, IAttributeToken<int>
     {
         public string XmlPropertyToken => "int";
+        public AttributeType AttributeType => AttributeType.Int;
+
+        public int ReadAttribute(RbxAttribute attr) => attr.ReadInt();
+        public void WriteAttribute(RbxAttribute attr, int value) => attr.WriteInt(value);
 
         public bool ReadProperty(Property prop, XmlNode token)
         {

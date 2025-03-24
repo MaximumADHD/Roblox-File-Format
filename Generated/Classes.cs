@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.664.0.6640713
+// Updated as of 0.665.0.6650685
 
 using System;
 
@@ -421,8 +421,6 @@ namespace RobloxFiles
     [RbxService]
     public class AuroraService : Instance
     {
-
-        public bool RollbackEnabled;
     }
 
     [RbxService]
@@ -1965,7 +1963,9 @@ namespace RobloxFiles
         }
 
         public bool AutoButtonColor = true;
+        public HapticEffect HoverHapticEffect = null;
         public bool Modal;
+        public HapticEffect PressHapticEffect = null;
         public bool Selected;
         public ButtonStyle Style = ButtonStyle.Custom;
     }
@@ -2936,6 +2936,9 @@ namespace RobloxFiles
     public class InputBinding : Instance
     {
         public KeyCode KeyCode = KeyCode.Unknown;
+        public float PressedThreshold = 0.5f;
+        public float ReleasedThreshold = 0.2f;
+        public float Scale = 1;
         public GuiButton UIButton = null;
     }
 
@@ -3369,6 +3372,22 @@ namespace RobloxFiles
     [RbxService]
     public class MessagingService : Instance
     {
+    }
+
+    public class MetaBreakpoint : Instance
+    {
+        public string Condition = "";
+        public bool ContinueExecution;
+        public bool Enabled;
+        public int Line = 0;
+        public string LogMessage = "";
+        public bool RemoveOnHit;
+        public string Script = "";
+    }
+
+    public class MetaBreakpointContext : Instance
+    {
+        public string ContextDataInternal = "0 1 2 ";
     }
 
     [RbxService]
@@ -4453,6 +4472,11 @@ namespace RobloxFiles
     {
     }
 
+    public class RobloxSerializableInstance : Instance
+    {
+        public byte[] Data;
+    }
+
     [RbxService]
     public class RobloxServerStorage : Instance
     {
@@ -4754,6 +4778,15 @@ namespace RobloxFiles
         public float Release = 0.1f;
         public Instance SideChain = null;
         public float Threshold = -40;
+    }
+
+    public class CustomSoundEffect : SoundEffect
+    {
+    }
+
+    public class ChannelSelectorSoundEffect : CustomSoundEffect
+    {
+        public int Channel = 1;
     }
 
     public class DistortionSoundEffect : SoundEffect
@@ -5194,6 +5227,20 @@ namespace RobloxFiles
         public Color3 TextColor3 = Color3.FromRGB(57, 59, 61);
         public long TextSize = 16;
         public float VerticalStudsOffset = 0;
+    }
+
+    public class ChannelTabsConfiguration : TextChatConfigurations
+    {
+        public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);
+        public double BackgroundTransparency = 0;
+        public bool Enabled;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.BuilderSansBold);
+        public Color3 HoverBackgroundColor3 = Color3.FromRGB(125, 125, 125);
+        public Color3 SelectedTabTextColor3 = new Color3(1, 1, 1);
+        public Color3 TextColor3 = Color3.FromRGB(175, 175, 175);
+        public long TextSize = 18;
+        public Color3 TextStrokeColor3 = new Color3();
+        public double TextStrokeTransparency = 1;
     }
 
     public class ChatInputBarConfiguration : TextChatConfigurations
@@ -5730,6 +5777,11 @@ namespace RobloxFiles
 
         public bool EnableDefaultVoice = true;
         public AudioApiRollout UseAudioApi = AudioApiRollout.Automatic;
+    }
+
+    [RbxService]
+    public class WebSocketService : Instance
+    {
     }
 
     [RbxService]

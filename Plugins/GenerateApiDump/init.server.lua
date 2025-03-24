@@ -11,23 +11,29 @@ local outStream = ""
 local stackLevel = 0
 
 local singletons = {
-	Speaker = Instance.new("Sound"), -- close enough
-	Terrain = workspace:WaitForChild("Terrain", 1000),
+	Terrain = workspace:WaitForChild("Terrain", 10),
+	EditableMesh = AssetService:CreateEditableMesh(),
+	EditableImage = AssetService:CreateEditableImage(),
 	ParabolaAdornment = Instance.new("BoxHandleAdornment"), -- close enough
 	StarterPlayerScripts = StarterPlayer:WaitForChild("StarterPlayerScripts"),
 	StarterCharacterScripts = StarterPlayer:WaitForChild("StarterCharacterScripts"),
 	BubbleChatConfiguration = TextChatService:WaitForChild("BubbleChatConfiguration", 10),
 	ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration", 10),
+	ChannelTabsConfiguration = TextChatService:WaitForChild("ChannelTabsConfiguration", 10),
 	ChatInputBarConfiguration = TextChatService:WaitForChild("ChatInputBarConfiguration", 10),
-	EditableMesh = AssetService:CreateEditableMesh(),
-	EditableImage = AssetService:CreateEditableImage(),
 }
 
-local exceptionClasses = {
+local forceRegister = {
 	PackageLink = true,
 	ScriptDebugger = true,
+	MetaBreakpoint = true,
+	CustomSoundEffect = true,
+	MetaBreakpointContext = true,
 	ChatWindowConfiguration = true,
+	ChannelTabsConfiguration = true,
 	ChatInputBarConfiguration = true,
+	RobloxSerializableInstance = true,
+	ChannelSelectorSoundEffect = true,
 }
 
 local numberTypes = {
@@ -338,6 +344,8 @@ type TagMap = {
 -- Main
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+local lostEnumValues = require(script.LostEnumValues)
+
 local classes = {} :: {
 	[string]: ClassDescriptor
 }
@@ -501,6 +509,13 @@ local function generateClasses()
 			classMeta.Singleton = true
 			classMeta.Object = singletons[className]
 		end
+		
+		local maybeSingleton = game:FindFirstChildOfClass(className)
+		
+		if maybeSingleton then
+			classMeta.Singleton = true
+			classMeta.Object = maybeSingleton
+		end
 
 		if superClass and canCreateClass(class) then
 			local classTags = getTags(class)
@@ -608,7 +623,7 @@ local function generateClasses()
 			end
 		end
 
-		if exceptionClasses[class.Name] then
+		if forceRegister[class.Name] then
 			registerClass = true
 		end
 
@@ -1115,14 +1130,21 @@ local function generateEnums()
 		end
 
 		if #legacyNames > 0 then
+			local lostValues = lostEnumValues[enumName]
 			table.sort(legacyNames)
 			writeLine()
 
 			for i, legacyName in ipairs(legacyNames) do
 				local newName = legacyMap[legacyName]
-
+				local lostValue = lostValues and lostValues[legacyName]
 				writeLine("[Obsolete]")
-				writeLine("%s = %s,", legacyName, newName)
+
+				if lostValue then
+					writeLine(`[LostEnumValue(MapTo = {lostValue})]`)
+					writeLine("_%s = %s,", legacyName, newName)
+				else
+					writeLine("%s = %s,", legacyName, newName)
+				end
 
 				if i ~= #legacyNames then
 					writeLine()
