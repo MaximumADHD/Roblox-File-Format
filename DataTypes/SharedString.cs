@@ -23,6 +23,12 @@ namespace RobloxFiles.DataTypes
         public byte[] SharedValue => Find(ComputedKey ?? Key);
         public override string ToString() => $"Key: {ComputedKey ?? Key}";
 
+        /// <summary>
+        /// Base64 encoding of: <code>cae66941d9efbd404e4d88758ea67670</code> ... which is
+        /// the hex output of Blake2B when passing in an empty string.
+        /// </summary>
+        public static SharedString None => FromBase64("yuZpQdnvvUBOTYh1jqZ2cA==");
+
         public override int GetHashCode()
         {
             return Key.GetHashCode();

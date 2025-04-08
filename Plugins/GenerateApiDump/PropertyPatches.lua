@@ -182,7 +182,7 @@ local PropertyPatches: { [string]: Patch } = {
 
 	Decal = {
 		Redirect = {
-			-- Texture = "TextureContent",
+			Texture = "TextureContent",
 		}
 	},
 
@@ -459,6 +459,13 @@ local PropertyPatches: { [string]: Patch } = {
 		Defaults = {
 			AlphaMode = Enum.AlphaMode.Overlay
 		},
+
+		Redirect = {
+			ColorMap = "ColorMapContent",
+			NormalMap = "NormalMapContent",
+			MetalnessMap = "MetalnessMapContent",
+			RoughnessMap = "RoughnessMapContent",
+		}
 	},
 
 	TextBox = GuiTextMixIn,

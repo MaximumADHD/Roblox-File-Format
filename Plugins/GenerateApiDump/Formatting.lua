@@ -165,7 +165,7 @@ function Format.Content(content: Content)
 		local uri = assert(content.Uri)
 		return string.format("new Content(%q)", uri)
 	else
-		return "Content.none"
+		return "Content.None"
 	end
 end
 
@@ -310,8 +310,12 @@ function Format.Vector3int16(v3: Vector3int16): string
 end
 
 function Format.SharedString(str: string): string
-	local fmt = "SharedString.FromBase64(%q)"
-	return fmt:format(str)
+	if str ~= "" then
+		local fmt = "SharedString.FromBase64(%q)"
+		return fmt:format(str)
+	end
+
+	return "SharedString.None"
 end
 
 function Format.FontFace(font: Font): string

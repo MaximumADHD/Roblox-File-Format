@@ -47,6 +47,7 @@ local numberTypes = {
 local stringTypes = {
 	string = true,
 	BinaryString = true,
+	SharedString = true,
 	ProtectedString = true,
 }
 
@@ -794,7 +795,7 @@ local function generateClasses()
 				local couldSave = (serial.CanSave or propTags.Deprecated or redirect)
 
 				if serial.CanLoad and couldSave then
-					if firstLine and (classTags.Service or next(diffProps)) then
+					if firstLine and next(diffProps) then
 						writeLine()
 					end
 
@@ -908,7 +909,7 @@ local function generateClasses()
 								value = apiDefault or ""
 								gotValue = true
 							elseif valueType == "SharedString" then
-								value = apiDefault or "yuZpQdnvvUBOTYh1jqZ2cA=="
+								value = apiDefault or ""
 								gotValue = true
 							elseif category == "DataType" then
 								local DataType = env[valueType]
@@ -1046,6 +1047,7 @@ local function generateEnums()
 
 	writeLine("// Auto-generated list of Roblox enums.")
 	writeLine("// Updated as of %s", version)
+	writeLine("using System;")
 	writeLine()
 
 	writeLine("namespace RobloxFiles.Enums")

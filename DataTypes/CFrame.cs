@@ -19,19 +19,15 @@ namespace RobloxFiles.DataTypes
         public float Z => m34;
 
         public Vector3 Position => new Vector3(X, Y, Z);
-        public CFrame  Rotation => (this - Position);
+        public CFrame Rotation => (this - Position);
 
         public Vector3 XVector => new Vector3(m11, m21, m31);
         public Vector3 YVector => new Vector3(m12, m22, m32);
         public Vector3 ZVector => new Vector3(m13, m23, m33);
 
-        public Vector3 RightVector =>  XVector;
-        public Vector3 UpVector    =>  YVector;
-        public Vector3 LookVector  => -ZVector;
-
-        public Vector3 ColumnX => new Vector3(m11, m12, m13);
-        public Vector3 ColumnY => new Vector3(m21, m22, m23);
-        public Vector3 ColumnZ => new Vector3(m31, m32, m33);
+        public Vector3 RightVector => XVector;
+        public Vector3 UpVector => YVector;
+        public Vector3 LookVector => -ZVector;
 
         public static readonly CFrame identity = new CFrame();
 
@@ -141,10 +137,10 @@ namespace RobloxFiles.DataTypes
         public CFrame(params float[] comp)
         {
             Contract.Requires(comp.Length >= 12, "There should be 12 floats provided to construct a CFrame with an array of floats");
-            
-            m14 = comp[0]; m24 = comp[1];  m34 = comp[2];
-            m11 = comp[3]; m12 = comp[4];  m13 = comp[5];
-            m21 = comp[6]; m22 = comp[7];  m23 = comp[8];
+
+            m14 = comp[0]; m24 = comp[1]; m34 = comp[2];
+            m11 = comp[3]; m12 = comp[4]; m13 = comp[5];
+            m21 = comp[6]; m22 = comp[7]; m23 = comp[8];
             m31 = comp[9]; m32 = comp[10]; m33 = comp[11];
         }
 
@@ -156,18 +152,18 @@ namespace RobloxFiles.DataTypes
                 vZ = vX.Cross(vY);
 
             m14 = pos.X; m24 = pos.Y; m34 = pos.Z;
-            m11 = vX.X;  m12 = vX.Y;  m13 = vX.Z;
-            m21 = vY.X;  m22 = vY.Y;  m23 = vY.Z;
-            m31 = vZ.X;  m32 = vZ.Y;  m33 = vZ.Z;
+            m11 = vX.X; m12 = vX.Y; m13 = vX.Z;
+            m21 = vY.X; m22 = vY.Y; m23 = vY.Z;
+            m31 = vZ.X; m32 = vZ.Y; m33 = vZ.Z;
         }
 
         public static CFrame operator +(CFrame a, Vector3 b)
         {
             float[] ac = a.GetComponents();
 
-            float   x = ac[0],   y = ac[1],    z = ac[2], 
-                  m11 = ac[3], m12 = ac[4],  m13 = ac[5], 
-                  m21 = ac[6], m22 = ac[7],  m23 = ac[8], 
+            float x = ac[0], y = ac[1], z = ac[2],
+                  m11 = ac[3], m12 = ac[4], m13 = ac[5],
+                  m21 = ac[6], m22 = ac[7], m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 
             return new CFrame(x + b.X, y + b.Y, z + b.Z, m11, m12, m13, m21, m22, m23, m31, m32, m33);
@@ -177,9 +173,9 @@ namespace RobloxFiles.DataTypes
         {
             float[] ac = a.GetComponents();
 
-            float   x = ac[0],   y = ac[1],    z = ac[2],
-                  m11 = ac[3], m12 = ac[4],  m13 = ac[5],
-                  m21 = ac[6], m22 = ac[7],  m23 = ac[8],
+            float x = ac[0], y = ac[1], z = ac[2],
+                  m11 = ac[3], m12 = ac[4], m13 = ac[5],
+                  m21 = ac[6], m22 = ac[7], m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 
             return new CFrame(x - b.X, y - b.Y, z - b.Z, m11, m12, m13, m21, m22, m23, m31, m32, m33);
@@ -194,8 +190,8 @@ namespace RobloxFiles.DataTypes
 
             float[] ac = a.GetComponents();
 
-            float m11 = ac[3], m12 = ac[4],  m13 = ac[5],
-                  m21 = ac[6], m22 = ac[7],  m23 = ac[8],
+            float m11 = ac[3], m12 = ac[4], m13 = ac[5],
+                  m21 = ac[6], m22 = ac[7], m23 = ac[8],
                   m31 = ac[9], m32 = ac[10], m33 = ac[11];
 
             var up = new Vector3(m12, m22, m32);
@@ -215,9 +211,9 @@ namespace RobloxFiles.DataTypes
                   a21 = ac[6], a22 = ac[7], a23 = ac[8],
                   a31 = ac[9], a32 = ac[10], a33 = ac[11];
 
-            float b14 = bc[0], b24 = bc[1],  b34 = bc[2],
-                  b11 = bc[3], b12 = bc[4],  b13 = bc[5],
-                  b21 = bc[6], b22 = bc[7],  b23 = bc[8],
+            float b14 = bc[0], b24 = bc[1], b34 = bc[2],
+                  b11 = bc[3], b12 = bc[4], b13 = bc[5],
+                  b21 = bc[6], b22 = bc[7], b23 = bc[8],
                   b31 = bc[9], b32 = bc[10], b33 = bc[11];
 
             float n11 = a11 * b11 + a12 * b21 + a13 * b31 + a14 * m41;
@@ -257,19 +253,19 @@ namespace RobloxFiles.DataTypes
         {
             float[] ac = GetComponents();
 
-            float a14 = ac[0], a24 = ac[1],  a34 = ac[2],
-                  a11 = ac[3], a12 = ac[4],  a13 = ac[5],
-                  a21 = ac[6], a22 = ac[7],  a23 = ac[8],
+            float a14 = ac[0], a24 = ac[1], a34 = ac[2],
+                  a11 = ac[3], a12 = ac[4], a13 = ac[5],
+                  a21 = ac[6], a22 = ac[7], a23 = ac[8],
                   a31 = ac[9], a32 = ac[10], a33 = ac[11];
 
-            float det = ( a11 * a22 * a33 * m44 + a11 * a23 * a34 * m42 + a11 * a24 * a32 * m43
+            float det = (a11 * a22 * a33 * m44 + a11 * a23 * a34 * m42 + a11 * a24 * a32 * m43
                         + a12 * a21 * a34 * m43 + a12 * a23 * a31 * m44 + a12 * a24 * a33 * m41
                         + a13 * a21 * a32 * m44 + a13 * a22 * a34 * m41 + a13 * a24 * a31 * m42
                         + a14 * a21 * a33 * m42 + a14 * a22 * a31 * m43 + a14 * a23 * a32 * m41
                         - a11 * a22 * a34 * m43 - a11 * a23 * a32 * m44 - a11 * a24 * a33 * m42
                         - a12 * a21 * a33 * m44 - a12 * a23 * a34 * m41 - a12 * a24 * a31 * m43
                         - a13 * a21 * a34 * m42 - a13 * a22 * a31 * m44 - a13 * a24 * a32 * m41
-                        - a14 * a21 * a32 * m43 - a14 * a22 * a33 * m41 - a14 * a23 * a31 * m42 );
+                        - a14 * a21 * a32 * m43 - a14 * a22 * a33 * m41 - a14 * a23 * a31 * m42);
 
             if (det == 0)
                 return this;
@@ -298,7 +294,61 @@ namespace RobloxFiles.DataTypes
                     u = VectorAxisAngle(axis, Vector3.yAxis, theta),
                     b = VectorAxisAngle(axis, Vector3.zAxis, theta);
 
-            return new CFrame(0, 0, 0, r.X, u.X, b.X, r.Y, u.Y, b.Y, r.Z, u.Z, b.Z);
+            return new CFrame
+            (
+                0, 0, 0,
+                r.X, u.X, b.X,
+                r.Y, u.Y, b.Y,
+                r.Z, u.Z, b.Z
+            );
+        }
+
+        public static CFrame FromEulerAngles(RotationOrder order, EulerAngles angles)
+        {
+            CFrame cfx = FromAxisAngle(Vector3.xAxis, angles.Pitch),
+                   cfy = FromAxisAngle(Vector3.yAxis, angles.Yaw),
+                   cfz = FromAxisAngle(Vector3.zAxis, angles.Roll);
+
+            CFrame result = null;
+
+            switch (order)
+            {
+                case RotationOrder.XYZ:
+                {
+                    result = cfx * cfy * cfz;
+                    break;
+                }
+                case RotationOrder.XZY:
+                {
+                    result = cfx * cfz * cfy;
+                    break;
+                }
+                case RotationOrder.YXZ:
+                {
+                    result = cfy * cfx * cfz;
+                    break;
+                }
+                case RotationOrder.YZX:
+                {
+                    result = cfy * cfz * cfx;
+                    break;
+                }
+                case RotationOrder.ZXY:
+                {
+                    result = cfz * cfx * cfy;
+                    break;
+                }
+                case RotationOrder.ZYX:
+                {
+                    result = cfz * cfy * cfx;
+                    break;
+                }
+            }
+
+            if (result == null)
+                throw new ArgumentOutOfRangeException(nameof(order), order, null);
+
+            return result;
         }
 
         public static CFrame FromEulerAnglesXYZ(float x, float y, float z)
@@ -322,15 +372,15 @@ namespace RobloxFiles.DataTypes
         }
 
         public static CFrame Angles(float x, float y, float z) => FromEulerAnglesXYZ(x, y, z);
-        public static CFrame Angles(params float[] angles)     => FromEulerAnglesXYZ(angles);
-        
+        public static CFrame Angles(params float[] angles) => FromEulerAnglesXYZ(angles);
+
         public CFrame Lerp(CFrame other, float t)
         {
             if (t == 0f)
                 return this;
             else if (t == 1f)
                 return other;
-           
+
             var q1 = new Quaternion(this);
             var q2 = new Quaternion(other);
 
@@ -372,20 +422,20 @@ namespace RobloxFiles.DataTypes
 
         public float[] GetComponents()
         {
-            return new float[] 
-            { 
+            return new float[]
+            {
                 m14, m24, m34,
-                m11, m12, m13, 
-                m21, m22, m23, 
-                m31, m32, m33 
+                m11, m12, m13,
+                m21, m22, m23,
+                m31, m32, m33
             };
         }
 
         public EulerAngles ToEulerAngles() => new EulerAngles
         {
-            Yaw   = (float)Math.Asin(m13),
+            Yaw = (float)Math.Asin(m13),
             Pitch = (float)Math.Atan2(-m23, m33),
-            Roll  = (float)Math.Atan2(-m12, m11),
+            Roll = (float)Math.Atan2(-m12, m11),
         };
 
         [Obsolete]
@@ -430,8 +480,7 @@ namespace RobloxFiles.DataTypes
         {
             int xOrientId = (orientId / 6) % 3;
             int yOrientId = orientId % 3;
-
-            return (xOrientId != yOrientId);
+            return xOrientId != yOrientId;
         }
 
         public int GetOrientId()
@@ -439,8 +488,8 @@ namespace RobloxFiles.DataTypes
             if (!IsAxisAligned())
                 return -1;
 
-            int xNormal = ColumnX.ToNormalId();
-            int yNormal = ColumnY.ToNormalId();
+            int xNormal = XVector.ToNormalId();
+            int yNormal = YVector.ToNormalId();
             int orientId = (6 * xNormal) + yNormal;
 
             if (!IsLegalOrientId(orientId))
@@ -461,9 +510,9 @@ namespace RobloxFiles.DataTypes
             var matrix = new float[12]
             {
                 0,    0,    0,
-                R0.X, R0.Y, R0.Z,
-                R1.X, R1.Y, R1.Z,
-                R2.X, R2.Y, R2.Z
+                R0.X, R1.X, R2.X,
+                R0.Y, R1.Y, R2.Y,
+                R0.Z, R1.Z, R2.Z
             };
 
             return new CFrame(matrix);

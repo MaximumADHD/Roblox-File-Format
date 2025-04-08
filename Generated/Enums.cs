@@ -1,6 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.665.0.6650685
-
+// Updated as of 0.668.0.6680659
 using System;
 
 namespace RobloxFiles.Enums
@@ -36,6 +35,13 @@ namespace RobloxFiles.Enums
 
         [Obsolete]
         TeeShirt = TShirt,
+    }
+
+    public enum ActionOnAutoResumeSync
+    {
+        DontResume,
+        KeepStudio,
+        KeepLocal,
     }
 
     public enum ActionOnStopSync
@@ -644,15 +650,15 @@ namespace RobloxFiles.Enums
 
         [Obsolete]
         [LostEnumValue(MapTo = 7)]
-        Laser = Script,
+        _Laser = Script,
 
         [Obsolete]
         [LostEnumValue(MapTo = 6)]
-        Rocket = Script,
+        _Rocket = Script,
 
         [Obsolete]
         [LostEnumValue(MapTo = 5)]
-        Slingshot = Script,
+        _Slingshot = Script,
     }
 
     public enum BodyPart
@@ -1033,6 +1039,12 @@ namespace RobloxFiles.Enums
         Default,
         KeyboardMouse,
         ClickToMove,
+    }
+
+    public enum ConfigSnapshotErrorState
+    {
+        None,
+        LoadFailed,
     }
 
     public enum ConnectionError
@@ -2100,7 +2112,7 @@ namespace RobloxFiles.Enums
         _Steer = NoInput,
 
         [Obsolete]
-        _Throtle = NoInput,
+        Throtle = NoInput,
 
         [Obsolete]
         [LostEnumValue(MapTo = 4)]
@@ -2230,102 +2242,295 @@ namespace RobloxFiles.Enums
         RightCurly,
         Tilde,
         Delete,
+
+        [Obsolete]
         World0 = 160,
+
+        [Obsolete]
         World1,
+
+        [Obsolete]
         World2,
+
+        [Obsolete]
         World3,
+
+        [Obsolete]
         World4,
+
+        [Obsolete]
         World5,
+
+        [Obsolete]
         World6,
+
+        [Obsolete]
         World7,
+
+        [Obsolete]
         World8,
+
+        [Obsolete]
         World9,
+
+        [Obsolete]
         World10,
+
+        [Obsolete]
         World11,
+
+        [Obsolete]
         World12,
+
+        [Obsolete]
         World13,
+
+        [Obsolete]
         World14,
+
+        [Obsolete]
         World15,
+
+        [Obsolete]
         World16,
+
+        [Obsolete]
         World17,
+
+        [Obsolete]
         World18,
+
+        [Obsolete]
         World19,
+
+        [Obsolete]
         World20,
+
+        [Obsolete]
         World21,
+
+        [Obsolete]
         World22,
+
+        [Obsolete]
         World23,
+
+        [Obsolete]
         World24,
+
+        [Obsolete]
         World25,
+
+        [Obsolete]
         World26,
+
+        [Obsolete]
         World27,
+
+        [Obsolete]
         World28,
+
+        [Obsolete]
         World29,
+
+        [Obsolete]
         World30,
+
+        [Obsolete]
         World31,
+
+        [Obsolete]
         World32,
+
+        [Obsolete]
         World33,
+
+        [Obsolete]
         World34,
+
+        [Obsolete]
         World35,
+
+        [Obsolete]
         World36,
+
+        [Obsolete]
         World37,
+
+        [Obsolete]
         World38,
+
+        [Obsolete]
         World39,
+
+        [Obsolete]
         World40,
+
+        [Obsolete]
         World41,
+
+        [Obsolete]
         World42,
+
+        [Obsolete]
         World43,
+
+        [Obsolete]
         World44,
+
+        [Obsolete]
         World45,
+
+        [Obsolete]
         World46,
+
+        [Obsolete]
         World47,
+
+        [Obsolete]
         World48,
+
+        [Obsolete]
         World49,
+
+        [Obsolete]
         World50,
+
+        [Obsolete]
         World51,
+
+        [Obsolete]
         World52,
+
+        [Obsolete]
         World53,
+
+        [Obsolete]
         World54,
+
+        [Obsolete]
         World55,
+
+        [Obsolete]
         World56,
+
+        [Obsolete]
         World57,
+
+        [Obsolete]
         World58,
+
+        [Obsolete]
         World59,
+
+        [Obsolete]
         World60,
+
+        [Obsolete]
         World61,
+
+        [Obsolete]
         World62,
+
+        [Obsolete]
         World63,
+
+        [Obsolete]
         World64,
+
+        [Obsolete]
         World65,
+
+        [Obsolete]
         World66,
+
+        [Obsolete]
         World67,
+
+        [Obsolete]
         World68,
+
+        [Obsolete]
         World69,
+
+        [Obsolete]
         World70,
+
+        [Obsolete]
         World71,
+
+        [Obsolete]
         World72,
+
+        [Obsolete]
         World73,
+
+        [Obsolete]
         World74,
+
+        [Obsolete]
         World75,
+
+        [Obsolete]
         World76,
+
+        [Obsolete]
         World77,
+
+        [Obsolete]
         World78,
+
+        [Obsolete]
         World79,
+
+        [Obsolete]
         World80,
+
+        [Obsolete]
         World81,
+
+        [Obsolete]
         World82,
+
+        [Obsolete]
         World83,
+
+        [Obsolete]
         World84,
+
+        [Obsolete]
         World85,
+
+        [Obsolete]
         World86,
+
+        [Obsolete]
         World87,
+
+        [Obsolete]
         World88,
+
+        [Obsolete]
         World89,
+
+        [Obsolete]
         World90,
+
+        [Obsolete]
         World91,
+
+        [Obsolete]
         World92,
+
+        [Obsolete]
         World93,
+
+        [Obsolete]
         World94,
+
+        [Obsolete]
         World95,
+
         KeypadZero,
         KeypadOne,
         KeypadTwo,
@@ -4140,7 +4345,7 @@ namespace RobloxFiles.Enums
 
         [Obsolete]
         [LostEnumValue(MapTo = 9)]
-        Unjoinable = Smooth,
+        _Unjoinable = Smooth,
     }
 
     public enum SwipeDirection
@@ -4484,7 +4689,6 @@ namespace RobloxFiles.Enums
     {
         All,
         None,
-        PlayerGui,
     }
 
     public enum UIDragDetectorBoundingBehavior
@@ -4755,6 +4959,12 @@ namespace RobloxFiles.Enums
         None,
         Recording,
         Playing,
+    }
+
+    public enum VoiceChatDistanceAttenuationType
+    {
+        Inverse,
+        Legacy,
     }
 
     public enum VoiceChatState

@@ -132,7 +132,12 @@ namespace RobloxFiles
             {
                 case PropertyType.Int:
                 {
-                    if (Value is long)
+                    if (Value is BrickColor)
+                    {
+                        Type = PropertyType.BrickColor;
+                        break;
+                    }
+                    else if (Value is long)
                     {
                         Type = PropertyType.Int64;
                         goto case PropertyType.Int64;

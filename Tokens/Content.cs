@@ -33,7 +33,7 @@ namespace RobloxFiles.Tokens
                 else if (contentType == "Ref")
                     prop.Value = new Content(prop.File, token.InnerText);
                 else
-                    prop.Value = Content.none;
+                    prop.Value = Content.None;
 
                 prop.Type = PropertyType.Content;
                 return true;

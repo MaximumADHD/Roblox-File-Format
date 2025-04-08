@@ -7,7 +7,7 @@ namespace RobloxFiles.DataTypes
     {
         public readonly string Uri;
         public readonly ContentSourceType SourceType;
-        public static readonly Content none = new Content();
+        public static readonly Content None = new Content();
 
         public RbxObject Object { get; internal set; }
         internal readonly string RefId = "";

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.665.0.6650685
+// Updated as of 0.668.0.6680659
 
 using System;
 
@@ -497,7 +497,7 @@ namespace RobloxFiles
 
     public abstract class BaseWrap : Instance
     {
-        public Content CageMeshContent = Content.none;
+        public Content CageMeshContent = Content.None;
 
         public ContentId CageMeshId
         {
@@ -524,7 +524,7 @@ namespace RobloxFiles
         public bool Enabled = true;
         public int Order = 1;
         public float Puffiness = 1;
-        public Content ReferenceMeshContent = Content.none;
+        public Content ReferenceMeshContent = Content.None;
 
         public ContentId ReferenceMeshId
         {
@@ -762,34 +762,6 @@ namespace RobloxFiles
     {
     }
 
-    public class Camera : Instance
-    {
-        public CFrame CFrame = new CFrame(0, 20, 20, 1, 0, 0, 0, 0.70711f, 0.70711f, 0, -0.70711f, 0.70711f);
-        public Instance CameraSubject = null;
-        public CameraType CameraType = CameraType.Fixed;
-
-        [Obsolete]
-        public CFrame CoordinateFrame
-        {
-            get => CFrame;
-            set => CFrame = value;
-        }
-
-        public float FieldOfView = 70;
-        public FieldOfViewMode FieldOfViewMode = FieldOfViewMode.Vertical;
-        public CFrame Focus = new CFrame(0, 0, -5);
-        public bool HeadLocked = true;
-        public float HeadScale = 1;
-        public bool VRTiltAndRollEnabled;
-
-        [Obsolete]
-        public CFrame focus
-        {
-            get => Focus;
-            set => Focus = value;
-        }
-    }
-
     [RbxService]
     public class CaptureService : Instance
     {
@@ -970,6 +942,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class CommerceService : Instance
+    {
+    }
+
+    [RbxService]
+    public class ConfigService : Instance
     {
     }
 
@@ -1682,7 +1659,7 @@ namespace RobloxFiles
         public float Specular = 0;
 
         public ContentId Texture = "";
-        public Content TextureContent = Content.none;
+        public Content TextureContent = Content.None;
         public float Transparency = 0;
         public int ZIndex = 1;
     }
@@ -1988,7 +1965,7 @@ namespace RobloxFiles
         }
 
         public Color3 ImageColor3 = new Color3(1, 1, 1);
-        public Content ImageContent = Content.none;
+        public Content ImageContent = Content.None;
         public Vector2 ImageRectOffset = Vector2.zero;
         public Vector2 ImageRectSize = Vector2.zero;
         public float ImageTransparency = 0;
@@ -2082,7 +2059,7 @@ namespace RobloxFiles
         }
 
         public Color3 ImageColor3 = new Color3(1, 1, 1);
-        public Content ImageContent = Content.none;
+        public Content ImageContent = Content.None;
         public Vector2 ImageRectOffset = Vector2.zero;
         public Vector2 ImageRectSize = Vector2.zero;
         public float ImageTransparency = 0;
@@ -2935,11 +2912,16 @@ namespace RobloxFiles
 
     public class InputBinding : Instance
     {
+        public KeyCode Down = KeyCode.Unknown;
         public KeyCode KeyCode = KeyCode.Unknown;
+        public KeyCode Left = KeyCode.Unknown;
         public float PressedThreshold = 0.5f;
         public float ReleasedThreshold = 0.2f;
+        public KeyCode Right = KeyCode.Unknown;
         public float Scale = 1;
         public GuiButton UIButton = null;
+        public KeyCode Up = KeyCode.Unknown;
+        public Vector2 Vector2Scale = Vector2.one;
     }
 
     public class InputContext : Instance
@@ -3767,7 +3749,7 @@ namespace RobloxFiles
         public bool HasSkinnedMesh;
         public Vector3 InitialSize = Vector3.zero;
         public Vector3 JointOffset = Vector3.zero;
-        public Content MeshContent = Content.none;
+        public Content MeshContent = Content.None;
 
         [Obsolete]
         public ContentId MeshID
@@ -3784,7 +3766,7 @@ namespace RobloxFiles
 
         public byte[] PhysicsData;
         public RenderFidelity RenderFidelity = RenderFidelity.Automatic;
-        public Content TextureContent = Content.none;
+        public Content TextureContent = Content.None;
 
         public ContentId TextureID
         {
@@ -3897,6 +3879,34 @@ namespace RobloxFiles
         public float ThrottleFloat = 0;
         public float Torque = 10;
         public float TurnSpeed = 1;
+    }
+
+    public class Camera : PVInstance
+    {
+        public CFrame CFrame = new CFrame(0, 20, 20, 1, 0, 0, 0, 0.70711f, 0.70711f, 0, -0.70711f, 0.70711f);
+        public Instance CameraSubject = null;
+        public CameraType CameraType = CameraType.Fixed;
+
+        [Obsolete]
+        public CFrame CoordinateFrame
+        {
+            get => CFrame;
+            set => CFrame = value;
+        }
+
+        public float FieldOfView = 70;
+        public FieldOfViewMode FieldOfViewMode = FieldOfViewMode.Vertical;
+        public CFrame Focus = new CFrame(0, 0, -5);
+        public bool HeadLocked = true;
+        public float HeadScale = 1;
+        public bool VRTiltAndRollEnabled;
+
+        [Obsolete]
+        public CFrame focus
+        {
+            get => Focus;
+            set => Focus = value;
+        }
     }
 
     public class Model : PVInstance
@@ -4613,6 +4623,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class SerializationService : Instance
+    {
+    }
+
+    [RbxService]
     public class ServerScriptService : Instance
     {
 
@@ -4639,11 +4654,6 @@ namespace RobloxFiles
 
     [RbxService]
     public class SharedTableRegistry : Instance
-    {
-    }
-
-    [RbxService]
-    public class ShorelineUpgraderService : Instance
     {
     }
 
@@ -5074,9 +5084,13 @@ namespace RobloxFiles
         public AlphaMode AlphaMode = AlphaMode.Overlay;
         public Color3 Color = new Color3(1, 1, 1);
         public ContentId ColorMap = "";
+        public Content ColorMapContent = Content.None;
         public ContentId MetalnessMap = "";
+        public Content MetalnessMapContent = Content.None;
         public ContentId NormalMap = "";
+        public Content NormalMapContent = Content.None;
         public ContentId RoughnessMap = "";
+        public Content RoughnessMapContent = Content.None;
         public ContentId TexturePack;
     }
 
@@ -5715,10 +5729,8 @@ namespace RobloxFiles
     public class VideoPlayer : Instance
     {
         public ContentId Asset = "";
-        public bool AutoLoad;
         public bool Looping;
         public float PlaybackSpeed = 1;
-        public ContentId Thumbnail = "";
         public double TimePosition = 0;
         public float Volume = 1;
     }
@@ -5775,6 +5787,7 @@ namespace RobloxFiles
     public class VoiceChatService : Instance
     {
 
+        public VoiceChatDistanceAttenuationType DefaultDistanceAttenuation = VoiceChatDistanceAttenuationType.Inverse;
         public bool EnableDefaultVoice = true;
         public AudioApiRollout UseAudioApi = AudioApiRollout.Automatic;
     }

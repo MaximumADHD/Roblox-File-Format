@@ -29,10 +29,10 @@ namespace RobloxFiles
         {
             if (buffer.Length > 14)
             {
-                string header = Encoding.UTF7.GetString(buffer, 0, 14);
+                string header = Encoding.ASCII.GetString(buffer, 0, 8);
                 RobloxFile file = null;
 
-                if (header == BinaryRobloxFile.MagicHeader)
+                if (header == "<roblox!")
                     file = new BinaryRobloxFile();
                 else if (header.StartsWith("<roblox"))
                     file = new XmlRobloxFile();

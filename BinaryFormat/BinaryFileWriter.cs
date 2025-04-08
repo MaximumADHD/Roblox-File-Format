@@ -281,8 +281,6 @@ namespace RobloxFiles.BinaryFormat
 
             File.Classes = classes;
             File.Objects = objects.ToArray();
-
-            System.Diagnostics.Debugger.Break();
         }
 
         private bool StartWritingChunk(string chunkType)

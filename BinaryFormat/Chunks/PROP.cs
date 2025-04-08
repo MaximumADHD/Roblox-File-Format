@@ -329,13 +329,11 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     
                     for (int i = 0; i < objCount; i++)
                     {
-                        byte rawOrientId = reader.ReadByte();
+                        byte orientId = reader.ReadByte();
                         
-                        if (rawOrientId > 0)
+                        if (orientId > 0)
                         {
-                            // Make sure this value is in a safe range.
-                            int orientId = (rawOrientId - 1) % 36;
-                            var cf = CFrame.FromOrientId(orientId);
+                            var cf = CFrame.FromOrientId(orientId - 1);
                             matrices[i] = cf.GetComponents();
                         }
                         else if (Type == PropertyType.Quaternion)
@@ -708,7 +706,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             return new Content(File, objId.ToString());
                         }
 
-                        return Content.none;
+                        return Content.None;
                     });
 
                     break;
