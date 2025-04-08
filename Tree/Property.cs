@@ -44,13 +44,15 @@ namespace RobloxFiles
         UniqueId,
         FontFace,
         SecurityCapabilities,
+        Content
     }
 
     public class Property
     {
         public string Name { get; internal set; }
-        public Instance Instance { get; internal set; }
+        public RbxObject Object { get; internal set; }
         public PropertyType Type { get; internal set; }
+        internal RobloxFile File;
 
         public string XmlToken { get; internal set; }
         public byte[] RawBuffer { get; internal set; }
@@ -59,7 +61,6 @@ namespace RobloxFiles
         
         internal static BindingFlags BindingFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy | BindingFlags.IgnoreCase;
 
-        // FIXME: Add a proper type for SecurityCapabilities once it's purpose is better understood.
 
         public static readonly IReadOnlyDictionary<Type, PropertyType> Types = new Dictionary<Type, PropertyType>()
         {
@@ -79,7 +80,7 @@ namespace RobloxFiles
             { typeof(UDim2),     PropertyType.UDim2    },
             { typeof(CFrame),    PropertyType.CFrame   },
             { typeof(Color3),    PropertyType.Color3   },
-            { typeof(Content),   PropertyType.String   },
+            { typeof(Content),   PropertyType.Content   },
             { typeof(Vector2),   PropertyType.Vector2  },
             { typeof(Vector3),   PropertyType.Vector3  },
             { typeof(FontFace),  PropertyType.FontFace },
@@ -95,9 +96,9 @@ namespace RobloxFiles
             { typeof(NumberSequence),    PropertyType.NumberSequence },
             { typeof(Optional<CFrame>),  PropertyType.OptionalCFrame },
 
-            { typeof(ProtectedString),     PropertyType.String               }, 
-            { typeof(PhysicalProperties),  PropertyType.PhysicalProperties   },
-            { typeof(ulong),               PropertyType.SecurityCapabilities },
+            { typeof(ProtectedString),        PropertyType.String               }, 
+            { typeof(PhysicalProperties),     PropertyType.PhysicalProperties   },
+            { typeof(SecurityCapabilities),   PropertyType.SecurityCapabilities },
         };
 
         private void ImproviseRawBuffer()
@@ -131,7 +132,12 @@ namespace RobloxFiles
             {
                 case PropertyType.Int:
                 {
-                    if (Value is long)
+                    if (Value is BrickColor)
+                    {
+                        Type = PropertyType.BrickColor;
+                        break;
+                    }
+                    else if (Value is long)
                     {
                         Type = PropertyType.Int64;
                         goto case PropertyType.Int64;
@@ -167,9 +173,9 @@ namespace RobloxFiles
         {
             get
             {
-                if (Instance != null)
+                if (Object != null)
                 {
-                    Type instType = Instance.GetType();
+                    Type instType = Object.GetType();
                     string typeName = instType.Name;
 
                     if (typeName == Name)
@@ -198,26 +204,26 @@ namespace RobloxFiles
         {
             get
             {
-                if (Instance != null)
+                if (Object != null)
                 {
-                    if (Name == "Tags")
+                    if (Name == "Tags" && Object is Instance inst)
                     {
-                        byte[] data = Instance.SerializedTags;
+                        byte[] data = inst.SerializedTags;
                         RawValue = data;
                     }
                     else
                     {
-                        var type = Instance.GetType();
+                        var type = Object.GetType();
                         var member = ImplicitMember.Get(type, ImplicitName);
 
                         if (member != null)
                         {
-                            object value = member.GetValue(Instance);
+                            object value = member.GetValue(Object);
                             RawValue = value;
                         }
                         else
                         {
-                            RobloxFile.LogError($"RobloxFiles.Property - Property {Instance.ClassName}.{Name} does not exist!");
+                            RobloxFile.LogError($"RobloxFiles.Property - Property {Object.ClassName}.{Name} does not exist!");
                         }
                     }
                 }
@@ -226,15 +232,15 @@ namespace RobloxFiles
             }
             set
             {
-                if (Instance != null)
+                if (Object != null)
                 {
-                    if (Name == "Tags" && value is byte[] data)
+                    if (Name == "Tags" && value is byte[] data && Object is Instance inst)
                     {
-                        Instance.SerializedTags = data;
+                        inst.SerializedTags = data;
                     }
                     else
                     {
-                        var type = Instance.GetType();
+                        var type = Object.GetType();
                         var member = ImplicitMember.Get(type, ImplicitName);
 
                         if (member != null)
@@ -246,11 +252,11 @@ namespace RobloxFiles
                             {
                                 try
                                 {
-                                    member.SetValue(Instance, value);
+                                    member.SetValue(Object, value);
                                 }
                                 catch
                                 {
-                                    RobloxFile.LogError($"RobloxFiles.Property - Failed to cast value {value} into property {Instance.ClassName}.{Name}");
+                                    RobloxFile.LogError($"RobloxFiles.Property - Failed to cast value {value} into property {Object.ClassName}.{Name}");
                                 }
                             }
                             else if (valueType != null)
@@ -262,11 +268,11 @@ namespace RobloxFiles
                                     try
                                     {
                                         object castedValue = implicitCast.Invoke(null, new object[] { value });
-                                        member.SetValue(Instance, castedValue);
+                                        member.SetValue(Object, castedValue);
                                     }
                                     catch
                                     {
-                                        RobloxFile.LogError($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Instance.ClassName}.{Name}");
+                                        RobloxFile.LogError($"RobloxFiles.Property - Failed to implicitly cast value {value} into property {Object.ClassName}.{Name}");
                                     }
                                 }
                             }
@@ -294,16 +300,16 @@ namespace RobloxFiles
             }
         }
 
-        public Property(string name = "", PropertyType type = PropertyType.Unknown, Instance instance = null)
+        public Property(string name = "", PropertyType type = PropertyType.Unknown, RbxObject obj = null)
         {
-            Instance = instance;
+            Object = obj;
             Name = name;
             Type = type;
         }
 
-        public Property(Instance instance, PROP property)
+        public Property(RbxObject obj, PROP property)
         {
-            Instance = instance;
+            Object = obj;
             Name = property.Name;
             Type = property.Type;
         }
@@ -312,8 +318,11 @@ namespace RobloxFiles
         {
             string result = Name;
 
-            if (Instance != null)
-                result = Instance.GetFullName() + "->" + result;
+            if (Object != null)
+                if (Object is Instance inst)
+                    result = inst.GetFullName() + "->" + result;
+                else
+                    result = Object.ClassName + "->" + result;
 
             return result;
         }

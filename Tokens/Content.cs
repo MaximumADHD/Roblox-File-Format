@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Xml;
 
+using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
+using RobloxFiles.XmlFormat;
+using Newtonsoft.Json.Linq;
 
 namespace RobloxFiles.Tokens
 {
@@ -11,56 +14,64 @@ namespace RobloxFiles.Tokens
 
         public bool ReadProperty(Property prop, XmlNode token)
         {
-            string data = token.InnerText;
-            prop.Value = new Content(data);
-            prop.Type = PropertyType.String;
+            var obj = prop.Object;
+            var objType = obj.GetType();
+            var objField = objType.GetField(prop.Name);
 
-            if (token.HasChildNodes)
+            if (objField != null && objField.FieldType.Name == "ContentId")
+            {
+                var contentIdToken = XmlPropertyTokens.GetHandler<ContentIdToken>();
+                return contentIdToken.ReadProperty(prop, token);
+            }
+            else
             {
                 XmlNode childNode = token.FirstChild;
                 string contentType = childNode.Name;
 
-                if (contentType.StartsWith("binary") || contentType == "hash")
-                {
-                    try
-                    {
-                        // Roblox technically doesn't support this anymore, but load it anyway :P
-                        byte[] buffer = Convert.FromBase64String(data);
-                        prop.RawBuffer = buffer;
-                    }
-                    catch
-                    {
-                        RobloxFile.LogError($"ContentToken: Got illegal base64 string: {data}");
-                    }
-                }
-            }
+                if (contentType == "uri")
+                    prop.Value = new Content(token.InnerText);
+                else if (contentType == "Ref")
+                    prop.Value = new Content(prop.File, token.InnerText);
+                else
+                    prop.Value = Content.None;
 
-            return true;
+                prop.Type = PropertyType.Content;
+                return true;
+            }
         }
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            string content = prop.CastValue<Content>();
-            string type = "null";
+            var obj = prop.Object;
+            var objType = obj.GetType();
+            var objField = objType.GetField(prop.Name);
 
-            if (prop.HasRawBuffer)
-                type = "binary";
-            else if (content.Length > 0)
-                type = "url";
-
-            XmlElement contentType = doc.CreateElement(type);
-
-            if (type == "binary")
+            if (objField != null && objField.FieldType.Name == "ContentId")
             {
-                XmlCDataSection cdata = doc.CreateCDataSection(content);
-                contentType.AppendChild(cdata);
+                var contentIdToken = XmlPropertyTokens.GetHandler<ContentIdToken>();
+                contentIdToken.WriteProperty(prop, doc, node);
             }
             else
             {
-                contentType.InnerText = content;
+                var content = prop.CastValue<Content>();
+                string type = "null";
+
+                if (content.SourceType == ContentSourceType.None)
+                    type = "null";
+                else if (content.SourceType == ContentSourceType.Uri)
+                    type = "uri";
+                else if (content.SourceType == ContentSourceType.Object)
+                    type = "Ref";
+
+                XmlElement contentType = doc.CreateElement(type);
+
+                if (content.SourceType == ContentSourceType.Uri)
+                    contentType.InnerText = content.Uri;
+                else if (content.SourceType == ContentSourceType.Object)
+                    contentType.InnerText = content.Object.Referent;
+
+                node.AppendChild(contentType);
             }
-            
-            node.AppendChild(contentType);
         }
     }
 }

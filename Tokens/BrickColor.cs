@@ -12,14 +12,14 @@ namespace RobloxFiles.Tokens
         public string XmlPropertyToken => "BrickColor";
         public AttributeType AttributeType => AttributeType.BrickColor;
 
-        public BrickColor ReadAttribute(RbxAttribute attr) => attr.ReadInt();
+        public BrickColor ReadAttribute(RbxAttribute attr) => (BrickColorId)attr.ReadInt();
         public void WriteAttribute(RbxAttribute attr, BrickColor value) => attr.WriteInt(value.Number);
         
         public bool ReadProperty(Property prop, XmlNode token)
         {
             if (XmlPropertyTokens.ReadPropertyGeneric(token, out int value))
             {
-                BrickColor brickColor = BrickColor.FromNumber(value);
+                BrickColor brickColor = (BrickColorId)value;
                 prop.XmlToken = "BrickColor";
                 prop.Value = brickColor;
 

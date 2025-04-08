@@ -3,158 +3,94 @@ using RobloxFiles.Enums;
 
 namespace RobloxFiles.Utility
 {
-    /// <summary>
-    /// This class defines several dictionaries of metadata for Roblox materials.
-    /// It is primarily used for the PhysicalProperties DataType.
-    /// </summary>
-    public static class MaterialInfo
+    /*
+    for i, material in Enum.Material:GetEnumItems() do 
+        local physics = PhysicalProperties.new(material)
+    
+        local entry = string.format(
+            "{ Material.%-14s new PhysicalPropertyInfo(%.2ff, %.2ff, %.2ff, %.2ff, %.2ff) },",
+            `{material.Name},`,
+            physics.Density,
+            physics.Friction,
+            physics.Elasticity,
+            physics.FrictionWeight,
+            physics.ElasticityWeight
+        )
+    
+        print(entry)
+    end
+    */
+
+    public struct PhysicalPropertyInfo
+    {
+        public float Density;
+        public float Friction;
+        public float Elasticity;
+        public float FrictionWeight;
+        public float ElasticityWeight;
+
+        public PhysicalPropertyInfo(float density, float friction, float elasticity, float frictionWeight, float elasticityWeight)
+        {
+            Density = density;
+            Friction = friction;
+            Elasticity = elasticity;
+            FrictionWeight = frictionWeight;
+            ElasticityWeight = elasticityWeight;
+        }
+    }
+
+    public static class PhysicalPropertyData
     {
         /// <summary>
-        /// A dictionary mapping materials to their default Density.
+        /// A dictionary mapping materials to their default physical properties.
         /// </summary>
-        public static readonly IReadOnlyDictionary<Material, float> DensityMap = new Dictionary<Material, float>()
+        public static readonly IReadOnlyDictionary<Material, PhysicalPropertyInfo> Materials = new Dictionary<Material, PhysicalPropertyInfo>()
         {
-            {Material.Air,           0.01f},
-            {Material.Asphalt,       2.36f},
-            {Material.Basalt,        2.69f},
-            {Material.Brick,         1.92f},
-            {Material.Cobblestone,   2.69f},
-            {Material.Concrete,      2.40f},
-            {Material.CorrodedMetal, 7.85f},
-            {Material.CrackedLava,   2.69f},
-            {Material.DiamondPlate,  7.85f},
-            {Material.Fabric,        0.70f},
-            {Material.Foil,          2.70f},
-            {Material.ForceField,    2.40f},
-            {Material.Glacier,       0.92f},
-            {Material.Glass,         2.40f},
-            {Material.Granite,       2.69f},
-            {Material.Grass,         0.90f},
-            {Material.Ground,        0.90f},
-            {Material.Ice,           0.92f},
-            {Material.LeafyGrass,    0.90f},
-            {Material.Limestone,     2.69f},
-            {Material.Marble,        2.56f},
-            {Material.Metal,         7.85f},
-            {Material.Mud,           0.90f},
-            {Material.Neon,          0.70f},
-            {Material.Pavement,      2.69f},
-            {Material.Pebble,        2.40f},
-            {Material.Plastic,       0.70f},
-            {Material.Rock,          2.69f},
-            {Material.Salt,          2.16f},
-            {Material.Sand,          1.60f},
-            {Material.Sandstone,     2.69f},
-            {Material.Slate,         2.69f},
-            {Material.SmoothPlastic, 0.70f},
-            {Material.Snow,          0.90f},
-            {Material.Water,         1.00f},
-            {Material.Wood,          0.35f},
-            {Material.WoodPlanks,    0.35f},
-        };
-
-        /// <summary>
-        /// A dictionary mapping materials to their default Elasticity.
-        /// </summary>
-        public static readonly IReadOnlyDictionary<Material, float> ElasticityMap = new Dictionary<Material, float>()
-        {
-            {Material.Air,           0.01f},
-            {Material.Asphalt,       0.20f},
-            {Material.Basalt,        0.15f},
-            {Material.Brick,         0.15f},
-            {Material.Cobblestone,   0.17f},
-            {Material.Concrete,      0.20f},
-            {Material.CorrodedMetal, 0.20f},
-            {Material.CrackedLava,   0.15f},
-            {Material.DiamondPlate,  0.25f},
-            {Material.Fabric,        0.05f},
-            {Material.Foil,          0.25f},
-            {Material.ForceField,    0.20f},
-            {Material.Glacier,       0.15f},
-            {Material.Glass,         0.20f},
-            {Material.Granite,       0.20f},
-            {Material.Grass,         0.10f},
-            {Material.Ground,        0.10f},
-            {Material.Ice,           0.15f},
-            {Material.LeafyGrass,    0.10f},
-            {Material.Limestone,     0.15f},
-            {Material.Marble,        0.17f},
-            {Material.Metal,         0.25f},
-            {Material.Mud,           0.07f},
-            {Material.Neon,          0.20f},
-            {Material.Pavement,      0.17f},
-            {Material.Pebble,        0.17f},
-            {Material.Plastic,       0.50f},
-            {Material.Rock,          0.17f},
-            {Material.Salt,          0.05f},
-            {Material.Sand,          0.05f},
-            {Material.Sandstone,     0.15f},
-            {Material.Slate,         0.20f},
-            {Material.SmoothPlastic, 0.50f},
-            {Material.Snow,          0.03f},
-            {Material.Water,         0.01f},
-            {Material.Wood,          0.20f},
-            {Material.WoodPlanks,    0.20f},
-        };
-
-        /// <summary>
-        /// A dictionary mapping materials to their default Friction.
-        /// </summary>
-        public static readonly IReadOnlyDictionary<Material, float> FrictionMap = new Dictionary<Material, float>()
-        {
-            {Material.Air,           0.01f},
-            {Material.Asphalt,       0.80f},
-            {Material.Basalt,        0.70f},
-            {Material.Brick,         0.80f},
-            {Material.Cobblestone,   0.50f},
-            {Material.Concrete,      0.70f},
-            {Material.CorrodedMetal, 0.70f},
-            {Material.CrackedLava,   0.65f},
-            {Material.DiamondPlate,  0.35f},
-            {Material.Fabric,        0.35f},
-            {Material.Foil,          0.40f},
-            {Material.ForceField,    0.25f},
-            {Material.Glacier,       0.05f},
-            {Material.Glass,         0.25f},
-            {Material.Granite,       0.40f},
-            {Material.Grass,         0.40f},
-            {Material.Ground,        0.45f},
-            {Material.Ice,           0.02f},
-            {Material.LeafyGrass,    0.40f},
-            {Material.Limestone,     0.50f},
-            {Material.Marble,        0.20f},
-            {Material.Metal,         0.40f},
-            {Material.Mud,           0.30f},
-            {Material.Neon,          0.30f},
-            {Material.Pavement,      0.50f},
-            {Material.Pebble,        0.40f},
-            {Material.Plastic,       0.30f},
-            {Material.Rock,          0.50f},
-            {Material.Salt,          0.50f},
-            {Material.Sand,          0.50f},
-            {Material.Sandstone,     0.50f},
-            {Material.Slate,         0.40f},
-            {Material.SmoothPlastic, 0.20f},
-            {Material.Snow,          0.30f},
-            {Material.Water,         0.00f},
-            {Material.Wood,          0.48f},
-            {Material.WoodPlanks,    0.48f},
-        };
-
-        /// <summary>
-        /// A dictionary mapping materials to their default Friction.<para/>
-        /// NOTE: This only maps materials that have different FrictionWeights.<para/>
-        ///       If it isn't in here, assume their FrictionWeight is 1.
-        /// </summary>
-        public static readonly IReadOnlyDictionary<Material, float> FrictionWeightMap = new Dictionary<Material, float>()
-        {
-            {Material.Asphalt,       0.30f},
-            {Material.Basalt,        0.30f},
-            {Material.Brick,         0.30f},
-            {Material.Concrete,      0.30f},
-            {Material.Ice,           3.00f},
-            {Material.Sand,          5.00f},
-            {Material.Sandstone,     5.00f},
+            { Material.Plastic,       new PhysicalPropertyInfo(0.70f, 0.30f, 0.50f, 1.00f, 1.00f) },
+            { Material.SmoothPlastic, new PhysicalPropertyInfo(0.70f, 0.20f, 0.50f, 1.00f, 1.00f) },
+            { Material.Neon,          new PhysicalPropertyInfo(0.70f, 0.30f, 0.20f, 1.00f, 1.00f) },
+            { Material.Wood,          new PhysicalPropertyInfo(0.35f, 0.48f, 0.20f, 1.00f, 1.00f) },
+            { Material.WoodPlanks,    new PhysicalPropertyInfo(0.35f, 0.48f, 0.20f, 1.00f, 1.00f) },
+            { Material.Marble,        new PhysicalPropertyInfo(2.56f, 0.20f, 0.17f, 1.00f, 1.00f) },
+            { Material.Slate,         new PhysicalPropertyInfo(2.69f, 0.40f, 0.20f, 1.00f, 1.00f) },
+            { Material.Concrete,      new PhysicalPropertyInfo(2.40f, 0.70f, 0.20f, 0.30f, 1.00f) },
+            { Material.Granite,       new PhysicalPropertyInfo(2.69f, 0.40f, 0.20f, 1.00f, 1.00f) },
+            { Material.Brick,         new PhysicalPropertyInfo(1.92f, 0.80f, 0.15f, 0.30f, 1.00f) },
+            { Material.Pebble,        new PhysicalPropertyInfo(2.40f, 0.40f, 0.17f, 1.00f, 1.50f) },
+            { Material.Cobblestone,   new PhysicalPropertyInfo(2.69f, 0.50f, 0.17f, 1.00f, 1.00f) },
+            { Material.Rock,          new PhysicalPropertyInfo(2.69f, 0.50f, 0.17f, 1.00f, 1.00f) },
+            { Material.Sandstone,     new PhysicalPropertyInfo(2.69f, 0.50f, 0.15f, 5.00f, 1.00f) },
+            { Material.Basalt,        new PhysicalPropertyInfo(2.69f, 0.70f, 0.15f, 0.30f, 1.00f) },
+            { Material.CrackedLava,   new PhysicalPropertyInfo(2.69f, 0.65f, 0.15f, 1.00f, 1.00f) },
+            { Material.Limestone,     new PhysicalPropertyInfo(2.69f, 0.50f, 0.15f, 1.00f, 1.00f) },
+            { Material.Pavement,      new PhysicalPropertyInfo(2.69f, 0.50f, 0.17f, 0.30f, 1.00f) },
+            { Material.CorrodedMetal, new PhysicalPropertyInfo(7.85f, 0.70f, 0.20f, 1.00f, 1.00f) },
+            { Material.DiamondPlate,  new PhysicalPropertyInfo(7.85f, 0.35f, 0.25f, 1.00f, 1.00f) },
+            { Material.Foil,          new PhysicalPropertyInfo(2.70f, 0.40f, 0.25f, 1.00f, 1.00f) },
+            { Material.Metal,         new PhysicalPropertyInfo(7.85f, 0.40f, 0.25f, 1.00f, 1.00f) },
+            { Material.Grass,         new PhysicalPropertyInfo(0.90f, 0.40f, 0.10f, 1.00f, 1.50f) },
+            { Material.LeafyGrass,    new PhysicalPropertyInfo(0.90f, 0.40f, 0.10f, 2.00f, 2.00f) },
+            { Material.Sand,          new PhysicalPropertyInfo(1.60f, 0.50f, 0.05f, 5.00f, 2.50f) },
+            { Material.Fabric,        new PhysicalPropertyInfo(0.70f, 0.35f, 0.05f, 1.00f, 1.00f) },
+            { Material.Snow,          new PhysicalPropertyInfo(0.90f, 0.30f, 0.03f, 3.00f, 4.00f) },
+            { Material.Mud,           new PhysicalPropertyInfo(0.90f, 0.30f, 0.07f, 3.00f, 4.00f) },
+            { Material.Ground,        new PhysicalPropertyInfo(0.90f, 0.45f, 0.10f, 1.00f, 1.00f) },
+            { Material.Asphalt,       new PhysicalPropertyInfo(2.36f, 0.80f, 0.20f, 0.30f, 1.00f) },
+            { Material.Salt,          new PhysicalPropertyInfo(2.16f, 0.50f, 0.05f, 1.00f, 1.00f) },
+            { Material.Ice,           new PhysicalPropertyInfo(0.92f, 0.02f, 0.15f, 3.00f, 1.00f) },
+            { Material.Glacier,       new PhysicalPropertyInfo(0.92f, 0.05f, 0.15f, 2.00f, 1.00f) },
+            { Material.Glass,         new PhysicalPropertyInfo(2.40f, 0.25f, 0.20f, 1.00f, 1.00f) },
+            { Material.ForceField,    new PhysicalPropertyInfo(2.40f, 0.25f, 0.20f, 1.00f, 1.00f) },
+            { Material.Air,           new PhysicalPropertyInfo(0.01f, 0.01f, 0.01f, 1.00f, 1.00f) },
+            { Material.Water,         new PhysicalPropertyInfo(1.00f, 0.00f, 0.01f, 1.00f, 1.00f) },
+            { Material.Cardboard,     new PhysicalPropertyInfo(0.70f, 0.50f, 0.05f, 1.00f, 2.00f) },
+            { Material.Carpet,        new PhysicalPropertyInfo(1.10f, 0.40f, 0.25f, 1.00f, 2.00f) },
+            { Material.CeramicTiles,  new PhysicalPropertyInfo(2.40f, 0.51f, 0.20f, 1.00f, 1.00f) },
+            { Material.ClayRoofTiles, new PhysicalPropertyInfo(2.00f, 0.51f, 0.20f, 1.00f, 1.00f) },
+            { Material.RoofShingles,  new PhysicalPropertyInfo(2.36f, 0.80f, 0.20f, 0.30f, 1.00f) },
+            { Material.Leather,       new PhysicalPropertyInfo(0.86f, 0.35f, 0.25f, 1.00f, 1.00f) },
+            { Material.Plaster,       new PhysicalPropertyInfo(0.75f, 0.60f, 0.20f, 0.30f, 1.00f) },
+            { Material.Rubber,        new PhysicalPropertyInfo(1.30f, 1.50f, 0.95f, 3.00f, 2.00f) },
         };
     }
 }

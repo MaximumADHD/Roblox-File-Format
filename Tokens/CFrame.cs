@@ -83,13 +83,12 @@ namespace RobloxFiles.Tokens
                   y = attribute.ReadFloat(),
                   z = attribute.ReadFloat();
 
-            var rawOrientId = attribute.ReadByte();
+            byte orientId = attribute.ReadByte();
             var pos = new Vector3(x, y, z);
 
-            if (rawOrientId > 0)
+            if (orientId > 0)
             {
-                int orientId = (rawOrientId - 1) % 36;
-                return CFrame.FromOrientId(orientId) + pos;
+                return CFrame.FromOrientId(orientId - 1) + pos;
             }
             else
             {

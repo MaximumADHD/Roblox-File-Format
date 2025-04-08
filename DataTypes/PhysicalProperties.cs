@@ -19,12 +19,12 @@ namespace RobloxFiles.DataTypes
 
         public PhysicalProperties(Material material)
         {
-            if (MaterialInfo.FrictionWeightMap.ContainsKey(material))
-                FrictionWeight = MaterialInfo.FrictionWeightMap[material];
-
-            Density = MaterialInfo.DensityMap[material];
-            Friction = MaterialInfo.FrictionMap[material];
-            Elasticity = MaterialInfo.ElasticityMap[material];
+            var info = PhysicalPropertyData.Materials[material];
+            ElasticityWeight = info.ElasticityWeight;
+            FrictionWeight = info.FrictionWeight;
+            Elasticity = info.Elasticity;
+            Friction = info.Friction;
+            Density = info.Density;
         }
 
         public PhysicalProperties(float density, float friction, float elasticity, float frictionWeight = 1f, float elasticityWeight = 1f)
@@ -32,7 +32,6 @@ namespace RobloxFiles.DataTypes
             Density = density;
             Friction = friction;
             Elasticity = elasticity;
-
             FrictionWeight = frictionWeight;
             ElasticityWeight = elasticityWeight;
         }

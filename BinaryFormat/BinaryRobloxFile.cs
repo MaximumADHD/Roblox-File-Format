@@ -17,7 +17,7 @@ namespace RobloxFiles
 
         public ushort Version      { get; internal set; }
         public uint   NumClasses   { get; internal set; }
-        public uint   NumInstances { get; internal set; }
+        public uint   NumObjects   { get; internal set; }
         public long   Reserved     { get; internal set; }
 
         // Runtime Specific
@@ -25,7 +25,7 @@ namespace RobloxFiles
         public IReadOnlyList<BinaryRobloxFileChunk> Chunks => ChunksImpl;
         public override string ToString() => GetType().Name;
         
-        public Instance[] Instances { get; internal set; }
+        public RbxObject[] Objects { get; internal set; }
         public INST[] Classes       { get; internal set; }
 
         internal META META;
@@ -63,14 +63,13 @@ namespace RobloxFiles
                 // Read header data.
                 Version = reader.ReadUInt16();
                 NumClasses = reader.ReadUInt32();
-                NumInstances = reader.ReadUInt32();
+                NumObjects = reader.ReadUInt32();
                 Reserved = reader.ReadInt64();
 
                 // Begin reading the file chunks.
                 bool reading = true;
-
                 Classes = new INST[NumClasses];
-                Instances = new Instance[NumInstances];
+                Objects = new RbxObject[NumObjects];
 
                 while (reading)
                 {
@@ -159,15 +158,12 @@ namespace RobloxFiles
                 Referent = "-1";
                 ChunksImpl.Clear();
 
-                NumInstances = 0;
+                NumObjects = 0;
                 NumClasses = 0;
                 SSTR = null;
 
-                // Recursively capture all instances and classes.
-                writer.RecordInstances(Children);
-
-                // Apply the recorded instances and classes.
-                writer.ApplyClassMap();
+                // Build the Object/Class tables.
+                writer.BuildTables();
 
                 // Write the INST chunks.
                 foreach (INST inst in Classes)
@@ -220,7 +216,7 @@ namespace RobloxFiles
 
                 writer.Write(Version);
                 writer.Write(NumClasses);
-                writer.Write(NumInstances);
+                writer.Write(NumObjects);
                 writer.Write(Reserved);
 
                 foreach (BinaryRobloxFileChunk chunk in Chunks)

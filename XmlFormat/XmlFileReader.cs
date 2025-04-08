@@ -100,11 +100,11 @@ namespace RobloxFiles.XmlFormat
 
                 if (tokenHandler != null)
                 {
-                    Property prop = new Property()
+                    var prop = new Property()
                     {
                         Name = propName.InnerText,
-                        Instance = instance,
-                        XmlToken = propType
+                        XmlToken = propType,
+                        Object = instance,
                     };
 
                     if (!tokenHandler.ReadProperty(prop, propNode) && RobloxFile.LogErrors)
@@ -171,16 +171,23 @@ namespace RobloxFiles.XmlFormat
                 switch (childNode.Name)
                 {
                     case "Item":
+                    {
                         Instance child = ReadInstance(childNode, file);
 
                         if (child != null)
                             child.Parent = inst;
 
                         break;
-                    case "Properties": 
-                        ReadProperties(inst, childNode); 
+                    }
+                    case "Properties":
+                    {
+                        ReadProperties(inst, childNode);
                         break;
-                    default: break;
+                    }
+                    default:
+                    {
+                        break;
+                    }
                 }
             }
 

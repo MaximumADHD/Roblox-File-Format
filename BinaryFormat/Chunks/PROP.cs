@@ -56,34 +56,34 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 return;
             }
 
-            var ids = Class.InstanceIds;
-            int instCount = Class.NumInstances;
-            var props = new Property[instCount];
+            var ids = Class.ObjectIds;
+            int objCount = Class.NumObjects;
+            var props = new Property[objCount];
 
-            for (int i = 0; i < instCount; i++)
+            for (int i = 0; i < objCount; i++)
             {
                 int id = ids[i];
-                Instance instance = File.Instances[id];
+                RbxObject obj = File.Objects[id];
 
-                if (instance == null)
+                if (obj == null)
                 {
-                    RobloxFile.LogError($"PROP: No instance @{id} for property {ClassName}.{Name}");
+                    RobloxFile.LogError($"PROP: No object @{id} for property {ClassName}.{Name}");
                     continue;
                 }
 
-                var prop = new Property(instance, this);
+                var prop = new Property(obj, this);
                 props[i] = prop;
 
-                instance.AddProperty(prop);
+                obj.AddProperty(prop);
             }
 
             // Setup some short-hand functions for actions used during the read procedure.
-            var readInts = new Func<int[]>(() => reader.ReadInterleaved(instCount, reader.RotateInt32));
-            var readFloats = new Func<float[]>(() => reader.ReadInterleaved(instCount, reader.RotateFloat));
+            var readInts = new Func<int[]>(() => reader.ReadInterleaved(objCount, reader.RotateInt32));
+            var readFloats = new Func<float[]>(() => reader.ReadInterleaved(objCount, reader.RotateFloat));
             
             var readProperties = new Action<Func<int, object>>(read =>
             {
-                for (int i = 0; i < instCount; i++)
+                for (int i = 0; i < objCount; i++)
                 {
                     var prop = props[i];
 
@@ -120,10 +120,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             default:
                             {
                                 Property prop = props[i];
-                                Instance instance = prop.Instance;
+                                RbxObject obj = prop.Object;
 
-                                Type instType = instance.GetType();
-                                var member = ImplicitMember.Get(instType, Name);
+                                Type objType = obj.GetType();
+                                var member = ImplicitMember.Get(objType, Name);
 
                                 if (member != null)
                                 {
@@ -248,8 +248,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     readProperties(i =>
                     {
-                        BrickColor color = BrickColorIds[i];
-                        return color;
+                        BrickColor brickColor = BrickColorId.Medium_stone_grey;
+                        var value = BrickColorIds[i];
+
+                        if (Enum.IsDefined(typeof(BrickColorId), value))
+                            brickColor = (BrickColorId)value;
+
+                        return brickColor;
                     });
 
                     break;
@@ -307,7 +312,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 case PropertyType.Quaternion:
                 case PropertyType.OptionalCFrame:
                 {
-                    float[][] matrices = new float[instCount][];
+                    float[][] matrices = new float[objCount][];
 
                     if (Type == PropertyType.OptionalCFrame)
                     {
@@ -322,15 +327,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         }
                     }
                     
-                    for (int i = 0; i < instCount; i++)
+                    for (int i = 0; i < objCount; i++)
                     {
-                        byte rawOrientId = reader.ReadByte();
+                        byte orientId = reader.ReadByte();
                         
-                        if (rawOrientId > 0)
+                        if (orientId > 0)
                         {
-                            // Make sure this value is in a safe range.
-                            int orientId = (rawOrientId - 1) % 36;
-                            var cf = CFrame.FromOrientId(orientId);
+                            var cf = CFrame.FromOrientId(orientId - 1);
                             matrices[i] = cf.GetComponents();
                         }
                         else if (Type == PropertyType.Quaternion)
@@ -363,9 +366,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             CFrame_Y = readFloats(),
                             CFrame_Z = readFloats();
 
-                    var CFrames = new CFrame[instCount];
+                    var CFrames = new CFrame[objCount];
 
-                    for (int i = 0; i < instCount; i++)
+                    for (int i = 0; i < objCount; i++)
                     {
                         float[] matrix = matrices[i];
 
@@ -404,7 +407,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             break;
                         }
 
-                        for (int i = 0; i < instCount; i++)
+                        for (int i = 0; i < objCount; i++)
                         {
                             CFrame cf = CFrames[i];
                             bool archivable = reader.ReadBoolean();
@@ -421,19 +424,19 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.Enum:
                 {
-                    uint[] enums = reader.ReadInterleaved(instCount, BitConverter.ToUInt32);
+                    uint[] enums = reader.ReadInterleaved(objCount, BitConverter.ToUInt32);
 
                     readProperties(i =>
                     {
                         Property prop = props[i];
-                        Instance instance = prop.Instance;
+                        RbxObject obj = prop.Object;
 
-                        Type instType = instance.GetType();
+                        Type objType = obj.GetType();
                         uint value = enums[i];
 
                         try
                         {
-                            var info = ImplicitMember.Get(instType, Name);
+                            var info = ImplicitMember.Get(objType, Name);
 
                             if (info == null)
                             {
@@ -454,19 +457,19 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.Ref:
                 {
-                    var instIds = reader.ReadInstanceIds(instCount);
+                    var objIds = reader.ReadObjectIds(objCount);
 
                     readProperties(i =>
                     {
-                        int instId = instIds[i];
+                        int objId = objIds[i];
 
-                        if (instId >= File.NumInstances)
+                        if (objId >= File.NumObjects)
                         {
                             RobloxFile.LogError($"Got out of bounds referent index in {ClassName}.{Name}!");
                             return null;
                         }
 
-                        return instId >= 0 ? File.Instances[instId] : null;
+                        return objId >= 0 ? File.Objects[objId] : null;
                     });
 
                     break;
@@ -588,9 +591,9 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.Color3uint8:
                 {
-                    byte[] Color3uint8_R = reader.ReadBytes(instCount),
-                           Color3uint8_G = reader.ReadBytes(instCount),
-                           Color3uint8_B = reader.ReadBytes(instCount);
+                    byte[] Color3uint8_R = reader.ReadBytes(objCount),
+                           Color3uint8_G = reader.ReadBytes(objCount),
+                           Color3uint8_B = reader.ReadBytes(objCount);
 
                     readProperties(i =>
                     {
@@ -606,13 +609,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.Int64:
                 {
-                    var values = reader.ReadInterleaved(instCount, reader.RotateInt64);
+                    var values = reader.ReadInterleaved(objCount, reader.RotateInt64);
                     readProperties(i => values[i]);
                     break;
                 }
                 case PropertyType.SharedString:
                 {
-                    var keys = reader.ReadInterleaved(instCount, BitConverter.ToUInt32);
+                    var keys = reader.ReadInterleaved(objCount, BitConverter.ToUInt32);
 
                     readProperties(i =>
                     {
@@ -636,7 +639,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.UniqueId:
                 {
-                    var uniqueIds = reader.ReadInterleaved(instCount, (buffer, offset) =>
+                    var uniqueIds = reader.ReadInterleaved(objCount, (buffer, offset) =>
                     {
                         var random = reader.RotateInt64(buffer, 0);
                         var time = BitConverter.ToUInt32(buffer, 8);
@@ -665,8 +668,47 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.SecurityCapabilities:
                 {
-                    var capabilities = reader.ReadInterleaved(instCount, BitConverter.ToUInt64);
-                    readProperties(i => capabilities[i]);
+                    var capabilities = reader.ReadInterleaved(objCount, BitConverter.ToUInt64);
+                    readProperties(i => (SecurityCapabilities)capabilities[i]);
+                    break;
+                }
+                case PropertyType.Content:
+                {
+                    var sourceTypes = readInts();
+
+                    var numUris = reader.ReadUInt32();
+                    var uris = new string[numUris];
+
+                    for (int i = 0; i < numUris; i++)
+                        uris[i] = reader.ReadString();
+
+                    var numObjs = reader.ReadInt32();
+                    var objIds = reader.ReadObjectIds(numObjs);
+
+                    var _numExtObjs = reader.ReadInt32();
+                    var _extObjIds = reader.ReadObjectIds(_numExtObjs);
+
+                    var uriCtr = 0;
+                    var objCtr = 0;
+
+                    readProperties(i =>
+                    {
+                        var type = (ContentSourceType)sourceTypes[i];
+                        
+                        if (type == ContentSourceType.Uri)
+                        {
+                            var uri = uris[uriCtr++];
+                            return new Content(uri);
+                        }
+                        else if (type == ContentSourceType.Object)
+                        {
+                            var objId = objIds[objCtr++];
+                            return new Content(File, objId.ToString());
+                        }
+
+                        return Content.None;
+                    });
+
                     break;
                 }
                 default:
@@ -684,10 +726,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
             BinaryRobloxFile file = writer.File;
             var propMap = new Dictionary<string, PROP>();
 
-            foreach (int instId in inst.InstanceIds)
+            foreach (int objId in inst.ObjectIds)
             {
-                Instance instance = file.Instances[instId];
-                var props = instance.RefreshProperties();
+                RbxObject obj = file.Objects[objId];
+                var props = obj.RefreshProperties();
 
                 foreach (string propName in props.Keys)
                 {
@@ -726,15 +768,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
             INST inst = file.Classes[ClassIndex];
             var props = new List<Property>();
 
-            foreach (int instId in inst.InstanceIds)
+            foreach (int objId in inst.ObjectIds)
             {
-                Instance instance = file.Instances[instId];
-                var instProps = instance.Properties;
+                RbxObject obj = file.Objects[objId];
+                var objProps = obj.Properties;
 
-                if (!instProps.TryGetValue(Name, out Property prop))
-                    throw new Exception($"Property {Name} must be defined in {instance.GetFullName()}!");
+                if (!objProps.TryGetValue(Name, out Property prop))
+                    throw new Exception($"Property {Name} must be defined in {obj}!");
                 else if (prop.Type != Type)
-                    throw new Exception($"Property {Name} is not using the correct type in {instance.GetFullName()}!");
+                    throw new Exception($"Property {Name} is not using the correct type in {obj}!");
 
                 props.Add(prop);
             }
@@ -746,6 +788,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
             switch (Type)
             {
                 case PropertyType.String:
+                {
                     props.ForEach(prop =>
                     {
                         byte[] buffer = prop.HasRawBuffer ? prop.RawBuffer : null;
@@ -761,6 +804,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     });
 
                     break;
+                }
                 case PropertyType.Bool:
                 {
                     props.ForEach(prop =>
@@ -877,7 +921,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 {
                     var brickColorIds = props
                         .Select(prop => prop.CastValue<BrickColor>())
-                        .Select(value => value.Number)
+                        .Select(prop => (int)prop.Id)
                         .ToList();
 
                     writer.WriteInts(brickColorIds);
@@ -1046,7 +1090,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.Ref:
                 {
-                    var InstanceIds = new List<int>();
+                    // TODO: Will this support RbxObject later?
+                    var instIds = new List<int>();
 
                     props.ForEach(prop =>
                     {
@@ -1054,7 +1099,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                         if (prop.Value != null)
                         {
-                            Instance value = prop.CastValue<Instance>();
+                            var value = prop.CastValue<Instance>();
 
                             if (value.IsDescendantOf(File))
                             {
@@ -1063,10 +1108,10 @@ namespace RobloxFiles.BinaryFormat.Chunks
                             }
                         }
 
-                        InstanceIds.Add(referent);
+                        instIds.Add(referent);
                     });
 
-                    writer.WriteInstanceIds(InstanceIds);
+                    writer.WriteObjectIds(instIds);
                     break;
                 }
                 case PropertyType.Vector3int16:
@@ -1173,7 +1218,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                         if (custom)
                         {
-                            PhysicalProperties value = prop.CastValue<PhysicalProperties>();
+                            var value = prop.CastValue<PhysicalProperties>();
 
                             writer.Write(value.Density);
                             writer.Write(value.Friction);
@@ -1323,6 +1368,45 @@ namespace RobloxFiles.BinaryFormat.Chunks
                     writer.WriteInterleaved(capabilities);
                     break;
                 }
+                case PropertyType.Content:
+                {
+                    var contentTypes = new List<int>();
+                    var objectIds = new List<int>();
+                    var uris = new List<string>();
+
+                    props.ForEach(prop =>
+                    {
+                        var content = prop.CastValue<Content>();
+
+                        var typeId = (int)content.SourceType;
+                        contentTypes.Add(typeId);
+
+                        if (content.SourceType == ContentSourceType.Uri)
+                        {
+                            var uri = content.Uri;
+                            uris.Add(uri);
+                        }
+                        else if (content.SourceType == ContentSourceType.Object)
+                        {
+                            var obj = content.Object;
+                            int id = int.Parse(obj.Referent);
+                            objectIds.Add(id);
+                        }
+                    });
+
+                    writer.WriteInts(contentTypes);
+                    writer.Write(uris.Count);
+
+                    foreach (var uri in uris)
+                        writer.WriteString(uri);
+
+                    writer.Write(objectIds.Count);
+                    writer.WriteObjectIds(objectIds);
+
+                    // External Ids (unused)
+                    writer.Write(0);
+                    break;
+                }
                 default:
                 {
                     RobloxFile.LogError($"Unhandled property type: {Type} in {this}!");
@@ -1339,15 +1423,15 @@ namespace RobloxFiles.BinaryFormat.Chunks
             builder.AppendLine($"- ClassName:  {ClassName}");
             builder.AppendLine($"- ClassIndex: {ClassIndex}");
 
-            builder.AppendLine($"| InstanceId |           Value           |");
+            builder.AppendLine($"| ObjectId   |           Value           |");
             builder.AppendLine($"|-----------:|---------------------------|");
 
             INST inst = File.Classes[ClassIndex];
 
-            foreach (var instId in inst.InstanceIds)
+            foreach (var objId in inst.ObjectIds)
             {
-                Instance instance = File.Instances[instId];
-                Property prop = instance?.GetProperty(Name);
+                RbxObject obj = File.Objects[objId];
+                Property prop = obj?.GetProperty(Name);
 
                 object value = prop?.Value;
                 string str = value?.ToInvariantString() ?? "null";
@@ -1361,7 +1445,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 str = str.Replace('\r', ' ');
                 str = str.Replace('\n', ' ');
 
-                string row = string.Format("| {0, 10} | {1, -25} |", instId, str);
+                string row = string.Format("| {0, 10} | {1, -25} |", objId, str);
                 builder.AppendLine(row);
             }
         }

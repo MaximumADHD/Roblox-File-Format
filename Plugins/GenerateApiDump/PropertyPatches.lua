@@ -12,13 +12,6 @@ export type Patch = {
 	Defaults: { [string]: any }?,
 }
 
--- strict type reaffirmation?
--- this is some bug with Luau.
-
-local function GetSet(getSet: GetSet): GetSet
-	return getSet
-end
-
 local function UseColor3(propName: string): GetSet
 	return {
 		Get = string.format("BrickColor.FromColor3(%s)", propName),
@@ -44,27 +37,49 @@ local function TryGetEnumItem(enumName, itemName): EnumItem?
 	return nil
 end
 
+local function GetBodyPart(bodyPart: Enum.BodyPart): GetSet
+	return {
+		Get = `Specials.GetBodyPart(this, BodyPart.{bodyPart.Name}).AssetId`,
+		Set = `Specials.GetBodyPart(this, BodyPart.{bodyPart.Name}).AssetId = value`,
+	}
+end
+
+local function GetBodyColor(bodyPart: Enum.BodyPart): GetSet
+	return {
+		Get = `Specials.GetBodyPart(this, BodyPart.{bodyPart.Name}).Color`,
+		Set = `Specials.GetBodyPart(this, BodyPart.{bodyPart.Name}).Color = value`,
+	}
+end
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 local GuiTextMixIn: Patch = {
 	Redirect = {
-		Font = GetSet({
+		Font = {
 			Get = "FontUtility.GetLegacyFont(FontFace)",
 			Set = "FontUtility.TryGetFontFace(value, out FontFace)",
-		}),
+		},
 
-		FontSize = GetSet({
+		FontSize = {
 			Get = "FontUtility.GetFontSize(TextSize)",
 			Set = "TextSize = FontUtility.GetFontSize(value)",
-		}),
+		},
 
 		TextColor = UseColor3("TextColor3"),
-		TextWrap = GetSet("TextWrapped"),
+		TextWrap = "TextWrapped",
 
-		Transparency = GetSet({
+		Transparency = {
 			Get = "base.Transparency",
 			Set = "base.Transparency = value;\nTextTransparency  = value;",
-			Flag = "new",
-		}),
+			Flags = "new",
+		},
 	},
+}
+
+local GuiImageMixIn: Patch = {
+	Redirect = {
+		Image = "ImageContent",
+	}
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,28 +101,34 @@ local PropertyPatches: { [string]: Patch } = {
 
 	AudioSearchParams = {
 		Redirect = {
-			AudioSubtype = GetSet("AudioSubType"),
+			AudioSubtype = "AudioSubType",
 		},
+	},
+
+	AudioPlayer = {
+		Redirect = {
+			AssetId = "Asset",
+		}
 	},
 
 	BallSocketConstraint = {
 		-- Why does this even exist?
 		Redirect = {
-			MaxFrictionTorque = GetSet("MaxFrictionTorqueXml"),
+			MaxFrictionTorque = "MaxFrictionTorqueXml",
 		},
 	},
 
 	BasePart = {
 		Redirect = {
-			Position = GetSet({
+			Position = {
 				Get = "CFrame.Position",
 				Set = "CFrame = new CFrame(value) * CFrame.Rotation",
-			}),
+			},
 
-			MaterialVariant = GetSet("MaterialVariantSerialized"),
+			MaterialVariant = "MaterialVariantSerialized",
 			BrickColor = UseColor3("Color"),
-			Color = GetSet("Color3uint8"),
-			Size = GetSet("size"),
+			Color = "Color3uint8",
+			Size = "size",
 		},
 
 		Defaults = {
@@ -115,6 +136,12 @@ local PropertyPatches: { [string]: Patch } = {
 			MaterialVariantSerialized = "",
 			size = Vector3.new(4, 1.2, 2),
 		},
+	},
+
+	BaseWrap = {
+		Redirect = {
+			CageMeshId = "CageMeshContent",
+		}
 	},
 
 	BodyColors = {
@@ -129,15 +156,21 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	BodyAngularVelocity = {
-		Redirect = { angularvelocity = GetSet("AngularVelocity") },
+		Redirect = {
+			angularvelocity = "AngularVelocity"
+		},
 	},
 
 	BodyGyro = {
-		Redirect = { cframe = GetSet("CFrame") },
+		Redirect = {
+			cframe = "CFrame"
+		},
 	},
 
 	Camera = {
-		Redirect = { CoordinateFrame = GetSet("CFrame") },
+		Redirect = {
+			CoordinateFrame = "CFrame"
+		},
 	},
 
 	DataStoreService = {
@@ -147,10 +180,16 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
+	Decal = {
+		Redirect = {
+			Texture = "TextureContent",
+		}
+	},
+
 	DoubleConstrainedValue = {
 		Redirect = {
-			Value = GetSet("value"),
-			ConstrainedValue = GetSet("value"),
+			Value = "value",
+			ConstrainedValue = "value",
 		},
 	},
 
@@ -161,13 +200,15 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 
 		Redirect = {
-			Heat = GetSet("heat_xml"),
-			Size = GetSet("size_xml"),
+			Heat = "heat_xml",
+			Size = "size_xml",
 		},
 	},
 
 	FloatCurve = {
-		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" },
+		Defaults = {
+			ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA"
+		},
 	},
 
 	FormFactorPart = {
@@ -176,43 +217,51 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 
 		Redirect = {
-			FormFactor = GetSet("formFactorRaw"),
+			FormFactor = "formFactorRaw",
 		},
 	},
 
 	FunctionalTest = {
-		Defaults = { HasMigratedSettingsToTestService = false },
+		Defaults = {
+			HasMigratedSettingsToTestService = false
+		},
 	},
 
 	GuiBase2d = {
-		Redirect = { Localize = GetSet("AutoLocalize") },
+		Redirect = {
+			Localize = "AutoLocalize"
+		},
 	},
 
 	GuiBase3d = {
-		Redirect = { Color = UseColor3("Color3") },
+		Redirect = {
+			Color = UseColor3("Color3")
+		},
 	},
 
 	GuiObject = {
 		Redirect = {
-			Transparency = GetSet("BackgroundTransparency"),
+			Transparency = "BackgroundTransparency",
 			BackgroundColor = UseColor3("BackgroundColor3"),
 			BorderColor = UseColor3("BorderColor3"),
 		},
 	},
 
 	HttpService = {
-		Defaults = { HttpEnabled = false },
+		Defaults = {
+			HttpEnabled = false
+		},
 	},
 
 	Humanoid = {
 		Defaults = {
 			Health_XML = 100,
 			InternalHeadScale = 1,
-			InternalBodyScale = Vector3.new(1, 1, 1),
+			InternalBodyScale = Vector3.one,
 		},
 
 		Redirect = {
-			Health = GetSet("Health_XML"),
+			Health = "Health_XML",
 		},
 	},
 
@@ -222,16 +271,37 @@ local PropertyPatches: { [string]: Patch } = {
 			EmotesDataInternal = "[]",
 			EquippedEmotesDataInternal = "[]",
 		},
+
+		Redirect = {
+			Head = GetBodyPart(Enum.BodyPart.Head),
+			Torso = GetBodyPart(Enum.BodyPart.Torso),
+			LeftArm = GetBodyPart(Enum.BodyPart.LeftArm),
+			LeftLeg = GetBodyPart(Enum.BodyPart.LeftLeg),
+			RightArm = GetBodyPart(Enum.BodyPart.RightArm),
+			RightLeg = GetBodyPart(Enum.BodyPart.RightLeg),
+
+			HeadColor = GetBodyColor(Enum.BodyPart.Head),
+			TorsoColor = GetBodyColor(Enum.BodyPart.Torso),
+			LeftArmColor = GetBodyColor(Enum.BodyPart.LeftArm),
+			LeftLegColor = GetBodyColor(Enum.BodyPart.LeftLeg),
+			RightArmColor = GetBodyColor(Enum.BodyPart.RightArm),
+			RightLegColor = GetBodyColor(Enum.BodyPart.RightLeg),
+		}
 	},
 
+	ImageButton = GuiImageMixIn,
+	ImageLabel = GuiImageMixIn,
+
 	InsertService = {
-		Defaults = { AllowClientInsertModels = false },
+		Defaults = {
+			AllowClientInsertModels = false
+		},
 	},
 
 	IntConstrainedValue = {
 		Redirect = {
-			Value = GetSet("value"),
-			ConstrainedValue = GetSet("value"),
+			Value = "value",
+			ConstrainedValue = "value",
 		},
 	},
 
@@ -242,88 +312,72 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	LocalizationTable = {
-		Defaults = { Contents = "[]" },
+		Defaults = {
+			Contents = "[]"
+		},
 
 		Redirect = {
-			DevelopmentLanguage = GetSet("SourceLocaleId"),
+			DevelopmentLanguage = "SourceLocaleId",
 		},
 	},
 
 	MarkerCurve = {
-		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" },
+		Defaults = {
+			ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA"
+		},
 	},
 
 	MaterialService = {
-		Redirect = { Use2022Materials = GetSet("Use2022MaterialsXml") },
-
-		Defaults = {
-			AsphaltName = "Asphalt",
-			BasaltName = "Basalt",
-			BrickName = "Brick",
-			CobblestoneName = "Cobblestone",
-			ConcreteName = "Concrete",
-			CorrodedMetalName = "CorrodedMetal",
-			CrackedLavaName = "CrackedLava",
-			DiamondPlateName = "DiamondPlate",
-			FabricName = "Fabric",
-			FoilName = "Foil",
-			GlacierName = "Glacier",
-			GraniteName = "Granite",
-			GrassName = "Grass",
-			GroundName = "Ground",
-			IceName = "Ice",
-			LeafyGrassName = "LeafyGrass",
-			LimestoneName = "Limestone",
-			MarbleName = "Marble",
-			MetalName = "Metal",
-			MudName = "Mud",
-			PavementName = "Pavement",
-			PebbleName = "Pebble",
-			PlasticName = "Plastic",
-			RockName = "Rock",
-			SaltName = "Salt",
-			SandName = "Sand",
-			SandstoneName = "Sandstone",
-			SlateName = "Slate",
-			SmoothPlasticName = "SmoothPlastic",
-			SnowName = "Snow",
-			WoodName = "Wood",
-			WoodPlanksName = "WoodPlanks",
+		Redirect = {
+			Use2022Materials = "Use2022MaterialsXml"
 		},
 	},
 
 	MeshPart = {
-		Defaults = { VertexCount = 0 },
-		Redirect = { MeshID = GetSet("MeshId") },
+		Redirect = {
+			MeshId = "MeshContent",
+			MeshID = "MeshContent",
+			TextureID = "TextureContent",
+		},
 	},
 
 	Model = {
-		Defaults = { ScaleFactor = 1 },
+		Defaults = {
+			ScaleFactor = 1
+		},
 	},
 
 	PackageLink = {
-		Defaults = { AutoUpdate = false },
+		Defaults = {
+			AutoUpdate = false
+		},
 	},
 
 	Part = {
-		Redirect = { Shape = GetSet("shape") },
+		Redirect = {
+			Shape = "shape"
+		},
 	},
 
 	ParticleEmitter = {
 		Redirect = {
-			VelocitySpread = GetSet({
+			VelocitySpread = {
 				Get = "SpreadAngle.X",
 				Set = "SpreadAngle = new Vector2(value, value)",
-			}),
+			},
 		},
 	},
 
 	PartOperation = {
-		Defaults = { FormFactor = Enum.FormFactor.Custom },
+		Defaults = {
+			FormFactor = Enum.FormFactor.Custom
+		},
 	},
 
 	Players = {
-		Defaults = { MaxPlayersInternal = 16 },
+		Defaults = {
+			MaxPlayersInternal = 16
+		},
 	},
 
 	PolicyService = {
@@ -334,19 +388,27 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	RotationCurve = {
-		Defaults = { ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA" },
+		Defaults = {
+			ValuesAndTimes = "AAAAAAEAAAAKAAAAAAAAFkUAAAAA"
+		},
 	},
 
 	SelectionBox = {
-		Redirect = { SurfaceColor = UseColor3("SurfaceColor3") },
+		Redirect = {
+			SurfaceColor = UseColor3("SurfaceColor3")
+		},
 	},
 
 	SelectionSphere = {
-		Redirect = { SurfaceColor = UseColor3("SurfaceColor3") },
+		Redirect = {
+			SurfaceColor = UseColor3("SurfaceColor3")
+		},
 	},
 
 	ServerScriptService = {
-		Defaults = { LoadStringEnabled = false },
+		Defaults = {
+			LoadStringEnabled = false
+		},
 	},
 
 	Smoke = {
@@ -357,29 +419,26 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 
 		Redirect = {
-			Size = GetSet("size_xml"),
-			Opacity = GetSet("opacity_xml"),
-			RiseVelocity = GetSet("riseVelocity_xml"),
+			Size = "size_xml",
+			Opacity = "opacity_xml",
+			RiseVelocity = "riseVelocity_xml",
 		},
 	},
 
 	Sound = {
-		Defaults = {
-			xmlRead_MinDistance_3 = 10,
-			xmlRead_MaxDistance_3 = 10000,
-		},
-
 		Redirect = {
-			MaxDistance = GetSet("xmlRead_MaxDistance_3"),
-			xmlRead_MinDistance_3 = GetSet("EmitterSize"),
-			RollOffMinDistance = GetSet("EmitterSize"),
-			MinDistance = GetSet("EmitterSize"),
-			Pitch = GetSet("PlaybackSpeed"),
+			Pitch = "PlaybackSpeed",
+			MinDistance = "RollOffMinDistance",
+			MaxDistance = "RollOffMaxDistance",
+			xmlRead_MinDistance_3 = "RollOffMinDistance",
+			xmlRead_MaxDistance_3 = "RollOffMaxDistance",
 		},
 	},
 
 	Sparkles = {
-		Redirect = { Color = GetSet("SparkleColor") },
+		Redirect = {
+			Color = "SparkleColor"
+		},
 	},
 
 	StarterPlayer = {
@@ -397,7 +456,16 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	SurfaceAppearance = {
-		Defaults = { AlphaMode = Enum.AlphaMode.Overlay },
+		Defaults = {
+			AlphaMode = Enum.AlphaMode.Overlay
+		},
+
+		Redirect = {
+			ColorMap = "ColorMapContent",
+			NormalMap = "NormalMapContent",
+			MetalnessMap = "MetalnessMapContent",
+			RoughnessMap = "RoughnessMapContent",
+		}
 	},
 
 	TextBox = GuiTextMixIn,
@@ -439,7 +507,9 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	TrussPart = {
-		Redirect = { Style = GetSet("style") },
+		Redirect = {
+			Style = "style"
+		},
 	},
 
 	UnvalidatedAssetService = {
@@ -453,7 +523,9 @@ local PropertyPatches: { [string]: Patch } = {
 	},
 
 	UserInputService = {
-		Defaults = { LegacyInputEventsEnabled = true },
+		Defaults = {
+			LegacyInputEventsEnabled = true
+		},
 	},
 
 	ViewportFrame = {
@@ -473,8 +545,8 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 
 		Redirect = {
-			Part0 = GetSet("Part0Internal"),
-			Part1 = GetSet("Part1Internal"),
+			Part0 = "Part0Internal",
+			Part1 = "Part1Internal",
 		},
 	},
 
@@ -496,6 +568,12 @@ local PropertyPatches: { [string]: Patch } = {
 			MeshPartHeadsAndAccessories = TryGetEnumItem("MeshPartHeadsAndAccessories", "Default"),
 		},
 	},
+
+	WrapLayer = {
+		Redirect = {
+			ReferenceMeshId = "ReferenceMeshContent",
+		}
+	}
 }
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

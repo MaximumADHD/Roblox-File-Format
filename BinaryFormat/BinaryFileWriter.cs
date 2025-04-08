@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 using RobloxFiles.BinaryFormat.Chunks;
+using RobloxFiles.DataTypes;
+using RobloxFiles.Enums;
 
 namespace RobloxFiles.BinaryFormat
 {
@@ -23,10 +25,13 @@ namespace RobloxFiles.BinaryFormat
         private readonly Dictionary<string, INST> ClassMap;
 
         // Instances in parent->child order
-        private readonly List<Instance> Instances;
+        private readonly List<RbxObject> Instances;
 
         // Instances in child->parent order
         internal List<Instance> PostInstances { get; private set; }
+
+        // Objects picked up from Content properties.
+        internal List<RbxObject> Objects { get; private set; }
 
         public BinaryRobloxFileWriter(BinaryRobloxFile file, Stream workBuffer) : base(workBuffer)
         {
@@ -34,8 +39,9 @@ namespace RobloxFiles.BinaryFormat
 
             ChunkStart = 0;
             ChunkType = "";
-            
-            Instances = new List<Instance>();
+
+            Objects = new List<RbxObject>();
+            Instances = new List<RbxObject>();
             PostInstances = new List<Instance>();
 
             ClassMap = new Dictionary<string, INST>();
@@ -147,7 +153,7 @@ namespace RobloxFiles.BinaryFormat
         }
 
         // Accumulatively writes an interleaved array of integers.
-        public void WriteInstanceIds(List<int> values)
+        public void WriteObjectIds(List<int> values)
         {
             int numIds = values.Count;
             var instIds = new List<int>(values);
@@ -172,43 +178,88 @@ namespace RobloxFiles.BinaryFormat
             Write(buffer);
         }
 
-        internal void RecordInstances(IEnumerable<Instance> instances)
+        internal void RegisterObject(RbxObject obj)
         {
-            foreach (Instance instance in instances)
+            int objId = (int)File.NumObjects++;
+            string className = obj.ClassName;
+            obj.Referent = objId.ToString();
+
+            if (!ClassMap.TryGetValue(className, out INST inst))
+            {
+                inst = new INST()
+                {
+                    ClassName = className,
+                    ObjectIds = new List<int>(),
+                    IsService = false
+                };
+
+                if (obj is Instance instance)
+                    inst.IsService = instance.IsService;
+
+                ClassMap.Add(className, inst);
+            }
+
+            inst.NumObjects++;
+            inst.ObjectIds.Add(objId);
+        }
+
+        internal void RegisterChildren(Instance root)
+        {
+            foreach (Instance instance in root.GetChildren())
             {
                 if (!instance.Archivable)
                     continue;
 
-                int instId = (int)File.NumInstances++;
-                string className = instance.ClassName;
-
-                instance.Referent = instId.ToInvariantString();
+                RegisterObject(instance);
+                instance.RefreshProperties();
                 Instances.Add(instance);
 
-                if (!ClassMap.TryGetValue(className, out INST inst))
+                foreach (var pair in instance.Properties)
                 {
-                    inst = new INST()
-                    {
-                        ClassName = className,
-                        InstanceIds = new List<int>(),
-                        IsService = instance.IsService
-                    };
+                    var prop = pair.Value;
 
-                    ClassMap.Add(className, inst);
+                    if (prop.Type != PropertyType.Content)
+                        continue;
+
+                    var content = prop.CastValue<Content>();
+
+                    if (content == null || content.SourceType != ContentSourceType.Object)
+                        continue;
+
+                    var obj = content.Object;
+
+                    if (obj == null || obj is Instance)
+                        continue;
+
+                    if (Instances.Contains(obj))
+                        continue;
+
+                    Instances.Add(obj);
                 }
-                
-                inst.NumInstances++;
-                inst.InstanceIds.Add(instId);
-                
-                RecordInstances(instance.GetChildren());
+
+                RegisterChildren(instance);
                 PostInstances.Add(instance);
             }
         }
-        
-        internal void ApplyClassMap()
-        {
-            File.Instances = Instances.ToArray();
 
+        internal void BuildTables()
+        {
+            // Register the Instances.
+            RegisterChildren(File);
+
+            // Cast them to RbxObject.
+            var objects = Instances
+                .Cast<RbxObject>()
+                .ToList();
+
+            // Register the Objects.
+            foreach (var obj in Objects)
+            {
+                RegisterObject(obj);
+                objects.Add(obj);
+            }
+
+            // Build the class tables.
             var classNames = ClassMap
                 .Select(type => type.Key)
                 .ToList();
@@ -219,17 +270,19 @@ namespace RobloxFiles.BinaryFormat
                 .Select(className => ClassMap[className])
                 .ToArray();
 
-            for (int i = 0; i < classes.Length; i++, File.NumClasses++)
+            for (int i = 0; i < classes.Length; i++)
             {
                 string className = classNames[i];
                 INST inst = ClassMap[className];
+
                 inst.ClassIndex = i;
+                File.NumClasses++;
             }
 
             File.Classes = classes;
+            File.Objects = objects.ToArray();
         }
 
-        // Marks that we are writing a chunk.
         private bool StartWritingChunk(string chunkType)
         {
             if (chunkType.Length != 4)
@@ -248,7 +301,6 @@ namespace RobloxFiles.BinaryFormat
             return false;
         }
 
-        // Marks that we are writing a chunk.
         private bool StartWritingChunk(IBinaryFileChunk chunk)
         {
             if (!WritingChunk)

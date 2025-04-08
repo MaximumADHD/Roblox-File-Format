@@ -9,7 +9,7 @@ namespace RobloxFiles.DataTypes
 
     public class FontFace
     {
-        public readonly Content Family = "rbxasset://fonts/families/LegacyArial.json";
+        public readonly ContentId Family = "rbxasset://fonts/families/LegacyArial.json";
         public readonly FontWeight Weight = FontWeight.Regular;
         public readonly FontStyle Style = FontStyle.Normal;
 
@@ -18,9 +18,9 @@ namespace RobloxFiles.DataTypes
         // are loaded in parallel. If the CachedFaceId doesn't match with
         // the family file's face asset, then the correct one will be loaded late.
         // Setting this is not required, it's just a throughput optimization.
-        public Content CachedFaceId { get; set; } = "";
+        public ContentId CachedFaceId { get; set; } = "";
 
-        public FontFace(Content family, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal, string cachedFaceId = "")
+        public FontFace(ContentId family, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal, string cachedFaceId = "")
         {
             CachedFaceId = cachedFaceId;
             Family = family;
@@ -35,13 +35,13 @@ namespace RobloxFiles.DataTypes
 
         public static FontFace FromName(string name, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal)
         {
-            Content url = $"rbxasset://fonts/families/{name}.json";
+            ContentId url = $"rbxasset://fonts/families/{name}.json";
             return new FontFace(url, weight, style);
         }
 
         public static FontFace FromId(ulong id, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal)
         {
-            Content url = $"rbxassetid://{id}";
+            ContentId url = $"rbxassetid://{id}";
             return new FontFace(url, weight, style);
         }
 

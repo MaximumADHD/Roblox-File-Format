@@ -66,6 +66,9 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -114,6 +117,7 @@
     <Compile Include="DataTypes\ColorSequence.cs" />
     <Compile Include="DataTypes\ColorSequenceKeypoint.cs" />
     <Compile Include="DataTypes\Content.cs" />
+    <Compile Include="DataTypes\ContentId.cs" />
     <Compile Include="DataTypes\EulerAngles.cs" />
     <Compile Include="DataTypes\Faces.cs" />
     <Compile Include="DataTypes\FontFace.cs" />
@@ -128,6 +132,7 @@
     <Compile Include="DataTypes\Rect.cs" />
     <Compile Include="DataTypes\Region3.cs" />
     <Compile Include="DataTypes\Region3int16.cs" />
+    <Compile Include="DataTypes\SecurityCapabilities.cs" />
     <Compile Include="DataTypes\SharedString.cs" />
     <Compile Include="DataTypes\UDim.cs" />
     <Compile Include="DataTypes\UDim2.cs" />
@@ -152,6 +157,7 @@
     <Compile Include="Tokens\Color3uint8.cs" />
     <Compile Include="Tokens\ColorSequence.cs" />
     <Compile Include="Tokens\Content.cs" />
+    <Compile Include="Tokens\ContentId.cs" />
     <Compile Include="Tokens\Double.cs" />
     <Compile Include="Tokens\Enum.cs" />
     <Compile Include="Tokens\Faces.cs" />
@@ -178,13 +184,17 @@
     <Compile Include="Tokens\Vector3int16.cs" />
     <Compile Include="Tree\Attributes.cs" />
     <Compile Include="Tree\Instance.cs" />
+    <Compile Include="Tree\RbxObject.cs" />
     <Compile Include="Tree\Property.cs" />
+    <Compile Include="Tree\Service.cs" />
     <Compile Include="Utility\BrickColors.cs" />
     <Compile Include="Utility\DefaultProperty.cs" />
+    <Compile Include="Utility\LostEnumValue.cs" />
     <Compile Include="Utility\FontUtility.cs" />
     <Compile Include="Utility\Formatting.cs" />
     <Compile Include="Utility\ImplicitMember.cs" />
     <Compile Include="Utility\MaterialInfo.cs" />
+    <Compile Include="Utility\Specials.cs" />
     <Compile Include="XmlFormat\XmlFileReader.cs" />
     <Compile Include="XmlFormat\XmlFileWriter.cs" />
     <Compile Include="XmlFormat\XmlPropertyTokens.cs" />

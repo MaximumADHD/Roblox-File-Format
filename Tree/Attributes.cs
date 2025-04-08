@@ -16,7 +16,7 @@ namespace RobloxFiles
      // Null = 1,
         String = 2,
         Bool = 3,
-     // Int = 4,
+        Int = 4,
         Float = 5,
         Double = 6,
      // Array = 7,
@@ -33,7 +33,7 @@ namespace RobloxFiles
      // Vector2int16 = 18,
      // Vector3int16 = 19,
         CFrame = 20,
-     // Enum = 21,
+        Enum = 21,
         NumberSequence = 23,
      // NumberSequenceKeypoint = 24,
         ColorSequence = 25,
@@ -146,6 +146,7 @@ namespace RobloxFiles
 
         internal int ReadInt() => Reader.ReadInt32();
         internal byte ReadByte() => Reader.ReadByte();
+        internal uint ReadUInt() => Reader.ReadUInt32();
         internal bool ReadBool() => Reader.ReadBoolean();
         internal short ReadShort() => Reader.ReadInt16();
         internal float ReadFloat() => Reader.ReadSingle();
@@ -154,6 +155,7 @@ namespace RobloxFiles
 
         internal void WriteInt(int value) => Writer.Write(value);
         internal void WriteByte(byte value) => Writer.Write(value);
+        internal void WriteUInt(uint value) => Writer.Write(value);
         internal void WriteBool(bool value) => Writer.Write(value);
         internal void WriteFloat(float value) => Writer.Write(value);
         internal void WriteDouble(double value) => Writer.Write(value);

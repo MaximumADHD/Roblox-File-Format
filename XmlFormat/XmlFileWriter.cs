@@ -98,7 +98,7 @@ namespace RobloxFiles.XmlFormat
                     }
                     case PropertyType.String:
                     {
-                        if (prop.Value is Content)
+                        if (prop.Value is ContentId)
                             propType = "Content";
                         else if (prop.Value is ProtectedString)
                             propType = "ProtectedString";
