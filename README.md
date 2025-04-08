@@ -84,7 +84,7 @@ static void CountAssets(string path)
         foreach (var prop in props)
         {
             Property binding = prop.Value;
-            Content content = binding.CastValue<Content>();
+            ContentId content = binding.CastValue<ContentId>();
 
             if (content != null)
             {
@@ -111,6 +111,3 @@ static void CountAssets(string path)
     Console.Read();
 }
 ```
-
-At this time, property bindings are only generated upon opening or saving a file. Creating your own instance will not automatically generate these bindings, though this behavior will likely be changed in the near future.
-
