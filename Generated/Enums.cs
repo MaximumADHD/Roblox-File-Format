@@ -1,6 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.668.0.6680659
-using System;
+// Updated as of 0.674.0.6740785
 
 namespace RobloxFiles.Enums
 {
@@ -270,9 +269,10 @@ namespace RobloxFiles.Enums
         WritingNew,
     }
 
-    public enum AnnotationRequestResult
+    public enum AnnotationRequestStatus
     {
         Success,
+        Loading,
         ErrorInternalFailure,
         ErrorNotFound,
         ErrorModerated,
@@ -441,6 +441,11 @@ namespace RobloxFiles.Enums
         Enabled,
     }
 
+    [Obsolete]
+    public enum AudioCaptureMode
+    {
+    }
+
     public enum AudioChannelLayout
     {
         Mono,
@@ -465,6 +470,7 @@ namespace RobloxFiles.Enums
         Highpass48dB,
         Bandpass,
         Notch,
+        Lowpass6dB,
     }
 
     public enum AudioSimulationFidelity
@@ -593,6 +599,99 @@ namespace RobloxFiles.Enums
         Success = 1,
         PermissionDenied,
         Failed,
+    }
+
+    public enum AvatarSettingsAccessoryLimitMethod
+    {
+        Scale,
+        Remove,
+    }
+
+    public enum AvatarSettingsAccessoryMode
+    {
+        PlayerChoice,
+        CustomLimit,
+    }
+
+    public enum AvatarSettingsAnimationClipsMode
+    {
+        PlayerChoice,
+        CustomClips,
+    }
+
+    public enum AvatarSettingsAnimationPacksMode
+    {
+        PlayerChoice,
+        StandardR15,
+        StandardR6,
+    }
+
+    public enum AvatarSettingsAppearanceMode
+    {
+        PlayerChoice,
+        CustomParts,
+        CustomBody,
+    }
+
+    public enum AvatarSettingsBuildMode
+    {
+        PlayerChoice,
+        CustomBuild,
+    }
+
+    public enum AvatarSettingsClothingMode
+    {
+        PlayerChoice,
+        CustomLimit,
+    }
+
+    public enum AvatarSettingsCollisionMode
+    {
+        Default,
+        SingleCollider,
+        Legacy,
+    }
+
+    public enum AvatarSettingsCustomAccessoryMode
+    {
+        PlayerChoice,
+        CustomAccessories,
+    }
+
+    public enum AvatarSettingsCustomBodyType
+    {
+        AvatarReference,
+        BundleId,
+    }
+
+    public enum AvatarSettingsCustomClothingMode
+    {
+        PlayerChoice,
+        CustomClothing,
+    }
+
+    public enum AvatarSettingsHitAndTouchDetectionMode
+    {
+        UseParts,
+        UseCollider,
+    }
+
+    public enum AvatarSettingsJumpMode
+    {
+        JumpHeight,
+        JumpPower,
+    }
+
+    public enum AvatarSettingsLegacyCollisionMode
+    {
+        R6Colliders,
+        InnerBoxColliders,
+    }
+
+    public enum AvatarSettingsScaleMode
+    {
+        PlayerChoice,
+        CustomScale,
     }
 
     public enum AvatarThumbnailCustomizationType
@@ -780,6 +879,12 @@ namespace RobloxFiles.Enums
         Custom,
         Scriptable,
         Orbital,
+    }
+
+    public enum CaptureType
+    {
+        Screenshot,
+        Video,
     }
 
     public enum CatalogCategoryFilter
@@ -1526,6 +1631,13 @@ namespace RobloxFiles.Enums
         LODCount,
     }
 
+    public enum FacialAgeEstimationResultType
+    {
+        Complete,
+        Cancel,
+        Error,
+    }
+
     public enum FacialAnimationStreamingState
     {
         None,
@@ -1533,6 +1645,69 @@ namespace RobloxFiles.Enums
         Video,
         Place = 4,
         Server = 8,
+    }
+
+    public enum FacsActionUnit
+    {
+        ChinRaiserUpperLip,
+        ChinRaiser,
+        FlatPucker,
+        Funneler,
+        LowerLipSuck,
+        LipPresser,
+        LipsTogether,
+        MouthLeft,
+        MouthRight,
+        Pucker,
+        UpperLipSuck,
+        LeftCheekPuff,
+        LeftDimpler,
+        LeftLipCornerDown,
+        LeftLowerLipDepressor,
+        LeftLipCornerPuller,
+        LeftLipStretcher,
+        LeftUpperLipRaiser,
+        RightCheekPuff,
+        RightDimpler,
+        RightLipCornerDown,
+        RightLowerLipDepressor,
+        RightLipCornerPuller,
+        RightLipStretcher,
+        RightUpperLipRaiser,
+        JawDrop,
+        JawLeft,
+        JawRight,
+        Corrugator,
+        LeftBrowLowerer,
+        LeftOuterBrowRaiser,
+        LeftNoseWrinkler,
+        LeftInnerBrowRaiser,
+        RightBrowLowerer,
+        RightOuterBrowRaiser,
+        RightInnerBrowRaiser,
+        RightNoseWrinkler,
+        EyesLookDown,
+        EyesLookLeft,
+        EyesLookUp,
+        EyesLookRight,
+        LeftCheekRaiser,
+        LeftEyeUpperLidRaiser,
+        LeftEyeClosed,
+        RightCheekRaiser,
+        RightEyeUpperLidRaiser,
+        RightEyeClosed,
+        TongueDown,
+        TongueOut,
+        TongueUp,
+    }
+
+    public enum FeedRankingScoreType
+    {
+        Content,
+        Final,
+        GameJoin,
+        Interaction,
+        Sharing,
     }
 
     public enum FieldOfViewMode
@@ -1855,6 +2030,13 @@ namespace RobloxFiles.Enums
         CoreBillboards,
     }
 
+    public enum HandRigDescriptionSide
+    {
+        None,
+        Left,
+        Right,
+    }
+
     public enum HandlesStyle
     {
         Resize,
@@ -1932,6 +2114,8 @@ namespace RobloxFiles.Enums
         SslConnectFail,
         SslVerificationFail,
         Unknown,
+        ConnectionClosed,
+        ServerProtocolError,
     }
 
     public enum HttpRequestType
@@ -2069,7 +2253,7 @@ namespace RobloxFiles.Enums
     public enum InputActionType
     {
         Bool,
-        Float,
+        Direction1D,
         Direction2D,
     }
 
@@ -2613,14 +2797,8 @@ namespace RobloxFiles.Enums
         DPadDown,
         Thumbstick1,
         Thumbstick2,
-
-        [Obsolete]
         MouseLeftButton,
-
-        [Obsolete]
         MouseRightButton,
-
-        [Obsolete]
         MouseMiddleButton,
 
         [Obsolete]
@@ -3014,6 +3192,13 @@ namespace RobloxFiles.Enums
         NoOcclusion,
         EnemyOcclusion,
         OccludeAll,
+    }
+
+    public enum NegateOperationHiddenHistory
+    {
+        None,
+        NegatedUnion,
+        NegatedIntersection,
     }
 
     public enum NetworkOwnership
@@ -3862,6 +4047,7 @@ namespace RobloxFiles.Enums
         RemoteEvent,
         LegacySound,
         Players,
+        CapabilityControl,
     }
 
     public enum SelectionBehavior
@@ -3992,10 +4178,12 @@ namespace RobloxFiles.Enums
         BottomRight,
     }
 
+    [Obsolete]
     public enum StateObjectFieldType
     {
         Boolean,
         CFrame,
+        Color3,
         Float,
         Instance,
         Random,
@@ -4355,6 +4543,15 @@ namespace RobloxFiles.Enums
         Up,
         Down,
         None,
+    }
+
+    public enum SystemThemeValue
+    {
+        error,
+        light,
+        dark,
+        systemLight,
+        systemDark,
     }
 
     public enum TableMajorAxis
@@ -4908,6 +5105,15 @@ namespace RobloxFiles.Enums
         RightHand,
     }
 
+    public enum VideoCaptureResult
+    {
+        Success,
+        OtherError,
+        CapturingAlready,
+        NoDeviceSupport,
+        NoSpaceOnDevice,
+    }
+
     public enum VideoDeviceCaptureQuality
     {
         Default,
@@ -5055,6 +5261,7 @@ namespace RobloxFiles.Enums
         HSRInnerReverse,
         LayerCageFittedToBase,
         LayerCageFittedToPrev,
+        PreWrapDeformerOuterCage,
     }
 
     public enum WrapTargetDebugMode
@@ -5068,6 +5275,7 @@ namespace RobloxFiles.Enums
         TargetLayerInterface,
         Rbf,
         OuterCageDetail,
+        PreWrapDeformerCage,
     }
 
     public enum ZIndexBehavior

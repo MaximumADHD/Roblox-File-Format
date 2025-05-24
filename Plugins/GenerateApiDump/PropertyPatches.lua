@@ -79,6 +79,8 @@ local GuiTextMixIn: Patch = {
 local GuiImageMixIn: Patch = {
 	Redirect = {
 		Image = "ImageContent",
+		HoverImage = "HoverImageContent",
+		PressedImage = "PressedImageContent",
 	}
 }
 
@@ -333,6 +335,15 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
+	MaterialVariant = {
+		Redirect = {
+			ColorMap = "ColorMapContent",
+			NormalMap = "NormalMapContent",
+			MetalnessMap = "MetalnessMapContent",
+			RoughnessMap = "RoughnessMapContent",
+		}
+	},
+
 	MeshPart = {
 		Redirect = {
 			MeshId = "MeshContent",
@@ -468,10 +479,6 @@ local PropertyPatches: { [string]: Patch } = {
 		}
 	},
 
-	TextBox = GuiTextMixIn,
-	TextLabel = GuiTextMixIn,
-	TextButton = GuiTextMixIn,
-
 	Terrain = {
 		Defaults = {
 			Decoration = false,
@@ -480,6 +487,15 @@ local PropertyPatches: { [string]: Patch } = {
 			AcquisitionMethod = TryGetEnumItem("TerrainAcquisitionMethod", "None"),
 			MaterialColors = "AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM",
 		},
+	},
+
+	TerrainDetail = {
+		Redirect = {
+			ColorMap = "ColorMapContent",
+			NormalMap = "NormalMapContent",
+			MetalnessMap = "MetalnessMapContent",
+			RoughnessMap = "RoughnessMapContent",
+		}
 	},
 
 	TerrainRegion = {
@@ -491,6 +507,10 @@ local PropertyPatches: { [string]: Patch } = {
 			SmoothGrid = "AQU=",
 		},
 	},
+
+	TextBox = GuiTextMixIn,
+	TextLabel = GuiTextMixIn,
+	TextButton = GuiTextMixIn,
 
 	TextChatService = {
 		Defaults = {
