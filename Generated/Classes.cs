@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.674.0.6740785
+// Updated as of 0.676.0.6760531
 
 using System;
 
@@ -884,6 +884,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class MeshContentProvider : CacheableContentProvider
+    {
+    }
+
+    [RbxService]
+    public class SlimContentProvider : CacheableContentProvider
     {
     }
 
@@ -3434,6 +3439,11 @@ namespace RobloxFiles
     {
     }
 
+    [RbxService]
+    public class MLService : Instance
+    {
+    }
+
     public class MarkerCurve : Instance
     {
         public byte[] ValuesAndTimes = Convert.FromBase64String("AAAAAAEAAAAKAAAAAAAAFkUAAAAA");
@@ -3922,7 +3932,6 @@ namespace RobloxFiles
         public float GrassLength = 0.7f;
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
         public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
-        public bool ShorelinesUpgraded;
         public byte[] SmoothGrid = Convert.FromBase64String("AQU=");
         public bool SmoothVoxelsUpgraded;
         public Color3 WaterColor = Color3.FromRGB(12, 84, 91);
@@ -5569,6 +5578,7 @@ namespace RobloxFiles
         public bool CreateDefaultCommands = true;
         public bool CreateDefaultTextChannels = true;
         public bool HasSeenDeprecationDialog;
+        public bool isLegacyChatDisabled;
     }
 
     [RbxService]

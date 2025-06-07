@@ -1,5 +1,6 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.674.0.6740785
+// Updated as of 0.676.0.6760531
+using System;
 
 namespace RobloxFiles.Enums
 {
@@ -1451,6 +1452,7 @@ namespace RobloxFiles.Enums
         Animation,
         Navigation,
         GeometryCSG,
+        GraphicsSlimModels,
     }
 
     public enum DeviceFeatureType
@@ -3502,6 +3504,13 @@ namespace RobloxFiles.Enums
         TwoAttachment,
     }
 
+    public enum PreferredInput
+    {
+        KeyboardAndMouse,
+        Gamepad,
+        Touch,
+    }
+
     public enum PreferredTextSize
     {
         Medium = 1,
@@ -5106,6 +5115,14 @@ namespace RobloxFiles.Enums
     }
 
     public enum VideoCaptureResult
+    {
+        Success,
+        OtherError,
+        ScreenSizeChanged,
+        TimeLimitReached,
+    }
+
+    public enum VideoCaptureStartedResult
     {
         Success,
         OtherError,
