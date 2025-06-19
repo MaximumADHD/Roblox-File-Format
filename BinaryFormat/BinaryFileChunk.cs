@@ -52,7 +52,6 @@ namespace RobloxFiles.BinaryFormat
                 {
                     Stream decompStream = null;
 
-
                     if (CompressedData[0] == 0x78 || CompressedData[0] == 0x58)
                     {
                         // Probably zlib
@@ -68,8 +67,12 @@ namespace RobloxFiles.BinaryFormat
                         // Probably LZ4
                         byte[] decomp = new byte[Size];
                         int decoded = LZ4Codec.Decode(
-                            CompressedData, 0, CompressedSize,
-                            decomp, 0, Size
+                            CompressedData,
+                            0,
+                            CompressedSize,
+                            decomp,
+                            0,
+                            Size
                         );
                         decompStream = new MemoryStream(decomp);
                     }
@@ -90,7 +93,9 @@ namespace RobloxFiles.BinaryFormat
         public BinaryRobloxFileChunk(BinaryRobloxFileWriter writer, bool compress = true)
         {
             if (!writer.WritingChunk)
-                throw new Exception("BinaryRobloxFileChunk: Supplied writer must have WritingChunk set to true.");
+                throw new Exception(
+                    "BinaryRobloxFileChunk: Supplied writer must have WritingChunk set to true."
+                );
 
             Stream stream = writer.BaseStream;
 
