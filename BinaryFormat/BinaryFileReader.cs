@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -12,13 +12,15 @@ namespace RobloxFiles.BinaryFormat
         public readonly BinaryRobloxFile File;
         private byte[] lastStringBuffer = Array.Empty<byte>();
 
-        public BinaryRobloxFileReader(BinaryRobloxFile file, Stream stream) : base(stream)
+        public BinaryRobloxFileReader(BinaryRobloxFile file, Stream stream)
+            : base(stream)
         {
             File = file;
         }
 
         // Reads 'count * sizeof(T)' interleaved bytes
-        public T[] ReadInterleaved<T>(int count, Func<byte[], int, T> transform) where T : struct
+        public T[] ReadInterleaved<T>(int count, Func<byte[], int, T> transform)
+            where T : struct
         {
             int sizeof_T = Marshal.SizeOf<T>();
             int blobSize = count * sizeof_T;
@@ -40,12 +42,17 @@ namespace RobloxFiles.BinaryFormat
 
             return values;
         }
-        
+
         // Rotates the sign bit of an int32 buffer.
         public int RotateInt32(byte[] buffer, int startIndex)
         {
             int value = BitConverter.ToInt32(buffer, startIndex);
             return (int)((uint)value >> 1) ^ (-(value & 1));
+        }
+
+        public int Int32WithoutRotate(byte[] buffer, int startIndex)
+        {
+            return BitConverter.ToInt32(buffer, startIndex);
         }
 
         // Rotates the sign bit of an int64 buffer.
@@ -64,7 +71,7 @@ namespace RobloxFiles.BinaryFormat
             byte[] b = BitConverter.GetBytes(i);
             return BitConverter.ToSingle(b, 0);
         }
-        
+
         // Reads and accumulates an interleaved int32 buffer.
         public List<int> ReadObjectIds(int count)
         {
