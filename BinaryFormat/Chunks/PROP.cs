@@ -244,7 +244,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.BrickColor:
                 {
-                    int[] BrickColorIds = readInts();
+                    int[] BrickColorIds = reader.ReadInterleaved(objCount, BitConverter.ToInt32);
 
                     readProperties(i =>
                     {
@@ -924,7 +924,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                         .Select(prop => (int)prop.Id)
                         .ToList();
 
-                    writer.WriteInts(brickColorIds);
+                    writer.WriteInterleaved(brickColorIds);
                     break;
                 }
                 case PropertyType.Color3:
