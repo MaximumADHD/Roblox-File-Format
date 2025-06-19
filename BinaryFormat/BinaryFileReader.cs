@@ -48,6 +48,11 @@ namespace RobloxFiles.BinaryFormat
             return (int)((uint)value >> 1) ^ (-(value & 1));
         }
 
+        public int Int32WithoutRotate(byte[] buffer, int startIndex)
+        {
+            return BitConverter.ToInt32(buffer, startIndex);
+        }
+
         // Rotates the sign bit of an int64 buffer.
         public long RotateInt64(byte[] buffer, int startIndex)
         {
