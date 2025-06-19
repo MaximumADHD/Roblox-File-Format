@@ -78,9 +78,6 @@ namespace RobloxFiles.BinaryFormat.Chunks
             }
 
             // Setup some short-hand functions for actions used during the read procedure.
-            var readIntsWithoutTransform = new Func<int[]>(() =>
-                reader.ReadInterleaved(objCount, reader.Int32WithoutRotate)
-            );
             var readInts = new Func<int[]>(() => reader.ReadInterleaved(objCount, reader.RotateInt32));
             var readFloats = new Func<float[]>(() => reader.ReadInterleaved(objCount, reader.RotateFloat));
             
@@ -247,7 +244,7 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 }
                 case PropertyType.BrickColor:
                 {
-                    int[] BrickColorIds = readIntsWithoutTransform();
+                    int[] BrickColorIds = reader.ReadInterleaved(objCount, BitConverter.ToInt32);
 
                     readProperties(i =>
                     {
