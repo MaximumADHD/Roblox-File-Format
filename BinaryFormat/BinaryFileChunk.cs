@@ -52,7 +52,6 @@ namespace RobloxFiles.BinaryFormat
                 {
                     Stream decompStream = null;
 
-
                     if (CompressedData[0] == 0x78 || CompressedData[0] == 0x58)
                     {
                         // Probably zlib
@@ -66,11 +65,13 @@ namespace RobloxFiles.BinaryFormat
                     else
                     {
                         // Probably LZ4
-                        byte[] decomp = new byte[Size];
-                        int decoded = LZ4Codec.Decode(
+                        var decomp = new byte[Size];
+                        
+                        LZ4Codec.Decode(
                             CompressedData, 0, CompressedSize,
                             decomp, 0, Size
                         );
+                        
                         decompStream = new MemoryStream(decomp);
                     }
 
