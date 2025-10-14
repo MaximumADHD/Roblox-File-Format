@@ -11,6 +11,7 @@ namespace RobloxFiles.DataTypes
 
         public readonly float FrictionWeight = 1.0f;
         public readonly float ElasticityWeight = 1.0f;
+        public readonly float AcousticAbsorption = 1.0f;
 
         public override string ToString()
         {
@@ -27,13 +28,14 @@ namespace RobloxFiles.DataTypes
             Density = info.Density;
         }
 
-        public PhysicalProperties(float density, float friction, float elasticity, float frictionWeight = 1f, float elasticityWeight = 1f)
+        public PhysicalProperties(float density, float friction, float elasticity, float frictionWeight = 1f, float elasticityWeight = 1f, float acousticAbsorption = 1f)
         {
             Density = density;
             Friction = friction;
             Elasticity = elasticity;
             FrictionWeight = frictionWeight;
             ElasticityWeight = elasticityWeight;
+            AcousticAbsorption = acousticAbsorption;
         }
 
         public override int GetHashCode()
@@ -42,7 +44,8 @@ namespace RobloxFiles.DataTypes
                      ^ Friction.GetHashCode()
                      ^ Elasticity.GetHashCode()
                      ^ FrictionWeight.GetHashCode()
-                     ^ ElasticityWeight.GetHashCode();
+                     ^ ElasticityWeight.GetHashCode()
+                     ^ AcousticAbsorption.GetHashCode();
 
             return hash;
         }
@@ -65,6 +68,9 @@ namespace RobloxFiles.DataTypes
                 return false;
 
             if (!ElasticityWeight.Equals(other.ElasticityWeight))
+                return false;
+
+            if (!AcousticAbsorption.Equals(other.AcousticAbsorption))
                 return false;
 
             return true;

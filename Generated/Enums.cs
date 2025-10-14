@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.676.0.6760531
+// Updated as of 0.694.0.6940982
 using System;
 
 namespace RobloxFiles.Enums
@@ -151,6 +151,15 @@ namespace RobloxFiles.Enums
         Never,
     }
 
+    public enum AdornShading
+    {
+        Default,
+        Shaded,
+        XRay,
+        XRayShaded,
+        AlwaysOnTop,
+    }
+
     public enum AlignType
     {
         [Obsolete]
@@ -263,11 +272,26 @@ namespace RobloxFiles.Enums
         Enabled,
     }
 
+    public enum AnnotationChannelContentPreference
+    {
+        None,
+        All,
+        Unknown,
+    }
+
     public enum AnnotationEditingMode
     {
         None,
         PlacingNew,
         WritingNew,
+    }
+
+    public enum AnnotationPlaceContentPreference
+    {
+        None,
+        All,
+        MentionsAndReplies,
+        Unknown,
     }
 
     public enum AnnotationRequestStatus
@@ -330,6 +354,7 @@ namespace RobloxFiles.Enums
         NotAvailable,
         Available,
         AvailableBoundChannel,
+        AvailableBetaProgram,
     }
 
     public enum ApplyStrokeMode
@@ -493,6 +518,12 @@ namespace RobloxFiles.Enums
         Large,
     }
 
+    public enum AuthorityMode
+    {
+        Server,
+        Automatic,
+    }
+
     public enum AutoIndentRule
     {
         Off,
@@ -606,6 +637,8 @@ namespace RobloxFiles.Enums
     {
         Scale,
         Remove,
+        PreviewScale,
+        PreviewRemove,
     }
 
     public enum AvatarSettingsAccessoryMode
@@ -799,6 +832,13 @@ namespace RobloxFiles.Enums
         Inset,
     }
 
+    public enum BorderStrokePosition
+    {
+        Outer,
+        Center,
+        Inner,
+    }
+
     public enum BreakReason
     {
         Other,
@@ -882,9 +922,14 @@ namespace RobloxFiles.Enums
         Orbital,
     }
 
+    public enum CaptureGalleryPermission
+    {
+        ReadAndUpload,
+    }
+
     public enum CaptureType
     {
-        Screenshot,
+        Screenshot = 1,
         Video,
     }
 
@@ -1157,6 +1202,15 @@ namespace RobloxFiles.Enums
     {
         OK,
         Unknown,
+        ConnectErrors,
+        AlreadyConnected,
+        NoFreeIncomingConnections,
+        ConnectionBanned,
+        InvalidPassword,
+        IncompatibleProtocolVersion,
+        IPRecentlyConnected,
+        OurSystemRequiresSecurity,
+        SecurityKeyMismatch,
         DisconnectErrors = 256,
         DisconnectBadhash,
         DisconnectSecurityKeyMismatch,
@@ -1205,6 +1259,9 @@ namespace RobloxFiles.Enums
         PhantomFreeze,
         AndroidAnticheatKick,
         AndroidEmulatorKick,
+        AndroidRootedKick,
+        ScreentimeLockoutKick,
+        DisconnectionNotification,
         PlacelaunchErrors = 512,
         PlacelaunchDisabled = 515,
         PlacelaunchError,
@@ -1243,6 +1300,7 @@ namespace RobloxFiles.Enums
         None,
         Uri,
         Object,
+        Opaque,
     }
 
     public enum ContextActionPriority
@@ -1436,7 +1494,7 @@ namespace RobloxFiles.Enums
         LuaHeap,
         Script,
         PhysicsCollision,
-        PhysicsParts,
+        BaseParts,
         GraphicsSolidModels,
         GraphicsMeshParts = 10,
         GraphicsParticles,
@@ -1453,6 +1511,9 @@ namespace RobloxFiles.Enums
         Navigation,
         GeometryCSG,
         GraphicsSlimModels,
+
+        [Obsolete]
+        PhysicsParts = BaseParts,
     }
 
     public enum DeviceFeatureType
@@ -1502,6 +1563,13 @@ namespace RobloxFiles.Enums
         Neutral,
         Friendly,
         Enemy,
+    }
+
+    public enum DisplaySize
+    {
+        Small,
+        Medium,
+        Large,
     }
 
     public enum DominantAxis
@@ -1617,6 +1685,27 @@ namespace RobloxFiles.Enums
         CreatorAssetsCreate,
     }
 
+    public enum ExperienceStateRecordingLoadMode
+    {
+        NewReplay,
+        ContiguousSlice,
+        NoncontiguousSlice,
+    }
+
+    public enum ExperienceStateRecordingLoadSourceType
+    {
+        S3Url,
+        File,
+    }
+
+    public enum ExperienceStateRecordingPlaybackMode
+    {
+        Undefined,
+        Stopped,
+        Playing,
+        Rewinding,
+    }
+
     public enum ExplosionType
     {
         NoCraters,
@@ -1703,13 +1792,10 @@ namespace RobloxFiles.Enums
         TongueUp,
     }
 
-    public enum FeedRankingScoreType
+    public enum FeatureRestrictionAbuseVector
     {
-        Content,
-        Final,
-        GameJoin,
-        Interaction,
-        Sharing,
+        ExperienceChat,
+        Communication,
     }
 
     public enum FieldOfViewMode
@@ -2118,6 +2204,7 @@ namespace RobloxFiles.Enums
         Unknown,
         ConnectionClosed,
         ServerProtocolError,
+        CreatorEnvironmentsNotSupportedByService,
     }
 
     public enum HttpRequestType
@@ -2257,6 +2344,8 @@ namespace RobloxFiles.Enums
         Bool,
         Direction1D,
         Direction2D,
+        Direction3D,
+        ViewportPosition,
     }
 
     public enum InputType
@@ -2814,6 +2903,8 @@ namespace RobloxFiles.Enums
 
         [Obsolete]
         MouseY,
+
+        MousePosition,
     }
 
     public enum KeyInterpolationMode
@@ -2944,6 +3035,13 @@ namespace RobloxFiles.Enums
         Character,
         Camera,
         ObjectPosition,
+    }
+
+    public enum LuauTypeCheckMode
+    {
+        NoCheck,
+        Nonstrict,
+        Strict,
     }
 
     public enum MarketplaceBulkPurchasePromptStatus
@@ -3125,6 +3223,9 @@ namespace RobloxFiles.Enums
         Automatic,
         StreamingMesh,
         Disabled,
+
+        [Obsolete]
+        Enabled = StreamingMesh,
     }
 
     public enum ModelStreamingBehavior
@@ -3265,6 +3366,7 @@ namespace RobloxFiles.Enums
         All = 1,
         Avatar,
         DynamicHead,
+        Shoes,
     }
 
     public enum OutputLayoutMode
@@ -3326,6 +3428,7 @@ namespace RobloxFiles.Enums
         Grid2x2,
         Grid4x4,
         Grid8x8,
+        Custom,
     }
 
     public enum ParticleFlipbookMode
@@ -3384,6 +3487,20 @@ namespace RobloxFiles.Enums
         Enabled,
     }
 
+    public enum PeoplePageLayout
+    {
+        Card,
+        List,
+    }
+
+    public enum PerformanceOverlayMode
+    {
+        Overdraw,
+        Transparent,
+        Decals,
+        Lights,
+    }
+
     public enum PermissionLevelShown
     {
         Game,
@@ -3405,6 +3522,21 @@ namespace RobloxFiles.Enums
         Default,
         Fixed,
         Adaptive,
+    }
+
+    public enum PlaceContentPreference
+    {
+        None,
+        All,
+        MentionsAndReplies,
+        Unknown,
+    }
+
+    public enum PlacePublishType
+    {
+        None,
+        Publish,
+        Save,
     }
 
     public enum Platform
@@ -3481,6 +3613,13 @@ namespace RobloxFiles.Enums
         Kick,
     }
 
+    public enum PlayerExitReason
+    {
+        Unknown,
+        PlatformKick,
+        CreatorKick,
+    }
+
     public enum PoseEasingDirection
     {
         In,
@@ -3502,6 +3641,21 @@ namespace RobloxFiles.Enums
     {
         OneAttachment,
         TwoAttachment,
+    }
+
+    public enum PredictionMode
+    {
+        Automatic,
+        On,
+        Off,
+    }
+
+    public enum PredictionState
+    {
+        Idle,
+        Simulating,
+        RollingBack,
+        Resimulating,
     }
 
     public enum PreferredInput
@@ -3575,6 +3729,10 @@ namespace RobloxFiles.Enums
         UploadFailed,
         NoUserInput,
         UnknownFailure,
+        UGCValidationFailed,
+        ModeratedName,
+        PurchaseFailure,
+        TokenInvalid,
     }
 
     public enum PromptCreateAvatarResult
@@ -3591,6 +3749,13 @@ namespace RobloxFiles.Enums
         PurchaseFailure,
         UnknownFailure,
         TokenInvalid,
+    }
+
+    public enum PromptLinkSharingResult
+    {
+        Success = 1,
+        PlayerLeft,
+        InvalidLaunchData,
     }
 
     public enum PromptPublishAssetResult
@@ -3735,6 +3900,49 @@ namespace RobloxFiles.Enums
 
         [Obsolete]
         Whitelist = Include,
+    }
+
+    public enum ReadCapturesFromGalleryResult
+    {
+        Success,
+        NeedPermission,
+    }
+
+    public enum RecommendationActionType
+    {
+        AddReaction,
+        RemoveReaction,
+        Share,
+        Report,
+        Comment,
+        Play,
+        Purchase,
+    }
+
+    public enum RecommendationDepartureIntent
+    {
+        Neutral,
+        Positive,
+        Negative,
+    }
+
+    public enum RecommendationImpressionType
+    {
+        View,
+        NotViewable,
+    }
+
+    public enum RecommendationItemContentType
+    {
+        Static,
+        Dynamic,
+        Interactive,
+    }
+
+    public enum RecommendationItemVisibility
+    {
+        Private,
+        Public,
     }
 
     public enum RejectCharacterDeletions
@@ -3897,6 +4105,13 @@ namespace RobloxFiles.Enums
     {
         MovementRelative,
         CameraRelative,
+    }
+
+    public enum RsvpStatus
+    {
+        None,
+        Going,
+        NotGoing,
     }
 
     public enum RtlTextSupport
@@ -4229,6 +4444,12 @@ namespace RobloxFiles.Enums
         Default,
         Disabled,
         ClientPhysicsPause,
+    }
+
+    public enum StrokeSizingMode
+    {
+        FixedSize,
+        ScaledSize,
     }
 
     public enum StudioCloseMode
@@ -4573,6 +4794,7 @@ namespace RobloxFiles.Enums
     {
         PlaceSizeTooLarge,
         PlaceSizeApproachingLimit,
+        PlaceUploadFailing,
         NoError,
     }
 
@@ -4971,6 +5193,24 @@ namespace RobloxFiles.Enums
         UiMessageInfo,
     }
 
+    public enum UpdateState
+    {
+        UpdateNotAvailable,
+        UpdateAvailable,
+        UpdateInProgress,
+        UpdateReady,
+        UpdateFailed,
+    }
+
+    public enum UploadCaptureResult
+    {
+        Success,
+        NeedPermission,
+        CaptureModerated,
+        CaptureNotInGallery,
+        IneligibleCapture,
+    }
+
     public enum UsageContext
     {
         Default,
@@ -5201,6 +5441,19 @@ namespace RobloxFiles.Enums
         Failed,
     }
 
+    public enum VoiceClientLeaveReasons
+    {
+        Unknown,
+        ClientNetworkDisconnected,
+        PlayerLeft,
+        ClientShutdown,
+        PublishFailed,
+        RejoinReceived,
+        VoiceReboot,
+        ImguiDebugLeave,
+        LuaInitiated,
+    }
+
     public enum VoiceControlPath
     {
         Publish,
@@ -5240,6 +5493,20 @@ namespace RobloxFiles.Enums
         Open,
         Closing,
         Closed,
+    }
+
+    public enum WebStreamClientState
+    {
+        Connecting,
+        Open,
+        Error,
+        Closed,
+    }
+
+    public enum WebStreamClientType
+    {
+        SSE,
+        RawStream,
     }
 
     public enum WeldConstraintPreserve

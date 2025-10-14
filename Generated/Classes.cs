@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.676.0.6760531
+// Updated as of 0.694.0.6940982
 
 using System;
 
@@ -161,6 +161,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class AppRatingPromptService : Instance
+    {
+    }
+
+    [RbxService]
     public class AppUpdateService : Instance
     {
     }
@@ -191,6 +196,7 @@ namespace RobloxFiles
     [RbxService]
     public class AssetService : Instance
     {
+        public bool AllowInsertFreeAssets;
     }
 
     public class Atmosphere : Instance
@@ -277,9 +283,13 @@ namespace RobloxFiles
 
     public class AudioEmitter : Instance
     {
+        public bool AcousticSimulationEnabled = true;
         public byte[] AngleAttenuation;
         public string AudioInteractionGroup = "";
         public byte[] DistanceAttenuation;
+        public Instance PositionOverride;
+
+        [Obsolete]
         public AudioSimulationFidelity SimulationFidelity = AudioSimulationFidelity.Automatic;
     }
 
@@ -320,6 +330,14 @@ namespace RobloxFiles
     {
     }
 
+    public class AudioGate : Instance
+    {
+        public float Attack = 0.01f;
+        public bool Bypass;
+        public float Release = 0.1f;
+        public NumberRange Threshold = new NumberRange(-36, -24);
+    }
+
     public class AudioLimiter : Instance
     {
         public bool Bypass;
@@ -329,9 +347,13 @@ namespace RobloxFiles
 
     public class AudioListener : Instance
     {
+        public bool AcousticSimulationEnabled = true;
         public byte[] AngleAttenuation;
         public string AudioInteractionGroup = "";
         public byte[] DistanceAttenuation;
+        public Instance PositionOverride;
+
+        [Obsolete]
         public AudioSimulationFidelity SimulationFidelity = AudioSimulationFidelity.Automatic;
     }
 
@@ -344,7 +366,11 @@ namespace RobloxFiles
 
     public class AudioPlayer : Instance
     {
-        public ContentId Asset = "";
+        public ContentId Asset
+        {
+            get => AudioContent;
+            set => AudioContent = value;
+        }
 
         [Obsolete]
         public string AssetId
@@ -353,7 +379,9 @@ namespace RobloxFiles
             set => Asset = value;
         }
 
+        public Content AudioContent = Content.None;
         public bool AutoLoad = true;
+        public bool IsMutedForCapture;
         public NumberRange LoopRegion = new NumberRange(0, 60000);
         public bool Looping;
         public NumberRange PlaybackRegion = new NumberRange(0, 60000);
@@ -404,6 +432,12 @@ namespace RobloxFiles
         public string Title = "";
     }
 
+    public class AudioSpeechToText : Instance
+    {
+        public bool Enabled;
+        public string Text = "";
+    }
+
     public class AudioTextToSpeech : Instance
     {
         public bool Looping;
@@ -416,6 +450,17 @@ namespace RobloxFiles
         public float Volume = 1;
     }
 
+    public class AudioTremolo : Instance
+    {
+        public bool Bypass;
+        public float Depth = 1;
+        public float Duty = 0.5f;
+        public float Frequency = 5;
+        public float Shape = 0;
+        public float Skew = 0;
+        public float Square = 0;
+    }
+
     [RbxService]
     public class AuroraScriptService : Instance
     {
@@ -426,6 +471,7 @@ namespace RobloxFiles
     {
         public double HashRoundingPoint = 0;
         public bool IgnoreRotation;
+        public bool LockStepIdOffset;
         public int RollbackOffset = 0;
     }
 
@@ -488,6 +534,12 @@ namespace RobloxFiles
         public long CustomBodyBundleId = 0;
         public AvatarSettingsCustomBodyType CustomBodyType = AvatarSettingsCustomBodyType.AvatarReference;
         public NumberRange CustomBodyTypeScale;
+        public bool CustomEyebrowEnabled;
+        public long CustomEyebrowId = 0;
+        public bool CustomEyelashEnabled;
+        public long CustomEyelashId = 0;
+        public bool CustomFaceEnabled;
+        public long CustomFaceId = 0;
         public bool CustomHeadEnabled;
         public long CustomHeadId = 0;
         public NumberRange CustomHeadScale;
@@ -497,6 +549,8 @@ namespace RobloxFiles
         public long CustomLeftArmId = 0;
         public bool CustomLeftLegEnabled;
         public long CustomLeftLegId = 0;
+        public bool CustomMoodEnabled;
+        public long CustomMoodId = 0;
         public NumberRange CustomProportionsScale;
         public bool CustomRightArmEnabled;
         public long CustomRightArmId = 0;
@@ -549,8 +603,8 @@ namespace RobloxFiles
     {
         public AvatarSettingsCollisionMode CollisionMode = AvatarSettingsCollisionMode.Default;
         public AvatarSettingsHitAndTouchDetectionMode HitAndTouchDetectionMode = AvatarSettingsHitAndTouchDetectionMode.UseParts;
-        public AvatarSettingsLegacyCollisionMode LegacyCollisionMode = AvatarSettingsLegacyCollisionMode.R6Colliders;
-        public Vector3 SingleColliderSize = new Vector3(2, 4, 1);
+        public AvatarSettingsLegacyCollisionMode LegacyCollisionMode = AvatarSettingsLegacyCollisionMode.InnerBoxColliders;
+        public Vector3 SingleColliderSize = new Vector3(2, 3, 1);
     }
 
     [RbxService]
@@ -565,11 +619,6 @@ namespace RobloxFiles
 
     [RbxService]
     public class AvatarImportService : Instance
-    {
-    }
-
-    [RbxService]
-    public class AvatarPreloader : Instance
     {
     }
 
@@ -655,8 +704,6 @@ namespace RobloxFiles
         public WrapLayerAutoSkin AutoSkin = WrapLayerAutoSkin.Disabled;
         public CFrame BindOffset = CFrame.identity;
         public bool Enabled = true;
-        public Vector3 MaxSize = Vector3.zero;
-        public Vector3 Offset = Vector3.zero;
         public int Order = 1;
         public float Puffiness = 1;
         public Content ReferenceMeshContent = Content.None;
@@ -912,6 +959,11 @@ namespace RobloxFiles
     {
     }
 
+    [RbxService]
+    public class ChangeHistoryStreamingService : Instance
+    {
+    }
+
     public abstract class CharacterAppearance : Instance
     {
     }
@@ -1016,13 +1068,25 @@ namespace RobloxFiles
 
     public class ClickDetector : Instance
     {
-        public ContentId CursorIcon = "";
+        public ContentId CursorIcon
+        {
+            get => CursorIconContent;
+            set => CursorIconContent = value;
+        }
+
+        public Content CursorIconContent = Content.None;
         public float MaxActivationDistance = 32;
     }
 
     public class DragDetector : ClickDetector
     {
-        public ContentId ActivatedCursorIcon = "";
+        public ContentId ActivatedCursorIcon
+        {
+            get => ActivatedCursorIconContent;
+            set => ActivatedCursorIconContent = value;
+        }
+
+        public Content ActivatedCursorIconContent = Content.None;
         public bool ApplyAtCenterOfMass;
         public CFrame DragFrame = CFrame.identity;
         public DragDetectorDragStyle DragStyle = DragDetectorDragStyle.TranslatePlane;
@@ -1071,11 +1135,6 @@ namespace RobloxFiles
 
     [RbxService]
     public class CollectionService : Instance
-    {
-    }
-
-    [RbxService]
-    public class CommandService : Instance
     {
     }
 
@@ -1724,6 +1783,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class ExampleV2Service : Instance
+    {
+    }
+
+    [RbxService]
     public class ExperienceAuthService : Instance
     {
     }
@@ -1748,6 +1812,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class ExperienceStateCaptureService : Instance
+    {
+    }
+
+    [RbxService]
+    public class ExperienceStateRecordingService : Instance
     {
     }
 
@@ -1789,6 +1858,30 @@ namespace RobloxFiles
     {
         public Color3 Color3 = new Color3(1, 1, 1);
 
+        public ContentId MetalnessMap
+        {
+            get => MetalnessMapContent;
+            set => MetalnessMapContent = value;
+        }
+
+        public Content MetalnessMapContent = Content.None;
+
+        public ContentId NormalMap
+        {
+            get => NormalMapContent;
+            set => NormalMapContent = value;
+        }
+
+        public Content NormalMapContent = Content.None;
+
+        public ContentId RoughnessMap
+        {
+            get => RoughnessMapContent;
+            set => RoughnessMapContent = value;
+        }
+
+        public Content RoughnessMapContent = Content.None;
+
         [Obsolete]
         public float Shiny = 20;
 
@@ -1802,7 +1895,11 @@ namespace RobloxFiles
         }
 
         public Content TextureContent = Content.None;
+        public ContentId TexturePack;
+        public string TexturePackMetadata = "";
         public float Transparency = 0;
+        public Vector2 UVOffset = Vector2.zero;
+        public Vector2 UVScale = Vector2.one;
         public int ZIndex = 1;
     }
 
@@ -1848,11 +1945,6 @@ namespace RobloxFiles
 
     [RbxService]
     public class FeatureRestrictionManager : Instance
-    {
-    }
-
-    [RbxService]
-    public class FeedService : Instance
     {
     }
 
@@ -2297,17 +2389,20 @@ namespace RobloxFiles
 
         public AutomaticSize AutomaticCanvasSize = AutomaticSize.None;
         public ContentId BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png";
+        public Content BottomImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-bottom.png");
         public Vector2 CanvasPosition = Vector2.zero;
         public UDim2 CanvasSize = new UDim2(0, 0, 2, 0);
         public ElasticBehavior ElasticBehavior = ElasticBehavior.WhenScrollable;
         public ScrollBarInset HorizontalScrollBarInset = ScrollBarInset.None;
         public ContentId MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png";
+        public Content MidImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-middle.png");
         public Color3 ScrollBarImageColor3 = new Color3(1, 1, 1);
         public float ScrollBarImageTransparency = 0;
         public int ScrollBarThickness = 12;
         public ScrollingDirection ScrollingDirection = ScrollingDirection.XY;
         public bool ScrollingEnabled = true;
         public ContentId TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png";
+        public Content TopImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-top.png");
         public ScrollBarInset VerticalScrollBarInset = ScrollBarInset.None;
         public VerticalScrollBarPosition VerticalScrollBarPosition = VerticalScrollBarPosition.Right;
     }
@@ -2405,8 +2500,14 @@ namespace RobloxFiles
         public bool Looped;
         public bool Playing;
         public double TimePosition = 0;
-        public ContentId Video = "";
-        public Content VideoContent;
+
+        public ContentId Video
+        {
+            get => VideoContent;
+            set => VideoContent = value;
+        }
+
+        public Content VideoContent = Content.None;
         public float Volume = 1;
     }
 
@@ -2440,9 +2541,13 @@ namespace RobloxFiles
         public bool AlwaysOnTop;
         public float Brightness = 1;
         public bool ClipsDescendants;
+
+        [Obsolete]
         public float DistanceLowerLimit = 0;
-        public float DistanceStep = 0;
+
+        [Obsolete]
         public float DistanceUpperLimit = -1;
+
         public Vector3 ExtentsOffset = Vector3.zero;
         public Vector3 ExtentsOffsetWorldSpace = Vector3.zero;
         public float LightInfluence = 0;
@@ -2557,13 +2662,16 @@ namespace RobloxFiles
 
     public class BoxHandleAdornment : HandleAdornment
     {
+        public AdornShading Shading = AdornShading.Default;
         public Vector3 Size = Vector3.one;
     }
 
     public class ConeHandleAdornment : HandleAdornment
     {
         public float Height = 2;
+        public bool Hollow;
         public float Radius = 0.5f;
+        public AdornShading Shading = AdornShading.Default;
     }
 
     public class CylinderHandleAdornment : HandleAdornment
@@ -2572,6 +2680,7 @@ namespace RobloxFiles
         public float Height = 1;
         public float InnerRadius = 0;
         public float Radius = 1;
+        public AdornShading Shading = AdornShading.Default;
     }
 
     public class ImageHandleAdornment : HandleAdornment
@@ -2595,6 +2704,7 @@ namespace RobloxFiles
     public class SphereHandleAdornment : HandleAdornment
     {
         public float Radius = 1;
+        public AdornShading Shading = AdornShading.Default;
     }
 
     public class WireframeHandleAdornment : HandleAdornment
@@ -2735,11 +2845,20 @@ namespace RobloxFiles
         public Vector3 Position = Vector3.zero;
         public float Radius = 3;
         public HapticEffectType Type = HapticEffectType.UIClick;
+
+        [Obsolete]
         public FloatCurve Waveform;
+
+        public byte[] WaveformData;
     }
 
     [RbxService]
     public class HapticService : Instance
+    {
+    }
+
+    [RbxService]
+    public class HarmonyService : Instance
     {
     }
 
@@ -3004,6 +3123,7 @@ namespace RobloxFiles
         public Vector3 NeckRangeMin = Vector3.zero;
         public float NeckSize = 0;
         public CFrame NeckTposeAdjustment = CFrame.identity;
+        public CFrame OriginOffset = CFrame.identity;
         public Instance Pelvis = null;
         public Vector3 PelvisRangeMax = Vector3.zero;
         public Vector3 PelvisRangeMin = Vector3.zero;
@@ -3098,6 +3218,7 @@ namespace RobloxFiles
         public double BuildDebouncePeriod = 0.1;
         public bool HighCompression;
         public bool SerializePatch = true;
+        public bool UseFileLevelCompressionInsteadOfChunk;
         public bool ZstdCompression;
     }
 
@@ -3109,11 +3230,14 @@ namespace RobloxFiles
 
     public class InputBinding : Instance
     {
+        public KeyCode Backward = KeyCode.Unknown;
         public KeyCode Down = KeyCode.Unknown;
+        public KeyCode Forward = KeyCode.Unknown;
         public KeyCode KeyCode = KeyCode.Unknown;
         public KeyCode Left = KeyCode.Unknown;
         public float PressedThreshold = 0.5f;
         public float ReleasedThreshold = 0.2f;
+        public float ResponseCurve = 1;
         public KeyCode Right = KeyCode.Unknown;
         public float Scale = 1;
         public GuiButton UIButton = null;
@@ -3135,6 +3259,11 @@ namespace RobloxFiles
 
         [Obsolete]
         public bool AllowInsertFreeModels;
+    }
+
+    [RbxService]
+    public class InstanceExtensionsService : Instance
+    {
     }
 
     public class InternalSyncItem : Instance
@@ -3293,12 +3422,13 @@ namespace RobloxFiles
         public float EnvironmentDiffuseScale = 0;
         public float EnvironmentSpecularScale = 0;
         public float ExposureCompensation = 0;
+        public RolloutState ExtendLightRangeTo120 = RolloutState.Default;
         public Color3 FogColor = Color3.FromRGB(191, 191, 191);
         public float FogEnd = 100000;
         public float FogStart = 0;
         public float GeographicLatitude = 41.7333f;
         public bool GlobalShadows;
-        public LightingStyle LightingStyle = LightingStyle.Realistic;
+        public LightingStyle LightingStyle = LightingStyle.Soft;
         public Color3 OutdoorAmbient = Color3.FromRGB(127, 127, 127);
 
         [Obsolete]
@@ -3390,6 +3520,7 @@ namespace RobloxFiles
 
     public class AuroraScript : LuaSourceContainer
     {
+        public byte[] AuroraScriptBindingsSerialize;
         public bool EnableCulling;
         public bool EnableLOD;
         public int LODCriticality = 0;
@@ -3522,6 +3653,9 @@ namespace RobloxFiles
 
         public Content ColorMapContent = Content.None;
         public PhysicalProperties CustomPhysicalProperties;
+        public Content EmissiveMaskContent = Content.None;
+        public float EmissiveStrength = 1;
+        public Color3 EmissiveTint = new Color3(1, 1, 1);
         public MaterialPattern MaterialPattern = MaterialPattern.Regular;
 
         public ContentId MetalnessMap
@@ -3598,6 +3732,17 @@ namespace RobloxFiles
 
     [RbxService]
     public class MetaBreakpointManager : Instance
+    {
+    }
+
+    [RbxService]
+    public class MicroProfilerService : Instance
+    {
+        public string ContextLabel = "";
+    }
+
+    [RbxService]
+    public class ModerationService : Instance
     {
     }
 
@@ -3951,6 +4096,7 @@ namespace RobloxFiles
 
         public SharedString AeroMeshData = SharedString.None;
         public FluidFidelity FluidFidelityInternal = FluidFidelity.Automatic;
+        public bool InertiaMigrated;
         public SharedString PhysicalConfigData = SharedString.FromBase64("1B2M2Y8AsgTpgAmY7PhCfg==");
         public Vector3 UnscaledCofm = Vector3.zero;
         public Vector3 UnscaledVolInertiaDiags = Vector3.zero;
@@ -3967,10 +4113,16 @@ namespace RobloxFiles
         }
 
         public bool DoubleSided;
+
+        [Obsolete]
         public bool HasJointOffset;
+
         public bool HasSkinnedMesh;
         public Vector3 InitialSize = Vector3.zero;
+
+        [Obsolete]
         public Vector3 JointOffset = Vector3.zero;
+
         public Content MeshContent = Content.None;
 
         [Obsolete]
@@ -4154,7 +4306,13 @@ namespace RobloxFiles
 
     public abstract class BackpackItem : Model
     {
-        public ContentId TextureId = "";
+        public Content TextureContent = Content.None;
+
+        public ContentId TextureId
+        {
+            get => TextureContent;
+            set => TextureContent = value;
+        }
     }
 
     public class HopperBin : BackpackItem
@@ -4186,7 +4344,9 @@ namespace RobloxFiles
     public class Workspace : WorldRoot
     {
         public float AirDensity = 0.0012f;
+        public float AirTurbulenceIntensity = 0;
         public bool AllowThirdPartySales;
+        public AuthorityMode AuthorityMode = AuthorityMode.Server;
         public AvatarUnificationMode AvatarUnificationMode = AvatarUnificationMode.Default;
         public ClientAnimatorThrottlingMode ClientAnimatorThrottling = ClientAnimatorThrottlingMode.Default;
         public byte[] CollisionGroupData = Convert.FromBase64String("AQEABP////8HRGVmYXVsdA==");
@@ -4199,6 +4359,7 @@ namespace RobloxFiles
         public Vector3 GlobalWind = Vector3.zero;
         public float Gravity = 196.2f;
         public IKControlConstraintSupport IKControlConstraintSupport = IKControlConstraintSupport.Default;
+        public LuauTypeCheckMode LuauTypeCheckMode = LuauTypeCheckMode.NoCheck;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public ModelStreamingBehavior ModelStreamingBehavior = ModelStreamingBehavior.Default;
         public MoverConstraintRootBehaviorMode MoverConstraintRootBehavior = MoverConstraintRootBehaviorMode.Default;
@@ -4221,6 +4382,8 @@ namespace RobloxFiles
         public bool TerrainWeldsFixed = true;
         public RolloutState TouchEventsUseCollisionGroups = RolloutState.Default;
         public bool TouchesUseCollisionGroups;
+        public RolloutState UseImprovedModelLod = RolloutState.Default;
+        public RolloutState UseNewLuauTypeSolver = RolloutState.Default;
     }
 
     public class WorldModel : WorldRoot
@@ -4265,6 +4428,8 @@ namespace RobloxFiles
         public string FlipbookIncompatible = "Particle texture must be 1024 by 1024 to use flipbooks.";
         public ParticleFlipbookLayout FlipbookLayout = ParticleFlipbookLayout.None;
         public ParticleFlipbookMode FlipbookMode = ParticleFlipbookMode.Loop;
+        public int FlipbookSizeX = 1;
+        public int FlipbookSizeY = 1;
         public bool FlipbookStartRandom;
         public NumberRange Lifetime = new NumberRange(5, 10);
         public float LightEmission = 0;
@@ -4296,6 +4461,11 @@ namespace RobloxFiles
 
         public bool WindAffectsDrag;
         public float ZOffset = 0;
+    }
+
+    [RbxService]
+    public class PartyEmulatorService : Instance
+    {
     }
 
     [RbxService]
@@ -4524,6 +4694,7 @@ namespace RobloxFiles
         public float HoldDuration = 0;
         public KeyCode KeyboardKeyCode = KeyCode.E;
         public float MaxActivationDistance = 10;
+        public float MaxIndicatorDistance = 0;
         public string ObjectText = "";
         public bool RequiresLineOfSight = true;
         public LocalizationTable RootLocalizationTable = null;
@@ -4535,6 +4706,7 @@ namespace RobloxFiles
     public class ProximityPromptService : Instance
     {
         public bool Enabled = true;
+        public int MaxIndicatorsVisible = 16;
         public int MaxPromptsVisible = 16;
     }
 
@@ -4549,6 +4721,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class RbxAnalyticsService : Instance
+    {
+    }
+
+    [RbxService]
+    public class RecommendationService : Instance
     {
     }
 
@@ -4627,6 +4804,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class ReflectionService : Instance
+    {
+    }
+
+    [RbxService]
+    public class RemoteCommandService : Instance
     {
     }
 
@@ -4737,6 +4919,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class RunService : Instance
+    {
+    }
+
+    [RbxService]
+    public class RuntimeContentService : Instance
     {
     }
 
@@ -4868,6 +5055,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class SessionCheckService : Instance
+    {
+    }
+
+    [RbxService]
     public class SessionService : Instance
     {
     }
@@ -4892,6 +5084,11 @@ namespace RobloxFiles
         public int StarCount = 3000;
         public float SunAngularSize = 21;
         public ContentId SunTextureId = "rbxasset://sky/sun.jpg";
+    }
+
+    [RbxService]
+    public class SlimService : Instance
+    {
     }
 
     public class Smoke : Instance
@@ -4940,9 +5137,12 @@ namespace RobloxFiles
 
     public class Sound : Instance
     {
+        public Content AudioContent = Content.None;
+
         [Obsolete]
         public float EmitterSize = 10;
 
+        public bool IsMutedForCapture;
         public NumberRange LoopRegion = new NumberRange(0, 60000);
         public bool Looped;
 
@@ -4969,7 +5169,13 @@ namespace RobloxFiles
         public float RollOffMinDistance = 10;
         public RollOffMode RollOffMode = RollOffMode.Inverse;
         public SoundGroup SoundGroup = null;
-        public ContentId SoundId = "";
+
+        public ContentId SoundId
+        {
+            get => AudioContent;
+            set => AudioContent = value;
+        }
+
         public double TimePosition = 0;
         public float Volume = 0.5f;
 
@@ -5076,8 +5282,10 @@ namespace RobloxFiles
     [RbxService(IsRooted = false)]
     public class SoundService : Instance
     {
+        public bool AcousticSimulationEnabled;
         public ReverbType AmbientReverb = ReverbType.NoReverb;
         public RolloutState AudioApiByDefault = RolloutState.Default;
+        public RolloutState AudioPlayerVolumeFix = RolloutState.Default;
         public RolloutState CharacterSoundsUseNewApi = RolloutState.Default;
         public ListenerLocation DefaultListenerLocation = ListenerLocation.Default;
         public float DistanceFactor = 3.33f;
@@ -5086,6 +5294,11 @@ namespace RobloxFiles
         public bool RespectFilteringEnabled;
         public float RolloffScale = 1;
         public VolumetricAudio VolumetricAudio = VolumetricAudio.Automatic;
+    }
+
+    [RbxService]
+    public class SoundShimService : Instance
+    {
     }
 
     public class Sparkles : Instance
@@ -5293,6 +5506,13 @@ namespace RobloxFiles
         public StyleSheet StyleSheet = null;
     }
 
+    public class StyleQuery : Instance
+    {
+        public NumberRange AspectRatioRange;
+        public Vector2 MaxSize = new Vector2(float.MaxValue, float.MaxValue);
+        public Vector2 MinSize = Vector2.zero;
+    }
+
     [RbxService]
     public class StylingService : Instance
     {
@@ -5310,6 +5530,9 @@ namespace RobloxFiles
         }
 
         public Content ColorMapContent = Content.None;
+        public Content EmissiveMaskContent = Content.None;
+        public float EmissiveStrength = 1;
+        public Color3 EmissiveTint = new Color3(1, 1, 1);
 
         public ContentId MetalnessMap
         {
@@ -5419,6 +5642,9 @@ namespace RobloxFiles
         }
 
         public Content ColorMapContent = Content.None;
+        public Content EmissiveMaskContent = Content.None;
+        public float EmissiveStrength = 1;
+        public Color3 EmissiveTint = new Color3(1, 1, 1);
         public TerrainFace Face = TerrainFace.Side;
         public MaterialPattern MaterialPattern = MaterialPattern.Regular;
 
@@ -5578,7 +5804,15 @@ namespace RobloxFiles
         public bool CreateDefaultCommands = true;
         public bool CreateDefaultTextChannels = true;
         public bool HasSeenDeprecationDialog;
-        public bool isLegacyChatDisabled;
+        public bool IsLegacyChatDisabled;
+    }
+
+    public class TextGenerator : Instance
+    {
+        public int Seed = 0;
+        public string SystemPrompt = "";
+        public float Temperature = 0.7f;
+        public float TopP = 0.9f;
     }
 
     [RbxService]
@@ -5706,10 +5940,23 @@ namespace RobloxFiles
 
     public class UIDragDetector : UIComponent
     {
-        public ContentId ActivatedCursorIcon = "";
+        public ContentId ActivatedCursorIcon
+        {
+            get => ActivatedCursorIconContent;
+            set => ActivatedCursorIconContent = value;
+        }
+
+        public Content ActivatedCursorIconContent = Content.None;
         public UIDragDetectorBoundingBehavior BoundingBehavior = UIDragDetectorBoundingBehavior.Automatic;
         public GuiBase2d BoundingUI = null;
-        public ContentId CursorIcon = "";
+
+        public ContentId CursorIcon
+        {
+            get => CursorIconContent;
+            set => CursorIconContent = value;
+        }
+
+        public Content CursorIconContent = Content.None;
         public Vector2 DragAxis = Vector2.xAxis;
         public UIDragDetectorDragRelativity DragRelativity = UIDragDetectorDragRelativity.Absolute;
         public float DragRotation = 0;
@@ -5821,11 +6068,15 @@ namespace RobloxFiles
     public class UIStroke : UIComponent
     {
         public ApplyStrokeMode ApplyStrokeMode = ApplyStrokeMode.Contextual;
+        public UDim BorderOffset = new UDim();
+        public BorderStrokePosition BorderStrokePosition = BorderStrokePosition.Outer;
         public Color3 Color = new Color3();
         public bool Enabled = true;
         public LineJoinMode LineJoinMode = LineJoinMode.Round;
+        public StrokeSizingMode StrokeSizingMode = StrokeSizingMode.FixedSize;
         public float Thickness = 1;
         public float Transparency = 0;
+        public int ZIndex = 1;
     }
 
     [RbxService]
@@ -5851,7 +6102,14 @@ namespace RobloxFiles
         public bool LegacyInputEventsEnabled = true;
 
         public MouseBehavior MouseBehavior = MouseBehavior.Default;
-        public ContentId MouseIcon = "";
+
+        public ContentId MouseIcon
+        {
+            get => MouseIconContent;
+            set => MouseIconContent = value;
+        }
+
+        public Content MouseIconContent = Content.None;
         public bool MouseIconEnabled = true;
     }
 
@@ -5997,10 +6255,10 @@ namespace RobloxFiles
 
     public class VideoPlayer : Instance
     {
-        public ContentId Asset = "";
         public bool Looping;
         public float PlaybackSpeed = 1;
         public double TimePosition = 0;
+        public Content VideoContent = Content.None;
         public float Volume = 1;
     }
 
@@ -6099,4 +6357,12 @@ namespace RobloxFiles
         public Instance TargetInstance = null;
         public string TargetName = "Input";
     }
+
+    public class WrapTextureTransfer : Instance
+    {
+        public Content ReferenceCageMeshContent = Content.None;
+        public Vector2 UVMaxBound = new Vector2(float.MinValue, float.MinValue);
+        public Vector2 UVMinBound = new Vector2(float.MaxValue, float.MaxValue);
+    }
+
 }

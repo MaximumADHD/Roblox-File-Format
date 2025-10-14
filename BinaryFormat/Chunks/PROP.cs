@@ -564,15 +564,19 @@ namespace RobloxFiles.BinaryFormat.Chunks
                 {
                     readProperties(i =>
                     {
-                        bool custom = reader.ReadBoolean();
+                        var flags = (MaterialBitFlags)reader.ReadByte();
 
-                        if (custom)
+                        if ((flags & MaterialBitFlags.CustomPhysics) != 0)
                         {
                             float Density = reader.ReadFloat(),
                                   Friction = reader.ReadFloat(),
                                   Elasticity = reader.ReadFloat(),
                                   FrictionWeight = reader.ReadFloat(),
-                                  ElasticityWeight = reader.ReadFloat();
+                                  ElasticityWeight = reader.ReadFloat(),
+                                  AcousticAbsorption = 1f;
+
+                            if ((flags & MaterialBitFlags.AcousticAbsorption) != 0)
+                                AcousticAbsorption = reader.ReadFloat();
 
                             return new PhysicalProperties
                             (
@@ -580,7 +584,8 @@ namespace RobloxFiles.BinaryFormat.Chunks
                                 Friction,
                                 Elasticity,
                                 FrictionWeight,
-                                ElasticityWeight
+                                ElasticityWeight,
+                                AcousticAbsorption
                             );
                         }
 

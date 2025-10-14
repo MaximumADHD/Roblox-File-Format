@@ -9,11 +9,15 @@ namespace RobloxFiles.Tokens
     {
         public string XmlPropertyToken => "PhysicalProperties";
 
-        private static Func<string, T> CreateReader<T>(Func<string, T> parse, XmlNode token) where T : struct
+        private static Func<string, T> CreateReader<T>(Func<string, T> parse, XmlNode token, T fallback = default) where T : struct
         {
             return new Func<string, T>(key =>
             {
                 XmlElement node = token[key];
+
+                if (node == null)
+                    return fallback;
+
                 return parse(node.InnerText);
             });
         }
@@ -21,7 +25,7 @@ namespace RobloxFiles.Tokens
         public bool ReadProperty(Property prop, XmlNode token)
         {
             var readBool = CreateReader(bool.Parse, token);
-            var readFloat = CreateReader(Formatting.ParseFloat, token);
+            var readFloat = CreateReader(Formatting.ParseFloat, token, 1f);
 
             try
             {
@@ -36,7 +40,8 @@ namespace RobloxFiles.Tokens
                         readFloat("Friction"),
                         readFloat("Elasticity"),
                         readFloat("FrictionWeight"),
-                        readFloat("ElasticityWeight")
+                        readFloat("ElasticityWeight"),
+                        readFloat("AcousticAbsorption")
                     );
                 }
 
@@ -51,8 +56,8 @@ namespace RobloxFiles.Tokens
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
             bool hasCustomPhysics = (prop.Value != null);
-
             XmlElement customPhysics = doc.CreateElement("CustomPhysics");
+
             customPhysics.InnerText = hasCustomPhysics
                 .ToString()
                 .ToLower();
@@ -69,7 +74,8 @@ namespace RobloxFiles.Tokens
                     { "Friction", customProps.Friction },
                     { "Elasticity", customProps.Elasticity },
                     { "FrictionWeight", customProps.FrictionWeight },
-                    { "ElasticityWeight", customProps.ElasticityWeight }
+                    { "ElasticityWeight", customProps.ElasticityWeight },
+                    { "AcousticAbsorption", customProps.AcousticAbsorption },
                 };
 
                 foreach (string elementType in data.Keys)

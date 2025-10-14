@@ -109,7 +109,14 @@ local PropertyPatches: { [string]: Patch } = {
 
 	AudioPlayer = {
 		Redirect = {
+			Asset = "AudioContent",
 			AssetId = "Asset",
+		}
+	},
+
+	BackpackItem = {
+		Redirect = {
+			TextureId = "TextureContent",
 		}
 	},
 
@@ -175,6 +182,12 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
+	ClickDetector = {
+		Redirect = {
+			CursorIcon = "CursorIconContent"
+		}
+	},
+	
 	DataStoreService = {
 		Defaults = {
 			AutomaticRetry = true,
@@ -184,6 +197,9 @@ local PropertyPatches: { [string]: Patch } = {
 
 	Decal = {
 		Redirect = {
+			MetalnessMap = "MetalnessMapContent",
+			RoughnessMap = "RoughnessMapContent",
+			NormalMap = "NormalMapContent",
 			Texture = "TextureContent",
 		}
 	},
@@ -193,6 +209,12 @@ local PropertyPatches: { [string]: Patch } = {
 			Value = "value",
 			ConstrainedValue = "value",
 		},
+	},
+
+	DragDetector = {
+		Redirect = {
+			ActivatedCursorIcon = "ActivatedCursorIconContent",
+		}
 	},
 
 	Fire = {
@@ -439,6 +461,7 @@ local PropertyPatches: { [string]: Patch } = {
 	Sound = {
 		Redirect = {
 			Pitch = "PlaybackSpeed",
+			SoundId = "AudioContent",
 			MinDistance = "RollOffMinDistance",
 			MaxDistance = "RollOffMaxDistance",
 			xmlRead_MinDistance_3 = "RollOffMinDistance",
@@ -532,6 +555,13 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
+	UIDragDetector = {
+		Redirect = {
+			ActivatedCursorIcon = "ActivatedCursorIconContent",
+			CursorIcon = "CursorIconContent",
+		}
+	},
+
 	UnvalidatedAssetService = {
 		Defaults = {
 			CachedData = HttpService:JSONEncode({
@@ -544,8 +574,12 @@ local PropertyPatches: { [string]: Patch } = {
 
 	UserInputService = {
 		Defaults = {
-			LegacyInputEventsEnabled = true
+			LegacyInputEventsEnabled = true,
 		},
+
+		Redirect = {
+			MouseIcon = "MouseIconContent",
+		}
 	},
 
 	ViewportFrame = {
@@ -553,6 +587,12 @@ local PropertyPatches: { [string]: Patch } = {
 			CameraCFrame = CFrame.identity,
 			CameraFieldOfView = 70,
 		},
+	},
+
+	VideoFrame = {
+		Redirect = {
+			Video = "VideoContent"
+		}
 	},
 
 	WeldConstraint = {

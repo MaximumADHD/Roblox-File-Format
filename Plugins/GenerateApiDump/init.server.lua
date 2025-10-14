@@ -79,8 +79,10 @@ local NON_ROOTED_SERVICES = {
 }
 
 local isCoreScript = pcall(function()
-	local restricted = game:GetService("RobloxPluginGuiService")
-	return tostring(restricted)
+	local restricted: any = game:GetService("RobloxPluginGuiService")
+	assert(restricted)
+
+	return tostring(restricted) -- will throw without sufficient permissions.
 end)
 
 local function write(formatString, ...)
