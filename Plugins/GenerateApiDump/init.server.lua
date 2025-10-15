@@ -480,10 +480,46 @@ local function collectProperties(class: ClassDescriptor)
 		[string]: PropertyDescriptor
 	}
 
+	local contentProps = {} :: {
+		[string]: true
+	}
+
 	for _, member in ipairs(class.Members) do
 		if member.MemberType == "Property" then
+			if member.ValueType.Name == "Content" then
+				contentProps[member.Name] = true
+			end
+
 			local propName = member.Name
 			propMap[propName] = member
+		end
+	end
+
+	for contentName in pairs(contentProps) do
+		local contentProp = propMap[contentName]
+		local oldName = '^' .. contentName:gsub("Content$", "")
+
+		for name, prop in pairs(propMap) do
+			if prop == contentProp then
+				continue
+			end
+
+			if prop.Name:match(oldName) and prop.Name ~= "TexturePack" then
+				if prop.ValueType.Name == "ContentId" then
+					local patch = getPatches(class.Name)
+
+					local redirect = (function ()
+						if patch.Redirect == nil then
+							patch.Redirect = {}
+						end
+
+						return assert(patch.Redirect)
+					end)()
+
+					warn(class.Name, "Redirecting ContentId", prop.Name, "to Content", contentName)
+					redirect[prop.Name] = contentName
+				end
+			end
 		end
 	end
 
@@ -791,6 +827,8 @@ local function generateClasses()
 							continue
 						end
 					end
+				elseif valueType == "NetAssetRef" then
+					continue
 				end
 
 				local redirect = redirectProps[propName]

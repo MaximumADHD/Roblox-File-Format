@@ -76,14 +76,6 @@ local GuiTextMixIn: Patch = {
 	},
 }
 
-local GuiImageMixIn: Patch = {
-	Redirect = {
-		Image = "ImageContent",
-		HoverImage = "HoverImageContent",
-		PressedImage = "PressedImageContent",
-	}
-}
-
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 local PropertyPatches: { [string]: Patch } = {
@@ -114,12 +106,6 @@ local PropertyPatches: { [string]: Patch } = {
 		}
 	},
 
-	BackpackItem = {
-		Redirect = {
-			TextureId = "TextureContent",
-		}
-	},
-
 	BallSocketConstraint = {
 		-- Why does this even exist?
 		Redirect = {
@@ -145,12 +131,6 @@ local PropertyPatches: { [string]: Patch } = {
 			MaterialVariantSerialized = "",
 			size = Vector3.new(4, 1.2, 2),
 		},
-	},
-
-	BaseWrap = {
-		Redirect = {
-			CageMeshId = "CageMeshContent",
-		}
 	},
 
 	BodyColors = {
@@ -181,12 +161,6 @@ local PropertyPatches: { [string]: Patch } = {
 			CoordinateFrame = "CFrame"
 		},
 	},
-
-	ClickDetector = {
-		Redirect = {
-			CursorIcon = "CursorIconContent"
-		}
-	},
 	
 	DataStoreService = {
 		Defaults = {
@@ -195,26 +169,11 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
-	Decal = {
-		Redirect = {
-			MetalnessMap = "MetalnessMapContent",
-			RoughnessMap = "RoughnessMapContent",
-			NormalMap = "NormalMapContent",
-			Texture = "TextureContent",
-		}
-	},
-
 	DoubleConstrainedValue = {
 		Redirect = {
 			Value = "value",
 			ConstrainedValue = "value",
 		},
-	},
-
-	DragDetector = {
-		Redirect = {
-			ActivatedCursorIcon = "ActivatedCursorIconContent",
-		}
 	},
 
 	Fire = {
@@ -313,9 +272,6 @@ local PropertyPatches: { [string]: Patch } = {
 		}
 	},
 
-	ImageButton = GuiImageMixIn,
-	ImageLabel = GuiImageMixIn,
-
 	InsertService = {
 		Defaults = {
 			AllowClientInsertModels = false
@@ -354,23 +310,6 @@ local PropertyPatches: { [string]: Patch } = {
 	MaterialService = {
 		Redirect = {
 			Use2022Materials = "Use2022MaterialsXml"
-		},
-	},
-
-	MaterialVariant = {
-		Redirect = {
-			ColorMap = "ColorMapContent",
-			NormalMap = "NormalMapContent",
-			MetalnessMap = "MetalnessMapContent",
-			RoughnessMap = "RoughnessMapContent",
-		}
-	},
-
-	MeshPart = {
-		Redirect = {
-			MeshId = "MeshContent",
-			MeshID = "MeshContent",
-			TextureID = "TextureContent",
 		},
 	},
 
@@ -493,13 +432,6 @@ local PropertyPatches: { [string]: Patch } = {
 		Defaults = {
 			AlphaMode = Enum.AlphaMode.Overlay
 		},
-
-		Redirect = {
-			ColorMap = "ColorMapContent",
-			NormalMap = "NormalMapContent",
-			MetalnessMap = "MetalnessMapContent",
-			RoughnessMap = "RoughnessMapContent",
-		}
 	},
 
 	Terrain = {
@@ -510,15 +442,6 @@ local PropertyPatches: { [string]: Patch } = {
 			AcquisitionMethod = TryGetEnumItem("TerrainAcquisitionMethod", "None"),
 			MaterialColors = "AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM",
 		},
-	},
-
-	TerrainDetail = {
-		Redirect = {
-			ColorMap = "ColorMapContent",
-			NormalMap = "NormalMapContent",
-			MetalnessMap = "MetalnessMapContent",
-			RoughnessMap = "RoughnessMapContent",
-		}
 	},
 
 	TerrainRegion = {
@@ -555,13 +478,6 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
-	UIDragDetector = {
-		Redirect = {
-			ActivatedCursorIcon = "ActivatedCursorIconContent",
-			CursorIcon = "CursorIconContent",
-		}
-	},
-
 	UnvalidatedAssetService = {
 		Defaults = {
 			CachedData = HttpService:JSONEncode({
@@ -575,10 +491,6 @@ local PropertyPatches: { [string]: Patch } = {
 	UserInputService = {
 		Defaults = {
 			LegacyInputEventsEnabled = true,
-		},
-
-		Redirect = {
-			MouseIcon = "MouseIconContent",
 		}
 	},
 
@@ -587,12 +499,6 @@ local PropertyPatches: { [string]: Patch } = {
 			CameraCFrame = CFrame.identity,
 			CameraFieldOfView = 70,
 		},
-	},
-
-	VideoFrame = {
-		Redirect = {
-			Video = "VideoContent"
-		}
 	},
 
 	WeldConstraint = {
@@ -627,12 +533,6 @@ local PropertyPatches: { [string]: Patch } = {
 			PhysicsSteppingMethod = TryGetEnumItem("PhysicsSteppingMethod", "Default"),
 			MeshPartHeadsAndAccessories = TryGetEnumItem("MeshPartHeadsAndAccessories", "Default"),
 		},
-	},
-
-	WrapLayer = {
-		Redirect = {
-			ReferenceMeshId = "ReferenceMeshContent",
-		}
 	}
 }
 

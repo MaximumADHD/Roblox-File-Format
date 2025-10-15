@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.694.0.6940982
+// Updated as of 0.695.0.6950957
 using System;
 
 namespace RobloxFiles.Enums
@@ -3222,10 +3222,8 @@ namespace RobloxFiles.Enums
     {
         Automatic,
         StreamingMesh,
+        SLIM,
         Disabled,
-
-        [Obsolete]
-        Enabled = StreamingMesh,
     }
 
     public enum ModelStreamingBehavior
@@ -3242,6 +3240,28 @@ namespace RobloxFiles.Enums
         Persistent,
         PersistentPerPlayer,
         Nonatomic,
+    }
+
+    public enum ModerationResultCategory
+    {
+        ViolationDetected,
+        Borderline,
+        NoViolationDetected,
+    }
+
+    public enum ModerationResultLabel
+    {
+        ChildExploitation,
+        SuicideSelfInjuryAndHarmfulBehavior,
+        ThreatsBullyingAndHarassment,
+        TerrorismAndViolentExtremism,
+        DiscriminationSlursAndHateSpeech,
+        RealWorldSensitiveEvents,
+        ViolentContentAndGore,
+        RomanticAndSexualContent,
+        IllegalAndRegulatedGoodsAndActivities,
+        Profanity,
+        Other = 100,
     }
 
     public enum ModerationStatus
@@ -4047,6 +4067,13 @@ namespace RobloxFiles.Enums
         UnderWater,
     }
 
+    public enum ReviewableContentState
+    {
+        Pending,
+        Completed,
+        Failed,
+    }
+
     public enum RibbonTool
     {
         Select,
@@ -4810,6 +4837,33 @@ namespace RobloxFiles.Enums
 
         [Obsolete]
         Unified,
+    }
+
+    public enum TelemetryBackend
+    {
+        UNSPECIFIED,
+        EventIngest,
+        Points,
+        Teletune,
+        EphemeralCounter,
+        EphemeralStat,
+        Counter,
+        Stat,
+    }
+
+    public enum TelemetryStandardizedField
+    {
+        AddDatacenterId,
+        AddPlaceId,
+        AddUniverseId,
+        AddPlaceInstanceId,
+        AddPlaySessionId,
+        AddCurrentContextName,
+        AddOsInfo,
+        AddArchitectureInfo,
+        AddCpuInfo,
+        AddMemoryInfo,
+        AddSessionInfo,
     }
 
     public enum TeleportMethod

@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.694.0.6940982
+// Updated as of 0.695.0.6950957
 
 using System;
 
@@ -1778,11 +1778,6 @@ namespace RobloxFiles
     }
 
     [RbxService]
-    public class ExampleService : Instance
-    {
-    }
-
-    [RbxService]
     public class ExampleV2Service : Instance
     {
     }
@@ -2388,20 +2383,38 @@ namespace RobloxFiles
         }
 
         public AutomaticSize AutomaticCanvasSize = AutomaticSize.None;
-        public ContentId BottomImage = "rbxasset://textures/ui/Scroll/scroll-bottom.png";
+
+        public ContentId BottomImage
+        {
+            get => BottomImageContent;
+            set => BottomImageContent = value;
+        }
+
         public Content BottomImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-bottom.png");
         public Vector2 CanvasPosition = Vector2.zero;
         public UDim2 CanvasSize = new UDim2(0, 0, 2, 0);
         public ElasticBehavior ElasticBehavior = ElasticBehavior.WhenScrollable;
         public ScrollBarInset HorizontalScrollBarInset = ScrollBarInset.None;
-        public ContentId MidImage = "rbxasset://textures/ui/Scroll/scroll-middle.png";
+
+        public ContentId MidImage
+        {
+            get => MidImageContent;
+            set => MidImageContent = value;
+        }
+
         public Content MidImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-middle.png");
         public Color3 ScrollBarImageColor3 = new Color3(1, 1, 1);
         public float ScrollBarImageTransparency = 0;
         public int ScrollBarThickness = 12;
         public ScrollingDirection ScrollingDirection = ScrollingDirection.XY;
         public bool ScrollingEnabled = true;
-        public ContentId TopImage = "rbxasset://textures/ui/Scroll/scroll-top.png";
+
+        public ContentId TopImage
+        {
+            get => TopImageContent;
+            set => TopImageContent = value;
+        }
+
         public Content TopImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-top.png");
         public ScrollBarInset VerticalScrollBarInset = ScrollBarInset.None;
         public VerticalScrollBarPosition VerticalScrollBarPosition = VerticalScrollBarPosition.Right;
@@ -4382,7 +4395,6 @@ namespace RobloxFiles
         public bool TerrainWeldsFixed = true;
         public RolloutState TouchEventsUseCollisionGroups = RolloutState.Default;
         public bool TouchesUseCollisionGroups;
-        public RolloutState UseImprovedModelLod = RolloutState.Default;
         public RolloutState UseNewLuauTypeSolver = RolloutState.Default;
     }
 
@@ -6230,6 +6242,11 @@ namespace RobloxFiles
     public class Vector3Value : ValueBase
     {
         public Vector3 Value = Vector3.zero;
+    }
+
+    public class ValueCurve : Instance
+    {
+        public byte[] ValuesAndTimes;
     }
 
     public class Vector3Curve : Instance
