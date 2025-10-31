@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.695.0.6950957
+// Updated as of 0.697.0.6970925
 using System;
 
 namespace RobloxFiles.Enums
@@ -252,6 +252,24 @@ namespace RobloxFiles.Enums
         Cancelled,
         ErrorMultiplePeople,
         ErrorUploadingVideo = 2001,
+    }
+
+    public enum AnimationNodeType
+    {
+        InvalidNode,
+        AddNode,
+        BlendNode,
+        Blend1DNode,
+        Blend2DNode,
+        ClipNode,
+        GraphOutput,
+        MaskNode,
+        PrioritySelectNode,
+        RandomSequenceNode,
+        SelectNode,
+        SequenceNode,
+        SpeedNode,
+        SubtractNode,
     }
 
     public enum AnimationPriority
@@ -966,6 +984,12 @@ namespace RobloxFiles.Enums
         RecentlyUpdated = RecentlyCreated,
     }
 
+    public enum CatalogTimedOptionFilter
+    {
+        All = 1,
+        TimedOptionOnly,
+    }
+
     public enum CellBlock
     {
         Solid,
@@ -1174,6 +1198,11 @@ namespace RobloxFiles.Enums
         Invoked = 1,
         TriggerCharacter,
         TriggerForIncompleteCompletions,
+    }
+
+    public enum CompressionAlgorithm
+    {
+        Zstd,
     }
 
     public enum ComputerCameraMovementMode
@@ -1443,6 +1472,12 @@ namespace RobloxFiles.Enums
         ConnectionClosed,
     }
 
+    public enum DefaultScriptSyncFileType
+    {
+        Lua,
+        Luau,
+    }
+
     public enum DevCameraOcclusionMode
     {
         Zoom,
@@ -1519,6 +1554,7 @@ namespace RobloxFiles.Enums
     public enum DeviceFeatureType
     {
         DeviceCapture,
+        InExperienceFAE,
     }
 
     public enum DeviceForm
@@ -1683,6 +1719,15 @@ namespace RobloxFiles.Enums
     {
         DefaultScope,
         CreatorAssetsCreate,
+    }
+
+    public enum ExperienceEventStatus
+    {
+        Active,
+        Cancelled,
+        Moderated,
+        Unpublished,
+        Unknown,
     }
 
     public enum ExperienceStateRecordingLoadMode
@@ -2139,6 +2184,15 @@ namespace RobloxFiles.Enums
         UINotification,
         GameplayExplosion,
         GameplayCollision,
+    }
+
+    public enum HashAlgorithm
+    {
+        Blake2b,
+        Blake3,
+        Md5,
+        Sha1,
+        Sha256,
     }
 
     public enum HighlightDepthMode
@@ -2888,6 +2942,14 @@ namespace RobloxFiles.Enums
         DPadDown,
         Thumbstick1,
         Thumbstick2,
+        Thumbstick1Up,
+        Thumbstick1Down,
+        Thumbstick1Left,
+        Thumbstick1Right,
+        Thumbstick2Up,
+        Thumbstick2Down,
+        Thumbstick2Left,
+        Thumbstick2Right,
         MouseLeftButton,
         MouseRightButton,
         MouseMiddleButton,
@@ -3222,8 +3284,11 @@ namespace RobloxFiles.Enums
     {
         Automatic,
         StreamingMesh,
-        SLIM,
         Disabled,
+        SLIM = 4,
+
+        [Obsolete]
+        Deactivated = Disabled,
     }
 
     public enum ModelStreamingBehavior
@@ -4299,6 +4364,16 @@ namespace RobloxFiles.Enums
         LegacySound,
         Players,
         CapabilityControl,
+        Plugin,
+        LocalUser,
+        WritePlayer,
+        RobloxScript,
+        RobloxEngine,
+        Unassigned,
+        InternalTest,
+        PluginOrOpenCloud,
+        Assistant,
+        RemoteCommand,
     }
 
     public enum SelectionBehavior
@@ -5263,6 +5338,7 @@ namespace RobloxFiles.Enums
         CaptureModerated,
         CaptureNotInGallery,
         IneligibleCapture,
+        UploadQuotaReached,
     }
 
     public enum UsageContext
@@ -5561,6 +5637,7 @@ namespace RobloxFiles.Enums
     {
         SSE,
         RawStream,
+        WebSocket,
     }
 
     public enum WeldConstraintPreserve

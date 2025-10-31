@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.695.0.6950957
+// Updated as of 0.697.0.6970925
 
 using System;
 
@@ -99,6 +99,10 @@ namespace RobloxFiles
         public AnimationPriority Priority = AnimationPriority.Action;
     }
 
+    public class AnimationGraphDefinition : AnimationClip
+    {
+    }
+
     public class CurveAnimation : AnimationClip
     {
     }
@@ -125,6 +129,12 @@ namespace RobloxFiles
     [RbxService]
     public class AnimationFromVideoCreatorStudioService : Instance
     {
+    }
+
+    public class AnimationNodeDefinition : Instance
+    {
+        public byte[] InputPinData;
+        public AnimationNodeType NodeType = AnimationNodeType.InvalidNode;
     }
 
     public class AnimationRigData : Instance
@@ -1697,6 +1707,14 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class DebugSettings : Instance
+    {
+        public bool IsScriptStackTracingEnabled;
+        public bool ReportSoundWarnings;
+        public TickCountSampleMethod TickCountPreciseOverride = TickCountSampleMethod.Fast;
+    }
+
+    [RbxService]
     public class DebuggablePluginWatcher : Instance
     {
     }
@@ -1764,6 +1782,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class EditableService : Instance
+    {
+    }
+
+    [RbxService]
+    public class EncodingService : Instance
     {
     }
 
@@ -2023,6 +2046,12 @@ namespace RobloxFiles
     [RbxService]
     public class GamePassService : Instance
     {
+    }
+
+    [RbxService]
+    public class GameSettings : Instance
+    {
+        public bool VideoCaptureEnabled;
     }
 
     [RbxService]
@@ -3526,6 +3555,11 @@ namespace RobloxFiles
     {
     }
 
+    [RbxService]
+    public class LuaSettings : Instance
+    {
+    }
+
     public abstract class LuaSourceContainer : Instance
     {
         public string ScriptGuid = "";
@@ -4310,6 +4344,7 @@ namespace RobloxFiles
         public bool NeedsPivotMigration;
         public BasePart PrimaryPart = null;
         public float ScaleFactor = 1;
+        public SharedString SlimHash = SharedString.None;
         public Optional<CFrame> WorldPivotData;
     }
 
@@ -4519,6 +4554,59 @@ namespace RobloxFiles
     [RbxService]
     public class PhysicsService : Instance
     {
+    }
+
+    [RbxService]
+    public class PhysicsSettings : Instance
+    {
+        public bool AllowSleep;
+        public bool AreAnchorsShown;
+        public bool AreAssembliesShown;
+        public bool AreAssemblyCentersOfMassShown;
+        public bool AreAwakePartsHighlighted;
+        public bool AreBodyTypesShown;
+        public bool AreCollisionCostsShown;
+        public bool AreConstraintForcesShownForSelectedOrHoveredInstances;
+        public bool AreConstraintTorquesShownForSelectedOrHoveredInstances;
+        public bool AreContactForcesShownForSelectedOrHoveredAssemblies;
+        public bool AreContactIslandsShown;
+        public bool AreContactPointsShown;
+        public bool AreGravityForcesShownForSelectedOrHoveredAssemblies;
+        public bool AreJointCoordinatesShown;
+        public bool AreMagnitudesShownForDrawnForcesAndTorques;
+        public bool AreMechanismsShown;
+        public bool AreModelCoordsShown;
+        public bool AreNonAnchorsShown;
+        public bool AreOwnersShown;
+        public bool ArePartCoordsShown;
+        public bool AreRegionsShown;
+        public bool AreSolverIslandsShown;
+        public bool AreTerrainReplicationRegionsShown;
+        public bool AreTimestepsShown;
+        public bool AreUnalignedPartsShown;
+        public bool AreWorldCoordsShown;
+        public bool DisableCSGv2;
+        public bool DisableCSGv3ForPlugins;
+        public bool DrawConstraintsNetForce;
+        public bool DrawContactsNetForce;
+        public bool DrawTotalNetForce;
+        public bool EnableForceVisualizationSmoothing;
+        public float FluidForceDrawScale = 0;
+        public bool ForceCSGv2;
+        public float ForceDrawScale = 0;
+        public int ForceVisualizationSmoothingSteps = 0;
+        public bool IsInterpolationThrottleShown;
+        public bool IsReceiveAgeShown;
+        public bool IsTreeShown;
+        public EnviromentalPhysicsThrottle PhysicsEnvironmentalThrottle = EnviromentalPhysicsThrottle.DefaultAuto;
+        public bool ShowDecompositionGeometry;
+        public bool ShowFluidForcesForSelectedOrHoveredMechanisms;
+        public bool ShowInstanceNamesForDrawnForcesAndTorques;
+        public SolverConvergenceMetricType SolverConvergenceMetricType = SolverConvergenceMetricType.IterationBased;
+        public SolverConvergenceVisualizationMode SolverConvergenceVisualizationMode = SolverConvergenceVisualizationMode.Disabled;
+        public double ThrottleAdjustTime = 0;
+        public float TorqueDrawScale = 0;
+        public bool UseCSGv2;
     }
 
     [RbxService]
@@ -6105,6 +6193,78 @@ namespace RobloxFiles
     public class UnvalidatedAssetService : Instance
     {
         public string CachedData = "{\"lastSaveTime\":0,\"users\":[],\"lastKnownPublishRequest\":0}";
+    }
+
+    [RbxService]
+    public class UserGameSettings : Instance
+    {
+        public bool AllTutorialsDisabled;
+        public bool BadgeVisible;
+        public CustomCameraMode CameraMode = CustomCameraMode.Default;
+        public bool CameraYInverted;
+        public bool ChatTranslationEnabled;
+        public bool ChatTranslationFTUXShown;
+        public string ChatTranslationLocale = "";
+        public bool ChatTranslationToggleEnabled;
+        public bool ChatVisible;
+        public string CompletedTutorials = "";
+        public bool ComputerCameraMovementChanged;
+        public ComputerCameraMovementMode ComputerCameraMovementMode = ComputerCameraMovementMode.Default;
+        public bool ComputerMovementChanged;
+        public ComputerMovementMode ComputerMovementMode = ComputerMovementMode.Default;
+        public ControlMode ControlMode = ControlMode.Classic;
+        public string DefaultCameraID = "";
+        public int FramerateCap = 0;
+        public bool Fullscreen;
+        public float GamepadCameraSensitivity = 0;
+        public GraphicsOptimizationMode GraphicsOptimizationMode = GraphicsOptimizationMode.Performance;
+        public int GraphicsQualityLevel = 0;
+        public float HapticStrength = 0;
+        public bool HasEverUsedVR;
+        public float MasterVolume = 0;
+        public float MasterVolumeStudio = 0;
+        public bool MaxQualityEnabled;
+        public bool MicroProfilerWebServerEnabled;
+        public float MouseSensitivity = 0;
+        public Vector2 MouseSensitivityFirstPerson = Vector2.zero;
+        public Vector2 MouseSensitivityThirdPerson = Vector2.zero;
+        public bool OnScreenProfilerEnabled;
+        public float PartyVoiceVolume = 0;
+        public PeoplePageLayout PeoplePageLayout = PeoplePageLayout.Card;
+        public bool PerformanceStatsVisible;
+        public float PlayerHeight = 0;
+        public bool PlayerListVisible;
+        public bool PlayerNamesEnabled;
+        public PreferredTextSize PreferredTextSize = PreferredTextSize.Medium;
+        public float PreferredTransparency = 0;
+        public int QualityResetLevel = 0;
+        public int RCCProfilerRecordFrameRate = 0;
+        public int RCCProfilerRecordTimeFrame = 0;
+        public bool ReadAloud;
+        public bool ReducedMotion;
+        public SavedQualitySetting SavedQualityLevel = SavedQualitySetting.Automatic;
+        public bool StartMaximized;
+        public Vector2 StartScreenPosition = Vector2.zero;
+        public Vector2 StartScreenSize = Vector2.zero;
+        public bool TouchCameraMovementChanged;
+        public TouchCameraMovementMode TouchCameraMovementMode = TouchCameraMovementMode.Default;
+        public bool TouchMovementChanged;
+        public TouchMovementMode TouchMovementMode = TouchMovementMode.Default;
+        public bool UiNavigationKeyBindEnabled;
+        public bool UsedCoreGuiIsVisibleToggle;
+        public bool UsedCustomGuiIsVisibleToggle;
+        public bool UsedHideHudShortcut;
+        public VRComfortSetting VRComfortSetting = VRComfortSetting.Comfort;
+        public bool VREnabled;
+        public int VRRotationIntensity = 0;
+        public VRSafetyBubbleMode VRSafetyBubbleMode = VRSafetyBubbleMode.NoOne;
+        public bool VRSmoothRotationEnabled;
+        public bool VRSmoothRotationEnabledCustomOption;
+        public bool VRThirdPersonFollowCamEnabled;
+        public bool VRThirdPersonFollowCamEnabledCustomOption;
+        public bool VignetteEnabled;
+        public bool VignetteEnabledCustomOption;
+        public string gaID = "";
     }
 
     [RbxService]

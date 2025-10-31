@@ -71,5 +71,38 @@ namespace RobloxFiles
 
         Players
             = 1 << SecurityCapability.Players,
+
+        CapabilityControl
+            = 1 << SecurityCapability.CapabilityControl,
+
+        Plugin = 
+            1 << SecurityCapability.Plugin,
+
+        LocalUser =
+            1 << SecurityCapability.LocalUser,
+
+        WritePlayer =
+            1 << SecurityCapability.WritePlayer,
+
+        RobloxScript =
+            1 << SecurityCapability.RobloxScript,
+
+        RobloxEngine =
+            1 << SecurityCapability.RobloxEngine,
+
+        Unassigned =
+            1 << SecurityCapability.Unassigned,
+
+        InternalTest = 1
+            << SecurityCapability.InternalTest,
+
+        PluginOrOpenCloud = 1
+            << SecurityCapability.PluginOrOpenCloud,
+
+        Assistant = 1u
+            << SecurityCapability.Assistant,
+
+        RemoteCommand = 1u
+            << SecurityCapability.RemoteCommand,
     }
 }
