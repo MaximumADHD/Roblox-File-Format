@@ -5,6 +5,7 @@ using RobloxFiles.Enums;
 using RobloxFiles.DataTypes;
 using RobloxFiles.XmlFormat;
 using Newtonsoft.Json.Linq;
+using RobloxFiles.Utility;
 
 namespace RobloxFiles.Tokens
 {
@@ -16,9 +17,9 @@ namespace RobloxFiles.Tokens
         {
             var obj = prop.Object;
             var objType = obj.GetType();
-            var objField = objType.GetField(prop.Name);
+            var objMember = ImplicitMember.Get(objType, prop.Name);
 
-            if (objField != null && objField.FieldType.Name == "ContentId")
+            if (objMember != null && objMember.MemberType.Name == "ContentId")
             {
                 var contentIdToken = XmlPropertyTokens.GetHandler<ContentIdToken>();
                 return contentIdToken.ReadProperty(prop, token);
