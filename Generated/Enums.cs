@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.697.0.6970925
+// Updated as of 0.698.0.6980940
 using System;
 
 namespace RobloxFiles.Enums
@@ -1291,6 +1291,7 @@ namespace RobloxFiles.Enums
         AndroidRootedKick,
         ScreentimeLockoutKick,
         DisconnectionNotification,
+        DisconnectVerboselyModeratedGame,
         PlacelaunchErrors = 512,
         PlacelaunchDisabled = 515,
         PlacelaunchError,
@@ -3836,6 +3837,12 @@ namespace RobloxFiles.Enums
         TokenInvalid,
     }
 
+    public enum PromptExperienceDetailsResult
+    {
+        PromptClosed,
+        TeleportAttempted,
+    }
+
     public enum PromptLinkSharingResult
     {
         Success = 1,
@@ -5530,6 +5537,14 @@ namespace RobloxFiles.Enums
         NoService,
         ReleaseFailed,
         Unknown,
+    }
+
+    public enum VideoSampleSize
+    {
+        Small,
+        Medium,
+        Large,
+        Full,
     }
 
     public enum ViewMode

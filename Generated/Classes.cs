@@ -1,5 +1,5 @@
 ﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.697.0.6970925
+// Updated as of 0.698.0.6980940
 
 using System;
 
@@ -907,6 +907,7 @@ namespace RobloxFiles
         public long AssetId = 0;
         public BodyPart BodyPart = BodyPart.Head;
         public Color3 Color = new Color3();
+        public string HeadShape = "";
         public Instance Instance = null;
     }
 
@@ -5535,6 +5536,7 @@ namespace RobloxFiles
     public class StudioCameraService : Instance
     {
         public bool LockCameraSpeed;
+        public bool LoggingEnabled;
     }
 
     [RbxService]
@@ -6437,6 +6439,11 @@ namespace RobloxFiles
         public double TimePosition = 0;
         public Content VideoContent = Content.None;
         public float Volume = 1;
+    }
+
+    [RbxService]
+    public class VideoScreenCaptureService : Instance
+    {
     }
 
     [RbxService]
