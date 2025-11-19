@@ -76,10 +76,6 @@ namespace RobloxFileFormat.Update
                 {
                     process.Kill();
                     listener.Close();
-
-                    Console.WriteLine("Done! Press any key to continue...");
-                    Console.ReadKey();
-
                     Environment.Exit(0);
                 }
 
