@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobloxFileFormat", "RobloxF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobloxFileFormat.UnitTest", "UnitTest\RobloxFileFormat.UnitTest.csproj", "{E9FF1680-6FB9-41CD-9A73-7D072CB91118}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobloxFileFormat.Update", "Update\RobloxFileFormat.Update.csproj", "{82029CC1-B949-4EA9-A99B-B64BB6E061BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{E9FF1680-6FB9-41CD-9A73-7D072CB91118}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E9FF1680-6FB9-41CD-9A73-7D072CB91118}.Release|x64.ActiveCfg = Release|x64
 		{E9FF1680-6FB9-41CD-9A73-7D072CB91118}.Release|x64.Build.0 = Release|x64
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Debug|x64.Build.0 = Debug|Any CPU
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Release|x64.ActiveCfg = Release|Any CPU
+		{82029CC1-B949-4EA9-A99B-B64BB6E061BF}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

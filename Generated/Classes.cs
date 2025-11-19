@@ -1,5 +1,5 @@
-﻿// Auto-generated list of creatable Roblox classes.
-// Updated as of 0.698.0.6980940
+// Auto-generated list of creatable Roblox classes.
+// Updated as of 0.700.0.7000935
 
 using System;
 
@@ -391,6 +391,7 @@ namespace RobloxFiles
 
         public Content AudioContent = Content.None;
         public bool AutoLoad = true;
+        public bool AutoPlay;
         public bool IsMutedForCapture;
         public NumberRange LoopRegion = new NumberRange(0, 60000);
         public bool Looping;
@@ -2052,6 +2053,7 @@ namespace RobloxFiles
     [RbxService]
     public class GameSettings : Instance
     {
+        [Obsolete]
         public bool VideoCaptureEnabled;
     }
 
@@ -2742,6 +2744,14 @@ namespace RobloxFiles
     {
         public float Length = 5;
         public float Thickness = 1;
+    }
+
+    public class PyramidHandleAdornment : HandleAdornment
+    {
+        public float Height = 2;
+        public AdornShading Shading = AdornShading.Default;
+        public int Sides = 4;
+        public float Size = 1;
     }
 
     public class SphereHandleAdornment : HandleAdornment
@@ -4408,7 +4418,7 @@ namespace RobloxFiles
         public Vector3 GlobalWind = Vector3.zero;
         public float Gravity = 196.2f;
         public IKControlConstraintSupport IKControlConstraintSupport = IKControlConstraintSupport.Default;
-        public LuauTypeCheckMode LuauTypeCheckMode = LuauTypeCheckMode.NoCheck;
+        public LuauTypeCheckMode LuauTypeCheckMode = LuauTypeCheckMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public ModelStreamingBehavior ModelStreamingBehavior = ModelStreamingBehavior.Default;
         public MoverConstraintRootBehaviorMode MoverConstraintRootBehavior = MoverConstraintRootBehaviorMode.Default;
@@ -5386,7 +5396,6 @@ namespace RobloxFiles
         public bool AcousticSimulationEnabled;
         public ReverbType AmbientReverb = ReverbType.NoReverb;
         public RolloutState AudioApiByDefault = RolloutState.Default;
-        public RolloutState AudioPlayerVolumeFix = RolloutState.Default;
         public RolloutState CharacterSoundsUseNewApi = RolloutState.Default;
         public ListenerLocation DefaultListenerLocation = ListenerLocation.Default;
         public float DistanceFactor = 3.33f;
@@ -5447,12 +5456,14 @@ namespace RobloxFiles
         public float CameraMaxZoomDistance = 400;
         public float CameraMinZoomDistance = 0.5f;
         public CameraMode CameraMode = CameraMode.Classic;
+        public bool CharacterBreakJointsOnDeath = true;
         public float CharacterJumpHeight = 7.2f;
         public float CharacterJumpPower = 50;
         public float CharacterMaxSlopeAngle = 89;
         public bool CharacterUseJumpPower = true;
         public float CharacterWalkSpeed = 16;
         public bool ClassicDeath = true;
+        public bool CreateDefaultPlayerModule;
         public DevCameraOcclusionMode DevCameraOcclusionMode = DevCameraOcclusionMode.Zoom;
         public DevComputerCameraMovementMode DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice;
         public DevComputerMovementMode DevComputerMovementMode = DevComputerMovementMode.UserChoice;
@@ -5482,7 +5493,6 @@ namespace RobloxFiles
         public LoadCharacterLayeredClothing LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default;
         public CharacterControlMode LuaCharacterController = CharacterControlMode.Default;
         public float NameDisplayDistance = 100;
-        public bool RagdollDeath = true;
         public bool UserEmotesEnabled = true;
     }
 
@@ -5573,6 +5583,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class StudioTestService : Instance
+    {
+    }
+
+    [RbxService]
     public class StudioUserService : Instance
     {
     }
@@ -5611,6 +5626,7 @@ namespace RobloxFiles
     public class StyleQuery : Instance
     {
         public NumberRange AspectRatioRange;
+        public byte[] ConditionsSerialize;
         public Vector2 MaxSize = new Vector2(float.MaxValue, float.MaxValue);
         public Vector2 MinSize = Vector2.zero;
     }

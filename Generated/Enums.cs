@@ -1,5 +1,5 @@
-﻿// Auto-generated list of Roblox enums.
-// Updated as of 0.698.0.6980940
+// Auto-generated list of Roblox enums.
+// Updated as of 0.700.0.7000935
 using System;
 
 namespace RobloxFiles.Enums
@@ -254,6 +254,21 @@ namespace RobloxFiles.Enums
         ErrorUploadingVideo = 2001,
     }
 
+    public enum AnimationNodePlayMode
+    {
+        Loop,
+        PingPong,
+        OnceAndHold,
+        OnceAndReset,
+    }
+
+    public enum AnimationNodeTransitionType
+    {
+        CrossFade,
+        InertialBlend,
+        DeadBlend,
+    }
+
     public enum AnimationNodeType
     {
         InvalidNode,
@@ -463,6 +478,9 @@ namespace RobloxFiles.Enums
         EyelashAccessory,
         MoodAnimation,
         DynamicHead,
+        FaceMakeup = 88,
+        LipMakeup,
+        EyeMakeup,
 
         [Obsolete]
         TeeShirt = TShirt,
@@ -599,6 +617,9 @@ namespace RobloxFiles.Enums
         EyelashAccessory,
         MoodAnimation,
         DynamicHead,
+        FaceMakeup = 88,
+        LipMakeup,
+        EyeMakeup,
 
         [Obsolete]
         TeeShirtAccessory = TShirtAccessory,
@@ -1423,6 +1444,14 @@ namespace RobloxFiles.Enums
         ListAsync,
         GetVersionAsync,
         RemoveVersionAsync,
+        StandardRead,
+        StandardWrite,
+        StandardList,
+        StandardRemove,
+        OrderedRead,
+        OrderedWrite,
+        OrderedList,
+        OrderedRemove,
     }
 
     public enum DebuggerEndReason
@@ -1729,6 +1758,12 @@ namespace RobloxFiles.Enums
         Moderated,
         Unpublished,
         Unknown,
+    }
+
+    public enum ExperienceStateCaptureSelectionMode
+    {
+        Default,
+        SafetyHighlightMode,
     }
 
     public enum ExperienceStateRecordingLoadMode
@@ -2145,6 +2180,14 @@ namespace RobloxFiles.Enums
         Performance,
         Balanced,
         Quality,
+    }
+
+    public enum GroupMembershipStatus
+    {
+        None,
+        Joined,
+        JoinRequestPending,
+        AlreadyMember,
     }
 
     public enum GuiState
@@ -3102,6 +3145,7 @@ namespace RobloxFiles.Enums
 
     public enum LuauTypeCheckMode
     {
+        Default,
         NoCheck,
         Nonstrict,
         Strict,
@@ -3736,12 +3780,11 @@ namespace RobloxFiles.Enums
         Off,
     }
 
-    public enum PredictionState
+    public enum PredictionStatus
     {
-        Idle,
-        Simulating,
-        RollingBack,
-        Resimulating,
+        Authoritative,
+        Predicted,
+        None,
     }
 
     public enum PreferredInput
@@ -4171,6 +4214,7 @@ namespace RobloxFiles.Enums
     public enum RigType
     {
         R15,
+        CustomHumanoid,
         Custom,
         None,
     }
@@ -4253,6 +4297,7 @@ namespace RobloxFiles.Enums
         All = 1,
         Collectibles,
         Premium,
+        TimedOptions,
     }
 
     public enum SandboxedInstanceMode
@@ -4530,6 +4575,16 @@ namespace RobloxFiles.Enums
     {
         Poison,
         Confusion,
+    }
+
+    public enum StepFrequency
+    {
+        Hz60,
+        Hz30,
+        Hz15,
+        Hz10,
+        Hz5,
+        Hz1,
     }
 
     public enum StreamOutBehavior

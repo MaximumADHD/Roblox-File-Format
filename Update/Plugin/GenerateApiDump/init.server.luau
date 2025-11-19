@@ -4,7 +4,6 @@ local Selection = game:GetService("Selection")
 local HttpService = game:GetService("HttpService")
 local AssetService = game:GetService("AssetService")
 local StarterPlayer = game:GetService("StarterPlayer")
-local StudioService = game:GetService("StudioService")
 local TextChatService = game:GetService("TextChatService")
 
 local outStream = ""
@@ -78,13 +77,6 @@ local NON_ROOTED_SERVICES = {
 	SoundService = true,
 }
 
-local isCoreScript = pcall(function()
-	local restricted: any = game:GetService("RobloxPluginGuiService")
-	assert(restricted)
-
-	return tostring(restricted) -- will throw without sufficient permissions.
-end)
-
 local function write(formatString, ...)
 	local tabs = string.rep(" ", stackLevel * 4)
 	local fmt = formatString or ""
@@ -117,29 +109,28 @@ local function clearStream()
 	outStream = ""
 end
 
+local function postToLocalServer(endPoint: string, data: string?)
+	return pcall(function ()
+		HttpService:PostAsync(`http://localhost:20326/{endPoint}`, data or "")
+	end)
+end
+
 local function exportStream(label)
 	local results = outStream:gsub("\n\n\n", "\n\n")
-	local export
 
-	if plugin then
-		export = Instance.new("Script")
-		export.Archivable = false
-		export.Source = results
-		export.Name = label
-		export.Parent = workspace
+	local export = Instance.new("Script")
+	export.Archivable = false
+	export.Source = results
+	export.Name = label
+	export.Parent = workspace
 
-		Selection:Add({ export })
-	end
+	Selection:Add({ export })
+	wait()
 
-	if isCoreScript then
-		StudioService:CopyToClipboard(results)
-	elseif not plugin then
-		warn(label)
-		print(results)
-	else
-		wait()
-		plugin:OpenScript(export)
-	end
+	plugin:OpenScript(export)
+	wait()
+
+	postToLocalServer(`Write-{label}`, results)
 end
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -394,20 +385,7 @@ local function getClassMeta(className: string): typeof(classMeta[""])
 end
 
 local function getAsync(url: string)
-	local enabled
-
-	if isCoreScript then
-		enabled = HttpService:GetHttpEnabled()
-		HttpService:SetHttpEnabled(true)
-	end
-
-	local result = HttpService:GetAsync(url)
-
-	if isCoreScript then
-		HttpService:SetHttpEnabled(enabled)
-	end
-
-	return result
+	return HttpService:GetAsync(url)
 end
 
 local function getTags(object: Descriptor): TagMap
@@ -1003,8 +981,9 @@ local function generateClasses()
 								end
 							end
 
+							local parent = script.Parent
 							local id = string.format("%s.%s", className, propName)
-							local src = string.format("[%s]", script.Parent:GetFullName())
+							local src = string.format("[%s]", parent and parent:GetFullName() or "Unknown")
 
 							if gotValue then
 								warn(src, "Fell back to implicit value for property:", id)
@@ -1218,4 +1197,5 @@ end
 
 if game.Name:sub(1, 9) == "Null.rbxl" then
 	generateAll()
+	postToLocalServer("exit")
 end
