@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.700.0.7000935
+// Updated as of 0.701.0.7010966
 using System;
 
 namespace RobloxFiles.Enums
@@ -254,6 +254,19 @@ namespace RobloxFiles.Enums
         ErrorUploadingVideo = 2001,
     }
 
+    public enum AnimationNodeBlend2DInputMode
+    {
+        Cartesian,
+        Polar,
+    }
+
+    public enum AnimationNodeInterruptible
+    {
+        Always,
+        ClipFinished,
+        Expression,
+    }
+
     public enum AnimationNodePlayMode
     {
         Loop,
@@ -285,6 +298,12 @@ namespace RobloxFiles.Enums
         SequenceNode,
         SpeedNode,
         SubtractNode,
+    }
+
+    public enum AnimationNodeWaitFor
+    {
+        ClipFinished,
+        Expression,
     }
 
     public enum AnimationPriority
@@ -1221,6 +1240,18 @@ namespace RobloxFiles.Enums
         TriggerForIncompleteCompletions,
     }
 
+    public enum CompositeValueCurveType
+    {
+        ColorRGB,
+        ColorHSV,
+        NumberRange,
+        Rect,
+        UDim,
+        UDim2,
+        Vector2,
+        Vector3,
+    }
+
     public enum CompressionAlgorithm
     {
         Zstd,
@@ -1919,6 +1950,12 @@ namespace RobloxFiles.Enums
     {
         Accepted,
         Rejected,
+    }
+
+    public enum FilterType
+    {
+        Exclude,
+        Include,
     }
 
     public enum FinishRecordingOperation
@@ -3151,6 +3188,13 @@ namespace RobloxFiles.Enums
         Strict,
     }
 
+    public enum MakeupType
+    {
+        Face,
+        Lip,
+        Eye,
+    }
+
     public enum MarketplaceBulkPurchasePromptStatus
     {
         Completed = 1,
@@ -4202,6 +4246,33 @@ namespace RobloxFiles.Enums
         Ungroup,
         None,
         PivotEditor,
+    }
+
+    public enum RigLabel
+    {
+        Invalid,
+        Root,
+        Pelvis,
+        Waist,
+        Chest,
+        Neck,
+        HeadBase,
+        LeftClavicle,
+        LeftShoulder,
+        LeftElbow,
+        LeftWrist,
+        RightClavicle,
+        RightShoulder,
+        RightElbow,
+        RightWrist,
+        LeftHip,
+        LeftKnee,
+        LeftAnkle,
+        LeftToes,
+        RightHip,
+        RightKnee,
+        RightAnkle,
+        RightToes,
     }
 
     public enum RigScale

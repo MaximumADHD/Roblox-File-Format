@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.700.0.7000935
+// Updated as of 0.701.0.7010966
 
 using System;
 
@@ -200,6 +200,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class AssetManagerService : Instance
+    {
+    }
+
+    [RbxService]
+    public class AssetQualityService : Instance
     {
     }
 
@@ -1153,6 +1158,11 @@ namespace RobloxFiles
     [RbxService]
     public class CommerceService : Instance
     {
+    }
+
+    public class CompositeValueCurve : Instance
+    {
+        public CompositeValueCurveType CurveType = CompositeValueCurveType.NumberRange;
     }
 
     [RbxService]
@@ -3115,6 +3125,7 @@ namespace RobloxFiles
             set => Specials.GetBodyPart(this, BodyPart.Torso).Color = value;
         }
 
+        public bool UseAvatarSettings;
         public long WalkAnimation = 0;
         public float WidthScale = 1;
     }
@@ -3296,6 +3307,7 @@ namespace RobloxFiles
         public GuiButton UIButton = null;
         public KeyCode Up = KeyCode.Unknown;
         public Vector2 Vector2Scale = Vector2.one;
+        public Vector3 Vector3Scale = Vector3.one;
     }
 
     public class InputContext : Instance
@@ -3631,6 +3643,14 @@ namespace RobloxFiles
     [RbxService]
     public class MLService : Instance
     {
+    }
+
+    public class MakeupDescription : Instance
+    {
+        public long AssetId = 0;
+        public Instance Instance = null;
+        public MakeupType MakeupType = MakeupType.Face;
+        public int Order = 0;
     }
 
     public class MarkerCurve : Instance
@@ -4422,10 +4442,12 @@ namespace RobloxFiles
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public ModelStreamingBehavior ModelStreamingBehavior = ModelStreamingBehavior.Default;
         public MoverConstraintRootBehaviorMode MoverConstraintRootBehavior = MoverConstraintRootBehaviorMode.Default;
+        public RolloutState NextGenerationReplication = RolloutState.Default;
         public PathfindingUseImprovedSearch PathfindingUseImprovedSearch = PathfindingUseImprovedSearch.Default;
         public RolloutState PhysicsImprovedSleep = RolloutState.Default;
         public PhysicsSteppingMethod PhysicsSteppingMethod = PhysicsSteppingMethod.Default;
         public PlayerCharacterDestroyBehavior PlayerCharacterDestroyBehavior = PlayerCharacterDestroyBehavior.Default;
+        public RolloutState PlayerScriptsUseInputActionSystem = RolloutState.Default;
         public PrimalPhysicsSolver PrimalPhysicsSolver = PrimalPhysicsSolver.Default;
         public RejectCharacterDeletions RejectCharacterDeletions = RejectCharacterDeletions.Default;
         public RenderingCacheOptimizationMode RenderingCacheOptimizations = RenderingCacheOptimizationMode.Default;
@@ -4441,6 +4463,7 @@ namespace RobloxFiles
         public bool TerrainWeldsFixed = true;
         public RolloutState TouchEventsUseCollisionGroups = RolloutState.Default;
         public bool TouchesUseCollisionGroups;
+        public RolloutState UseFixedSimulation = RolloutState.Default;
         public RolloutState UseNewLuauTypeSolver = RolloutState.Default;
     }
 
@@ -5184,17 +5207,42 @@ namespace RobloxFiles
     {
         public bool CelestialBodiesShown = true;
         public float MoonAngularSize = 11;
-        public ContentId MoonTextureId = "rbxasset://sky/moon.jpg";
+        public Content MoonTextureContent = new Content("rbxasset://sky/moon.jpg");
+
+        public ContentId MoonTextureId
+        {
+            get => MoonTextureContent;
+            set => MoonTextureContent = value;
+        }
+
+        public Content SkyboxBackContent = new Content("rbxasset://textures/sky/sky512_bk.tex");
         public ContentId SkyboxBk = "rbxasset://textures/sky/sky512_bk.tex";
         public ContentId SkyboxDn = "rbxasset://textures/sky/sky512_dn.tex";
+        public Content SkyboxDownContent = new Content("rbxasset://textures/sky/sky512_dn.tex");
+        public Content SkyboxFrontContent = new Content("rbxasset://textures/sky/sky512_ft.tex");
         public ContentId SkyboxFt = "rbxasset://textures/sky/sky512_ft.tex";
+        public Content SkyboxLeftContent = new Content("rbxasset://textures/sky/sky512_lf.tex");
         public ContentId SkyboxLf = "rbxasset://textures/sky/sky512_lf.tex";
         public Vector3 SkyboxOrientation = Vector3.zero;
+        public Content SkyboxRightContent = new Content("rbxasset://textures/sky/sky512_rt.tex");
         public ContentId SkyboxRt = "rbxasset://textures/sky/sky512_rt.tex";
-        public ContentId SkyboxUp = "rbxasset://textures/sky/sky512_up.tex";
+
+        public ContentId SkyboxUp
+        {
+            get => SkyboxUpContent;
+            set => SkyboxUpContent = value;
+        }
+
+        public Content SkyboxUpContent = new Content("rbxasset://textures/sky/sky512_up.tex");
         public int StarCount = 3000;
         public float SunAngularSize = 21;
-        public ContentId SunTextureId = "rbxasset://sky/sun.jpg";
+        public Content SunTextureContent = new Content("rbxasset://sky/sun.jpg");
+
+        public ContentId SunTextureId
+        {
+            get => SunTextureContent;
+            set => SunTextureContent = value;
+        }
     }
 
     [RbxService]
