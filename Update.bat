@@ -36,5 +36,4 @@ echo Something went wrong while building! Error Code: %errorlevel%
 goto done
 
 :done
-pause
 exit

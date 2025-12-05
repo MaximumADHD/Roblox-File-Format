@@ -179,6 +179,7 @@ namespace RobloxFiles.Enums
         Overlay,
         Transparency,
         TintMask,
+        Opaque,
     }
 
     public enum AnalyticsCustomFieldKeys
@@ -3048,6 +3049,7 @@ namespace RobloxFiles.Enums
         MouseY,
 
         MousePosition,
+        Touch,
     }
 
     public enum KeyInterpolationMode
@@ -4186,6 +4188,12 @@ namespace RobloxFiles.Enums
         Default,
         RotationsReset,
         Custom,
+    }
+
+    public enum RestPoseModel
+    {
+        FromRigInACE,
+        FromRigInFile,
     }
 
     public enum ReturnKeyType

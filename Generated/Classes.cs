@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.701.0.7010966
+// Updated as of 0.702.0.7020614
 
 using System;
 
@@ -134,6 +134,7 @@ namespace RobloxFiles
     public class AnimationNodeDefinition : Instance
     {
         public byte[] InputPinData;
+        public string NodeId = "";
         public AnimationNodeType NodeType = AnimationNodeType.InvalidNode;
     }
 
@@ -3299,6 +3300,7 @@ namespace RobloxFiles
         public KeyCode Forward = KeyCode.Unknown;
         public KeyCode KeyCode = KeyCode.Unknown;
         public KeyCode Left = KeyCode.Unknown;
+        public int PointerIndex = 0;
         public float PressedThreshold = 0.5f;
         public float ReleasedThreshold = 0.2f;
         public float ResponseCurve = 1;
@@ -3721,6 +3723,7 @@ namespace RobloxFiles
 
     public class MaterialVariant : Instance
     {
+        public AlphaMode AlphaMode = AlphaMode.Overlay;
         public Material BaseMaterial = Material.Plastic;
 
         public ContentId ColorMap
@@ -5243,6 +5246,16 @@ namespace RobloxFiles
             get => SunTextureContent;
             set => SunTextureContent = value;
         }
+    }
+
+    [RbxService]
+    public class SlimAnimationReplicationService : Instance
+    {
+    }
+
+    [RbxService]
+    public class SlimReplicationService : Instance
+    {
     }
 
     [RbxService]
