@@ -3723,7 +3723,7 @@ namespace RobloxFiles
 
     public class MaterialVariant : Instance
     {
-        public AlphaMode AlphaMode = AlphaMode.Overlay;
+        public AlphaMode AlphaMode = AlphaMode.Opaque;
         public Material BaseMaterial = Material.Plastic;
 
         public ContentId ColorMap
