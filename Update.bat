@@ -13,6 +13,9 @@ cd Update
 RobloxFileFormat.Update.exe
 if %errorlevel% NEQ 0 goto updateError
 
+echo Syncing w/ GitHub
+git pull
+
 echo Building RobloxFileFormat.dll
 cd ..
 

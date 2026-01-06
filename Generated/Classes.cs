@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.702.0.7020614
+// Updated as of 0.703.0.7031352
 
 using System;
 
@@ -3302,10 +3302,12 @@ namespace RobloxFiles
         public KeyCode Left = KeyCode.Unknown;
         public int PointerIndex = 0;
         public float PressedThreshold = 0.5f;
+        public KeyCode PrimaryModifier = KeyCode.Unknown;
         public float ReleasedThreshold = 0.2f;
         public float ResponseCurve = 1;
         public KeyCode Right = KeyCode.Unknown;
         public float Scale = 1;
+        public KeyCode SecondaryModifier = KeyCode.Unknown;
         public GuiButton UIButton = null;
         public KeyCode Up = KeyCode.Unknown;
         public Vector2 Vector2Scale = Vector2.one;
@@ -3330,6 +3332,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class InstanceExtensionsService : Instance
+    {
+    }
+
+    [RbxService]
+    public class InstanceFileSyncService : Instance
     {
     }
 
@@ -5688,7 +5695,6 @@ namespace RobloxFiles
     {
         public NumberRange AspectRatioRange;
         public byte[] ConditionsSerialize;
-        public Vector2 MaxSize = new Vector2(float.MaxValue, float.MaxValue);
         public Vector2 MinSize = Vector2.zero;
     }
 

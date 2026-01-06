@@ -81,10 +81,10 @@ static void CountAssets(string path)
         var instPath = inst.GetFullName();
         var props = inst.Properties;
 
-        foreach (var prop in props)
+        foreach (Property prop in props)
         {
-            Property binding = prop.Value;
-            ContentId content = binding.CastValue<ContentId>();
+			// Test if this property's value has a type of ContentId.
+            var content = prop.Value as ContentId;
 
             if (content != null)
             {
@@ -111,3 +111,7 @@ static void CountAssets(string path)
     Console.Read();
 }
 ```
+
+# Reliability
+This project receives automated updates alongside the [Roblox Client Tracker](https://github.com/MaximumADHD/Roblox-Client-Tracker), alongside occasional manual fixes.
+New classes, enums, and properties (especially those that are not intended for developer consumption) are not guaranteed to be stable across version upgrades.

@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.702.0.7020614
+// Updated as of 0.702.2.7020633
 using System;
 
 namespace RobloxFiles.Enums
@@ -1025,12 +1025,6 @@ namespace RobloxFiles.Enums
         RecentlyUpdated = RecentlyCreated,
     }
 
-    public enum CatalogTimedOptionFilter
-    {
-        All = 1,
-        TimedOptionOnly,
-    }
-
     public enum CellBlock
     {
         Solid,
@@ -1370,6 +1364,9 @@ namespace RobloxFiles.Enums
         TeleportUnauthorized,
         TeleportFlooded,
         TeleportIsTeleporting,
+
+        [Obsolete]
+        DisconnectNoResponse = DisconnectRaknetErrors,
     }
 
     public enum ConnectionState
@@ -2532,6 +2529,14 @@ namespace RobloxFiles.Enums
         [Obsolete]
         [LostEnumValue(MapTo = 6)]
         _UpDown = NoInput,
+    }
+
+    public enum InstanceFileSyncStatus
+    {
+        NotSynced,
+        Errored,
+        SyncedAsRoot,
+        SyncedAsDescendant,
     }
 
     public enum IntermediateMeshGenerationResult
