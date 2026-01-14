@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.703.0.7031352
+// Updated as of 0.704.0.7041059
 
 using System;
 
@@ -5693,9 +5693,7 @@ namespace RobloxFiles
 
     public class StyleQuery : Instance
     {
-        public NumberRange AspectRatioRange;
         public byte[] ConditionsSerialize;
-        public Vector2 MinSize = Vector2.zero;
     }
 
     [RbxService]

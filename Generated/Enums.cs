@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.703.0.7031352
+// Updated as of 0.704.0.7041059
 using System;
 
 namespace RobloxFiles.Enums
@@ -2338,6 +2338,8 @@ namespace RobloxFiles.Enums
         ConnectionClosed,
         ServerProtocolError,
         CreatorEnvironmentsNotSupportedByService,
+        InactivityTimeout,
+        TooManyOutstandingRequests,
     }
 
     public enum HttpRequestType
@@ -4459,6 +4461,14 @@ namespace RobloxFiles.Enums
         LandscapeSensor,
         Portrait,
         Sensor,
+    }
+
+    public enum ScreenshotCaptureResult
+    {
+        Success,
+        OtherError,
+        NoDeviceSupport,
+        NoSpaceOnDevice,
     }
 
     public enum ScrollBarInset
