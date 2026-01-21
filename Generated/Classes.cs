@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.704.0.7041059
+// Updated as of 0.705.0.7050923
 
 using System;
 
@@ -1600,6 +1600,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class CookiesService : Instance
+    {
+    }
+
+    [RbxService]
+    public class CoreGuiConfiguration : Instance
     {
     }
 

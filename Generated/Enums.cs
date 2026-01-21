@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.704.0.7041059
+// Updated as of 0.705.0.7050923
 using System;
 
 namespace RobloxFiles.Enums
@@ -1418,6 +1418,7 @@ namespace RobloxFiles.Enums
         EmotesMenu,
         SelfView,
         Captures,
+        AvatarSwitcher,
     }
 
     public enum CreateAssetResult
@@ -3745,6 +3746,7 @@ namespace RobloxFiles.Enums
         UWP,
         PS5,
         MetaOS,
+        Web,
         None,
     }
 
@@ -5198,6 +5200,8 @@ namespace RobloxFiles.Enums
         PasswordShown,
         Username,
         OneTimePassword,
+        NewPassword,
+        NewPasswordShown,
     }
 
     public enum TextTruncate
