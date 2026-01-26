@@ -20,11 +20,14 @@ namespace RobloxFiles
             Name = ClassName;
         }
 
-        /// <summary>The raw list of children for this Instance.</summary>
-        internal HashSet<Instance> Children = new HashSet<Instance>();
+        /// <summary>The raw unsafe list of children for this Instance.</summary>
+        private readonly List<Instance> _children = new List<Instance>();
+
+        /// <summary>A readable list of children for this Instance.</summary>
+        public IReadOnlyList<Instance> Children => _children;
 
         /// <summary>The raw unsafe value of the Instance's parent.</summary>
-        private Instance ParentUnsafe;
+        private Instance _parent;
 
         /// <summary>The name of this Instance.</summary>
         public string Name;
@@ -54,15 +57,8 @@ namespace RobloxFiles
         public bool ParentLocked { get; internal set; }
 
         /// <summary>Indicates whether this Instance is a Service.</summary>
-        public virtual bool IsService
-        {
-            get
-            {
-                return Attribute.IsDefined(GetType(), typeof(RbxService));
-            }
-        }
-
-
+        public virtual bool IsService => Attribute.IsDefined(GetType(), typeof(RbxService));
+        
         /// <summary>A hashset of CollectionService tags assigned to this Instance.</summary>
         public readonly HashSet<string> Tags = new HashSet<string>();
 
@@ -206,7 +202,7 @@ namespace RobloxFiles
         /// </summary>
         public Instance Parent
         {
-            get => ParentUnsafe;
+            get => _parent;
 
             set
             {
@@ -229,9 +225,9 @@ namespace RobloxFiles
                 if (Parent == this)
                     throw new InvalidOperationException($"Attempt to set {Name} as its own parent");
 
-                ParentUnsafe?.Children.Remove(this);
-                value?.Children.Add(this);
-                ParentUnsafe = value;
+                _parent?._children.Remove(this);
+                value?._children.Add(this);
+                _parent = value;
             }
         }
 
