@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.705.0.7050924
+// Updated as of 0.706.0.7060746
 
 using System;
 
@@ -1981,6 +1981,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class FeatureRestrictionManager : Instance
+    {
+    }
+
+    [RbxService]
+    public class FileManagerService : Instance
     {
     }
 

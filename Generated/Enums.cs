@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.705.0.7050923
+// Updated as of 0.705.0.7050924
 using System;
 
 namespace RobloxFiles.Enums
@@ -1463,6 +1463,13 @@ namespace RobloxFiles.Enums
         Follow,
     }
 
+    public enum DataModelExtractorFileType
+    {
+        PlaceFile,
+        FirstSlice,
+        NonFirstSliceSlice,
+    }
+
     public enum DataStoreRequestType
     {
         GetAsync,
@@ -1762,6 +1769,13 @@ namespace RobloxFiles.Enums
         WhenScrollable,
         Always,
         Never,
+    }
+
+    public enum EngineFolder
+    {
+        Screenshots,
+        Videos,
+        Logs,
     }
 
     public enum EnviromentalPhysicsThrottle
@@ -4522,6 +4536,24 @@ namespace RobloxFiles.Enums
         PluginOrOpenCloud,
         Assistant,
         RemoteCommand,
+        AssetRead,
+        AssetManagement,
+        DynamicGeneration,
+        PlatformAvatarEditing,
+        AssetCreateUpdate,
+        Capture,
+        SensitiveInput,
+        Monetization,
+        LoadOwnedAsset,
+        Social,
+        ServerCommunication,
+        Logging,
+        PromptExternalPurchase,
+        Groups,
+        Teleport,
+        Consequences,
+        Material,
+        AvatarBehavior,
     }
 
     public enum SelectionBehavior
