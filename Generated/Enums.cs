@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.705.0.7050924
+// Updated as of 0.707.0.7070728
 using System;
 
 namespace RobloxFiles.Enums
@@ -1339,6 +1339,11 @@ namespace RobloxFiles.Enums
         ScreentimeLockoutKick,
         DisconnectionNotification,
         DisconnectVerboselyModeratedGame,
+        DisconnectCollaboratorNotAgeVerified,
+        DisconnectCollaboratorTrustedConnectionsRequired,
+        DisconnectCollaboratorOwnerActionRequired,
+        DisconnectCollaboratorTooManyCollaborators,
+        DisconnectCollaboratorUnknownError,
         PlacelaunchErrors = 512,
         PlacelaunchDisabled = 515,
         PlacelaunchError,
@@ -1467,7 +1472,7 @@ namespace RobloxFiles.Enums
     {
         PlaceFile,
         FirstSlice,
-        NonFirstSliceSlice,
+        NonFirstSlice,
     }
 
     public enum DataStoreRequestType
@@ -1666,6 +1671,13 @@ namespace RobloxFiles.Enums
         Neutral,
         Friendly,
         Enemy,
+    }
+
+    public enum DisplayScalingMode
+    {
+        Default,
+        Legacy,
+        Responsive,
     }
 
     public enum DisplaySize
@@ -3072,6 +3084,9 @@ namespace RobloxFiles.Enums
 
         MousePosition,
         Touch,
+        MouseWheel,
+        TrackpadPan = 1040,
+        TrackpadPinch = 1045,
     }
 
     public enum KeyInterpolationMode
@@ -4204,6 +4219,7 @@ namespace RobloxFiles.Enums
         Active = 131072,
         Hover = 262144,
         Selection = 524288,
+        NegatedPart = 1048576,
     }
 
     public enum RestPose

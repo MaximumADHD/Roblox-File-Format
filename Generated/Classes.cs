@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.706.0.7060750
+// Updated as of 0.707.0.7070728
 
 using System;
 
@@ -2859,6 +2859,7 @@ namespace RobloxFiles
     public class GuiService : Instance
     {
         public bool AutoSelectGuiEnabled = true;
+        public DisplayScalingMode DisplayScalingMode = DisplayScalingMode.Default;
         public bool GuiNavigationEnabled = true;
         public GuiObject SelectedObject = null;
     }
@@ -6039,6 +6040,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class TraceRouteService : Instance
+    {
+    }
+
+    [RbxService]
     public class TracerService : Instance
     {
     }
@@ -6631,6 +6637,11 @@ namespace RobloxFiles
         public string SourceName = "Output";
         public Instance TargetInstance = null;
         public string TargetName = "Input";
+    }
+
+    [RbxService]
+    public class WrapDeformMeshProvider : Instance
+    {
     }
 
     public class WrapTextureTransfer : Instance
