@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.707.0.7070728
+// Updated as of 0.708.0.7080878
 using System;
 
 namespace RobloxFiles.Enums
@@ -2566,6 +2566,7 @@ namespace RobloxFiles.Enums
         Errored,
         SyncedAsRoot,
         SyncedAsDescendant,
+        AncestorErrored,
     }
 
     public enum IntermediateMeshGenerationResult
@@ -3087,6 +3088,7 @@ namespace RobloxFiles.Enums
         MouseWheel,
         TrackpadPan = 1040,
         TrackpadPinch = 1045,
+        MouseDelta = 1048,
     }
 
     public enum KeyInterpolationMode

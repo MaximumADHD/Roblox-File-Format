@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.707.0.7070728
+// Updated as of 0.708.0.7080878
 
 using System;
 
@@ -1883,6 +1883,7 @@ namespace RobloxFiles
 
     public class FaceControls : Instance
     {
+        public byte[] InternalOverrideFACSData;
     }
 
     public abstract class FaceInstance : Instance
@@ -4474,6 +4475,10 @@ namespace RobloxFiles
         public RenderingCacheOptimizationMode RenderingCacheOptimizations = RenderingCacheOptimizationMode.Default;
         public ReplicateInstanceDestroySetting ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default;
         public AnimatorRetargetingMode Retargeting = AnimatorRetargetingMode.Default;
+        public byte[] RolloutValidationBinaryExpectedValue;
+        public byte[] RolloutValidationBinaryString;
+        public SharedString RolloutValidationSharedExpectedValue = SharedString.None;
+        public SharedString RolloutValidationSharedString = SharedString.None;
         public SandboxedInstanceMode SandboxedInstanceMode = SandboxedInstanceMode.Default;
         public SignalBehavior SignalBehavior2 = SignalBehavior.Default;
         public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
@@ -4686,6 +4691,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class PlatformFriendsService : Instance
+    {
+    }
+
+    [RbxService]
+    public class PlatformLibraries : Instance
     {
     }
 
