@@ -956,6 +956,12 @@ namespace RobloxFiles.Enums
         LockFirstPerson,
     }
 
+    public enum CameraNavigationModel
+    {
+        Roblox,
+        IndustryCompatible,
+    }
+
     public enum CameraPanMode
     {
         Classic,

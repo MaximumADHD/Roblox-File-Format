@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.708.0.7080878
+// Updated as of 0.709.0.7090870
 
 using System;
 
@@ -1039,9 +1039,12 @@ namespace RobloxFiles
 
     public class CharacterMesh : CharacterAppearance
     {
+        public Content BaseTextureContent;
         public long BaseTextureId = 0;
         public BodyPart BodyPart = BodyPart.Head;
+        public Content MeshContent;
         public long MeshId = 0;
+        public Content OverlayTextureContent;
         public long OverlayTextureId = 0;
     }
 
@@ -3124,6 +3127,7 @@ namespace RobloxFiles
 
         public long RunAnimation = 0;
         public long Shirt = 0;
+        public bool StaticFacialAnimation;
         public long SwimAnimation = 0;
 
         public long Torso
@@ -3308,6 +3312,7 @@ namespace RobloxFiles
     public class InputBinding : Instance
     {
         public KeyCode Backward = KeyCode.Unknown;
+        public bool ClampMagnitudeToOne;
         public KeyCode Down = KeyCode.Unknown;
         public KeyCode Forward = KeyCode.Unknown;
         public KeyCode KeyCode = KeyCode.Unknown;
@@ -5337,6 +5342,7 @@ namespace RobloxFiles
 
     public class Sound : Instance
     {
+        public bool AcousticSimulationEnabled;
         public Content AudioContent = Content.None;
 
         [Obsolete]
@@ -5634,6 +5640,7 @@ namespace RobloxFiles
     [RbxService]
     public class StudioCameraService : Instance
     {
+        public float FocusDistance = 50;
         public bool LockCameraSpeed;
         public bool LoggingEnabled;
     }
@@ -5694,6 +5701,7 @@ namespace RobloxFiles
     {
         public int Priority = 0;
         public byte[] PropertiesSerialize;
+        public byte[] PropertyTransitionsSerialize;
         public string Selector = "";
     }
 
