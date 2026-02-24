@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.709.0.7090870
+// Updated as of 0.710.0.7100702
 
 using System;
 
@@ -1039,12 +1039,12 @@ namespace RobloxFiles
 
     public class CharacterMesh : CharacterAppearance
     {
-        public Content BaseTextureContent;
+        public Content BaseTextureContent = Content.None;
         public long BaseTextureId = 0;
         public BodyPart BodyPart = BodyPart.Head;
-        public Content MeshContent;
+        public Content MeshContent = Content.None;
         public long MeshId = 0;
-        public Content OverlayTextureContent;
+        public Content OverlayTextureContent = Content.None;
         public long OverlayTextureId = 0;
     }
 
@@ -1080,11 +1080,6 @@ namespace RobloxFiles
         public bool BubbleChatEnabled;
         public bool IsAutoMigrated;
         public bool LoadDefaultChat = true;
-    }
-
-    [RbxService]
-    public class ChatbotUIService : Instance
-    {
     }
 
     public class ClickDetector : Instance
@@ -1913,6 +1908,7 @@ namespace RobloxFiles
         }
 
         public Content NormalMapContent = Content.None;
+        public float Rotation = 0;
 
         public ContentId RoughnessMap
         {
@@ -3312,7 +3308,7 @@ namespace RobloxFiles
     public class InputBinding : Instance
     {
         public KeyCode Backward = KeyCode.Unknown;
-        public bool ClampMagnitudeToOne;
+        public bool ClampMagnitudeToOne = true;
         public KeyCode Down = KeyCode.Unknown;
         public KeyCode Forward = KeyCode.Unknown;
         public KeyCode KeyCode = KeyCode.Unknown;
@@ -4480,10 +4476,6 @@ namespace RobloxFiles
         public RenderingCacheOptimizationMode RenderingCacheOptimizations = RenderingCacheOptimizationMode.Default;
         public ReplicateInstanceDestroySetting ReplicateInstanceDestroySetting = ReplicateInstanceDestroySetting.Default;
         public AnimatorRetargetingMode Retargeting = AnimatorRetargetingMode.Default;
-        public byte[] RolloutValidationBinaryExpectedValue;
-        public byte[] RolloutValidationBinaryString;
-        public SharedString RolloutValidationSharedExpectedValue = SharedString.None;
-        public SharedString RolloutValidationSharedString = SharedString.None;
         public SandboxedInstanceMode SandboxedInstanceMode = SandboxedInstanceMode.Default;
         public SignalBehavior SignalBehavior2 = SignalBehavior.Default;
         public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
@@ -5068,6 +5060,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class RolloutValidationService : Instance
+    {
+    }
+
+    [RbxService]
     public class RomarkRbxAnalyticsService : Instance
     {
     }
@@ -5342,7 +5339,7 @@ namespace RobloxFiles
 
     public class Sound : Instance
     {
-        public bool AcousticSimulationEnabled;
+        public bool AcousticSimulationEnabled = true;
         public Content AudioContent = Content.None;
 
         [Obsolete]
@@ -5611,11 +5608,6 @@ namespace RobloxFiles
 
     [RbxService]
     public class StopWatchReporter : Instance
-    {
-    }
-
-    [RbxService]
-    public class StreamingService : Instance
     {
     }
 

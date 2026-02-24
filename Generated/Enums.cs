@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.708.0.7080878
+// Updated as of 0.710.0.7100702
 using System;
 
 namespace RobloxFiles.Enums
@@ -4306,27 +4306,27 @@ namespace RobloxFiles.Enums
     public enum RigLabel
     {
         Invalid,
-        Root,
-        Pelvis,
-        Waist,
-        Chest,
-        Neck,
-        HeadBase,
-        LeftClavicle,
-        LeftShoulder,
-        LeftElbow,
-        LeftWrist,
-        RightClavicle,
-        RightShoulder,
-        RightElbow,
-        RightWrist,
+        Root = 2,
         LeftHip,
         LeftKnee,
         LeftAnkle,
-        LeftToes,
-        RightHip,
+        RightHip = 7,
         RightKnee,
         RightAnkle,
+        Waist = 11,
+        LeftShoulder,
+        LeftElbow,
+        LeftWrist,
+        RightShoulder = 16,
+        RightElbow,
+        RightWrist,
+        Neck = 20,
+        Pelvis = 23,
+        Chest,
+        HeadBase,
+        LeftClavicle,
+        RightClavicle,
+        LeftToes,
         RightToes,
     }
 
@@ -5219,6 +5219,28 @@ namespace RobloxFiles.Enums
         Bottom,
     }
 
+    public enum TerrainLiquidMergeOperation
+    {
+        None,
+        Source,
+        Union,
+        Difference,
+        Intersect,
+    }
+
+    public enum TerrainSolidMergeOperation
+    {
+        None,
+        Paint,
+        Source,
+        Union,
+        Dig,
+        Difference,
+        Intersect,
+        Cut,
+        Place,
+    }
+
     public enum TextChatMessageStatus
     {
         Unknown = 1,
@@ -5813,6 +5835,13 @@ namespace RobloxFiles.Enums
         Publish,
         Subscribe,
         Join,
+    }
+
+    public enum VoiceRccReconnectReason
+    {
+        Unknown,
+        Migration,
+        CloseRoom,
     }
 
     public enum VolumetricAudio
