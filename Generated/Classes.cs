@@ -4227,7 +4227,6 @@ namespace RobloxFiles
         public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
         public byte[] SmoothGrid = Convert.FromBase64String("AQU=");
         public bool SmoothVoxelsUpgraded;
-        public AssetContentMap VoxelGridAssetContentMap;
         public Color3 WaterColor = Color3.FromRGB(12, 84, 91);
         public float WaterReflectance = 1;
         public float WaterTransparency = 0.3f;
@@ -5301,16 +5300,44 @@ namespace RobloxFiles
         }
 
         public Content SkyboxBackContent = new Content("rbxasset://textures/sky/sky512_bk.tex");
-        public ContentId SkyboxBk = "rbxasset://textures/sky/sky512_bk.tex";
-        public ContentId SkyboxDn = "rbxasset://textures/sky/sky512_dn.tex";
+
+        public ContentId SkyboxBk
+        {
+            get => SkyboxBackContent;
+            set => SkyboxBackContent = value;
+        }
+
+        public ContentId SkyboxDn
+        {
+            get => SkyboxDownContent;
+            set => SkyboxDownContent = value;
+        }
+
         public Content SkyboxDownContent = new Content("rbxasset://textures/sky/sky512_dn.tex");
         public Content SkyboxFrontContent = new Content("rbxasset://textures/sky/sky512_ft.tex");
-        public ContentId SkyboxFt = "rbxasset://textures/sky/sky512_ft.tex";
+
+        public ContentId SkyboxFt
+        {
+            get => SkyboxFrontContent;
+            set => SkyboxFrontContent = value;
+        }
+
         public Content SkyboxLeftContent = new Content("rbxasset://textures/sky/sky512_lf.tex");
-        public ContentId SkyboxLf = "rbxasset://textures/sky/sky512_lf.tex";
+
+        public ContentId SkyboxLf
+        {
+            get => SkyboxLeftContent;
+            set => SkyboxLeftContent = value;
+        }
+
         public Vector3 SkyboxOrientation = Vector3.zero;
         public Content SkyboxRightContent = new Content("rbxasset://textures/sky/sky512_rt.tex");
-        public ContentId SkyboxRt = "rbxasset://textures/sky/sky512_rt.tex";
+
+        public ContentId SkyboxRt
+        {
+            get => SkyboxRightContent;
+            set => SkyboxRightContent = value;
+        }
 
         public ContentId SkyboxUp
         {

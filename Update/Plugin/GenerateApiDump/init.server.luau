@@ -20,6 +20,8 @@ local singletons = {
 	ChatWindowConfiguration = TextChatService:WaitForChild("ChatWindowConfiguration", 10),
 	ChannelTabsConfiguration = TextChatService:WaitForChild("ChannelTabsConfiguration", 10),
 	ChatInputBarConfiguration = TextChatService:WaitForChild("ChatInputBarConfiguration", 10),
+} :: {
+	[string]: Instance?
 }
 
 local forceRegister = {
@@ -77,7 +79,7 @@ local NON_ROOTED_SERVICES = {
 	SoundService = true,
 }
 
-local function write(formatString, ...)
+local function write(formatString: string, ...)
 	local tabs = string.rep(" ", stackLevel * 4)
 	local fmt = formatString or ""
 
@@ -125,10 +127,10 @@ local function exportStream(label)
 	export.Parent = workspace
 
 	Selection:Add({ export })
-	wait()
+	task.wait()
 
 	plugin:OpenScript(export)
-	wait()
+	task.wait()
 
 	postToLocalServer(`Write-{label}`, results)
 end
@@ -179,7 +181,7 @@ function patchIndex.__index(self: typeof(patches), key)
 	return self[key]
 end
 
-local function getPatches(className)
+local function getPatches(className: string)
 	local classPatches = patches[className]
 	return setmetatable(classPatches, patchIndex)
 end
@@ -514,7 +516,7 @@ apiDumpJson = ""
 local function generateClasses()
 	local env = getfenv()
 	
-	local classNames = {}
+	local classNames: {string} = {}
 	classes = {}
 
 	for _, class in ipairs(apiDump.Classes) do
@@ -548,7 +550,9 @@ local function generateClasses()
 				local old = (dumpFolder and dumpFolder:FindFirstChildOfClass(className)) or game:FindFirstChildOfClass(className)
 				
 				classMeta.Object = old or (function (): Instance?
-					local success, object = pcall(Instance.new, className)
+					local success, object = pcall(function ()
+						return Instance.new(className)
+					end)
 
 					if success then
 						return object
@@ -600,7 +604,7 @@ local function generateClasses()
 	writeLine("namespace RobloxFiles")
 	openStack()
 
-	for i, className in ipairs(classNames) do
+	for i, className in classNames do
 		local class: ClassDescriptor = classes[className]
 		local classTags = getTags(class)
 
@@ -676,7 +680,7 @@ local function generateClasses()
 			local redirectProps: typeof(assert(classPatches.Redirect)) = classPatches.Redirect or {}
 
 			local propMap = collectProperties(class)
-			local propNames = {}
+			local propNames: { string } = {}
 
 			for propName in pairs(propMap) do
 				table.insert(propNames, propName)
@@ -805,7 +809,7 @@ local function generateClasses()
 							continue
 						end
 					end
-				elseif valueType == "NetAssetRef" then
+				elseif valueType == "NetAssetRef" or valueType == "AssetContentMap" then
 					continue
 				end
 
@@ -1107,7 +1111,7 @@ local function generateEnums()
 		local lastValue = -1
 		local mapped = {}
 
-		table.sort(enumItems, function(a, b)
+		table.sort(enumItems, function(a: EnumItemDescriptor, b: EnumItemDescriptor)
 			return a.Value < b.Value
 		end)
 
@@ -1190,7 +1194,9 @@ local function generateAll()
 end
 
 if plugin then
-	button.Click:Connect(generateAll)
+	if button then
+		button.Click:Connect(generateAll)
+	end
 else
 	generateAll()
 end

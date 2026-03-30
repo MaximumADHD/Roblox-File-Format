@@ -383,6 +383,17 @@ local PropertyPatches: { [string]: Patch } = {
 		},
 	},
 
+	Sky = {
+		Redirect = {
+			SkyboxBk = "SkyboxBackContent",
+			SkyboxDn = "SkyboxDownContent",
+			SkyboxFt = "SkyboxFrontContent",
+			SkyboxLf = "SkyboxLeftContent",
+			SkyboxRt = "SkyboxRightContent",
+			SkyboxUp = "SkyboxUpContent",
+		}
+	},
+
 	Smoke = {
 		Defaults = {
 			size_xml = 1,
