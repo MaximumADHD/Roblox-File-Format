@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.714.0.7141089
+// Updated as of 0.715.1.7151119
 
 using System;
 
@@ -2113,6 +2113,10 @@ namespace RobloxFiles
     }
 
     public class Folder : Instance
+    {
+    }
+
+    public class GeneratedFolder : Folder
     {
     }
 
@@ -4485,6 +4489,13 @@ namespace RobloxFiles
         public BrickColor TeamColor = BrickColorId.Medium_stone_grey;
     }
 
+    public class ProceduralModel : Model
+    {
+        public bool Dirty;
+        public ModuleScript Generator;
+        public Vector3 Size = new Vector3(12, 12, 12);
+    }
+
     public abstract class WorldRoot : Model
     {
     }
@@ -4537,6 +4548,7 @@ namespace RobloxFiles
         public bool TouchesUseCollisionGroups;
         public RolloutState UseFixedSimulation = RolloutState.Default;
         public RolloutState UseNewLuauTypeSolver = RolloutState.Default;
+        public RolloutState ValidateEnabledProximityPrompt = RolloutState.Default;
     }
 
     public class WorldModel : WorldRoot
@@ -4795,6 +4807,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class PluginConnectionService : Instance
+    {
+    }
+
+    [RbxService]
     public class PluginDebugService : Instance
     {
     }
@@ -4891,6 +4908,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class ProceduralBehaviorSchedulerService : Instance
+    {
+    }
+
+    [RbxService]
     public class ProcessInstancePhysicsService : Instance
     {
     }
@@ -4934,6 +4956,11 @@ namespace RobloxFiles
     [RbxService]
     public class RbxAnalyticsService : Instance
     {
+    }
+
+    public class RealtimeMedia : Instance
+    {
+        public bool ForwardInput;
     }
 
     [RbxService]

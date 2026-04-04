@@ -3801,6 +3801,12 @@ namespace RobloxFiles.Enums
         Roblox,
     }
 
+    public enum PhysicalConstraintType
+    {
+        AnimationConstraint,
+        Motor6D,
+    }
+
     public enum PhysicsSimulationRate
     {
         Fixed240Hz,
@@ -3917,6 +3923,12 @@ namespace RobloxFiles.Enums
         Unknown,
         Active,
         OtherPayer,
+    }
+
+    public enum PluginConnectionTargetType
+    {
+        Edit,
+        Test,
     }
 
     public enum PoseEasingDirection
@@ -4105,6 +4117,12 @@ namespace RobloxFiles.Enums
     {
         Default,
         Custom,
+    }
+
+    public enum PurchaseOption
+    {
+        TimedOption = 1,
+        Permanent,
     }
 
     public enum QualityLevel
