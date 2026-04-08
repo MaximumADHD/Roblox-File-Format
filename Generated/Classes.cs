@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.715.1.7151119
+// Updated as of 0.716.0.7160873
 
 using System;
 
@@ -4492,7 +4492,7 @@ namespace RobloxFiles
     public class ProceduralModel : Model
     {
         public bool Dirty;
-        public ModuleScript Generator;
+        public ModuleScript Generator = null;
         public Vector3 Size = new Vector3(12, 12, 12);
     }
 
@@ -5865,6 +5865,7 @@ namespace RobloxFiles
         }
 
         public Content NormalMapContent = Content.None;
+        public ResamplerMode ResampleMode = ResamplerMode.Default;
 
         public ContentId RoughnessMap
         {

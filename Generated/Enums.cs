@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.714.0.7141089
+// Updated as of 0.715.1.7151119
 using System;
 
 namespace RobloxFiles.Enums
@@ -4446,15 +4446,6 @@ namespace RobloxFiles.Enums
         Pinky1,
         Pinky2,
         Pinky3,
-
-        [Obsolete]
-        LeftToes = LeftToeBase,
-
-        [Obsolete]
-        Pelvis = Spine,
-
-        [Obsolete]
-        RightToes = RightToeBase,
     }
 
     public enum RigScale
