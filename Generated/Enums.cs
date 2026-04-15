@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.715.1.7151119
+// Updated as of 0.716.0.7160873
 using System;
 
 namespace RobloxFiles.Enums
@@ -1693,6 +1693,13 @@ namespace RobloxFiles.Enums
         Low,
         Medium,
         High,
+    }
+
+    public enum DeviceSimulatorScalingMode
+    {
+        ScaleToPhysicalSize,
+        ActualResolution,
+        FitToWindow,
     }
 
     public enum DeviceType
@@ -4238,6 +4245,19 @@ namespace RobloxFiles.Enums
         NeedPermission,
     }
 
+    public enum ReceiptDecision
+    {
+        NotProcessedYet,
+        Processed,
+    }
+
+    public enum ReceiptType
+    {
+        DeveloperProduct,
+        RobuxTransferSender,
+        RobuxTransferReceiver,
+    }
+
     public enum RecommendationActionType
     {
         AddReaction,
@@ -4732,6 +4752,7 @@ namespace RobloxFiles.Enums
     {
         Floor,
         Ladder,
+        ClassicLadder,
     }
 
     public enum SensorUpdateType
@@ -5991,6 +6012,7 @@ namespace RobloxFiles.Enums
         Unknown,
         Migration,
         CloseRoom,
+        FAEUpdate,
     }
 
     public enum VolumetricAudio

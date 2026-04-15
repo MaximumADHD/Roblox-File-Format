@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.716.0.7160873
+// Updated as of 0.717.0.7170978
 
 using System;
 
@@ -404,7 +404,6 @@ namespace RobloxFiles
         public Content AudioContent = Content.None;
         public bool AutoLoad = true;
         public bool AutoPlay;
-        public bool IsMutedForCapture;
         public NumberRange LoopRegion = new NumberRange(0, 60000);
         public bool Looping;
         public NumberRange PlaybackRegion = new NumberRange(0, 60000);
@@ -492,10 +491,8 @@ namespace RobloxFiles
     [RbxService]
     public class AuroraService : Instance
     {
-        public bool EnableInputLatencyMaxResimFrames;
         public double HashRoundingPoint = 0;
         public bool IgnoreRotation;
-        public int InputLatencyMaxResimFrames = 0;
         public bool LockStepIdOffset;
         public int RollbackOffset = 0;
     }
@@ -1526,7 +1523,6 @@ namespace RobloxFiles
     [RbxService]
     public class ContextActionService : Instance
     {
-        public int NetcodeInputLatency = 0;
     }
 
     public abstract class Controller : Instance
@@ -2581,7 +2577,7 @@ namespace RobloxFiles
         public int MaxVisibleGraphemes = -1;
         public bool MultiLine;
         public string OpenTypeFeatures = "";
-        public Color3 PlaceholderColor3 = Color3.FromRGB(178, 178, 178);
+        public Color3 PlaceholderColor3 = Color3.FromRGB(127, 127, 127);
         public string PlaceholderText = "";
         public bool RichText;
         public bool ShowNativeInput = true;
@@ -2676,6 +2672,7 @@ namespace RobloxFiles
     {
         public bool Enabled = true;
         public bool ResetOnSpawn = true;
+        public bool TabKeyboardNavigation;
         public ZIndexBehavior ZIndexBehavior = ZIndexBehavior.Global;
     }
 
@@ -3394,6 +3391,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class InternalMessagingService : Instance
+    {
+    }
+
+    [RbxService]
+    public class InternalMessagingServiceVerifier : Instance
     {
     }
 
@@ -4523,6 +4525,7 @@ namespace RobloxFiles
         public RolloutState LayeredClothingCacheOptimizations = RolloutState.Default;
         public LuauTypeCheckMode LuauTypeCheckMode = LuauTypeCheckMode.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
+        public RolloutState MeshStreamingAndImprovedLods = RolloutState.Default;
         public ModelStreamingBehavior ModelStreamingBehavior = ModelStreamingBehavior.Default;
         public MoverConstraintRootBehaviorMode MoverConstraintRootBehavior = MoverConstraintRootBehaviorMode.Default;
         public RolloutState NextGenerationReplication = RolloutState.Default;
@@ -4908,6 +4911,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class Preloaded : Instance
+    {
+    }
+
+    [RbxService]
     public class ProceduralBehaviorSchedulerService : Instance
     {
     }
@@ -5266,6 +5274,8 @@ namespace RobloxFiles
     {
         public CFrame HitFrame = CFrame.identity;
         public Vector3 HitNormal = Vector3.zero;
+        public float LadderSearchHeight = 6;
+        public float LadderSearchOffset = 5;
         public float SearchDistance = 0;
         public Material SensedMaterial = Material.Air;
         public BasePart SensedPart = null;
@@ -5451,7 +5461,6 @@ namespace RobloxFiles
         [Obsolete]
         public float EmitterSize = 10;
 
-        public bool IsMutedForCapture;
         public NumberRange LoopRegion = new NumberRange(0, 60000);
         public bool Looped;
 
@@ -5756,6 +5765,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class StudioDeviceEmulatorService : Instance
+    {
+    }
+
+    [RbxService]
+    public class StudioDeviceSimulatorService : Instance
     {
     }
 
