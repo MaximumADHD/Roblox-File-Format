@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.717.0.7170982
+// Updated as of 0.718.0.7181104
 
 using System;
 
@@ -5188,6 +5188,11 @@ namespace RobloxFiles
     public class SafetyService : Instance
     {
         public bool IsCaptureModeForReport;
+    }
+
+    [RbxService]
+    public class SceneAnalysisService : Instance
+    {
     }
 
     [RbxService]

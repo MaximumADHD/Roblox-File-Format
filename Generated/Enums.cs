@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.717.0.7170978
+// Updated as of 0.717.0.7170982
 using System;
 
 namespace RobloxFiles.Enums
@@ -381,6 +381,12 @@ namespace RobloxFiles.Enums
         Edit,
     }
 
+    public enum AntiAliasing
+    {
+        Disabled,
+        Enabled,
+    }
+
     public enum AppLifecycleManagerState
     {
         Detached,
@@ -402,6 +408,7 @@ namespace RobloxFiles.Enums
         GamePageLoaded,
         HomePageLoaded,
         AvatarEditorPageLoaded,
+        HomePageInteractive,
     }
 
     public enum AppShellFeature
@@ -1932,7 +1939,10 @@ namespace RobloxFiles.Enums
     public enum ExternalEditorMode
     {
         SystemDefault,
-        CustomEditor,
+        UserSelectedEditor,
+
+        [Obsolete]
+        CustomEditor = UserSelectedEditor,
     }
 
     public enum FACSDataLod
@@ -3167,11 +3177,14 @@ namespace RobloxFiles.Enums
         MouseY,
 
         MousePosition,
-        Touch,
+        TouchPosition,
         MouseWheel,
         TrackpadPan = 1040,
         TrackpadPinch = 1045,
         MouseDelta = 1048,
+
+        [Obsolete]
+        Touch = TouchPosition,
     }
 
     public enum KeyInterpolationMode
