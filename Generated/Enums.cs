@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.718.0.7181104
+// Updated as of 0.718.1.7181110
 using System;
 
 namespace RobloxFiles.Enums
@@ -3182,6 +3182,8 @@ namespace RobloxFiles.Enums
         TrackpadPan = 1040,
         TrackpadPinch = 1045,
         MouseDelta = 1048,
+        TouchDelta,
+        TouchPinch,
 
         [Obsolete]
         Touch = TouchPosition,
@@ -3453,6 +3455,11 @@ namespace RobloxFiles.Enums
         Level02,
         Level03,
         Level04,
+        Level05,
+        Level06,
+        Level07,
+        Level08,
+        Level09,
     }
 
     public enum MeshPartHeadsAndAccessories
@@ -3586,13 +3593,6 @@ namespace RobloxFiles.Enums
         Pushing,
         Stopping,
         AirFree,
-    }
-
-    public enum MoverConstraintRootBehaviorMode
-    {
-        Default,
-        Disabled,
-        Enabled,
     }
 
     public enum MuteState

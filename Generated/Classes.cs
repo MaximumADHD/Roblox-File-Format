@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.718.1.7181110
+// Updated as of 0.719.0.7191339
 
 using System;
 
@@ -1145,6 +1145,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class CloudCRUDService : Instance
+    {
+    }
+
+    [RbxService]
+    public class CloudExecutionService : Instance
     {
     }
 
@@ -2951,10 +2956,6 @@ namespace RobloxFiles
         public Vector3 Position = Vector3.zero;
         public float Radius = 3;
         public HapticEffectType Type = HapticEffectType.UIClick;
-
-        [Obsolete]
-        public FloatCurve Waveform;
-
         public byte[] WaveformData;
     }
 
@@ -3917,14 +3918,13 @@ namespace RobloxFiles
     {
         public bool HttpProxyEnabled;
         public string HttpProxyURL = "";
+        public float InboundNetworkJitterMs = 0;
         public float InboundNetworkLossPercent = 0;
-        public int InboundNetworkMaxDelayMs = 0;
-        public int InboundNetworkMinDelayMs = 0;
+        public float InboundNetworkMinDelayMs = 0;
         public double IncomingReplicationLag = 0;
-        public bool NetworkEmulationEnabled;
+        public float OutboundNetworkJitterMs = 0;
         public float OutboundNetworkLossPercent = 0;
-        public int OutboundNetworkMaxDelayMs = 0;
-        public int OutboundNetworkMinDelayMs = 0;
+        public float OutboundNetworkMinDelayMs = 0;
         public bool PrintJoinSizeBreakdown;
         public bool PrintPhysicsErrors;
         public bool PrintStreamInstanceQuota;
@@ -4230,6 +4230,7 @@ namespace RobloxFiles
         public bool Decoration;
         public float GrassLength = 0.7f;
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
+        public SharedString Materials = SharedString.None;
         public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
         public byte[] SmoothGrid = Convert.FromBase64String("AQU=");
         public bool SmoothVoxelsUpgraded;
@@ -4527,7 +4528,6 @@ namespace RobloxFiles
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public RolloutState MeshStreamingAndImprovedLods = RolloutState.Default;
         public ModelStreamingBehavior ModelStreamingBehavior = ModelStreamingBehavior.Default;
-        public MoverConstraintRootBehaviorMode MoverConstraintRootBehavior = MoverConstraintRootBehaviorMode.Default;
         public RolloutState NextGenerationReplication = RolloutState.Default;
         public PathfindingUseImprovedSearch PathfindingUseImprovedSearch = PathfindingUseImprovedSearch.Default;
         public RolloutState PhysicsImprovedSleep = RolloutState.Default;
