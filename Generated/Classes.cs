@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.719.0.7191339
+// Updated as of 0.720.0.7201169
 
 using System;
 
@@ -4576,6 +4576,14 @@ namespace RobloxFiles
     [RbxService]
     public class PackageUIService : Instance
     {
+    }
+
+    [RbxService]
+    public class Packages : Instance
+    {
+        public bool IsDehydrated;
+        public int ShellPackagesCount = 0;
+        public int SkippedInstancesCount = 0;
     }
 
     public class PartOperationAsset : Instance

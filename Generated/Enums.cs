@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.718.1.7181110
+// Updated as of 0.719.0.7191339
 using System;
 
 namespace RobloxFiles.Enums
@@ -524,6 +524,7 @@ namespace RobloxFiles.Enums
         FaceMakeup = 88,
         LipMakeup,
         EyeMakeup,
+        VoxelFragment,
 
         [Obsolete]
         TeeShirt = TShirt,
@@ -1405,6 +1406,9 @@ namespace RobloxFiles.Enums
         PlacelaunchPartyCannotFit,
         PlacelaunchHttpError,
         PlacelaunchUserPrivacyUnauthorized = 533,
+        PlacelaunchAgeVerificationRequired = 542,
+        PlacelaunchParentalApprovalRequired,
+        PlacelaunchCoreGated,
         PlacelaunchCreatorBan = 600,
         PlacelaunchDeviceBlock,
         PlacelaunchCustomMessage = 610,
@@ -1472,6 +1476,7 @@ namespace RobloxFiles.Enums
         SelfView,
         Captures,
         AvatarSwitcher,
+        ExperienceShop,
     }
 
     public enum CreateAssetResult
@@ -4308,6 +4313,21 @@ namespace RobloxFiles.Enums
         Public,
     }
 
+    public enum RecommendationPreferenceTargetType
+    {
+        User,
+        Universe,
+        CustomTag,
+    }
+
+    public enum RecommendationPreferenceType
+    {
+        AddFollow,
+        RemoveFollow,
+        AddMute,
+        RemoveMute,
+    }
+
     public enum RejectCharacterDeletions
     {
         Default,
@@ -4765,6 +4785,7 @@ namespace RobloxFiles.Enums
     {
         Floor,
         Ladder,
+        ClassicFloor,
         ClassicLadder,
     }
 
@@ -5285,6 +5306,11 @@ namespace RobloxFiles.Enums
     {
         RowMajor,
         ColumnMajor,
+    }
+
+    [Obsolete]
+    public enum TagReplicability
+    {
     }
 
     public enum TeamCreateErrorState
@@ -6124,6 +6150,7 @@ namespace RobloxFiles.Enums
         LayerCageFittedToBase,
         LayerCageFittedToPrev,
         PreWrapDeformerOuterCage,
+        SkinningTransfer,
     }
 
     public enum WrapTargetDebugMode
