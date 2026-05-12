@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.720.0.7201168
+// Updated as of 0.720.0.7201169
 
 using System;
 
@@ -6284,10 +6284,7 @@ namespace RobloxFiles
 
     public class UICorner : UIComponent
     {
-        public UDim BottomLeftRadius = new UDim(0, 8);
-        public UDim BottomRightRadius = new UDim(0, 8);
-        public UDim TopLeftRadius = new UDim(0, 8);
-        public UDim TopRightRadius = new UDim(0, 8);
+        public UDim CornerRadius = new UDim(0, 8);
     }
 
     public class UIDragDetector : UIComponent
