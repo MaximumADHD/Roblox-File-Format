@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.720.0.7201169
+// Updated as of 0.721.0.7211107
 using System;
 
 namespace RobloxFiles.Enums
