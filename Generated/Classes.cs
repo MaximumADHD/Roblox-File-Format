@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.720.0.7201169
+// Updated as of 0.721.0.7211107
 
 using System;
 
@@ -2641,6 +2641,7 @@ namespace RobloxFiles
         }
 
         public bool Looped;
+        public VideoSampleSize MaximumResolution = VideoSampleSize.Full;
         public bool Playing;
         public float RollOffMaxDistance = 10000;
         public float RollOffMinDistance = 1;
@@ -5235,6 +5236,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class ScriptDebuggerService : Instance
+    {
+    }
+
+    [RbxService]
     public class ScriptEditorService : Instance
     {
     }
@@ -5760,7 +5766,7 @@ namespace RobloxFiles
     [RbxService]
     public class StudioCameraService : Instance
     {
-        public float FocusDistance = 50;
+        public float FocusDistance = 0;
         public bool LockCameraSpeed;
         public bool LoggingEnabled;
     }
@@ -6284,7 +6290,10 @@ namespace RobloxFiles
 
     public class UICorner : UIComponent
     {
-        public UDim CornerRadius = new UDim(0, 8);
+        public UDim BottomLeftRadius = new UDim(0, 8);
+        public UDim BottomRightRadius = new UDim(0, 8);
+        public UDim TopLeftRadius = new UDim(0, 8);
+        public UDim TopRightRadius = new UDim(0, 8);
     }
 
     public class UIDragDetector : UIComponent
@@ -6692,6 +6701,7 @@ namespace RobloxFiles
     public class VideoPlayer : Instance
     {
         public bool Looping;
+        public VideoSampleSize MaximumResolution = VideoSampleSize.Full;
         public float PlaybackSpeed = 1;
         public double TimePosition = 0;
         public Content VideoContent = Content.None;

@@ -460,6 +460,12 @@ namespace RobloxFiles.Enums
         TimedOut,
     }
 
+    public enum AssetRepresentation
+    {
+        FullLength,
+        ShortPreview,
+    }
+
     public enum AssetType
     {
         Image = 1,
@@ -1208,6 +1214,7 @@ namespace RobloxFiles.Enums
         Hull,
         Box,
         PreciseConvexDecomposition,
+        Scalable,
     }
 
     public enum CommandPermission
@@ -1406,7 +1413,8 @@ namespace RobloxFiles.Enums
         PlacelaunchPartyCannotFit,
         PlacelaunchHttpError,
         PlacelaunchUserPrivacyUnauthorized = 533,
-        PlacelaunchAgeVerificationRequired = 542,
+        PlacelaunchVipOwnerNotPresent = 541,
+        PlacelaunchAgeVerificationRequired,
         PlacelaunchParentalApprovalRequired,
         PlacelaunchCoreGated,
         PlacelaunchCreatorBan = 600,
@@ -1558,6 +1566,13 @@ namespace RobloxFiles.Enums
         OrderedRemove,
     }
 
+    public enum DebugBreakModeType
+    {
+        Never,
+        Always,
+        Unhandled,
+    }
+
     public enum DebuggerEndReason
     {
         ClientRequest,
@@ -1591,6 +1606,14 @@ namespace RobloxFiles.Enums
         Exception,
         SingleStep,
         Entrypoint,
+    }
+
+    public enum DebuggerResumeType
+    {
+        StepInto,
+        StepOut,
+        StepOver,
+        Resume,
     }
 
     public enum DebuggerStatus
@@ -2565,6 +2588,7 @@ namespace RobloxFiles.Enums
         Add,
         Multiply,
         AlphaBlend,
+        NormalMapBlend,
     }
 
     public enum InOut
@@ -4680,6 +4704,22 @@ namespace RobloxFiles.Enums
         OtherError,
         NoDeviceSupport,
         NoSpaceOnDevice,
+    }
+
+    public enum ScriptStoppedReason
+    {
+        Breakpoint,
+        Exception,
+        Pause,
+        Step,
+        Entry,
+    }
+
+    public enum ScriptVariableScope
+    {
+        Local,
+        Upvalue,
+        Global,
     }
 
     public enum ScrollBarInset
