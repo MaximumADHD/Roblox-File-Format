@@ -531,6 +531,7 @@ namespace RobloxFiles.Enums
         LipMakeup,
         EyeMakeup,
         VoxelFragment,
+        AvatarBackground,
 
         [Obsolete]
         TeeShirt = TShirt,
@@ -670,6 +671,7 @@ namespace RobloxFiles.Enums
         FaceMakeup = 88,
         LipMakeup,
         EyeMakeup,
+        AvatarBackground = 92,
 
         [Obsolete]
         TeeShirtAccessory = TShirtAccessory,
@@ -1399,6 +1401,8 @@ namespace RobloxFiles.Enums
         DisconnectCollaboratorOwnerActionRequired,
         DisconnectCollaboratorTooManyCollaborators,
         DisconnectCollaboratorUnknownError,
+        DisconnectCollaboratorRequestedEviction,
+        DisconnectCollaboratorTrustedConnectionsRequiredPC,
         PlacelaunchErrors = 512,
         PlacelaunchDisabled = 515,
         PlacelaunchError,
@@ -1895,6 +1899,15 @@ namespace RobloxFiles.Enums
         Never,
     }
 
+    public enum EngagementLevel
+    {
+        Unknown,
+        Inactive,
+        Low,
+        Medium,
+        High,
+    }
+
     public enum EngineFolder
     {
         Screenshots,
@@ -1911,6 +1924,15 @@ namespace RobloxFiles.Enums
         Skip4,
         Skip8,
         Skip16,
+    }
+
+    public enum ExperienceActivationStatus
+    {
+        Unknown,
+        New,
+        Active,
+        Lapsed,
+        Reactivated,
     }
 
     public enum ExperienceAuthScope
@@ -3215,6 +3237,9 @@ namespace RobloxFiles.Enums
         TouchPinch,
 
         [Obsolete]
+        None = Unknown,
+
+        [Obsolete]
         Touch = TouchPosition,
     }
 
@@ -3965,6 +3990,15 @@ namespace RobloxFiles.Enums
         Unknown,
         PlatformKick,
         CreatorKick,
+    }
+
+    public enum PlayerPlatformActivationStatus
+    {
+        Unknown,
+        New,
+        Active,
+        Lapsed,
+        Reactivated,
     }
 
     public enum PlayerPlatformSpenderStatus

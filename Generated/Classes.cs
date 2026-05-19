@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.721.0.7211107
+// Updated as of 0.722.0.7221020
 
 using System;
 
@@ -457,6 +457,7 @@ namespace RobloxFiles
     public class AudioSpeechToText : Instance
     {
         public bool Enabled;
+        public bool IsDictationEnabled;
         public string Text = "";
     }
 
@@ -688,6 +689,8 @@ namespace RobloxFiles
     [RbxService]
     public class StarterGui : BasePlayerGui
     {
+        public RolloutState ClipsDescendantsSupportsRotation = RolloutState.Default;
+
         [Obsolete]
         public bool ResetPlayerGuiOnSpawn = true;
 
@@ -2056,6 +2059,11 @@ namespace RobloxFiles
     {
     }
 
+    [RbxService]
+    public class FileSyncReplicationService : Instance
+    {
+    }
+
     public class Fire : Instance
     {
         public Color3 Color = Color3.FromRGB(236, 139, 70);
@@ -2976,6 +2984,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class HeatmapQueryService : Instance
+    {
+    }
+
+    [RbxService]
     public class HeatmapService : Instance
     {
     }
@@ -3360,6 +3373,7 @@ namespace RobloxFiles
         public float Scale = 1;
         public KeyCode SecondaryModifier = KeyCode.Unknown;
         public GuiButton UIButton = null;
+        public GuiButton UIModifier;
         public KeyCode Up = KeyCode.Unknown;
         public Vector2 Vector2Scale = Vector2.one;
         public Vector3 Vector3Scale = Vector3.one;
