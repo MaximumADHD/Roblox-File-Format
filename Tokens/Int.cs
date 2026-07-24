@@ -24,13 +24,13 @@ namespace RobloxFiles.Tokens
             }
             else
             {
-                return XmlPropertyTokens.ReadPropertyGeneric<int>(prop, PropertyType.Int, token);
+                return XmlPropertyTokens.ReadPropertyGeneric<long>(prop, PropertyType.Int, token);
             }
         }
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            int value = prop.CastValue<int>();
+            long value = prop.CastValue<long>();
             node.InnerText = value.ToInvariantString();
         }
     }

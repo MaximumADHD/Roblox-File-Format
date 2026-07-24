@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.722.0.7221024
+// Updated as of 0.731.0.7310942
 using System;
 
 namespace RobloxFiles.Enums
@@ -168,6 +168,12 @@ namespace RobloxFiles.Enums
         XRay,
         XRayShaded,
         AlwaysOnTop,
+    }
+
+    public enum AgeCheckStatus
+    {
+        Unchecked,
+        Checked,
     }
 
     public enum AlignType
@@ -420,6 +426,7 @@ namespace RobloxFiles.Enums
         HomePage,
         More,
         Landing,
+        WatchPage,
     }
 
     public enum AppUpdateStatus
@@ -532,6 +539,7 @@ namespace RobloxFiles.Enums
         EyeMakeup,
         VoxelFragment,
         AvatarBackground,
+        TextDocument,
 
         [Obsolete]
         TeeShirt = TShirt,
@@ -1035,6 +1043,11 @@ namespace RobloxFiles.Enums
         PCBlock,
         NotFound,
         OutsideOwnerAgeBucket,
+        NotAuthorized,
+        OutsideAgeBucketTcPc,
+        OtherCollaboratorSettingsPreventTrust,
+        AgeVerificationCountryBlocked,
+        OtherUserCannotCollaborate,
     }
 
     public enum CaptureGalleryPermission
@@ -1052,7 +1065,10 @@ namespace RobloxFiles.Enums
     {
         None = 1,
         Featured,
+
+        [Obsolete]
         Collectibles,
+
         CommunityCreations,
         Premium,
         Recommended,
@@ -1200,6 +1216,7 @@ namespace RobloxFiles.Enums
         DeveloperUpdate,
         ServerEmpty,
         OutOfMemory,
+        Moderation,
     }
 
     public enum CollaboratorStatus
@@ -1403,6 +1420,11 @@ namespace RobloxFiles.Enums
         DisconnectCollaboratorUnknownError,
         DisconnectCollaboratorRequestedEviction,
         DisconnectCollaboratorTrustedConnectionsRequiredPC,
+        DisconnectRemoteAttestationUnsupported,
+        DisconnectRemoteAttestationGeneralFailure,
+        DisconnectRemoteAttestationTimeout,
+        DisconnectRemoteAttestationOSOutOfDate,
+        DisconnectRemoteAttestationBootValidationFailure,
         PlacelaunchErrors = 512,
         PlacelaunchDisabled = 515,
         PlacelaunchError,
@@ -1421,6 +1443,7 @@ namespace RobloxFiles.Enums
         PlacelaunchAgeVerificationRequired,
         PlacelaunchParentalApprovalRequired,
         PlacelaunchCoreGated,
+        PlacelaunchCollaborationCoreGated,
         PlacelaunchCreatorBan = 600,
         PlacelaunchDeviceBlock,
         PlacelaunchCustomMessage = 610,
@@ -1796,6 +1819,15 @@ namespace RobloxFiles.Enums
         Large,
     }
 
+    public enum DistanceAttenuationMode
+    {
+        Custom,
+        InverseTapered,
+        Linear,
+        LinearSquared,
+        Inverse,
+    }
+
     public enum DomainType
     {
         EXPERIENCE = 1,
@@ -1896,6 +1928,12 @@ namespace RobloxFiles.Enums
         WhenScrollable,
         Always,
         Never,
+    }
+
+    public enum EmitterPositionType
+    {
+        Parent,
+        Instance,
     }
 
     public enum EngagementLevel
@@ -2375,6 +2413,20 @@ namespace RobloxFiles.Enums
         Tutorial,
     }
 
+    public enum GradientTileMode
+    {
+        Clamp,
+        Repeat,
+        Mirror,
+    }
+
+    public enum GradientType
+    {
+        Linear,
+        Radial,
+        Conical,
+    }
+
     public enum GraphicsMode
     {
         Automatic = 1,
@@ -2508,6 +2560,7 @@ namespace RobloxFiles.Enums
         CreatorEnvironmentsNotSupportedByService,
         InactivityTimeout,
         TooManyOutstandingRequests,
+        InvalidRangeResponse,
     }
 
     public enum HttpRequestType
@@ -2652,6 +2705,12 @@ namespace RobloxFiles.Enums
         ViewportPosition,
     }
 
+    public enum InputBindingType
+    {
+        Automatic,
+        Scriptable,
+    }
+
     public enum InputSink
     {
         None,
@@ -2723,6 +2782,13 @@ namespace RobloxFiles.Enums
         HighQualityMesh,
     }
 
+    public enum InternalVideoUsage
+    {
+        Default,
+        WatchPage,
+        HomeCarousel,
+    }
+
     public enum InterpolationThrottlingMode
     {
         Default,
@@ -2761,7 +2827,7 @@ namespace RobloxFiles.Enums
 
     public enum KeyCode
     {
-        Unknown,
+        None,
         Backspace = 8,
         Tab,
         Clear = 12,
@@ -3240,12 +3306,24 @@ namespace RobloxFiles.Enums
         MouseDelta = 1048,
         TouchDelta,
         TouchPinch,
-
-        [Obsolete]
-        None = Unknown,
+        ButtonCenter,
+        ButtonBack,
+        ButtonUp,
+        ButtonDown,
+        ButtonLeft,
+        ButtonRight,
 
         [Obsolete]
         Touch = TouchPosition,
+
+        [Obsolete]
+        Unknown = None,
+    }
+
+    public enum KeyCodeStringFormat
+    {
+        Default,
+        Abbreviated,
     }
 
     public enum KeyInterpolationMode
@@ -3259,6 +3337,11 @@ namespace RobloxFiles.Enums
     {
         Include,
         Exclude,
+    }
+
+    public enum KnownWindow
+    {
+        Main,
     }
 
     public enum Language
@@ -3332,6 +3415,12 @@ namespace RobloxFiles.Enums
         None,
         Character,
         Camera,
+    }
+
+    public enum ListenerPositionType
+    {
+        Parent,
+        Instance,
     }
 
     public enum ListenerType
@@ -3901,6 +3990,13 @@ namespace RobloxFiles.Enums
         Adaptive,
     }
 
+    public enum PioneerSource
+    {
+        Roblox,
+        DaveyBazooka,
+        Oof,
+    }
+
     public enum PlaceContentPreference
     {
         None,
@@ -4057,11 +4153,19 @@ namespace RobloxFiles.Enums
         None,
     }
 
+    public enum PredictiveStreamingMode
+    {
+        Default,
+        Enabled,
+        Disabled,
+    }
+
     public enum PreferredInput
     {
         KeyboardAndMouse,
         Gamepad,
         Touch,
+        MicroGamepad,
     }
 
     public enum PreferredTextSize
@@ -4156,6 +4260,17 @@ namespace RobloxFiles.Enums
         PurchaseFailure,
         UnknownFailure,
         TokenInvalid,
+    }
+
+    public enum PromptCreateOutfitResult
+    {
+        Success = 1,
+        PartialSuccess,
+        CreationFailure,
+        PermissionDenied,
+        Timeout,
+        NoUserInput,
+        UnknownFailure,
     }
 
     public enum PromptExperienceDetailsResult
@@ -4461,6 +4576,8 @@ namespace RobloxFiles.Enums
     {
         FromRigInACE,
         FromRigInFile,
+        FromRigInFileZeroedRotations,
+        FromCustomClip,
     }
 
     public enum ReturnKeyType
@@ -4915,11 +5032,26 @@ namespace RobloxFiles.Enums
         AncestryDeferred,
     }
 
+    public enum SimulationMode
+    {
+        Default,
+        Enabled,
+        Disabled,
+    }
+
     public enum SizeConstraint
     {
         RelativeXY,
         RelativeXX,
         RelativeYY,
+    }
+
+    public enum SlimTintMode
+    {
+        None,
+        LOD,
+        Meshes,
+        Zone = 5,
     }
 
     public enum SolidPrimitiveType
@@ -5034,6 +5166,20 @@ namespace RobloxFiles.Enums
     {
         FixedSize,
         ScaledSize,
+    }
+
+    public enum StudioAction
+    {
+        Undo,
+        Redo,
+        SelectAll,
+        DeleteSelected,
+        DuplicateSelection,
+        ClearSelection,
+        ZoomExtents,
+        Copy = 61,
+        Cut,
+        Paste,
     }
 
     public enum StudioCaptureBufferStatus
@@ -5655,6 +5801,19 @@ namespace RobloxFiles.Enums
         Precise,
     }
 
+    public enum TitleBarControlsPosition
+    {
+        Unknown,
+        Left,
+        Right,
+    }
+
+    public enum TitleBarMode
+    {
+        Native,
+        Custom,
+    }
+
     public enum TonemapperPreset
     {
         Default,
@@ -5874,12 +6033,34 @@ namespace RobloxFiles.Enums
         Preview,
     }
 
+    public enum UserAcquisitionSource
+    {
+        Unknown,
+        PendingAttribution,
+        HomeRecommendation,
+        ContinueToPlay,
+        Curation,
+        Friends,
+        Search,
+        Teleport,
+        Ads,
+        HomeOther,
+        Other,
+    }
+
     public enum UserCFrame
     {
         Head,
         LeftHand,
         RightHand,
         Floor,
+    }
+
+    public enum UserIdMode
+    {
+        Invalid,
+        Global,
+        Domain,
     }
 
     public enum UserInputState
@@ -5914,6 +6095,13 @@ namespace RobloxFiles.Enums
         TextInput,
         InputMethod,
         None,
+    }
+
+    public enum UserReturnStatus
+    {
+        Unknown,
+        New,
+        Returning,
     }
 
     public enum VRComfortSetting
@@ -6132,6 +6320,7 @@ namespace RobloxFiles.Enums
         Migration,
         CloseRoom,
         FAEUpdate,
+        BlockListChanged,
     }
 
     public enum VolumetricAudio
@@ -6204,6 +6393,13 @@ namespace RobloxFiles.Enums
     {
         AllUsers,
         NoOne,
+    }
+
+    public enum WindowState
+    {
+        Normal,
+        Minimized,
+        Maximized,
     }
 
     public enum WrapLayerAutoSkin

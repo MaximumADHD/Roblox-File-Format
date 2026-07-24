@@ -26,7 +26,7 @@ local function TryGetEnumItem(enumName, itemName): EnumItem?
 
 	if gotEnum then
 		local gotEnumItem, item = pcall(function()
-			return (enum :: any)[itemName] :: EnumItem
+			return enum:FromName(itemName)
 		end)
 
 		if gotEnumItem then
@@ -48,6 +48,13 @@ local function GetBodyColor(bodyPart: Enum.BodyPart): GetSet
 	return {
 		Get = `Specials.GetBodyPart(this, BodyPart.{bodyPart.Name}).Color`,
 		Set = `Specials.GetBodyPart(this, BodyPart.{bodyPart.Name}).Color = value`,
+	}
+end
+
+local function ContentAssetId(propName: string): GetSet
+	return {
+		Get = propName .. ".AssetId",
+		Set = propName .. " = new Content(value)",
 	}
 end
 
@@ -159,6 +166,14 @@ local PropertyPatches: { [string]: Patch } = {
 	Camera = {
 		Redirect = {
 			CoordinateFrame = "CFrame"
+		},
+	},
+
+	CharacterMesh = {
+		Redirect = {
+			MeshId = ContentAssetId("MeshContent"),
+			BaseTextureId = ContentAssetId("BaseTextureContent"),
+			OverlayTextureId = ContentAssetId("OverlayTextureContent"),
 		},
 	},
 	
@@ -323,6 +338,10 @@ local PropertyPatches: { [string]: Patch } = {
 		Defaults = {
 			AutoUpdate = false
 		},
+
+		Redirect = {
+			PackageIdSerialize = "PackageContentSerialize",
+		}
 	},
 
 	Part = {
@@ -380,6 +399,12 @@ local PropertyPatches: { [string]: Patch } = {
 	ServerScriptService = {
 		Defaults = {
 			LoadStringEnabled = false
+		},
+	},
+
+	ShirtGraphic = {
+		Redirect = {
+			Graphic = "TextureContent",
 		},
 	},
 
@@ -537,13 +562,13 @@ local PropertyPatches: { [string]: Patch } = {
 
 			StreamingMinRadius = 64,
 			StreamingTargetRadius = 1024,
-
-			MeshPartHeads = TryGetEnumItem("MeshPartHeads", "Default"),
-			SignalBehavior = TryGetEnumItem("SignalBehavior", "Default"),
-			StreamingPauseMode = TryGetEnumItem("StreamingPauseMode", "Default"),
-			PhysicsSteppingMethod = TryGetEnumItem("PhysicsSteppingMethod", "Default"),
-			MeshPartHeadsAndAccessories = TryGetEnumItem("MeshPartHeadsAndAccessories", "Default"),
 		},
+	},
+
+	WrapLayer = {
+		Redirect = {
+			TemporaryReferenceId = "TemporaryReferenceMeshContent",
+		}
 	}
 }
 

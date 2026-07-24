@@ -1,5 +1,6 @@
 ﻿using RobloxFiles.Enums;
 using System;
+using System.Text.RegularExpressions;
 
 namespace RobloxFiles.DataTypes
 {
@@ -23,6 +24,12 @@ namespace RobloxFiles.DataTypes
             SourceType = ContentSourceType.Uri;
         }
 
+        public Content(long assetId)
+        {
+            Uri = $"rbxassetid://{assetId}";
+            SourceType = ContentSourceType.Uri;
+        }
+
         public Content(RbxObject obj)
         {
             if (obj is Instance)
@@ -40,6 +47,19 @@ namespace RobloxFiles.DataTypes
         {
             SourceType = ContentSourceType.Object;
             RefId = refId;
+        }
+
+        public long AssetId
+        {
+            get
+            {
+                var match = Regex.Match(Uri, "rbxassetid://(\\d+)");
+
+                if (match.Success)
+                    return long.Parse(match.Groups[1].Value);
+
+                return 0;
+            }
         }
 
         public override bool Equals(object obj)

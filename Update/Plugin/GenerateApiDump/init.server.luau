@@ -467,7 +467,11 @@ local function collectProperties(class: ClassDescriptor)
 	for _, member in ipairs(class.Members) do
 		if member.MemberType == "Property" then
 			if member.ValueType.Name == "Content" then
-				contentProps[member.Name] = true
+				local serial = member.Serialization
+
+				if serial.CanLoad then
+					contentProps[member.Name] = true
+				end
 			end
 
 			local propName = member.Name
@@ -484,7 +488,7 @@ local function collectProperties(class: ClassDescriptor)
 				continue
 			end
 
-			if prop.Name:match(oldName) and prop.Name ~= "TexturePack" then
+			if prop.Name:match(oldName) then
 				if prop.ValueType.Name == "ContentId" then
 					local patch = getPatches(class.Name)
 
@@ -738,7 +742,7 @@ local function generateClasses()
 
 				local diffNames = {}
 
-				for name in pairs(diffProps) do
+				for name: string in pairs(diffProps) do
 					table.insert(diffNames, name)
 				end
 
@@ -814,7 +818,7 @@ local function generateClasses()
 				end
 
 				local redirect = redirectProps[propName]
-				local couldSave = (serial.CanSave or propTags.Deprecated or redirect)
+				local couldSave = (serial.CanSave or propTags.Deprecated or redirect ~= nil)
 
 				if serial.CanLoad and couldSave then
 					if firstLine and next(diffProps) then
