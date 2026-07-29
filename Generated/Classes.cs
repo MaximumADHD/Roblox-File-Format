@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.731.0.7310942
+// Updated as of 0.732.0.7321040
 
 using System;
 
@@ -2643,6 +2643,25 @@ namespace RobloxFiles
         public TextYAlignment TextYAlignment = TextYAlignment.Center;
     }
 
+    public class InputActionLabel : GuiObject
+    {
+        public InputActionLabel() : base()
+        {
+            ClipsDescendants = false;
+        }
+
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.Legacy);
+        public Color3 ImageColor3 = new Color3(1, 1, 1);
+        public float ImageTransparency = 0;
+        public InputAction InputAction = null;
+        public Color3 TextColor3 = Color3.FromRGB(27, 42, 53);
+        public float TextSize = 8;
+        public float TextTransparency = 0;
+        public bool TextWrapped;
+        public TextXAlignment TextXAlignment = TextXAlignment.Center;
+        public TextYAlignment TextYAlignment = TextYAlignment.Center;
+    }
+
     public class RelativeGui : GuiObject
     {
     }
@@ -4689,6 +4708,7 @@ namespace RobloxFiles
 
     public abstract class WorldRoot : Model
     {
+        public byte[] CollisionGroupData;
     }
 
     [RbxService]
@@ -4700,7 +4720,6 @@ namespace RobloxFiles
         public AuthorityMode AuthorityMode = AuthorityMode.Server;
         public AvatarUnificationMode AvatarUnificationMode = AvatarUnificationMode.Default;
         public ClientAnimatorThrottlingMode ClientAnimatorThrottling = ClientAnimatorThrottlingMode.Default;
-        public byte[] CollisionGroupData = Convert.FromBase64String("AQEABP////8HRGVmYXVsdA==");
         public Camera CurrentCamera = null;
         public double DistributedGameTime = 0;
         public RolloutState EnableSLIMAvatars = RolloutState.Default;
@@ -4746,6 +4765,7 @@ namespace RobloxFiles
 
     public class WorldModel : WorldRoot
     {
+        public bool UseWorkspaceCollisionGroups;
     }
 
     public class PackageLink : Instance
@@ -6401,9 +6421,9 @@ namespace RobloxFiles
         public ChatVersion ChatVersion = ChatVersion.LegacyChatService;
         public bool CreateDefaultCommands = true;
         public bool CreateDefaultTextChannels = true;
-        public RolloutState EnableProtectedChat = RolloutState.Default;
         public bool HasSeenDeprecationDialog;
         public bool IsLegacyChatDisabled;
+        public RolloutState PlatformIntegratedChat = RolloutState.Default;
     }
 
     public class TextGenerator : Instance
@@ -6687,6 +6707,7 @@ namespace RobloxFiles
         public UDim BlurRadius = new UDim();
         public Color3 Color = new Color3();
         public bool Enabled = true;
+        public ApplyShadowMode Mode = ApplyShadowMode.Shape;
         public UDim2 Offset = new UDim2();
         public UDim2 Spread = new UDim2();
         public float Transparency = 0;

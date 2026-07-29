@@ -125,7 +125,9 @@ namespace RobloxFiles
                 }
             }
 
-            if (RawValue is long)
+            if (Value is BrickColor)
+                Type = PropertyType.Int;
+            else if (RawValue is long)
                 Type = PropertyType.Int64;
             
             switch (Type)
@@ -153,6 +155,12 @@ namespace RobloxFiles
                 }
                 case PropertyType.Int64:
                 {
+                    if (Value is int)
+                    {
+                        Type = PropertyType.Int;
+                        goto case PropertyType.Int;
+                    }
+
                     RawBuffer = BitConverter.GetBytes((long)Value);
                     break;
                 }

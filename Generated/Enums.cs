@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.731.0.7310942
+// Updated as of 0.732.0.7321040
 using System;
 
 namespace RobloxFiles.Enums
@@ -440,6 +440,12 @@ namespace RobloxFiles.Enums
         AvailableBetaProgram,
     }
 
+    public enum ApplyShadowMode
+    {
+        Shape,
+        Text,
+    }
+
     public enum ApplyStrokeMode
     {
         Contextual,
@@ -537,8 +543,7 @@ namespace RobloxFiles.Enums
         FaceMakeup = 88,
         LipMakeup,
         EyeMakeup,
-        VoxelFragment,
-        AvatarBackground,
+        AvatarBackground = 92,
         TextDocument,
 
         [Obsolete]
@@ -2394,6 +2399,13 @@ namespace RobloxFiles.Enums
         Transport,
     }
 
+    public enum GenerateMomentTextResult
+    {
+        Success,
+        Pending,
+        Failed,
+    }
+
     [Obsolete]
     public enum Genre
     {
@@ -2787,6 +2799,7 @@ namespace RobloxFiles.Enums
         Default,
         WatchPage,
         HomeCarousel,
+        FeatureTileAd,
     }
 
     public enum InterpolationThrottlingMode
@@ -3593,6 +3606,15 @@ namespace RobloxFiles.Enums
         TurboBuildersClub,
         OutrageousBuildersClub,
         Premium,
+    }
+
+    public enum MeshAttribute
+    {
+        Vertex,
+        Normal,
+        Color,
+        UV,
+        Face,
     }
 
     public enum MeshPartDetailLevel
@@ -6095,6 +6117,13 @@ namespace RobloxFiles.Enums
         TextInput,
         InputMethod,
         None,
+    }
+
+    public enum UserNewReturningStatus
+    {
+        Unknown,
+        New,
+        Returning,
     }
 
     public enum UserReturnStatus
