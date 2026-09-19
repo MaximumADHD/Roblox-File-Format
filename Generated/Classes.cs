@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.737.0.7371584
+// Updated as of 0.739.0.7390687
 
 using System;
 
@@ -67,6 +67,13 @@ namespace RobloxFiles
     {
     }
 
+    public class AdPlacement : Instance
+    {
+        public Instance ActivationInstance = null;
+        public AdFormat AdFormat = AdFormat.RewardedVideo;
+        public long PlacementId = 0;
+    }
+
     public class AdPortal : Instance
     {
     }
@@ -85,6 +92,11 @@ namespace RobloxFiles
     {
         [Obsolete]
         public string ApiKey = "";
+    }
+
+    [RbxService]
+    public class AnimatedImageService : Instance
+    {
     }
 
     public class Animation : Instance
@@ -153,6 +165,16 @@ namespace RobloxFiles
         public byte[] postTransform = Convert.FromBase64String("AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=");
         public byte[] preTransform = Convert.FromBase64String("AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=");
         public byte[] transform = Convert.FromBase64String("AQAAAAEAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAA=");
+    }
+
+    public class AnimationValueNodeDefinition : Instance
+    {
+        public string NodeId = "";
+        public AnimationValueNodeType NodeType = AnimationValueNodeType.Invalid;
+    }
+
+    public class AnimationValueOutputDefinition : Instance
+    {
     }
 
     public class Animator : Instance
@@ -1844,11 +1866,6 @@ namespace RobloxFiles
         public MeshType MeshType = MeshType.Head;
     }
 
-    [RbxService]
-    public class DataModelPatchService : Instance
-    {
-    }
-
     public class DataStoreGetOptions : Instance
     {
         public bool UseCache = true;
@@ -2104,6 +2121,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class ExternalIdentityService : Instance
+    {
+    }
+
+    [RbxService]
     public class FaceAnimatorService : Instance
     {
     }
@@ -2293,6 +2315,7 @@ namespace RobloxFiles
 
     public class Folder : Instance
     {
+        public Color3 IconTint = new Color3();
     }
 
     public class GeneratedFolder : Folder
@@ -2441,6 +2464,7 @@ namespace RobloxFiles
         public UDim2 Size = new UDim2();
         public SizeConstraint SizeConstraint = SizeConstraint.RelativeXY;
 
+        [Obsolete]
         public float Transparency
         {
             get => BackgroundTransparency;
@@ -2473,6 +2497,7 @@ namespace RobloxFiles
         {
             Active = true;
             ClipsDescendants = false;
+            InputSink = InputSink.Activate;
             Selectable = true;
         }
 
@@ -2490,6 +2515,7 @@ namespace RobloxFiles
         {
             Active = true;
             ClipsDescendants = false;
+            InputSink = InputSink.Activate;
             Selectable = true;
         }
 
@@ -2533,6 +2559,7 @@ namespace RobloxFiles
         {
             Active = true;
             ClipsDescendants = false;
+            InputSink = InputSink.Activate;
             Selectable = true;
         }
 
@@ -2753,6 +2780,7 @@ namespace RobloxFiles
         {
             Active = true;
             ClipsDescendants = false;
+            InputSink = InputSink.Activate;
             Selectable = true;
         }
 
@@ -2821,9 +2849,9 @@ namespace RobloxFiles
             ClipsDescendants = false;
         }
 
-        public FontFace FontFace;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.BuilderSansMedium);
         public TextChannel Target = null;
-        public bool UseDefaultFont;
+        public bool UseDefaultFont = true;
     }
 
     public class VideoDisplay : GuiObject
@@ -4137,6 +4165,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class MomentsService : Instance
+    {
+    }
+
+    [RbxService]
     public class MouseService : Instance
     {
     }
@@ -4786,6 +4819,7 @@ namespace RobloxFiles
         public RolloutState ImprovedPhysicsReplication = RolloutState.Default;
         public RolloutState LayeredClothingCacheOptimizations = RolloutState.Default;
         public LuauTypeCheckMode LuauTypeCheckMode = LuauTypeCheckMode.Default;
+        public RolloutState MapTVRemoteToGamepadKeycodes = RolloutState.Default;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories = MeshPartHeadsAndAccessories.Default;
         public RolloutState MeshStreamingAndImprovedLods = RolloutState.Default;
         public ModelStreamingBehavior ModelStreamingBehavior = ModelStreamingBehavior.Default;
@@ -4803,6 +4837,7 @@ namespace RobloxFiles
         public SandboxedInstanceMode SandboxedInstanceMode = SandboxedInstanceMode.Default;
         public SignalBehavior SignalBehavior2 = SignalBehavior.Default;
         public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
+        public bool StreamingAdaptiveRadius;
         public bool StreamingEnabled;
         public StreamingIntegrityMode StreamingIntegrityMode = StreamingIntegrityMode.Default;
         public int StreamingMinRadius = 64;
@@ -5260,6 +5295,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class PublishService : Instance
+    {
+    }
+
+    [RbxService]
+    public class QueueService : Instance
     {
     }
 
@@ -6037,6 +6077,7 @@ namespace RobloxFiles
         public LoadCharacterLayeredClothing LoadCharacterLayeredClothing = LoadCharacterLayeredClothing.Default;
         public CharacterControlMode LuaCharacterController = CharacterControlMode.Default;
         public float NameDisplayDistance = 100;
+        public Instance PlaceAvatarRules;
         public int PlayerModuleStatus = 0;
         public bool UserEmotesEnabled = true;
     }
@@ -6061,6 +6102,10 @@ namespace RobloxFiles
 
     public class StateMachineTransitionDefinition : Instance
     {
+        public Instance From = null;
+        public int Priority = 0;
+        public Instance To = null;
+        public string TransitionId = "";
     }
 
     [RbxService]
@@ -6398,6 +6443,7 @@ namespace RobloxFiles
 
     public class TextChannel : Instance
     {
+        public bool AddPlayersOnJoin;
     }
 
     public class TextChatCommand : Instance
@@ -6470,6 +6516,7 @@ namespace RobloxFiles
         public FontFace FontFace = FontFace.FromEnum(Enums.Font.GothamMedium);
         public float HeightScale = 1;
         public HorizontalAlignment HorizontalAlignment = HorizontalAlignment.Left;
+        public TextChannelDisplayMode TextChannelDisplayMode = TextChannelDisplayMode.AllTextChannels;
         public Color3 TextColor3 = new Color3(1, 1, 1);
         public long TextSize = 14;
         public Color3 TextStrokeColor3 = new Color3();

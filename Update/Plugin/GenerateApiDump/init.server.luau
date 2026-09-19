@@ -119,19 +119,6 @@ end
 
 local function exportStream(label)
 	local results = outStream:gsub("\n\n\n", "\n\n")
-
-	local export = Instance.new("Script")
-	export.Archivable = false
-	export.Source = results
-	export.Name = label
-	export.Parent = workspace
-
-	Selection:Add({ export })
-	task.wait()
-
-	plugin:OpenScript(export)
-	task.wait()
-
 	postToLocalServer(`Write-{label}`, results)
 end
 

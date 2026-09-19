@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.736.0.7361346
+// Updated as of 0.739.0.7390687
 using System;
 
 namespace RobloxFiles.Enums
@@ -250,6 +250,23 @@ namespace RobloxFiles.Enums
         Complete,
     }
 
+    public enum AnimatedImagePlaybackState
+    {
+        Begin,
+        Playing,
+        Paused,
+        Completed,
+        Canceled,
+    }
+
+    public enum AnimatedImageScaleType
+    {
+        Stretch,
+        Tile,
+        Fit,
+        Crop,
+    }
+
     public enum AnimationClipFromVideoStatus
     {
         Initializing,
@@ -270,6 +287,13 @@ namespace RobloxFiles.Enums
     {
         Cartesian,
         Polar,
+    }
+
+    public enum AnimationNodeBlendMode
+    {
+        Over,
+        Add,
+        Subtract,
     }
 
     public enum AnimationNodeInterruptible
@@ -322,6 +346,8 @@ namespace RobloxFiles.Enums
         SequenceNode,
         SpeedNode,
         SubtractNode,
+        OneShotNode,
+        StateMachineNode = 16,
     }
 
     public enum AnimationNodeWaitFor
@@ -339,6 +365,12 @@ namespace RobloxFiles.Enums
         Action3,
         Action4,
         Core = 1000,
+    }
+
+    public enum AnimationValueNodeType
+    {
+        Invalid,
+        Expression,
     }
 
     public enum AnimatorRetargetingMode
@@ -1489,6 +1521,13 @@ namespace RobloxFiles.Enums
         TeleportUnauthorized,
         TeleportFlooded,
         TeleportIsTeleporting,
+        TransportErrors = 1024,
+        DisconnectTransportIoError,
+        DisconnectTransportIoInternetError,
+        DisconnectTransportProtocolError,
+        DisconnectTransportNgtcp2Error,
+        DisconnectTransportQuicError,
+        DisconnectTransportRnaError,
 
         [Obsolete]
         DisconnectNoResponse = DisconnectRaknetErrors,
@@ -4094,6 +4133,13 @@ namespace RobloxFiles.Enums
         Adaptive,
     }
 
+    public enum PinExperienceStatus
+    {
+        Success,
+        Failure,
+        AlreadyExists,
+    }
+
     public enum PioneerSource
     {
         Roblox,
@@ -4375,6 +4421,7 @@ namespace RobloxFiles.Enums
         Timeout,
         NoUserInput,
         UnknownFailure,
+        UGCValidationFailed,
     }
 
     public enum PromptCreatePlatformContentResult
@@ -4534,6 +4581,12 @@ namespace RobloxFiles.Enums
 
         [Obsolete]
         Level__9 = Level09,
+    }
+
+    public enum QueueDecision
+    {
+        Commit,
+        Defer,
     }
 
     public enum R15CollisionType
@@ -5417,6 +5470,8 @@ namespace RobloxFiles.Enums
         AICOOverlayButtonBackgroundHover,
         AICOOverlayButtonBackgroundPressed,
         IndentationRuler,
+        ReviewableChangeAddedText,
+        ReviewableChangeRemovedText,
     }
 
     public enum StudioScriptEditorColorPresets
@@ -5817,6 +5872,12 @@ namespace RobloxFiles.Enums
         Intersect,
         Cut,
         Place,
+    }
+
+    public enum TextChannelDisplayMode
+    {
+        AllTextChannels,
+        DefaultTextChannels,
     }
 
     public enum TextChatMessageStatus
