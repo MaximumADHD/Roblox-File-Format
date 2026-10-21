@@ -1,0 +1,40 @@
+name: Check Roblox Studio version
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - id: version
+        name: Compare current Roblox version
+        env:
+          RBX_API_KEY: ${{ secrets.RBX_API_KEY }}
+        run: python Scripts/github_actions.py check-version
+
+      - if: steps.version.outputs.changed == 'true'
+        name: Start API generation
+        uses: actions/github-script@v7
+        env:
+          ROBLOX_VERSION: ${{ steps.version.outputs.version }}
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "generate-api.yml",
+              ref: "main",
+            });

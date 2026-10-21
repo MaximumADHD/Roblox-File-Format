@@ -1,0 +1,92 @@
+name: Generate Roblox API sources
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "Scripts/**"
+      - "**/*.cs"
+      - "*.cs"
+      - "RobloxFileFormat.csproj"
+      - "RobloxFileFormat.sln"
+      - "!Generated/Classes.cs"
+      - "!Generated/Enums.cs"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-roblox-api
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - id: version
+        name: Resolve current Roblox version
+        shell: bash
+        env:
+          RBX_API_KEY: ${{ secrets.RBX_API_KEY }}
+        run: python Scripts/github_actions.py check-version
+
+      - name: Run Luau generation tasks
+        shell: bash
+        env:
+          RBX_API_KEY: ${{ secrets.RBX_API_KEY }}
+          ROBLOX_VERSION: ${{ steps.version.outputs.version }}
+        run: python Scripts/github_actions.py generate --version "$ROBLOX_VERSION"
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Build File-Format solution
+        run: dotnet build RobloxFileFormat.sln --configuration Release --verbosity minimal
+
+      - id: commit
+        name: Commit generated sources
+        shell: bash
+        env:
+          ROBLOX_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          git config user.name "Roblox-Client-Tracker"
+          git config user.email "rbxclientwatch@gmail.com"
+          git add Generated/Classes.cs Generated/Enums.cs Generated/Version.txt
+          if git diff --cached --quiet; then
+            echo "Generated sources are already current."
+          else
+            git commit -m "$ROBLOX_VERSION"
+            git push origin HEAD:main
+          fi
+          commit_sha="$(git rev-parse HEAD)"
+          echo "sha=$commit_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Create versioned release with assembly
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ROBLOX_VERSION: ${{ steps.version.outputs.version }}
+          TARGET_COMMIT: ${{ steps.commit.outputs.sha }}
+        run: |
+          set -euo pipefail
+          asset="bin/Release/net10.0/RobloxFileFormat.dll"
+          test -f "$asset"
+          release_tag="${ROBLOX_VERSION}-${TARGET_COMMIT:0:7}"
+          if gh release view "$release_tag" >/dev/null 2>&1; then
+            gh release upload "$release_tag" "$asset" --clobber
+          else
+            gh release create "$release_tag" "$asset" \
+              --title "$ROBLOX_VERSION" \
+              --target "$TARGET_COMMIT" \
+              --notes "Synced to $ROBLOX_VERSION."
+          fi

@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Update generated Roblox classes and enums",
+            "detail": "Run both Cloud Luau generators. Requires RBX_API_KEY in the environment.",
+            "type": "process",
+            "command": "python",
+            "args": [
+                "${workspaceFolder}\\Scripts\\github_actions.py",
+                "generate",
+                "--version",
+                "${input:robloxVersion}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "robloxVersion",
+            "type": "promptString",
+            "description": "Roblox client version to generate",
+        }
+    ]
+}
