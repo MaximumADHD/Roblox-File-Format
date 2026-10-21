@@ -27,7 +27,7 @@ namespace RobloxFiles.Tokens
                 var time = BitConverter.ToUInt32(bytes, 4);
                 var index = BitConverter.ToUInt32(bytes, 0);
 
-                var uniqueId = new UniqueId(rand, time, index);
+                var uniqueId = new RobloxFiles.DataTypes.UniqueId(rand, time, index);
                 prop.Value = uniqueId;
 
                 return true;
@@ -38,7 +38,7 @@ namespace RobloxFiles.Tokens
 
         public void WriteProperty(Property prop, XmlDocument doc, XmlNode node)
         {
-            var uniqueId = prop.CastValue<UniqueId>();
+            var uniqueId = prop.CastValue<RobloxFiles.DataTypes.UniqueId>();
 
             var random = BitConverter.GetBytes(uniqueId.Random);
             var time = BitConverter.GetBytes(uniqueId.Time);
