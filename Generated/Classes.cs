@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.744.0.7441076
+// Updated as of 0.745.0.7451137
 
 using System;
 
@@ -51,6 +51,10 @@ namespace RobloxFiles
     }
 
     public class ExecutedRemoteCommand : RbxObject
+    {
+    }
+
+    public class FeatureMatchingSession : RbxObject
     {
     }
 
@@ -859,27 +863,27 @@ namespace RobloxFiles
 
     public class AvatarClothingRules : Instance
     {
-        public long ClassicPantsAccessoryOverride = 0;
-        public long ClassicShirtsAccessoryOverride = 0;
-        public long ClassicTShirtsAccessoryOverride = 0;
+        public long ClassicPantsOverride = 0;
+        public long ClassicShirtOverride = 0;
+        public long ClassicTShirtOverride = 0;
         public AvatarSettingsClothingMode ClothingMode = AvatarSettingsClothingMode.PlayerChoice;
 
-        [Obsolete("Use `ClassicPantsAccessoryOverride` instead.")]
+        [Obsolete("Use `ClassicPantsOverride` instead.")]
         public bool CustomClassicPantsAccessoryEnabled;
 
-        [Obsolete("Use `ClassicPantsAccessoryOverride` instead.")]
+        [Obsolete("Use `ClassicPantsOverride` instead.")]
         public long CustomClassicPantsAccessoryId;
 
-        [Obsolete("Use `ClassicShirtsAccessoryOverride` instead.")]
+        [Obsolete("Use `ClassicShirtOverride` instead.")]
         public bool CustomClassicShirtsAccessoryEnabled;
 
-        [Obsolete("Use `ClassicShirtsAccessoryOverride` instead.")]
+        [Obsolete("Use `ClassicShirtOverride` instead.")]
         public long CustomClassicShirtsAccessoryId;
 
-        [Obsolete("Use `ClassicTShirtsAccessoryOverride` instead.")]
+        [Obsolete("Use `ClassicTShirtOverride` instead.")]
         public bool CustomClassicTShirtsAccessoryEnabled;
 
-        [Obsolete("Use `ClassicTShirtsAccessoryOverride` instead.")]
+        [Obsolete("Use `ClassicTShirtOverride` instead.")]
         public long CustomClassicTShirtsAccessoryId;
 
         [Obsolete("Use `TShirtAccessoryOverride` instead.")]
@@ -897,10 +901,10 @@ namespace RobloxFiles
         [Obsolete("Use `JacketAccessoryOverride` instead.")]
         public long CustomJacketAccessoryId;
 
-        [Obsolete("Use `LeftShoesAccessoryOverride` instead.")]
+        [Obsolete("Use `LeftShoeAccessoryOverride` instead.")]
         public bool CustomLeftShoesAccessoryEnabled;
 
-        [Obsolete("Use `LeftShoesAccessoryOverride` instead.")]
+        [Obsolete("Use `LeftShoeAccessoryOverride` instead.")]
         public long CustomLeftShoesAccessoryId;
 
         [Obsolete("Use `PantsAccessoryOverride` instead.")]
@@ -909,10 +913,10 @@ namespace RobloxFiles
         [Obsolete("Use `PantsAccessoryOverride` instead.")]
         public long CustomPantsAccessoryId;
 
-        [Obsolete("Use `RightShoesAccessoryOverride` instead.")]
+        [Obsolete("Use `RightShoeAccessoryOverride` instead.")]
         public bool CustomRightShoesAccessoryEnabled;
 
-        [Obsolete("Use `RightShoesAccessoryOverride` instead.")]
+        [Obsolete("Use `RightShoeAccessoryOverride` instead.")]
         public long CustomRightShoesAccessoryId;
 
         [Obsolete("Use `ShirtAccessoryOverride` instead.")]
@@ -941,10 +945,10 @@ namespace RobloxFiles
 
         public long DressSkirtAccessoryOverride = 0;
         public long JacketAccessoryOverride = 0;
-        public long LeftShoesAccessoryOverride = 0;
+        public long LeftShoeAccessoryOverride = 0;
         public Vector3 LimitBounds = Vector3.zero;
         public long PantsAccessoryOverride = 0;
-        public long RightShoesAccessoryOverride = 0;
+        public long RightShoeAccessoryOverride = 0;
         public long ShirtAccessoryOverride = 0;
         public long ShortsAccessoryOverride = 0;
         public long SweaterAccessoryOverride = 0;
@@ -953,6 +957,7 @@ namespace RobloxFiles
 
     public class AvatarCollisionRules : Instance
     {
+        public bool BodyPartsCollidableOnDeath = true;
         public AvatarSettingsCollisionMode CollisionMode = AvatarSettingsCollisionMode.Default;
         public AvatarSettingsHitAndTouchDetectionMode HitAndTouchDetectionMode = AvatarSettingsHitAndTouchDetectionMode.UseParts;
 
@@ -1545,6 +1550,7 @@ namespace RobloxFiles
     [RbxService]
     public class CloudClientService : Instance
     {
+        public bool RobloxRealityFilterEnabled;
     }
 
     [RbxService]
@@ -2426,6 +2432,11 @@ namespace RobloxFiles
     }
 
     public class MotorFeature : Feature
+    {
+    }
+
+    [RbxService]
+    public class FeatureMatchingService : Instance
     {
     }
 
@@ -3771,6 +3782,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class IntegrityService : Instance
+    {
+    }
+
+    [RbxService]
     public class IntentService : Instance
     {
     }
@@ -4665,7 +4681,7 @@ namespace RobloxFiles
         public bool HeadLocked = true;
         public float HeadScale = 1;
         public OrthographicMode OrthographicMode = OrthographicMode.Vertical;
-        public float OrthographicSize = 300;
+        public float OrthographicSize = 35;
         public ProjectionType ProjectionType = ProjectionType.Perspective;
         public bool VRTiltAndRollEnabled;
         public float ViewStretch = 1;
@@ -5030,7 +5046,6 @@ namespace RobloxFiles
         public byte[] RawJoinData;
         public Instance ReplicationFocus;
         public SpawnLocation RespawnLocation;
-        public int StepIdOffset;
         public Team Team;
         public BrickColor TeamColor;
         public bool TeleportedIn;
@@ -5070,7 +5085,7 @@ namespace RobloxFiles
     [RbxService]
     public class Players : Instance
     {
-        public bool BanningEnabled;
+        public bool BanningEnabled = true;
         public bool CharacterAutoLoads = true;
         public int MaxPlayersInternal = 16;
         public int PreferredPlayersInternal;
@@ -5870,7 +5885,7 @@ namespace RobloxFiles
         public bool CharacterUseJumpPower = true;
         public float CharacterWalkSpeed = 16;
         public bool ClassicDeath = true;
-        public bool CreateDefaultPlayerModule;
+        public bool CreateDefaultPlayerModule = true;
         public DevCameraOcclusionMode DevCameraOcclusionMode = DevCameraOcclusionMode.Zoom;
         public DevComputerCameraMovementMode DevComputerCameraMovementMode = DevComputerCameraMovementMode.UserChoice;
         public DevComputerMovementMode DevComputerMovementMode = DevComputerMovementMode.UserChoice;
@@ -6213,7 +6228,7 @@ namespace RobloxFiles
 
     public class TextDocument : Instance
     {
-        public Content TextContent;
+        public Content TextContent = Content.None;
     }
 
     public class TextGenerator : Instance

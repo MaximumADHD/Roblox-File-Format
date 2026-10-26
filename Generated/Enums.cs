@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.744.0.7441076
+// Updated as of 0.745.0.7451137
 using System;
 
 namespace RobloxFiles.Enums
@@ -3437,6 +3437,7 @@ namespace RobloxFiles.Enums
         Cylinder,
         Wedge,
         CornerWedge,
+        Capsule,
     }
 
     public enum ParticleEmitter2DEmissionMode
@@ -3651,6 +3652,21 @@ namespace RobloxFiles.Enums
         Failure,
         FallbackToDefault,
         Kick,
+    }
+
+    public enum PlayerDeviceTrustDecision
+    {
+        Accept,
+        Reject,
+    }
+
+    public enum PlayerDeviceTrustLevel
+    {
+        Pending,
+        Unknown,
+        None,
+        Standard,
+        Full,
     }
 
     public enum PlayerExitReason
