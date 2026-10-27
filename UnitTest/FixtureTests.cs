@@ -122,6 +122,23 @@ namespace RobloxFiles.UnitTest
         }
 
         [Fact]
+        public void GeneratedClassHierarchyPreservesAbstractBoundaries()
+        {
+            var nonInstances = typeof(RbxObject).Assembly.GetTypes()
+                .Where(type => type.IsSubclassOf(typeof(RbxObject))
+                    && !typeof(Instance).IsAssignableFrom(type))
+                .ToArray();
+
+            Assert.NotEmpty(nonInstances);
+            Assert.All(nonInstances, type => Assert.False(type.IsAbstract, type.FullName + " must be concrete."));
+            Assert.True(typeof(BasePart).IsAbstract);
+            Assert.True(typeof(TriangleMeshPart).IsAbstract);
+            Assert.False(typeof(Instance).IsAbstract);
+            Assert.False(typeof(StarterPlayerScripts).IsAbstract);
+            Assert.False(typeof(Terrain).IsAbstract);
+        }
+
+        [Fact]
         public void SecurityCapabilitiesAreGenerated()
         {
             SecurityCapabilitiesTests.Run();

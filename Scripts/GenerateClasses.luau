@@ -1030,7 +1030,7 @@ local function formatDefault(value: any, csharpType: string, engineType: string?
 	return nil
 end
 
-local function getDefaultInstance(class: any): (Instance?, boolean)
+local function getDefaultInstance(class: any, engineInstancesByClass: { [string]: Instance }): (Instance?, boolean)
 	local permissions = class.Permits or {}
 
 	if permissions.GetService then
@@ -1053,7 +1053,7 @@ local function getDefaultInstance(class: any): (Instance?, boolean)
 		end
 	end
 
-	return nil, false
+	return engineInstancesByClass[class.Name], false
 end
 
 local function getCSharpName(name: string, className: string): string
@@ -1080,12 +1080,36 @@ local function generateClasses()
 		classByName[class.Name] = class
 	end
 
+	local engineInstancesByClass: { [string]: Instance } = {
+		Terrain = workspace.Terrain,
+		StarterPlayerScripts = game.StarterPlayer.StarterPlayerScripts,
+		StarterCharacterScripts = game.StarterPlayer.StarterCharacterScripts,
+		ChatWindowConfiguration = game.TextChatService.ChatWindowConfiguration,
+		ChatInputBarConfiguration = game.TextChatService.ChatInputBarConfiguration,
+		ChannelTabsConfiguration = game.TextChatService.ChannelTabsConfiguration,
+		BubbleChatConfiguration = game.TextChatService.BubbleChatConfiguration,
+	}
+
+	for _, class in ipairs(classes) do
+		local permissions = class.Permits or {}
+
+		if permissions.GetService then
+			local success, service = pcall(function()
+				return game:GetService(class.Name)
+			end)
+
+			if success and service then
+				engineInstancesByClass[service.ClassName] = service
+			end
+		end
+	end
+
 	local includedClasses = {}
 
 	for _, class in ipairs(classes) do
 		local permissions = class.Permits or {}
 
-		if permissions.New or permissions.GetService or FORCE_REGISTER[class.Name] then
+		if permissions.New or permissions.GetService or FORCE_REGISTER[class.Name] or engineInstancesByClass[class.Name] then
 			local parentName = class.Name
 
 			while parentName and parentName ~= "Object" and parentName ~= "Instance" do
@@ -1103,8 +1127,8 @@ local function generateClasses()
 	for _, candidate in ipairs(classes) do
 		local permissions = candidate.Permits or {}
 
-		if permissions.New or permissions.GetService then
-			local instance, shouldDestroy = getDefaultInstance(candidate)
+		if permissions.New or permissions.GetService or engineInstancesByClass[candidate.Name] then
+			local instance, shouldDestroy = getDefaultInstance(candidate, engineInstancesByClass)
 			
 			if instance then
 				if shouldDestroy then
@@ -1262,7 +1286,8 @@ local function generateClasses()
 		local permissions = class.Permits or {}
 		local isService = permissions.GetService ~= nil
 
-		local isCreatable = permissions.New ~= nil or isService or FORCE_REGISTER[className]
+		local isCreatable = permissions.New ~= nil or isService
+			or FORCE_REGISTER[className] or engineInstancesByClass[className] ~= nil
 		local superclass = getCSharpSuperclass(className)
 
 		if not isCreatable and not class.Subclasses then
@@ -1297,9 +1322,23 @@ local function generateClasses()
 			end
 		end
 		
+		local topClass = getCSharpSuperclass(className)
+		
+		while topClass and (topClass ~= "RbxObject" and topClass ~= "Instance") do
+			local parent = classByName[topClass]
+			
+			if parent and parent.Superclass then
+				topClass = getCSharpSuperclass(topClass)
+			else
+				break
+			end
+		end
 
-		local classKind = if isCreatable or class.Superclass == "Object" then "class" else "abstract class"
-		writeLine("public %s %s : %s", classKind, className, superclass)
+		if topClass == "RbxObject" then
+			isCreatable = true
+		end
+
+		writeLine("public %sclass %s : %s", if isCreatable then "" else "abstract ", className, superclass)
 		openStack()
 
 		local classPatch = PropertyPatches[className] or {}
@@ -1330,6 +1369,28 @@ local function generateClasses()
 		end
 
 		local contentRedirects: { [string]: GetSet } = {}
+		local legacyRedirects: { [string]: GetSet } = {}
+
+		for _, property in ipairs(properties) do
+			local deprecated = property.Display and property.Display.DeprecationMessage
+
+			if deprecated ~= nil and not property.Serialized and redirects[property.Name] == nil then
+				for _, target in ipairs(properties) do
+					if target.Name ~= property.Name
+						and target.Name:lower() == property.Name:lower()
+						and (target.Serialized or redirects[target.Name] ~= nil)
+					then
+						local sourceType = getCSharpType(property.Type or {}, includedClasses)
+						local targetType = getCSharpType(target.Type or {}, includedClasses)
+
+						if sourceType ~= nil and sourceType == targetType then
+							legacyRedirects[property.Name] = getCSharpName(target.Name, className)
+							break
+						end
+					end
+				end
+			end
+		end
 
 		for _, contentProperty in ipairs(properties) do
 			local contentName = contentProperty.Name
@@ -1365,7 +1426,7 @@ local function generateClasses()
 		local lastDeprecationRedirect = false
 		
 		for _, property in ipairs(properties) do
-			local redirect = redirects[property.Name] or contentRedirects[property.Name]
+			local redirect = redirects[property.Name] or contentRedirects[property.Name] or legacyRedirects[property.Name]
 			local deprecated = property.Display and property.Display.DeprecationMessage
 			
 			if not (property.Serialized or property.ContentType or redirect or deprecated) then
@@ -1435,6 +1496,10 @@ local function generateClasses()
 					continue
 				end
 			elseif not canWrite and not (property.Serialized or property.ContentType) then
+				continue
+			elseif deprecated ~= nil and not (property.Serialized or property.ContentType)
+				and patchDefaults[property.Name] == nil
+			then
 				continue
 			end
 

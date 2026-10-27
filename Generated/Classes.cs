@@ -24,11 +24,11 @@ namespace RobloxFiles
     {
     }
 
-    public abstract class ScreenshotCapture : Capture
+    public class ScreenshotCapture : Capture
     {
     }
 
-    public abstract class VideoCapture : Capture
+    public class VideoCapture : Capture
     {
     }
 
@@ -290,10 +290,6 @@ namespace RobloxFiles
     public class Attachment : Instance
     {
         public CFrame CFrame = CFrame.identity;
-
-        [Obsolete("Use `Orientation` instead.")]
-        public Vector3 Rotation = null;
-
         public bool Visible;
     }
 
@@ -1184,7 +1180,11 @@ namespace RobloxFiles
         }
 
         [Obsolete("Use `MaxTorque` instead.")]
-        public Vector3 maxTorque = null;
+        public Vector3 maxTorque
+        {
+            get => MaxTorque;
+            set => MaxTorque = value;
+        }
     }
 
     [Obsolete("Use `VectorForce` instead.")]
@@ -1232,10 +1232,18 @@ namespace RobloxFiles
         public Vector3 Position = new Vector3(0, 50, 0);
 
         [Obsolete("Use `MaxForce` instead.")]
-        public Vector3 maxForce = null;
+        public Vector3 maxForce
+        {
+            get => MaxForce;
+            set => MaxForce = value;
+        }
 
         [Obsolete("Use `Position` instead.")]
-        public Vector3 position = null;
+        public Vector3 position
+        {
+            get => Position;
+            set => Position = value;
+        }
     }
 
     [Obsolete("Use `VectorForce` instead.")]
@@ -1245,10 +1253,18 @@ namespace RobloxFiles
         public Vector3 Location = Vector3.zero;
 
         [Obsolete("Use `Force` instead.")]
-        public Vector3 force = null;
+        public Vector3 force
+        {
+            get => Force;
+            set => Force = value;
+        }
 
         [Obsolete("Use `Location` instead.")]
-        public Vector3 location = null;
+        public Vector3 location
+        {
+            get => Location;
+            set => Location = value;
+        }
     }
 
     [Obsolete("Use `LinearVelocity` instead.")]
@@ -1259,10 +1275,18 @@ namespace RobloxFiles
         public Vector3 Velocity = new Vector3(0, 2, 0);
 
         [Obsolete("Use `MaxForce` instead.")]
-        public Vector3 maxForce = null;
+        public Vector3 maxForce
+        {
+            get => MaxForce;
+            set => MaxForce = value;
+        }
 
         [Obsolete("Use `Velocity` instead.")]
-        public Vector3 velocity = null;
+        public Vector3 velocity
+        {
+            get => Velocity;
+            set => Velocity = value;
+        }
     }
 
     [Obsolete("Use `LineForce` instead.")]
@@ -2373,12 +2397,6 @@ namespace RobloxFiles
 
         public Content RoughnessMapContent = Content.None;
 
-        [Obsolete]
-        public float Shiny = 20;
-
-        [Obsolete]
-        public float Specular = 0;
-
         public ContentId Texture
         {
             get => TextureContent;
@@ -2483,7 +2501,11 @@ namespace RobloxFiles
         public float heat_xml = 9;
 
         [Obsolete("Use `Size` instead.")]
-        public float size = 5;
+        public float size
+        {
+            get => Size;
+            set => Size = value;
+        }
 
         public float size_xml = 5;
     }
@@ -3436,28 +3458,21 @@ namespace RobloxFiles
         public float InternalHeadScale = 1;
         public float JumpHeight = 7.2f;
         public float JumpPower = 50;
-
-        [Obsolete]
-        public BasePart LeftLeg = null;
-
         public float MaxHealth = 100;
         public float MaxSlopeAngle = 89;
         public float NameDisplayDistance = 100;
         public NameOcclusion NameOcclusion = NameOcclusion.OccludeAll;
         public bool RequiresNeck = true;
         public HumanoidRigType RigType = HumanoidRigType.R6;
-
-        [Obsolete]
-        public BasePart RightLeg = null;
-
-        [Obsolete]
-        public BasePart Torso = null;
-
         public bool UseJumpPower = true;
         public float WalkSpeed = 16;
 
         [Obsolete("Use `MaxHealth` instead.")]
-        public float maxHealth = 100;
+        public float maxHealth
+        {
+            get => MaxHealth;
+            set => MaxHealth = value;
+        }
     }
 
     public class HumanoidDescription : Instance
@@ -3975,10 +3990,6 @@ namespace RobloxFiles
         public bool Outlines = true;
 
         public bool PrioritizeLightingQuality;
-
-        [Obsolete]
-        public Color3 ShadowColor = null;
-
         public float ShadowSoftness = 0.5f;
 
         [Obsolete("Use `LightingStyle` instead.")]
@@ -4022,9 +4033,6 @@ namespace RobloxFiles
             get => SourceLocaleId;
             set => SourceLocaleId = value;
         }
-
-        [Obsolete("Use `RootLocalizationTable` instead.")]
-        public Instance Root = null;
 
         public string SourceLocaleId = "en-us";
     }
@@ -4380,14 +4388,7 @@ namespace RobloxFiles
 
         public Color3uint8 Color3uint8 = Color3.FromRGB(163, 162, 165);
         public PhysicalProperties CustomPhysicalProperties;
-
-        [Obsolete]
-        public float Elasticity = 0.5f;
-
         public bool EnableFluidForces = true;
-
-        [Obsolete]
-        public float Friction = 0.3f;
 
         [Obsolete]
         public float FrontParamA = -0.5f;
@@ -4471,7 +4472,11 @@ namespace RobloxFiles
         public Vector3 Velocity = Vector3.zero;
 
         [Obsolete("Use `BrickColor` instead.")]
-        public BrickColor brickColor = null;
+        public BrickColor brickColor
+        {
+            get => BrickColor;
+            set => BrickColor = value;
+        }
 
         public Vector3 size = new Vector3(4, 1.2f, 2);
     }
@@ -4495,7 +4500,11 @@ namespace RobloxFiles
         }
 
         [Obsolete]
-        public FormFactor formFactor = FormFactor.Brick;
+        public FormFactor formFactor
+        {
+            get => FormFactor;
+            set => FormFactor = value;
+        }
 
         public FormFactor formFactorRaw = FormFactor.Brick;
     }
@@ -4544,6 +4553,23 @@ namespace RobloxFiles
         {
             TopSurface = SurfaceType.Smooth;
         }
+    }
+
+    public class Terrain : BasePart
+    {
+        public TerrainAcquisitionMethod AcquisitionMethod = TerrainAcquisitionMethod.None;
+        public bool Decoration;
+        public float GrassLength;
+        public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
+        public SharedString Materials;
+        public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
+        public byte[] SmoothGrid = Convert.FromBase64String("AQU=");
+        public bool SmoothVoxelsUpgraded;
+        public Color3 WaterColor = Color3.FromRGB(12, 84, 91);
+        public float WaterReflectance = 1;
+        public float WaterTransparency = 0.3f;
+        public float WaterWaveSize = 0.15f;
+        public float WaterWaveSpeed = 10;
     }
 
     public abstract class TriangleMeshPart : BasePart
@@ -4687,7 +4713,11 @@ namespace RobloxFiles
         public float ViewStretch = 1;
 
         [Obsolete("Use `Focus` instead.")]
-        public CFrame focus = null;
+        public CFrame focus
+        {
+            get => Focus;
+            set => Focus = value;
+        }
     }
 
     public class ViewportCamera : Camera
@@ -4777,20 +4807,12 @@ namespace RobloxFiles
         public bool ExplicitAutoJoints = true;
         public bool FallHeightEnabled = true;
         public float FallenPartsDestroyHeight = -500;
-
-        [Obsolete]
-        public bool FilteringEnabled = true;
-
         public FluidForces FluidForces;
         public Vector3 GlobalWind = Vector3.zero;
         public float Gravity = 196.2f;
         public IKControlConstraintSupport IKControlConstraintSupport;
         public RolloutState ImprovedAnimationConstraint;
         public RolloutState ImprovedPhysicsReplication;
-
-        [Obsolete]
-        public InterpolationThrottlingMode InterpolationThrottling = InterpolationThrottlingMode.Default;
-
         public RolloutState LayeredClothingCacheOptimizations;
         public LuauTypeCheckMode LuauTypeCheckMode = LuauTypeCheckMode.Default;
         public RolloutState MapTVRemoteToGamepadKeycodes;
@@ -4983,8 +5005,6 @@ namespace RobloxFiles
     [RbxService]
     public class PathfindingService : Instance
     {
-        [Obsolete]
-        public float EmptyCutoff = 0;
     }
 
     [RbxService]
@@ -5029,10 +5049,6 @@ namespace RobloxFiles
         public string CharacterAppearance;
 
         public long CharacterAppearanceId;
-
-        [Obsolete]
-        public int DataComplexityLimit;
-
         public DevCameraOcclusionMode DevCameraOcclusionMode;
         public DevComputerCameraMovementMode DevComputerCameraMode;
         public DevComputerMovementMode DevComputerMovementMode;
@@ -5049,9 +5065,6 @@ namespace RobloxFiles
         public Team Team;
         public BrickColor TeamColor;
         public bool TeleportedIn;
-
-        [Obsolete("Use `UserId` instead.")]
-        public long userId;
     }
 
     [RbxService]
@@ -5144,9 +5157,6 @@ namespace RobloxFiles
     public class Pose : PoseBase
     {
         public CFrame CFrame = CFrame.identity;
-
-        [Obsolete]
-        public float MaskWeight = 0;
     }
 
     public abstract class PostEffect : Instance
@@ -5678,10 +5688,6 @@ namespace RobloxFiles
     {
         public bool AcousticSimulationEnabled = true;
         public Content AudioContent = Content.None;
-
-        [Obsolete("Use `RollOffMinDistance` instead.")]
-        public float EmitterSize = 10;
-
         public NumberRange LoopRegion = new NumberRange(0, 60000);
         public bool Looped;
 
@@ -5906,7 +5912,11 @@ namespace RobloxFiles
         public bool UserEmotesEnabled = true;
     }
 
-    public abstract class StarterPlayerScripts : Instance
+    public class StarterPlayerScripts : Instance
+    {
+    }
+
+    public class StarterCharacterScripts : StarterPlayerScripts
     {
     }
 
@@ -6027,13 +6037,6 @@ namespace RobloxFiles
     public class Team : Instance
     {
         public bool AutoAssignable = true;
-
-        [Obsolete]
-        public bool AutoColorCharacters = true;
-
-        [Obsolete]
-        public int Score = 0;
-
         public BrickColor TeamColor = BrickColorId.White;
     }
 
@@ -6069,8 +6072,6 @@ namespace RobloxFiles
     [RbxService]
     public class TeleportService : Instance
     {
-        [Obsolete]
-        public bool CustomizedTeleportUI;
     }
 
     [RbxService]
@@ -6138,10 +6139,6 @@ namespace RobloxFiles
         public bool AutoRuns = true;
         public string Description = "";
         public bool ExecuteWithStudioRun;
-
-        [Obsolete("Use `ThrottlePhysicsToRealtime` instead.")]
-        public bool Is30FpsThrottleEnabled = true;
-
         public bool IsPhysicsEnvironmentalThrottled = true;
         public bool IsSleepAllowed = true;
         public int NumberOfPlayers = 0;
@@ -6172,37 +6169,71 @@ namespace RobloxFiles
     {
     }
 
+    public class BubbleChatConfiguration : TextChatConfigurations
+    {
+        public string AdorneeName = "HumanoidRootPart";
+        public Color3 BackgroundColor3 = Color3.FromRGB(250, 250, 250);
+        public double BackgroundTransparency = 0.1;
+        public float BubbleDuration = 15;
+        public float BubblesSpacing = 6;
+        public bool Enabled = true;
+        public Font Font = Font.GothamMedium;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.GothamMedium);
+        public Vector3 LocalPlayerStudsOffset = Vector3.zero;
+        public float MaxBubbles = 3;
+        public float MaxDistance = 100;
+        public float MinimizeDistance = 40;
+        public bool TailVisible = true;
+        public Color3 TextColor3 = Color3.FromRGB(57, 59, 61);
+        public long TextSize = 16;
+        public float VerticalStudsOffset = 0;
+    }
+
+    public class ChannelTabsConfiguration : TextChatConfigurations
+    {
+        public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);
+        public double BackgroundTransparency = 0;
+        public bool Enabled;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.BuilderSansBold);
+        public Color3 HoverBackgroundColor3 = Color3.FromRGB(125, 125, 125);
+        public Color3 SelectedTabTextColor3 = new Color3(1, 1, 1);
+        public Color3 TextColor3 = Color3.FromRGB(175, 175, 175);
+        public long TextSize = 18;
+        public Color3 TextStrokeColor3 = new Color3();
+        public double TextStrokeTransparency = 1;
+    }
+
     public class ChatInputBarConfiguration : TextChatConfigurations
     {
-        public bool AutocompleteEnabled;
-        public Color3 BackgroundColor3;
-        public double BackgroundTransparency;
-        public bool Enabled;
-        public FontFace FontFace;
-        public KeyCode KeyboardKeyCode;
-        public Color3 PlaceholderColor3;
+        public bool AutocompleteEnabled = true;
+        public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);
+        public double BackgroundTransparency = 0.2;
+        public bool Enabled = true;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.GothamMedium);
+        public KeyCode KeyboardKeyCode = KeyCode.Slash;
+        public Color3 PlaceholderColor3 = Color3.FromRGB(178, 178, 178);
         public TextChannel TargetTextChannel;
-        public Color3 TextColor3;
-        public long TextSize;
-        public Color3 TextStrokeColor3;
-        public double TextStrokeTransparency;
+        public Color3 TextColor3 = new Color3(1, 1, 1);
+        public long TextSize = 14;
+        public Color3 TextStrokeColor3 = new Color3();
+        public double TextStrokeTransparency = 0.5;
     }
 
     public class ChatWindowConfiguration : TextChatConfigurations
     {
-        public Color3 BackgroundColor3;
-        public double BackgroundTransparency;
-        public bool Enabled;
-        public FontFace FontFace;
-        public float HeightScale;
-        public HorizontalAlignment HorizontalAlignment;
-        public TextChannelDisplayMode TextChannelDisplayMode;
-        public Color3 TextColor3;
-        public long TextSize;
-        public Color3 TextStrokeColor3;
-        public double TextStrokeTransparency;
-        public VerticalAlignment VerticalAlignment;
-        public float WidthScale;
+        public Color3 BackgroundColor3 = Color3.FromRGB(25, 27, 29);
+        public double BackgroundTransparency = 0.3;
+        public bool Enabled = true;
+        public FontFace FontFace = FontFace.FromEnum(Enums.Font.GothamMedium);
+        public float HeightScale = 1;
+        public HorizontalAlignment HorizontalAlignment = HorizontalAlignment.Left;
+        public TextChannelDisplayMode TextChannelDisplayMode = TextChannelDisplayMode.AllTextChannels;
+        public Color3 TextColor3 = new Color3(1, 1, 1);
+        public long TextSize = 14;
+        public Color3 TextStrokeColor3 = new Color3();
+        public double TextStrokeTransparency = 0.5;
+        public VerticalAlignment VerticalAlignment = VerticalAlignment.Top;
+        public float WidthScale = 1;
     }
 
     public class TextChatMessageProperties : Instance
@@ -6556,9 +6587,6 @@ namespace RobloxFiles
     {
         [Obsolete]
         public bool LegacyInputEventsEnabled = true;
-
-        [Obsolete("Use `TouchControlsEnabled` instead.")]
-        public bool ModalEnabled;
 
         public MouseBehavior MouseBehavior = MouseBehavior.Default;
 
