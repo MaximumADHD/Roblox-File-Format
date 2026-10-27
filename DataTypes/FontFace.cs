@@ -22,7 +22,7 @@ namespace RobloxFiles.DataTypes
 
         public FontFace(ContentId family, FontWeight weight = FontWeight.Regular, FontStyle style = FontStyle.Normal, string cachedFaceId = "")
         {
-            CachedFaceId = cachedFaceId;
+            CachedFaceId = cachedFaceId ?? "";
             Family = family;
             Weight = weight;
             Style = style;

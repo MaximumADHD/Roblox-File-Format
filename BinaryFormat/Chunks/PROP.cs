@@ -1381,7 +1381,13 @@ namespace RobloxFiles.BinaryFormat.Chunks
 
                     props.ForEach(prop =>
                     {
-                        var content = prop.CastValue<Content>();
+                        var value = prop.Value;
+                        var content = value as Content;
+
+                        if (value is ContentId contentId)
+                            content = contentId;
+
+                        content = content ?? Content.None;
 
                         var typeId = (int)content.SourceType;
                         contentTypes.Add(typeId);

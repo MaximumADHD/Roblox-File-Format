@@ -62,10 +62,7 @@ namespace RobloxFiles.Tokens
                 contentType.InnerText = content;
             }
 
-            XmlElement contentId = doc.CreateElement("ContentId");
-            contentId.SetAttribute("name", prop.Name);
-            contentId.AppendChild(contentType);
-            contentId.AppendChild(node);
+            node.AppendChild(contentType);
         }
     }
 }

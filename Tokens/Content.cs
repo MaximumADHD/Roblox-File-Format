@@ -45,16 +45,16 @@ namespace RobloxFiles.Tokens
         {
             var obj = prop.Object;
             var objType = obj.GetType();
-            var objField = objType.GetField(prop.Name);
+            var objMember = ImplicitMember.Get(objType, prop.Name);
 
-            if (objField != null && objField.FieldType.Name == "ContentId")
+            if (objMember != null && objMember.MemberType == typeof(ContentId))
             {
                 var contentIdToken = XmlPropertyTokens.GetHandler<ContentIdToken>();
                 contentIdToken.WriteProperty(prop, doc, node);
             }
             else
             {
-                var content = prop.CastValue<Content>();
+                var content = prop.CastValue<Content>() ?? Content.None;
                 string type = "null";
 
                 if (content.SourceType == ContentSourceType.None)

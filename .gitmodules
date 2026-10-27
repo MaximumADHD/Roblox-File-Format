@@ -1,0 +1,3 @@
+[submodule "UnitTest/Fixtures/rbx-test-files"]
+	path = UnitTest/Fixtures/rbx-test-files
+	url = https://github.com/rojo-rbx/rbx-test-files.git

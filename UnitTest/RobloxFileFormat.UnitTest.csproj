@@ -4,6 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +30,22 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RobloxFileFormat.csproj" />
+    <ProjectReference Include="..\SourceGenerators\RobloxFileFormat.SourceGenerators.csproj" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" PrivateAssets="all" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Fixtures\rbx-test-files\**\*.rbxm;Fixtures\rbx-test-files\**\*.rbxmx;Fixtures\rbx-test-files\**\*.rbxl;Fixtures\rbx-test-files\**\*.rbxlx"
+          CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <Target Name="ValidateFixtureSubmodule" BeforeTargets="PrepareForBuild">
+    <Error Condition="!Exists('Fixtures/rbx-test-files/README.md')"
+           Text="Fixture submodule is missing. Run git submodule update --init --recursive before building tests." />
+    <RemoveDir Directories="$(OutDir)Fixtures/rbx-test-files" />
+  </Target>
   
 </Project>

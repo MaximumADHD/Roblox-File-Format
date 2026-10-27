@@ -55,7 +55,7 @@ namespace RobloxFiles
             {
                 // Verify the signature of the file.
                 byte[] binSignature = reader.ReadBytes(14);
-                string signature = Encoding.UTF7.GetString(binSignature);
+                string signature = Encoding.Latin1.GetString(binSignature);
 
                 if (signature != MagicHeader)
                     throw new InvalidDataException("Provided file's signature does not match BinaryRobloxFile.MagicHeader!");

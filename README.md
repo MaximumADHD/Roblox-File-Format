@@ -58,7 +58,8 @@ if (workspace != null)
 
 Property values are populated upon opening a file through `Property` binding objects. 
 The read-only dictionary `Instance.Properties` provides a lookup for these bindings, thus allowing for generic iteration over the properties of an Instance!
-For example, this function will count all distinct `Content` urls in the `Workspace` a given file:
+
+For example, this function will count all distinct `ContentId` urls in the `Workspace` a given file:
 ```cs
 static void CountAssets(string path)
 {
@@ -112,6 +113,28 @@ static void CountAssets(string path)
 }
 ```
 
+# Tests
+The xUnit test project uses [rbx-test-files](https://github.com/rojo-rbx/rbx-test-files) as a pinned submodule in `UnitTest/Fixtures/rbx-test-files`.
+Initialize the fixtures and run the tests from the repository root:
+
+```sh
+git submodule update --init --recursive
+dotnet test RobloxFileFormat.sln --configuration Release
+```
+
+Tests cover loading every binary/XML model and place, in-memory save/reload hierarchy checks, representative integer values and object references, and the security capabilities generator.
+
+The structural tests do not guarantee lossless preservation of every property or byte-for-byte output.
+Fixture discovery fails if the submodule is missing or empty. No fixture files are modified by the tests.
+The GitHub Actions test workflow runs on Windows and Linux and uploads TRX reports even when tests fail.
+The two `places/all-instances-415` hierarchy round-trip tests are temporarily skipped because legacy HumanoidDescription conversion adds BodyPartDescription children. Their load tests remain enabled, and the Specials compatibility functionality is unchanged.
+
+To run only the fixture load checks:
+
+```sh
+dotnet test UnitTest/RobloxFileFormat.UnitTest.csproj --configuration Release --filter FullyQualifiedName~FixtureLoads
+```
+
 # Reliability
-This project receives automated updates alongside the [Roblox Client Tracker](https://github.com/MaximumADHD/Roblox-Client-Tracker), alongside occasional manual fixes.
-New classes, enums, and properties (especially those that are not intended for developer consumption) are not guaranteed to be stable across version upgrades.
+
+This project receives automated updates alongside the [Roblox Client Tracker](https://github.com/MaximumADHD/Roblox-Client-Tracker), with occasional manual fixes. New classes, enums, and properties (especially those that are not intended for developer consumption) are not guaranteed to be stable across version upgrades.

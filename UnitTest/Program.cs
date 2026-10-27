@@ -56,6 +56,12 @@ namespace RobloxFiles.UnitTest
         [STAThread]
         static void Main(string[] args)
         {
+            if (args.Length == 1 && args[0] == "--test-security-capabilities")
+            {
+                SecurityCapabilitiesTests.Run();
+                return;
+            }
+
             RobloxFile.LogErrors = true;
 
             if (args.Length > 0)

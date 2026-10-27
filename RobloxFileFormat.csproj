@@ -92,7 +92,6 @@
     <Compile Include="DataTypes\Rect.cs" />
     <Compile Include="DataTypes\Region3.cs" />
     <Compile Include="DataTypes\Region3int16.cs" />
-    <Compile Include="DataTypes\SecurityCapabilities.cs" />
     <Compile Include="DataTypes\SharedString.cs" />
     <Compile Include="DataTypes\UDim.cs" />
     <Compile Include="DataTypes\UDim2.cs" />
@@ -159,6 +158,10 @@
     <Compile Include="XmlFormat\XmlFileWriter.cs" />
     <Compile Include="XmlFormat\XmlPropertyTokens.cs" />
     <Compile Include="XmlFormat\XmlRobloxFile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="SourceGenerators\RobloxFileFormat.SourceGenerators.csproj"
+                      OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <DebugType>embedded</DebugType>
