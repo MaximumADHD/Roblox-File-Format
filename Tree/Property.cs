@@ -73,6 +73,7 @@ namespace RobloxFiles
             { typeof(float),   PropertyType.Float  },
             { typeof(double),  PropertyType.Double },
             { typeof(string),  PropertyType.String },
+            { typeof(byte[]),  PropertyType.String },
 
             { typeof(Ray),       PropertyType.Ray      },
             { typeof(Rect),      PropertyType.Rect     },
