@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.745.0.7451137
+// Updated as of 0.746.0.7461264
 using System;
 
 namespace RobloxFiles.Enums
@@ -340,6 +340,7 @@ namespace RobloxFiles.Enums
     {
         Invalid,
         Expression,
+        FeatureMatching,
     }
 
     public enum AnimatorRetargetingMode
@@ -1939,6 +1940,13 @@ namespace RobloxFiles.Enums
         Float16,
     }
 
+    public enum FeatureMatchingSource
+    {
+        Input,
+        Continuity,
+        Ignore,
+    }
+
     public enum FeatureNormalization
     {
         None,
@@ -1950,6 +1958,12 @@ namespace RobloxFiles.Enums
     {
         ExperienceChat,
         Communication,
+    }
+
+    public enum FeatureSelectionMode
+    {
+        Nearest,
+        WeightedRandom,
     }
 
     public enum FeedbackType
@@ -3752,13 +3766,6 @@ namespace RobloxFiles.Enums
         Largest,
     }
 
-    public enum PrimalPhysicsSolver
-    {
-        Default,
-        Experimental,
-        Disabled,
-    }
-
     public enum PrimitiveType
     {
         Null,
@@ -4503,6 +4510,13 @@ namespace RobloxFiles.Enums
     {
         OnRead,
         Manual,
+    }
+
+    public enum SerializationFormat
+    {
+        Binary,
+        Json,
+        Luau,
     }
 
     public enum ServerLiveEditingMode

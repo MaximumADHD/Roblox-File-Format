@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.745.0.7451137
+// Updated as of 0.746.0.7461264
 
 using System;
 
@@ -56,6 +56,20 @@ namespace RobloxFiles
 
     public class FeatureMatchingSession : RbxObject
     {
+    }
+
+    public class FeatureSearchParams : RbxObject
+    {
+        public float AnchorCostScale;
+        public bool AnchorIgnoresTagFilters;
+        public int AnchorRow;
+        public float MaxDistance;
+        public int MaxResults;
+        public long NormalizationKey;
+        public bool ReturnChannelCosts;
+        public FeatureSelectionMode SelectionMode;
+        public long SelectionSeed;
+        public float SelectionTemperature;
     }
 
     public class AccessoryDescription : Instance
@@ -129,7 +143,7 @@ namespace RobloxFiles
     [RbxService]
     public class AnimatedImageService : Instance
     {
-        public byte[] UserCreatedTracks;
+        public byte[] UserCreatedClips;
     }
 
     public class Animation : Instance
@@ -180,7 +194,7 @@ namespace RobloxFiles
     public class AnimationNodeDefinition : Instance
     {
         public byte[] InputPinData;
-        public string NodeId;
+        public string NodeId = "";
         public AnimationNodeType NodeType = AnimationNodeType.InvalidNode;
     }
 
@@ -190,6 +204,7 @@ namespace RobloxFiles
         public bool AutoPlay;
         public bool Enabled;
         public bool Loop;
+        public byte[] ParametersSerialize;
         public float Speed;
         public string Track;
     }
@@ -207,7 +222,7 @@ namespace RobloxFiles
 
     public class AnimationValueNodeDefinition : Instance
     {
-        public string NodeId;
+        public string NodeId = "";
         public AnimationValueNodeType NodeType = AnimationValueNodeType.Invalid;
     }
 
@@ -3056,6 +3071,7 @@ namespace RobloxFiles
     public abstract class LayerCollector : GuiBase2d
     {
         public bool Enabled = true;
+        public RolloutState InputSinkEnabled = RolloutState.Default;
         public bool ResetOnSpawn = true;
         public ZIndexBehavior ZIndexBehavior = ZIndexBehavior.Global;
     }
@@ -4559,7 +4575,7 @@ namespace RobloxFiles
     {
         public TerrainAcquisitionMethod AcquisitionMethod = TerrainAcquisitionMethod.None;
         public bool Decoration;
-        public float GrassLength;
+        public float GrassLength = 0.7f;
         public byte[] MaterialColors = Convert.FromBase64String("AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHtagcLgc4RKxr21zq2UlJSM");
         public SharedString Materials;
         public byte[] PhysicsGrid = Convert.FromBase64String("AgMAAAAAAAAAAAAAAAA=");
@@ -4797,7 +4813,7 @@ namespace RobloxFiles
         public float AirDensity = 0.0012f;
         public float AirTurbulenceIntensity = 0;
         public bool AllowThirdPartySales;
-        public AuthorityMode AuthorityMode;
+        public AuthorityMode AuthorityMode = AuthorityMode.Automatic;
         public AvatarUnificationMode AvatarUnificationMode;
         public ClientAnimatorThrottlingMode ClientAnimatorThrottling = ClientAnimatorThrottlingMode.Default;
         public Camera CurrentCamera;
@@ -4813,19 +4829,21 @@ namespace RobloxFiles
         public IKControlConstraintSupport IKControlConstraintSupport;
         public RolloutState ImprovedAnimationConstraint;
         public RolloutState ImprovedPhysicsReplication;
+        public RolloutState InputSinkEnabled;
         public RolloutState LayeredClothingCacheOptimizations;
         public LuauTypeCheckMode LuauTypeCheckMode = LuauTypeCheckMode.Default;
         public RolloutState MapTVRemoteToGamepadKeycodes;
         public MeshPartHeadsAndAccessories MeshPartHeadsAndAccessories;
         public RolloutState MeshStreamingAndImprovedLods;
         public ModelStreamingBehavior ModelStreamingBehavior;
+        public RolloutState NextGenerationPhysicsSolver = RolloutState.Default;
         public RolloutState NextGenerationReplication;
+        public RolloutState ParticlesUseDynamicWind;
         public PathfindingUseImprovedSearch PathfindingUseImprovedSearch;
         public PhysicsSteppingMethod PhysicsSteppingMethod;
         public PlayerCharacterDestroyBehavior PlayerCharacterDestroyBehavior;
         public RolloutState PlayerScriptsUseInputActionSystem;
-        public PredictiveStreamingMode PredictiveStreamingMode;
-        public PrimalPhysicsSolver PrimalPhysicsSolver;
+        public PredictiveStreamingMode PredictiveStreamingMode = PredictiveStreamingMode.Default;
         public RejectCharacterDeletions RejectCharacterDeletions;
         public RenderingCacheOptimizationMode RenderingCacheOptimizations;
         public ReplicateInstanceDestroySetting ReplicateInstanceDestroySetting;
@@ -4834,17 +4852,16 @@ namespace RobloxFiles
         public AnimatorRetargetingMode Retargeting = AnimatorRetargetingMode.Default;
         public SandboxedInstanceMode SandboxedInstanceMode;
         public SignalBehavior SignalBehavior2;
-        public StreamOutBehavior StreamOutBehavior;
+        public StreamOutBehavior StreamOutBehavior = StreamOutBehavior.Default;
         public bool StreamingAdaptiveRadius;
         public bool StreamingEnabled;
-        public StreamingIntegrityMode StreamingIntegrityMode;
+        public StreamingIntegrityMode StreamingIntegrityMode = StreamingIntegrityMode.Default;
         public int StreamingMinRadius = 64;
         public int StreamingTargetRadius = 1024;
         public bool TerrainWeldsFixed = true;
         public RolloutState TouchEventsUseCollisionGroups;
         public bool TouchesUseCollisionGroups;
         public RolloutState UseFixedSimulation;
-        public RolloutState UseInputSink;
         public RolloutState UseNewLuauTypeSolver;
         public RolloutState ValidateEnabledProximityPrompt;
     }
@@ -5024,6 +5041,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class PlaceAssetIdsService : Instance
+    {
+    }
+
+    [RbxService]
+    public class PlaceSettings : Instance
     {
     }
 
@@ -5824,7 +5846,7 @@ namespace RobloxFiles
         public ReverbType AmbientReverb = ReverbType.NoReverb;
         public RolloutState AudioApiByDefault;
         public RolloutState CharacterSoundsUseNewApi = RolloutState.Default;
-        public ListenerLocation DefaultListenerLocation;
+        public ListenerLocation DefaultListenerLocation = ListenerLocation.Default;
         public bool DiffractionEnabled = true;
         public float DistanceFactor = 3.33f;
         public float DopplerScale = 1;
@@ -5930,7 +5952,7 @@ namespace RobloxFiles
         public Instance From;
         public int Priority = 0;
         public Instance To;
-        public string TransitionId;
+        public string TransitionId = "";
     }
 
     [RbxService]
@@ -6062,10 +6084,15 @@ namespace RobloxFiles
 
     public class TeleportOptions : Instance
     {
+        [Obsolete("Use `ReservedServerId` instead.")]
         public string ReservedServerAccessCode = "";
+
         public string ReservedServerId = "";
         public string ServerInstanceId = "";
+
+        [Obsolete("Use `ReservedServerId` instead.")]
         public bool ShouldReserveServer;
+
         public string VipServerId = "";
     }
 
@@ -6846,11 +6873,6 @@ namespace RobloxFiles
         public string SourceName = "Output";
         public Instance TargetInstance;
         public string TargetName = "Input";
-    }
-
-    [RbxService]
-    public class WrapDeformMeshProvider : Instance
-    {
     }
 
     public class WrapTextureTransfer : Instance
