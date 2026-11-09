@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.746.0.7461264
+// Updated as of 0.747.0.7471481
 
 using System;
 
@@ -143,7 +143,6 @@ namespace RobloxFiles
     [RbxService]
     public class AnimatedImageService : Instance
     {
-        public byte[] UserCreatedClips;
     }
 
     public class Animation : Instance
@@ -540,6 +539,18 @@ namespace RobloxFiles
         public string Text = "";
     }
 
+    public class AudioStreamReader : Instance
+    {
+        public AudioChannelLayout Layout = AudioChannelLayout.Mono;
+        public AudioWindowSize WindowSize = AudioWindowSize.Medium;
+    }
+
+    public class AudioStreamWriter : Instance
+    {
+        public AudioChannelLayout Layout = AudioChannelLayout.Mono;
+        public AudioWindowSize WindowSize = AudioWindowSize.Medium;
+    }
+
     public class AudioTextToSpeech : Instance
     {
         public bool AutoLocalize = true;
@@ -609,7 +620,7 @@ namespace RobloxFiles
     public class AvatarAccessoryRules : Instance
     {
         public AvatarSettingsAccessoryMode AccessoryMode = AvatarSettingsAccessoryMode.PlayerChoice;
-        public long BackAccessoryOverride = 0;
+        public long BackAccessoryOverride = -1;
 
         [Obsolete("Use `HairAccessoryOverride` instead.")]
         public AvatarSettingsCustomAccessoryMode CustomAccessoryMode;
@@ -664,16 +675,17 @@ namespace RobloxFiles
 
         public bool EnableEmissives = true;
         public bool EnableSound = true;
+        public bool EnableSpawnEffects = true;
         public bool EnableVFX = true;
-        public long FaceAccessoryOverride = 0;
-        public long FrontAccessoryOverride = 0;
-        public long HairAccessoryOverride = 0;
-        public long HeadAccessoryOverride = 0;
+        public long FaceAccessoryOverride = -1;
+        public long FrontAccessoryOverride = -1;
+        public long HairAccessoryOverride = -1;
+        public long HeadAccessoryOverride = -1;
         public Vector3 LimitBounds = Vector3.zero;
         public AvatarSettingsAccessoryLimitMethod LimitMethod = AvatarSettingsAccessoryLimitMethod.Remove;
-        public long NeckAccessoryOverride = 0;
-        public long ShoulderAccessoryOverride = 0;
-        public long WaistAccessoryOverride = 0;
+        public long NeckAccessoryOverride = -1;
+        public long ShoulderAccessoryOverride = -1;
+        public long WaistAccessoryOverride = -1;
     }
 
     public class AvatarAnimationRules : Instance
@@ -682,7 +694,7 @@ namespace RobloxFiles
         public AvatarSettingsAnimationClipsMode AnimationClipsMode;
 
         public AvatarSettingsAnimationPacksMode AnimationPacksMode = AvatarSettingsAnimationPacksMode.PlayerChoice;
-        public long ClimbAnimationOverride = 0;
+        public long ClimbAnimationOverride = -1;
 
         [Obsolete("Use `ClimbAnimationOverride` instead.")]
         public bool CustomClimbAnimationEnabled;
@@ -744,15 +756,15 @@ namespace RobloxFiles
         [Obsolete("Use `WalkAnimationOverride` instead.")]
         public long CustomWalkAnimationId;
 
-        public long FallAnimationOverride = 0;
-        public long IdleAltAnimationOverride = 0;
-        public long IdleAnimationOverride = 0;
-        public long JumpAnimationOverride = 0;
-        public long MoodAnimationOverride = 0;
-        public long RunAnimationOverride = 0;
-        public long SwimAnimationOverride = 0;
-        public long SwimIdleAnimationOverride = 0;
-        public long WalkAnimationOverride = 0;
+        public long FallAnimationOverride = -1;
+        public long IdleAltAnimationOverride = -1;
+        public long IdleAnimationOverride = -1;
+        public long JumpAnimationOverride = -1;
+        public long MoodAnimationOverride = -1;
+        public long RunAnimationOverride = -1;
+        public long SwimAnimationOverride = -1;
+        public long SwimIdleAnimationOverride = -1;
+        public long WalkAnimationOverride = -1;
     }
 
     public class AvatarBodyRules : Instance
@@ -854,17 +866,17 @@ namespace RobloxFiles
         public NumberRange CustomWidthScale;
 
         public NumberRange CustomWorldHeight = new NumberRange(5.5f);
-        public long HeadOverride = 0;
+        public long HeadOverride = -1;
 
         [Obsolete]
         public bool KeepPlayerHead;
 
-        public long LeftArmOverride = 0;
-        public long LeftLegOverride = 0;
-        public long RightArmOverride = 0;
-        public long RightLegOverride = 0;
+        public long LeftArmOverride = -1;
+        public long LeftLegOverride = -1;
+        public long RightArmOverride = -1;
+        public long RightLegOverride = -1;
         public AvatarSettingsScaleMode ScaleMode = AvatarSettingsScaleMode.PlayerChoice;
-        public long TorsoOverride = 0;
+        public long TorsoOverride = -1;
     }
 
     [RbxService]
@@ -874,9 +886,9 @@ namespace RobloxFiles
 
     public class AvatarClothingRules : Instance
     {
-        public long ClassicPantsOverride = 0;
-        public long ClassicShirtOverride = 0;
-        public long ClassicTShirtOverride = 0;
+        public long ClassicPantsOverride = -1;
+        public long ClassicShirtOverride = -1;
+        public long ClassicTShirtOverride = -1;
         public AvatarSettingsClothingMode ClothingMode = AvatarSettingsClothingMode.PlayerChoice;
 
         [Obsolete("Use `ClassicPantsOverride` instead.")]
@@ -954,28 +966,29 @@ namespace RobloxFiles
         [Obsolete("Use `TShirtAccessoryOverride` instead.")]
         public long CustomTShirtAccessoryId;
 
-        public long DressSkirtAccessoryOverride = 0;
-        public long JacketAccessoryOverride = 0;
-        public long LeftShoeAccessoryOverride = 0;
+        public long DressSkirtAccessoryOverride = -1;
+        public long JacketAccessoryOverride = -1;
+        public long LeftShoeAccessoryOverride = -1;
         public Vector3 LimitBounds = Vector3.zero;
-        public long PantsAccessoryOverride = 0;
-        public long RightShoeAccessoryOverride = 0;
-        public long ShirtAccessoryOverride = 0;
-        public long ShortsAccessoryOverride = 0;
-        public long SweaterAccessoryOverride = 0;
-        public long TShirtAccessoryOverride = 0;
+        public long PantsAccessoryOverride = -1;
+        public long RightShoeAccessoryOverride = -1;
+        public long ShirtAccessoryOverride = -1;
+        public long ShortsAccessoryOverride = -1;
+        public long SweaterAccessoryOverride = -1;
+        public long TShirtAccessoryOverride = -1;
     }
 
     public class AvatarCollisionRules : Instance
     {
         public bool BodyPartsCollidableOnDeath = true;
         public AvatarSettingsCollisionMode CollisionMode = AvatarSettingsCollisionMode.Default;
-        public AvatarSettingsHitAndTouchDetectionMode HitAndTouchDetectionMode = AvatarSettingsHitAndTouchDetectionMode.UseParts;
+        public Vector3 HitboxSize = new Vector3(2, 5.5f, 1);
 
         [Obsolete]
         public AvatarSettingsLegacyCollisionMode LegacyCollisionMode;
 
         public Vector3 SingleColliderSize = new Vector3(2, 3, 1);
+        public AvatarSettingsTouchAndQueryDetectionMode TouchAndQueryDetectionMode = AvatarSettingsTouchAndQueryDetectionMode.UseParts;
     }
 
     [RbxService]
@@ -986,6 +999,12 @@ namespace RobloxFiles
     [RbxService]
     public class AvatarEditorService : Instance
     {
+    }
+
+    public class AvatarEffectDescription : Instance
+    {
+        public long AssetId = 0;
+        public AvatarEffectType EffectType = AvatarEffectType.None;
     }
 
     public class AvatarRules : Instance
@@ -2552,11 +2571,30 @@ namespace RobloxFiles
 
     public class Folder : Instance
     {
+        public Content ExplorerIconContent = Content.None;
         public Color3 IconTint = new Color3();
     }
 
     public class GeneratedFolder : Folder
     {
+    }
+
+    public class FollowRotationBoneBehavior : Instance
+    {
+        public bool CounterRotate;
+        public Instance Driver;
+        public float Weight;
+    }
+
+    public class FollowTwistBoneBehavior : Instance
+    {
+        public Axis Axis;
+        public FollowTwistBoneAxisMode AxisMode;
+        public bool CounterRotate;
+        public Instance Driver;
+        public Instance EndBone;
+        public Instance StartBone;
+        public float Weight;
     }
 
     public class ForceField : Instance
@@ -4277,6 +4315,11 @@ namespace RobloxFiles
     }
 
     [RbxService]
+    public class ModelInfoService : Instance
+    {
+    }
+
+    [RbxService]
     public class ModerationService : Instance
     {
     }
@@ -4742,6 +4785,7 @@ namespace RobloxFiles
 
     public class Model : PVInstance
     {
+        public Content ExplorerIconContent = Content.None;
         public ModelLevelOfDetail LevelOfDetail = ModelLevelOfDetail.Automatic;
         public CFrame ModelMeshCFrame;
         public SharedString ModelMeshData;
@@ -4827,7 +4871,6 @@ namespace RobloxFiles
         public Vector3 GlobalWind = Vector3.zero;
         public float Gravity = 196.2f;
         public IKControlConstraintSupport IKControlConstraintSupport;
-        public RolloutState ImprovedAnimationConstraint;
         public RolloutState ImprovedPhysicsReplication;
         public RolloutState InputSinkEnabled;
         public RolloutState LayeredClothingCacheOptimizations;
@@ -4981,7 +5024,7 @@ namespace RobloxFiles
         public int FlipbookSizeY = 1;
         public bool FlipbookStartRandom;
         public NumberRange Lifetime = new NumberRange(5, 10);
-        public float LightEmission = 0;
+        public float LightInfluence = 0;
         public bool LockedToParent;
         public float Rate = 20;
         public NumberRange RotSpeed = new NumberRange(0);
@@ -5092,7 +5135,6 @@ namespace RobloxFiles
     [RbxService]
     public class PlayerDataService : Instance
     {
-        public PlayerDataLoadFailureBehavior LoadFailureBehavior = PlayerDataLoadFailureBehavior.Failure;
     }
 
     [RbxService]
@@ -5526,8 +5568,6 @@ namespace RobloxFiles
 
     public class PhysicsActivitySensor : SensorBase
     {
-        public Vector3 Position;
-        public Vector3 Size;
     }
 
     [RbxService]
@@ -6824,10 +6864,10 @@ namespace RobloxFiles
     [RbxService]
     public class VoiceChatService : Instance
     {
-        public VoiceChatDistanceAttenuationType DefaultDistanceAttenuation;
-        public bool EnableDefaultVoice;
+        public VoiceChatDistanceAttenuationType DefaultDistanceAttenuation = VoiceChatDistanceAttenuationType.Inverse;
+        public bool EnableDefaultVoice = true;
         public RolloutState EnableVoiceVolumeControls;
-        public AudioApiRollout UseAudioApi;
+        public AudioApiRollout UseAudioApi = AudioApiRollout.Automatic;
     }
 
     [RbxService]

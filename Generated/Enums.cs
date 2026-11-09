@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.746.0.7461264
+// Updated as of 0.747.0.7471481
 using System;
 
 namespace RobloxFiles.Enums
@@ -418,6 +418,8 @@ namespace RobloxFiles.Enums
         HomePageLoaded,
         AvatarEditorPageLoaded,
         HomePageInteractive,
+        TapCampaignPageTab,
+        CampaignPageLoaded,
     }
 
     public enum AppShellFeature
@@ -549,6 +551,8 @@ namespace RobloxFiles.Enums
         AvatarBackground = 92,
         TextDocument,
         AnimatedImage = 95,
+        ComputeFunction,
+        SpawnEffect,
     }
 
     public enum AssetTypeVerification
@@ -697,6 +701,7 @@ namespace RobloxFiles.Enums
         LipMakeup,
         EyeMakeup,
         AvatarBackground = 92,
+        SpawnEffect = 97,
     }
 
     public enum AvatarChatServiceFeature
@@ -720,6 +725,12 @@ namespace RobloxFiles.Enums
         Chat,
         Emote,
         InspectMenu,
+    }
+
+    public enum AvatarEffectType
+    {
+        None,
+        Spawn,
     }
 
     public enum AvatarGenerationError
@@ -827,6 +838,7 @@ namespace RobloxFiles.Enums
     {
         UseParts,
         UseCollider,
+        UseHitbox,
     }
 
     public enum AvatarSettingsJumpMode
@@ -845,6 +857,13 @@ namespace RobloxFiles.Enums
     {
         PlayerChoice,
         CustomScale,
+    }
+
+    public enum AvatarSettingsTouchAndQueryDetectionMode
+    {
+        UseParts,
+        UseCollider,
+        UseHitbox,
     }
 
     public enum AvatarThumbnailCustomizationType
@@ -1824,6 +1843,14 @@ namespace RobloxFiles.Enums
         Unknown,
     }
 
+    public enum ExperienceRatingResult
+    {
+        Completed = 1,
+        Dismissed,
+        NotAllowed,
+        Failed,
+    }
+
     public enum ExperienceStateCaptureSelectionMode
     {
         Default,
@@ -2015,6 +2042,13 @@ namespace RobloxFiles.Enums
     {
         Default,
         Experimental,
+    }
+
+    public enum FollowTwistBoneAxisMode
+    {
+        Local,
+        Follower,
+        StartToEndBone,
     }
 
     public enum Font
@@ -2312,6 +2346,17 @@ namespace RobloxFiles.Enums
         AlreadyMember,
     }
 
+    public enum GuiNavigationDirection
+    {
+        None,
+        Up,
+        Down,
+        Left,
+        Right,
+        Forward,
+        Backward,
+    }
+
     public enum GuiState
     {
         Idle,
@@ -2521,6 +2566,13 @@ namespace RobloxFiles.Enums
         AlphaBlend,
         NormalMapBlend,
         Subtract,
+        Darken,
+        Lighten,
+        Screen,
+        Overlay,
+        SoftLight,
+        HardLight,
+        Difference,
     }
 
     public enum InOut
@@ -3651,21 +3703,6 @@ namespace RobloxFiles.Enums
         All,
         Team,
         Whisper,
-    }
-
-    public enum PlayerDataErrorState
-    {
-        LoadFailed,
-        FlushFailed,
-        ReleaseFailed,
-        None,
-    }
-
-    public enum PlayerDataLoadFailureBehavior
-    {
-        Failure,
-        FallbackToDefault,
-        Kick,
     }
 
     public enum PlayerDeviceTrustDecision
