@@ -1110,11 +1110,11 @@ namespace RobloxFiles
             set => HSRContent = value;
         }
 
-        public Content HSRContent = Content.None;
+        public Content HSRContent;
         public SharedString HSRData;
         public SharedString HSRMeshIdData;
         public CFrame ImportOrigin = CFrame.identity;
-        public Content TemporaryCageMeshContent = Content.None;
+        public Content TemporaryCageMeshContent;
     }
 
     public class WrapDeformer : BaseWrap
@@ -1147,7 +1147,7 @@ namespace RobloxFiles
         public float ShrinkFactor = 0;
 
         public float TargetShaping = 0;
-        public Content TemporaryReferenceMeshContent = Content.None;
+        public Content TemporaryReferenceMeshContent;
     }
 
     public class WrapTarget : BaseWrap
@@ -2445,6 +2445,7 @@ namespace RobloxFiles
             set => TextureContent = value;
         }
 
+        public Content TexturePackContent;
         public string TexturePackMetadata;
         public float Transparency = 0;
         public Vector2 UVOffset = Vector2.zero;
@@ -2967,7 +2968,7 @@ namespace RobloxFiles
             set => BottomImageContent = value;
         }
 
-        public Content BottomImageContent = Content.None;
+        public Content BottomImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-bottom.png");
         public Vector2 CanvasPosition = Vector2.zero;
         public UDim2 CanvasSize = new UDim2(0, 0, 2, 0);
         public ElasticBehavior ElasticBehavior = ElasticBehavior.WhenScrollable;
@@ -2979,7 +2980,7 @@ namespace RobloxFiles
             set => MidImageContent = value;
         }
 
-        public Content MidImageContent = Content.None;
+        public Content MidImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-middle.png");
         public Color3 ScrollBarImageColor3 = new Color3(1, 1, 1);
         public float ScrollBarImageTransparency = 0;
         public int ScrollBarThickness = 12;
@@ -2992,7 +2993,7 @@ namespace RobloxFiles
             set => TopImageContent = value;
         }
 
-        public Content TopImageContent = Content.None;
+        public Content TopImageContent = new Content("rbxasset://textures/ui/Scroll/scroll-top.png");
         public ScrollBarInset VerticalScrollBarInset = ScrollBarInset.None;
         public VerticalScrollBarPosition VerticalScrollBarPosition = VerticalScrollBarPosition.Right;
     }
@@ -3288,7 +3289,7 @@ namespace RobloxFiles
             set => ImageContent = value;
         }
 
-        public Content ImageContent = Content.None;
+        public Content ImageContent = new Content("rbxasset://textures/SurfacesDefault.png");
         public Vector2 Size = Vector2.one;
 
         public ImageHandleAdornment()
@@ -4245,7 +4246,7 @@ namespace RobloxFiles
             set => ColorMapContent = value;
         }
 
-        public Content ColorMapContent = Content.None;
+        public Content ColorMapContent;
         public PhysicalProperties CustomPhysicalProperties;
         public Content EmissiveMaskContent;
         public float EmissiveStrength = 1;
@@ -4258,7 +4259,7 @@ namespace RobloxFiles
             set => MetalnessMapContent = value;
         }
 
-        public Content MetalnessMapContent = Content.None;
+        public Content MetalnessMapContent;
 
         public ContentId NormalMap
         {
@@ -4266,7 +4267,7 @@ namespace RobloxFiles
             set => NormalMapContent = value;
         }
 
-        public Content NormalMapContent = Content.None;
+        public Content NormalMapContent;
 
         public ContentId RoughnessMap
         {
@@ -4274,9 +4275,9 @@ namespace RobloxFiles
             set => RoughnessMapContent = value;
         }
 
-        public Content RoughnessMapContent = Content.None;
+        public Content RoughnessMapContent;
         public float StudsPerTile = 10;
-        public ContentId TexturePack;
+        public Content TexturePackContent;
     }
 
     [RbxService]
@@ -4337,7 +4338,7 @@ namespace RobloxFiles
             set => IconContent = value;
         }
 
-        public Content IconContent = Content.None;
+        public Content IconContent;
         public Instance TargetFilter;
     }
 
@@ -4672,10 +4673,10 @@ namespace RobloxFiles
 
     public class PartOperation : TriangleMeshPart
     {
-        public ContentId AssetId;
         public byte[] ChildData;
         public SharedString ChildData2;
         public int ComponentIndex;
+        public Content Content;
         public FormFactor FormFactor = FormFactor.Custom;
         public Vector3 InitialSize;
         public byte[] MeshData;
@@ -4920,7 +4921,7 @@ namespace RobloxFiles
         public string DefaultName;
         public int ModifiedState;
         public Content PackageContent = Content.None;
-        public Content PackageContentSerialize = Content.None;
+        public Content PackageContentSerialize;
         public byte[] SerializedDefaultAttributes;
         public long VersionIdSerialize;
     }
@@ -4988,7 +4989,7 @@ namespace RobloxFiles
             set => TextureContent = value;
         }
 
-        public Content TextureContent = Content.None;
+        public Content TextureContent = new Content("rbxasset://textures/particles/sparkles_main.dds");
         public float TimeScale = 1;
         public NumberSequence Transparency = new NumberSequence(0);
         public float VelocityInheritance = 0;
@@ -5621,7 +5622,7 @@ namespace RobloxFiles
     {
         public bool CelestialBodiesShown = true;
         public float MoonAngularSize = 11;
-        public Content MoonTextureContent = Content.None;
+        public Content MoonTextureContent = new Content("rbxasset://sky/moon.jpg");
 
         public ContentId MoonTextureId
         {
@@ -5629,7 +5630,7 @@ namespace RobloxFiles
             set => MoonTextureContent = value;
         }
 
-        public Content SkyboxBackContent = Content.None;
+        public Content SkyboxBackContent = new Content("rbxasset://textures/sky/sky512_bk.tex");
 
         public ContentId SkyboxBk
         {
@@ -5643,8 +5644,8 @@ namespace RobloxFiles
             set => SkyboxDownContent = value;
         }
 
-        public Content SkyboxDownContent = Content.None;
-        public Content SkyboxFrontContent = Content.None;
+        public Content SkyboxDownContent = new Content("rbxasset://textures/sky/sky512_dn.tex");
+        public Content SkyboxFrontContent = new Content("rbxasset://textures/sky/sky512_ft.tex");
 
         public ContentId SkyboxFt
         {
@@ -5652,7 +5653,7 @@ namespace RobloxFiles
             set => SkyboxFrontContent = value;
         }
 
-        public Content SkyboxLeftContent = Content.None;
+        public Content SkyboxLeftContent = new Content("rbxasset://textures/sky/sky512_lf.tex");
 
         public ContentId SkyboxLf
         {
@@ -5661,7 +5662,7 @@ namespace RobloxFiles
         }
 
         public Vector3 SkyboxOrientation = Vector3.zero;
-        public Content SkyboxRightContent = Content.None;
+        public Content SkyboxRightContent = new Content("rbxasset://textures/sky/sky512_rt.tex");
 
         public ContentId SkyboxRt
         {
@@ -5675,10 +5676,10 @@ namespace RobloxFiles
             set => SkyboxUpContent = value;
         }
 
-        public Content SkyboxUpContent = Content.None;
+        public Content SkyboxUpContent = new Content("rbxasset://textures/sky/sky512_up.tex");
         public int StarCount = 3000;
         public float SunAngularSize = 21;
-        public Content SunTextureContent = Content.None;
+        public Content SunTextureContent = new Content("rbxasset://sky/sun.jpg");
 
         public ContentId SunTextureId
         {
@@ -6088,7 +6089,14 @@ namespace RobloxFiles
 
         public Content RoughnessMapContent = Content.None;
         public int SurfaceSlot = -1;
-        public ContentId TexturePack;
+
+        public ContentId TexturePack
+        {
+            get => TexturePackContent;
+            set => TexturePackContent = value;
+        }
+
+        public Content TexturePackContent;
     }
 
     [RbxService]
@@ -6154,7 +6162,7 @@ namespace RobloxFiles
             set => ColorMapContent = value;
         }
 
-        public Content ColorMapContent = Content.None;
+        public Content ColorMapContent;
         public Content EmissiveMaskContent;
         public float EmissiveStrength = 1;
         public Color3 EmissiveTint = new Color3(1, 1, 1);
@@ -6167,7 +6175,7 @@ namespace RobloxFiles
             set => MetalnessMapContent = value;
         }
 
-        public Content MetalnessMapContent = Content.None;
+        public Content MetalnessMapContent;
 
         public ContentId NormalMap
         {
@@ -6175,7 +6183,7 @@ namespace RobloxFiles
             set => NormalMapContent = value;
         }
 
-        public Content NormalMapContent = Content.None;
+        public Content NormalMapContent;
 
         public ContentId RoughnessMap
         {
@@ -6183,9 +6191,9 @@ namespace RobloxFiles
             set => RoughnessMapContent = value;
         }
 
-        public Content RoughnessMapContent = Content.None;
+        public Content RoughnessMapContent;
         public float StudsPerTile = 10;
-        public ContentId TexturePack;
+        public Content TexturePackContent;
     }
 
     public class TerrainRegion : Instance
