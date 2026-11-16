@@ -1,5 +1,5 @@
 // Auto-generated list of creatable Roblox classes.
-// Updated as of 0.747.0.7471481
+// Updated as of 0.748.0.7481526
 
 using System;
 
@@ -17,6 +17,10 @@ namespace RobloxFiles
     }
 
     public class AppHandle : RbxObject
+    {
+    }
+
+    public class Blob : RbxObject
     {
     }
 
@@ -1126,6 +1130,7 @@ namespace RobloxFiles
         public WrapLayerAutoSkin AutoSkin = WrapLayerAutoSkin.Disabled;
         public CFrame BindOffset = CFrame.identity;
         public bool Enabled = true;
+        public Content NonUniformScaleContent = Content.None;
         public int Order = 1;
 
         [Obsolete]
@@ -1140,14 +1145,14 @@ namespace RobloxFiles
         }
 
         public CFrame ReferenceOrigin = CFrame.identity;
-        public Content RotateScaleDeformationMap = Content.None;
-        public Content ScaleOnlyDeformationMap = Content.None;
+        public Content RotateUniformScaleContent = Content.None;
 
         [Obsolete]
         public float ShrinkFactor = 0;
 
         public float TargetShaping = 0;
         public Content TemporaryReferenceMeshContent;
+        public Content UniformScaleContent = Content.None;
     }
 
     public class WrapTarget : BaseWrap
@@ -2505,6 +2510,11 @@ namespace RobloxFiles
 
     [RbxService]
     public class FileManagerService : Instance
+    {
+    }
+
+    [RbxService]
+    public class FilePickerService : Instance
     {
     }
 
@@ -4038,6 +4048,7 @@ namespace RobloxFiles
         public float FogStart = 0;
         public float GeographicLatitude = 41.7333f;
         public bool GlobalShadows;
+        public LightAttenuationMode LightAttenuationMode = LightAttenuationMode.Legacy;
         public LightingStyle LightingStyle = LightingStyle.Soft;
         public Color3 OutdoorAmbient = Color3.FromRGB(127, 127, 127);
 
@@ -5244,6 +5255,8 @@ namespace RobloxFiles
     public class ColorCorrectionEffect : PostEffect
     {
         public float Brightness = 0;
+        public Content ColorLutContent = Content.None;
+        public float ColorLutIntensity = 1;
         public float Contrast = 0;
         public float Saturation = 0;
         public Color3 TintColor = new Color3(1, 1, 1);
@@ -6132,6 +6145,8 @@ namespace RobloxFiles
 
     public class TeleportOptions : Instance
     {
+        public bool ForcePublicServer;
+
         [Obsolete("Use `ReservedServerId` instead.")]
         public string ReservedServerAccessCode = "";
 
@@ -6943,6 +6958,14 @@ namespace RobloxFiles
     }
 
     public class ParticipantHandle : RbxObject
+    {
+    }
+
+    public class PickedFile : RbxObject
+    {
+    }
+
+    public class SceneSnapshot : RbxObject
     {
     }
 

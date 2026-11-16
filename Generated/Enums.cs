@@ -1,5 +1,5 @@
 // Auto-generated list of Roblox enums.
-// Updated as of 0.747.0.7471481
+// Updated as of 0.748.0.7481526
 using System;
 
 namespace RobloxFiles.Enums
@@ -1704,8 +1704,9 @@ namespace RobloxFiles.Enums
 
     public enum DomainType
     {
-        EXPERIENCE = 1,
-        OAUTH = 3,
+        Experience = 1,
+        Group,
+        OAuth,
     }
 
     public enum DominantAxis
@@ -1806,6 +1807,7 @@ namespace RobloxFiles.Enums
         Screenshots,
         Videos,
         Logs,
+        ClientSettings,
     }
 
     public enum EnviromentalPhysicsThrottle
@@ -3007,6 +3009,12 @@ namespace RobloxFiles.Enums
         Left,
         Center,
         Right,
+    }
+
+    public enum LightAttenuationMode
+    {
+        Legacy,
+        Realistic,
     }
 
     public enum LightingStyle
